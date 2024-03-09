@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="ja">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<TITLE>TORO's Data library(Configuration file)</TITLE>
+<LINK REL="CHAPTER" HREF="dlcfg.html">
+<style type="text/css"><!--
+body { line-height: 150%; }
+hr { border:solid 1px; }
+pre { line-height: 110%; word-break: break-word; }
+ul { font-size: 110%; }
+span { font-weight: bold; font-size: 150% }
+#page { width: 96%; text-align: left; }
+#title { text-align: center; }
+#index { width:105pt; float:left; border-right: 1px solid gray; }
+#contents { width:100%; float:right; margin-left:-110pt; }
+#contents2 { margin-left:114pt; }
+
+@media only screen and (orientation: portrait) {
+ #index { width:100%; float:none; border-right:none; }
+ #contents { float:none; margin-left:0pt; }
+ #contents2 { margin-left:0pt; }
+}
+--></style></head>
+<body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
+<div id="page">
+<div id="title"><H2><A NAME="top">Configuration file &amp; Memo</A></H2>
+KL や PPx 等の、設定が重要なソフトの設定例と解説です。<hr></div>
+<div id="contents"><div id="contents2">
+<H3>K-Launcher</H3>
+ <UL>
+  <LI><A HREF="#kl">メモ</A>
+  <LI><A HREF="./klcfg/toro.txt">TORO(Version 1.17, 98x1, 1999/6/19)</A>
+ </UL>
+
+<H3>Paper Plane xUI</H3>
+ <UL>
+  <LI><A HREF="#ppx">メモ</A>
+  <LI><A HREF="ppxhlp.html">オンラインヘルプ</A>
+  <LI><A HREF="ssppx.html">動作画面/カスタマイズ例</A>
+  <LI><A HREF="./ppxcfg/defcust.txt">初期設定値(Version 1.95, 2024/01/27)</A>
+  <LI><A HREF="./ppxcfg/defxpr.txt">エクスプローラ風追加設定+ソートの昇降設定(SETUP.EXEに内蔵、Version 1.82, 2021/11/20)</A>
+  <LI><A HREF="./ppxcfg/defkl.txt">K-Launcher/FD(出射 厚氏作)風追加設定(SETUP.EXEに内蔵、Version 1.60, 2018/03/24)</A>
+  <LI><A HREF="./ppxcfg/deffm.txt">FILMTN(K.Ishida氏作)風追加設定(SETUP.EXEに内蔵、Version 1.60, 2018/03/24)</A>
+  <LI><A HREF="./ppxcfg/defdia.txt">ダイアモンドキー追加設定(SETUP.EXEに内蔵、Version 1.00, 2008/04/06)</A>
+  <LI><A HREF="./ppxcfg/defjpn.txt">メニューの日本語表記設定(SETUP.EXEに内蔵、Version 1.95, 2024/01/27)</A>
+  <LI><A HREF="./ppxcfg/defjpn2.txt">メニューの日本語表記設定, エクスプローラ風追加設定+ソートの昇降設定用(SETUP.EXEに内蔵、Version 1.73, 2020/05/23)</A>
+  <LI><A HREF="./ppxcfg/deflowsp.txt">Windows95, 98, Meとメインメモリが384Mbytes以下のときに用いる追加設定(SETUP.EXEに内蔵、1.77, 2021/01/23)</A>
+  <LI><A HREF="./ppxcfg/ppc-one_pane-show_tab.txt">PPc 一体化窓（1ペイン、タブ常時表示）用の追加設定(1.82, 2021/11/20)</A>
+  <LI><A HREF="./ppxcfg/ppc-two_pane-no_tab.txt">PPc 一体化窓（2ペイン/2画面）用の追加設定(1.82, 2021/11/20)</A>
+  <LI><A HREF="./ppxcfg/ppc-two_pane-show_tab.txt">PPc 一体化窓（2ペイン/2画面、タブ常時表示）用の追加設定(1.82, 2021/11/20)</A>
+  <LI><A HREF="./ppxcfg/noneinc.txt">シフトキーを使わずに頭文字検索する設定(Version 1.00, 2008/04/06)</A>
+  <LI><A HREF="./ppxcfg/shiftinc.txt">Shift+英数字で頭文字検索する設定(Version 1.00, 2008/04/06)</A>
+  <LI><A HREF="./ppxcfg/defwin.txt">Windowsの設定に合わせる配色(SETUP.EXEに内蔵、Version 1.77, 2021/01/23)</A>
+  <LI><A HREF="./ppxcfg/defblack.txt">背景が黒(CRT向け)の配色(Version 1.77, 2021/01/23)</A>
+  <LI><A HREF="./ppxcfg/defdark.txt">背景がダーク/灰(LCD向け)の配色(Version 1.77, 2021/01/23)</A><br>※メニュー等のWindowsによる描画の部分は、X_uxt の変更が必要。
+  <LI><A HREF="./ppxcfg/deflight.txt">背景がライト/暗白(LCD向け)の配色(Version 1.77, 2021/01/23)</A>
+  <LI><A HREF="./ppxcfg/defwhite.txt">背景が白(CRT向け)の配色(Version 1.77, 2021/01/23)</A>
+  <LI><A HREF="./ppxcfg/ppxdemos.txt">CFX Module, Text Module, DockShowを使ったサンプル(Version 1.12, 2010/4/1)</A>
+  <LI><A HREF="./ppxcfg/toro.txt">TORO(Version 0.41, 2005/12/23)</A>
+</UL>
+
+<H3>ClockPod</H3>
+ <UL style="" >
+  <LI><A HREF="#clockpod">メモ</A>
+ </UL>
+
+<HR><A HREF="#top">↑</A><H3><A NAME="kl">K-Launcher メモ</A></H3><UL>
+ <LI>実行関係のカスタマイズを行うとき、いちいち KL.CFG を編集してカスタマイズをしてから確認なくても、s[H]ell で直接実行して済ませることもできます。
+ <LI>頭文字検索もカスタマイズ可能です。例えば次のようにアルファベットキーなどをすべて置き換えることで、[SHIFT]+[ALT]+[英数字]を[SHIFT]+[英数字]にすることができます。<br>
+ただし、元から割り当てられていた[SHIFT]+[英数字]が使えなくなりますので、別のキーに割り当て直す必要があります。<br>
+<pre>
+A_main = { ;ファイル選択時
+'!'	=@~1
+'"'	=@~2
+'#'	=@~3
+(省略)
+')'	=@~9
+\A	=@~A
+\B	=@~B
+\C	=@~C
+(省略)
+\Z	=@~Z
+}
+</pre>
+</UL>
+
+<HR><A HREF="#top">↑</A><H3><A NAME="ppx">Paper Plane xUI メモ</A></H3><UL>
+ <LI>カスタマイズの例として次のような記載をしている部分があります。<BR>
+KC_main = {<BR>
+ESC = Q<BR>
+}<BR>
+これは、「KC_main」という項目内に、「ESC = Q」という行を追加する意味です。<BR>
+実際の作業は、設定ファイル中の「KC_main」の「{}」でくくった中に、「ESC = Q」という行を追加することでおこないます。また、該当項目がない場合は、上記三行を追加記載します。記載する場所は、設定ファイルの末尾等、他の設定に含まれない場所ならどこでもいいです。<BR>
+尚、PPxではテキストの書き出し時に類似する項目群の付近に整列します。<BR>
+また、PPxの場合は、上記三行のみ記載したファイルを作成し、GUIなら「追加」ボタンで、コマンドラインなら CA コマンドで追記することで、
+設定を追加することができます。
+ <LI>実行関係のカスタマイズを行うとき、s[H]ell で直接実行して確認することができます。
+ <LI>頭文字検索もカスタマイズ可能です。例えば次のようにアルファベットキーなどをすべて置き換えることで、[SHIFT]+[ALT]+[英数字]を[SHIFT]+[英数字]にすることができます。<br>
+ただし、元から割り当てられていた[SHIFT]+[英数字]が使えなくなりますので、別のキーに割り当て直す必要があります。<br>
+<pre>
+KC_main = { ;ファイル選択時
+'!'	=@~1
+'"'	=@~2
+'#'	=@~3
+(省略)
+')'	=@~9
+\A	=@~A
+\B	=@~B
+\C	=@~C
+(省略)
+\Z	=@~Z
+}
+</pre>
+ <li>テキスト形式によるカスタマイズは、部分カスタマイズが可能です。<br>
+例えば、上記カスタマイズ例の「背景が白の配色」を「取込」(CS)や「追加」(CA)で取り込むことで、色に関する設定のみを変更することができます。<br>
+尚、「{」「}」で括る形式の項目（この場合は、C_ext）は、「取込」(CS)と「追加」(CA)で既存の内容を上書きする際の挙動が違うので、ヘルプ等を参照して取り込み方法を使い分けてください。
+
+ <li>PPc の最上段の行のカスタマイズ XC_stat は、何も登録されていないときは次のような設定とほぼ同じになります。<BR>
+ XC_stat = _AUTO,_AUTO,0,0,I"Mark:"mn i"/" ms8L I"Entry:" e0 i"/" E0L I"Free:" Df8L I"Used:" Du8L I"Total:" Dt8L Y<br><br>
+また、他の例として、いくつか用意してみました。<br><br>
+「.」「..」をカウントしない指定<br>
+XC_stat = _AUTO,_AUTO,0,0,I"Mark:"mn i"/" ms8L I"Entry:" e1 i"/" E1L I"Free:" Df8L I"Used:" Du8L I"Total:" Dt8L Y<br><br>
+「.」「..」をカウントしない指定 + 一列表示用 + マーク情報優先<br>
+XC_stat = _AUTO,_AUTO,0,0,I"*"mn i"/" e1 ms12 I" bytes"L Df8 I" free"<br>
+</UL>
+
+<HR><A HREF="#top">↑</A><H3><A NAME="clockpod">ClockPod メモ</A></H3><UL>
+ <LI>常時表示したい情報があるとき、次のように環境変数に代入しておいて、その環境変数を表示するようにすれば、いちいち表示形式を変更する必要が無くなります。<br>
+<pre>
+S_default	= %n-%d(%W) %H:%m %vMAIL%vIME ; 標準表示形式
+Z_NewMail	= ,%3(%2):%1; %1:名前 %2:メール数
++%vMAIL		= M:%3
+Z_IME		=				; IME 状態が変化
++compare	= %I,Rあ,あ
+++%vIME		= ■
+++break		=
++%vIME		= □
+</pre>
+</UL>
+<HR><A HREF="./index.html">Homeへ戻る</A>
+<hr><address>Copyright(c)1997-2023 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+<IMG SRC="http://toro.d.dooo.jp/ac/accimg.cgi?id=dlcfg" ALT="access counter用" WIDTH="20" HEIGHT="11"></div></div>
+<div id="index">
+<strong><A HREF="./index.html">TORO's Library</A></strong>
+<H3>Software</H3>
+&nbsp;<A HREF="./slwin4.html">Windows</A><br>
+&nbsp;&nbsp;<A HREF="./slppx.html">PPx</A><br>
+&nbsp;&nbsp;<A HREF="./slplugin.html">DLL,SusiePlugin</A><br>
+&nbsp;<A HREF="./sldos.html">MS-DOS</A><br>
+&nbsp;<A HREF="./sle500.html">SHARP PC-E500</A><br>
+<H3>Hardware</H3>
+&nbsp;<A HREF="./hde500.html">SHARP PC-E500</A><br>
+<H3>Data</H3>
+&nbsp;<A HREF="dlminfo.html">Information</A><br>
+&nbsp;&nbsp;<A HREF="./ppxhlp.html">PPx Help</A><br>
+&nbsp;<A HREF="./dldoslfn.html">DOS 上で LFN</A><br>
+&nbsp;<A HREF="./dlsrc.html">Source</A><br>
+&nbsp;<A HREF="./dlcfg.html">Config Memo</A><br>
+&nbsp;<A HREF="./dlw32api.html">Win32 API memo</A><br>
+<H3>Message Board</H3>
+&nbsp;<A HREF="/wforum/wforum.cgi">Software</A>
+</div>
+</div></body></html>

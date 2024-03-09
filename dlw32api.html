@@ -1,0 +1,505 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="ja">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<TITLE>TORO's Data Library(Win32 API memo)</TITLE>
+<LINK REL="CHAPTER" HREF="dlw32api.html">
+<style type="text/css"><!--
+body { line-height: 150%; word-break: break-word; }
+hr { border: solid 1px; }
+pre { line-height: 110%; font-size: 105%; white-space: pre-wrap; background-color: #f6f69f; }
+table { background-color: #f6f69f; }
+th { font-weight: normal; position: sticky; left: 0; background-color: #f6f69f; }
+dt { font-weight: bold; }
+#page { width: 96%; text-align: left; }
+#title { text-align: center; }
+#index { width:105pt; float:left; border-right: 1px solid gray; }
+#contents { width:100%; float:right; margin-left:-110pt; }
+#contents2 { margin-left:114pt; }
+
+@media only screen and (orientation: portrait) {
+ #index { width:100%; float:none; border-right:none; }
+ #contents { float:none; margin-left:0pt; }
+ #contents2 { margin-left:0pt; }
+}
+--></style></head>
+<body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
+<div id="page">
+<div id="title"><H2>Win32 API memo</H2>
+Win32 API について、SDK HELP/MSDN に載っていない／分かりにくい事項の覚え書きです。<hr></div>
+<div id="contents"><div id="contents2">
+ <UL>
+  <LI><A HREF="#single">個別API等の動作関連</A></LI>
+  <LI><A HREF="#group" >特定機能関連</A></LI>
+  <LI><A HREF="#homes" >プラットホーム(Win32/Win32c/Win32s)による動作違い関連</A></LI>
+  <LI><A HREF="#unicode">UNICODE</A></LI>
+  <LI><A HREF="#etc">その他</A></LI>
+ </UL>
+<A HREF="index.html">Homeへ戻る</A> update:2023-10-22
+<HR><H3><A NAME="single">個別API等の動作関連</A></H3><DL>
+<dt>GetTempPathName(lpszPath, lpszPrefix, uUnique, lpszTempFile)</dt>
+<DD>uUnique == 0 のとき、生成したファイル名で filesize = 0 のファイルが作成される。<br>
+→一時ディレクトリを作る時はこのファイルを一旦削除するか、uUnique != 0 で利用する必要あり。
+<br>(2000-09-02)</DD>
+
+<dt>GetTempPath(cchBuffer, lpszTempPath)</dt>
+<DD>cchBuffer は 約 0x7000 未満にしないといけない。<br>0x7fff 等では例外が発生し、0x8000 では FALSE を返す。
+<br>(2000-11-04)</DD>
+
+<dt>GetFileInformationByHandle()</dt>
+<DD>NEC PC-98x1用 Windows9x 上からネットワーク上の Windows9x(機種問わず)のエントリを見た場合、dwFileAttributesが正常に取得できない。また、nFileSizeHigh/nFileSizeLowが正常で無い場合もある。FindFirstFile()/FileNextFile(), GetFileAttributes()なら問題無いようなので、こちらから情報を得るといいようだ。
+<br>(2001-09-08)</DD>
+
+<dt>FindFirstFile()<br>FindNextFile()<br>int 21H AX=714eH/714fH</dt>
+<DD><UL><LI>cAlternateFileName はエントリ名が 8.3 文字に収まらない場合に使われる。収まる場合は「&quot;&quot;」である。<br>
+更に、小文字などで構成されている場合でも、8.3 形式で収まれば cAlternateFileName は使われない。<br>
+また、短いファイル名の生成機能(NT系のみ、HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem\NtfsDisable8dot3NameCreation)を停止している場合も使われない。
+<br>(2002-05-08)</LI>
+<LI>dwCreationTime / dwLastAccessTimeが未対応の場合は値が 0 となるが、これを普通に変換すると「1601-01-01 9:00:00.000」(９時になっているのは、日本が GMT+9 であるため)になる。このため、２桁年表示を「year - 2000」等とするとおかしくなる。もっとも2000年問題関連で対処されている可能性が大きいが(^^;
+<br>(2003-04-22)</LI>
+<LI>表現できない文字(例えばANSI版APIでOEM文字にないUNICODE文字)で構成されたファイル名は、似た文字がある場合はその文字に、似た文字が無ければ「?」になる。
+(WideCharToMultiByteでの処理と同じはず。)<br>
+どちらにしても、得られたファイル名を用いてファイル操作をすることはできない。<br><br>
+例）<br>
+上付き数字2「&#178;」(UNICODE 0xb2)→「2」(ANSI 0x32)<br>
+著作権記号(c)「&#169;」(UNICODE 0xa9)→「c」(ANSI 0x63)<br>
+左斜め上矢印「&#8598;」(UNICODE 0x2196)→「?」(ANSI 0x3f)<br>
+※「」内にUNICODE文字を使っているため、表示環境によっては正しく表示されません。
+<br>(2002-05-08)</LI>
+
+<LI>ANSI 版では、cFileName に入りきらない長さ、例えば、漢字のみで200文字(ANSI 版なら400bytes相当)のエントリは列挙されず、ERROR_MORE_DATAとなる。<br>
+また、CD-ROM等上のディレクトリを読むときにERROR_MORE_DATAがでる場合がある。常に同じエントリででる訳ではないので、読み取り失敗したのではないかと思われる。<br>
+これらの理由によってERROR_MORE_DATAがでてもFindNextFileで続きを読むことができる。
+<br>(2005-06-23)</LI>
+
+<li>短いファイル名の取得は、少なくともWindows7以降において、大きな負担になっており、倍程度の時間が必要となっている（下記表を参照）。<br>
+このため、短いファイル名が不要であれば、FindFirst や FindExInfoStandard を指定した FindFirstFileEx より、FindExInfoBasic を指定した FindFirstFileEx が好ましい。(2023-10-22)</li>
+
+<li>FindFirst や、FindFirstFileEx の代わりに FileIdBothDirectoryInfo 等を指定した GetFileInformationByHandleEx を使用することができる。ただし、FindFirst や、FindFirstFileEx と同程度の情報を入手する場合、速度はほとんど変わらない。（下記表を参照, 2023-10-22)</li>
+</UL></DD>
+
+<dt>FindFirst(), FindFirstFileEx(), GetFileInformationByHandleEx()</dt>
+<dd>FindFirst, FindFirstFileEx, GetFileInformationByHandleEx による特定ディレクトリの全エントリ取得の速度比較例を以下に示す。<br>
+いずれも、VMWare 上の仮想マシン上の Windows を用いて、C:\Windows\WinSxS 内を対象にし、FindFirst による計測を１度行った後、表に記載の API を使用して本測定している。<br>
+※計測値は１回計測の値である為、数msの誤差がある。
+※計測は次の書庫内の実行ファイルを使った。 <a href="./findfirst.zip">findfirst.zip</a>
+
+<table style ="display:block; white-space: nowrap; overflow-x: scroll;" ><tr><th></th><td>Windows7<br>(エントリ数 14627)</td><td>Windows8.1<br>(エントリ数 12695)</td><td>Windows10<br>(エントリ数 13724)</td></tr>
+<tr><th>FindFirst</th><td>27.3ms</td><td>14.5ms</td><td>53.1ms</td></tr>
+<tr><th>FindFirstFileEx<br>(FindExInfoBasic)</th><td>7.1ms</td><td>7.5ms</td><td>41.2ms</td></tr>
+<tr><th>FindFirstFileEx<br>(FindExInfoBasic<br>FIND_FIRST_EX_LARGE_FETCH)</th><td>6.3ms</td><td>10.5ms</td><td>18.8ms</td></tr>
+<tr><th>FindFirstFileEx<br>(FindExInfoStandard)</th><td>22.6ms</td><td>15.4ms</td><td>54.3ms</td></tr>
+<tr><th>FindFirstFileEx<br>(FindExInfoStandard<br>FIND_FIRST_EX_LARGE_FETCH)</th><td>30.4ms</td><td>19.8ms</td><td>33.1ms</td></tr>
+<tr><th>GetFileInformationByHandleEx<br>(FileIdBothDirectoryInfo)</th><td>30.6ms</td><td>20.7ms</td><td>33.1ms</td></tr>
+<tr><th>GetFileInformationByHandleEx<br>(FileIdExtdDirectoryInfo)</th><td>-</td><td>11.2ms</td><td>17.6ms</td></tr>
+<tr><th>GetFileInformationByHandleEx<br>(FileFullDirectoryInfo)</th><td>-</td><td>13.0ms</td><td>21.0ms</td></tr>
+</table></dd>
+<dd>(2023-10-22)</DD>
+
+<dt>RegisterDragDrop (OLE2 D&amp;D)</dt>
+<DD>内部で作成される別スレッドで監視を行っている
+<br>(2001-02-04)</DD>
+
+<dt>GetDiskFreeSpace</dt>
+<DD><UL><LI>Windows 9x では 各種値が FAT16 の範囲内に調節される（次の例を参照）。<br>
+lpSectorsPerCluster * lpBytesPerSector ≦ 32768<br>
+lpFreeClusters &amp; lpClusters ≦ 65535<br>
+※ディスク容量は 2Gbytes 以内に丸められる。</LI>
+<LI>Windows NT/2000 では各種値が 16bit を超えることがあるため、ディスク容量が 2Gbytes/4Gbytes を越え、signed long/unsigned long の範囲外になる。</LI>
+<LI>Windows 2000 以降で可能な Disk Quota が有効である場合、各種クラスタ数は Quota の制限値に沿った値になる。</LI>
+</UL>(2001-02-20)</DD>
+
+<dt>GetDiskFreeSpaceEx</dt>
+<DD><UL><LI>Windows95B(OSR2)、WindowsNT 4.0 以降対応のため、それ以前の Windows に対応するには手動でインポートを行う必要がある。</LI>
+<LI>Windows 9x(PC, NEC98x1を問わない) でネットワークドライブ(ドライブ名形式／UNC形式を問わない)の容量を求めると、そのドライブの総容量が 2Gbytes を超える場合、各種容量が 2Gbytes 以内に丸められる(GetDiskFreeSpaceと同じ処理)。</LI>
+<LI>Windows NT4.0/2000 では Disk Quota で丸められた空き容量／総容量と実ドライブの空き容量を求めることができる。</LI>
+</UL>(2001-02-20)</DD>
+
+<dt>CompareString</dt>
+<dd>dwCmpFlags で使用される、NORM_xxx、LINGUISTIC_ は、同等か否かの比較用フラグである。ソートのための比較に使用しても、CSTR_GREATER_THAN / CSTR_LESS_THAN の変化は得られず、並び順が変わらない。<br>
+ソートのための比較フラグは、SORT_STRINGSORT / SORT_DIGITSASNUMBERS のみになる。
+<br>(2020-04-18)</DD>
+
+<dt>MoveFile</dt>
+<DD>異なるボリュームに対してファイルの移動ができないことになっているが、実際は可能になっている。(95B/NT4/2000で確認)<br>
+※エントリの付け替えによる高速移動と区別する方法が見当たらず、MoveFileで待たされることがある。
+<br>(2001-04-04)</DD>
+
+<dt>NotifyChangeEventLog</dt>
+<DD>このAPIで得られるシグナル状態は、PulseEventによって変化する。つまり、待機API(WaitForSingleObject等)内で変化しないと取得できない。例えば、<br>
+while ( WaitForSingleObject(hEvent, 0) != WAIT_OBJECT_0 );<br>
+というコードを書いてもイベントログの書き込みがされたことをすべて検出できない。<br>
+→GetNumberOfEventLogRecordsを併用したほうがよさそうだ
+<br>(2001-12-06)</DD>
+
+<dt>PulseEvent</dt>
+<DD>待機API(WaitForSingleObject等)によって待機している場合でないとPulseEventの効果が期待できない。例えば、<br>
+while ( WaitForSingleObject(hEvent, 0) != WAIT_OBJECT_0 );<br>
+というコードを書くと検出漏れが発生する<br>
+<br>(2001-12-06)</DD>
+
+<dt>SetWindowText<br>GetWindowText<br>WM_SETTEXT<br>WM_GETTEXT</dt>
+<DD>?etWindowTextとWM_?ETTEXTは基本的に同じ動作だが、条件によっては異なる動作となる。
+<UL><LI>別プロセスのEdit controlに対してテキスト内容の取得・設定を行う場合、WM_?ETTEXTは動作するが、?etWindowTextは使用できない。</LI>
+<LI>WM_?ETTEXT で正しいテキストを取得できない場合、SendMessageではなくSendMessageA/SendMessageWを使ってコード体系を変えてみるとよい。</LI>
+</UL>(2002-02-02)修正</DD>
+
+<dt>FindFirstChangeNotification</dt>
+<DD>エラーの返値は、INVALID_HANDLE_VALUEだが、NULLが帰ってくることがある。(Win2000 SP3 で MAX_PATH を越えるパスを指定したときに確認)<br>
+<br>(2002-11-08)</DD>
+
+<dt>SelectObject</dt>
+<dd>フォントの切り替えはかなりコストが掛かるようだ。<br>
+ppv.exe は、tab を矢印で表示させるときに、一時的に SelectObject を使って Symbolフォント切り替えている。この状態で tab code が大量に入っているファイルを表示させたとき、画面描画中であることががはっきりわかるほど遅くなる。<br>
+<br>(2003-04-19)</DD>
+
+<dt>ImpersonateNamedPipeClient</dt>
+<DD>ImpersonateNamedPipeClientは、「パイプから直前に読み取ったメッセージ」の送信元クライアントに偽装することができる。つまり、ReadFile等で予めメッセージを読んだ後に、ImpersonateNamedPipeClientを使う必要がある。<br>
+ConnectNamedPipeを実行した直後等は、まだメッセージを読んだことにならないので、ImpersonateNamedPipeClientを実行してもエラーになる。
+<br>(2003-09-20)</DD>
+
+<dt>ToAscii(uVirtKey, uScanCode, lpbKeyState, lpwTransKey, fuState)</dt>
+<dd>変換された結果が入る lpwTransKey は WORD だが、実際は下位バイトのみ書き換えられ、上位バイトは ToAscii の実行前と同じ値である。
+<br>(Windows2000 SP4で確認、2004-11-27)</dd>
+
+<dt>ReadConsoleInput</dt>
+<dd>SetConsoleModeでENABLE_MOUSE_INPUTを指定し、コンソールのプロパティで簡易編集を解除した状態では、ReadConsoleInputでマウスカーソルの位置を取得できる。<br>
+この位置は、Windows2000/XPならスクリーンバッファ内の座標に収まるが、WindowsNTではバッファ外の座標も入る(X, Y = -1, -1等)
+<br>(2005-11-26)</dd>
+
+<dt>SHGetFileInfo</dt>
+<dd><ul><li><del>SHGFI_ICON のみを指定すると、SHFILEINFOの.hIconと.iIconにそれぞれ結果が返されるが、Desktop.ini等によるアイコン指定が無効になる。(2007-08-11)</del>(勘違いだったようだ 2013-11-05)</li>
+<li>SHGFI_ICON | SHGFI_SYSICONINDEX を指定すると、SHFILEINFOの.iIconは Desktop.ini等によるアイコン指定が反映されたイメージリストのインデックスが取得できる。ただし、ショートカットなどのオーバレイは反映されない。<br>
+SHFILEINFOの.hIconにはオーバレイも反映されたアイコンが新規に作成され、格納される。
+<br>(2007-08-11)</li>
+<li>SHGFI_ICONを指定したとき、戻り値がtrueであっても.hIconがnullになることがある。Sleep(10)等で待ってから再取得すれば成功するようだ。<br>(Windows7 SP1で確認、2013-11-05)</ul></dd>
+
+<dt>SHFileOperation</dt>
+<dd>SHFileOperationの実行中に実行元のウィンドウを閉じてPostQuitMessageを実行しても、途中で止まって、場合によってはプロセスが残ったままになる。<br>
+このため、SHFileOperationの実行後、実行元のウィンドウを閉じたかどうかを確認し(例えば、IsWindow)、既に閉じていた場合はPostQuitMessageを再度実行する必要がある。<br>
+※SHFileOperationの実行中は、実行元の入力を抑制しない為、実行元のメッセージループが回る疑似バックグラウンド状態になる。
+<br>(2007-12-01)</dd>
+
+<dt>UnhookWindowsHookEx</dt>
+<dd>UnhookWindowsHookExを実行しただけでは、全てのプロセスにフックしたDLLは全て解放されない。これは、DLLが解放されるタイミングが該当プロセスでGetMessage等を呼び出したときだからである。このため、DLLをすぐに解放したいときは、UnhookWindowsHookExの後にPostMessage(HWND_BROADCAST, WM_NULL, 0, 0)を実行するとよい。<br>
+※SetWindowsHookExによりDLLがフックするタイミングもGetMessage等を呼び出したときと思われる。
+<br>(2008-08-24)</dd>
+
+<dt>CreateDIBitmap</dt>
+<dd>Windows7で、CreateDIBitmapで作成したビットマップへの部分描画(DrawIconEx, BitBlt等)を行うと、描画していない部分も書き換わる。<br>
+CreateDIBSectionを使ってビットマップを作成すれば問題ない。
+<br>(2011-07-23)</dd>
+
+<dt>CreateSymbolicLink</dt>
+<dd>Windows7で、TRUE であるにもかかわらず、失敗して ERROR_PRIVILEGE_NOT_HELD となっていることがある
+<br>(2014-11-08)</dd>
+
+<dt>SetTimer(hWnd, nIDEvent, uElapse, lpTimerFunc)</dt>
+<dd>hWnd が NULL の場合のみ、ユーザーオブジェクト(ユーザーリソース)を1つ使用する。メッセージ処理用のWindowを内部で使用しているようだ。<br>
+このとき、lpTimerFunc に渡される ID は、nIDEvent ではなく、内部で作成された ID となる。このため、KillTimer に nIDEvent を渡してもタイマーを終了・破棄することができず、ユーザーオブジェクトを使用したままとなる。
+<br>(2023-09-23)</dd>
+
+<dt>WM_xBUTTONUP<br>WM_xBUTTONDOWN<br>WM_xBUTTONDBLCLK</dt>
+<DD>最小化時等でクライアント外の座標が渡されることがある。
+<br>(2000-09-02)</DD>
+
+<dt>WM_MOUSEWHEEL</dt>
+<DD>SendMessageによって呼ばれているようだ。
+<br>(2000-09-02)</DD>
+
+<dt>WM_INITMENU</dt>
+<DD>任意のメニュー／ポップアップメニューがアクティブになるときに発生する。また、一旦メニューループを抜けない限り再発生しない。具体例は次の通り。
+<UL><LI>TrackPopupMenuで任意メニューをアクティブにするとき</LI>
+<LI>メニューバー上のメニューを非アクティブ時に選択／アクティブにしたとき</LI>
+<LI>システムメニュー(タイトルバー左端をクリック、タイトルバーを右クリック、Alt+Spaceで出るメニュー)をアクティブにするとき</LI></UL>
+(2001-06-19)</DD>
+<dd>メニューバーをアクティブにしたときに、WM_INITMENUのwParamで得られるメニューハンドルは、SetMenu() で設定/GetMenu()で得られるメニューハンドルと同じ値である。<br>
+システムメニューをアクティブにしたときも SetMenu() で設定したメニューハンドルと同じ値である。しかし、<br>
+(1)メニューバーがないときはWM_INITMENUでシステムメニューかどうかを判別する方法が用意されていないようだ。<br>
+(2)得られたメニューハンドルに対してWM_INITMENU内でModifyMenu()やSetMenuItemInfo()を行っても反映されない。<br>
+(DrawMenuBar()をWM_INITMENU内で実行しても反映されない。)<br>
+WM_INITMENU内であってもGetMenuState()で得たメニューハンドルに対して変更する必要があるが、WM_INITMENU内でGetMenuState()を実行すると異常終了するので、予めハンドルを用意する必要がある。<br>
+(2010-09-20)</DD>
+
+<dt>WM_INITMENUPOPUP</dt>
+<DD>任意のポップアップメニューがアクティブになるときに発生する。同じメニューループであってもアクティブになる度に発生する。
+(2001-06-19)</DD>
+
+<dt>EM_GETSEL<br>EM_SETSEL<br>EM_LIMITTEXT<br>EM_LINEINDEX</dt>
+<DD>WindowsXP 以降でビジュアルスタイルの ANSI 版エディットボックスを開いているにも関らず、EM_GETSEL / EM_SETSEL / EM_LIMITTEXTで UNICODE 版の動作をする。<br>
+例えば、次のコードでは XP 以外では FALSE を返すが、XP では TRUE となる。<br>
+<a href="http://support.microsoft.com/default.aspx?scid=kb;ja;418099">[WinXP] Common Control 6.0 の EM_LIMITTEXT による入力制限</a>によれば仕様ということである。<br>
+（ビジュアルスタイルではANSI版／完全なANSI変換は提供せず、UNICODE版のみ提供のようだ）<br>
+また、エディットボックスが UNICODE版 の動作をするかは IsWindowUnicode を使えば判定できる。(2003-12-6)<br>
+<del>※ Windows 8.1 で ANSI 版の動作をするようになった。(2017-12-30)</del>(勘違いだった 2018-10-20)
+<pre>
+BOOL CheckXPEditBox(void){
+    DWORD lP, wP;
+    HWND hWnd;
+    BOOL result;
+
+    hWnd = CreateWindowA(&quot;EDIT&quot;, &quot;漢字&quot;, 0, 0, 0, 0, 0, NULL, NULL, hInstance, 0);
+    ShowWindow(hWnd, SW_HIDE);
+
+    SendMessageA(hWnd, EM_SETSEL, (WPARAM)0, (LPARAM)-1);
+    SendMessageA(hWnd, EM_GETSEL, (WPARAM)&amp;wP, (LPARAM)&amp;lP);
+    if ( GetWindowTextLengthA(hWnd) &gt; (lP - wP) ){
+        result = TRUE;
+    }else{
+        result = FALSE;
+    }
+    PostMessage(hWnd, WM_CLOSE, 0, 0);
+    return result;
+}
+※キーボードフックを行うプログラムがあるときなど、
+　このコードで検出できない状況もある。
+</pre>
+(2003-12-06)</DD>
+
+<dt>EM_SETSEL</dt>
+<DD>無条件に文字列の末尾を指定する方法として -1 を指定するのが一般的だが、この値だと失敗することがあるようだ。正の最大値 0x7fffffff を使えば回避できるようだ。<br>
+manifest 適用 XPで、ANSI版エディットボックスを使用したときにこの現象を確認した<br>
+(2004-09-20)</DD>
+</DL>
+<HR><H3><A NAME="group">特定機能関連</A></H3><DL>
+<dt>プロパティシート関連</dt>
+<DD><UL><LI>アクティブ時にキーボードフォーカス移動ができない。→Ver5.0で対応<br>
+(2000-09-02)</LI>
+<LI>アクティブ時に内部でキーボードフォーカスの再設定が行われるが、その時、WM_COMMANDが生成されることがある。→これで状態取得を行っているとうまくいかない。特にラジオボタン<br>
+(2000-09-02)</LI>
+<li>プロパティシートの大きさは、最初のページの大きさから決められる。<br>
+最初のページのフォントが設定されていないとき、[OK]/[キャンセル]/[適用]等の場所を差し引いた大きさになり、<br>
+環境によって余分な空白ができたり、一部のコントロールが隠れてしまうことがある。<br>
+(2007-9-23)</li></ul></DD>
+
+<dt>RAS関連</dt>
+<DD>RAS 関連の API が入った DLL を動的読込みする場合は RASAPI32.DLL を読込むことになると思うが、RASAPI32.DLLがあってもそれに関連する DLL がない場合があり、GetProcAddressが成功しても API の実行時に DLL の読込み失敗ダイアログが表示されることがある。
+<br>(2000-9-2)</DD>
+
+<dt>Popup Menu</dt>
+<DD><ul><li>Popup Menu は表示中の PopupWindow の Window Class(&quot;#32768&quot;) ではなく、別のところで制御しているらしく、サブクラス化が困難な模様。また、メッセージループも内部で行っているため、大本のメッセージループではメッセージをつかまえることが困難。<br>
+　PopupMenuをマウスのホイールで選択できるかどうかを試していたのだか、このために挫折(^^;。
+<br>(2001-2-4)
+<br>フックはどうやらWH_MSGFILTERで対処するようだ(2010-8-8)</li>
+<li>メニューテキスト中のタブ文字(\t)は、WindowsXP/2003まではインデント処理であるが、WindowsVista以降では両端揃えの区切りになる。<br>
+※インデント : タブより右の文字列が左揃え<br>
+※両端揃え : タブより左は左揃え、タブより右は右揃え</li>
+<li>MF_MENUBARBREAK, MFT_MENUBARBREAK, MF_MENUBREAK, MFT_MENUBREAK を付けると複数段のメニューが作成できる。しかし、WindowsXP以降ではビジュアルスタイルが適用されず、しかも表示速度等が低下する。<br>
+(2010-8-8)</li></ul></dd>
+
+<dt>Listbox</dt>
+<DD>LBS_HASSTRINGS でないオーナードローのリスト ボックスは、LB_ADDSTRING等で任意の値を設定することができる。<br>
+　しかし、Windows XP 上では 0 等の値を使用すると正しくアイテムが格納されなくなる。<br>
+※SP1 で修正されている。
+<br>(2002-9-27)</DD>
+
+<dt>FILETIME</dt>
+<DD>西暦1601年 01/01 0:00:00(UTC)からの100ns単位の経過時間を表す。現在使われているグレゴリオ暦が1582年から使われているため、それに近くてきりのいい年から始めているようだ。<br>
+FILETIMEがオーバーフローを起こすのは西暦約60,000年である。<br>
+FILETIMEが 0x7fff ffff ffff ffff(西暦約30,800年)を越えるとSystemTimeToFileTime()でエラーになる。<br>
+日常使う時間の単位との換算は次の通り。<br><table>
+<tr><td align="right">1秒</td><td align="right">10,000,000</td><td align="right">0x0098 9680</td></tr>
+<tr><td align="right">1分</td><td align="right">600,000,000</td><td align="right">0x23c3 4600</td></tr>
+<tr><td align="right">1時間</td><td align="right">36,000,000,000</td><td align="right">0x0008 61c4 6800</td></tr>
+<tr><td align="right">1日</td><td align="right">864,000,000,000</td><td align="right">0x00C9 2A69 C000</td></tr>
+<tr><td align="right">1980-1-1 00:00:00<br>(FAT, MS-DOSで扱える最初の日)</td><td align="right"></td><td align="right">UTC : 0x01A8 E79F E1D5 8000<br>JST : 0x01A8 E754 71ED D800</td></tr>
+<tr><td align="right">2000-1-1 00:00:00</td><td align="right"></td><td align="right">UTC : 0x01BF 53EB 256D 4000<br>JST : 0x01BF 539F B585 9800</td></tr>
+</table><br>
+※うるう秒があるため現実の日時と上記値とのずれが生じる(1972年～2012年で25秒)。<br>
+※国際原子時(TAI)との差はうるう秒を含めて35秒ある。<br>
+(2012-07-07)</DD>
+
+<dt>画面描画</dt>
+<DD>WindowsXPで「ドラッグ中にウィンドウの内容を表示する」を有効にした状態でウィンドウをドラッグすると、その後ろのウィンドウに未描画部分が残ることがある。この現象は親ウィンドウのみ発生して、子ウィンドウでは発生しない。
+<br>(2004-12-18)</DD>
+
+<dt>ウィンドウハンドルの有効チェック(IsWindow)</dt>
+<dd>長時間スワップ時などの高負荷状態では、対象ウィンドウが存在するにもかかわらずウィンドウハンドルが無効の扱いとなり、IsWindow, SendMessage, SendMessageTimeout, GetWindowThreadProcessId等でエラーになる。<br>
+※詳細を調べていないが、LPCでやりとりしている雰囲気があるので、自プロセスのウィンドウハンドルなら有効のままだが、別プロセスのウィンドウハンドルが無効になると思われる。<br>
+<br>
+このような高負荷状態でもウィンドウハンドルが有効かどうか判定する方法は、一般的なAPIにはない模様。(試していないが、ToolHelp32やPSAPI辺りを使って該当ウィンドウハンドルが一覧中にあるかどうかを判断すればできるかもしれない。ただし、コストは大きい。)<br>
+<br>
+もし、該当ウィンドウを所有するプロセスが存在しているかどうかを知りたいために、ウィンドウハンドルの有効性を判断するなら、予めプロセスIDを取得して、これの有効性をOpenProcess等を用いて判断したほうが良さそうである。
+<br>(2006-04-29)</dd>
+
+<dt>画面のスケーリング(デスクトップ上のテキストやその他の項目を縮小又は拡大)</dt>
+<dd>マニフェスト、SetProcessDPIAware / SetProcessDpiAwareness で高DPI対応を宣言すると、ウィンドウのスケーリング処理が行われなくなる。</dd>
+<dd>動的な画面スケーリングに対応していない物は次のとおり。これらは再ログインしないと変化しない。<br>
+※Windows10 1703(RS2, Creators Update)では、dpiAwarenessにPerMonitorV2が追加され、PerMonitorV2を指定するとこれらも動的変更されるようになった。<br>
+<ul><li>SystemParametersInfo, GetSystemMetrics, GetDeviceCaps … 変更前の値が維持される</li>
+<li>メニュー … フォント大きさ、メニュー高さが変化しない。但しモニタ別のDPI変更には対応。</li>
+<li>プロパティシート…DPI仮想化が有効になり、拡大縮小される</li>
+<li>ダイアログ…フォント大きさが変化しない。<br>
+※PerMonitorV2指定時に動的変更するが、ダイアログのフォント指定が必要。</li>
+<li>ボタン、ツールボックス、ツリー、ヘッダ等 … CCM_DPISCALEのSendMessageで対応する。但し、フォントや画像等を指定しているときは、これらの大きさを調整しないので、再指定する必要がある。Rebarのバンド幅も変更されない。</li></ul></dd>
+<dd>高DPI対応を宣言したプロセスで、SystemParametersInfo, GetSystemMetricsを使用して画面に関するサイズを得る場合は、「(取得値 * (GetDpiForMonitorやWM_DPICHANGEDで得たDPI)) / (GetDeviceCapsで得たDPI)」とすることで適切な値になる。
+<br>(2017-05-13)</dd>
+
+<dt>ICCプロファイル付きビットマップとクリップボード</dt>
+<dd>CF_DIBV5 を使って ICCプロファイル付きビットマップをクリップボードに SetClipboardData で格納した場合、CF_DIB によるクリップボードの取得が可能であるが、ICCプロファイル の分だけ画像がずれた形になる。<br>
+CF_DIB が CF_DIBV5 から BITMAPV5HEADER + ビットマップ + ICCプロファイル の形に誤変換してしまうためである。<br>
+このため、CF_DIBV5 を格納した後、BITMAPV5HEADER + ビットマップ の形で CF_DIB を追加格納すると、CF_DIB の画像のズレを抑えることができる。
+※ BITMAPINFOHEADER + ビットマップだと、CF_DIB が BITMAPV5HEADER のサイズで BITMAPINFOHEADER となる。
+<br>(Windows10 RS1で確認、2016-09-03)</dd>
+
+<dt>コンソール</dt>
+<dd>Windows10 1607(RS1, Anniversary Update)でエスケープシーケンスによる着色(16色)やカーソル操作が可能になった。<br>
+また、Windows10 1703(RS2, Creators Update)でフルカラー着色が可能になった。<br>
+但し、エスケープシーケンスによる着色を行うと、コンソールウィンドウの窓サイズが変更されると表示内容が全て失われる<br>
+(2017-5-13)</dd>
+</dl>
+
+<dt>Windows Terminal</dt>
+<dd><ul><li>GetConsoleWindow で取得できるウィンドウ(PseudoConsoleWindow)は、表示に使われる Window ではない。</li>
+<li>以下の操作を行ったとき、画面最下行で一度に複数行を表示してもスクロールを行わず、一行分しか表示されない。</br>
+GetConsoleScreenBufferInfoEx(hStdout, lpConsoleScreenBufferInfoEx);<br>
+SetConsoleScreenBufferInfoEx(hStdout, lpConsoleScreenBufferInfoEx);</li></ul>
+(2023-09-23)</dd>
+
+<HR><H3><A NAME="homes">プラットホーム(Win32/Win32c/Win32s)による動作違い関連</A></H3>
+※Win32 は WindowsNT/2000/XP/2003、Win32c は Windows95/98/98SE/Me、Win32s は Windows3.1にWin32sを組み込んだ状態です。
+<DL>
+<dt>GetWindowRect()<br>GetWindowPlacement()</dt>
+<DD><UL><LI>Win32c では常に FALSE</LI>
+<LI>Win32/Win32s は TRUE</LI></UL>
+<br>(2000-9-2)</DD>
+
+<dt>TimerProc()(SetTimer/WM_TIMER)</dt>
+<DD><UL><LI>Win32/Win32s ではメッセージループを用意しなくても、モーダルダイアログボックスさえあれば、タイマーが動作する。</LI>
+<LI>Win32cでは、モーダルダイアログのみだして、メッセージループを用意しない場合、タイマーが他のメッセージのついでにしか動作しなくなる。</LI></UL>
+<br>(2000-9-2)</DD>
+
+<dt>TrackPopupMenu()</dt>
+<DD>TPM_RETURNCMD指定は、Win32sでは無効。
+<br>(2000-9-2)</DD>
+<DD>戻り値は、Win32では32bit、Win32cでは16bitに丸められる。
+<br>(2004-11-20)</DD>
+
+<dt>OpenFileMapping()</dt>
+<DD>Win32cでは、名前付ファイルマッピングで既存のマップがないと作成してしまうようだ。
+<br>(2000-9-2)</DD>
+
+<dt>SetClipboardData</dt>
+<DD>Win32ではOSが元のクリップ内容を元に別の形式を自動作成する（ex)CF_TEXTからCF_UNICODETEXT）が、Win32cでは行われない
+<br>(2003-3-24)</DD>
+
+<dt>EnableWindow(HWND hWnd, BOOL bEnable)</dt>
+<DD>Windows95では bEnable は TRUE(1) FALSE(0) のみ解釈し、0, 1 以外の値では機能しない。<br>
+Windows2000では 0 か 0 以外で解釈する。
+<br>(2002-11-24)</DD>
+
+<dt>MapDialogRect(HWND hwndDlg, LPRECT lprc)</dt>
+<dd>Win32cでは、lprcの中身によってはDivideBy0例外が発生する。
+<br>(2006-04-29)</dd>
+
+<dt>CallNextHookEx(HHOOK hhk, int nCode, WPARAM wParam, LPARAM lParam)</dt>
+<dd>パラメータにあるhhkは、Win32cではSetWindowsHookExの戻り値、Win32では<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winui/winui/windowsuserinterface/windowing/hooks/hookreference/hookfunctions/callnexthookex.asp">最新の英語版MSDN</a>では、「Ignored.」になっている。<br>
+※一時期の英語版MSDNでは、Win32のみの記載になっていた。
+<br>(2007-04-21)</dd>
+
+<dt>コンソール</dt>
+<DD>Win32c上のコンソールは次の問題がある。
+<UL><LI>SetConsoleWindowInfo()等を用いて窓の大きさを大きくすると、DOS Appplication の実行時におかしくなる。</LI>
+<LI>ReadConsoleInput()では、IMEによる漢字入力が使用できない。</LI></UL>
+<br>(2000-9-2)<br>
+<UL><LI>SetConsoleTextAttribute等で文字属性が指定できるが、COMMON_LVB_xxxx 系が画面に反映されない(PC, NEC98x1 にて確認)</LI></UL>
+<br>(2001-2-4)</DD>
+
+<dt>時間管理精度</dt>
+<DD>インターバル処理をするために、最短はどの程度の間隔で行えるかを調べてみた。<br>
+※計測、制御、ゲーム目的ではないので、時間自体の精度や、最長呼び出し間隔等は考慮していない。<br>
+<table style ="display:block; white-space: nowrap; overflow-x: scroll;" ><tr><th></th><td>Windows95</td><td>Windows98/ME</td><td>WindowsNT系<br>(Workstation)</td><td>WindowsNT系<br>(Server)</td><td>Windows3.1+Win32s<br>(NEC PC9801)</td><td>Windows98<br>(NEC PC9801)</td></tr>
+<tr><th>Sleep</th><td>13ms</td><td>5ms</td><td>10ms</td><td>15ms</td><td>1ms</td><td>5ms</td></tr>
+<tr><th>Sleep<br>(timeBeginPeriod=1ms)</th><td>1ms</td><td>1ms</td><td>1ms</td><td>1ms</td><td>1ms</td><td>1ms</td></tr>
+<tr><th>timeGetTime</th><td>1ms</td><td>1ms</td><td>10ms</td><td>15ms</td><td>1ms</td><td>1ms</td></tr>
+<tr><th>timeGetTime<br>(timeBeginPeriod=1ms)</th><td>1ms</td><td>1ms</td><td>1ms</td><td>1ms</td><td>1ms</td><td>1ms</td></tr>
+<tr><th>GetTickCount</th><td>13ms</td><td>5ms</td><td>10ms</td><td>15ms</td><td>25ms</td><td>5ms</td></tr>
+<tr><th>GetTickCount<br>(timeBeginPeriod=1ms)</th><td>1ms</td><td>1ms</td><td>10ms</td><td>15ms</td><td>25ms</td><td>1ms</td></tr>
+<tr><th>SetTimer</th><td>55ms</td><td>55ms</td><td>10ms</td><td>15ms</td><td>25ms</td><td>25ms</td></tr>
+<tr><th>SetTimer<br>(timeBeginPeriod=1ms)</th><td>55ms</td><td>55ms</td><td>10ms</td><td>15ms</td><td>25ms</td><td>25ms</td></tr>
+<tr><th>QueryPerformanceFrequency</th><td>1,193,180Hz</td><td>1,193,180Hz</td><td>3,579,545Hz</td><td>3,579,545Hz</td><td>1,193,180Hz</td><td>2,457,600Hz</td></tr>
+</table></dd>
+<dd>※55ms は IBM-PC のインターバルタイマ(i8254)由来の値。1,193,180Hzの2の16乗分周値。<br>
+※13ms は 55ms の四分の一。1,193,180Hzの2の14乗分周値。<br>
+※1,193,180Hzは、IBM-PCのシステムタイマ(i8254)由来の値。3,579,545Hzの３分周値。<br>
+※3,579,545Hzは、ACPIタイマー由来の値。この周波数はテレビ放送のNTSCの色副搬送波周波数でもある（発振器が安く、入手しやすい）。</dd>
+<dd>尚、これらの値は、OSが同じでも使用しているハードウェアによって異なる値になることがある。<br>
+また、計測値から求めた値であるため、実際とは異なる場合がある。<br>
+更に、常に同じ間隔で使えるわけではなく、スレッドのタイムスライス(20ms)等の要因で遅れることもある。このため、正確な間隔を期待してはいけない。<br>
+（Windowsでms単位の正確な時間管理を期待するのは、もともとそのようなリアルタイム重視の設計をしていないので見当違いである）</dd>
+<dd>(2006-04-29)</DD>
+<dd>ms 単位で正確な時間を管理する必要がある場合、正確な間隔で処理できることを期待したアルゴリズムを使わず、QueryPerformanceCounter, timeGetTime, GetTickCount 等を用いてより正確な時間差を求め、その時間差に応じた処理を行う必要がある。</dd>
+<dd>また、各カウンタのオーバフローも考慮する必要がある。</dd>
+<dd>(2004-4-11)</DD>
+
+<dt>パラメータチェック</dt>
+<DD>Win32ではAPIのパラメータチェックが厳密である。<br>
+例えば、フラグ指定のパラメータは、対応しているフラグ以外を指定するとエラーになる。また、内部にサイズ指定がある構造体は、厳密にサイズが一致しないとエラーになる（サイズを多めにしてもエラーになる）。ディレクトリパスを格納するバッファのサイズも32K以上を指定するとエラーになる。※32Kは「\\?\～」を用いたときの最大値<br>
+逆に、Win32c/Win32s はこれらのチェックがされていない。<br>
+<br>
+これに関連して、新しいWindowsで追加されたフラグを指定する場合は、古いWindowsでエラーとなるため、どちらでも機能するようにするためにはバージョンによる場合分けが必要になる。
+<br>(2005-6-23)</DD>
+</DL>
+
+<HR><H3><A NAME="unicode">UNICODE</A></H3>
+<DL>
+<dt>WORD境界</dt>
+<DD>一部のAPIは引数にUNICODE文字列を与えるときに、アラインメントをWORD境界に合わせないと意図する動作をしない。
+<ul><li>MessageBoxW は、ウィンドウの幅計算が正しく行えなくなり、幅広になる。</li>
+<li>TextOutW は、文字列の表示に失敗する。</li>
+<li>RegQueryValueExW は、lpszSubKey の文字列が WORD 境界にあっていないと、値の取得に失敗する。</li>
+<li>CreateMutexW は、エラーになる。</li></ul>
+<br>(2004-10-4)</DD>
+<dt>DLL</dt>
+<DD>ANSI前提のDLLをLoadLibraryWで読み込もうとすると、例外を発生する場合があるようだ。UNxxx.DLLやSusie Plug-inでLoadLibraryWではだめで、LoadLibraryAなら読める例がいくつかあった。
+<br>(2004-4-12)</DD>
+
+<dt>Borland C++</dt>
+<DD>BCC32 で UNICODE 文字列を使う場合に（個人的に？）問題となる挙動。
+<ul><li>TextOutW(hWnd, 0, 0, L"Text", 4)等とした場合、L"Text"のWORD境界あわせをしてくれないため、APIによっては失敗したり異常動作したりする。<br>
+(2004-4-11)</li>
+<li>BCC32 5.0 では、１つのTEXT() マクロを使って複数行の文字列をまとめて指定すると、全てUNICODE文字列として扱う。<br>
+(2004-11-20)</li></ul></DD>
+</DL>
+
+<HR><H3><A NAME="etc">その他</A></H3>
+<DL>
+<dt>TRUE/FALSE</dt>
+<DD>BOOL 型のとき、FALSE で比較することは問題無いですが、TRUE で比較すると、TRUEのつもりで様々な真となる値を書いてしまったときに対処できません。<br>
+自分でも気をつけているはずだったのですが、ふと grep をかけると、かなりの場所で TRUE で比較してました(^^;。<br>
+<STRONG>自信があっても定期的に調べることが大切</STRONG>ですね。
+<br>(2000-12-21)</DD>
+
+<dt>WINMM.DLL / sndPlaySound</dt>
+<DD>sndPlaySound か WINMM.DLL 自体かは調べていないが、WINMM.DLL のロードは秒単位で待たされる場合がある
+<br>(2001-2-4)</DD>
+
+<dt>バッファのチェック</dt>
+<dd>WindowsXP SP2以降で、バッファとそのサイズをパラメータとして指定するAPIは、そのサイズの範囲内でバッファが有効であるかのチェックがされる。つまり、指定したバッファにサイズ分のページが割り当てられていない場合は、エラーになる。
+<br>(2008-9-21)</DD>
+
+</DL>
+<HR><A HREF="index.html">Homeへ戻る</A>
+<hr><address>Copyright(c)1997-2017 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+<IMG SRC="http://toro.d.dooo.jp/ac/accimg.cgi?id=dlw32api" ALT="access counter用" WIDTH="20" HEIGHT="11"></div></div>
+<div id="index">
+<strong><A HREF="./index.html">TORO's Library</A></strong>
+<H3>Software</H3>
+&nbsp;<A HREF="./slwin4.html">Windows</A><br>
+&nbsp;&nbsp;<A HREF="./slppx.html">PPx</A><br>
+&nbsp;&nbsp;<A HREF="./slplugin.html">DLL,SusiePlugin</A><br>
+&nbsp;<A HREF="./sldos.html">MS-DOS</A><br>
+&nbsp;<A HREF="./sle500.html">SHARP PC-E500</A><br>
+<H3>Hardware</H3>
+&nbsp;<A HREF="./hde500.html">SHARP PC-E500</A><br>
+<H3>Data</H3>
+&nbsp;<A HREF="dlminfo.html">Information</A><br>
+&nbsp;&nbsp;<A HREF="./ppxhlp.html">PPx Help</A><br>
+&nbsp;<A HREF="dldoslfn.html">DOS 上で LFN</A><br>
+&nbsp;<A HREF="dlsrc.html">Source</A><br>
+&nbsp;<A HREF="dlcfg.html">Config Memo</A><br>
+&nbsp;<A HREF="dlw32api.html">Win32 API memo</A><br>
+<H3>Message Board</H3>
+&nbsp;<A HREF="/wforum/wforum.cgi">Software</A>
+</div>
+</div></body></html>

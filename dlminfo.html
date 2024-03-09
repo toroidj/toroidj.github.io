@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="ja">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<TITLE>TORO's Data Library(Information)</TITLE>
+<LINK REL="CHAPTER" HREF="dlminfo.html">
+<style type="text/css"><!--
+body { line-height: 150%; word-break: break-word; }
+hr { border: solid 1px; }
+pre { line-height: 110%; font-size: 105%; white-space: pre-wrap; background-color: #f6f69f; }
+table { background-color: #f6f69f; }
+#page { width: 96%; text-align: left; }
+#title { text-align: center; }
+#index { width:105pt; float:left; border-right: 1px solid gray; }
+#contents { width:100%; float:right; margin-left:-110pt; }
+#contents2 { margin-left:114pt; }
+
+@media only screen and (orientation: portrait) {
+ #index { width:100%; float:none; border-right:none; }
+ #contents { float:none; margin-left:0pt; }
+ #contents2 { margin-left:0pt; }
+}
+--></style></head>
+<body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
+<div id="page">
+<div id="title"><H2><A NAME="top">追加情報</A></H2>
+拙作公開物についての追加情報です。<hr></div>
+<div id="contents"><div id="contents2"><ul>
+  <li><A HREF="#general">共通事項</A></li>
+  <li><A HREF="#win64">64bit 版 Windows の注意事項</A></li>
+  <li><A HREF="#verify">配布書庫・実行ファイルの破損・改ざん確認</A></li>
+  <li><A HREF="#report">異常終了時の報告機能について</A></li>
+  <li><A HREF="#ppx">Paper Plane xUI</A></li>
+  <li><A HREF="#clockpod">ClockPod</A></li>
+  <li><A HREF="#clism">CLISM excellent</A></li>
+  <li><A HREF="#runasa">RUNASA</A></li>
+  <li><A HREF="#tsysl">TORO'id syslogd</A></li>
+  <li><A HREF="#kl">K-Launcher</A></li>
+  <li><A HREF="#fall">落窓</A></li>
+ </ul>
+<a href="index.html">Homeへ戻る</a>
+<hr><h3><A NAME="general">共通事項</A></h3><ul>
+<li>本サイトで公開している各拙作ソフトウェアは、その使用（個人的な使用、業務の一環としての使用）に対する対価は必要としていません。ライセンス等の詳細についてはソフトウェア毎に異なりますのでそれぞれのドキュメントを参照してください。</li>
+<li>各ソフトウェアに記載している動作環境は、公開時に動作確認した環境です。公開後に提供された動作環境でも大抵動作すると思います。</li>
+<li>UAC を経由して実行(管理者として実行)したり、「別のユーザで実行」したりしたプロセスは、例え同じユーザ名であっても、デスクトップと環境が分離されています。<br>
+このため、「割り当てたネットワークドライブが使用できない」「一方で設定した内容が他方で反映されない」「ドラッグ＆ドロップができない」等の現象が起きます(WindowsXP 以降)。</li>
+<li>WindowsVista 以降ではDOSアプリケーションは、32bit OS の英語環境しか提供されていません。32bit OS では日本語表示は別途ドライバを入れないとできません。64bit OS では環境自体ありません。</li>
+</ul>
+<hr><h3><A NAME="win64">64bit 版 Windows の注意事項</A></h3><ul>
+<li>64bit アプリケーションは、32bit 版 DLL を使用できません。同様に 32bit アプリケーションは、64bit 版 DLL を使用できません。<br>
+64bit アプリケーションで、32bit 版 DLL を使用するには、その DLL に対応した中継ソフト(拙作 UNBYPASS 等)が必要です。</li>
+<li>64bit 版 Windows 上のエクスプローラーは、64bit アプリケーションであるため、64bit 版のシェル拡張を使用します。このため、他の 32bit アプリケーションがエクスプローラーのシェル拡張を使用しようとしても、使用できません。</li>
+<li>64bit 版 WinPE 等の特別な環境では、32bit アプリケーションが実行できません。</li>
+<li>64bit 版 Windows では、32bit アプリケーションから 64bit 用 system32 内のアプリケーションを、64bit アプリケーションから 32bit 用 system32 (SysWOW64) 内のアプリケーションを初期状態では実行することができません。<br>
+参考:<a href="https://msdn.microsoft.com/ja-jp/windows/aa384187(v=vs.80)">ファイル システム リダイレクタ</a><br>
+<a href="http://support.microsoft.com/kb/942589/ja">アプリケーションが32 ビット Windows Server 2003 の64 ビット バージョンを実行しているコンピュータでの System32 フォルダにアクセスできません。</a><br>
+
+対策としては：<br>
+[32bit] Sysnative ディレクトリ( C:\Windows\Sysnative ) を指定してアプリケーションを実行するか、環境変数 path の末尾に Sysnative ディレクトリ を追加して、実行する。<br>
+Windows XP では前記リンクの修正プログラムを適用するか、64bit アプリケーションを使って Sysnativeなどにsystem32のジャンクションを作成して対応できます。<br>
+[64bit] SysWOW64 ディレクトリ( C:\Windows\SysWOW64 )を指定してアプリケーションを実行するか、環境変数 path の末尾に SysWOW64 を追加して、実行する。</li>
+<li>64bit版Windowsでは、32bitアプリケーションが C:\Program Files を直接参照することはできません。C:\Program Files は C:\Program Files (x86) にリダイレクトされます。<br>どうしても参照したい場合は、C:\Program Files を示すシンボリックリンクやジャンクションを他の場所に用意する必要があります。</li>
+<li>64bit版Windows上では、DOS用ソフトと16bit Windowsソフトは動作しません。Windowsの仕様です。<br>
+DOS用ソフトをエミュレートで実行するソフトがいくつか公開されているので、そのソフト経由で実行する必要があります。</li>
+</ul>
+
+<hr><h3><A NAME="verify">配布書庫・実行ファイルの破損・改ざん確認</A></h3><br>
+　2014年9月末以降に配布している拙作ソフトのzip書庫と実行ファイル(.exe,.dll,.spi,.sph)は、拙作 <a href="slwin4.html#tfilesign">tfilesign</a>による簡易署名を付けるようにしています。<br>
+　例えば、zip書庫にはコメントとして「dkfmpjeepgkkcpcbinkjfnjalghiehponpojcnnhkdadnageepcnndpppalbbmgknfeeclbbfpenbajolladfkomndnoehocihdbpapecjnclkhmhlhjfcankgcnhflpaie」等の文字が埋め込まれており、これが簡易署名として機能します。
+　「tfilesign t <i>検証対象ファイル名</i>」と実行すると、検証対象ファイルが破損・改ざんされていないかを確認することができます。
+
+<hr><h3><A NAME="report">異常終了時の報告機能について</A></h3><br>
+　Paper Plane xUIとClockPodには、異常終了したときにダイアログを表示し、「はい」を選択したときに、異常終了したときの状況を作者に送信する機能が用意されています。<br>
+　異常終了をしないように修正するために役立つことがありますので、ダイアログで「はい」を選択して送信してもらえると助かります。<br>
+　この機能については次のようになっています。送信したくない場合は「いいえ」か「キャンセル」を選択してください。「いいえ」は、そのまま強制終了します。「キャンセル」は、Windowsの異常終了ダイアログが表示されます。<br><ul>
+<li>送信される内容は、ダイアログに表示される内容のみであり、「ソフトの名称、ソフトのバージョン、Windowsのバージョン、異常終了を起こした場所や関連する場所のメモリアドレス・関数名、異常終了の理由」です。</li>
+<li>異常終了の送信には規定の関連づけされているブラウザ(Internet Explorerなど)を使います。自前でhttp通信を行いません。</li>
+<li>報告を受信したときは、報告内容に加え、送信元IPアドレスを加工して作成されるID(元のアドレスに復元できません。)と、ブラウザのユーザエージェント、を集計のために保存します。<A HREF="./fsample.html">送信結果のサンプル</A></li>
+<li>送信頂いた内容が既知の問題であれば、理由や対処方法等を通知することがあります。</li>
+<li>送信頂いた内容をもとにしても問題が判明できないこともありますので、受け取った内容について全て解説したりすることはありません。</li>
+<li>メールアドレスなどの連絡をするための情報を受け取っていませんので、送信した内容を元に個別に連絡することはありません。</li></ul>
+
+<hr><h3><A NAME="ppx">Paper Plane xUI</A></h3>
+<A HREF="ppxhlp.html">オンラインヘルプ</A>
+
+<hr><h3><A NAME="clockpod">ClockPod</A></h3><ul>
+<li>メールチェック中は追従せず、チェックが終わるまで同じ表示位置になります。</li>
+<li>メールチェックのパスワードは、作成したユーザ上でのみ有効です。別ユーザでは使用できません。</li>
+</UL>
+
+<hr><h3><A NAME="clism">CLISM excellent</A></h3><ul>
+<li>選択範囲の解除抑止処理は、別のユーザで実行しているアプリケーションや、WindowsVistaの別権限で実行しているアプリケーションに対しては機能しません。同条件で、ホットキーにシフトキー２回押しを使用しているときは、ホットキーも反応しません。</li>
+</UL>
+
+<hr><h3><A NAME="runasa">RUNASA</A></h3><UL>
+<li>サービス版はWindowsVista以降でデスクトップ上で実行されない問題があります。RUNASAで画面操作を行うソフトを使う場合は、サービス版は使わないようにしてください。<br>
+また、Windowsのタスクスケジューラが強化されているので、これを使用することも検討してみてください。GUIによる設定の他、schtasks.exeで操作が可能です。</li>
+<li>「アクセスが拒否されました」エラーは、RUNASAサービスにアクセスできなかったとき(例えば、サービスが起動していなかった、登録時に管理者権限を持っていなかったときなど)にでます。<br>
+サービスが起動しているか、管理者権限を持つアカウントで登録しているかを確認してください。</li>
+<li>「データが無効です」エラーは、サービスに登録していないショートカットを実行したときや、改ざんチェックを有効にしていたときに実行対象が登録時と異なるときに出ます。</li>
+<li>「クライアントは要求された特権を保有していません」「クライアントは必要な特権を保持していません。」エラーは、いくつか原因があります。<br>
+(1)RUNASAサービスを使っていないのに「自前実行」設定を用いたときに出ることがあります。※特権設定をしないと、普通のアカウントでサービスなしの自前実行はできません。<br>
+(2)NASを用いたり、ドメイン構成等のときは、「ネットワーク上で認証」が必要なときがあります。</li>
+<li>正しいユーザ名とパスワードを指定しても「ログオン失敗: ユーザー名を認識できないか、またはパスワードが間違っています。」エラーが出る場合、エクスプローラの「別のユーザとして実行」で実行できるかどうかを試してみてください。実行できないときは、ユーザが正しく登録されていないなどの問題が起きています。</li>
+<LI>パスワード等の保護に用いている暗号の強度は大したものではなく、本当のプログラマなら元の内容を復号化することができてしまう程度でしかありません。できるだけサービス版を登録し、これを使用することをお薦めします。</LI>
+<li>ふつうに登録コマンドに登録しても正常に実行できない場合、実行対象そのものではなく、そのショートカットを登録してみてください。（ショートカットでだめならリンク先）<br>
+.exe 等の実行可能なファイルと、ショートカットとでは実行方法が異なりますので、正常に実行できるようになる場合があります。</li>
+<li>登録した内容は、作成したPC&amp;OS上でのみ有効です。別PCやデュアルブートの異なるOS上では使用できません。作成したショートカットを使って異なる環境のプログラムを実行するという悪用を防止するためです。</li>
+<li>UACが有効な場合、RUNASAを使って管理者権限のユーザで実行してもUACダイアログを省略することはできません。その代わり、UACダイアログではパスワードを入れる必要がなくなります。</li>
+</UL>
+
+<hr><h3><A NAME="tsysl">TORO'id syslogd</A></h3><UL>
+<LI>TORO'id syslogdが起動しているPC上のClockPodに送信するときは、(送信先)に「.」を指定してください。</LI>
+</UL>
+
+<hr><h3><A NAME="kl">K-Launcher</A></h3><UL>
+<li>64bit版Windows上では動作しません。Windowsの仕様です。<br>
+尚、DOS アプリケーションをエミュレーションにより実行できるソフトがいくつか公開されていますので、それらを使用すれば使用できます。</li>
+<LI>UNICODE driver等を常駐させないと、ファイラー窓でLFNの漢字等の文字が表示されず、「?」となります。</LI>
+<LI>DOS上、WindowsのDOSモード上等では、LFN名のままのコピーや移動はできません。ただし、doslfn 等のツールを併用することで可能となります。詳細は、<A HREF="dldoslfn.html">こちらのページを参照してください。</A></LI>
+<li>MS-DOS互換と謳ったDOSで、K-Launcherが動作しないことがあるようです。この場合、あらかじめダイレクトアクセスを使用しない状態でカスタマイズ(Drvmode の各 B4 を 0 にする)することで、動作するようになることがあります。</li>
+<li>一部環境で、ディレクトリが表示できなかったり、ファイルコピーができないことがあります。この場合、X_freeE = 1 とすることで回避できる場合があります。<BR>
+例)Windows95OSR2 の DOS + Microsoft Workgroup Connection で net use を使って接続したドライブが「Invalid drive」エラーになるとき。（ただし、この例は X_freeE = 1 指定の他、UNC形式で直接参照することでも回避可能です。）<BR>
+※この設定を行うと、エラーを一部無視しますので本当のエラーを検出できなくなる場合があります。</li>
+<li>通常の方法で名前の変更や削除ができなくなった場合、次の操作で対処できる場合があります。これらの操作はダイレクトアクセスが可能な環境で行うことができます。<br>(a)Shift+[R]による名前変更<br>
+(b)Shift+[D]による削除</li>
+</UL>
+
+<hr><h3><A NAME="fall">落窓</A></h3><UL>
+<li>落窓終了後、元の位置に戻せないウィンドウがある場合、一度最大化表示を解除した状態で終了してみてください。</li>
+</UL>
+
+<HR><A HREF="index.html">Homeへ戻る</A>
+<hr><address>Copyright(c)1997-2021 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+<IMG SRC="http://toro.d.dooo.jp/ac/accimg.cgi?id=dlminfo" ALT="access counter用" WIDTH="20" HEIGHT="11"></div></div>
+<div id="index">
+<strong><A HREF="./index.html">TORO's Library</A></strong>
+<H3>Software</H3>
+&nbsp;<A HREF="./slwin4.html">Windows</A><br>
+&nbsp;&nbsp;<A HREF="./slppx.html">PPx</A><br>
+&nbsp;&nbsp;<A HREF="./slplugin.html">DLL,SusiePlugin</A><br>
+&nbsp;<A HREF="./sldos.html">MS-DOS</A><br>
+&nbsp;<A HREF="./sle500.html">SHARP PC-E500</A><br>
+<H3>Hardware</H3>
+&nbsp;<A HREF="./hde500.html">SHARP PC-E500</A><br>
+<H3>Data</H3>
+&nbsp;<A HREF="dlminfo.html">Information</A><br>
+&nbsp;&nbsp;<A HREF="./ppxhlp.html">PPx Help</A><br>
+&nbsp;<A HREF="dldoslfn.html">DOS 上で LFN</A><br>
+&nbsp;<A HREF="dlsrc.html">Source</A><br>
+&nbsp;<A HREF="dlcfg.html">Config Memo</A><br>
+&nbsp;<A HREF="dlw32api.html">Win32 API memo</A><br>
+<H3>Message Board</H3>
+&nbsp;<A HREF="/wforum/wforum.cgi">Software</A>
+</div>
+</div></body></html>
