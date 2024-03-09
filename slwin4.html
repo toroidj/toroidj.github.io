@@ -1,0 +1,403 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="ja">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TORO's Software library(Win32/Win64)</title>
+<link rel="CHAPTER" href="slwin4.html">
+<link rev="MADE" href="mailto:toroid.jp&nbsp;@&#8203;gmail.com">
+<style type="text/css"><!--
+body { line-height: 130%; }
+hr { border:solid 1px; }
+pre { line-height: 110%; }
+span { font-weight: bold; font-size: 150% }
+img { max-width: 100%; height: auto; }
+#page { width:96%; text-align:left; }
+#title { text-align:center; }
+#index { width:105pt; float:left; border-right: 1px solid gray; }
+#contents { width:100%; float:right; margin-left:-110pt; }
+#contents2 { margin-left:114pt; }
+
+@media only screen and (orientation: portrait) {
+ #index { width:100%; float:none; border-right:none; }
+ #contents { float:none; margin-left:0pt; }
+ #contents2 { margin-left:0pt; }
+}
+-->
+</style></head>
+<body bgcolor="#eeee99" text="#000000" link="#0000CC" vlink="#8800cc" alink="#440088">
+<div id="page">
+<div id="title"><h2>Windows (Windows 95 - Me, Windows NT4.0 - 11/2022)</h2></div>
+<div id="contents"><div id="contents2">
+ <table border="0" summary="目録">
+  <tr><td>・<a href="#cpod">ClockPod 2.x</a>&nbsp;(<a href="#cpod1">+1</a>)
+  </td><td>- テロップ型情報表示</td></tr>
+  <tr><td>・<a href="#cpodv1">ClockPod 1.3</a>
+  </td><td>- 現在の窓に張りつく時計</td></tr>
+  <tr><td>・<a href="#cpodap">CPODAP</a>
+  </td><td>- ASUS PC Probe 2 で得られる温度情報を ClockPod へ転送</td></tr>
+  <tr><td>・<a href="#taalt">TAALT</a>
+  </td><td>- [ALT] の無効化＆キーによる窓移動</td></tr>
+  <tr><td>・<a href="#clism">CLISM</a>
+  </td><td>- 簡素なクリップボードのテキスト履歴ペースト</td></tr>
+  <tr><td>・<a href="#clismex">CLISM excellent</a>
+  </td><td>- 強化版CLISM</td></tr>
+  <tr><td>・<a href="#saver">Saver Dice</a>
+  </td><td>- スクリーンセーバチェンジャー</td></tr>
+  <tr><td>・<a href="#ppmon">PPMON</a>
+  </td><td>- リアルタイムプロセスメモリモニタ</td></tr>
+  <tr><td>・<a href="#conwin">conwin</a>
+  </td><td>- コンソールウィンドウ各種操作コマンド</td></tr>
+  <tr><td>・<a href="#as">Action Selector</a>
+  </td><td>- コンソール用拡張子判別メニュー</td></tr>
+  <tr><td>・<a href="#tsysl">TORO'id syslogd</a>
+  </td><td>- TORO版 syslogd</td></tr>
+  <tr><td>・<a href="#runasa">RUNASA</a>
+  </td><td>- 毎回パスワード入力をしなくても別ユーザでプログラム実行</td></tr>
+  <tr><td>・<a href="#trisus">trisus</a>
+  </td><td>- 複数PCでの一括パッチ当て支援ツール</td></tr>
+  <tr><td>・<a href="#ct">CT</a>
+  </td><td>- ファイルのタイムスタンプのみコピー</td></tr>
+  <tr><td>・<a href="#delh">DELHTTP</a>
+  </td><td>- ファイル中のHTTP/EMAILヘッダの削除</td></tr>
+  <tr><td>・<a href="#winclose">WinClose</a>
+  </td><td>- 指定クラス名のウィンドウを閉じる</td></tr>
+  <tr><td>・<a href="#pressm">PRESSM</a>
+  </td><td>- シャットダウン等の初期選択を変更</td></tr>
+  <tr><td>・<a href="#erexec">EREXEC</a>
+  </td><td>- レスポンスファイルをコマンドラインに展開して実行</td></tr>
+  <tr><td>・<a href="#zacls">zacls</a>
+  </td><td>- ファイルやディレクトリのアクセス権を操作</td></tr>
+  <tr><td>・<a href="#tfilesign">tfilesign</a>
+  </td><td>- zip,exe,dllファイルの簡易署名</td></tr>
+  <tr><td>・<a href="#IMEredir">IME redirect PAD</a>
+  </td><td>- IMEが使えない別ユーザプロセスで漢字を入力するための入力パッド</td></tr>
+  <tr><td>・<a href="#dllfree">DLLFREE</a>
+  </td><td>- ソフト本体が終了しても削除できない関連DLLの削除支援</td></tr>
+  <tr><td>・<a href="#wakeflok">wakeflok</a>
+  </td><td>- 特定条件のフリーズを検知し、解除できるツール</td></tr>
+  <tr><td>・<a href="#fall">落窓</a>
+  </td><td>- デスクトップに重力をかけてみる</td></tr>
+  <tr><td>・<a href="#dusty">DUSTYTOP</a>
+  </td><td>- デスクトップ放置シミュレータ</td></tr>
+ </table><br><a href="./index.html">Homeへ戻る</a>
+<!-- DownloadList
+cpod
+./clockpod272.zip
+./clockpod272p1.zip
+cpodv1
+./CLKPOD13.LZH
+cpodap
+./CPODAP11.LZH
+taalt
+./taalt17.zip
+clism
+./clism19.zip
+clismex
+./clisme21.zip
+saver
+./saverdice14.zip
+ppmon
+./ppmon03.zip
+conwin
+./conwin10.zip
+as
+./AS12.LZH
+tsysl
+./tsyslogd20.zip
+./tsyslogd13.zip
+runasa
+./runasa27.zip
+trisus
+./TRISUS03.LZH
+ct
+./ct13.zip
+delh
+./DELH10.LZH
+winclose
+./WINCLOSE1.LZH
+pressm
+./PRESSM11.LZH
+erexec
+./erexec10.zip
+zacls
+./zacls06.zip
+tfilesign
+./tfilesign11.zip
+IMEredir
+./IMEredirect10.zip
+dllfree
+./dllfree.zip
+wakeflok
+./wakeflok.zip
+fall
+./FALLWIN.LZH
+dusty
+./DUSTYTOP.LZH
+./MEWLL01.LZH
+EndList -->
+<hr><a href="./slwin4.html">↑</a><a name="cpod"><span>ClockPod 2.x</span></a> Version 2.72
+<br><a href="sscp.html"><img src="thcp.jpg" alt="動作画面" WIDTH="200" height="41"></a><br><br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/clockpod272.zip">clockpod272.zip</a> ( 377 Kbytes,&nbsp;2021-11-28,&nbsp;Windows 95 - Me, Windows 3.1+Win32s, Windows NT 3.51 - 11/2022(32bit/64bit))<br>
+<br>アクティブなウィンドウに張りつく時計「ClockPod Version 1.x」を大幅変更し、<br>
+使用中のウィンドウに張りつくコンパクトな情報表示ツールとしました。<br>
+特徴<br>
+・使用中のウィンドウの右上に張りついて時刻表示<br>
+・複数アカウントのE-mail着信チェックと、条件指定可能な件名表示<br>
+・回線接続状況、電源状態等の通知<br>
+・任意ウィンドウの操作(フォント変更、半透明化、最前面表示等)<br>
+・ネットワークを介した通知、回線切断<br>
+※32bit版/64bit版が入っています。<br><br>●<strong>変更点</strong><br>2.71→2.72<br>
+・マウスカーソル位置のウィンドウ操作メニューの表示(point)を追加<br>
+・OpenSSL&nbsp;1.1.x&nbsp;と&nbsp;3.0.0&nbsp;に対応(X_libssl)<br>
+・IMAP4の処理を改善<br>
+<br>
+2.71+1→2.72<br>
+・IMAP4の処理を改善<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="cpod1"><span>ClockPod 2.x</span></a> Version 2.72+1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/clockpod272p1.zip">clockpod272p1.zip</a> ( 158 Kbytes,&nbsp;2023-3-25,&nbsp;Windows 95 - Me, Windows 3.1+Win32s, Windows NT 3.51 - 11/2022(32bit/64bit))<br>
+<br>試験公開版です。 Version 2.72からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>2.72→2.72+1<br>
+・マウスが来たときに左に移動してよける設定を追加(X_dodge)<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="cpodv1"><span>ClockPod 1.3</span></a> Version 1.3
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/CLKPOD13.LZH">CLKPOD13.LZH</a> ( 30 Kbytes,&nbsp;1999-6-19,&nbsp;Windows 95/98/NT4.0/2000)<br>
+<br>アクティブなウィンドウを追従する時計です。<br>
+また、メールの到着、電源状態の変化等の情報をテロップとサウンドで報知したり、<br>
+ウィンドウのフォントの変更を行うなど、ちょっと変わった機能を内蔵しています。<br><br>●<strong>変更点</strong><br>1.2→1.3<br>
+・(Win98/2000)グラデーション付きタイトルバーの対策<br>
+・テロップの誤字修正<br>
+・追従機能の改善<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="cpodap"><span>CPODAP</span></a> Version 1.1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/CPODAP11.LZH">CPODAP11.LZH</a> ( 9 Kbytes,&nbsp;2002-7-14,&nbsp;Windows 95/98/NT4.0/2000)<br>
+<br>ASUS PC Probe 2 で得られるCPUやマザーボードの温度情報を ClockPod へ転送します。<br><br>●<strong>変更点</strong><br>1.0→1.1<br>
+・PC&nbsp;Probe&nbsp;2.15&nbsp;でも動作するようにした<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="taalt"><span>TAALT</span></a> Version 1.7
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/taalt17.zip">taalt17.zip</a> ( 65 Kbytes,&nbsp;2016-10-1,&nbsp;Windows 95/98/Me/NT4.0/2000/XP/2003/Vista/2008/7,WindowsXP/2003/Vista/2008/7 x64 Edition)<br>
+<br>Alt+英字を有効にしたまま、単独 Alt キー押下によるメニューモードへの移行を<br>
+抑止する機能と、Altキー + 方向キーによるウィンドウ移動機能を持った常駐用ソフト<br>
+です。<br>
+※32bit版/64bit版が入っています。<br><br>●<strong>変更点</strong><br>1.6→1.7<br>
+・Alt+カーソルによる窓移動について、Windows10で窓枠の周りに生じる隙間を調整した<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="clism"><span>CLISM</span></a> Version 1.9
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/clism19.zip">clism19.zip</a> ( 56 Kbytes,&nbsp;2010-1-23,&nbsp;Windows 95/98/Me/NT4.0/2000/XP/2003/Vista/2008/7,WindowsXP/2003/Vista/2008/7 x64 Edition)<br>
+<br>クリップボードにコピーしたテキストを蓄積し、蓄積したテキストをSHIFT+CTRL+Vで<br>
+現れるメニューで任意に選び、ペーストを行うものです。<br>
+同様のソフトは色々ありますが、それらに比べてシンプルにすることで、GDI/USER リソースを僅かしか消費しないのが特徴です。<br>
+また、UNICODEテキストも正しく蓄積できます。<br>
+※32bit版/64bit版が入っています。<br>
+※Version2.0以降は、CLISM excellentの実行ファイルとファイルサイズの差が小さくなるため配布していません。CLISM excellent を DLL が無い状態で起動すると、CLISM 相当の動作になります。<br><br>●<strong>変更点</strong><br>1.8→1.9<br>
+・x64版を用意した<br>
+・WindowsVista以降で、メニュー表示が右揃えになっていたのを左揃えに直した<br>
+・メニュー表示中、改行を記号で表示するようにした<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="clismex"><span>CLISM excellent</span></a> Version 2.1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/clisme21.zip">clisme21.zip</a> ( 102 Kbytes,&nbsp;2018-9-29,&nbsp;Windows 95-Me, Windows NT 4.0-10/2016(32bit/64bit))<br>
+<br>メニューでテキストを選択しても貼り付け先のアプリケーションの選択範囲を<br>
+初期化しないようにし、蓄積した履歴を次回起動時に使えるようにした、<br>
+CLISM の強化版です。<br>
+※32bit版/64bit版が入っています。<br><br>●<strong>変更点</strong><br>2.0→2.1<br>
+・Windows10(1703)でメニュー、ダイアログの画面スケーリングの動的変更に対応した<br>
+・ホットキーの設定ダイアログを表示するときに異常終了することがあるのを修正<br>
+・未定義の設定が定型文として登録されないようにした<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="saver"><span>Saver Dice</span></a> Version 1.4
+<a href="https://toroidj.github.io/win/sssdice.html">動作画面</a><br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/saverdice14.zip">saverdice14.zip</a> ( 21 Kbytes,&nbsp;2012-6-16,&nbsp;Windows 95/98/Me/NT4.0/2000/XP/2003/Vista)<br>
+<br>色々なスクリーンセーバを一定時間毎にランダムに変更します。<br><br>●<strong>変更点</strong><br>1.3→1.4<br>
+・Vista,7で、aeroの無効により一部のスクリーンセーバの低速化を回避する設定を用意<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="ppmon"><span>PPMON</span></a> Version 0.3
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/ppmon03.zip">ppmon03.zip</a> ( 62 Kbytes,&nbsp;2010-2-13,&nbsp;Windows 95/98/Me/NT4.0/2000/XP/2003/Vista/2008/7,WindowsXP/2003/Vista/2008/7 x64 Edition)<br>
+<br>任意ウィンドウのプロセスのメモリイメージをリアルタイム表示するモニタです。<br>
+※32bit版/64bit版が入っています。<br><br>●<strong>変更点</strong><br>0.2→0.3<br>
+・x64版を用意した<br>
+・画面構成を変更<br>
+・検索の設定を各種追加<br>
+・ビットマップ表示機能を追加<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="conwin"><span>conwin</span></a> Version 1.0
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/conwin10.zip">conwin10.zip</a> ( 34 Kbytes,&nbsp;2011-9-10,&nbsp;Windows 95/98/Me/NT4.0/2000/XP/2003/Vista/2008/7,WindowsXP/2003/Vista/2008/7 64bit版)<br>
+<br>バッチファイル等から CMD.EXE等で使用されるコンソールウィンドウを隠す/最小化/移動/全面表示等、色々コマンド操作をすることができます。<br>
+※32bit版/64bit版が入っています。<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="as"><span>Action Selector</span></a> Version 1.2
+<a href="https://toroidj.github.io/win/ssas.html">動作画面</a><br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/AS12.LZH">AS12.LZH</a> ( 21 Kbytes,&nbsp;1998-5-23,&nbsp;Windows 95/98/NT4.0/2000)<br>
+<br>DOS用ファイラ等で、Windowsの拡張子判別を利用できるようにするものです。<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="tsysl"><span>TORO'id syslogd</span></a> Version 2.0
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/tsyslogd20.zip">tsyslogd20.zip</a> ( 105 Kbytes,&nbsp;2011-2-12,&nbsp;Windows 95/98/Me/NT4.0/2000/XP/2003/Vista/2008/7,WindowsXP/2003/Vista/2008/7 64bit版)<br>
+<br>ダイアルアップルータの syslog を受け取るために作った私家版 syslogd です。<br>
+拙作 ClockPod に同梱の syslogd をより使いやすくし、タスクトレイ版と、<br>
+NTのサービス版を用意しました。<br>
+32bit版/64bit版が入っており、それぞれIPv4/IPv6で受信できます。<br><br>●<strong>変更点</strong><br>1.3→2.0<br>
+・IPv6対応版<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="tsyslold"><span>TORO'id syslogd</span></a> Version 1.3
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/tsyslogd13.zip">tsyslogd13.zip</a> ( 90 Kbytes,&nbsp;2009-7-25,&nbsp;Windows 95/98/Me/NT4.0/2000/XP/2003/Vista/2008,WindowsXP/2003/Vista/2008 x64 Edition)<br>
+<br>ダイアルアップルータの syslog を受け取るために作った私家版 syslogd です。<br>
+拙作 ClockPod に同梱の syslogd をより使いやすくし、タスクトレイ版と、<br>
+NTのサービス版を用意しました。<br>
+※IPv4用です。<br>
+※32bit版/64bit版が入っています。<br><br>●<strong>変更点</strong><br>1.2→1.3<br>
+・x64版を作成した<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="runasa"><span>RUNASA</span></a> Version 2.7
+<a href="https://toroidj.github.io/win/ssrunasa.html">動作画面</a><br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/runasa27.zip">runasa27.zip</a> ( 171 Kbytes,&nbsp;2016-10-22,&nbsp;Windows [NT4.0]/2000/XP/2003/[Vista/2008-10/2016](32bit/64bit))<br>
+<br>RUNASA は「別のユーザとして実行」やRUNASのように毎回パスワード入力を<br>
+することなく、好きなタイミングで別ユーザによるプログラムを起動できるように<br>
+するためのツールです。<br>
+暗号化によるログインパスワードの保護と、NTサービスによる保護の２通りの方法を<br>
+選択可能です。<br>
+※Windows Vista/2008以降は、サービス版が実質利用できません。<br>
+※RUNASAは、UACダイアログの回避には使用できません。その場合は、Windows標準のタスクスケジューラに登録する方法がお勧めです。<br>
+※32bit版/64bit版が入っています。<br>
+<b>※注意</b><br>現在、いくつかのアンチウイルスソフトで、マルウェア（<a href="http://home.mcafee.com/VirusInfo/VirusProfile.aspx?key=687543#none">Generic PWS.y!dsp (McAfee)</a>等）として検出されています。<br>該当マルウェアの挙動と異なるため誤検出の可能性が高いですが、念のため各自で調査してから利用されると安心ではないかと思います。<br><br>●<strong>変更点</strong><br>2.6→2.7<br>
+・RUNASA64.EXE&nbsp;で参照ボタンを使用すると異常終了するのを修正<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="trisus"><span>trisus</span></a> Version 0.3
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/TRISUS03.LZH">TRISUS03.LZH</a> ( 11 Kbytes,&nbsp;2003-11-2,&nbsp;Windows 95/98/Me/NT4.0/2000/XP)<br>
+<br>複数台数のPC上でパッチ当てプログラム等を一括実行するためのツールです。<br>
+ファイルサーバに置かれた定義ファイルを元に、未実行の部分だけバッチ処理することができます。<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="ct"><span>CT</span></a> Version 1.3
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/ct13.zip">ct13.zip</a> ( 11 Kbytes,&nbsp;2013-2-23,&nbsp;MS-DOS 2.1以上／Windows 95 - Me/NT3.51 - 8)<br>
+<br>あるファイルのタイムスタンプの内容を別のファイルのタイムスタンプにコピー<br>
+します。また、MS-DOS 上では DOS ソフトとして動作し、Windows 95/NT 等では<br>
+32bit コンソールアプリケーションとしてネイティブ動作をします。<br><br>●<strong>変更点</strong><br>1.2→1.3<br>
+・(WIN)エラー表示を調整<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="delh"><span>DELHTTP</span></a> Version 1.0
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/DELH10.LZH">DELH10.LZH</a> ( 9 Kbytes,&nbsp;2000-11-19,&nbsp;Windows 95/98/NT4.0/2000)<br>
+<br>HTTP メッセージのヘッダや E-mail のヘッダ部分が含まれるファイルのヘッダ部分の<br>
+一括削除を行います。<br>
+具体的には、指定したファイルの先頭から改行コードが２つ続く部分までを削除します。<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="winclose"><span>WinClose</span></a> Version 1.1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/WINCLOSE1.LZH">WINCLOSE1.LZH</a> ( 7 Kbytes,&nbsp;2007-7-21,&nbsp;Windows 95/98/Me/NT4.0/2000/XP/2003/Vista)<br>
+<br>指定クラス名のウィンドウを全て閉じます。<br>
+Link 時に起動している Link 対象を終わらせるために使います<br><br>●<strong>変更点</strong><br>1.0→1.1<br>
+・ウィンドウを閉じたあと少し待つようにした<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="pressm"><span>PRESSM</span></a> Version 1.1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/PRESSM11.LZH">PRESSM11.LZH</a> ( 7 Kbytes,&nbsp;2004-2-7,&nbsp;Windows 95/98/Me/NT4.0/2000/XP/2003)<br>
+<br>Windows の終了時にシャットダウンや再起動の選択肢を選ぶことができますが、<br>
+その初期選択を変更するためのツールです。<br>
+スタートアップ等でこれを実行するようにしておくことで、キーボードショート<br>
+カット等で画面を見ずに終わらせても、誤って前回指定した普段と違う終了方法で<br>
+終了してしまうことを防ぐことができます。<br><br>●<strong>変更点</strong><br>1.0→1.1<br>
+・スタンバイと休止状態を指定できるようにした<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="erexec"><span>EREXEC</span></a> Version 1.0
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/erexec10.zip">erexec10.zip</a> ( 37 Kbytes,&nbsp;2012-11-10,&nbsp;Windows NT4.0/2000/XP/2003/Vista/2008/7/8/2012)<br>
+<br>ファイル名などが列挙されているレスポンスファイルをコマンドラインに<br>
+展開するツールです。<br><br>●<strong>変更点</strong><br>0.5→1.0<br>
+・UTF-8のレスポンスファイルに対応<br>
+・展開後の長さが約32000を越えたときはエラーとして扱うようにした<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="zacls"><span>zacls</span></a> Version 0.6
+<a href="https://toroidj.github.io/win/sszacls.html">動作画面</a><br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/zacls06.zip">zacls06.zip</a> ( 95 Kbytes,&nbsp;2019-2-2,&nbsp;Windows Vista/2008 - 10/2016 ※表示のみ:NT4.0/2000/XP/2003)<br>
+<br>ファイルやディレクトリのアクセス権を表示・操作する為のソフトです。<br>
+複数ファイル・ディレクトリをアクセス権等を一括して表示し、<br>
+ちょっとした変更をするために適しています。<br>
+実際のアクセス権の操作は icacls.exe/takeown.exe を呼び出して行います。<br><br>●<strong>変更点</strong><br>0.5→0.6<br>
+・設定するアクセス権の種類の一覧を設定ファイルで指定するようにした<br>
+・全体の挙動調整を行った<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="tfilesign"><span>tfilesign</span></a> Version 1.1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/tfilesign11.zip">tfilesign11.zip</a> ( 38 Kbytes,&nbsp;2016-11-19,&nbsp;Windows Vista/2008 - 10/2016)<br>
+<br>zip / exe / dll ファイルに簡易署名を付けたり、検証したりするためのソフトです。<br>
+ソフトの自動アップデート処理の際に偽造・改竄がされていないかを<br>
+検証するために作ったものであり、第三者機関による作成者の確認<br>
+機能がないので、作成者の保証のためには使えません。<br><br>●<strong>変更点</strong><br>1.0→1.1<br>
+・exeファイルの未使用部分に署名を埋め込む指定(sp)を追加<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="IMEredir"><span>IME redirect PAD</span></a> Version 1.0
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/IMEredirect10.zip">IMEredirect10.zip</a> ( 52 Kbytes,&nbsp;2017-4-1,&nbsp;Windows 8/2012 - 10/2016)<br>
+<br>Windows 8以降では、標準ユーザ使用時に、別のユーザで実行しているプロセス上でIMEを使った漢字等の文字入力ができないという問題があります。<br>
+IME redirect PAD は、該当プロセスでIMEを使って漢字入力するための入力パッドをホットキーで呼び出しできるようにします。<br>
+※ Windows 10(1607)の3月の更新で問題が解消されたようです。<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="dllfree"><span>DLLFREE</span></a> Version 1.0
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/dllfree.zip">dllfree.zip</a> ( 7 Kbytes,&nbsp;2008-11-1,&nbsp;Windows 95/98/Me/NT4.0/2000/XP/2003/Vista/2008)<br>
+<br>ソフト本体が終了しているのに削除できない関連 DLL ファイルを<br>
+削除できるようにするためのソフトです。<br>
+（問題となるソフトで PostMessage(HWND_BROADCAST,WM_NULL,0,0) を<br>
+実行していないのを補います。）<br>
+<br>
+※使用中や削除が禁止されている DLL ファイルを強制削除するための<br>
+ソフトではありません。<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="wakeflok"><span>wakeflok</span></a> Version 1.0
+<a href="https://toroidj.github.io/win/sswakeflok.png">動作画面</a><br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/wakeflok.zip">wakeflok.zip</a> ( 21 Kbytes,&nbsp;2010-1-30,&nbsp;Windows XP/2003/Vista/2008/7)<br>
+<br>特定条件によるフリーズ(スレッド終了時の競合によるデッドロック)を<br>
+検知して、強制的にフリーズを解除するための常駐用ソフトです。<br>
+<br>
+■注意<br>
+・様々な種類のフリーズ原因のうち、１種類のみ対応しています。他の種類のフリーズは検出も解除もできません。<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="fall"><span>落窓</span></a>
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/FALLWIN.LZH">FALLWIN.LZH</a> ( 12 Kbytes,&nbsp;2000-8-20,&nbsp;Windows 95/98/NT4.0/2000/3.1+Win32s)<br>
+<br>デスクトップに重力をかけてみるソフトです。<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="dusty"><span>DUSTYTOP</span></a>
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/DUSTYTOP.LZH">DUSTYTOP.LZH</a> ( 10 Kbytes,&nbsp;2003-4-1,&nbsp;Windows 95/98/Me/NT4.0/2000/XP)<br>
+<br>ほったらかしのデスクトップがどうなるかを、独自の加速技術によって再現してみたりするものです。<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="mewll"><span>mewll</span></a>
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/MEWLL01.LZH">MEWLL01.LZH</a> ( 37 Kbytes,&nbsp;2001-5-2,&nbsp;Windows 95/98/NT4.0/2000)<br>
+<br>活発な猫とアナウンサのマスコットの試作品です。<br>
+SSTP server 機能付。<br>
+
+<hr><address>Copyright(c)1997-2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+<img src="http://toro.d.dooo.jp/ac/accimg.cgi?id=slwin4" alt="access counter用" width="20" height="11">
+</div></div>
+<div id="index">
+<strong><a href="./index.html">TORO's Library</a></strong>
+<h3>Software</h3>
+&nbsp;<a href="./slwin4.html">Windows</a><br>
+&nbsp;&nbsp;<a href="./slppx.html">PPx</a><br>
+&nbsp;&nbsp;<a href="./slplugin.html">DLL,SusiePlugin</a><br>
+&nbsp;<a href="./sldos.html">MS-DOS</a><br>
+&nbsp;<a href="./sle500.html">SHARP PC-E500</a><br>
+<h3>Hardware</h3>
+&nbsp;<a href="./hde500.html">SHARP PC-E500</a><br>
+<h3>Data</h3>
+&nbsp;<a href="dlminfo.html">Information</a><br>
+&nbsp;&nbsp;<a href="./ppxhlp.html">PPx Help</a><br>
+&nbsp;<a href="./dldoslfn.html">DOS 上で LFN</a><br>
+&nbsp;<a href="./dlsrc.html">Source</a><br>
+&nbsp;<a href="./dlcfg.html">Config Memo</a><br>
+&nbsp;<a href="./dlw32api.html">Win32 API memo</a><br>
+<h3>Message Board</h3>
+&nbsp;<a href="/wforum/wforum.cgi">Software</a>
+</div>
+</div></body></html>
