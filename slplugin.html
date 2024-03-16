@@ -57,6 +57,8 @@ img { max-width: 100%; height: auto; }
   </td><td>- コマンドラインツールを使うSusie Plug-in</td></tr>
   <tr><td>・<a href="#ifmagick">ImageMagick Susie Plug-in</a>
   </td><td>- ImageMagick(DLL版)を使った非推奨Susie Plug-in</td></tr>
+  <tr><td>・<a href="#runspx">Runspi / Runsph / Runspia</a>
+  </td><td>- Susie Plug-in による画像の取得、書庫展開と、動作検証をする</td></tr>
   <tr><td>・<a href="#spibench">spibench 改変版</a>
   </td><td>- 宮坂 賢氏作成 spibench の改変版</td></tr>
   <tr><td>・<a href="#unzzip">unzzip.dll</a>
@@ -68,11 +70,11 @@ img { max-width: 100%; height: auto; }
 unbypass
 ./unbypass20.zip
 iftwic
-./iftwic21.zip
+./iftwic22.zip
 iftpsd
 ./iftpsd16.zip
 ifgif
-./ifgif-0.1.1.3.zip
+./ifgif-0.1.1.4.zip
 iftwebp
 ./iftwebp11.zip
 axeres
@@ -93,12 +95,14 @@ spextend
 ./spextend13p1.zip
 ifmagick
 ./ifmagick10.zip
+runspx
+./runspx10.zip
 spibench
 ./spibench-20170902.zip
 unzzip
 ./unzzip13.zip
 7zca
-./7zca04.zip
+./7zca05.zip
 EndList -->
 <hr><a href="./slplugin.html">↑</a><a name="unbypass"><span>UNBYPASS.DLL</span></a> Version 2.0
 <br>
@@ -113,19 +117,17 @@ EndList -->
  Susie plug-inは、マルチスレッドに対応していません。<br><br>●<strong>変更点</strong><br>1.9→2.0<br>
 ・Unxxx&nbsp;/&nbsp;Susie&nbsp;plug-in&nbsp;でダイアログが表示されるときの挙動を調整した<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="iftwic"><span>WIC Susie Plug-in</span></a> Version 2.1
+<hr><a href="./slplugin.html">↑</a><a name="iftwic"><span>WIC Susie Plug-in</span></a> Version 2.2
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/iftwic21.zip">iftwic21.zip</a> ( 261 Kbytes,&nbsp;2022-9-18,&nbsp;Windows XP/2003 - 11/2022(x86, x64, Arm64))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/iftwic22.zip">iftwic22.zip</a> ( 270 Kbytes,&nbsp;2024-3-9,&nbsp;Windows XP/2003 - 11/2022(x86, x64, Arm64))<br>
 <br>WIC(Windows Imaging Component)を使って各種に読み込むためのSusie Plug-in です。<br>
 WIC は標準で、BMP, PNG, ICO, JPG(JPEG), GIF, TIFF, HDP(HD Photo) 形式に対応しており、追加のコーデックをインストールすることにより任意の形式を増やすことができます。<br>
 32bit版/64bit版が入っています。<br>
 <br>
 ・マルチスレッド対応<br>
  このPlug-inは、マルチスレッドによる画像の展開に対応しています。<br>
- ファイル形式名の取得(GetPluginInfo)は、マルチスレッドに対応していません。<br><br>●<strong>変更点</strong><br>2.0→2.1<br>
-・ソフトによっては設定の読み込みに失敗する問題を修正<br>
-<br>
-※arm64版は現在作成環境がおかしいため、Ver.2.0&nbsp;時のファイルが入っています。<br>
+ ファイル形式名の取得(GetPluginInfo)は、マルチスレッドに対応していません。<br><br>●<strong>変更点</strong><br>2.1→2.2<br>
+・0&nbsp;バイトのファイルの読み込み時に異常終了することがあるのを修正<br>
 
 <hr><a href="./slplugin.html">↑</a><a name="iftpsd"><span>PSD Susie Plug-in</span></a> Version 1.6
 <br>
@@ -139,15 +141,17 @@ WIC は標準で、BMP, PNG, ICO, JPG(JPEG), GIF, TIFF, HDP(HD Photo) 形式に�
 ・レイヤー取得用のプラグイン(axtpsd)を追加<br>
 ・ARM64&nbsp;版を作成<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="ifgif"><span>GIF import plug-in</span></a> Version 0.1.1.3
+<hr><a href="./slplugin.html">↑</a><a name="ifgif"><span>GIF import plug-in</span></a> Version 0.1.1.4
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/ifgif-0.1.1.3.zip">ifgif-0.1.1.3.zip</a> ( 79 Kbytes,&nbsp;2016-3-19,&nbsp;Windows XP/2003 - 10/2016(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/ifgif-0.1.1.4.zip">ifgif-0.1.1.4.zip</a> ( 122 Kbytes,&nbsp;2024-3-12,&nbsp;Windows XP/2003 - 10/2016(32bit/64bit))<br>
 <br>mij4x氏<a href="http://mij4x.datacompression.jp/" >(サイト閉鎖)</a>が作成された <a href="https://toroidj.github.io/redistribution/ifgif-0.1.1.zip" >CompuServe 社の GIF 画像用の Susie plug-in(転載)</a>を<br>
 64bit版 Susie Plug-in として使えるように手直ししたものです。<br>
 <br>
 ・マルチスレッド対応<br>
- このPlug-inは、マルチスレッドに完全対応しています。<br><br>●<strong>変更点</strong><br>0.1.1.2→0.1.1.3<br>
-・64bit化の修正し忘れを対処した<br>
+ このPlug-inは、マルチスレッドに完全対応しています。<br><br>●<strong>変更点</strong><br>0.1.1.3→0.1.1.4<br>
+・64bit化の修正し忘れ(hInfo&nbsp;のアラインメント)を対処した<br>
+・UNICODE&nbsp;版&nbsp;API&nbsp;を用意した<br>
+・ARM64&nbsp;版を用意した<br>
 
 <hr><a href="./slplugin.html">↑</a><a name="iftwebp"><span>WebP Susie Plug-in</span></a> Version 1.1
 <br>
@@ -274,6 +278,11 @@ ifextend : 画像の展開(ImageMagick)、動画の切り出し(FFmpeg)、32bit 
 ・マルチスレッド対応未確認<br>
  このPlug-inは、マルチスレッドに対応しているかを確認できていません。<br>
 
+<hr><a href="./slplugin.html">↑</a><a name="runspx"><span>Runspi / Runsph / Runspia</span></a>
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/runspx10.zip">runspx10.zip</a> ( 190 Kbytes,&nbsp;2024-3-16,&nbsp;Windows XP/2003 - 10/2022(x86, x64, Arm64))<br>
+<br>Susie Plug-in を使って画像の取得、書庫展開をしたり、Susie Plug-in の動作検証を行ったりするためのコンソールアプリケーションです。<br>
+
 <hr><a href="./slplugin.html">↑</a><a name="spibench"><span>spibench 改変版</span></a>
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/spibench-20170902.zip">spibench-20170902.zip</a> ( 97 Kbytes,&nbsp;2017-9-2,&nbsp;Windows XP/2003 - 10/2016(32bit/64bit))<br>
@@ -292,14 +301,14 @@ OpenArchive API のサブセットの API を用意しています。<br>
 ・Deflate64&nbsp;に対応<br>
 ・ARM64&nbsp;版を作成&nbsp;(unzzip64A.dll&nbsp;を&nbsp;unzzip64.dll&nbsp;に名前変更する必要あり)<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="7zca"><span>7zca.dll</span></a> Version 0.4
+<hr><a href="./slplugin.html">↑</a><a name="7zca"><span>7zca.dll</span></a> Version 0.5
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/7zca04.zip">7zca04.zip</a> ( 123 Kbytes,&nbsp;2020-1-11,&nbsp;Windows XP/2003 - 10/2019(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/7zca05.zip">7zca05.zip</a> ( 184 Kbytes,&nbsp;2024-3-9,&nbsp;Windows XP/2003 - 10/2022(32bit/64bit))<br>
 <br>7-Zipに入っている7z.dllを使った 7z等の書庫の展開ライブラリの試作品です。<br>
 OpenArchive API のサブセットの API を用意しています。<br>
-32bit版/64bit版が入っています。<br><br>●<strong>変更点</strong><br>0.3→0.4<br>
-・7-Zip&nbsp;18.01等ではファイル時刻がタイムゾーン分ずれるのを修正<br>
-・SzipcaGetWriteTimeEx,SzipcaGetCreateTimeEx,SzipcaGetAccessTimeExを追加<br>
+32bit版/64bit版が入っています。<br><br>●<strong>変更点</strong><br>0.4→0.5<br>
+・エラー発生時に異常終了することがあるのを修正<br>
+・ARM64版を追加<br>
 
 <hr><address>Copyright(c)1997-2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
 <img src="http://toro.d.dooo.jp/ac/accimg.cgi?id=slplugin" alt="access counter用" width="20" height="11">

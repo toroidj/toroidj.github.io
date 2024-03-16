@@ -1,0 +1,603 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="ja">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<TITLE>TORO's Data Library(Susie Plug-in 仕様)</TITLE>
+<LINK REL="CHAPTER" HREF="dlsphapi.html">
+<style type="text/css"><!--
+body { line-height: 150%; word-break: break-word; }
+hr { border: solid 1px; }
+pre { line-height: 110%; font-size: 105%; white-space: pre-wrap; background-color: #f6f69f; }
+table { background-color: #f6f69f; }
+th { font-weight: normal; position: sticky; left: 0; background-color: #f6f69f; }
+dt { font-weight: bold; }
+p { text-align: left; }
+#page { width: 96%; text-align: left; }
+#title { text-align: center; }
+#index { width:115pt; float:left; border-right: 1px solid gray; }
+#contents { width:100%; float:right; margin-left:-120pt; }
+#contents2 { margin-left:124pt; }
+.type { color: #4040f0; }
+.prefix { color: #802000; }
+
+@media only screen and (orientation: portrait) {
+ #index { width:100%; float:none; border-right:none; }
+ #contents { float:none; margin-left:0pt; }
+ #contents2 { margin-left:0pt; }
+}
+--></style></head>
+<body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
+<div id="page">
+<div id="title"><H2>Susie 32bit / 64bit Plug-in の仕様(2024-3-16版)</H2>
+<hr></div>
+<div id="contents"><div id="contents2">
+<p>拙作 Susie 32bit / 64bit Plug-in の仕様です。</p>
+<p>拙作 Susie 64bit Plug-inは、Susie 32bit Plug-in 仕様 rev5 を元に拡張した独自仕様です。<br>
+本仕様は API の 64bit 化に加えて、Susie 32bit Plug-in 仕様 rev5 では記載されていなかった動作の言及や、曖昧な定義の厳格化をおこなっています。</p>
+<p>Susie 32bit Plug-in 仕様 rev5 は、Susie 32bit Plug-in の本家となる竹村嘉人 (たけちん)氏のサイト (<a href="http://www.digitalpad.co.jp/~takechin/">http://www.digitalpad.co.jp/~takechin/</a>) の Plug-in package ver0.08 に同梱されています。</p>
+ <UL>
+  <LI><A HREF="#fileext">Plug-in 拡張子</A></LI>
+  <LI><A HREF="#api" >64bit API の概要</A></LI>
+  <LI><A HREF="#apilist" >API 一覧</A></LI>
+  <LI><A HREF="#errorcode" >エラーコード</A></LI>
+  <LI><A HREF="#bitmap" >bitmap 仕様</A></LI>
+  <LI><A HREF="#others" >その他</A></LI>
+  <LI><A HREF="#tests" >テスト用プログラム</A></LI>
+  <LI><A HREF="#reference" >参考資料</A></LI>
+ </UL>
+<A HREF="index.html">Homeへ戻る</A>
+<HR><H3><A NAME="fileext">Plug-in 拡張子</A></H3>
+Susie Plug-in として以下の拡張子が決められています。.spi と .PLG が本家仕様です。 .sph, .spha は独自仕様です。
+<pre>
+.spi   Susie 32bit Plug-in
+.sph   Susie 64bit(x64) Plug-in
+.spha  Susie 64bit(ARM64) Plug-in
+.PLG   Susie 16bit Plug-in
+</pre>
+
+<HR><H3><A NAME="api">64bit API の概要</A></H3>
+<ul><li>定義が 32bit / 64bit で共用できるように LONG_PTR 等を使用しています。</li>
+<li>64bit 版の構造体はアラインメント合わせを行っているため、要素のアラインメントずれに注意が必要です。</li>
+<li>本家仕様では引数に使用していない const を使用しています。</li>
+<li>メモリハンドルは明瞭化のため、HANDLE から HLOCAL に変えています。尚、HLOCAL は HANDLE の typedef です。</li>
+<li>API 名末尾に「W」が付いているものは UNICODE 版です。</li>
+<li>UNICODE 版 API は全てオプションです。</li>
+<li>GetArchiveInfo を使ったときは、GetFile / GetFileInfo を使用し、<br>
+  GetArchiveInfoW を使ったときは、GetFileW / GetFileInfoW を使用する必要があります。<br>
+  上記以外の UNICODE 版は ANSI 版と混在使用できます。</li>
+<li>IsSupported は仕様としてファイルハンドル指定ができますが、既存のファイルハンドル指定アプリケーションのための互換用仕様です。<br>
+  新規に使用しないでください。また、使用している場合はバッファ指定に置き換えることをおすすめします<br>
+  以前の 32bit Windows ではファイルハンドルが 16bit Windows との互換性のために 16bit に納まっていましたが、現在は 16bit を超えるようになり、誤動作するためです。</li></ul>
+<HR><H3><A NAME="apilist">API 一覧</A></H3>
+<ul>
+<li><a href="#GetPluginInfo">[IF][AX] GetPluginInfo, GetPluginInfoW</a></li>
+<li><a href="#IsSupported">[IF][AX] IsSupported, IsSupportedW</a></li>
+<li><a href="#ConfigurationDlg">[IF][AX][option] ConfigurationDlg</a></li>
+<li><a href="#GetPictureInfo">[IF] GetPictureInfo, GetPictureInfoW</a></li>
+<li><a href="#GetPicture">[IF] GetPicture, GetPictureW</a></li>
+<li><a href="#GetPreview">[IF][option] GetPreview, GetPreviewW</a></li>
+<li><a href="#GetArchiveInfo">[AX] GetArchiveInfo, GetArchiveInfoW</a></li>
+<li><a href="#GetFile">[AX] GetFile, GetFileW</a></li>
+<li><a href="#GetFileInfo">[AX] GetFileInfo, GetFileInfoW</a></li>
+<li><a href="#CreatePicture">[IN][独自, option]CreatePicture, CreatePictureW</a></li>
+</ul>
+<p>※ 一覧の符号説明<br>
+ [IF] Import filter. 画像展開プラグイン用API<br>
+ [AX] Export filter. アーカイブ展開プラグイン用API<br>
+ [option] オプションAPI。APIが存在しない場合がある</p>
+<p>※ API のパラメータ欄の符号説明<br>
+ [in] 入力。プラグイン側で変更禁止<br>
+ [out] 出力。プラグイン側で変更される</p>
+<p>※ API の実装欄の符号説明<br>
+ [IF] Import filter. 画像展開プラグイン用API<br>
+ [AX] Export filter. アーカイブ展開プラグイン用API<br>
+ 未実装可:  常に -1 を返しても良い<br>
+ オプション:  オプションAPI。常に -1 を返しても良いし、APIがなくても良い<br>
+ 無API注意:  常に -1 を返したり、APIがないプラグインがある</p>
+
+<h4>構造体一覧</h4>
+<ul>
+<li><a href="#PictureInfo">struct PictureInfo</a></li>
+<li><a href="#fileInfo">struct fileInfo</a></li>
+<li><a href="#fileInfoW">struct fileInfoW</a></li>
+</ul>
+<h4>コールバック</h4>
+<ul>
+<li><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></li>
+</ul>
+
+<h4><a name="GetPluginInfo">GetPluginInfo, GetPluginInfoW </a></h4>
+Plug-in に関する情報を取得します。Plug-in の種類、表示用の名前、対応拡張子 が得られます。<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPluginInfo(<span class="type">int</span> infono, <span class="type">LPSTR</span> buf, <span class="type">int</span> buflen);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPluginInfoW(<span class="type">int</span> infono, <span class="type">LPWSTR</span> buf, <span class="type">int</span> buflen);<br>
+<pre>パラメータ
+[in] <span class="type">int</span> infono
+ 0  Plug-in APIバージョン
+    "00IN" または "00AM" が返ります。本家仕様としては他の指定が挙げられていますが、実際には使用されていないので、この２つに限定しています。
+ 1  Plug-in の名前、バージョン、Copyright
+
+ 2n+2  対応拡張子 ("*.JPG" "*.RGB;*.Q0" など。ワイルドカードを「;」で区切る)
+ 2n+1  ファイル形式名 (ファイルダイアログ等のファイルタイプ名として使われます)
+
+[out] <span class="type">LPSTR</span> buf
+ 結果文字列の受け取り先。buflen が不足しているときは末尾 \0 が無い場合があります。
+
+[in] <span class="type">int</span> buflen
+ buf の長さ（ \0 の分を含む）。
+ Susie では infono = 0 では 8、infono = 1 では 128、 2以降は 255 が指定されているので、アプリケーションは前記以上の大きさを推奨します。
+
+戻り値
+ 文字列の長さ(\0 を含まない)。infono が無効の場合は 0 になります。
+ 全ての対応拡張子を調べるために戻り値が 0 になるまで infono の値を増やして呼び出される使い方がされます。
+ 尚、\0 を含んだ長さにしている Plug-in が多いので注意が必要です。
+
+実装
+ [IF][AX] GetPluginInfo:必須, GetPluginInfoW:オプション
+</pre>
+<h4><a name="IsSupported">IsSupported, IsSupportedW</a></h4>
+ファイルに対応しているかを調べます。<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> IsSupported(<span class="type">LPCSTR</span> filename, <span class="type">const void *</span>dw);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> IsSupportedW(<span class="type">LPCWSTR</span> filename, <span class="type">const void *</span>dw);<br>
+<pre>パラメータ
+[in] <span class="type">int</span> filename
+  ファイル名。フルパス推奨です。
+[in] <span class="type">LPCSTR / LPCWSTR</span>dw
+  ファイル先頭部(2Kbyte)を読み込んだバッファへのポインタ
+  ファイルサイズが 2Kbyte 以下の場合もバッファは 2Kbyte 確保し、余分は 0 で埋めること。
+  (使用禁止) dw の値が 16bit の範囲に収まるときは、ファイルハンドルと見なします。また、ファイルポインタはアプリケーション側で予め指定します。
+  ファイルハンドル指定は、現在の 32bit Windows ではファイルハンドルが 16bit を超える場合があるので使用禁止です。
+
+戻り値
+  0 非対応
+  0以外 対応している画像フォーマットである
+
+解説
+ 各 Plug-in は基本的に渡されたファイルのヘッダを調べ、自分の対応したファイルフォーマットであるかどうかを調べます。
+ Susie の純正 Plug-inではfilenameを使用していません。
+ Susie は、画像・書庫に対して必ず１回は使用しています。
+ IsSupported で 対応と判断されても後続の API(GetPicture等) で対応ファイルでないとエラーが出ることがあります。アプリケーションは、前記状況のときに別の Plug-in を使うにすると失敗が減ります。
+ ※ Plug-in によっては、ここで得られたファイル名をファイルイメージ渡しの GetPicture, GetArchiveInfo 等で利用することがあります。
+ ※ lhasad.spi では 2Kbyte 以上参照する記載があります（spi_api.txt の「バッファサイズ2Kbyte以上は自己解凍型LHa対応のため」）。
+ ※ ファイルハンドル渡しはファイルハンドルが 16bit に納まらないことがあるため使用禁止です。
+
+実装
+ [IF][AX] IsSupported:必須, IsSupportedW:オプション
+</pre>
+<h4><a name="ConfigurationDlg">ConfigurationDlg</a></h4>
+Plug-in 定義の aboutダイアログ か 設定ダイアログを実行します。<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> ConfigurationDlg(<span class="type">HWND</span> hWnd, <span class="type">int</span> function);<br>
+
+<pre>パラメータ
+[in] <span class="type">HWND</span> hWnd
+  親ウィンドウのウィンドウハンドル
+[in] <span class="type">int</span> function
+
+動作
+  0  Plug-inのaboutダイアログ表示(必要であれば)
+  1  設定ダイアログ表示
+
+戻り値
+  <a href="#errorcode">エラーコード</a>
+
+実装
+ [IF][AX] ConfigurationDlg:オプション(Susie 0.40以降)
+</pre>
+<h4><a name="GetPictureInfo">GetPictureInfo, GetPictureInfoW</a></h4>
+画像ファイルの情報を取得します。<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPictureInfo(<span class="type">LPCSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <a href="#PictureInfo">struct PictureInfo</a> *lpInfo);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPictureInfoW(<span class="type">LPCWSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <a href="#PictureInfo">struct PictureInfo</a> *lpInfo);<br>
+
+<pre>パラメータ
+[in] <span class="type">LPCSTR / LPCWSTR</span> buf
+  入力がファイルの場合: ファイル名
+  メモリーの場合: ファイルイメージへのポインタ
+[in] <span class="type">LONG_PTR</span> len
+  入力がファイルの場合: 読込み開始オフセット(MacBin対応のため)
+  メモリーの場合: メモリサイズ
+[in] <span class="type">int</span> flag
+  追加情報 0000 0000 0000 0SSS
+    SSS : 入力形式
+      000 : ディスクファイル
+      001 : メモリ上のイメージ
+[out] <a href="#PictureInfo">struct PictureInfo</a> *lpInfo
+
+戻り値
+  <a href="#errorcode">エラーコード</a>
+
+解説
+  実際の画像の情報ではなく、プロパティ表示用のヘッダ等から入手した情報が使われたりするため、GetPictureで得られる画像と合わない事も生じます。このため、GetPictureInfo は参考情報として扱い、GetPicture を使った後は、GetPicture の画像の情報を利用する必要があります。
+
+ プラグインによっては、lpInfo の各要素を全て更新しないことがあります。
+  本家も left, top を更新していないプラグインがいくつかあります。
+  このため、アプリケーションは、GetPictureInfo を使う前に lpInfo の各要素を初期化しておくことをおすすめします。
+
+実装
+ [IF] GetPictureInfo:無API注意, GetPictureInfoW:オプション
+
+構造体
+<a name="PictureInfo"></a>#pragma pack(push, 1)
+<span class="type">struct PictureInfo</span>
+{
+   <span class="type">long</span> left, top;    // 画像を展開する位置
+   <span class="type">long</span> width;       // 画像の幅(pixel)
+   <span class="type">long</span> height;      // 画像の高さ(pixel)
+   <span class="type">WORD</span> x_density;   // 画素の水平方向密度
+   <span class="type">WORD</span> y_density;   // 画素の垂直方向密度
+   <span class="type">short</span> colorDepth; // １画素当たりのbit数
+   #ifdef _WIN64
+       <span class="type">char</span> dummy[2]; // アラインメント合わせ用(64bit版)
+   #endif
+   <span class="type">HLOCAL</span> hInfo;     // 画像内のテキスト情報(Windowsのコードページ、UTF-8の場合はBOMを付けること)。未使用: NULL
+};
+#pragma pack(pop)
+※ 32bit版の構造体のアラインメント合わせは 1 のため、hInfo のアラインメントは通常と異なります。
+※ 64bit版の hInfo のアラインメントが合わないため、アプリケーション側で hInfo を正しく取得できない場合があります。例えば、GetPictureInfo の呼び出し前に hInfo = 0x7f7f7f7f7f7f7f7f としておき、呼び出し後に (hInfo & 0xff00000000000000) == 0x7f00000000000000 を満たしている場合、アラインメントずれを検出できます。
+</pre>
+<h4><a name="GetPicture">GetPicture, GetPictureW</a>, <a name="GetPreview">GetPreview, GetPreviewW</a></h4>
+画像ファイルからビットマップを取得します。<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPicture(<span class="type">LPCSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPictureW(<span class="type">LPCWSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPreview(<span class="type">LPCSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPreviewW(<span class="type">LPCWSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<pre>パラメータ
+[in]  <span class="type">LPCSTR / LPCWSTR</span> buf
+  入力がファイルの場合: ファイル名
+  メモリーの場合: ファイルイメージへのポインタ
+[in]  <span class="type">LONG_PTR</span> len
+  入力がファイルの場合: 読込み開始オフセット(MacBin対応のため)
+  メモリーの場合: データサイズ
+[in]  <span class="type">int</span> flag
+  追加情報 0000 0000 0000 0SSS
+    SSS : 入力形式
+      000 : ディスクファイル
+      001 : メモリ上のイメージ
+[out] <span class="type">HLOCAL</span> *pHBInfo
+  BITMAPINFO 構造体が納められたメモリハンドルが返される
+[out] <span class="type">HLOCAL</span> *pHBm
+  ビットマップデータ本体のメモリハンドルが返される
+[in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
+  途中経過を表示するコールバック関数へのポインタ
+  NULL の場合、plug-in は処理が終了するまでプロセスを占有し、中断も出来ません。
+  ただし、NULL を許容しないプラグインがあるので、アプリケーションはダミーでも関数を指定することを推奨します。
+[in][option] <span class="type">LONG_PTR</span> lData
+  コールバック関数に渡す変数。
+
+戻り値
+  <a href="#errorcode">エラーコード</a>
+
+解説
+  プラグインはLocalAllocによって必要なメモリーを確保し、そのハンドルを返します。
+  アプリケーションはLocalLockでポインタを取得し、LocalUnlock, LocalFreeによってメモリーを解放する必要があります。
+  Susie は 16/32bit, RLE bitmap に完全に対応していません。また、トップダウンDIBに対応していません。
+
+  GetPreview / GetPreviewW は、プレビュー用のデータやアルゴリズムがあればそれを使用してビットマップを用意します。このため GetPicture / GetPictureW と画像サイズが異なります。また、アプリケーションは、GetPreview が -1 を返してきたときに GetPicture を使用するようにします。
+
+実装
+ [IF] GetPicture:必須, GetPictureW:オプション, GetPreview:未実装可,無API注意,  GetPreviewW:オプション
+</pre>
+<h4><a name="GetArchiveInfo">GetArchiveInfo, GetArchiveInfoW</a></h4>
+アーカイブ内のすべてのファイルの情報を取得します。<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetArchiveInfo(<span class="type">LPCSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *lphInf);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetArchiveInfoW(<span class="type">LPCWSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *lphInf);<br>
+<pre>パラメータ
+[in] <span class="type">LPCSTR / LPCWSTR</span> buf
+  入力がファイルの場合 ファイル名
+  メモリーの場合 ファイルイメージへのポインタ
+[in] <span class="type">LONG_PTR</span> len
+  入力がファイルの場合 読込み開始オフセット(MacBin対応のため)
+  メモリーの場合 データサイズ
+[in] <span class="type">int</span> flag
+  追加情報 0000 0000 0000 0SSS
+    SSS : 入力形式
+      000 : ディスクファイル
+      001 : メモリ上のイメージ
+[out] <span class="type">HLOCAL</span> *lphInf
+  <a href="#fileInfo">fileInfW</a></li> (ANSI版), <a href="#fileInfoW">fileInfoW</a></li> (UNICODE版) の配列の LOCAL メモリハンドルを受け取る変数へのポインタ。
+   エラーの時は、NULL を設定します。戻り値が 0 以外の時も必ず設定が必要です。
+  アプリケーションはLocalLockでポインタを取得し、LocalUnlock, LocalFreeによってメモリーを解放する必要があります。
+   method[0] == '\0' のときは終端です。このときの fileInfoW の大きさは method[0] の大きさのみであって、他の要素を参照しようとするとアクセス違反になる場合があります。
+
+戻り値
+  <a href="#errorcode">エラーコード</a>
+  lhasad.spi では常に 2 を返します。このため、lphInf が NULL か NULL でないかの判断も必要です。
+
+解説
+ ファイル名のディレクトリ部は fileInfo/W.path、ファイル名部は fileInfo/W.filenam に格納されます。
+
+ファイル filename.ext の場合、
+path = ""、filename = "filename.ext"
+ファイル dir1\dir2\filename.ext の場合、
+path = "dir1\\dir2\\"、filename = "filename.ext"
+ディレクトリ dir1\dir2\ の場合は、
+path = "dir1\\dir2\\"、filename = ""
+
+ 尚、一部の Plug-in は、ディレクトリ部を含めて filename に格納しています。またパスの区切りに「/」を用いている場合があります。
+
+実装
+ [AX] GetArchiveInfo:必須, GetArchiveInfoW:オプション
+
+構造体
+#define SUSIE_PATH_MAX 200
+// Susie 用の time_t(UNIX時間)。spi では 32bit、sph では 64bit。
+// FILETIME に変換するときは、(timestamp * 10000000) + 0x19db1ded53e8000
+typedef <span class="type">ULONG_PTR</span> susie_time_t;
+
+<a name="fileInfo"></a>#pragma pack(push, 1)
+struct {
+  <span class="type">unsigned char</span>  method[8];  // 圧縮法の種類
+  <span class="type">ULONG_PTR</span>      position;   // ファイル上での位置 ※位置と関係ないインデックスとして使うこともある
+  <span class="type">ULONG_PTR</span>      compsize;   // 圧縮されたサイズ
+  <span class="type">ULONG_PTR</span>      filesize;   // 元のファイルサイズ ※ 展開しないとサイズが分からない場合は設定されないことがある
+  <span class="type">susie_time_t</span>   timestamp;  // ファイルの更新日時
+  <span class="type">char</span>           path[SUSIE_PATH_MAX];  // ディレクトリ。末尾は \\ を推奨。
+  <span class="type">char</span>           filename[SUSIE_PATH_MAX];  // ファイル名。\\ や / は使用不可
+  <span class="type">unsigned long</span>  crc;        // CRC
+  #ifdef _WIN64
+    <span class="type">char</span> dummy[4]; // アラインメント合わせ用(64bit版)
+  #endif
+} fileInfo;
+#pragma pack(pop)
+
+<a name="fileInfoW"></a>#pragma pack(push, 1)
+struct {
+  <span class="type">unsigned char</span>  method[8];  // 圧縮法の種類
+  <span class="type">ULONG_PTR</span>      position;   // ファイル上での位置 ※位置と関係ないインデックスとして使うこともある
+  <span class="type">ULONG_PTR</span>      compsize;   // 圧縮されたサイズ
+  <span class="type">ULONG_PTR</span>      filesize;   // 元のファイルサイズ ※ 展開しないとサイズが分からない場合は設定されないことがある
+  <span class="type">susie_time_t</span>   timestamp;  // ファイルの更新日時
+  <span class="type">WCHAR</span>          path[SUSIE_PATH_MAX];  // ディレクトリ。末尾は \\ を推奨。
+  <span class="type">WCHAR</span>          filename[SUSIE_PATH_MAX];  // ファイル名。\\ や / は使用不可
+  <span class="type">unsigned long</span>  crc;        // CRC
+  #ifdef _WIN64
+    <span class="type">char</span> dummy[4]; // アラインメント合わせ用(64bit版)
+  #endif
+} fileInfoW;
+#pragma pack(pop)
+</pre>
+<h4><a name="GetFile">GetFile, GetFileW</a></h4>
+アーカイブ内の指定ファイルを取得します。<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetFile(<span class="type">LPCSTR</span> src, <span class="type">LONG_PTR</span> len, <span class="type">LPSTR</span> dest, <span class="type">unsigned int</span> flag, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> prgressCallback, <span class="type">LONG_PTR</span> lData);
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetFileW(<span class="type">LPCWSTR</span> src, <span class="type">LONG_PTR</span> len, <span class="type">LPWSTR</span> dest, <span class="type">unsigned int</span> flag, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> prgressCallback, <span class="type">LONG_PTR</span> lData);
+<pre>パラメータ<br>
+[in] <span class="type">LPCSTR / LPCWSTR</span> src
+  入力がファイルの場合: ファイル名
+  メモリーの場合: ファイルイメージへのポインタ
+[in] <span class="type">LONG_PTR</span> len
+  入力がファイルの場合: 読込み開始オフセット、GetArchiveInfo で得られる positionをそのまま使う。※位置と関係ないインデックスとして使うこともあるので、ファイル位置として想定しない方が良い。
+  メモリーの場合: データサイズ
+[in] or [out] <span class="type">LPSTR / LPWSTR</span> dest
+  出力先がファイルの場合: [in] 出力先ディレクトリ。fileInfo の path は使用されず、dest\filename の形で保存されます。
+  メモリーの場合: [out] ファイルの入った LOCAL メモリーハンドルを受け取る変数へのポインタ。
+[in] <span class="type">int</span> flag
+  追加情報 0000 0DDD 0000 0SSS
+    SSS : 入力形式
+      000 : ディスクファイル
+      001 : メモリ上のイメージ
+    DDD : 出力形式
+      000 : ディスクファイル
+      001 : メモリ上のイメージ
+[in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
+  途中経過を表示するコールバック関数へのポインタ。
+  NULL の場合、plug-in は処理が終了するまでプロセスを占有し、中断も出来ません。
+  ただし、NULL を許容しないプラグインがあるのでダミーのコールバックを推奨します。
+[in][option] <span class="type">LONG_PTR</span> lData
+  コールバック関数に渡す変数。
+
+戻り値
+  <a href="#errorcode">エラーコード</a>
+
+解説
+  src と len の組み合わせで書庫ファイル中のファイルを指定して取得を行います。
+  GetFile/W は予め GetArchiveInfo/W か GetFileInfo/W を実行し、struct fileinfo/W の情報を得る必要があります。
+  src がファイル名の場合は、struct fileinfo/W 中の position を len として扱います。
+  src がメモリイメージの場合は、ファイルのメモリイメージの先頭から前記 position の分だけずらしたメモリを指定します。
+  len は struct fileinfo/W 中の compsize 以上が必要になります。
+
+  プラグインはLocalAllocによって必要なメモリーを確保し、そのハンドルを返します。
+  アプリケーションはLocalLockでポインタを取得し、LocalUnlock, LocalFreeによってメモリーを解放する必要があります。
+
+実装
+ [AX] GetFile:必須, GetFileW:オプション
+</pre>
+<h4><a name="GetFileInfo">GetFileInfo, GetFileInfoW</a></h4>
+アーカイブ内の指定したファイルの情報を取得します。<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetFileInfo(<span class="type">LPCSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">LPCSTR</span> filename, <span class="type">unsigned int</span> flag, <a href="#fileInfo">struct fileInfo</a></li> *lpInfo);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetFileInfoW(<span class="type">LPCWSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">LPCWSTR</span> filename, <span class="type">unsigned int</span> flag, <a href="#fileInfoW">struct fileInfoW</a></li> *lpInfo);<br>
+<pre>パラメータ
+[in] <span class="type">LPCSTR / LPCWSTR</span> buf
+  入力がファイルの場合: ファイル名
+  メモリーの場合: ファイルイメージへのポインタ
+[in] <span class="type">LONG_PTR</span> len
+  入力がファイルの場合: 読込み開始オフセット、GetArchiveInfo で得られる positionをそのまま使う。※位置と関係ないインデックスとして使うこともあるので、ファイル位置として想定しない方が良い。
+  メモリーの場合: データサイズ
+[in] <span class="type">LPCSTR / LPCWSTR</span> filename
+  情報を取得するファイルのファイル名。アーカイブ内のディレクトリを含めて指定
+[in] <span class="type">int</span> flag
+  追加情報 0000 0000 I000 0SSS
+    SSS : 入力形式
+      000 : ディスクファイル
+      001 : メモリ上のイメージ
+    I : ファイル名の case
+     0 : ファイル名の大文字小文字を区別する
+     1 : ファイル名の大文字小文字を同一視する。
+[out] <a href="#fileInfo">fileInfo</a></li>/<a href="#fileInfoW">fileInfoW</a></li> lpInfo
+  情報を受け取る fileInfo 構造体へのポインタ
+
+戻り値
+  <a href="#errorcode">エラーコード</a>
+
+解説
+  書庫ファイル中のファイル filename を指定して情報取得を行います。
+  lpInfo の内容は、GetArchiveInfo/W から得られる struct fileinfo/W と同じ内容なので、GetArchiveInfo/W を先に使っていたときは、GetFileInfo/W を使わなくても GetFile/W を使用できます。
+  Susie は、この API を現在使用していません。
+
+実装
+ [AX] GetFileInfo:無API注意, GetFileInfoW:オプション
+</pre>
+<h4><a name="CreatePicture">CreatePicture (オプション、独自)</a></h4>
+ビットマップを指定した拡張子に対応するファイル形式でエンコードします。<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> CreatePicture(<span class="type">LPCSTR</span> filepath, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <a href="#PictureInfo">struct PictureInfo</a> *lpInfo, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> progressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> CreatePictureW(<span class="type">LPCWSTR</span> filepath, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <a href="#PictureInfo">struct PictureInfo</a> *lpInfo, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> progressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<pre>パラメータ
+拡張子に対応したファイル形式でビットマップからファイルを作成します。
+
+[in] <span class="type">LPCSTR / LPCWSTR</span> buf
+  保存するファイル名。拡張子がエンコードするファイルの種類を示す。対応していない拡張子の時は、デフォルトの種類でエンコードするか、2 を返す。
+[in] flag
+  追加情報 000E RDDD 0000 0000
+    DDD : 出力形式
+      000 : ディスクファイル
+      001 : メモリ上のイメージ(未対応)
+    R : 不明の拡張子の扱い
+      0 : 規定のファイル形式で保存する
+      1 : エラー 2 を返す
+    E : 追加情報(未実装)
+      0 : 追加情報なし
+      1 : 追加情報あり
+[in] <span class="type">HLOCAL</span> *pHBInfo
+  BITMAPINFO 構造体が納められたメモリハンドル
+[in] <span class="type">HLOCAL</span> *pHBm
+  ビットマップデータ本体のメモリハンドル
+[in][option] <a href="#PictureInfo">struct PictureInfo</a> *lpInfo
+  pHBInfo にない情報を含めるときに使用します。lpInfo = NULL としても構いません。x_density, y_density, colorDepth は pHBInfo を参照するため、使用されません。
+  ※将来保存形式を拡張する場合は、flag の B12 を 1 にして、この構造体の後ろに空白区切りのコマンドパラメータの文字列を追加する形を想定しています。
+[in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
+  途中経過を表示するコールバック関数へのポインタ。
+  NULL の場合、plug-in は処理が終了するまでプロセスを占有し、中断も出来ません。
+  ただし、NULL を許容しないプラグインがあるのでダミーのコールバックを推奨します。
+[in][option] <span class="type">LONG_PTR</span> lData
+  コールバック関数に渡す変数。
+
+戻り値
+  <a href="#errorcode">エラーコード</a>
+
+解説
+AtoB Converter(<a href="https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html">https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html</a>)の API を参考にしています。<br>
+対応拡張子は、GetPluginInfo/W で得られる拡張子であり、「*.1st;*.2nd...」と複数記載されている場合は先頭の拡張子(.1st)のみ対応です。また、GetPluginInfo/W に列挙されていても対応していない場合があり，その時は規定の拡張子扱いになるか、エラー -2 になります。
+
+実装
+[IN] CreatePicture:独自API, オプション
+</pre>
+
+<HR><H3>コールバック</H3>
+<a name="SUSIE_PROGRESS"></a><span class="prefix">typedef</span> <span class="type">int</span> (<span class="prefix">__stdcall</span> *SUSIE_PROGRESS)(<span class="type">int</span> nNum, <span class="type">int</span> nDenom, <span class="type">LONG_PTR</span> lData);</a>
+<pre>
+  まず nNum == 0 でコールされ、nNum == nDenom になるまで
+  定期的に呼ばます。
+  戻り値が 非0 の時、Plug-inは処理を中断します。
+</pre>
+
+<HR><H3><A NAME="errorcode">エラーコード</A></H3>
+<pre>    0 : 正常終了
+   -1 : その機能は実装されていない
+    1 : コールバック関数が非0を返したので展開を中止した
+    2 : 未知のフォーマット
+    3 : データが壊れている
+    4 : メモリーが確保出来ない
+    5 : メモリーエラー（Lock出来ない、等）
+    6 : ファイルリードエラー
+    7 : （予約）
+    8 : 内部エラー
+    9 : ファイルライトエラー </pre>
+<HR><H3><A NAME="bitmap">bitmap仕様</A></H3>
+やりとりするビットマップは、pHBInfo と pHBm に分かれて扱われます。それぞれの大きさは LocalSize で参照します。<br>
+<br>
+pHBInfo<br>
+  次のビットマップの情報が入ります。先頭 * はアプリケーション側で必須(Susie が対応している形式)となる対応形式です。<br>
+  Plug-inとしては * 以外の形式も使用できますが、設定で * のみの形式に制限できることを推奨します。<br>
+<pre>
+  * BITMAPINFOHEADER (24bit のとき)
+  * BITMAPINFOHEADER + パレット (1/2/4/8bit のとき)
+    BITMAPINFOHEADER + BITFIELDS (16/24/32bit のとき)
+    BITMAPV5HEADER (24bit のとき)
+    BITMAPV5HEADER + パレット (1/2/4/8bit のとき)
+    BITMAPV5HEADER + パレット + カラープロファイル(1/2/4/8bit のとき)
+    BITMAPV5HEADER + カラープロファイル(16/24/32bit のとき)
+</pre>
+pHBm<br>
+  ビットマップそのものが入ります。<br>
+<br>
+Plug-in を使うアプリケーションとして完全対応したい場合は、前記の全種類の対応に加え、次の仕様に対応する必要があります。Plug-in 側はこれらの形式を使わない設定を用意することを推奨します。<br>
+・トップダウンDIB(biHeight が負の値)<br>
+・16/32bit カラー<br>
+・1以外のアスペクト比(biXPelsPerMeter != biYPelsPerMeter)<br>
+・32bit BGRA (透過画像)<br>
+・カラープロファイル<br>
+・4/8bit RLE<br>
+・8bit 以外の色深度(10bitグレーや 10bit * 3カラーなど)<br>
+<br>
+また、「BMP Suite」(<a href="https://entropymine.com/jason/bmpsuite/">https://entropymine.com/jason/bmpsuite/</a>)に上記仕様の BMP ファイルの例や、破損 BMP ファイルの例が用意されているので、これら例を読み込んでも異常動作を起こさないように対応することをお勧めします。<br>
+<br>
+参考：ファイルに保存するときの配置<br>
+ BITMAPFILEHEADER, BITMAPINFOHEADER, [パレット又はBITFIELDS], ビットマップ<br>
+ BITMAPFILEHEADER, BITMAPV5HEADER, [パレット又はBITFIELDS], ビットマップ, [カラープロファイル]<br>
+<br>
+参考：クリップボードに保存するときの配置<br>
+ BITMAPINFOHEADER, [パレット又はBITFIELDS], ビットマップ<br>
+ BITMAPV5HEADER, [パレット又はBITFIELDS], ビットマップ, [カラープロファイル]<br>
+※ BITMAPV5HEADERを使う場合は CF_DIBV5(BITMAPV5HEADER) と CF_DIB(BITMAPINFOHEADER) をこの順に登録する必要がある。
+<br>
+<HR><H3><A NAME="othrts">その他</A></H3>
+<ul>
+<li>Susie 0.47b は、トップダウンDIB に対応していません。<br>
+また、カタログ表示は更に多くの 16bit DIB, 32bit DIB が扱えない制限があります。</li>
+<li>アプリケーションは、IsSupported を必ず使用してください。その後の API でメモリ渡しを使うと、Plug-in がファイル名を受け取る唯一のチャンスとなるなど、他のAPIで不足している情報を集めることがあるためです。</li>
+<li>API は主に次の使い方がされます。<br>
+IsSupported - GetPicture<br>
+IsSupported - GetPictureInfo - GetPicture<br>
+<br>
+IsSupported - GetArchiveInfo - [GetFile]n<br>
+IsSupported - GetArchiveInfo - [GetFileInfo - GetFile]n<br>
+IsSupported - GetArchiveInfo - [IsSupported - GetFileInfo - GetFile]n</li>
+<li>ファイルサイズが 0、または画像ファイルのヘッダサイズに満たない大きさのファイルを、ファイル名かメモリイメージで渡されることがあります。Plug-in 側はこれらのファイルでも異常終了しないように対策する必要があります。</li>
+<li>複数のスレッドを使う場合、一連の操作(IsSupported～GetPicture/GetFile まで)は同じスレッドで行う必要があります。<br>
+IsSupportedやGetArchiveInfoで得られた情報をスレッド単位でキャッシュしている場合があります。</li>
+</ul>
+</pre>
+
+<HR><H3><A NAME="tests">テスト用プログラム</A></H3>
+動作確認用として次のファイルを用意しました。<br>
+<a href="./slplugin.html#runspx">Runspi / Runsph / Runspia</a><br>
+Plug-in の API を一通り試すことができます。<br>
+
+<a href="spxtests.zip">spxtests.zip</a><br>
+アプリケーション側は、ifextend.spi/sph, axextend.spi/sph で if_test1.test_if, ax_test1.test_ax を開くことができるか確認できます。<br>
+
+<HR><H3><A NAME="reference">参考資料</A></H3>
+Susie Plug-in 関係<br>
+<ul><li><a href="http://www.digitalpad.co.jp/~takechin/">Susieの部屋</a> 「Susie 32bit Plug-in 仕様 rev5」(<a href="http://www.digitalpad.co.jp/~takechin/download.html">http://www.digitalpad.co.jp/~takechin/download.html</a>)</li>
+<li><a href="https://www2f.biglobe.ne.jp/kana/">kana's Home Page</a> 「Susie Plug-in Specification Rev4+α on Win32」(<a href="https://www2f.biglobe.ne.jp/~kana/spi_api/index.html">https://www2f.biglobe.ne.jp/~kana/spi_api/index.html</a>)<br></li>
+<li><a href="https://www.asahi-net.or.jp/~kh4s-smz/index.html">SHIMITEI</a> 「Susie Plug-inプログラミング」(<a href="https://www.asahi-net.or.jp/~kh4s-smz/spi/index.html">https://www.asahi-net.or.jp/~kh4s-smz/spi/index.html</a>)</li>
+<li><a href="http://home.netyou.jp/cc/susumu/program.html">プログラミング - とぅいんくる☆は～つ</a> 「Susie Plug-in Programming Guide」(<a href="http://home.netyou.jp/cc/susumu/progSusie.html">http://home.netyou.jp/cc/susumu/progSusie.html</a>)</li>
+</ul>
+Windows Bitmap 関係<br>
+<ul><li><a href="https://entropymine.com/jason/">Jason Summers’s web site</a> 「BMP Suite」(<a href="https://entropymine.com/jason/bmpsuite/">https://entropymine.com/jason/bmpsuite/</a>)</li>
+</ul>
+<hr><a href="index.html">Homeへ戻る</a>
+<hr><address>Copyright(c)2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+<img src="/ac/accimg.cgi?id=dlsphapi" alt="access counter用" width="20" height="11">
+</div></div>
+<div id="index">
+<strong><A HREF="./index.html">TORO's Library</A></strong>
+
+<H3>Software</H3>
+&nbsp;<A HREF="./slwin4.html">Windows</A><br>
+&nbsp;&nbsp;<A HREF="./slppx.html">PPx</A><br>
+&nbsp;&nbsp;<A HREF="./slplugin.html">DLL,SusiePlugin</A><br>
+&nbsp;<A HREF="./sldos.html">MS-DOS</A><br>
+&nbsp;<A HREF="./sle500.html">SHARP PC-E500</A><br>
+<H3>Hardware</H3>
+&nbsp;<A HREF="./hde500.html">SHARP PC-E500</A><br>
+<H3>Data</H3>
+&nbsp;<A HREF="dlminfo.html">Information</A><br>
+&nbsp;&nbsp;<A HREF="./ppxhlp.html">PPx Help</A><br>
+&nbsp;<A HREF="dldoslfn.html">DOS 上で LFN</A><br>
+&nbsp;<A HREF="dlsrc.html">Source</A><br>
+&nbsp;<A HREF="dlcfg.html">Config Memo</A><br>
+&nbsp;<A HREF="dlw32api.html">Win32 API memo</A><br>
+&nbsp;<A HREF="dlsphapi.html">SusiePlugin仕様</A><br>
+<H3>Message Board</H3>
+&nbsp;<A HREF="/wforum/wforum.cgi">Software</A>
+</div>
+</div></body></html>
