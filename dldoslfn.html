@@ -1,8 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="ja">
-<head><meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TORO's Data Library(DOS ��� LFN�����g��)</title>
+<title>TORO's Data Library(DOS 上で LFN等を使う)</title>
 <LINK REL="CHAPTER" HREF="dldoslfn.html">
 <style type="text/css"><!--
 body { line-height: 150%; word-break: break-word; }
@@ -23,60 +23,60 @@ table { background-color: #f6f69f; }
 --></style></head>
 <body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
 <div id="page">
-<div id="title"><H2>DOS ��� LFN�����g��</H2>
-DOS���LFN��NTFS��p�����i�ɂ��Ă̎G�L�ł��B<hr></div>
+<div id="title"><H2>DOS 上で LFN等を使う</H2>
+DOS上でLFNやNTFSを用いる手段についての雑記です。<hr></div>
 <div id="contents"><div id="contents2">
  <UL>
-  <LI><A HREF="#dosspec">DOS�P�̂̔\��</A></LI>
-  <LI><A HREF="#lfn">FAT���LFN���g�p�ł���悤�ɂ���</A></LI>
-  <LI><A HREF="#ntfs">NTFS���A�N�Z�X����</A></LI>
+  <LI><A HREF="#dosspec">DOS単体の能力</A></LI>
+  <LI><A HREF="#lfn">FAT上でLFNを使用できるようにする</A></LI>
+  <LI><A HREF="#ntfs">NTFSをアクセスする</A></LI>
  </UL>
-<a href="index.html">Home�֖߂�</a>
-<hr><h3><A NAME="dosspec">DOS�P�̂̔\��</A></H3>
-<table><tr><td></td><td>FAT12/16</td><td>FAT32</td><td>LFN<sub>��1</sub></td><td>NTFS</td></tr>
-<tr><td>DOS 6.2�ȑO</td>		<td>��</td><td>�~</td><td>��<sub>��2</sub></td><td>�~</td></tr>
-<tr><td>Windows95,95a DOS���[�h</td>	<td>��</td><td>�~</td><td>��<sub>��3</sub></td><td>��<sub>��4</sub></tr>
-<tr><td>Windows95,95a DOS�v�����v�g</td><td>��</td><td>�~</td><td>��</td><td>��<sub>��4</sub></tr>
-<tr><td>Windows95b(OSR2)�ȍ~ DOS���[�h</td><td>��</td><td>��</td><td>��<sub>��3</sub></td><td>��<sub>��4</sub></tr>
-<tr><td>Windows95b(OSR2)�ȍ~ DOS�v�����v�g</td><td>��</td><td>��</td><td>��</td><td>��<sub>��4</sub></tr>
-<tr><td>WindowsNT4.0�ȑO DOS VM</td><td>��</td><td>��<sub>��5</sub></td><td>��<sub>��6</sub></td><td>��</td></tr>
-<tr><td>Windows2000�AXP�ȍ~ DOS VM</td>	<td>��</td><td>��</td><td>��</td><td>��</td></tr>
+<a href="index.html">Homeへ戻る</a>
+<hr><h3><A NAME="dosspec">DOS単体の能力</A></H3>
+<table><tr><td></td><td>FAT12/16</td><td>FAT32</td><td>LFN<sub>※1</sub></td><td>NTFS</td></tr>
+<tr><td>DOS 6.2以前</td>		<td>○</td><td>×</td><td>△<sub>※2</sub></td><td>×</td></tr>
+<tr><td>Windows95,95a DOSモード</td>	<td>○</td><td>×</td><td>△<sub>※3</sub></td><td>△<sub>※4</sub></tr>
+<tr><td>Windows95,95a DOSプロンプト</td><td>○</td><td>×</td><td>○</td><td>△<sub>※4</sub></tr>
+<tr><td>Windows95b(OSR2)以降 DOSモード</td><td>○</td><td>○</td><td>△<sub>※3</sub></td><td>△<sub>※4</sub></tr>
+<tr><td>Windows95b(OSR2)以降 DOSプロンプト</td><td>○</td><td>○</td><td>○</td><td>△<sub>※4</sub></tr>
+<tr><td>WindowsNT4.0以前 DOS VM</td><td>○</td><td>△<sub>※5</sub></td><td>△<sub>※6</sub></td><td>○</td></tr>
+<tr><td>Windows2000、XP以降 DOS VM</td>	<td>○</td><td>○</td><td>○</td><td>○</td></tr>
 </table><br>
-��1 LFN �֌W��INT 21H�t�@���N�V������񋟂��ADOS�A�v���P�[�V������LFN���g�p�\�ł��邩�ǂ����������B<br>
-��2 �h���C�o��ǉ����邱�Ƃ�LFN�Ή�DOS�\�t�g��LFN���󂯕t����悤�ɂȂ�܂��B(DOSLFN ��)<br>
-��3 �h���C�o��ǉ����邱�Ƃ�command.com����Windows�Y�t��DOS�R�}���h��ALFN�Ή�DOS�\�t�g��LFN���󂯕t����悤�ɂȂ�܂��B(DOSLFN ��)<br>
-��4 �h���C�o��ǉ����邱�Ƃ�NTFS�h���C�u���������Ƃ��ł���悤�ɂȂ�Acommand.com����Windows�Y�t��DOS�R�}���h��ALFN�Ή�DOS�\�t�g��NTFS�h���C�u���LFN���󂯕t����悤�ɂȂ�܂��B(NTFSDOS ��)<br>
-��5 �h���C�o�ǉ����邱�Ƃ�FAT32�h���C�u���g�p�ł���悤�ɂȂ�܂��B(FAT32 for Windows NT 4.0 ��)<br>
-��6 DOSLFN �����J���Ă��� <a href="http://www-user.tu-chemnitz.de/~heha/">Hennis Heimatseite</a>��haftmann#software Freeware-Angebote �ɂ��� ntlfn ���g����悤�ł��i���m�F�j<br>
+※1 LFN 関係のINT 21Hファンクションを提供し、DOSアプリケーションがLFNを使用可能であるかどうかをいう。<br>
+※2 ドライバを追加することでLFN対応DOSソフトがLFNを受け付けるようになります。(DOSLFN 等)<br>
+※3 ドライバを追加することでcommand.com等のWindows添付のDOSコマンドや、LFN対応DOSソフトがLFNを受け付けるようになります。(DOSLFN 等)<br>
+※4 ドライバを追加することでNTFSドライブを扱うことができるようになり、command.com等のWindows添付のDOSコマンドや、LFN対応DOSソフトがNTFSドライブ上のLFNを受け付けるようになります。(NTFSDOS 等)<br>
+※5 ドライバ追加することでFAT32ドライブが使用できるようになります。(FAT32 for Windows NT 4.0 等)<br>
+※6 DOSLFN を公開している <a href="http://www-user.tu-chemnitz.de/~heha/">Hennis Heimatseite</a>のhaftmann#software Freeware-Angebote にある ntlfn が使えるようです（未確認）<br>
 
-<hr><h3><A NAME="lfn">FAT���LFN���g�p�ł���悤�ɂ���</A></H3>
+<hr><h3><A NAME="lfn">FAT上でLFNを使用できるようにする</A></H3>
 
-FAT���LFN���g�p���邽�߂̃h���C�o�������ӏ����Ō��J����Ă��܂����A<a href="http://www-user.tu-chemnitz.de/~heha/">Hennis Heimatseite</a>��haftmann#software Freeware-Angebote �Ō��J����Ă���DOSLFN���A���̂Ƃ����Ԏg�����肪�悳�����ł��B<br>
-0.32n�ȍ~�͓��{���P�[����UNICODE�ϊ��e�[�u�����ǉ����ꂽ���߁A�p�����[�^�����ŏ풓�����Ă��抸�����g�p�ł��܂��B<br>
-�܂��ANEC PC-98x1��MS-DOS�ł��g�p�ł��܂��B<br>
-���Asector size ��512�ȊO�ł͑Ή����Ă��Ȃ��悤�ł��BAT�@�ł�512�����g���܂��񂪁ANEC PC-98x1 �̏ꍇ�́AWindows95���ȊO��Format���������ꍇ��1024���ƂȂ��Ă���ꍇ������̂ŁA�A�N�Z�X�ł��Ȃ��ꍇ������܂��B<br>
-���g�p���@<br>
-doslfn.zip�̒��g�����ׂĂǂ����ɓW�J���Adoslfn.com�����s���邱�Ƃ�FAT���LFN�T�|�[�g������܂��B<br>
-���̏�Ԃ� K-Launcher ���g�p����ƁALFN�t���̃t�@�C���R�s�[�A�ړ��A���O�ύX�����\�ɂȂ�܂��B
+FAT上でLFNを使用するためのドライバ等が何箇所かで公開されていますが、<a href="http://www-user.tu-chemnitz.de/~heha/">Hennis Heimatseite</a>のhaftmann#software Freeware-Angebote で公開されているDOSLFNが、今のところ一番使い勝手がよさそうです。<br>
+0.32n以降は日本ロケールのUNICODE変換テーブルが追加されたため、パラメータ無しで常駐させても取敢えず使用できます。<br>
+また、NEC PC-98x1のMS-DOSでも使用できます。<br>
+尚、sector size が512以外では対応していないようです。AT機では512しか使われませんが、NEC PC-98x1 の場合は、Windows95等以外でFormatをかけた場合は1024等となっている場合があるので、アクセスできない場合があります。<br>
+●使用方法<br>
+doslfn.zipの中身をすべてどこかに展開し、doslfn.comを実行することでFAT上のLFNサポートがされます。<br>
+この状態で K-Launcher を使用すると、LFN付きのファイルコピー、移動、名前変更等が可能になります。
 
-<hr><h3><A NAME="ntfs">NTFS���A�N�Z�X����</A></H3>
+<hr><h3><A NAME="ntfs">NTFSをアクセスする</A></H3>
 
-NTFS�h���C�u��DOS/Win9x����A�N�Z�X����h���C�o�Ƃ��āA<a href="http://www.sysinternals.com/">Sysinternals</a>�Ō��J����Ă���NTFSDOS������܂����B<strong>���݂͔z�z����Ă��܂���B</strong><br>
-NTFSDOS �́A1bytes�����t�@�C���̓ǂݍ��݂����ł��܂���B�܂��AProfessional�ł� WindowsNT/2000����NTFS�h���C�o��q�؂��邱�ƂŁA�M���������߂�ƂƂ��ɁA�������̖��O���g�����t�@�C�����������Ƃ��ł���悤�ɂȂ�܂��i���̑���ANTFS�h���C�o��p�ӂ��Ȃ��Ɠ��삵�܂���j�BProfessional �� FullVersion���w�����邱�Ƃŏ������݂��ł���悤�ɂȂ�܂��B<br>
-������� NEC PC-98x1 �œ��삷�邩�ǂ����͒��ׂĂ��܂���B<br>
-���ǂݎ���p�łł��A�폜�͂ł���悤�ł��B<br>
-���g�p���@<br>
-Professional �łȂ����͏��ɂ̒��g�����ׂĂǂ����ɓW�J���Antfsdos.exe /u ��NTFS�h���C�u���ǉ�����܂��B�i���m�F�ł��j<br>
-Professional �̕��́AWindowsNT/2000���� NTFSDOS Professional ���C���X�g�[����A�N���f�B�X�N�̍쐬�\�t�g���N�����邱�ƂŁA�t���b�s�[�f�B�X�N�i�Q���K�v�ł��j�� NTFSDOS �̋N���f�B�X�N���쐬���邱�Ƃ��ł��܂��B���̃f�B�X�N���g���ċN�����邱�ƂŁANTFS�h���C�u���ǉ�����܂��B<br>
-���̏�Ԃ� K-Launcher ���g�p����ƁA<u>NTFS �h���C�u�̂݁A</u>LFN�t���̃t�@�C���R�s�[�A�ړ��A���O�ύX�����\�ɂȂ�܂��BNTFS �h���C�u�ȊO�� FAT �h���C�u���� NTFSDOS �����ł� LFN �ɑΉ����Ȃ��̂ŁADOSLFN �����g�p����K�v������܂��B
+NTFSドライブをDOS/Win9xからアクセスするドライバとして、<a href="http://www.sysinternals.com/">Sysinternals</a>で公開されているNTFSDOSがありました。<strong>現在は配布されていません。</strong><br>
+NTFSDOS は、1bytes文字ファイルの読み込みしかできません。また、Professional版は WindowsNT/2000等のNTFSドライバを拝借することで、信頼性を高めるとともに、漢字等の名前を使ったファイルを扱うことができるようになります（その代わり、NTFSドライバを用意しないと動作しません）。Professional の FullVersionを購入することで書き込みもできるようになります。<br>
+こちらは NEC PC-98x1 で動作するかどうかは調べていません。<br>
+※読み取り専用版でも、削除はできるようです。<br>
+●使用方法<br>
+Professional でない方は書庫の中身をすべてどこかに展開し、ntfsdos.exe /u でNTFSドライブが追加されます。（未確認です）<br>
+Professional の方は、WindowsNT/2000等に NTFSDOS Professional をインストール後、起動ディスクの作成ソフトを起動することで、フロッピーディスク（２枚必要です）に NTFSDOS の起動ディスクが作成することができます。このディスクを使って起動することで、NTFSドライブが追加されます。<br>
+この状態で K-Launcher を使用すると、<u>NTFS ドライブのみ、</u>LFN付きのファイルコピー、移動、名前変更等が可能になります。NTFS ドライブ以外の FAT ドライブ等は NTFSDOS だけでは LFN に対応しないので、DOSLFN 等を使用する必要があります。
 
-<hr><h3><A NAME="double">DOSLFN��NTFSDOS�𓯎��Ɏg��</A></H3>
+<hr><h3><A NAME="double">DOSLFNとNTFSDOSを同時に使う</A></H3>
 
-DOSLFN ���ɏ풓�����Ă��� NTFSDOS ���풓������K�v������悤�ł��B<br>
-(DOSLFN.TXT�ɋL�ڂ���Ă��܂��B)<br>
-<HR><A HREF="./index.html">Home�֖߂�</A>
-<hr><address>Copyright(c)1997-2016 TORO/���� �ǘa E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
-<IMG SRC="http://toro.d.dooo.jp/ac/accimg.cgi?id=dldoslfn" ALT="access counter�p" WIDTH="20" HEIGHT="11"></div></div>
+DOSLFN を先に常駐させてから NTFSDOS を常駐させる必要があるようです。<br>
+(DOSLFN.TXTに記載されています。)<br>
+<HR><A HREF="./index.html">Homeへ戻る</A>
+<hr><address>Copyright(c)1997-2016 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+<IMG SRC="http://toro.d.dooo.jp/ac/accimg.cgi?id=dldoslfn" ALT="access counter用" WIDTH="20" HEIGHT="11"></div></div>
 <div id="index">
 <strong><A HREF="./index.html">TORO's Library</A></strong>
 <H3>Software</H3>
@@ -90,11 +90,11 @@ DOSLFN ���ɏ풓�����Ă��� NTFSDOS ���풓������K�v������悤�ł��B<br>
 <H3>Data</H3>
 &nbsp;<A HREF="dlminfo.html">Information</A><br>
 &nbsp;&nbsp;<A HREF="./ppxhlp.html">PPx Help</A><br>
-&nbsp;<A HREF="dldoslfn.html">DOS ��� LFN</A><br>
+&nbsp;<A HREF="dldoslfn.html">DOS 上で LFN</A><br>
 &nbsp;<A HREF="dlsrc.html">Source</A><br>
 &nbsp;<A HREF="dlcfg.html">Config Memo</A><br>
 &nbsp;<A HREF="dlw32api.html">Win32 API memo</A><br>
 <H3>Message Board</H3>
-&nbsp;<A HREF="/wforum/wforum.cgi">Software</A>
+&nbsp;<A HREF="http://toro.d.dooo.jp/wforum/wforum.cgi">Software</A>
 </div>
 </div></body></html>
