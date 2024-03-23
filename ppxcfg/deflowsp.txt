@@ -1,0 +1,18 @@
+X_mled	=0
+X_flst	=1,0,0,14
+X_cbsz	=1024,0,64000
+X_unbg	=0
+X_ardir	=10,0
+X_stip	=0,1,0,2,32,4,256,256
+XC_dset	={
+*	=B0,5,0,0,-1,-1,B11111,B1,
+}
+X_svsz	=4000000
+X_wsiz	=20000000
+XC_szcm	=0
+XC_isea	=0,1,0,0,0
+XV_bctl	=1,1,0
+XV_imgD	={
+VA	=-2,3
+}
+XB_size	=80,200,80,30

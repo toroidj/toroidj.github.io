@@ -1,0 +1,50 @@
+KC_main	= {
+\LEFT	=@PUP
+\RIGHT	=@PDOWN
+','	,%M_exec
+B	,%"Binary Convert" %M_bin
+E	,%"JMTE|Text edit"%Orib,editor %{%FDC%}
+P	,*pack "%2%\|%X|" %Or-
+\P	,%"Pack File Ex" %M_xpack
+F2	=@X
+F3	=@C
+F4	=@D
+F5	=@R
+F6	=@S
+F7	=@F
+F8	=@T
+F9	,%"JMTE|Text edit"%Orib,editor %{%FDC%}
+F10	=@U
+\F1	=@A
+\F2	=@I
+\F3	=@M
+\F4	=@\D
+\F5	=@K
+\F6	=@H
+\F7	=@W
+\F8	=@\W
+\F9	,%M_exec
+\F10	=@0
+}
+KV_main	= {
+1	=@END
+2	=@DOWN
+3	=@PDOWN
+4	=@LEFT
+6	=@RIGHT
+7	=@HOME
+8	=@UP
+9	=@PUP
+E	,%"JMTE|Text edit"%Orib,editor %{%FDC%}
+F3	=@'<'
+F4	=@'>'
+F5	=@PDOWN
+F6	=@PUP
+F7	=@F
+F8	=@B
+\F7	=@']'
+\F8	=@'['
+}
+M_exec	= {
+cmd	= %Ob,%comspec%
+}

@@ -1,0 +1,82 @@
+K_edit	= {
+^[	=@ESC
+^]	=@HELP
+;^A	,%k"@\LEFT"
+;^C	,%k"@\DOWN"
+^D	,%k"@RIGHT"
+^E	,%k"@UP"
+^F	,%k"@\RIGHT"
+^G	,%k"@DEL"
+^I	,%k"@TAB"
+^R	,%k"@\UP"
+^S	,%k"@LEFT"
+;^V	,%k"@INS"
+^X	,%k"@DOWN"
+^W	,%k"@HOME"
+^Z	,%k"@END"
+^T	,%k"@\BS"
+^Y	,%k"@\DEL"
+&Q	=@&1
+&W	=@&2
+}
+KB_edit	= {
+^[	=@ESC
+^]	=@HELP
+^A	=@\LEFT
+^C	=@\DOWN
+^D	=@RIGHT
+^E	=@UP
+^F	=@\RIGHT
+^G	=@DEL
+^H	=@BS
+^I	=@TAB
+^M	=@ENTER
+^R	=@\UP
+^S	=@LEFT
+^V	=@INS
+^X	=@DOWN
+^W	=@HOME
+^Z	=@END
+^T	=@\BS
+^Y	=@\DEL
+&Q	=@&1
+&W	=@&2
+}
+KC_main	= {
+^[	=@ESC
+^]	=@HELP
+^A	=@\LEFT
+^C	=@\DOWN
+^D	=@RIGHT
+^E	=@UP
+^F	=@\RIGHT
+^G	=@DEL
+^H	=@BS
+^I	=@TAB
+^M	=@ENTER
+^R	=@\UP
+^S	=@LEFT
+^V	=@INS
+^X	=@DOWN
+^W	=@HOME
+^Z	=@END
+}
+KV_main	= {
+^[	=@ESC
+^]	=@HELP
+^A	=@\LEFT
+^C	=@\DOWN
+^D	=@RIGHT
+^E	=@UP
+^F	=@\RIGHT
+^G	=@DEL
+^H	=@BS
+^I	=@TAB
+^M	=@ENTER
+^R	=@\UP
+^S	=@LEFT
+^V	=@INS
+^X	=@DOWN
+^W	=@HOME
+^Z	=@END
+}

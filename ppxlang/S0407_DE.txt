@@ -1,0 +1,916 @@
+﻿Mes0407	=#{	DE
+0000	1782
+0001	OK
+0002	Stornieren
+0003	Abbruch (&A)
+0004	Wiederholen (&R)
+0005	Ignoriere (&I)
+0006	Ja (&Y)
+0007	Nicht)
+7005	Extname (&E)
+7007	Option (&O)
+7011	Ausführen
+7012	Warten Sie auf PPb ...
+7013	Mit Selbst ausführen (&s)
+7014	Mit neuem PPb ausführen (&n)
+7018	Geben Sie das Anmeldekennwort ein
+7019	Pfad
+701D	Beim erneuten Anmelden verbinden (&C)
+701E	Benutzername (&U)
+701F	Passwort (&P)
+7020	Dateivorgänge
+7022	Nur neues Datum (&n)
+7023	Umbenennen (&R)
+7024	Überschreiben (&O)
+7025	Überspringen (&S)
+7026	Mit Archiv (&a)
+7027	Nummer hinzufügen (&b)
+7028	Anhängen (&p)
+7029	Alle die gleiche Aktion (&W)
+702A	Großbuchstaben (&U)
+702B	Kleinbuchstaben (&L)
+702C	Forced 8.3 (&F)
+702D	Falsches Leerzeichen löschen (&g)
+702E	Zahlen löschen
+702F	Readonly (&R)
+7030	Archiv (&A)
+7031	Versteckt (&H)
+7032	System (&X)
+7034	Sicherheitsattribut kopieren (&e)
+7035	sKip leichter Fehler (&K)
+7036	Automatische Überprüfung 'Alle' (&u)
+703F	Aktion mit demselben Namen
+7040	Namensfilter
+7041	Attribute
+7042	Dest (&D)
+7043	Umbenennen (&e)
+7044	Größe teilen (&v)
+7045	Seriennummer (&N)
+7047	Kopieren Sie SACL (&C)
+7048	Verzeichnis (&D)
+7049	Burst / Selbstpufferung (&g)
+704A	Flach / mach keinen Baum (&l)
+704B	Verzeichnisse aufbewahren (&K)
+704C	loG Fenster (&G)
+704D	Protokoll rückgängig machen (&U)
+704E	Extrahiere '%' (&a)
+704F	AutoReadonly Off (&O)
+7050	Alte Datei sichern (&V)
+7051	1. Blatt (&s)
+7052	Dateiname (&n)
+7053	Dir Name Fix (&D)
+7054	Stille Warnung vor neuem Verzeichnis (&S)
+7055	Niedrige Priorität (&L)
+7056	Quelleneintrag
+7057	Zieleingabe
+7058	Attribut \nDateigröße \nErstellungszeit \nSchreibzeit \nZugriffszeit
+7059	keine Wartezeit mit Ergebnis (&R)
+705A	&3: Option
+705C	&2: Umbenennen
+705E	&1. Allgemeines
+7062	Verwenden Sie alle Reaktionen (&U)
+7063	Verzögerungsliste hinzufügen (&D)
+7064	DifferSize (&z)
+7068	Datei am Zielort umbenennen (&V)
+7070	Verhindern Sie, dass Sie in den Schlaf eintreten (&P)
+7071	Entschlüsseltes Ziel zulassen (&D)
+7072	Join-Stapel erstellen (&J)
+7073	Quellenname
+7074	Gesamtgröße zählen (&C)
+7075	Aktivieren Sie zuerst Exist (&E).
+7076	serialiZe operieren (&Z)
+7077	Nach dem Schließen der Datei verschieben
+7078	Extention korrigieren (&Y)
+7079	Log &4
+7400	Test (&T)
+7402	Befehlsliste
+7411	Daten anpassen (&C)
+7412	Nach Text speichern (&S)
+7413	Nach Text anhängen (&A)
+7414	Update per Text (&U)
+7415	Dump to Text (&D)
+7416	Initialisieren (&I)
+7417	Verlaufsdaten (&H)
+7418	Dump to Text (&o)
+7419	Initialisieren (&R)
+741A	Schlüsselüberprüfung (&K)
+741C	Ordner zuordnen (&P)
+741D	Ordner zuordnen (&U)
+741E	Ordner mit PPc öffnen (&f)
+741F	Konsole ausblenden (&l)
+7420	Datei
+7421	Bearbeiten und anhängen (&E)
+7429	Anpassen durch bearbeiteten Text
+742C	Anhängen (&A)
+742D	Verwenden Sie Text (&e)
+742E	Ergebnis (&R)
+7436	Anhängen (&A)
+7437	Löschen (&D)
+7439	Farbe (&C)
+743B	Usw. (&E)
+743C	Unterstreichen (&U)
+743D	Farben
+743E	Nach Erweiterung sortieren (&x)
+743F	Nach Farbe sortieren (&l)
+7456	Datentypen
+7459	Typen (&y)
+7463	Schlüssel
+7464	Schlüssel)
+7465	Tasten
+7467	Mäuse
+746A	<-
+746B	^
+746C	v
+746D	->
+746F	Aufführen
+7472	PPx muss neu gestartet werden
+7473	Benutze (&U)
+7474	Detail (&P)
+7477	Standarderweiterung (&D)
+7478	Automatische Erkennung (&A)
+7479	Verlängerung (&P)
+747A	Ziel (.bmp, .dib) (&e)
+7482	Sonstiges
+7491	Up (&U)
+7492	Unten (&w)
+7493	Tastenkürzel (&K)
+7496	FG Farbe (&F)
+7497	Hintergrundfarbe (&B)
+7498	Schaltfläche Bearbeiten (&B)
+749A	Menüs
+74E3	Löschen (&D)
+74E4	speichern (&v)
+74E5	Einfügen (&I)
+74E6	Detail (&X)
+74EA	Makrobuchstabe (&M)
+74EC	Kommentar (&C)
+74ED	Befehle (&L)
+74F8	Allgemeines
+74FC	Finde (&F)
+7602	Erweiterungsmodus
+7603	Drücken Sie die Taste "Verwenden" und klicken Sie auf "OK".
+7604	(erforderlich mit 'NULL' cust)
+7608	Farben
+760C	Markieren Sie Farben
+7617	Ausblenden (Kommentar) (&C)
+7618	VOLL breit (&L)
+7619	Volle Namenslänge (&N)
+761B	Anzeigeformate
+761C	Format (&F)
+7676	Susie
+77FD	Ref (&f)
+77FE	Speichern (&S)
+77FF	Übernehmen (&A)
+7800	Attribut
+7801	AttriBute (&B)
+7802	Erstellen (&1)
+7803	Schreiben Sie (&2)
+7804	Zugang (&3)
+7805	(&C)
+7806	(&W)
+7807	(&Q)
+7808	Alt
+7809	Neu
+780A	Verzeichnis ändern (&M)
+780B	Detail (&X)
+780C	Readonly (&R)
+780D	Versteckt (&H)
+780E	System (&S)
+780F	Archiv (&A)
+7810	Komprimierung (&p)
+7811	Verschlüsselung (&E)
+7812	Unterverzeichnis (&D)
+7813	Index (&I)
+7814	Temporär (&T)
+7815	Offline (&O)
+7840	Laufwerksinformationen
+7841	Laufwerksname
+7842	Volumen
+7843	Festplattentyp
+7844	Ordnungsnummer
+7845	Dateisystem
+7846	Belegter Speicherplatz
+7847	Freiraum
+7848	Wirklich kostenlos
+7849	Gesamtfläche
+784A	Bytes / Sektor
+784B	Bytes / Cluster
+784C	Maximale Dateinamenlänge
+784D	Bytes
+784E	Cluster
+7860	Fall erhalten
+7861	Groß- und Kleinschreibung beachten
+7862	UNICODE
+7863	ACLS
+7864	Dateikomprimierung
+7865	Lautstärkekomprimierung
+7866	Benannte Streams
+7867	Quoten
+7868	Spärlich
+7869	Reparse
+786A	Fernbedienung
+786B	Objekt-IDS
+786C	Verschlüsselung
+786D	Schreibgeschützt
+786E	Sequentielles Schreiben einmal
+786F	Transaktionen
+7870	Hardlinks
+7871	Erweiterte Attribute
+7872	Öffnen Sie mit fileID
+7873	USN Journal
+7874	Integritätsströme
+7875	Blockieren Sie die Nachzählung
+7876	Sparse VDL
+7877	DAX, direkter Zugriff
+7881	Verzeichnismaske (&D)
+7882	Echtzeitmaske (&m)
+7884	Format (&t)
+7885	Wortübereinstimmung (&W)
+78C0	Inkrementelle Suche
+78C2	Up (&U)
+78C3	Unten (&D)
+78C4	Mark (&M)
+78C5	Vorderseite (&F)
+78C6	Roma (&o)
+78C7	Details (&T)
+78D0	PPc-Fenstereinstellung
+78D1	Doppelstart (&D)
+78D2	Doppelte Schließung (&C)
+78D3	Doppelt aktiv (&A)
+78D4	JointWindow (_) (&J)
+78D5	Links / Rechts (&L)
+78D6	Auf / Ab (&U)
+78D7	Gestapelt (&P)
+78D8	Feste Größe (&S)
+78D9	Fix Active PPc (&F)
+78DA	Größe (&z)
+78DB	Größe + Position (&o)
+78DC	Combo (&m)
+78E0	Detail sortieren
+78E2	Fall (&C)
+78E3	Kana (&K)
+78E4	Nicht Leerzeichen (&N)
+78E5	Symbole (&y)
+78E6	Breit (&W)
+78E7	String sort (&t)
+78E8	Nummer (&u)
+78EC	Letzter Eintrag (&E)
+78ED	Rückwärts &1
+78EE	Rückwärts &2
+78EF	Rückwärts &3
+78F0	Wo ist die Datei?
+78F1	Quelle (&S)
+78F3	Dateiname (&n)
+78F5	Und Dateiname (&A)
+78FA	Suchmarken (&m)
+78FB	Verzeichnis haben (&H)
+78FC	Unterverzeichnis (&u)
+78FD	Virtueller FS (&V)
+7900	Markierungsdetail vergleichen
+7910	Allgemeines
+792A	Zugriffszeit:
+792B	Zeit ändern:
+792C	Zeit schaffen:
+792D	Größe:
+792E	Pfad:
+792F	Art:
+7C00	Wählen Sie Einfügetyp
+7C08	Drucken
+7C0A	Jetzt drucken...
+ACET	\n und%d Anwendung
+ADHD	Diese Datei wird von Anwendungen verwendet; \n
+ADTE	Geben Sie einen Titel ein
+AICP	Prüfmuster hinzufügen
+ASTL	Startliste hinzufügen
+BRAK	Job gebrochen
+BREX	Benötigen Sie eine Regexp-Bibliothek
+BUSY	Beschäftigt...
+CAOF	Cache: Aus
+CAON	Cache: Ein
+CCAN	Stornieren
+CCMC	Alles stimmte überein
+CCMP	Vergleiche abgeschlossen
+CDAT	Atr-Time-Name (&A)
+CDCM	Kommentare (&m)
+CDD1	Details1 (&D)
+CDD2	Details2 (&4)
+CDFN	Vollständiger Name (&n)
+CDI1	Icons1 (&5)
+CDI2	Icons2 (&6)
+CDI3	Icons3 (&7)
+CDID	Symboldetails (&I)
+CDL1	Liste1 (&L)
+CDL2	Liste &2
+CDL3	Liste &3
+CDT1	Thumbnails1 (&T)
+CDT2	Thumbnails2 (&8)
+CDT3	Thumbnails3 (&9)
+CMP1	Gleiches SHA-1 (&H)
+CMPA	Gleiche Größe &&Zeit (&a)
+CMPB	Gleiche Binärdatei (&B)
+CMPC	Kommentar (&C)
+CMPD	Detail ... (&D)
+CMPE	Vorhandene Datei (&E)
+CMPF	Dateiname ohne Erweiterung (&F)
+CMPH	Vergleiche Hash mit Zwischenablage (&C)
+CMPI	file sIze (keine Namensprüfung) (&I)
+CMPL	Große Datei (&L)
+CMPM	Kommentar (1 Fenster) (&m)
+CMPN	neue Datei (&F)
+CMPQ	gleiche Größe, beliebiger Name (&Q)
+CMPS	Dateigröße (&S)
+CMPT	Zeitstempel (&T)
+CMPW	alOne-Datei (&O)
+CMPX	Existiert (mit dir) (&x)
+CMPZ	gleiche Dateigröße (1Fenster) (&Z)
+COMP	abgeschlossen.
+CPDN	Clip fertig
+CPML	Verlassen Sie den Auswahlmodus
+CPMS	Auswahlmodus
+CPPN	Clip dir fertig
+CPTX	Clip
+CRSS	Einstellung sichern
+CTHE	HookEdit (&E)
+CUTR	Fertig schneiden
+DDAB	Schaltfläche Hinzufügen
+DDAI	Element zum Baum hinzufügen
+DDAL	Element zur Listendatei hinzufügen
+DDCM	Kann nicht weitermachen
+DDCP	Nach (&C) kopieren
+DDDP	Dup on (&D)
+DDDT	Detail (&a)
+DDET	etc ... (&e)
+DDJP	Springe von (&J)
+DDLI	Verknüpfung zu (&S)
+DDML	Listendatei erstellen (&L)
+DDMV	Gehe zu (&M)
+DDOP	Offen für (&O)
+DDSC	Verknüpfung zu (&S)
+DDSW	Wechseln Sie zu (&w)
+DDTX	Text (&t)
+DEFA	Standard
+DEXT	%s löschen
+DICD	CD / DVD / BD ...
+DIFI	Fest
+DIRA	Ramdisk
+DIRE	Fernbedienung
+DIRM	Abnehmbar
+DIRS	<dir>
+DREN	Verzeichnis (&i)
+DSAR	Asynchrones Lesen (&A)
+DSCA	Abbrechen (&C)
+DSCV	Cache-Ansicht (&C)
+DSEI	Eintragssymbol (&Y)
+DSFO	&0: Kraft
+DSHO	&0: Standard
+DSIA	Overlay (Sicherheit)
+DSIB	leer
+DSIF	Rahmen
+DSIH	Overlay (kein Cache)
+DSII	Informationseinstellung
+DSIL	Informationszeilensymbol
+DSIN	normal
+DSIO	mit Overlay
+DSIS	einfach
+DSIT	durch
+DSIW	keine Show
+DSMA	Miniaturansicht vergrößern
+DSMI	Miniaturansicht minimieren
+DSSD	-speichern Sie den Cache auf der Festplatte (&D)
+DSSE	- Cache jedes Mal speichern (&E)
+DSSM	Langsamer Modus (&S)
+DSTA	&4: Archiv
+DSTD	&5: Verzeichnismodus
+DSTE	&3: Zeitlichkeit
+DSTF	&4: Listendatei
+DSTL	&2: Dieser Pfad und dieses Unterverzeichnis
+DSTP	&1: Dieser Weg
+DSTS	&6: Pfad getrennt
+DSWM	Uhr modifiziert (&W)
+EACO	Zählt schon
+EBDK	%s ist ein falscher Schlüsselname
+EBPC	Befehl bad * pane:%s
+EBRK	Halterungsfehler
+EBRV	Benötigen Sie Windows Vista oder höher.
+EBSG	%s ist eine schlechte Signatur
+EBWS	Schlechtes Dateisystem
+EC32	comdlg32.dll Ladefehler
+ECDR	Kann nicht auspacken
+ECFL	Passen Sie den Flächenfluss an
+ECUD	Kann nicht rückgängig machen.
+EDAD	DD faulture (&D)
+EDAL	Wählen Sie Alle (&A)
+EDBL	Blockmodus (&B)
+EDCA	Abbrechen (&n)
+EDCP	Kopieren (&C)
+EDCU	Schneiden (&t)
+EDDL	Betriebsfehler löschen:%s
+EDEC	codieren (&e)
+EDEL	Kann nicht löschen
+EDET	Typen (&t)
+EDIT	Bearbeiten
+EDPA	Einfügen (&P)
+EDTD	Temporäres Verzeichnis löschen faulture
+EECR	Artikel '%s' nicht in%s gefunden
+EEFT	%s kann nicht ausgeführt werden
+EENF	Eintrag nicht gefunden
+EENM	Der Nummernfehler
+EFLW	Pufferfluss
+EHKY	Hotkey (%s) Registerfehler
+EKCD	Schlüsselfehler
+EKFT	Schlüsselcodefehler
+EKNF	Schlüsselwort nicht gefunden
+ELST	Aus Liste löschen (&l)
+ENFF	Nicht gefunden%s
+ENOM	Nicht genug Erinnerungen
+ENSO	Nicht unterstützt
+ENSP	Trennzeichen \'%c \' nicht gefunden
+ENUD	%s ist nicht UnXXX
+EOEC	Weitere PPc können nicht registriert werden.
+EOLT	Größe zu lang.
+EPRM	Parameterfehler
+EPTH	Pfadfehler
+EREG	Fehler bei regulären Ausdrücken:%s
+ESCT	Abkürzungsfehler
+ESEP	Trennzeichen nicht gefunden
+ESHO	Ich kann nicht auf das jetzt geöffnete Archiv zugreifen.
+ETMW	Zu viele Formatzeichen 'W' / 'w'
+EUFM	Unbekanntes Format
+EUKW	Unbekanntes Schlüsselwort
+EUOP	Unbekannte Option:%s
+EUXC	Unbekannter Befehl: *%s
+EWFT	W Formatfehler
+EWNF	Kann unter NTFS nicht unterstützt werden
+EXEX	Datei existiert
+EXIT	Beenden Sie (&x)
+EXNF	Neu schafft
+EXNW	Neue Datei existiert
+EXOL	Alte Datei existiert
+FBAC	Aktion: (&i)
+FBAK	Sicherungsfehler.
+FBDW	PPb kritischer Fehler
+FDLW	Die PPx-Systemtabelle ist%04X defekt
+FEWE	Gefundene Datei scheint an der falschen Stelle zu extrahieren
+FEXP	Explorer-Ordner
+FIXE	Diese Datei scheint%s und%s zu sein. \NDiese Dateierweiterung muss nicht geändert werden.
+FIXH	PPffix-Prüferweiterungstyp, wenn auf diesem Symbol abgelegt.
+FIXM	Diese Datei scheint%s und%s zu sein. \NSDateierweiterung ändern?
+FIXU	Dateityp ist unbekannt.
+FLAC	alles abgeschlossen
+FLCA	Abgesagt
+FLER	Fehler
+FLEX	existierte
+FLLS	übersprungen
+FLNO	Kein Betrieb
+FLOD	<Laden>
+FLPC	Zum Teil fertiggestellt
+FLTC	Keine Existenz
+FLTE	Existieren
+FMYF	Laufwerksliste
+FNET	Netzwerk-PC
+FOCA	Stornieren
+FOCL	Schließen
+FOCO	Fortsetzen
+FOCP	Pause
+FOCS	Überspringen
+FOFC	FC (&C)
+FOOK	OK
+FOST	Start
+FUPD	Verzeichnis nicht gefunden und übergeordnetes Verzeichnis verschieben
+FUPR	Verzeichnis nicht gefunden, und Stammverzeichnis verschieben
+GDAI	Automatische Füllung
+GDAR	Auto Frame
+GDFI	Füllen
+GDFR	Rahmen
+GSIG	Unterschrift ist gut.
+HDRA	Attribute
+HDRC	Datum erstellt
+HDRD	Datum
+HDRE	Datum zugegriffen
+HDRN	Name
+HDRS	Größe
+HPDN	Http Fertig.
+IANI	Animieren: [P]
+IDIR	Verzeichnis (&D)
+IDIV	Seitenmodus teilen ([<] [>], Alle lesen: [/])
+IFCN	Dateizählung ...
+IGAN	Animieren (&m)
+IGNP	Nächste Seite (&N)
+IGPP	Vorherige Seite (&P)
+ILFI	Listendatei (&L)
+IMAB	Abbrechen (&a)
+IMCA	Abbrechen (&n)
+IMIG	Igonre (&I)
+IMNO	Nicht)
+IMOK	OK
+IMRE	Wiederholen (&R)
+IMSK	SkIp (&I)
+IMST	Start (&Y)
+IMTC	Abbrechen (&C)
+IMYE	Ja (&Y)
+IMYK	OK (&Y)
+IPAG	Mehrere Seiten
+ISEA	Inkrementeller Suchmodus
+ITCK	Nach dem Schließen hervorheben (&K)
+ITCM	Kommentar (&C)
+ITFE	Namenserweiterung (&E)
+ITFN	Dateiname (&N)
+ITHA	Markiere alle (&G)
+ITHL	Markieren Sie (&H)
+ITMA	Alle markieren (&A)
+ITMO	Häkchen (&M)
+ITSH	Markieren Sie den Übereinstimmungseintrag (&L).
+JLER	FEHLER>
+JLEX	exec>
+JLPA	Pause>
+JLWA	warte>
+JMAE	Extrakt
+JMAL	Alle
+JMAP	Archiv
+JMAT	Attribute
+JMCL	Clip
+JMCO	Vergleichen Sie
+JMCP	Kopieren
+JMCR	klar
+JMCS	Größenanzahl
+JMCU	Schnitt
+JMDE	Löschen
+JMJO	Job
+JMLI	Link / Kreuzung
+JMMO	Bewegung
+JMMR	Spiegel
+JMPA	Einfügen
+JMPR	Eigenschaften
+JMPS	Einfügen Tastenkombination
+JMPV	Vorschau
+JMRE	Umbenennen
+JMRU	Ausführen
+JMSH	Abkürzung
+JMSL	Symlink
+JMTE	Text bearbeiten
+JMUN	Rückgängig machen
+JNCL	CLSID (&C)
+JNJL	Link (&l)
+JNSH	Verknüpfung (&s)
+JNST	Stream (&t)
+JPCL	CLSID (Paarfenster) (&i)
+JPDI	Paar anzeigen Fenster (&p)
+JPJL	Link (Paarfenster) (&r)
+JPSH	Verknüpfung (Paarfenster) (&p)
+JPST	Stream (Paarfenster) (&w)
+JPLN	Link springen
+JWOF	Fenster verbinden: aus
+JWON	Fenster verbinden: ein
+KWAT	\nDrücken Sie eine beliebige Taste, um fortzufahren.
+LDAD	Adresse
+LDDR	fährt
+LDIN	Eingang
+LDOL	Sperren
+LDOS	Separator
+LDSI	XC_inf
+LDST	XC_stat
+LERE	Eintrag aus Liste gelöscht.
+LGAP	Anhängen
+LGCR	Erstellen
+LGDE	Löschen
+LGER	Error
+LGOW	Überschreiben
+LGWA	Warnung
+LHIL	Markieren
+LHIO	Markieren Sie aus
+LMAK	Kennzeichen
+LOAD	Wird geladen
+LRMA	Markierung umkehren
+LUMA	Markierung aufheben
+LYCA	Beschriftung (&C)
+LYDB	Dockboden (&B)
+LYDT	Dock Top (&D)
+LYHA	Kopfzeile (&H)
+LYIL	Informationszeile (&I)
+LYJL	Jobliste (&J)
+LYLG	Protokoll (&g)
+LYME	Menüleiste (&M)
+LYOT	Andere (&O)
+LYSA	Standerd Adressleiste (&a)
+LYSC	Bildlaufleiste (&o)
+LYSL	Statuszeile (&S)
+LYSS	Bildlaufleiste tauschen (&p)
+LYST	Standerd-Symbolleiste (&t)
+LYTI	Titelleiste (&l)
+LYTR	Baum (&r)
+LYWM	Fenster ... (&W)
+MBCP	Clip Nachrichtentext
+MCOP	offen (&o)
+MCPL	spielen (&p)
+MCPR	drucken (&p)
+MCRC	Gemeinsames Menü bearbeiten (&c)
+MCRD	Standardauswahl festlegen (&d)
+MCRE	Standardbefehl festlegen (&e)
+MCRK	Ausführen als (&a)
+MCRV	Als Administrator ausführen (&a)
+MCRX	Menü Dateinamenerweiterung bearbeiten (&x)
+MDLC	Mit Shift: Löschen
+MEAD	Element hinzufügen (&A)
+MEDE	Element löschen (&D)
+MEDT	Menü bearbeiten (&E)
+MEMD	Element ändern (&M)
+MERE	Elementname umbenennen (&R)
+MGNR	Allgemein (&G)
+MIGE	Benötigen Sie MIGEMO.DLL
+MSAV	Einstellung sichern
+MTCL	Baum schließen (&X)
+MTDL	Fahrt
+MTDR	Verwenden Sie den Umbenennungsdialog (&D).
+MTDS	Verzeichniseinstellungen
+MTED	Auswerfen
+MTFA	Favoriten (&a)
+MTFO	Ordnerbaum (&t)
+MTFP	Fokus PPc (&F)
+MTMI	 Einfaches Symbol (&m)
+MTNF	Ordner erstellen (&C)
+MTNU	Benutzerbaum erstellen (&U)
+MTNW	Neu
+MTOL	 Symbolüberlagerung (&o)
+MTPL	PPc-Liste (&P)
+MTRL	Neu laden (&R)
+MTRS	Lauf als Selbst
+MTRT	Neu laden
+MTSB	Symbolleiste anzeigen (&b)
+MTSC	Shell-Kontext
+MTSH	Geschützten Ordner anzeigen (&h)
+MTSI	Symbol anzeigen (&S)
+MTSL	Linie (&L)
+MTSN	Einzelknoten (&N)
+MTSO	Sortieren
+MTSS	Sync-Auswahl (&y)
+MTST	Einstellungen (&S)
+MTUE	Benutzerliste anpassen (&m)
+MTVF	Aussicht
+MWOP	Warten
+NEWD	Geben Sie eine neue Festplatte ein
+NITX	Textdatei \t.txt (&T)
+NOEL	Feilen Sie eine beliebige mach
+NOIC	Das Setup ist nicht abgeschlossen. Es ist besser, eine SETUP.EXE auszuführen.
+NOTX	Zeichenkette nicht gefunden.
+NWDN	TEMPDIR
+NWFN	TEMPFILE
+OPSA	Öffnen Sie die ausgewählte Adresse (&A).
+OWDT	Verzeichnisarten (&y)
+OWIT	Senden an (&n)
+PACI	individuelles Archiv
+PACO	andere
+PACT	Archivtyp
+PJAD	Pfad hinzufügen
+PJCP	Schalttafel
+PJDE	Desktop
+PJDL	DriveList
+PJMD	Meine Dokumente
+PJRB	Papierkorb
+QABO	Job brechen?
+QBAK	Sicherungspfad?
+QCOM	Aktion fortsetzen Mit markiertem Eintrag außerhalb des Bildschirms?
+QCRD	Neues Verzeichnis erstellen?
+QDDL	Verspätete Liste löschen?
+QDDO	Verspätete Listenaufgabe starten?
+QDFA	Datei mit speziellen Attributen löschen?
+QDL1	löschen?
+QDL2	,,, \n
+QDL3	Einträge löschen? \n
+QDL4	Formularbaum löschen?
+QDRC	Ja \tDuplizieren Sie den Analysepunkt \nNein \tKopierdateien
+QDRD	In den Papierkorb umziehen?
+QDRP	Ja \tLöschpunkt löschen \nNein \tLöschpunkt &Dateien löschen
+QEFD	%s \nexisted, löschen?
+QEWE	Diese Datei scheint an der falschen Stelle zu extrahieren. Extrakt?
+QICU	Initialisieren anpassen anpassen, ok?
+QIHI	Geschichte initialisieren, ok?
+QISD	%s ist Laufwerksname? \nJa \Laufwerksname \nNein \tVerzeichnisname \n
+QMCF	Kommentardatei erstellen?
+QOSL	Dateigröße zu groß. Datei Bild teilweise lesen?
+QPPC	PPc beenden?
+QPPV	PPv beenden?
+QSAM	Über schreiben ok?
+QSAN	%d gleichnamige Dateien gefunden. Verarbeitungsmethode auswählen.
+QSAO	Gleichnamige Datei gefunden. Verarbeitungsmethode auswählen.
+QSAV	Bearbeitete Daten speichern?
+QSDP	Als Zielpfad für Paarfenster festlegen?
+QSIZ	Benötigen Sie das Herunterfahren von PPx, ok?
+QSP2	Scheint durch 2G, Datei teilen zu müssen. Datei teilen?
+QSPT	Kein freier Speicherplatz. Datei teilen?
+QSPW	Scheint kein freier Speicherplatz. Datei teilen?
+QSUD	Rückgängig machen?
+QSXS	Warten auf Synchronisation ...
+QTWP	TOROs Bibliothek verbinden?
+QUPD	Update anpassen? \N \nJa \tBackup &Update \nNein \tUpdate ohne Backup \nAbbrechen \tNein Update \n
+QUSV	Schreiben Sie mit der Viewer-Anwendung
+QWRD	Bestellung schreiben?
+REGP	Programm auswählen und registrieren
+RKAL	Fehler beim erneuten Eingeben des Schlüsselbefehls.
+RRPC	Neustart PPc erforderlich
+RTPC	PPc muss bald neu gestartet werden
+SACO	Größenanzahl ... [PAUSE]: Pause
+SAUT	Auto
+SAVE	speichern
+SAVP	Sichere Lage
+SCMP	Starten Sie Compare
+SDPF	Legen Sie die Dump-Datei fest
+SHCM	ShellContext (&S)
+SIOF	Synchronisierungsinformationen: Aus
+SION	Synchronisierungsinformationen: Ein
+SLMD	Aktivieren Sie den langsamen Modus
+SNAN	(Nummer hinzufügen)
+SNAP	(anhängen)
+SNBK	(Backup)
+SNCN	(Namen ändern)
+SNCP	(Kopieren)
+SNDE	(löschen)
+SNKP	(behalten)
+SNLN	(Verknüpfung)
+SNMV	(Bewegung)
+SNOW	(überschreiben)
+SNRE	(wiederherstellen)
+SNSK	(überspringen)
+SPOF	Synchronisierungseigenschaften: Aus
+SPON	Synchronisierungseigenschaften: Ein
+SSRP	Programmpfad eingeben (%s)
+SSRT	Sortierung...
+SVOF	SyncView: Aus
+SVON	SyncView: ein
+SWPD	Fenster auf Desktop verschieben
+TABC	Schließen (&C)
+TABD	Standardfarbe (&D)
+TABE	Auswerfen (&E)
+TABH	Verstecken (&H)
+TABI	Tab-Breite speichern (&S)
+TABK	Wählen Sie die Tabulatortaste mit der Taste (&k).
+TABL	Sperre (&L)
+TABN	Neuer Tab (&N)
+TABP	neues Fenster (&P)
+TABR	cOlor (&O)
+TABS	CloSed PPc (&S)
+TABW	SWAP-Bereich (&W)
+TACL	LeFt schließen (&F)
+TACP	Schließen Sie pAne (&A)
+TACR	rechts schließen (&R)
+TAPN	Dateiname anhängen
+TATR	Attribut
+TC22	SHA-2 &24
+TC25	SHA-2 &56
+TC32	CRC32 (&C)
+TCFC	Dateityp (&t)
+TCHL	Harte Links (&H)
+TCHP	Auspacken (http)
+TCIT	Info Tipp Text (&p)
+TCLE	Spalte ext (&t)
+TCLR	Löschen (&l)
+TCM5	MD5 (&M)
+TCME	Kommentar bearbeiten (&E)
+TCMT	Kommentar (&t)
+TCOW	Besitzer (&O)
+TCS1	SHA-1 (&S)
+TDAD	DD-Fensterliste (&D)
+TDEL	Löschen
+TDFO	Verzögerter Dateivorgang
+TDUP	Dup
+TEDJ	Geben Sie die Zeilenlokalisierungsoption des Editors ein
+TEIF	Eintragsinformationen
+TENN	Geben Sie einen neuen Namen ein
+TEXE	Ausführen
+TFAC	PPc-Dateiaktion
+TFCP	Vergleichen Sie
+TFEM	Maske finden
+TFMK	FindMark
+TFUM	FindUnMark
+THIL	Markieren Sie Wörter
+TINS	Geben Sie den Namen des neuen Menüelements ein
+TISD	Pfadkorrektur
+TLDS	Logdisk
+TLNO	Zeilennummer
+TMCF	Erstellen Sie eine Kommentardatei
+TMHL	Harte Verbindung
+TMKD	maKe Verzeichnis
+TMKF	MaKe-Datei
+TPAC	Packdatei:
+TPCL	PPc-Protokoll
+TPTX	Klartext (&T)
+TRDE	Eintrag lesen
+TREC	Kontinuierliche Umbenennung
+TREN	Umbenennen
+TRER	Referenz anzeigen
+TSCP	Wählen Sie eine Textcode-Seite aus
+TSDR	Verzeichnis auswählen
+TSEI	Eintragsinformationen synchronisieren
+TSFN	Datei aussuchen
+TSHL	Schale
+TSMD	Modul (&T)
+TSVN	Dateiname speichern
+TTAB	TAB GRÖSSE
+TTRE	Baum
+TTWP	Jump-Website
+TUPA	Archiv auspacken
+TWRD	Eintragsreihenfolge schreiben
+TXAT	Alle Texte
+TXSL	Ausgewählte Zeilen
+UCMD	:Unbekannter Befehl
+UDED	Eintragsdaten aktualisieren (&.)
+UNKN	Unbekannt
+UPED	%s aktualisiert
+USTD	Aktion wird in diesem Verzeichnis nicht unterstützt
+VFSL	VFS laden
+VFSU	VFS entladen
+VTAI	Schwanzmodus (&a)
+VTDC	Dokument
+VTHE	Verhexen
+VTIM	Bild
+VTRI	Rohbild
+VTTX	Text
+WITD	Benötigen Sie WININET.DLL
+WKSI	Der Schlüsselname scheint ungültig zu sein
+WLLP	Langes Pfadverzeichnis
+WNOA	Kein \'@ \' Präfix
+WUML	Breite nicht übereinstimmende Linie%d (diese Breite:%d, maximale Breite:%d)
+XBRO	Webbrowser
+XCAC	Cache-Verzeichnis
+XEDI	Texteditor
+XEDL	Punktlinienpräfix des Texteditors
+XELE	Verwenden Sie beim Update eine hohe Ausführungsstufe
+XFCO	PPb (Vista)
+XFCT	Registerkarte und Kopfzeile
+XFDL	Dialog
+XFIX	PPv beheben
+XFME	Allgemeines
+XFTR	Baum
+XFUF	PPv proportional
+XIAC	Aktivieren Sie den Bildschirmleser
+XLAG	Sprache
+XLOG	Protokollierung
+XLSP	allgemeiner Zeilenabstand
+XSAV	Sicherungsverzeichnis
+XSUS	Susie Verzeichnis
+XUP0	Aktion auswählen
+XUP1	keine Aktion
+XUP2	benachrichtigen
+XUP3	aktualisieren, benachrichtigen
+XUP4	aktualisieren, benachrichtigen, sichern
+XUP5	aktualisieren
+XUP6	Update, Backup
+XUPM	Update anpassen
+XUUE	Serverzugriffsfehler.
+XUUN	Nicht gefundene Update-Datei.
+XUUQ	Finden Sie die Version%s. Update von%s?
+XVIE	Datei-Viewer
+YGBJ	Job brechen
+YGBW	hinter dem Fenster
+YGCL	Befehlsliste
+YGCZ	Zoomfenster löschen
+YGEX	Ausfahrt
+YGFD	frei definieren
+YGMD	Fenster nach unten bewegen
+YGML	Fenster nach links bewegen
+YGMR	Fenster nach rechts bewegen
+YGMU	Fenster nach oben bewegen
+YGMZ	minimieren
+YGOW	undurchsichtiges Fenster
+YGPW	transparentes Fenster
+YGRP	Fensterposition wiederherstellen
+YGSH	Zeig Hilfe
+YGSH	kleine Fensterhöhe
+YGSM	Systemmenü
+YGSP	Fensterposition speichern
+YGSW	kleine Fensterbreite
+YGTW	von oben zum Fenster
+YGWH	breite Fensterhöhe
+YGWW	breite Fensterbreite
+YGZI	Fenster vergrößern
+YGZO	Fenster verkleinern
+YTGG	Allgemeines
+YTGW	allgemeine Fensteraktion
+ZGHL	Hilfe; Rechtsklick oder F1-Taste
+ZTCC	Mauszeiger
+ZTCD	Anzeige (abgeschlossen)
+ZTCE	Eintragssuche
+ZTCI	Symbol
+ZTCL	Layout und Registerkartenleiste
+ZTCM	Cursor bewegen
+ZTCN	Cursor-Detail
+ZTCO	Operationen
+ZTCV	Aussicht
+ZTDR	Zeichnen
+ZTFO	Dateivorgang
+ZTFO	Schriftart
+ZTGR	Allgemeines
+ZTLE	Zeileneditor
+ZTNS	keine Unterstützung
+ZTOP	Operation
+ZTOT	Andere
+ZTPB	PPb - Konsole
+ZTPC	PPc - Dateimanager
+ZTPE	PPe - Texteditor
+ZTPF	PPffix - Erweiterungsumbenennung
+ZTPU	PPcust - Customizer
+ZTPV	PPv - Datei-Viewer
+ZTPY	PPtray
+ZTVD	Ziehen
+ZTVI	Bildansicht
+ZTVT	Textübersicht
+};pkmoldagfihajiiaekhjapaefbdloklkgbhpmjfakogkabiofnignccjgmdbgieigmjnhcclkaojolhhncpolipbacejehmbnapmphelegppdipndhjdghkkdhdbcngiaie 

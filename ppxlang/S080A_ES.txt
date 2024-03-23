@@ -1,0 +1,1743 @@
+﻿Mes080A	=#{	ES
++|0000	191
+0001	OK
+0002	Cancelar
+0003	Abortar(&A)
+0004	Reintentar (&R)
+0005	Ignorar(&I)
+0006	Sí(&Y)
+0007	No(&N)
+7005	extensión (&E)
+7007	Opción(&O)
+7009	&...
+7011	Ejecutar
+7012	Esperar a PPb...
+7013	Ejecutar con self(&s)
+7014	Ejecutar con nuevo PPb(&n)
+7018	Ingrese la contraseña de inicio de sesión
+7019	Camino
+701D	Conectarse al volver a iniciar sesión (&C)
+701E	Nombre de usuario (&U)
+701F	Contraseña (&P)
+7020	Operaciones de archivos
+7022	Solo nueva fecha(&n)
+7023	Renombrar(&R)
+7024	Sobrescribir(&O)
+7025	Saltar (&S)
+7026	Con archivo(&a)
+7027	Añadir número(&b)
+7028	Agregar (&p)
+7029	Toda la misma acción (&W)
+702A	Mayúsculas (&U)
+702B	Minúsculas (&L)
+702C	Forzado 8.3(&F)
+702D	Eliminar espacio incorrecto (&G)
+702E	Eliminar números (&B)
+702F	Solo lectura (&R)
+7030	Archivo(&A)
+7031	Oculto (&H)
+7032	Sistema(&X)
+7034	Copiar atributo de seguridad (&E)
+7035	omitir pequeño error (&K)
+7036	Comprobación automática de 'Todos' (&U)
+703F	Acción del mismo nombre
+7040	Filtro de nombre
+7041	Atributos
+7042	Destino(&D)
+7043	Renombrar(&E)
+7044	Tamaño de división (&V)
+7045	Número de serie (&N)
+7047	Copiar SACL(&C)
+7048	Directorio(&D)
+7049	Ráfaga/autobúfer (&G)
+704A	Plano/no hacer árbol(&L)
+704B	Conservar directorios(&K)
+704C	ventana de registro(&G)
+704D	Deshacer registro (&U)
+704E	Extraer '%'(&A)
+704F	Solo lectura automática desactivada (&O)
+7050	Copia de seguridad del archivo antiguo (&V)
+7051	Primera hoja(&1)
+7052	Nombre de archivo (&n)
+7053	Corrección de nombre de directorio (&D)
+7054	Advertencia silenciosa de creación de un nuevo directorio (&S)
+7055	Prioridad baja (&L)
+7056	Entrada de origen
+7057	Entrada de destino
+7058	Atributo\nTamaño de archivo\nTiempo de creación\nTiempo de escritura\nTiempo de acceso
+7059	no espere con Result(&R)
+705A	&3:Opción
+705C	&2:Renombrar
+705E	&1. General
+7062	Usar todas las reacciones (&U)
+7063	añadir lista de retrasos (&D)
+7064	Tamaño diferente (&Z)
+7068	Renombrar archivo en destino (&V)
+7070	Evitar que entre en suspensión (&P)
+7071	Permitir destino descifrado (&D)
+7072	Hacer Unir lote(&J)
+7073	Nombre de la fuente
+7074	Contar tamaño total(&C)
+7075	marque Existir primero (&E)
+7076	serializar operar(&Z)
+7077	Mover después de cerrar el archivo
+7078	Corregir extensión (&Y)
+7079	Registro &4
+707A	Enlace para enlace simbólico
+707B	Eliminar fuentes de enlaces simbólicos (&H)
+7400	Prueba (&T)
+7402	lista de comandos
+7410	Archivo
+7411	Personalizar datos(&C)
+7412	Almacenar por texto (&S)
+7413	Agregar por texto (&A)
+7414	Actualizar por texto (&U)
+7415	Volcar a texto (&D)
+7416	Inicializar(&I)
+7417	Datos históricos (&H)
+7418	Volcar a texto(&o)
+7419	Inicializar (&R)
+741A	Comprobación de clave (&K)
+741C	Asociar carpeta(&P)
+741D	Desasociar carpeta(&U)
+741E	Abrir carpeta con PPc(&f)
+741F	Ocultar consola (&L)
+7421	Editar y agregar (&E)
+7429	Personalizar por texto editado
+742C	Agregar (&A)
+742D	Usar texto (&E)
+742E	Resultado(&R)
+7430	Colores
+7433	Artículo(&I)
+7436	Agregar (&A)
+7437	Eliminar (&D)
+7438	Lista de palabras (&I)
+7439	Color(&C)
+743B	Detalle(&E)
+743C	Subrayado(&U)
+743E	Ordenar por extensión(&X)
+743F	Ordenar por color(&L)
+7450	Tipos de archivo
+7457	(O E_...)(&O)
+7458	Escriba el nombre (&I)
+7459	Tipos(&Y)
+7460	Llaves
+7461	Ratones
+7462	Botones
+7464	Llaves(&S)
+746A	←
+746B	↑
+746C	↓
+746D	→
+746F	Lista
+7470	susie
+7472	susie informacion
+7473	Usar(&U)
+7474	Detalle(&P)
+7476	Lista(&Y)
+7477	Extensión predeterminada (&D)
+7478	Detección automática (&A)
+7479	Extensión (&P)
+747A	Objetivo (.bmp,.dib)(&G)
+7480	varios
+7490	Menús
+7491	Arriba(&U)
+7492	Abajo (&W)
+7493	Tecla de acceso directo (&K)
+7495	Separador(&S)
+7496	Color de primer plano (&F)
+7497	Color de fondo (&B)
+7498	Botón editar (&B)
+74E2	guardar(&V)
+74E4	Eliminar (&D)
+74E6	Insertar(&I)
+74E7	Detalle(&X)
+74EA	Letra macro(&M)
+74EC	Comentar(&C)
+74ED	Comandos(&L)
+74EF	Detalle(&X)
+74F0	General
+74FC	Buscar(&F)
+7600	Pulse la tecla Usar y haga clic en 'Aceptar'
+7602	modo extendido
+7604	(requerir con cliente 'NULL')
+7608	Colores
+760C	Resaltar colores
+760D	Superior (&T)
+760E	Abajo (&B)
+7610	Formatos de visualización
+7617	Ocultar(Comentario)(&C)
+7618	Ancho completo (&L)
+7619	Longitud del nombre completo (&N)
+761C	Mostrar artículos (&F)
+761D	Lista de artículos (&Y)
+77FD	Referir(&F)
+77FE	Ahorra(&S)
+77FF	Aplicar(&A)
+7800	Atributos
+7801	Atributos(&B)
+7802	Crear(&1)
+7803	Escribir(&2)
+7804	Acceso(&3)
+7805	(&C)
+7806	(&W)
+7807	(&Q)
+7808	Viejo
+7809	Nuevo
+780A	Modificar directorio (&M)
+780B	detalle(&X)
+780C	Solo lectura (&R)
+780D	Oculto (&H)
+780E	Sistema(&S)
+780F	Archivo(&A)
+7810	Compresión(&P)
+7811	Cifrado (&E)
+7812	subdirectorio(&D)
+7813	Índice(&I)
+7814	Temporal (&T)
+7815	Desconectado(&O)
+7840	Información de la unidad
+7841	Nombre de la unidad
+7842	Volumen
+7843	tipo de disco
+7844	Número de serie
+7845	sistema de archivos
+7846	Espacio usado
+7847	Espacio libre
+7848	muy gratis
+7849	Espacio total
+784A	Bytes/Sector
+784B	Bytes/Cluster
+784C	Longitud máxima del nombre de archivo
+784D	bytes
+784E	Clústeres
+7860	Caso preservado
+7861	Distingue mayúsculas y minúsculas
+7862	UNICODIGO
+7863	ACLS
+7864	Comprimir archivo
+7865	Compresión de volumen
+7866	Corrientes con nombre
+7867	cuotas
+7868	Escaso
+7869	Reanalizar
+786A	Remoto
+786B	IDS de objeto
+786C	Cifrado
+786D	Solo lectura
+786E	Escritura secuencial una vez
+786F	Actas
+7870	enlaces duros
+7871	Atributos extendidos
+7872	Abrir por ID de archivo
+7873	Revista USN
+7874	corrientes de integridad
+7875	Recuento de bloques
+7876	VDL disperso
+7877	DAX,acceso directo
+7881	Máscara de directorio (&D)
+7882	Máscara en tiempo real (&M)
+7884	formato (&T)
+7885	Coincidencia de palabras (&W)
+78C0	Búsqueda incremental
+78C2	Arriba(&U)
+78C3	Abajo(&D)
+78C4	Marca(&M)
+78C5	Frente (&F)
+78C6	Roma(&O)
+78C7	Detalles (&T)
+78D0	Configuración de la ventana PPc
+78D1	Arranque doble (&D)
+78D2	Cierre doble (&C)
+78D3	Doble Activo(&A)
+78D4	Ventana conjunta(_)(&J)
+78D5	Izquierda/Derecha(&L)
+78D6	Arriba/Abajo(&U)
+78D7	Apilado(&P)
+78D8	Tamaño fijo (&S)
+78D9	Arreglar PPc activo (&F)
+78DA	Tamaño (&z)
+78DB	Tamaño+Posición(&O)
+78DC	Combo(&M)
+78E1	ordenar detalle
+78E3	Caso(&C)
+78E4	Kana(&K)
+78E5	Sin espacio (&N)
+78E6	Símbolos (&Y)
+78E7	ancho (y ancho)
+78E8	Tipo de cadena (&T)
+78E9	Número (&U)
+78EC	Última entrada (&E)
+78ED	Reversa &1
+78EE	Reversa &2
+78EF	Inversa &3
+78F0	¿Dónde está el archivo?
+78F1	Fuentes(&S)
+78F3	Nombre de archivo(&N)
+78F5	Y,Nombre de archivo(&A)
+78FA	Marcas de búsqueda (&m)
+78FB	Tener directorio (&H)
+78FC	Subdirectorio(&U)
+78FD	FS virtual(&V)
+7900	Detalle de la marca de comparación
+7910	General
+792A	Tiempo de acceso:
+792B	Modificar hora:
+792C	Tiempo de creación:
+792D	Tamaño:
+792E	Camino:
+792F	Tipo:
+7C00	Seleccionar tipo de pegado
+7C08	Imprimir
+7C0A	Ahora Imprimiendo...
+ACET	\n, y %d aplicación
+ADDE	emular D&D (&D)
+ADDH	Gancho D&D (&D)
+ADDP	Publicar archivos
+ADDR	Botón derecho D&D(&D)
+ADHD	Este archivo está siendo utilizado por aplicaciones;\n
+ADTE	Introduce un título
+AICP	Agregar patrón de verificación
+ALLI	Todo
+ANSP	Dejar de animar
+ASRA	Tasa de aspecto
+ASTL	Añadir lista de inicio
+BRAK	trabajo roto
+BREX	Necesita biblioteca de expresiones regulares
+BRKD	datos rotos
+BUSY	Ocupado...
+CAOF	Caché: desactivado
+CAON	caché: activado
+CCAN	Cancelar
+CCMC	todo emparejado
+CCMP	Comparar completado
+CDAT	Atributos - Hora - Nombre(&A)
+CDCM	Comentarios(&m)
+CDD1	Detalles1(&D)
+CDD2	Detalles2(&4)
+CDFN	Nombre completo(&n)
+CDI1	Iconos 1(&5)
+CDI2	Iconos 2(&6)
+CDI3	Iconos 3(&7)
+CDID	Detalles del icono (&I)
+CDL1	Lista1(&L)
+CDL2	Lista &2
+CDL3	Lista &3
+CDT1	Miniaturas1(&T)
+CDT2	Miniaturas2(&8)
+CDT3	Miniaturas3(&9)
+CMP1	Mismo SHA-1(&H)
+CMPA	Mismo tamaño && tiempo(&A)
+CMPB	Mismo binario (&B)
+CMPC	Comentar(&C)
+CMPD	Detalle...(&D)
+CMPE	Archivo existente (&E)
+CMPF	Nombre de archivo sin extensión (&F)
+CMPH	Comparar hash con portapapeles (&C)
+CMPI	tamaño del archivo (sin control de nombre, &I)
+CMPL	Archivo grande (&L)
+CMPM	comentario(1ventana, &M)
+CMPN	nuevo archivo (&F)
+CMPQ	mismo tamaño, cualquier nombre (&Q)
+CMPS	tamaño de archivo (&S)
+CMPT	Marca de tiempo (&T)
+CMPW	archivo solo (&O)
+CMPX	Existe (con dir, &X)
+CMPZ	mismo tamaño de archivo (1 ventana, &Z)
+COMP	terminado.
+COMT	comentario
+CPDN	Clip hecho
+CPML	Salir del modo Seleccionar
+CPMS	Seleccionar modo
+CPPN	Clip dir hecho
+CPTX	Acortar
+CRSS	Guardar configuración
+CTHE	Editar gancho (&E)
+CUTR	corte listo
+DDAB	Agregar botón
+DDAI	Agregar elemento al árbol
+DDAL	Agregar elemento al archivo de lista
+DDCM	no puedo seguir adelante
+DDCP	Copiar a (&C)
+DDDP	Duplicado en(&D)
+DDDT	Detalle(&a)
+DDET	otro tipo...(&E)
+DDJP	Saltar desde(&J)
+DDLI	Acceso directo a (&S)
+DDML	Crear archivo de lista (&L)
+DDMV	Mover a(&M)
+DDOP	Abierto a(&O)
+DDSC	Acceso directo a(&S)
+DDSW	Cambiar a(&W)
+DDTX	texto(&t)
+DEFA	por defecto
+DEXT	Eliminar %s
+DICD	CD/DVD/BD...
+DIFI	Fijado
+DIRA	ramdisk
+DIRE	Remoto
+DIRM	Retirable
+DIRS	<dir>
+DREN	directorio(&I)
+DSAR	Lectura asíncrona (&A)
+DSCA	Cancelar (&C)
+DSCV	Vista de caché (&C)
+DSEI	Icono de entrada (&Y)
+DSFO	&0:Fuerza
+DSHO	&0:Predeterminado
+DSIA	superposición (seguridad)
+DSIB	blanco
+DSIF	marco
+DSIH	superposición (sin caché)
+DSII	configuración de información
+DSIL	icono de línea de información
+DSIN	normal
+DSIO	con superposición
+DSIS	simple
+DSIT	a través de
+DSIW	no show
+DSMA	Ampliar miniatura
+DSMI	Minificar miniatura
+DSSD	-guardar caché en disco (&D)
+DSSE	-guardar caché cada vez (&E)
+DSSM	Modo lento (&S)
+DSTA	&4:Archivo
+DSTD	&5:Modo directorio
+DSTE	&3:Temporalidad
+DSTF	&4:archivo de lista
+DSTL	&2:Esta ruta y subdirección
+DSTP	&1:Este camino
+DSTS	&6:Ruta separada
+DSWM	Reloj modificado (&W)
+EACO	ya contando
+EBDK	%s es un nombre de clave incorrecto
+EBPC	mal *comando de panel: %s
+EBRK	Error de freno
+EBRV	Requiere Windows Vista o posterior.
+EBSG	%s es una firma incorrecta
+EBWA	Atributos comodín incorrectos
+EBWS	Sistema de archivos incorrecto
+EC32	Error de carga de comdlg32.dll
+ECAL	Error de cálculo: %s
+ECDR	no puedo desempacar
+ECFD	'Completo' no puede ser multiuso.
+ECFL	Personalizar flujo de área
+ECHF	Verifique el registro de fallas del informe.
+ECME	Error de menú contextual
+ECUD	No se puede ejecutar deshacer.
+EDAD	Falla DD (&D)
+EDAL	Seleccionar todo(&A)
+EDBL	Modo de bloque (&B)
+EDCA	Cancelar(&N)
+EDCP	Copiar(&C)
+EDCU	Cortar (&T)
+EDDL	Borrar error de operación :%s
+EDEC	codificar(&e)
+EDEL	No se puede borrar
+EDET	tipos(&t)
+EDIT	Editar
+EDPA	Pegar(&P)
+EDTD	Error de eliminación de directorio temporal
+EECR	El elemento '%s' no se encuentra en %s
+EEFT	No se puede ejecutar %s
+EENF	Entrada no encontrada
+EENM	error de número e
+EFAL	falla
+EFLW	Flujo de búfer
+EFUT	función: falta ')'.
+EHKY	Error de registro de tecla de acceso directo (%s)
+EIFC	%%F no compatible: %c
+EKCD	error clave
+EKFT	Error de código clave
+EKNF	Palabra clave no encontrada
+ELST	Borrar de la lista(&l)
+ELTA	Error en la lista de objetivos
+EMDI	Error (Requerir sin modo de división de archivos)
+EMEU	Error de creación del menú '%s'
+EMUT	Falta %%*%s ')'.
+ENFF	No encontrado %s
+ENFT	Objetivo no encontrado
+ENFU	No encontrado %%*%s
+ENOM	No hay suficientes recuerdos
+ENSO	No apoyo
+ENSP	Separador \'%c\' no encontrado
+ENUD	%s no es UnXXX
+EOEC	No puedo registrar más PPc.
+EOFI	error al abrir archivo
+EOLT	Tamaño demasiado largo.
+EPBY	Usar error PPb (%s)
+EPRM	error de parametro
+EPTH	Error de ruta
+EREG	Error de expresión regular: %s
+ESCT	Error de atajo
+ESEP	Separador no encontrado
+ESHO	No se puede acceder al archivo abierto ahora.
+ETMW	Demasiados caracteres de formato 'W'/'w'
+EUFM	formato desconocido
+EUKW	Palabra clave desconocida
+EUOP	Opción desconocida: %s
+EUXC	Comando desconocido: *%s
+EVFA	El archivo de descarga es incorrecto.
+EWFT	Error de formato W
+EWLD	error de comodines
+EWLG	comodín demasiado largo
+EWNF	No se puede admitir en NTFS
+EWRT	Error al escribir
+EWUS	Usar atributos no admitidos en esta coincidencia
+EXEF	ejecutar...
+EXEX	El archivo existe
+EXIT	Salir(&x)
+EXNF	Nueva crea
+EXNW	Existe un nuevo archivo
+EXOL	Existe un archivo antiguo
+FBAC	Acción:(&i)
+FBAK	Fallo de copia de seguridad.
+FBDW	Error crítico de PPb
+FDLW	La tabla del sistema PPx está rota %04X
+FEWE	El archivo encontrado parece extraerse en el lugar equivocado
+FEXP	Carpeta del explorador
+FIXE	Este archivo parece ser %s y %s.\nNo es necesario modificar esta extensión de archivo.
+FIXH	PPffix verifique el tipo de extensión, cuando se coloque en este ícono.
+FIXM	Este archivo parece que el tipo es %s y %s.\n¿Modificar la extensión del archivo?
+FIXU	El tipo de archivo es desconocido.
+FLAC	todo completado
+FLCA	Cancelado
+FLER	errores
+FLEX	existió
+FLLS	omitido
+FLNO	sin operar
+FLOD	<cargando>
+FLPC	parcialmente completado
+FLTC	No existe
+FLTE	Existir
+FMYF	Lista de unidades
+FNET	PC de red
+FOCA	Cancelar
+FOCL	Cerca
+FOCO	Continuar
+FOCP	Pausa
+FOCS	Saltar
+FOFC	Comparar(&C)
+FOOK	DE ACUERDO
+FOST	Comenzar
+FUPD	Directorio no encontrado, y mover directorio principal
+FUPR	Directorio no encontrado, y mover directorio raíz
+GDAI	Relleno automático
+GDAR	Marco automático
+GDFI	Llenar
+GDFR	Marco
+GSIG	La firma es buena.
+HDRA	Atributos
+HDRC	fecha de creacion
+HDRD	Fecha
+HDRE	Fecha accesada
+HDRN	Nombre
+HDRS	Tamaño
+HELP	ayuda
+HIST	historias
+HPDN	Http Listo.
+IANI	Animado: [P]
+IDIR	Directorio(&D)
+IDIV	Modo de división de página ([<][>], Todo leído:[/])
+IFCN	Conteo de archivos...
+IGAN	Animar(&m)
+IGNP	Página siguiente (&N)
+IGPP	Página anterior(&P)
+IICC	Incluir perfil de color
+ILFI	Archivo de lista (&L)
+IMAB	Cancelar(&A)
+IMCA	Cancelar(&N)
+IMIG	Igonre(&I)
+IMNO	No)
+IMOK	DE ACUERDO
+IMRE	Reintentar (&R)
+IMSK	Saltar(&I)
+IMST	Inicio(&Y)
+IMTC	Cancelar (&C)
+IMYE	Sí(&Y)
+IMYK	OK(&Y)
+IPAG	multi página
+ISEA	Modo de búsqueda incremental
+ITCK	Mantener resaltado después de cerrar (&K)
+ITCM	Comentar(&C)
+ITFE	extensión de nombre (&E)
+ITFN	Nombre de archivo(&N)
+ITHA	Resaltar todo(&G)
+ITHL	Resaltar (&H)
+ITIP	Incluir ruta (&P)
+ITMA	Marcar todo(&A)
+ITMO	Marca de verificación (&M)
+ITSH	Resaltar entrada de coincidencia (&L)
+JLER	ERROR>
+JLEX	ejecutar>
+JLPA	pausa>
+JLWA	espera>
+JMAE	Extracto
+JMAL	Todo
+JMAP	Archivo
+JMAT	Atributos
+JMCL	Acortar
+JMCO	Comparar
+JMCP	Copiar
+JMCR	Claro
+JMCS	Conteo de tamaño
+JMCU	Cortar
+JMDE	Borrar
+JMJO	Trabajo
+JMLI	Enlace/Cruce
+JMMO	Mover
+JMMR	Espejo
+JMPA	Pegar
+JMPR	Propiedades
+JMPS	Pegar acceso directo
+JMPV	Avance
+JMRE	Rebautizar
+JMRU	Ejecutar
+JMSH	Atajo
+JMSL	Enlace simbólico
+JMTE	Edición de texto
+JMUN	Deshacer
+JNCL	CLSID(&C)
+JNHL	ハードリンク一覧(&H)
+JNJL	enlace(&l)
+JNSH	acceso directo(&s)
+JNST	flujo (&T)
+JPCL	CLSID (ventana de par, &I)
+JPDI	Mostrar ventana de par(&P)
+JPHL	反対窓でハードリンク一覧(&P)
+JPJL	enlace (ventana de par, &R)
+JPLN	Enlace de salto
+JPSH	atajo (ventana de par) (&p)
+JPST	flujo (ventana de par) (&w)
+JWOF	Ventana de unión: desactivada
+JWON	Unirse a la ventana: en
+KWAT	\nPresione cualquier tecla para continuar.
+LCOK	No hay error.
+LDAD	DIRECCIÓN
+LDDR	unidades
+LDIN	aporte
+LDOL	Cerrar
+LDOS	Separador
+LDSI	XC_inf
+LDST	XC_stat
+LERE	Entrada borrada de la lista.
+LGAP	Adjuntar
+LGCR	Crear
+LGDE	Borrar
+LGER	Error
+LGOW	Sobrescribir
+LGWA	Advertencia
+LHIL	Destacar
+LHIO	Resaltar
+LMAK	Marca
+LOAD	cargando
+LRMA	marca inversa
+LUMA	Desmarcar
+LYCA	Título del panel (&C)
+LYCI	Línea de información común (&N)
+LYDB	Parte inferior del muelle (&B)
+LYDT	Parte superior del muelle (&D)
+LYHA	Encabezado (&H)
+LYIL	Línea de información (&I)
+LYJL	Lista de trabajos (&J)
+LYLG	Registro (&G)
+LYME	Barra de menú (&M)
+LYOT	Otros(&X)
+LYSA	Barra de direcciones estándar (&a)
+LYSC	Barra de desplazamiento (&O)
+LYSL	Línea de estado (&S)
+LYSS	Cambiar barra de desplazamiento (&P)
+LYST	Barra de herramientas estándar (&T)
+LYTI	Barra de título (&L)
+LYTR	Árbol(&R)
+LYWM	Ventana...(&W)
+MBCP	Clip de texto del mensaje
+MCOP	abierto(&o)
+MCPL	jugar(&P)
+MCPR	imprimir(&p)
+MCRC	Editar menú común(&c)
+MCRD	Establecer selección predeterminada (&d)
+MCRE	Establecer comando predeterminado (&E)
+MCRK	Ejecutar como(&a)
+MCRV	Ejecutar como administrador(&a)
+MCRX	Editar menú de extensión de nombre de archivo (&X)
+MDLC	Con turno: Borrar
+MEAD	Agregar artículo (&A)
+MEDE	Eliminar elemento (&D)
+MEDT	Editar menú (&E)
+MEMD	Modificar artículo (&M)
+MERE	Renombrar nombre del elemento (&R)
+MGNR	General(&G)
+MIGE	Necesita MIGEMO.DLL
+MSAV	Guardar configuración
+MSCL	boton cerrar
+MSEN	zona de entrada
+MSFR	marco de la ventana
+MSHA	Encabezado de la columna
+MSHM	menú oculto
+MSIC	área de iconos
+MSIF	líneas de información
+MSLI	línea de estado
+MSMA	hacer símbolo
+MSME	Barra de menús
+MSMI	botón minimizar
+MSPA	barra de ruta
+MSSC	barra de desplazamiento
+MSSP	área en blanco
+MSSY	icono de ventana
+MSTA	cola de entrada
+MSTB	botón de pestaña
+MSTI	barra de título
+MSTS	tabulador
+MSZO	botón maximizar
+MTCL	Cerrar árbol (&X)
+MTDL	Conducir
+MTDR	use el cuadro de diálogo Renombrar (&D)
+MTDS	Configuración del directorio
+MTED	Expulsar
+MTFA	Favoritos(&A)
+MTFO	árbol de carpetas (&t)
+MTFP	Enfoque PPc(&F)
+MTMI	Icono simple(&M)
+MTNF	Crear carpeta(&C)
+MTNU	Crear árbol de usuarios (&U)
+MTNW	Nuevo
+MTOL	superposición de iconos (&o)
+MTPL	lista PPc(&P)
+MTRL	Recargar (&R)
+MTRS	Ejecutar como uno mismo
+MTRT	Recargar
+MTSB	Mostrar barra de herramientas (&b)
+MTSC	Contexto de la carcasa
+MTSH	Mostrar carpeta protegida (&H)
+MTSI	Mostrar icono(&S)
+MTSL	Línea(&L)
+MTSN	Nodo único (&N)
+MTSO	Clasificar
+MTSS	Sincronizar-seleccionar(&Y)
+MTST	Configuraciones(&S)
+MTUE	Personalizar lista de usuarios(&M)
+MTVF	Vista
+MWOP	Esperar
+NEWD	Introducir nuevo disco
+NEWF	(archivo nuevo)
+NEWI	nuevo
+NITX	Archivo de texto\t.txt(&T)
+NOEL	no coincide con ningún archivo
+NOIC	La configuración no está completa. Es mejor ejecutar un SETUP.EXE.
+NOMF	Desactivar mostrar nota
+NOMI	Sin más información
+NOMN	Mostrar nota
+NOTX	Cadena no encontrado.
+NWDN	TEMPDIR
+NWFN	TEMPFILE
+OPSA	Abrir dirección seleccionada (&A)
+OWDT	Tipos de directorio(&Y)
+OWIT	Enviar a(&N)
+PACI	archivo individual
+PACO	otro
+PACT	tipo de archivo
+PJAD	Añadir ruta
+PJCP	Panel de control
+PJDE	Escritorio
+PJDL	Lista de unidades
+PJMD	Mis documentos
+PJRB	papelera de reciclaje
+QABO	¿Romper el trabajo?
+QBAK	Ruta de respaldo?
+QCOM	¿Continuar la acción con la entrada marcada fuera de la pantalla?
+QCRD	Crear nuevo directorio?
+QDAC	¿Eliminar acción?
+QDDL	¿Eliminar la lista de retrasados?
+QDDO	¿Iniciar tarea de lista retrasada?
+QDFA	¿Eliminar archivo de atributos especiales?
+QDKM	¿Eliminar configuración de clave?
+QDL1	¿borrar?
+QDL2	,,,\norte
+QDL3	¿eliminar entradas?\n
+QDL4	¿borrar el árbol del formulario?
+QDRC	Sí\tPunto de análisis duplicado\nNo\tCopiar archivos
+QDRD	¿Mover a la papelera de reciclaje?
+QDRP	Sí\tEliminar punto de análisis\nNo\tEliminar punto de análisis y archivos
+QEFD	%s\n existía, ¿eliminar?
+QETF	¿Extraer el archivo a la ruta temporal?
+QEWE	Este archivo parece extraerse en el lugar equivocado. ¿Extracto?
+QICU	Inicializar personalizar, ¿de acuerdo?
+QIHI	Inicializa el historial, ¿de acuerdo?
+QISD	%s es el nombre de la unidad?\nSí\tnombre de la unidad\nNo\tnombre del directorio\n
+QMCF	¿Crear archivo de comentarios?
+QOSL	Tamaño de archivo demasiado grande. ¿Leer la imagen del archivo parcialmente?
+QPPC	¿Salir de PPc?
+QPPV	¿Salir de PPv?
+QRCC	¿Registrar PPc en el menú contextual?
+QRLA	¿Quitar este idioma?
+QSAM	Sobre escribir ok?
+QSAN	Se encontraron %d archivos con el mismo nombre. Seleccione el método de procesamiento.
+QSAO	Archivo con el mismo nombre encontrado. Seleccione el método de procesamiento.
+QSAV	¿Guardar datos editados?
+QSDP	¿Estableciendo como ruta de destino de ventanas de par?
+QSIZ	Necesito el apagado de PPx, ¿de acuerdo?
+QSP2	Esta unidad parece necesitar dividirse por 2G bytes. ¿Dividir archivo?
+QSPT	Sin espacio libre. ¿Dividir archivo?
+QSPW	Parece que no hay espacio libre. ¿Dividir archivo?
+QSUD	¿Empezar a deshacer?
+QSXS	Esperando sincronizando...
+QTWP	¿Conectar la biblioteca de TORO?
+QUPD	¿Actualizar personalizar?\n\nSí\tCopia de seguridad y actualización\nNo\tActualizar sin copia de seguridad\nCancelar\tSin actualización\n
+QUSV	Escribir usando la aplicación de visor
+QWRD	Orden escribir?
+REGP	Seleccione y registre el programa
+RKAL	Error de reingreso de comando clave.
+RRPC	Solicitar reinicio de PPc
+RTPC	Solicitar reinicio de PPc, pronto
+SACO	Recuento de tamaño... [PAUSA]: Descanso
+SAUT	Auto
+SAVE	Ahorrar
+SAVP	Guardar posicion
+SCMP	Empezar Comparar
+SDPF	Establecer archivo de volcado
+SHCM	Menú contextual de shell (&S)
+SIOF	Información de sincronización: Desactivado
+SION	Información de sincronización: activada
+SLMD	Entrar en modo lento
+SNAN	(Añade un número)
+SNAP	(adjuntar)
+SNBK	(respaldo)
+SNCN	(cambiar nombre)
+SNCP	(Copiar)
+SNDE	(borrar)
+SNKP	(mantener)
+SNLN	(enlace)
+SNMV	(mover)
+SNOW	(Sobrescribir)
+SNRE	(restaurar)
+SNSK	(saltar)
+SPOF	Propiedades de sincronización: desactivado
+SPON	Sincronizar propiedades: activado
+SPPF	Ruta de sincronización: desactivada
+SPPN	Ruta de sincronización: activada
+SSRP	Ruta del programa de entrada (%s)
+SSRT	clasificación...
+SVOF	Vista sincronizada: desactivada
+SVON	Vista sincronizada: activada
+SWPD	mover ventana al escritorio
+TABC	Cerrar (&C)
+TABD	Color predeterminado (&D)
+TABE	Expulsar (&E)
+TABH	Ocultar(&H)
+TABI	Guardar ancho de pestaña (&S)
+TABK	seleccionar pestaña por tecla (&k)
+TABL	Bloqueo(&L)
+TABN	Nueva pestaña(&N)
+TABP	nuevo panel (&P)
+TABR	color(&O)
+TABS	cerrado PPc(&S)
+TABW	panel de intercambio (&W)
+TACL	cerrar a la izquierda (&F)
+TACP	cerrar panel(&A)
+TACR	cerrar Derecha(&R)
+TAPN	Agregar nombre de archivo
+TATR	Atributo
+TC22	SHA-224(&2)
+TC25	SHA-256(&5)
+TC32	CRC32(&C)
+TCFC	Tipo de archivo (&t)
+TCHL	Enlaces duros (&H)
+TCHP	Descomprimir (http)
+TCIT	Texto de sugerencia de información (&P)
+TCLE	Extensión de columna (&T)
+TCLR	Borrar(&l)
+TCM5	MD5(&M)
+TCME	Editar comentario(&E)
+TCMT	Comentar(&T)
+TCOW	Propietario (&O)
+TCS1	SHA-1(&S)
+TDAD	Lista de ventanas DnD
+TDEL	Borrar
+TDFO	Operación de archivo retrasado
+TDUP	doble
+TEDJ	Ingrese la opción de localización de línea del editor
+TEHC	Reflejos)
+TEIF	Información de entrada
+TENN	Introduce un nuevo nombre
+TEXE	Ejecutar
+TFAC	Acción de archivo PPc
+TFCP	Comparar
+TFEM	encontrar máscara
+TFMK	Buscar marca
+TFUM	Buscar Desmarcar
+THIL	Resaltar palabras
+TINS	Ingrese el nombre del nuevo elemento del menú
+TISD	Corrección de ruta
+TLDS	disco de registro
+TLNO	Número de línea
+TMCD	Deshabilitar a cuadros de transparente
+TMCE	Habilitar a cuadros de transparente
+TMCF	Crear archivo de comentarios
+TMHL	enlace duro
+TMKD	hacer directorio
+TMKF	hacer archivo
+TOCH	entrar en modo táctil
+TPAC	Paquete de archivo:
+TPCL	registro de ppc
+TPTX	Texto sin formato (&T)
+TRDE	Leer entrada
+TREC	Cambio de nombre continuo
+TREN	Rebautizar
+TRER	Mostrar referencia
+TSAN	Guardar nombre de acción
+TSCP	Seleccionar página de código de texto
+TSDR	Seleccionar directorio
+TSEI	Información de la entrada de sincronización
+TSFN	Seleccione Archivo
+TSHL	caparazón
+TSMD	Módulo(&T)
+TSVN	Guardar nombre de archivo
+TTAB	TAMAÑO DE PESTAÑA
+TTRE	Árbol
+TTWP	Saltar sitio web
+TUPA	Descomprimir archivo
+TWRD	Escribir orden de entrada
+TXAT	todo el texto
+TXSL	Líneas seleccionadas
+UCMD	:Comando desconocido
+UDED	Actualizar datos de entrada (&.)
+UNKN	Desconocido
+UPED	%s actualizado
+USTD	La acción no es compatible con este directorio
+VBAB	Agregar mapa de bits del botón (&A)
+VBCD	[texto del botón/]nombre del consejo
+VBCL	x_xxx
+VBCR	extensión
+VBDB	Lista de botones predeterminados (&L)
+VBEI	extensión / comodín
+VBFI	Palabra o X_xxx
+VBMA	Nombre clave
+VBPJ	nombre del árticulo
+VBRB	Referencia del mapa de bits de la lista de botones: %s(&R)
+VBRK	(blanco)
+VCAU	auto
+VCBA	texto del artículo
+VCBB	elemento de vuelta
+VCBC	subtítulo
+VCBD	subtítulo atrás
+VCBE	Línea de edición de PPb
+VCBF	marco de texto
+VCBG	parte posterior del marco
+VCBK	fondo
+VCBO	ventana emergente de PPb
+VCBP	Paletas PPb (Vista)
+VCBR	Registro de ejecución de PPb
+VCBS	editar texto
+VCBT	volver a editar
+VCBU	texto seleccionado
+VCBV	seleccionado atrás
+VCBW	texto de registro
+VCBX	volver a iniciar sesión
+VCBY	registrar texto seleccionado
+VCBZ	registro seleccionado atrás
+VCCA	título, pestaña
+VCCC	Carcter de control de PPv
+VCCL	línea de cursor PPv
+VCCT	Tema de colores (Algunos colores, requieren reiniciar PPx)
+VCDA	texto
+VCDB	atrás
+VCDI	desactivar
+VCEA	etiqueta
+VCEB	Entrada de PPc atrás
+VCEC	actual
+VCED	directorio
+VCEE	encriptado
+VCEF	especial
+VCEH	oculto
+VCEI	virtual
+VCEL	enlace
+VCEM	mensaje
+VCEN	normal
+VCEO	comprimido
+VCEP	padre
+VCER	solo lectura
+VCES	sistema
+VCET	Texto de entrada de PPc
+VCFD	Marco y diálogo
+VCFE	Extensión de archivo PPc
+VCFF	texto seleccionado
+VCFG	seleccionado atrás
+VCFH	emparejar texto
+VCFI	emparejar de nuevo
+VCFJ	texto normal
+VCFK	espalda normal
+VCFL	pestaña x botón
+VCFM	pestaña x atrás
+VCFN	pestaña de texto activo
+VCFO	pestaña activa atrás
+VCFP	pestaña texto seleccionado
+VCFQ	pestaña seleccionada atrás
+VCFR	pestaña de texto normal
+VCFS	pestaña normal atrás
+VCHF	encontrar
+VCHL	Punto culminante de PPv
+VCIA	Información de PPc 1.º
+VCIB	información PPc 2do
+VCIN	texto de valor
+VCJA	mensaje
+VCJB	eliminado
+VCJC	normal
+VCJD	estado gris
+VCJE	modificado
+VCJF	adjunto
+VCJG	sin foco
+VCJH	marco
+VCJI	subrayar
+VCJJ	marcado
+VCJK	normal (línea uniforme)
+VCJL	seleccionado
+VCJM	red
+VCJN	resaltar1
+VCJO	resaltar2
+VCJP	resaltar3
+VCJQ	resaltar4
+VCJR	resaltar5
+VCJS	resaltar6
+VCJT	resaltar7
+VCJU	resaltar8
+VCJV	cursor del mouse
+VCJW	espalda inactiva (color de mezcla)
+VCLA	registro, dirección, trabajo
+VCLF	Cargador de alimentación de línea PPv
+VCLG	primera linea
+VCLH	segunda linea
+VCLI	línea
+VCLK	enlace ppv
+VCLL	gris
+VCLM	normal
+VCLN	número de línea PPv
+VCME	mensaje de texto
+VCOT	otro
+VCPB	azul
+VCPC	verde
+VCPD	cian
+VCPE	rojo
+VCPF	magenta
+VCPG	amarillo
+VCPI	gris
+VCPJ	azul claro
+VCPK	verde claro
+VCPL	cian claro
+VCPM	luz roja
+VCPN	magenta claro
+VCPO	amarillo claro
+VCPP	luz blanca
+VCPQ	negro (atrás)
+VCPR	blanco (predeterminado)
+VCRE	informe
+VCTA	Carta de fichas de PPv
+VCTB	antes de editar
+VCTC	negro para CRT
+VCTD	Oscuro para LCD
+VCTE	Luz para LCD
+VCTF	Blanco para CRT
+VCTG	etiqueta ppv
+VCTH	Colores del sistema operativo (GDI)
+VCTI	ventana de punta
+VCTR	árbol
+VCTS	comentario
+VCTT	etiqueta
+VCVA	(reservado)
+VCVB	línea límite de PPv
+VCVC	linea antigua
+VCVD	marcador
+VCVE	PPv línea de vuelta extra
+VCVT	Texto PPv, atrás
+VCWA	marco de luz
+VCWB	Cara del marco
+VCWC	Sombra del marco
+VCWD	(pesado) Cara de la ventana
+VCWE	(pesado) Cara de diálogo
+VCWF	(pesado)Texto de ventana
+VCWG	Resaltar atrás
+VCWH	Subrayar el texto
+VCWI	texto gris, para modo oscuro
+VCWJ	Texto de diálogo (pesado), para modo oscuro
+VCWK	línea de borde, para modo oscuro
+VCWL	enfoque hacia atrás, para el modo oscuro
+VCWS	PPv amplio espacio
+VDLA	ancho de nombre
+VDLC	color
+VDLD	ancho
+VDLE	Error de descarga de la lista de idiomas
+VDLF	formato
+VDLH	altura
+VDLI	identificación (1-9)
+VDLN	Proxima linea
+VDLT	texto
+VDLV	nombre-valor
+VDLW	ancho
+VDLX	ancho de extensión
+VDLY	tipo
+VDLZ	tamaño
+VDMB	marca de verificación
+VDME	Show-entradas
+VDMF	nombre de archivo corto
+VDMG	Sangría (píxeles)
+VDMI	texto de usuario
+VDMM	marca
+VDMN	imagen
+VDMP	página-no
+VDMQ	diseño de lista
+VDMS	en blanco para el borde
+VDMT	detalle de tiempo
+VDMU	ex-comentario
+VDMV	valor-cadena-id
+VDMZ	tamaño[,]
+VDNA	atributos
+VDNB	caja
+VDNC	comentario
+VDND	Espacio del disco
+VDNE	recuento de entradas
+VDNF	Nombre del archivo
+VDNG	Sangría (letras)
+VDNH	línea[-]
+VDNI	elemento-texto
+VDNL	linea[|]
+VDNM	marca-símbolo
+VDNN	icono
+VDNO	color de texto
+VDNP	todas las páginas
+VDNR	directorio
+VDNS	blanco
+VDNT	tiempo (escribir)
+VDNU	extensión de columnas
+VDNV	etiqueta de volumen
+VDNX	módulos
+VDNY	tipo de directorio
+VDNZ	tamaño
+VEAA	Archivo DLL
+VEAB	alias
+VEAC	Lista de elementos para prioridad y eliminación (&I)
+VEAD	alias nombre = valor(&I)
+VECA	estilo de vista PPc
+VECC	Artículo(&I)
+VEDA	lectura asíncrona,
+VEDB	configuración del directorio
+VEDC	cache,
+VEDD	Artículo(&I)
+VEDH	sin verificación,
+VEDI	configuración de iconos de información,
+VEDL	configuración del icono de la línea del cursor,
+VEDN	No guardar caché asíncrona,
+VEDO	ordenar la configuración,
+VEDS	Guardar asíncrono y en caché,
+VEEA	lista retrasada
+VEEC	(&I)
+VEFA	* acciones de archivo
+VEFC	Yo solo borro(&I)
+VEGA	host guardado de identificación
+VEGC	Yo solo borro(&I)
+VEHA	Texto destacado de PPv
+VEHC	Nombre del archivo
+VEHD	directorios
+VEHF	nombre de ruta completa
+VEHG	general
+VEHH	línea de comando
+VEHM	mascarilla
+VEHN	dígitos
+VEHP	directorio ppc
+VEHR	búsqueda de romaníes
+VEHS	buscar
+VEHU	Usuario - tu
+VEHV	nombre de archivo PPv
+VEHW	Nombres de PC
+VEHX	Usuario - x
+VEIA	PPc 1ra informacion
+VEJA	PPc 2da información
+VEKA	Aplicaciones marcadas
+VEKC	(&I)
+VELA	Columnas de texto PPv
+VELC	Columnas (0: completo -1: ancho de ventana) (&C)
+VELH	Artículo(&I)
+VEMA	nombre de onda / comp. comandos
+VEMC	(&I) tipo = nombre wav / línea de comandos
+VENA	Posición de la ventana
+VENC	(&I)
+VENL	Icono de extensiones PPc
+VEOA	opción PPv
+VEOC	Artículo(&I)
+VEPA	Camino
+VEPC	ID = ruta/diseño(&I)
+VESA	Agrega (&A)
+VESB	Línea de estado de PPc
+VESC	(&I)
+VESE	Editar (&A)
+VETA	Columnas de pestañas PPv,PPe
+VETC	Artículo(&I)
+VEUA	Comando de usuario
+VEUC	(&I) nombre de comando = valor(%*arg(n)
+VEVA	Datos del usuario
+VEVC	(&I) Nombre del elemento = valor
+VEYA	Otras configuraciones
+VEYC	(&I) Nombre del elemento = valor
+VFSL	carga VFS
+VFSU	Descarga VFS
+VHDE	Configuración predeterminada
+VHPC	Menú oculto de PPc
+VHPV	menú oculto ppv
+VIMC	||\x9insertar nuevo separador de columna
+VIMF	insertar nombre de archivo seleccionado
+VIMI	\\t\insertar sangría
+VIMK	&&\x9insertar prefijo de tecla de método abreviado
+VIML	*iniciar \tset directorio actual. en el archivo y ejecutar
+VIMN	Introduzca el nombre del menú (M_xxx)
+VIMS	=--\x9insert separator
+VIMY	inserte código clave...
+VKAL	Lista PPc Auto DD (&D)
+VKBL	lista de PPb
+VKBR	Referencia PPb
+VKCG	PP general
+VKCI	Búsqueda incremental PPc
+VKCT	arbol ppc
+VKED	edición de línea y PPe
+VKLI	edición de línea (con K_edit)
+VKPB	editar PPb
+VKPC	Modo de intercalación de texto PPv
+VKPE	PPe(con K_editar)
+VKPT	Modo de texto de página PPv
+VKPV	ppv generales
+VKTR	árbol general
+VKTY	Tecla de acceso directo de la bandeja PP
+VKVI	Modo de imagen PPv
+VLBN	Nombre del botón
+VLDT	Detalle
+VLFF	Presione la tecla F4 para la lista
+VLHT	inclina hacia la izquierda
+VLIL	Acción(&i)
+VLIN	Nombre del árticulo
+VLIT	inclinar a la derecha
+VLLC	Botón izquierdo
+VLLD	doble izquierda
+VLLH	presione y mantenga presionada la izquierda
+VLMC	botón central
+VLMD	doble medio
+VLMH	presionar y mantener presionado en el medio
+VLMI	Nombre del árticulo
+VLRC	botón derecho
+VLRD	doble derecho
+VLRG	gesto correcto
+VLRH	presione y mantenga presionada la derecha
+VLTA	Área objetivo
+VLTB	Botón
+VLTK	Llave
+VLTM	Nombre clave
+VLTN	Escribe un nombre
+VLWC	Botón derecho e izquierdo
+VLWH	R & L presione y sostenga
+VLXC	cuarto botón
+VLXD	cuarto doble
+VLXH	4º pulsa y mantén pulsado
+VLYC	5to botón
+VLYD	quinto doble
+VLYH	5º pulsa y mantén pulsado
+VMCB	barra de menú de ppc
+VMCR	contexto adicional de PPc
+VMDI	Contexto de la carpeta PPc
+VMEB	barra de menú del PPe
+VMEC	edición de línea, menú contextual
+VMEP	Paquete adicional de PPc \\[P]
+VMET	(O M_...)(&O)
+VMIL	Artículo(&I)
+VMLB	edición de línea, barra de menú
+VMMD	PPc insertar texto DD(&D)
+VMOB	PPc otra conversión [B]
+VMPJ	Salto de ruta PPc [0]
+VMSO	clasificación PPc
+VMTA	Menú de pestañas PPc &[-]
+VMVB	barra de menú PPv
+VMVC	contexto adicional PPv
+VMWI	comodines
+VMWS	PPc donde esta,fuente
+VNMA	auxiliar: ajustes
+VNMB	barra de menú PPx
+VNMC	Menús de extensión
+VNMG	General
+VNMO	otros ajustes
+VOLF	Saltar lista de archivos de idioma en línea
+VOPF	Carga del archivo
+VPPC	ppc
+VPPI	PPbandeja
+VPPV	PPv
+VQBA	parece deshabilitar
+VQDT	¿Eliminar %s?
+VQKM	¿Agregar atajo de tecla de comentario a MC_menu y MV_menu?
+VQNA	El ajuste no se conserva. ¿Realmente renunciar?
+VRCT	barra de herramientas ppc
+VRDF	¿Restaurar la configuración predeterminada?
+VREF	referirse
+VRFM	Barra de edición de línea (ratón)
+VRFP	Barra de edición de línea (pluma)
+VRFT	Barra de edición de línea (táctil)
+VRTB	Vuelva a intentar la acción recargando mapa de bits
+VRTT	Barra de herramientas de árbol
+VRVT	barra de herramientas PPv
+VTAI	modo de cola(&a)
+VTBA	Seleccione la imagen de la barra de herramientas.
+VTBU	Seleccione la imagen del botón de la barra de herramientas.
+VTDC	Documento
+VTHE	Maleficio
+VTIM	Imagen
+VTNM	nuevo (botón Guardar clic derecho)
+VTOE	Seleccione la aplicación.
+VTRI	Imagen sin procesar
+VTTX	Texto
+VUSD	No admitir esta imagen
+VXCR	PPc Entrar
+VXSC	PPc,PPv Mayús + Intro
+VXTV	Vista previa de la punta de PPc
+VXUP	Desempaquetar PPc[U]
+VYCP	acortar
+VYCT	cortar
+VYCU	personalizar
+VYDL	borrar
+VYFA	Agregar favoritos
+VYFC	copiar entrada
+VYFM	mover entrada
+VYFN	Unidad de red gratuita
+VYFT	panel de árbol
+VYFV	favoritos
+VYFW	adelante
+VYJP	saltar al padre
+VYLD	cambiar manejo
+VYLG	directorio abierto
+VYND	nuevo directorio
+VYNE	nueva entrada
+VYNU	Asignar unidad de red
+VYOU	operación de deshacer
+VYPE	anterior
+VYPP	propiedades
+VYPS	pegar
+VYSD	ordenar por fecha
+VYSN	ordenar por nombre
+VYSO	clasificar
+VYSZ	ordenado por tamaño
+VYTR	árbol
+VYVS	estilo de vista
+VYWS	encontrar archivo
+WITD	Necesita WININET.DLL
+WKSI	El nombre clave parece inválido
+WLLP	Directorio de ruta larga
+WNMM	Advertencia: carácter de macro no compatible.
+WNOA	Sin prefijo \'@\'
+WUML	ancho de línea no coincidente %d(este ancho:%d, ancho máximo:%d)
+XAAC	actualizar todo PPc
+XACD	Crear carpeta de nombre de archivo
+XACR	Guardar y restaurar la posición del directorio
+XALT	Deshabilitar menú por ALT
+XARD	Directorio de carga asíncrono
+XASP	Habilitar la acción de la ventana de activación del mouse
+XASR	recargar la posición del cursor
+XASS	posición ordenada del cursor
+XAST	lista atribuida
+XASU	lista de archivos copiados
+XASV	lista eliminada
+XASW	lista renombrada
+XASX	lista activada
+XAUT	auto
+XAWE	rueda externa
+XAWI	Cambio de ancho automático con estilo de vista
+XBC0	mostrar información común. línea
+XBC1	mostrar la barra de direcciones
+XBC2	árbol común
+XBC3	mostrar registro común
+XBC4	panel de diseño de pila
+XBC5	mostrar siempre
+XBC6	ventana combinada redimensionable
+XBC7	pequeño control de ventana
+XBC8	Mostrar la barra de herramientas
+XBC9	encabezamiento
+XBCA	mostrar el título del panel
+XBCB	Mostrar barra de título
+XBCC	Mostrar barra de menú
+XBCD	Mostrar pestaña por panel
+XBCE	forzar registro común
+XBCF	retraso mostrar registro común
+XBCG	Ancho de pestaña fijo
+XBCH	Pestaña de varias líneas
+XBCI	pestaña de color
+XBCJ	Mostrar pestaña por panel2
+XBCK	nueva pestaña a la derecha activa
+XBCL	nueva clasificación de ancho de pestaña
+XBCM	subir pestaña de directorio después de cerrar
+XBCO	siguiente combo
+XBCP	min cerrar
+XBCQ	Reutilizar el mismo panel de ruta
+XBCR	bloqueo predeterminado
+XBCS	sin pestaña de movimiento
+XBD0	corregir el ancho del área de la pestaña
+XBD2	pequeña barra de desplazamiento
+XBD3	Restablecer pestaña en el arranque
+XBD4	Mover cuadro de diálogo al centro del panel
+XBD5	pestaña inferior
+XBD6	boton cerrar
+XBD7	use el ID de PPc "Zxxx" en el ID combinado "A"
+XBD8	botón de cierre de ocultación automática
+XBD9	mantener la tasa de ancho de los paneles con eliminar un panel
+XBDA	Sobre el panel en la pestaña espacio nulo
+XBEP	Sonido de error
+XBRO	Navegador web
+XBSY	líneas registradas
+XBSZ	líneas de visualización de la consola
+XBTA	ventana de PPv opaca
+XBTB	imagen brillante (%)
+XBTL	mostrar pestaña
+XBTM	mostrar LF
+XBTN	mostrar el espacio de la caja
+XBTO	ventana opaca
+XBTP	camino de la imagen
+XBTY	mostrar de nuevo la imagen
+XBUW	(UNICODE ver.) calcular char. ancho
+XCAC	directorio de caché
+XCAL	pequeña calculadora
+XCAR	Selección de menú contextual de entrada predeterminada de guardado automático
+XCBS	Tamaño del búfer de ráfaga
+XCBT	en el tamaño de archivo del modo de ráfaga de activación automática
+XCBU	Tamaño mínimo de archivo de deshabilitar caché de archivos
+XCCD	conjunto de caracteres de texto volcado
+XCDC	Botón Sumar tamaños de archivo
+XCLD	tipo de cursor
+XCLE	tipo marcado
+XCMB	Ventana combinada (requiere reiniciar PPc)
+XCMC	usar combo
+XCPA	título de la pestaña
+XCPG	modo de desplazamiento
+XCPS	archivo de lista
+XCTA	no cuenta
+XCTB	parada en 10 segundos
+XCTC	parada en 10 segundos
+XCTD	no te detengas
+XCTT	Tamaño de conteo
+XCWT	Comentar guardar
+XDDX	Introduzca dir. tiempo por hover en DnD
+XDIN	Archivo de icono para directorio
+XDLF	Lista de unidades
+XDLG	Menú de unidad (\[L])
+XDLH	Salto de unidad ([1]...[9])
+XDLI	mostrar (Límite) en el título (requerir reiniciar PPx)
+XDLJ	Lista de PC(\\,\\nombrepc)
+XDLO	registro del archivador
+XDLP	registro de errores
+XDLQ	todo el registro
+XDPM	Mostrar máscara en el pie de foto
+XDSA	Mostrar icono en el área de información
+XDSB	Icono de entradas predeterminadas
+XDSS	Habilitar escalado de pantalla
+XDST	Ordenar/Máscara/Ver destino predeterminado de estilo
+XEDI	Editor de texto
+XEDL	Prefijo de línea de punto del editor de texto
+XEED	cuadro de edición enganchado
+XELE	Usar alto nivel de ejecución en la actualización
+XEMV	Cambio de timbre en INS/DEL
+XEOC	Parpadeo de error
+XESB	mostrar referencia
+XESC	con extensión
+XESD	primera posición
+XESE	diálogo de cambio de nombre
+XESF	arriba
+XESG	extensión
+XESH	abajo
+XESI	seleccionar
+XETS	extensión
+XEXL	extensión longitud máxima
+XEXM	Habilitar archivos creados con enter
+XEXS	alarma nuevo expediente ejecutivo
+XFAT	tiempo fijo para FAT
+XFCO	PPb(Vista)
+XFCT	pestaña y encabezado
+XFDI	cuando llene el directorio, sin entrada de archivo
+XFDL	diálogo
+XFEC	color de nombre de archivo
+XFFI	Arreglo para dibujar texto a la izquierda
+XFFX	la extensión fija es minúscula
+XFIX	corrección de PPv
+XFL0	Líneas de lista
+XFL1	Coincidencia parcial
+XFL2	Exhibición automática (OS)
+XFL3	Salón del automóvil1
+XFL4	Salón del automóvil2
+XFL5	Salón del automóvil3
+XFL6	tiempo de visualización de la lista (ms)
+XFL7	tiempo de espera de listado (ms)
+XFL8	Longitud mínima de la lista
+XFLE	arreglar el parpadeo
+XFLS	lista de relleno
+XFME	general
+XFOA	ilimitado
+XFOB	limitado
+XFOC	serializado (máximo 32 trabajos)
+XFOW	Copia de fondo
+XFST	Lista de lectura rápida
+XFTR	árbol
+XFUF	PPv proporcional
+XGMD	Intercambio cuidadoso ([G])
+XGST	Usar gesto
+XHIR	Mantener las posiciones del cursor
+XHSR	Mantener posiciones de directorio
+XIAC	Habilitar lector de pantalla
+XIFX	tamaño del icono en el área de información
+XIMC	zoom
+XIMD	tipo de zoom
+XIME	controlar IME desactivado
+XING	vista gris
+XISA	búsqueda incremental
+XITO	tiempo de espera de búsqueda (ms)
+XIXO	Animar (requiere reiniciar PPv)
+XIXP	Modificar fondo (requiere reiniciar PPv)
+XIXQ	Aplicar perfil de color (requiere reiniciar PPv)
+XJIA	no flash
+XJIB	flash trasero
+XJIC	destello
+XJID	sonido
+XJIE	silencio
+XJIF	sonido de fondo
+XJIG	sonido
+XJIH	archivo de onda
+XJIN	Acción en el cuadro de diálogo Mostrar
+XJIO	Acción en completa
+XJLA	espectáculo
+XJLB	espectáculo
+XJLC	mostrar siempre en la ventana combo PPc
+XJLD	ocultar diálogo con mostrar lista de trabajos
+XJLS	Mostrar ventana de lista de trabajos
+XJLT	lista de trabajo
+XKRA	alieas clave reflexiva
+XKTR	tecla de acceso rápido de PPc
+XLAG	Idioma de la pantalla
+XLDM	Mostrar menú con el botón izquierdo DD(&D)
+XLDN	Mostrar siempre la ventana del menú
+XLDO	Soltar el modo predeterminado
+XLGA	terminado
+XLGB	ruta de origen
+XLGC	ruta de destino
+XLGD	respaldo
+XLGE	Guardar registro común en archivo (X_save)
+XLGG	saltar
+XLGH	Mostrar tipos de registro de operaciones
+XLGI	hacer carpeta
+XLIC	Intervalo de clics de entrada
+XLLZ	modo de lectura de archivos grandes
+XLNM	mostrar número de línea
+XLOG	Inicio sesión
+XLSP	espacio de línea general
+XLT0	centrarse en el siguiente elemento
+XLT1	habilitar personalizar y completar el nombre
+XLT2	adelante
+XLT3	parcial
+XLT4	parcial y selecto
+XLT5	migemo
+XLT6	reservado1
+XLT7	reservado2
+XLTB	usar relleno TAB
+XLTC	modo de llenado
+XMDD	Habilitar cuadro de edición DD(&D)
+XMEN	cerrar menú en tecla indefinida
+XMIF	corrección de enfoque minimizado
+XMIS	varios
+XMLE	Mostrar multilínea
+XMON	Forzar el modo multimonitor
+XMPA	panel máximo
+XMPB	primer panel
+XMSD	Etiqueta de directorio
+XMSL	Clic en enlace del explorador
+XMSM	Marcar desde la última marca(shift+clic)
+XMVD	Fuera de la ventana con el cursor arriba/abajo
+XMVE	Fuera de rango por el cursor arriba/abajo
+XMVL	Fuera de la ventana con el cursor izquierdo/derecho
+XMVM	Fuera de rango por el cursor izquierdo/derecho
+XMWI	Columnas del menú (requieren reiniciar PPx)
+XNBF	mostrar siempre el cursor en la ventana
+XNCP	nuevo conjunto de caracteres de texto
+XNFT	Tamaño del formato (Z)
+XNFU	Tamaño del formato (z)
+XNFV	Tamaño del formato (Dx, mS)
+XNFW	Tamaño del formato (Dx, ms)
+XNOO	No
+XOCG	imagen en miniatura
+XOCH	mostrar el icono en la imagen de la uña del pulgar
+XOCI	mostrar (usar explorador)
+XOCJ	mostrar el texto del archivo
+XOCK	Reducir imagen en rectángulo
+XOCL	mostrar en archivo
+XOCM	caché a miniatura.jpg
+XODR	Relleno de nombre de unidad
+XODS	alfa
+XODT	alfa y dígito
+XOFF	apagado
+XOND	Nombre de nueva carpeta predeterminado (compatible con %x)
+XONF	Nuevo nombre de archivo predeterminado (compatible con %x)
+XONN	en
+XPM0	Ancho grande
+XPM1	Gran altura
+XPM2	Desactivar inicio de arrastre
+XPM3	Deshabilitar menú oculto
+XPM4	Entrada abierta con un solo toque
+XPM5	Dirección de par de ventanas automáticas
+XPM6	Deshabilitar acción con activo
+XPMB	Mostrar barra de comandos
+XPMC	Modo táctil
+XPMD	click del raton
+XPME	tocar
+XPMF	toque la pluma
+XPRS	imprimir
+XPRT	margen
+XPRU	escala de imagen
+XPSA	desactivar
+XPSB	deshabilitar (mostrar directorio)
+XPSC	permitir
+XPSD	habilitar y saltar
+XPSK	directorio de archivo
+XPSL	Destacar entrada puntiaguda
+XPTG	use la ruta del par como antes de la ventana activa sin ventana combinada
+XRCH	migemo caché letras
+XRCL	usar lista PPc
+XREY	usar la biblioteca Regexp
+XRRT	iniciar el tiempo de recarga (activo, seg)
+XRRU	iniciar el tiempo de recarga (no activo, seg)
+XRTR	para el directorio de entrada
+XRTS	sin ventana secundaria
+XRTT	árbol (1 ppc solamente)
+XRTU	árbol
+XSAT	&\[alfabeto] acción
+XSAV	directorio de copia de seguridad
+XSDI	extensión en el directorio
+XSEM	búsqueda de la primera letra
+XSLW	Coeficiente de lectura lenta
+XSPS	un proceso
+XSR0	volver a escribir
+XSR1	parte 1
+XSR2	parte 2
+XSRM	Desplazarse
+XSTP	Mostrar sugerencia de nombre largo
+XSTQ	Mostrar sugerencia de información de archivo al pasar el mouse
+XSTR	Mostrar vista previa haciendo clic en la cola de entrada
+XSTS	vista previa mostrar posición
+XSTV	tipo de programa de vista previa
+XSUS	directorio susie
+XSVZ	sincronizar el tamaño de la vista
+XSZM	Tamaño de archivo sumado
+XTAB	barra de pestañas (requiere reiniciar PPc)
+XTAM	comando terminal
+XTCH	PPb en terminal por defecto
+XTDD	Habilitar texto DD(&D)
+XTDR	Mostrar entrada [.]
+XTDS	Mostrar [..] entrada
+XTDT	Mostrar [.][..] siempre
+XTFO	Otras configuraciones se encuentran sobre la etiqueta de opción del cuadro de diálogo de operación de archivo.
+XTMD	siempre modo cursor
+XTRA	muestra el icono
+XTRB	cubrir
+XTRC	icono sencillo
+XTRD	barra de herramientas
+XTRE	Ventana de árbol
+XTRF	diálogo de cambio de nombre
+XTRG	vista sincronizada
+XTRH	mostrar carpeta protegida
+XTRY	Usar bandeja de tareas
+XTSB	botón de la barra de tareas del paquete (después de Win7, requiere reiniciar PPx)
+XTWI	píxel
+XTWT	en la Terminal de Windows
+XUCS	Mostrar cursor de línea
+XUIN	Archivo de icono para incógnitas
+XULH	Altura del cursor subrayado
+XUNB	Ejecutar UNxxx en segundo plano
+XUNF	texto proporcional
+XUP0	seleccione la acción
+XUP1	ninguna acción
+XUP2	notificar
+XUP3	actualizar, notificar
+XUP4	actualizar, notificar, respaldar
+XUP5	actualizar
+XUP6	actualizar, copia de seguridad
+XUPM	Personalizar actualización
+XUUE	Error de acceso al servidor.
+XUUN	Archivo de actualización no encontrado.
+XUUQ	Encuentra la versión %s. ¿Actualizar desde %s?
+XUX1	Estándar de Windows (GDI)
+XUX2	Oscuro
+XUX3	Luz
+XUXT	Modo oscuro para diálogo, menú (Win10 1903, requiere reiniciar PPx)
+XVDA	botón de desplazamiento
+XVDB	botón seleccionar
+XVDC	botón mover ventana
+XVDD	usar desplazamiento automático
+XVDE	Usar gesto
+XVIE	Visor de archivos
+XVLF	margen izquierdo
+XVNM	número de línea lógica
+XVPS	Mostrar posición por PPc llamado
+XVZS	cambiar el rango seleccionado
+XWBC	nuevo ppb
+XWBD	tiempo de diálogo (seg)
+XWDE	Eliminar directorio de verificación con archivo
+XWDF	Eliminar cheque con entrada marcada fuera de la pantalla
+XWDG	Eliminar atributo de verificación
+XWDH	Omitir error leve (archivo no encontrado).
+XWDL	Mostrar diálogo a reciclado
+XWDM	Mostrar cuadro de diálogo para eliminar
+XWHE	líneas de rueda
+XWPB	usar ppb
+XWSZ	leer cheque
+XXES	Extender tecla de mayúsculas
+XXFC	Comando de comparación de archivos (fuente %FDC, destino %2)
+XYES	Sí
+YGBJ	trabajo de descanso
+YGBW	detrás de la ventana
+YGCZ	borrar ventana de zoom
+YGEX	salida
+YGFD	libre definir
+YGMD	mover la ventana hacia abajo
+YGMH	pequeña altura de la ventana
+YGML	mover la ventana a la izquierda
+YGMR	ventana mover a la derecha
+YGMU	mover la ventana hacia arriba
+YGMZ	minimizar
+YGOW	ventana opaca
+YGPW	ventana transparente
+YGRP	restaurar la posición de la ventana
+YGSH	mostrar ayuda
+YGSM	menu del sistema
+YGSP	guardar la posición de la ventana
+YGSW	ancho de ventana pequeño
+YGTW	arriba a la ventana
+YGWH	gran altura de la ventana
+YGWW	ancho de ventana ancha
+YGZI	acercar la ventana
+YGZO	alejar la ventana
+YTGG	general
+YTGW	acción de ventana general
+ZGHL	Ayuda; clic derecho o tecla F1
+ZTCC	Cursor
+ZTCD	Mostrar (completado)
+ZTCE	búsqueda de entradas
+ZTCI	Icono
+ZTCL	Diseño y barra de pestañas
+ZTCM	movimiento del cursor
+ZTCN	Detalle del cursor
+ZTCO	Operaciones
+ZTCV	Vista
+ZTDR	Dibujar
+ZTFO	Operación de archivo
+ZTFS	Fuente
+ZTGR	General
+ZTLE	editor de línea
+ZTNS	sin soporte
+ZTOP	Operación
+ZTOT	Otros
+ZTPB	PPb - consola
+ZTPC	PPc - administrador de archivos
+ZTPE	PPe - editor de texto
+ZTPF	PPffix - renombrador de extensiones
+ZTPU	PPcust - personalizador
+ZTPV	PPv - visor de archivos
+ZTPY	PPtray
+ZTVD	Arrastrar
+ZTVI	Vista de imagen
+ZTVT	Vista de texto
+};bcdombgbmmejledhmbnebgfkkkgjekkoicjfcainoeogcllpdlihnggiefhalljjapmhbhbbnlahbfpkkmhfdcbkfkpkgcpllhmoolbdehdjjnjlmjlmaklnnhldgkomaie 

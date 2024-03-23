@@ -1,0 +1,916 @@
+﻿Mes0412	=#{	한국 
+0000	1782
+0001	확인
+0002	취소
+0003	중단 (&A)
+0004	재시도 (&R)
+0005	무시 (&I)
+0006	예 (&Y)
+0007	아니요 (&N)
+7005	Extname (&E)
+7007	옵션 (&O)
+7011	실행
+7012	PPb를 기다리십시오 ...
+7013	자신 (&s)으로 실행
+7014	새 PPb (&n)로 실행
+7018	로그인 비밀번호 입력
+7019	통로
+701D	재 로그인 (&C)에서 연결
+701E	사용자 이름 (&U)
+701F	비밀번호 (&P)
+7020	파일 작업
+7022	새 날짜 만 (&n)
+7023	이름 바꾸기 (&R)
+7024	덮어 쓰기 (&O)
+7025	건너 뛰기 (&S)
+7026	아카이브 사용 (&A)
+7027	번호 추가 (&b)
+7028	추가 (&p)
+7029	모든 동일한 동작 (&W)
+702A	대문자 (&U)
+702B	소문자 (&L)
+702C	강제 8.3 (&F)
+702D	잘못된 공간 (&g) 삭제
+702E	번호 삭제
+702F	읽기 전용 (&R)
+7030	아카이브 (&A)
+7031	숨김 (&H)
+7032	시스템 (&X)
+7034	보안 속성 복사 (&e)
+7035	sKip 약간의 오류 (&K)
+7036	자동 '모두'확인 (&u)
+703F	같은 이름 액션
+7040	이름 필터
+7041	속성
+7042	목적지 (&D)
+7043	이름 바꾸기 (&e)
+7044	크기 나누기 (&v)
+7045	일련 번호 (&N)
+7047	SACL (&C) 복사
+7048	디렉토리 (&D)
+7049	버스트 / 셀프 버퍼링 (&g)
+704A	평평 / 나무를 만들지 않음 (&l)
+704B	디렉토리 유지 (&K)
+704C	loG 창 (&G)
+704D	실행 취소 로그 (&U)
+704E	%'(&a) 추출
+704F	자동 읽기 전용 끄기 (&O)
+7050	오래된 파일 백업 (&V)
+7051	첫 번째 시트 (&s)
+7052	파일 이름 (&n)
+7053	디렉터리 이름 수정 (&D)
+7054	새 디렉터리 자동 경고 (&S)
+7055	낮은 우선 순위 (&L)
+7056	소스 항목
+7057	목적지 항목
+7058	속성 \n 파일 크기 \n 생성 시간 \n 쓰기 시간 \n 액세스 시간
+7059	결과 (&R)와 함께 대기하지 않음
+705A	&3 : 옵션
+705C	&2 : 이름 바꾸기
+705E	&1 : 일반
+7062	모든 반응 (&U) 사용
+7063	지연 목록 추가 (&D)
+7064	DifferSize (&z)
+7068	대상 (&V)에서 파일 이름 바꾸기
+7070	수면 진입 방지 (&P)
+7071	복호화 된 대상 허용 (&D)
+7072	Join batch (&J) 만들기
+7073	소스 이름
+7074	총 크기 계산 (&C)
+7075	먼저 존재 확인 (&E)
+7076	직렬화 작동 (&Z)
+7077	파일 닫기 후 이동
+7078	확장자 수정 (&Y)
+7079	로그 &4
+7400	테스트 (&T)
+7402	명령 목록
+7411	데이터 사용자 지정 (&C)
+7412	텍스트로 저장 (&S)
+7413	텍스트로 추가 (&A)
+7414	텍스트 (&U)로 업데이트
+7415	텍스트로 덤프 (&D)
+7416	초기화 (&I)
+7417	히스토리 데이터 (&H)
+7418	텍스트로 덤프 (&o)
+7419	초기화 (&R)
+741A	키 확인 (&K)
+741C	폴더 연결 (&P)
+741D	폴더 연결 해제 (&U)
+741E	PPc (&f)로 폴더 열기
+741F	콘솔 숨기기 (&l)
+7420	파일
+7421	편집 및 추가 (&E)
+7429	편집 된 텍스트로 사용자 지정
+742C	추가 (&A)
+742D	텍스트 (&e) 사용
+742E	결과 (&R)
+7436	추가 (&A)
+7437	삭제 (&D)
+7439	색상 (&C)
+743B	기타 (&E)
+743C	밑줄 (&U)
+743D	그림 물감
+743E	확장명 (&x)으로 정렬
+743F	색상으로 정렬 (&l)
+7456	파일 유형
+7459	유형 (&y)
+7463	키
+7464	키 (&S)
+7465	버튼
+7467	마우스
+746A	<-
+746B	^
+746C	V
+746D	->
+746F	명부
+7472	PPx 재부팅 필요
+7473	사용 (&U)
+7474	세부 정보 (&P)
+7477	기본 확장자 (&D)
+7478	자동 감지 (&A)
+7479	확장 (&P)
+747A	대상 (.bmp, .dib) (&e)
+7482	기타
+7491	위로 (&U)
+7492	아래로 (&w)
+7493	단축키 (&K)
+7496	FG 색상 (&F)
+7497	BG 컬러 (&B)
+7498	편집 버튼 (&B)
+749A	메뉴
+74E3	삭제 (&D)
+74E4	저장 (&v)
+74E5	삽입 (&I)
+74E6	세부 사항 (&X)
+74EA	매크로 문자 (&M)
+74EC	댓글 (&C)
+74ED	명령 (&L)
+74F8	일반
+74FC	찾기 (&F)
+7602	확장 모드
+7603	사용 키를 누르고 '확인'을 클릭합니다.
+7604	( 'NULL'고객에게 필요)
+7608	그림 물감
+760C	하이라이트 색상
+7617	숨기기 (댓글) (&C)
+7618	FULL 와이드 (&L)
+7619	전체 이름 길이 (&N)
+761B	표시 형식
+761C	형식 (&F)
+7676	수지
+77FD	참조 (&f)
+77FE	저장 (&S)
+77FF	신청 (&A)
+7800	속성
+7801	AttriBute (&B)
+7802	만들기 (&1)
+7803	쓰기 (&2)
+7804	액세스 (&3)
+7805	(&씨)
+7806	(&W)
+7807	(&큐)
+7808	낡은
+7809	새로운
+780A	디렉토리 수정 (&M)
+780B	세부 사항 (&X)
+780C	읽기 전용 (&R)
+780D	숨김 (&H)
+780E	시스템 (&S)
+780F	아카이브 (&A)
+7810	압축 (&p)
+7811	암호화 (&E)
+7812	하위 디렉터리 (&D)
+7813	색인 (&I)
+7814	임시 (&T)
+7815	오프라인 (&O)
+7840	드라이브 정보
+7841	드라이브 이름
+7842	음량
+7843	디스크 유형
+7844	일련 번호
+7845	파일 시스템
+7846	사용 된 공간
+7847	자유 공간
+7848	진짜 무료
+7849	전체 공간
+784A	바이트 / 섹터
+784B	바이트 / 클러스터
+784C	최대 파일 이름 길이
+784D	바이트
+784E	클러스터
+7860	케이스가 보존 됨
+7861	대소 문자 구분
+7862	유니 코드
+7863	ACLS
+7864	파일 압축
+7865	볼륨 압축
+7866	명명 된 스트림
+7867	할당량
+7868	부족한
+7869	재분석
+786A	먼
+786B	개체 IDS
+786C	암호화
+786D	읽기 전용
+786E	한 번 순차적 쓰기
+786F	업무
+7870	하드 링크
+7871	확장 된 속성
+7872	fileID로 열기
+7873	USN 저널
+7874	무결성 스트림
+7875	참조 계산 차단
+7876	희소 VDL
+7877	DAX, 직접 액세스
+7881	디렉토리 마스크 (&D)
+7882	실시간 마스크 (&m)
+7884	형식 (&t)
+7885	단어 일치 (&W)
+78C0	증분 검색
+78C2	위로 (&U)
+78C3	아래로 (&D)
+78C4	마크 (&M)
+78C5	전면 (&F)
+78C6	로마 (&o)
+78C7	세부 정보 (&T)
+78D0	PPc 창 설정
+78D1	더블 부트 (&D)
+78D2	이중 닫기 (&C)
+78D3	더블 액티브 (&A)
+78D4	JointWindow (_) (&J)
+78D5	왼쪽 / 오른쪽 (&L)
+78D6	위 / 아래 (&U)
+78D7	쌓여 (&P)
+78D8	크기 수정 (&S)
+78D9	활성 PPc (&F) 수정
+78DA	크기 (&z)
+78DB	크기 + 위치 (&o)
+78DC	콤보 (&m)
+78E0	상세 정렬
+78E2	케이스 (&C)
+78E3	가나 (&K)
+78E4	비 공백 (&N)
+78E5	기호 (&y)
+78E6	와이드 (&W)
+78E7	문자열 정렬 (&t)
+78E8	숫자 (&u)
+78EC	마지막 항목 (&E)
+78ED	반전 &1
+78EE	반전 &2
+78EF	반전 &3
+78F0	파일은 어디에 있습니까?
+78F1	출처 (&S)
+78F3	파일 이름 (&n)
+78F5	그리고, 파일명 (&A)
+78FA	검색 표시 (&m)
+78FB	디렉토리 (&H) 있음
+78FC	하위 디렉터리 (&u)
+78FD	가상 FS (&V)
+7900	마크 상세 비교
+7910	일반
+792A	액세스 시간 :
+792B	시간 수정 :
+792C	시간 만들기 :
+792D	크기:
+792E	통로:
+792F	유형:
+7C00	붙여 넣기 유형 선택
+7C08	인쇄
+7C0A	지금 인쇄 중 ...
+ACET	\n 및 %d 응용 프로그램
+ADHD	이 파일은 응용 프로그램에서 사용 중입니다. \n
+ADTE	제목을 입력하세요.
+AICP	체크 패턴 추가
+ASTL	시작 목록 추가
+BRAK	직업 중단
+BREX	정규식 라이브러리 필요
+BUSY	바쁜...
+CAOF	캐시 : 꺼짐
+CAON	캐시 : 켜짐
+CCAN	취소
+CCMC	모두 일치
+CCMP	비교 완료
+CDAT	Atr-Time-Name (&A)
+CDCM	댓글 (&m)
+CDD1	세부 정보 1 (&D)
+CDD2	세부 정보 2 (&4)
+CDFN	성명 (&n)
+CDI1	아이콘 1 (&5)
+CDI2	아이콘 2 (&6)
+CDI3	아이콘 3 (&7)
+CDID	아이콘 세부 정보 (&I)
+CDL1	목록 1 (&L)
+CDL2	목록 &2
+CDL3	목록 &3
+CDT1	썸네일 1 (&T)
+CDT2	썸네일 2 (&8)
+CDT3	썸네일 3 (&9)
+CMP1	동일한 SHA-1 (&H)
+CMPA	동일한 크기 &&시간 (&a)
+CMPB	동일한 바이너리 (&B)
+CMPC	댓글 (&C)
+CMPD	상세 ... (&D)
+CMPE	기존 파일 (&E)
+CMPF	확장자가없는 파일 이름 (&F)
+CMPH	해시를 클립 보드 (&C)와 비교
+CMPI	파일 크기 (이름 확인 없음) (&I)
+CMPL	대용량 파일 (&L)
+CMPM	댓글 (1 창) (&m)
+CMPN	새 파일 (&F)
+CMPQ	동일한 크기, 모든 이름 (&Q)
+CMPS	파일 크기 (&S)
+CMPT	타임 스탬프 (&T)
+CMPW	alOne 파일 (&O)
+CMPX	존재 (디렉터리 포함) (&x)
+CMPZ	같은 파일 크기 (1window) (&Z)
+COMP	완료되었습니다.
+CPDN	클립 완료
+CPML	선택 모드 나가기
+CPMS	모드 선택
+CPPN	클립 디렉토리 완료
+CPTX	클립
+CRSS	설정 저장
+CTHE	HookEdit (&E)
+CUTR	컷 준비
+DDAB	추가 버튼
+DDAI	트리에 항목 추가
+DDAL	목록 파일에 항목 추가
+DDCM	계속할 수 없습니다.
+DDCP	복사 (&C)
+DDDP	Dup on (&D)
+DDDT	세부 정보 (&a)
+DDET	등 ... (&e)
+DDJP	점프 (&J)
+DDLI	(&S) 바로 가기
+DDML	목록 파일 만들기 (&L)
+DDMV	이동 (&M)
+DDOP	열기 (&O)
+DDSC	바로 가기 (&S)
+DDSW	다음으로 바꾸기 (&w)
+DDTX	텍스트 (&t)
+DEFA	기본
+DEXT	%s 삭제
+DICD	CD / DVD / BD ...
+DIFI	결정된
+DIRA	Ramdisk
+DIRE	먼
+DIRM	이동할 수 있는
+DIRS	<dir>
+DREN	디렉토리 (&i)
+DSAR	비동기 읽기 (&A)
+DSCA	취소 (&C)
+DSCV	캐시보기 (&C)
+DSEI	항목 아이콘 (&Y)
+DSFO	&0 : 강제
+DSHO	&0 : 기본값
+DSIA	오버레이 (안전)
+DSIB	공백
+DSIF	틀
+DSIH	오버레이 (캐시 없음)
+DSII	정보 설정
+DSIL	정보 라인 아이콘
+DSIN	표준
+DSIO	오버레이 포함
+DSIS	단순한
+DSIT	...을 통하여
+DSIW	더 쇼 없다
+DSMA	축소판 확대
+DSMI	축소판 축소
+DSSD	-디스크에 캐시 저장 (&D)
+DSSE	-매번 캐시 저장 (&E)
+DSSM	느린 모드 (&S)
+DSTA	&4 : 아카이브
+DSTD	&5 : 디렉토리 모드
+DSTE	&3 : 일시성
+DSTF	&4 : 목록 파일
+DSTL	&2 :이 경로 및 하위 디렉토리
+DSTP	&1 :이 경로
+DSTS	&6 : 별도 경로
+DSWM	수정 된보기 (&W)
+EACO	이미 계산 중
+EBDK	%s는 잘못된 키 이름입니다.
+EBPC	잘못된 * 창 명령 : %s
+EBRK	Braket 오류
+EBRV	Windows Vista 이상이 필요합니다.
+EBSG	%s는 잘못된 서명입니다.
+EBWS	잘못된 파일 시스템
+EC32	comdlg32.dll로드 오류
+ECDR	포장을 풀 수 없습니다.
+ECFL	영역 흐름 사용자 지정
+ECUD	실행 취소를 실행할 수 없습니다.
+EDAD	DD 결함 (&D)
+EDAL	모두 선택 (&A)
+EDBL	블록 모드 (&B)
+EDCA	취소 (&n)
+EDCP	복사 (&C)
+EDCU	잘라 내기 (&t)
+EDDL	삭제 작업 오류 : %s
+EDEC	인코딩 (&e)
+EDEL	삭제할 수 없습니다
+EDET	유형 (&t)
+EDIT	편집하다
+EDPA	붙여 넣기 (&P)
+EDTD	임시 디렉터리 삭제 오류
+EECR	%s에서 항목 '%s'을 (를) 찾을 수 없습니다.
+EEFT	%s을 (를) 실행할 수 없습니다.
+EENF	항목을 찾을 수 없습니다.
+EENM	전자 번호 오류
+EFLW	버퍼 흐름
+EHKY	핫키 (%s) 등록 오류
+EKCD	주요 오류
+EKFT	키 코드 오류
+EKNF	키워드를 찾을 수 없습니다.
+ELST	목록에서 지우기 (&l)
+ENFF	%s을 (를) 찾을 수 없습니다.
+ENOM	충분하지 않은 추억
+ENSO	지원하지 않음
+ENSP	구분 기호 \'%c \'을 (를) 찾을 수 없습니다.
+ENUD	%s는 UnXXX가 아닙니다.
+EOEC	PPc를 더 등록 할 수 없습니다.
+EOLT	크기가 너무 깁니다.
+EPRM	매개 변수 오류
+EPTH	경로 오류
+EREG	정규식 오류 : %s
+ESCT	바로 가기 오류
+ESEP	구분자를 찾을 수 없습니다.
+ESHO	지금 열린 아카이브에 액세스 할 수 없습니다.
+ETMW	형식 문자 'W'/ 'w'가 너무 많습니다.
+EUFM	알 수없는 형식
+EUKW	알 수없는 키워드
+EUOP	알 수없는 옵션 : %s
+EUXC	알 수없는 명령 : * %s
+EWFT	W 형식 오류
+EWNF	NTFS에서 지원할 수 없습니다.
+EXEX	파일이 존재
+EXIT	종료 (&x)
+EXNF	새로운 창조물
+EXNW	새 파일이 있습니다.
+EXOL	이전 파일이 있습니다.
+FBAC	조치 : (&i)
+FBAK	백업 오류입니다.
+FBDW	PPb 심각한 오류
+FDLW	PPx 시스템 테이블이 손상되었습니다 %04X
+FEWE	찾은 파일이 잘못된 위치에서 추출되는 것 같습니다.
+FEXP	탐색기 폴더
+FIXE	이 파일 유형은 %s 및 %s 인 것 같습니다. \n이 파일 확장자는 수정할 필요가 없습니다.
+FIXH	PPffix는이 아이콘에 놓을 때 확장 유형을 확인합니다.
+FIXM	이 파일 유형은 %s 및 %s 인 것 같습니다. \n 파일 확장자를 수정 하시겠습니까?
+FIXU	파일 유형을 알 수 없습니다.
+FLAC	모두 완료
+FLCA	취소 된
+FLER	오류
+FLEX	존재했다
+FLLS	건너 뛴
+FLNO	작동하지 않음
+FLOD	<로딩>
+FLPC	부분적으로 완료
+FLTC	존재하지 않음
+FLTE	있다
+FMYF	드라이브 목록
+FNET	네트워크 PC
+FOCA	취소
+FOCL	닫기
+FOCO	계속하다
+FOCP	중지
+FOCS	건너 뛰기
+FOFC	FC (&C)
+FOOK	확인
+FOST	스타트
+FUPD	디렉토리를 찾을 수 없습니다. 상위 디렉토리를 이동하십시오.
+FUPR	디렉토리를 찾을 수 없습니다. 루트 디렉토리를 이동하십시오.
+GDAI	자동 채우기
+GDAR	자동 프레임
+GDFI	가득 따르다
+GDFR	틀
+GSIG	서명이 좋다.
+HDRA	속성
+HDRC	생성 일자
+HDRD	데이트
+HDRE	액세스 한 날짜
+HDRN	이름
+HDRS	크기
+HPDN	HTTP 완료.
+IANI	애니메이션 : [P]
+IDIR	디렉토리 (&D)
+IDIV	페이지 분할 모드 ([<] [>], 모두 읽기 : [/])
+IFCN	파일 계산 중 ...
+IGAN	애니메이션 (&m)
+IGNP	다음 페이지 (&N)
+IGPP	이전 페이지 (&P)
+ILFI	목록 파일 (&L)
+IMAB	취소 (&a)
+IMCA	취소 (&n)
+IMIG	이곤 레 (&I)
+IMNO	아니요 (&N)
+IMOK	확인
+IMRE	재시도 (&R)
+IMSK	SkIp (&I)
+IMST	시작 (&Y)
+IMTC	취소 (&C)
+IMYE	예 (&Y)
+IMYK	확인 (&Y)
+IPAG	다중 페이지
+ISEA	증분 검색 모드
+ITCK	닫은 후 하이라이트 유지 (&K)
+ITCM	댓글 (&C)
+ITFE	이름 확장자 (&E)
+ITFN	파일 이름 (&N)
+ITHA	모두 강조 (&G)
+ITHL	하이라이트 (&H)
+ITMA	모두 표시 (&A)
+ITMO	확인 표시 (&M)
+ITSH	하이라이트 매치 엔트리 (&L)
+JLER	오류>
+JLEX	exec>
+JLPA	일시 중지>
+JLWA	기다려>
+JMAE	추출물
+JMAL	모두
+JMAP	아카이브
+JMAT	속성
+JMCL	클립
+JMCO	비교
+JMCP	부
+JMCR	맑은
+JMCS	크기 수
+JMCU	절단
+JMDE	지우다
+JMJO	일
+JMLI	링크 / 접합
+JMMO	움직임
+JMMR	거울
+JMPA	풀
+JMPR	속성
+JMPS	바로 가기 붙여 넣기
+JMPV	시사
+JMRE	이름 바꾸기
+JMRU	실행
+JMSH	지름길
+JMSL	Symlink
+JMTE	텍스트 편집
+JMUN	실행 취소
+JNCL	CLSID (&C)
+JNJL	링크 (&l)
+JNSH	단축키 (&s)
+JNST	스트림 (&t)
+JPCL	CLSID (쌍 창) (&i)
+JPDI	쌍 창 표시 (&p)
+JPJL	링크 (페어 창) (&r)
+JPSH	단축키 (페어 창) (&p)
+JPST	스트림 (쌍 창) (&w)
+JPLN	점프 링크
+JWOF	참여 창 : 꺼짐
+JWON	참여 창 : 켜짐
+KWAT	\n 계속하려면 아무 키나 누르십시오.
+LDAD	주소
+LDDR	드라이브
+LDIN	입력
+LDOL	자물쇠
+LDOS	분리 기호
+LDSI	XC_inf
+LDST	XC_stat
+LERE	목록에서 항목을 지 웠습니다.
+LGAP	추가
+LGCR	창조하다
+LGDE	지우다
+LGER	오류
+LGOW	덮어 쓰기
+LGWA	경고
+LHIL	가장 밝은 부분
+LHIO	강조 표시 해제
+LMAK	표
+LOAD	로딩
+LRMA	리버스 마크
+LUMA	표시 해제
+LYCA	캡션 (&C)
+LYDB	도크 하단 (&B)
+LYDT	독 탑 (&D)
+LYHA	헤더 (&H)
+LYIL	정보 라인 (&I)
+LYJL	작업 목록 (&J)
+LYLG	로그 (&g)
+LYME	메뉴 바 (&M)
+LYOT	기타 (&O)
+LYSA	표준 주소 표시 줄 (&a)
+LYSC	스크롤바 (&o)
+LYSL	상태 라인 (&S)
+LYSS	스크롤바 바꾸기 (&p)
+LYST	표준 도구 모음 (&t)
+LYTI	제목 표시 줄 (&l)
+LYTR	나무 (&r)
+LYWM	창 ... (&W)
+MBCP	메시지 텍스트 클립
+MCOP	열기 (&o)
+MCPL	재생 (&P)
+MCPR	인쇄 (&p)
+MCRC	공통 메뉴 편집 (&c)
+MCRD	기본 선택 (&d) 설정
+MCRE	기본 명령 설정 (&e)
+MCRK	다음으로 실행 (&a)
+MCRV	관리자 권한으로 실행 (&a)
+MCRX	파일 이름 확장 메뉴 편집 (&x)
+MDLC	시프트 사용 : 삭제
+MEAD	항목 추가 (&A)
+MEDE	항목 삭제 (&D)
+MEDT	메뉴 편집 (&E)
+MEMD	항목 수정 (&M)
+MERE	항목 이름 (&R) 이름 바꾸기
+MGNR	일반 (&G)
+MIGE	MIGEMO.DLL 필요
+MSAV	설정 저장
+MTCL	트리 닫기 (&X)
+MTDL	드라이브
+MTDR	이름 바꾸기 대화 상자 (&D) 사용
+MTDS	디렉토리 설정
+MTED	꺼내기
+MTFA	즐겨 찾기 (&a)
+MTFO	폴더 트리 (&t)
+MTFP	초점 PPc (&F)
+MTMI	 단순 아이콘 (&m)
+MTNF	폴더 생성 (&C)
+MTNU	사용자 트리 (&U) 생성
+MTNW	새로운
+MTOL	 아이콘 오버레이 (&o)
+MTPL	PPc 목록 (&P)
+MTRL	새로 고침 (&R)
+MTRS	스스로 실행
+MTRT	새로 고침
+MTSB	도구 모음 표시 (&b)
+MTSC	쉘 컨텍스트
+MTSH	보호 된 폴더 표시 (&h)
+MTSI	아이콘 표시 (&S)
+MTSL	라인 (&L)
+MTSN	단일 노드 (&N)
+MTSO	종류
+MTSS	동기화 선택 (&y)
+MTST	설정 (&S)
+MTUE	사용자 목록 사용자 지정 (&m)
+MTVF	전망
+MWOP	기다림
+NEWD	새 디스크 입력
+NITX	텍스트 파일 \t.txt (&T)
+NOEL	모든 마하 파일
+NOIC	설정이 완료되지 않았습니다. SETUP.EXE를 실행하는 것이 좋습니다.
+NOTX	문자열을 찾을 수 없습니다.
+NWDN	TEMPDIR
+NWFN	TEMPFILE
+OPSA	선택한 주소 열기 (&A)
+OWDT	디렉토리 유형 (&y)
+OWIT	보내기 (&n)
+PACI	개별 아카이브
+PACO	다른
+PACT	아카이브 유형
+PJAD	경로 추가
+PJCP	ControlPanel
+PJDE	데스크탑
+PJDL	DriveList
+PJMD	내 문서
+PJRB	재활용 쓰레기통
+QABO	직장을 깰?
+QBAK	백업 경로?
+QCOM	계속 조치 표시된 항목이 화면에 표시되지 않습니까?
+QCRD	새 디렉토리를 만드시겠습니까?
+QDDL	지연된 목록을 삭제 하시겠습니까?
+QDDO	지연된 목록 작업을 시작 하시겠습니까?
+QDFA	특수 속성 파일을 삭제 하시겠습니까?
+QDL1	지우다?
+QDL2	,,,\엔
+QDL3	항목을 삭제 하시겠습니까? \n
+QDL4	양식 트리를 지우시겠습니까?
+QDRC	예 \t 중복 재분석 지점 \n 아니요 \t 파일 복사
+QDRD	휴지통으로 이동 하시겠습니까?
+QDRP	예 \t 재분석 지점 삭제 \n 아니요 \t 재분석 지점 및 파일 삭제
+QEFD	%s \n 존재합니다. 삭제 하시겠습니까?
+QEWE	이 파일은 잘못된 위치에서 추출되는 것 같습니다. 추출물?
+QICU	사용자 정의를 초기화하십시오.
+QIHI	기록 초기화, 알았지?
+QISD	%s는 드라이브 이름입니까? \n 예 \t 드라이브 이름 \n 아니요 \t 디렉토리 이름 \n
+QMCF	댓글 파일을 만드시겠습니까?
+QOSL	파일 크기가 너무 큽니다. 파일 이미지를 부분적으로 읽으시겠습니까?
+QPPC	PPc를 종료 하시겠습니까?
+QPPV	PPv를 종료 하시겠습니까?
+QSAM	덮어 쓰시겠습니까?
+QSAN	%d 개의 동일한 이름 파일을 찾았습니다. 처리 방법을 선택하십시오.
+QSAO	같은 이름의 파일을 찾았습니다. 처리 방법을 선택하십시오.
+QSAV	수정 된 데이터를 저장 하시겠습니까?
+QSDP	페어 윈도우의 목적지 경로로 설정 하시겠습니까?
+QSIZ	PPx의 종료가 필요합니다.
+QSP2	2G 파일로 나누어야 할 것 같습니다. 파일을 분할 하시겠습니까?
+QSPT	여유 공간이 없습니다. 파일을 분할 하시겠습니까?
+QSPW	여유 공간이없는 것 같습니다. 파일을 분할 하시겠습니까?
+QSUD	실행 취소를 시작 하시겠습니까?
+QSXS	동기화 대기 중 ...
+QTWP	TORO의 라이브러리를 연결 하시겠습니까?
+QUPD	업데이트 사용자 정의? \n \n 예 \t 백업 및 업데이트 \n 아니요 \t 백업없이 업데이트 \n 취소 \t 업데이트 없음 \n
+QUSV	뷰어 응용 프로그램을 사용하여 작성
+QWRD	주문 쓰기?
+REGP	프로그램 선택 및 등록
+RKAL	키 명령 재 입력 오류입니다.
+RRPC	PPc 재시작 필요
+RTPC	곧 PPc 재시작 필요
+SACO	크기 수 ... [PAUSE] : Break
+SAUT	자동
+SAVE	저장
+SAVP	위치 저장
+SCMP	비교 시작
+SDPF	덤프 파일 설정
+SHCM	ShellContext (&S)
+SIOF	동기화 정보 : 끄기
+SION	동기화 정보 : 켜기
+SLMD	저속 모드 시작
+SNAN	(숫자를 더하다)
+SNAP	(추가)
+SNBK	(지원)
+SNCN	(이름을 바꿔라)
+SNCP	(부)
+SNDE	(지우다)
+SNKP	(유지)
+SNLN	(링크)
+SNMV	(움직임)
+SNOW	(덮어 쓰기)
+SNRE	(복원)
+SNSK	(건너 뛰기)
+SPOF	동기화 속성 : 해제
+SPON	동기화 속성 : 설정
+SSRP	입력 프로그램 경로 (%s)
+SSRT	정렬 중 ...
+SVOF	SyncView : 끄기
+SVON	SyncView : 켜짐
+SWPD	창을 바탕 화면으로 이동
+TABC	닫기 (&C)
+TABD	기본 색상 (&D)
+TABE	꺼내기 (&E)
+TABH	숨기기 (&H)
+TABI	탭 너비 (&S) 저장
+TABK	키로 탭 선택 (&k)
+TABL	잠금 (&L)
+TABN	새 탭 (&N)
+TABP	새 창 (&P)
+TABR	색상 (&O)
+TABS	폐쇄 PPc (&S)
+TABW	스왑 창 (&W)
+TACL	닫기 leFt (&F)
+TACP	닫기 pAne (&A)
+TACR	닫기 오른쪽 (&R)
+TAPN	파일 이름 추가
+TATR	속성
+TC22	SHA-2 &24
+TC25	SHA-2 &56
+TC32	CRC32 (&C)
+TCFC	파일 유형 (&t)
+TCHL	하드 링크 (&H)
+TCHP	압축 해제 (http)
+TCIT	정보 팁 텍스트 (&p)
+TCLE	열 Ext (&t)
+TCLR	지우기 (&l)
+TCM5	MD5 (&M)
+TCME	댓글 수정 (&E)
+TCMT	댓글 (&t)
+TCOW	소유자 (&O)
+TCS1	SHA-1 (&S)
+TDAD	DD 창 목록 (&D)
+TDEL	지우다
+TDFO	지연된 파일 작업
+TDUP	복제
+TEDJ	편집자의 줄 찾기 옵션 입력
+TEIF	참가 정보
+TENN	새 이름 입력
+TEXE	실행
+TFAC	PPc 파일 동작
+TFCP	비교
+TFEM	마스크 찾기
+TFMK	FindMark
+TFUM	FindUnMark
+THIL	하이라이트 단어
+TINS	새 메뉴 항목 이름 입력
+TISD	경로 수정
+TLDS	로그 디스크
+TLNO	줄 번호
+TMCF	댓글 파일 만들기
+TMHL	하드 링크
+TMKD	maKe 디렉토리
+TMKF	maKe 파일
+TPAC	팩 파일 :
+TPCL	PPc 로그
+TPTX	일반 텍스트 (&T)
+TRDE	항목 읽기
+TREC	지속적인 이름 바꾸기
+TREN	이름 바꾸기
+TRER	참조 표시
+TSCP	텍스트 코드 페이지 선택
+TSDR	디렉토리 선택
+TSEI	동기화 항목 정보
+TSFN	파일 선택
+TSHL	껍질
+TSMD	모듈 (&T)
+TSVN	파일명 저장
+TTAB	탭 크기
+TTRE	나무
+TTWP	웹 사이트 점프
+TUPA	아카이브 압축 해제
+TWRD	항목 순서 쓰기
+TXAT	모든 텍스트
+TXSL	선택된 라인
+UCMD	: 알 수없는 명령
+UDED	항목 데이터 업데이트 (&.)
+UNKN	알 수 없는
+UPED	%s 업데이트
+USTD	이 디렉토리에서 지원되지 않는 작업입니다.
+VFSL	VFS로드
+VFSU	VFS 언로드
+VTAI	테일 모드 (&a)
+VTDC	문서
+VTHE	마녀
+VTIM	영상
+VTRI	원시 이미지
+VTTX	본문
+WITD	WININET.DLL 필요
+WKSI	키 이름이 잘못된 것 같습니다.
+WLLP	긴 경로 디렉토리
+WNOA	\'@ \'접두사 없음
+WUML	너비 불일치 줄 %d (이 너비 : %d, 최대 너비 : %d)
+XBRO	웹 브라우저
+XCAC	캐시 디렉토리
+XEDI	텍스트 에디터
+XEDL	텍스트 편집기 포인트 라인 접두사
+XELE	업데이트시 높은 실행 수준 사용
+XFCO	PPb (Vista)
+XFCT	탭 및 헤더
+XFDL	대화
+XFIX	PPv 수정
+XFME	일반
+XFTR	나무
+XFUF	PPv 비례
+XIAC	스크린 리더 사용
+XLAG	표시 언어
+XLOG	벌채 반출
+XLSP	일반 줄 간격
+XSAV	백업 디렉토리
+XSUS	수지 디렉토리
+XUP0	액션 선택
+XUP1	조치 없음
+XUP2	알리다
+XUP3	업데이트, 알림
+XUP4	업데이트, 알림, 백업
+XUP5	최신 정보
+XUP6	업데이트, 백업
+XUPM	업데이트 사용자 지정
+XUUE	서버 액세스 오류입니다.
+XUUN	업데이트 파일을 찾을 수 없습니다.
+XUUQ	%s 버전을 찾으십시오. %s에서 업데이트 하시겠습니까?
+XVIE	파일 뷰어
+YGBJ	휴식을 취하다
+YGBW	창 뒤에
+YGCL	명령 목록
+YGCZ	확대 창 지우기
+YGEX	출구
+YGFD	자유 정의
+YGMD	창 아래로 이동
+YGML	창 왼쪽으로 이동
+YGMR	창 오른쪽으로 이동
+YGMU	창 위로 이동
+YGMZ	최소화
+YGOW	불투명 창
+YGPW	투명한 창
+YGRP	창 위치 복원
+YGSH	도움을 보여
+YGSH	작은 창 높이
+YGSM	시스템 메뉴
+YGSP	창 위치 저장
+YGSW	작은 창 너비
+YGTW	창에서 위로
+YGWH	넓은 창 높이
+YGWW	넓은 창 너비
+YGZI	창 확대
+YGZO	창 축소
+YTGG	일반
+YTGW	일반 창 작업
+ZGHL	도움; 오른쪽 클릭 또는 F1 키
+ZTCC	커서
+ZTCD	표시 (완료)
+ZTCE	항목 검색
+ZTCI	상
+ZTCL	레이아웃 및 탭 바
+ZTCM	커서 이동
+ZTCN	커서 세부 사항
+ZTCO	운영
+ZTCV	전망
+ZTDR	무승부
+ZTFO	파일 작업
+ZTFO	폰트
+ZTGR	일반
+ZTLE	라인 편집기
+ZTNS	지원 없음
+ZTOP	조작
+ZTOT	기타
+ZTPB	PPb-콘솔
+ZTPC	PPc-파일 관리자
+ZTPE	PPe-텍스트 편집기
+ZTPF	PPffix-확장명 이름 변경
+ZTPU	PPcust-커 스터 마이저
+ZTPV	PPv-파일 뷰어
+ZTPY	PP 트레이
+ZTVD	견인
+ZTVI	이미지보기
+ZTVT	텍스트보기
+};dppmbmiiijhihneakncfckcoionecmloipchkbhghdnbdanondkfmmdhfecnchoiecellmbnmlhpmcdcncgldagjddihhmkfnahlhpmlkcolakimkoiifmickdaenfabaie 

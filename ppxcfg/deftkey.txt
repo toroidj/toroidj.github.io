@@ -1,0 +1,465 @@
+.YTGG|general	共通・一般
+YGFD|free define	割当て解除	NULL
+YGEX|exit	終了	@&F4
+YGBJ|break job	処理中止	@PAUSE
+YGSH|show help	ヘルプ表示	@F1
+7402|command list	コマンド一覧	%Obd *ppcust /c
+.YTGW|general window action	共通・窓操作
+YGMZ|minimize	最小化	@\ESC
+YGSM|system menu	システムメニュー	@&SPACE
+YGMU|window move to up	窓を上に移動	@&UP
+YGMD|window move to down	窓を下に移動	@&DOWN
+YGML|window move to left	窓を左に移動	@&LEFT
+YGMR|window move to right	窓を右に移動	@&RIGHT
+YGSH|small window height	窓枠高さを縮める	@&\UP
+YGWH|wide window height	窓枠高さを広げる	@&\DOWN
+YGMH|small window width	窓枠幅を縮める	@&\LEFT
+YGWW|wide window width	窓枠幅を広げる	@&\RIGHT
+YGRP|restore window position	窓位置復帰	@&HOME
+YGSP|save window position	窓位置記憶	@&\HOME
+YGZI|zoom in window	窓拡大	@^NUM+
+YGZO|zoom out window	窓縮小	@^NUM-
+YGCZ|clear zoom window	窓拡縮解除	@^NUM0
+YGPW|transparent window	窓透明	@^\NUM-
+YGOW|opaque window	窓不透明	@^\NUM+
+YGTW|top to window	窓を最前面移動	WTOP
+YGBW|behind to window	窓を最背面移動	WBOTTOM
+.general 2	共通・特殊
+customizer	カスタマイザ起動	CUSTOMIZE
+change layout	窓別のレイアウト変更	LAYOUT
+connect net drive	ネットドライブ接続	NETUSE
+disconnect net drive	ネットドライブ切断	NETUNUSE
+save settings	設定保存	SAVECUST
+reload customize	再カスタマイズ	LOADCUST
+toggle VFS	仮想dir pluginトグル	TOGGLEVFS
+load VFS plugin	仮想dir plugin有効	LOADVFS
+free VFS plugin	仮想dir plugin無効	FREEVFS
+logoff	ログオフ	LOGOFF
+power off	電源を切る	POWEROFF
+reboot	Windows再起動	REBOOT
+shutdown	シャットダウン	SHUTDOWN
+terminate PC	強制シャットダウン	TERMINATE
+suspend	サスペンド	SUSPEND
+hibernate	休止状態	HIBERNATE
+screen saver	スクリーンセーバ	SSAVER
+monitor off	モニタを切る	*monitoroff
+lock PC	コンピュータのロック	*lockpc
+open support page	PPxサポートページ	SUPPORT
+Update PPx	PPxの更新(正式版のみ)	*checkupdate
+Update PPx with beta	PPxの更新(開発版含む)	*checkupdate p
+about	バージョン情報	ABOUT
+backimage	選択ファイルを背景表示	*setcust X_bg:Path=%FDC %: *customize X_bg:Type=10
+backimage(fixed)	選択ファイルを背景表示(固定位置)	*setcust X_bg:Path=%FDC %: *customize X_bg:Type=1
+off backimage	背景表示を解除	*customize X_bg:Type=0
+dup tree(dir)	ツリーのみコピー	*file copy /mask:a:d+
+eject disk	CD/DVDの取り出し	%"CD/DVD取り出し" %z"<ドライブ名>:\",eject
+eject usb drive	現在ドライブの取り外し(Windows7以降用)	%"現在ドライブ取り外し"*freedriveuse %*name(HP,"%1")%: %z"%*name(HP,""%1"")",eject
+eject usb device	USB デバイスの取り外し(Windows7以降用)	%"USB取り外し" *freedriveuse <ドライブ名>%: %z"<ドライブ名>:\",eject
+.general commands	共通・コマンド
+file operation	ファイルオペレーション	*file (action)
+alias	エイリアス定義	*alias
+chdir	コマンドのカレントディレクトリ変更	*cd <path>
+clipboard	クリップボード登録	*cliptext <text>
+customize	部分カスタマイズ	*customize <ID=param>
+customize	カスタマイズ書込	*setcust <ID=param>
+get customize	カスタマイズ読込	%*getcust(<ID=param>)
+env. value	環境変数設定	*set <value=strings>
+select PPx	指定PPxにフォーカス	*selectppx <ID>
+get file	httpのファイル取得	*httpget <url>,<savename>
+launch	指定ファイルを実行	*launch <command>
+.PPc Enter
+enter	Enter実行	@ENTER
+shell menu	Enterメニュー	@^ENTER
+shift enter	Shift+Enter実行	@\ENTER
+.PPc directory	PPc Dir移動
+parent directory	親ディレクトリ	@BS
+root directory	ルートへ移動	@'\'
+'desktop' directory	一覧へ移動	@'|'
+prev. directory	直前ディレクトリ	@\BS
+path list menu	お気に入りメニュー	@0
+back directory	前に戻る	@^LEFT
+next directory	次に進む	@^RIGHT
+back directory menu	まとめて前に戻る	@^\LEFT
+next directory menu	まとめて次に進む	@^\RIGHT
+enter directory	下層移動	C_DIR
+prev. directory	前のディレクトリに移動	@BS @UP C_DIR
+next directory	次のディレクトリに移動	@BS @DOWN C_DIR
+path copy to pair window	反対窓を同パスに	@'='
+path copy from pair window	現在窓を反対窓と同パスに	%j%2
+new tab	新規タブで開く	*pane newtab %FBDC
+new tab(current)	現在ディレクトリを新規タブで開く	*pane newtab %FBD
+new tab on pair window	反対窓の新規タブで開く	*pane newtab ~ %FBDC
+new tab(current) on pair window	現在ディレクトリを反対窓の新規タブで開く	*pane newtab ~ %FBD
+reload directory	再読込	@F5
+update list	更新	@^F5
+enter path	パス変更	@L
+jump address bar	アドレスバーに移動	@^G
+choose drive	ドライブ変更	@\L
+choose ext drive	ドライブ変更(非表示含む)	%M?extdrivemenu
+prev. drive	前のドライブに移動	*cursor 8,1,12,0,12,0
+next drive	次のドライブに移動	*cursor 8,1,13,0,13,0
+drive A:	ドライブA:に移動	@1
+drive B:	ドライブB:に移動	@2
+drive C:	ドライブC:に移動	@3
+drive D:	ドライブD:に移動	@4
+drive E:	ドライブE:に移動	@5
+drive F:	ドライブF:に移動	@6
+drive G:	ドライブG:に移動	@7
+drive H:	ドライブH:に移動	@8
+drive I:	ドライブI:に移動	@9
+desktop	デスクトップに移動	%j#0:\
+control panel	コントロールパネルに移動	%j#3:\
+recylebin	ごみ箱に移動	%j#10:\
+start menu	スタートメニューに移動	%j#11:\
+enter into CLSID folder	CLSID仮想フォルダ内に移動	%M?exjumpmenu,!C
+jump to link	リンク先へ移動	%M?exjumpmenu,!L
+jump to shortcut	ショートカット先	%M?exjumpmenu,!S
+list streams	ストリーム一覧	%M?exjumpmenu,!T
+CLSID folder(pair)	反対窓をCLSID仮想フォルダに	%M?exjumpmenu,!I
+link(pair)	反対窓をリンク先に	%M?exjumpmenu,!R
+shortcut(pair)	反対窓をショートカット先に	%M?exjumpmenu,!P
+stream list(pair)	反対窓をストリーム一覧に	%M?exjumpmenu,!W
+flat tree	カレントディレクトリ以下のファイルをディレクトリ無視して一覧表示	*whereis %1,,,,,1,0
+flat show(dbl)	現在窓・反対窓のファイルをディレクトリ無視して一覧表示	*whereis %1;%2,,,,,1,0
+toggle cache	ディレクトリ読み込みキャッシュのトグル	*cache
+.PPc cursor	PPcカーソル
+up	カーソル↑	@UP
+down	カーソル↓	@DOWN
+left	カーソル←	@LEFT
+right	カーソル→	@RIGHT
+previous	カーソル前	PREVITEM
+next	カーソル次	NEXTITEM
+left-up	左上	*cursor 9,-1,0,B010,0,B010
+right-down	右下	*cursor 9,1,0,B010,0,B010
+back page	前ページ	@PUP
+next page	次ページ	@PDOWN
+first entry	先頭へ移動	@'<'
+last entry	末尾へ移動	@'>'
+back mark	前のマークに移動	*cursor 16,-1
+next mark	次のマークに移動	*cursor 16,1
+back selected mark	前選択のマークに移動	*cursor 17,-1
+next selected mark	次選択のマークに移動	*cursor 17,1
+next file entry	次のファイルに移動	*cursor 19
+next directory entry	次のディレクトリに移動	*cursor 20
+search dialog	インクリメンタルダイアログ	@J
+search mode	インクリメンタルモード	@\J
+.PPc Explorer like cursor	PPcカーソル(エクスプローラ風)
+up+unmark	解除+カーソル↑	@^END @UP
+down+unmark	解除+カーソル↓	@^END @DOWN
+left+unmark	解除+カーソル←	@^END @LEFT
+right+unmark	解除+カーソル→	@^END @RIGHT
+back page+unmark	解除+前ページ	@^END @PUP
+next page+unmark	解除+次ページ	@^END @PDOWN
+up+mark	選択+カーソル↑	*cursor 0,-1,4,B1000,0,B010
+down+mark	選択+カーソル↓	*cursor 0, 1,4,B1000,0,B010
+left+mark	選択+カーソル←	*cursor 4,-1,4,B1000,0,B010
+right+mark	選択+カーソル→	*cursor 4, 1,4,B1000,0,B010
+back page+mark	選択+前ページ	*cursor 8,-1,5,B1010,0,B010
+next page+mark	選択+次ページ	*cursor 8, 1,5,B1010,0,B010
+.PPc display types	PPc表示方法
+find	マスク(一時)	@F
+wildcard	マスク(常時)	@\F
+sort	ソート(一時)	@S
+hold sort	ソート(常時)	@\S
+tree	ツリー(一時)	@T
+tree window	ツリー(常時)	@\T
+tree(parent)	現在dirが親のツリー	*tree "%1" %: *tree focus
+view style	表示形式	@';'
+swap window	反対窓と入れ替え	@G
+whereis	ファイル検索	@^W
+whereis2	書庫内検索	@^\W
+find(OS)	ファイル検索(エクスプローラ)	@^F
+clear change	更新状態表示を解除	*clearchange
+.PPc window	PPc窓操作
+redraw	再描画	@^L
+fix window size	窓枠大きさ調整	@&F6
+zoom in	フォント拡大	@\INS
+zoom out	フォント縮小	@\DEL
+pair window	反対窓へ移動	@\LEFT
+next window	次のPPcへ移動	@F6
+prev window	前のPPcへ移動	@\F6
+menu bar	メニューバー表示	@'^'
+joint window	新規ペイン・窓連結トグル	@'_'
+dup PPc	PPcをもう一枚・新規タブ	@F11
+dup PPc path	同パスPPcを追加・新規タブ	@\F11
+Runas PPc	AdminPPcを起動	@^F11
+pane menu	ペインメニュー	@&'-'
+pane separator left	ペイン区切り←	@&^LEFT
+pane separator right	ペイン区切り→	@&^RIGHT
+pane separator up	ペイン区切り↑	@&^UP
+pane separator down	ペイン区切り↓	@&^DOWN
+50% pane	ペイン区切りを中央に	*pairrate 50
+layout menu	レイアウトメニュー	*layout
+.PPc combo window	PPc一体化時窓操作
+change focus pair pane	反対ペインに切替	*pane focus ~
+change focus next pane	次のペインに切替	*pane focus +1
+change focus prev pane	前のペインに切替	*pane focus -1
+hide pane	現在ペインを隠す	*pane hide
+eject pane	現在ペインを分離独立	*pane eject
+chenge focus next tab	右のタブに切替	*pane select t+1
+chenge focus prev tab	左のタブに切替	*pane select t-1
+chenge focus next hidden tab	右の非表示タブに切替	*pane select h+1
+chenge focus prev hidden tab	左の非表示タブに切替	*pane select h-1
+focus next active tab	次のアクティブタブに切替	*pane select ta+1
+focus prev active tab	前のアクティブタブに切替	*pane select ta-1
+.PPc mark	PPcマーク操作
+mark	ファイルマーク	@^\A
+mark all	全マーク	@END
+mark all file	ファイル全マーク	@HOME
+invert mark	全マーク反転	@\END
+invert mark file	ファイルマーク反転	@\HOME
+unmark all	全マーク解除	@^END
+unmark file	全ファイルマーク解除	@^HOME
+mark dialog	詳細マーク	@'+'
+unmark dialog	詳細マーク解除	@'-'
+down mark	マーク+↓	@SPACE
+up mark	マーク+↑	@\SPACE
+split mark	前/後半マーク	@'/'
+from last mark	直前マークからマーク	*range lastmark cursor
+All Extention Mark	選択拡張子で全マーク	*markentry *.%*regexp("%#T","/\s+/,*./g")
+Ext Mask	選択拡張子でマスク	*maskentry *.%*regexp("%T","/\s+/,*./g")
+compare	比較マーク	@O
+save mark	マーク状況を記憶	*string p,markinf=%*temp()markinf.txt %: *makelistfile "%sp"markinf"" -name -marked
+restore mark	マークを復元	*markentry -list:"%sp"markinf"" -mark
+.PPc operations	PPc操作
+close all	確認有りで全て閉じる	@ESC
+close	確認無しで閉じる	@Q
+exit all	全て閉じる	@&F4
+copy entries	コピー	@C
+copy(explorer)	コピー(Explorer)	@\C
+MOVE	移動	@M
+move(explorer)	移動(Explorer)	@\M
+dup entry	ファイル複製	@F12
+create hardlink	ハードリンク	@\F12
+AUTODD	自動D&D	@^D
+auto d&d	自動D&D(コマンド)	*autodragdrop [caption][,r]
+recyclebin	ごみ箱へ移動	@D
+delete	削除	@\D
+delete(BG)	削除(バックグラウンド)	*ppcfile delete
+erase from list	リストファイルから消去	@^\D
+clip file	クリップ	@^C
+cut	切り取り	@^X
+paste	ペースト	@^V
+clip(explorer)	エクスプローラ互換クリップ	%z,copy
+cut(exp)	エクスプローラ互換切り取り	%z,cut
+paste(exp)	エクスプローラ互換ペースト	%z.,paste
+clip files	クリップ(ファイル等)	*clipentry file
+clip filename	クリップ(ファイル名)	*clipentry text
+clip directory	クリップ(フォルダ名)	@^\C
+Clip name list	ファイル名の一覧をクリップ(Vista以降限定)	%ObdTs clip < %aFCN
+paste link	ショートカット貼付	@^\V
+attribute	属性・時刻変更	@A
+rename	名前変更	@R
+Continuous rename	連続名前変更	@^R
+bulk rename	一括名前変更	@\R
+shell	コマンドライン	@H
+execute	パラメータ指定実行	@X
+create directory	新規ディレクトリ	@K
+create directory	新規ディレクトリ＆移動	@K C_DIR
+create entry	新規エントリ	@\K
+edit new text	新規テキスト編集(ファイル作成無)	>editor %*name(DCU,textfile.txt)
+edit new text with create	新規テキスト編集(ファイル作成有)	*set tempvar=%*name(NDCU,textfile.txt) %: *makefile "%'tempvar'" %: editor "%'tempvar'"
+disk information	ドライブ情報	@I
+file information	エントリ情報	@^I
+sync information	連動エントリ情報	@^\I
+edit	エディタで編集	%"JMTE|Text edit"%Orib,editor %FDC
+edit	エディタ編集(確認有)	%"JMTE|Text edit"%Orib,editor %{%FDC%}
+PPE	テキスト編集(PPe)	@\E
+PPV	PPvで内容表示	@N
+Preview	プレビュー表示	*entrytip preview
+File information Preview	ファイル情報チップ	*entrytip fileinfo
+viewon cursor	保持View	@Y
+sync view	連動ファイルビュー	@\Y
+sync path	連動・同期パス	@^Y
+comment	コメント操作	@\O
+pack	書庫作成	*pack "%2%\|%X|" %Or-
+individual pack	書庫作成(個別)	*pack "|%2%\|",indiv %Or-
+PACK LHA	書庫作成(LHA)	%"Pack File"%eSc,gfcp%M_xpack,!"lh&5"
+PACK ZIP	書庫作成(zip)	%"Pack File"%eSc,gfcp%M_xpack,!"zip(zip32j)"
+EXPACK	書庫作成(メニュー)	%"Pack File Ex"%eSc,gfcp%M_xpack
+UNPACK	書庫展開	@U
+EXUNPACK	書庫展開(メニュー)	@\U
+unpack	反対窓に書庫展開(確認無し)	*unpack %2
+unpack	反対窓にディレクトリ作成+書庫展開(確認無し)	*makedir "%2%\%X" %: *unpack %2%\%X
+unpack command	書庫展開(コマンド)	*unpack <path>
+VIEW	ビューアで表示	@V
+explorer	エクスプローラ	@^E
+write entry	エントリ順書込	@W
+write comment	コメント保存	@\W
+zap file	拡張子判別実行	@Z
+enter menu	Enterメニュー	@^F10
+Shell menu	シェルメニュー	@^\F10
+properties	プロパティ	@&ENTER
+sync properties	連動プロパティ	@&^ENTER
+count size	選択エントリの総サイズを算出	*countsize
+pop entry	エントリpop	@INS
+push entry	エントリpush	@DEL
+Make .lnk to this window	現在窓にショートカットを作成	@^C @^\V
+Make .lnk to pair window	反対窓にショートカットを作成	*file !MakeShortcut
+.PPc misc	PPc特殊
+window dialog	Window設定ダイアログ	C_WIND
+directory settings	ディレクトリ別設定	*diroption
+P	反対窓を最前面	PWTOP
+P	反対窓を最背面	PWBOTTOM
+clearbin	ごみ箱を空にする	%z"#10:\",B
+.PPv cursor	PPvカーソル移動
+up	カーソル↑	@UP
+down	カーソル↓	@DOWN
+left	カーソル←	@LEFT
+right	カーソル→	@RIGHT
+back page	前ページ	@PUP
+next page	次ページ	@PDOWN
+left page	左ページ	@\LEFT
+right page	右ページ	@\RIGHT
+top	先頭	@HOME
+last	末尾	@END
+left	左端	@\HOME
+right	右端	@\END
+Jump	行番号ジャンプ	@J
+mark 1	しおり1に現在位置を登録	@D
+jump mark 1	しおり1の位置に移動	@G
+mark line	指定しおりに現在位置を登録	@^D
+jump mark line	指定しおりの位置に移動	@^G
+.PPv general	PPv一般
+cursor mode	キャレットモード	@I
+all select	全て選択	@^A
+clip	クリップ	@^C
+paste	ペースト	@^V
+paste	種類指定して貼付	@^\V
+back find	上方検索入力	@B
+back find	上方検索	@'['
+PPe	PPeで開く	@\E
+FWD find	下方検索入力	@F
+FWD find	下方検索	@']'
+highlight	単語ハイライト	@\F
+shell	コマンドライン	@H
+show memo	メモを開く	@M
+toggle info	常時メモ	@\M
+width	桁数指定	@';'
+reload	再読込	@'.'
+toggle size limit	部分表示切り替え	@'/'
+next range	ファイル内の前を読込	@'<'
+next range	ファイル内の次を読込	@'>'
+top page	前ページ	@^PUP
+last page	次ページ	@^PDOWN
+top page	先頭ページ	@^\PUP
+last page	末尾ページ	@^\PDOWN
+open file	開く	@^O
+save	名前を付けて保存	@^S
+play	wav再生	@P
+print	印刷	@^P
+rev. text color	文字色反転	@^R
+rev. back color	背景色反転	@\R
+EXECUTE	パラメータ指定実行	@X
+zap	拡張子判別実行	@Z
+zoommode	等倍・拡縮切替え	@'='
+aspect rate	アスペクト比	@A
+zoom	拡大	@INS
+zoom	縮小	@DEL
+rotate l	画像左回転	@K
+rotate r	画像右回転	@L
+char	文字エンコード	@'@'
+mode	表示方法	@':'
+CtrlSym	制御記号表示	@C
+LineNum	左端行番号表示	@U
+Pro.	プロポーショナル表示	@W
+line	論理・表示行番号切替	@T
+MENUBAR	メニューバー表示	@'^'
+HELP	ヘルプ表示	@F1
+CLOSEDIALOG	確認有りで閉じる	@ESC
+CLOSE	確認無しで閉じる	@Q
+shift enter	Shift+Enter実行	@\ENTER
+CRMENU	メニュー	@F10
+CRMENU	拡張子メニュー	@\F10
+ShellMENU	シェルメニュー	@^\F10
+print	画像印刷解像度	@^U
+PPc previous item	PPcのカーソル前	%K-C"PREVITEM@N"
+PPc next item	PPcのカーソル次	%K-C"NEXTITEM@N"
+PPc mark and back	PPcのマーク+前	%K-C"@\SPACE@N"
+PPc mark and next	PPcのマーク+次	%K-C"@SPACE@N"
+.PPb
+QUIT	終了	@ESC
+HistoryUp	ヒストリ↑	@UP
+HistoryDown	ヒストリ↓	@DOWN
+left	カーソル←	@LEFT
+right	カーソル→	@RIGHT
+word left	カーソル単語←	@^LEFT
+word right	カーソル単語→	@^RIGHT
+Scroll Up	スクロール↑	@^UP
+Scroll Down	スクロール↓	@^DOWN
+top line	左端	@HOME
+end line	右端	@END
+LEFT	選択+←	@\LEFT
+RIGHT	選択+→	@\RIGHT
+LEFT	選択+単語←	@^\LEFT
+RIGHT	選択+単語→	@^\RIGHT
+top	選択+左端	@\HOME
+end	選択+右端	@\END
+all select	全て選択	@^A
+undo	元に戻す	@^Z
+uncut buffer	削除を戻す	@^U
+clip text	クリップ	@^C
+paste text	ペースト	@^V
+cut text	切り取り	@^X
+del	カーソル位置削除	@DEL
+bs	カーソル前削除	@BS
+del end	行末まで削除	@^DEL
+del top	行頭まで削除	@^BS
+tab	ファイル名補完	@TAB
+tab(p)	部分一致補完	@^I
+ref mode	参照モード	@\UP
+gui mode	GUI編集窓	@\ENTER
+.PPe/edit	PPe/一行編集
+QUIT	中止	@ESC
+ALL	全て選択	@^A
+ALL	選択解除	@^\A
+select ext	拡張子等選択	@F2
+UNDO	元に戻す	@^Z
+UNDO	削除を戻す	@^U
+clip text	クリップ	@^C
+paste text	ペースト	@^V
+cut text	切り取り	@^X
+del	1文字削除	@DEL
+bs	1文字削除	@BS
+del	行末まで削除	@^DEL
+del	行頭まで削除	@^BS
+del	1行削除	@^Y
+tab	ファイル名補完	@TAB
+tab(p)	部分一致補完	@^I
+file menu	ファイルメニュー	@^']'
+config menu	設定メニュー	@\F2
+edit menu 1	編集メニュー1	@^K
+edit menu 2	編集メニュー2	@^Q
+menu	候補一覧	@F4
+find	文字列検索	@^F
+find	文字列検索(次)	@F3
+replace	置換	@F7
+dhist	ヒストリ削除	@&DEL
+open	ファイルを開く	@^O
+save	ファイルを保存	@^S
+inc width	窓幅増	@&\RIGHT
+dec width	窓幅減	@&\LEFT
+inc height	窓高さ増	@&\DOWN
+dec height	窓高さ減	@&\UP
+completelist left scroll	補完リスト左スクロール	@~LEFT
+completelist right scroll	補完リスト右スクロール	@~RIGHT
+wide completelist	補完リスト拡幅	@~^RIGHT
+narrow completelist	補完リスト狭幅	@~^LEFT
+.PPe/edit insert	PPe/一行編集 文字列挿入
+insert PPx path	PPxディレクトリ挿入	@^0
+insert PPx path	現在窓パス挿入	@^1
+insert PPx path	反対窓パス挿入	@^2
+insert EntryPath	エントリフルパス挿入	@^P
+insert EntryName	エントリ名挿入	@^N
+insert EntryExt	エントリ(拡張子除く)挿入	@^E
+insert EntryExt	エントリ拡張子挿入	@^T
+insert Entry	カーソル位置エントリ挿入	@^R
+insertF	ファイル挿入	@^\F
+dirm	ディレクトリ挿入	@^\D
+insertD	参照挿入	@^\I
+path menu	パス挿入メニュー	@^\P
+date	日付挿入	@F5
+insert PPc	PPc表示パスを挿入	@^\L
+space	空白挿入	%k"' '
+.PPe/edit command	PPe/一行編集 コマンド
+tree	ツリー	*tree [type]

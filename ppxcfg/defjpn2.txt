@@ -1,0 +1,14 @@
+XC_stat	=_AUTO,_AUTO,0,0,I" 選択: "mn i"/" ms8L I" 全数: " e1 L I" 空き: " Df5L I" 全体: " Dt5L Y L O"_DBLA" i"Paper Plane cUI (c)TORO"
+-|MC_menu	=
+MC_menu	= {
+ファイル(&F)	= %M_menuCFile
+編集(&E)	= %M_menuCEdit
+表示(&V)	= %M_menuCView
+お気に入り(&A)	= ?favorites
+ツール(&T)	= %M_menuCTool
+ヘルプ(&H)	= %M_menuCHelp
+}
+Mes0411	={
+NWDN	=新しいフォルダ
+NWFN	=新規ファイル
+}

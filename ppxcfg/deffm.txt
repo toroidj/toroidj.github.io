@@ -1,0 +1,38 @@
+KC_main	= {
+\LEFT	=@PUP
+\RIGHT	=@PDOWN
+H	=@L
+J	=@0
+L	=@\L
+N	=@R
+X	=@H
+Y	=@\F
+^T	=@A
+\V	=@I
+I	,%"Binary Convert" %M_bin
+E	,%"JMTE|Text edit"%Orib,editor %{%FDC%}
+P	,*pack "%2%\|%X|" %Or-
+\P	,%"Pack File Ex" %M_xpack
+R	=@X
+','	,*cursor 9,-1,0,B010,0,B010
+'.'	,*cursor 9,1,0,B010,0,B010
+}
+KV_main	= {
+1	=@END
+2	=@DOWN
+3	=@PDOWN
+4	=@LEFT
+6	=@RIGHT
+7	=@HOME
+8	=@UP
+9	=@PUP
+E	,%"JMTE|Text edit"%Orib,editor %{%FDC%}
+F3	=@'<'
+F4	=@'>'
+F5	=@PDOWN
+F6	=@PUP
+F7	=@F
+F8	=@B
+\F7	=@']'
+\F8	=@'['
+}

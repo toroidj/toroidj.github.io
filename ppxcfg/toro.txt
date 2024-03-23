@@ -1,0 +1,614 @@
+PPxCFG	= 0.41
+;※コメントやデフォルトカスタマイズと変化がないところは、一部削除しています
+;--------------------------------------------------------------------------
+;・各種設定
+;==========================================================================
+X_win	= {	; 表示形式全般
+	;  +---B3:1=(PPcのみ)スクロールバーの位置を下端⇔右端で切替
+	;  |+--B2:1=スクロールバーを表示させない。
+	;  ||+-B1:1=タスクバー等では１つにまとめる(要PPtray)ただし、不都合有り
+	;  |||+B0:1=MenuBar表示
+CA	= B0000
+CB	= B0000
+CC	= B0000
+CD	= B0000
+V	= B0000
+}
+X_scrm	= 2	; スクロール方法 0:全書換(低性能GPU向) 1:部分1 2:部分2(最速?)
+X_tray	= 0	; 最小化時にトレイに格納 0:しない 1:する
+X_mwid	= 60	; メニューの最大桁数
+X_mmon	= 0	; モニタの数 0:自動認識 1:強制マルチ
+X_alt	= 1	; 0:一般UI  1:[alt]でmenuを無効
+X_IME	= 1	; IME制御 0:しない 1:Off
+X_beep	= B00000000	; Beepを発声する B00000000:全く出さない
+			;B10101111:重要なものだけ B11111111:全て
+X_evoc	= 0	; 表示喚起 0:なし 1:タイトルバー点滅
+X_lddm	= 1	; 左D&D時でも必ずメニューを表示 0:しない 1:する
+X_es	= NFER	; 拡張シフトキー
+X_ltab	= 0	; 全ての一行編集で[TAB]設定を有効に0:しない 1:する
+X_fdir	= 1	; エントリ補完でdir入力の時はdir限定 0:しない 1:する
+X_flst	= 1	; (試作)エントリ補完の結果を一覧表示 0:しない 1:する
+X_calc	= 1	; 一行編集で数式が入力されたら計算 0:しない 1:する
+X_acr	= 1	; Enter選択時に未登録拡張子なら登録 0:しない 1:する
+X_log	= 0	; 各種ログを 0:保存しない -1:保存する
+X_wnam	= 1	; 書庫中のファイル名チェックを 0:しない 1:する
+X_upm	= 4	; カスタマイズ内容自動更新方法
+		; 0:毎回処理方法を選択 1:何もしない 2:バージョン通知のみ
+		; 3:更新後通知(バックアップ無) 4:更新後通知(バックアップ有)
+		; 5:更新・非通知(バックアップ無) 6:更新・非通知(バックアップ有)
+X_extl	= 4	; 拡張子とみなす最大長さ 0:拡張子無 -1:制限無
+X_rtree	= 0	; ディレクトリ入力は 0:常にTEXT 1:1枚時TREE 2:常にTREE
+X_rclst	= 0	; ディレクトリ入力でPPcが3枚以上なら一覧選択 0:しない 1:する
+X_svsz	= 2000000	; 連動ビューで表示するファイルサイズの最大値
+X_wsiz	= 20000000	; ファイルの読み込みで警告する大きさ
+X_dlf	= 0,0	; ドライブリスト(:),ドライブメニュー(PPc \[L])で
+		;  選択したドライブのパスは 0:以前のカレント 1:必ずルート
+X_fopw	= 1	; FileOperationで同時実行を抑制 0:しない 1:する
+X_cbsz	= 8000	; FileOperation,burst modeバッファサイズ(単位Kb)
+;・PPc 関連 --------
+XC_mvUD	= 0,1,4,B000,0,B010	; [↑][↓]
+XC_mvLR	= 4,1,4,B000,0,B010	; [←][→]
+XC_mvPG	= 8,1,5,B000,0,B010	; [Page Up/Down]
+XC_mvSC	= 3,1,4,B000,0,B010	; スクロールバーによる操作
+X_combo	= 0	; 複数 PPc を一体化	0:しない 1:する
+X_combos	= 1	; 一体化時、情報行を共用	0:しない 1:する
+XC_pmsk	= 0	; 書庫等内のディレクトリ仮想移動を有効に	0:しない 1:する
+X_sps	= 0	; 複数 PPc を１プロセスで実行	0:しない 1:する
+XC_page	= 0	; カーソルの窓越え移動は	0:ページ単位 1:スクロール処理
+XC_fwin	= 1	; XC_page=0の時,エントリ表示は
+		; 0:空欄がでないように詰める 1:列単位 2:ページ単位
+XC_msel	= 0	; エントリクリックは 0:カーソル移動 1:移動＆マーク(Explorer風)
+XC_nsbf	= 1	; 画面外へのカーソル移動を不可に 0:しない 1:する
+XC_exem	= 0	; [Enter],[Z]等はマークエントリを対象に 0:しない 1:する
+XC_emov	= 0	; エントリの移動は	0:スタック 1:リング
+XC_gmod	= 0	; [G]の処理は	0:窓入換(高速) 1:パス交換(低速)
+XC_szcm	= 0	; 算出ディレクトリサイズをコメント登録 0:しない 1:する
+X_tdd	= 1	; テキスト形式のD&Dを	0:しない 1:する
+XC_mdd	= 1	; エディットボックスへの拡張D&Dを有効に 0:しない 1:する
+X_cntt	= 10	; 処理ファイル数算出を	0:しない ≧1:指定秒数で省略
+XC_seat	= 1	; &\[英数字]は 0:頭文字検索 1:インクリメンタルサーチ 2:兼用
+XC_seam	= 0	; 頭文字検索の検索開始位置は	0:新規は先頭 1:常にカーソル
+X_unbg	= 3	; UNxxxを別プロセス(要PPTRAY.EXE)で動作
+		;  0:させない 1:させる 3:させる(他のプロセスより優先度低)
+XC_cwrt	= 0	; コメントファイル作成は	0:手動 1:確認有 2:自動
+XC_Gest	= 0	; 右ボタンでジェスチャーを	0:しない 1:する 2:する+D&D可
+X_Slow	= 50	; 低速モードを開始する係数、大きいほど鈍感
+XC_rrt	= 2,5	; 一覧更新の開始秒数	アクティブ,非アクティブ
+XC_swin	= {	; 窓の連結、設定,状態保存値の順
+; 設定  ※B,D,F…はA,C,E…の内容を用いる
+;	   +--------B8:1=両方同時に前面に出す
+;	   |++------B6,B7:窓の連結方法      00=左右 01=上下 10=重ねる
+;	   |||+-----B5:0=大きさ 1=大きさ+位置
+;	   ||||+----B4:1=対となる窓で、アクティブとなる窓を固定
+;	   |||||+---B3:1=対の窓を同時に終了
+;	   ||||||+--B2:1=あらかじめ２枚起動
+;	   |||||||+-B1:1=反対窓の高さ／幅を現在窓の大きさに
+;	   ||||||||+B0:窓の連結を           0=しない 1=する
+A	= B000000000,2
+B	= B000000000,2
+C	= B000000000,4
+D	= B000000000,4
+}
+XC_sort	= {	; 保持ソート \[S]
+A	= 16,-1,-1,B011111,B00000000000000000000000001
+B	= 16,-1,-1,B011111,B00000000000000000000000001
+C	= 16,-1,-1,B011111,B00000000000000000000000001
+D	= 16,-1,-1,B011111,B00000000000000000000000001
+}
+XC_tree	= {	; ツリー窓の幅 \[T]
+A	= 0,220
+B	= 0,154
+C	= 0,154
+D	= 0,0
+}
+XC_mask	= {	; 表示する属性とファイル名 \[F]
+}
+XC_rmsk	= 1	; [F]/\[F]でRealtimeMaskを使用 0:しない 1:する
+XC_isea	= 0,1	; インクリメンタルサーチの動作 方法,検索位置
+;		方法		0:通常入力 2:ローマ字入力(migemo)
+;		検索位置	0:前方一致 1:部分一致
+XC_ito	= 900	; インクリメンタルサーチのタイムアウト時間(ms)
+XC_alst	= 0,0,1	; 各コマンド終了後の一覧処理
+;		[A],[C/M],[D/\D]の順
+;		0:更新,1:更新(非表示),2:更新(マークがないときは再読込),
+;		3:更新(非表示,マークがないときは再読込),4:再読込
+XC_alac	= 0	; 各コマンド終了を全PPcに通知	0:しない 1:する
+;--------------------------------------------------------------------------
+;** エントリの表示方法の指定
+;--------------------------------------------------------------------------
+;	文字,背景,カーソル,マーク,書式
+XC_stat	= _AUTO,_AUTO,0,0,	; ステータス行
+XC_inf1	= _AUTO,_AUTO,0,0,cFC	; 情報行１行目
+XC_inf2	= _AUTO,_AUTO,0,5,f8,5z10S1T17S1A10	; 情報行２行目
+XC_celD	= _AUTO,_AUTO,1,5	; エントリ表示 文字,背景,カーソル,マーク
+XC_celF	= {	; エントリ表示 書式(現在書式)
+A	= MF16,5Z7S1T8s1
+B	= MF16,5Z7S1T8s1
+C	= MF16,5Z7S1T8s1
+D	= MF16,5Z7S1T8s1
+}
+MC_celS	= {	; エントリ表示 書式([;]メニュー)
+default1	= MF16,5Z7S1T8s1
+default2	= MF16,5z10S1T8s1
+ICON1	= Nw40F9,5Z7S1T8s1
+ICON2	= Nw40F9,5z10S1T8s1
+ICON3	= Nw40F9s1
+Comment	= MF8,5cz10cS1cT14C
+SFN	= Mf8,5Z7S1T17s1
+AST	= MA10S1T17S1w250F8
+8.3	= MF9,5s1
+Attr	= MW80F8z10S1T17S1A8s1
+Image	= n20,8s1
+}
+XC_ifix	= 0	; 情報行のアイコンサイズ 0:自動 32:通常の大きさ
+XC_tdir	= 1,1	; ディレクトリ「.」,「..」を表示	0:しない 1:する
+XC_dpmk	= 0	; エントリマスクを表示	0:しない 1:する
+XC_sdir	= 0	; ディレクトリは拡張子を分離表示	0:しない 1:する
+XC_ocig	= 1	; 表示書式が画像(n)で、非画像エントリは 0:空欄 1:アイコン表示
+XC_awid	= 0	; エントリ表示幅が変わったら窓幅を調節	0:しない 1:する
+XC_acsr	= 1,0	; 各コマンド終了後のカーソル位置処理
+;		[.]等の再読込,[S/\S]の順
+;		0:以前の画面と同じ位置,1:以前のエントリ内容と同じ位置
+;--------------------------------------------------------------------------
+;** ドライブ毎の設定
+;--------------------------------------------------------------------------
+XC_dset	= { 
+PPX	= B0,4,1,-1,-1,B011111,B00000000000000000000000001
+:	= B0,1,16,-1,-1,B011111,B00000000000000000000000001
+*	= B0,4,16,-1,-1,B011111,B00000000000000000000000001
+}
+;・PPv 関連 --------
+XV_dds	= 1	;ドラッグスクロールで窓外にでたらオートに 0:しない 1:する
+X_vzs	= 1	;選択する範囲を選択方向に応じて変更 0:しない 1:する
+XV_minf	= 1	;最小化時にPPvの呼出元へ強制変更 0:しない 1 or 2:する
+XV_bctl	= 2,2	;制御記号の表示 タブ,改行  0:しない 1:する 2:高速(制限有)
+XV_drag	= 1,2,3	;ドラッグ開始ボタン スクロール,選択,窓移動
+		; 0:使用しない 1:左 2:右 3:中/ホイール 4:左右同時 5:第4 6:第5
+XV_cols	= {	; 表示桁数=該当拡張子、全てに一致しなければ80
+84	= .wri
+}
+XV_tab	= {	; tab大きさ=該当拡張子、全てに一致しなければ8
+4	= .c,.cpp,.h,.hpp,.pl,.rh
+}
+XV_opts	= {	; ファイル種別(E_xxx形式)=オプション
+}
+XV_imgD	= {	;拡大縮小設定	PPvID = 倍率、縮小加工方法
+;倍率: -1:窓枠に合わせる -2:窓より小→等倍、大→縮小 0:100% 1-10000:%倍率
+;縮小加工方法: 1:白地に黒文字 2:黒字に白文字 3:カラー高速 4:混合
+VA	= -2,4
+VB	= -1,1
+}
+;・PPb 関連 --------
+XB_size	= 80,600,80,30	; コンソールの全体大きさと表示部分の大きさ
+XB_uwid	= 0	;(UNICODE版)正確なカーソル位置取得を 0:しない 1:する
+;・PPe 関連 --------
+X_ucsr	= 1	; カーソル位置に下線を使う 0:しない 1:する
+;・PPtray 関連 --------
+X_eedit	= 0	; エディット拡張を外部提供 0:しない 1:する
+;==========================================================================
+;・エイリアス
+;==========================================================================
+A_exec	= {	; エイリアス
+editor	= "wzeditor.exe"
+editorL	= /J
+viewer	= PPV.EXE -r
+ppe	= *ppe
+min	= %On
+man	= %Ox
+low	= %Ol
+noa	= %Oa
+}
+;==========================================================================
+;・ファイル判別
+;==========================================================================
+E_cr	= {	; [Enter]用判別
+.	,%M_Ccr,!N
+7Z	= C_DIR
+:ACAD	,%M_Ccr,!N
+:BMP	,%M_Ccr,!"N"
+:C	,%M_Ccr,!"N"
+:CAB	= C_DIR
+:DIR	= C_DIR
+:EXE	,%M_Ccr,"open"
+:EXE32C	,%M_Ccr,!"e&Xecute"
+:EXEDOS	,%M_Ccr,!"e&Xecute"
+:HANA	,%M_Ccr,"open"
+:JHD	,%M_Ccr,"Open"
+:LHA	= C_DIR
+:PKZIP	= C_DIR
+:RAR	= C_DIR
+:RIFF	,%M_Ccr,"Play"
+:SCR	,%M_Ccr,"open"
+:SZDD	= C_DIR
+:XJS	,%"Script" *script %{%R%}
+:XLF	= C_DIR
+:XLS95	,%M_Ccr,!"e&Xecute"
+:XPLS	,%"Script" *script %{%R%}
+:XVBS	,%"Script" *script %{%R%}
+AVI	,%M_Ccr,"open"
+BAT	,%M_Ccr,"e&Xecute"
+CHM	,%M_Ccr,!"open"
+COM	,%M_Ccr,"e&Xecute"
+DLL	= C_DIR
+DWG	,%M_Ccr,!"Open"
+EXE	,%M_Ccr,"e&Xecute"
+FON	,%M_Ccr,!"open"
+GZ	= C_DIR
+JHD	,%M_Ccr,!"Open"
+LZH	= C_DIR
+MAC	,%{KMC %C%}
+MAK	,%{MAKE -f%C%}
+MAKEFILE.	,%{MAKE %|%}
+MSI	,%M_Ccr,!"Open"
+PI	= @^\F10
+PPT	,%M_Ccr,"soffice.exe"
+RAR	= C_DIR
+SYS	= @^\F10
+TTF	,%M_Ccr,!"open"
+WSP	,WSP -D %C
+XDF	,XDF V %C
+XLB	,%M_Ccr,!"N"
+XLS	,%M_Ccr,"Open"
+XML	,%M_Ccr,!N
+XSL	,%M_Ccr,!"N"
+ZIP	= C_DIR
+}
+E_scr	= {	; \[Enter]用判別
+*	,%"Text edit"%Orib,%'editor' %FDC
+}
+E_unpack2	= {	; [U]用判別、使用できるDLLが無い時に使用
+ARC	,UNPACK %C %!2
+ARJ	,ARJ X %C %!2
+HA	,HA X %C
+LZH	,LHA X %C %!2%\
+LZS	,LHA X %C %!2%\
+PMA	,PMA X %C %!2
+ZIP	,PKUNZIP -d %C %!2
+ZOO	,ZOO -E %C %!2
+DLZ	,DLH E %C %!2
+TAR	,TAR xvf %C -o %!2
+TAZ	,TAR xvf %C -o %!2
+TGZ	,TAR xvf %C -o %!2
+??_	,EXPAND -r %C %!2
+*Z	,GZIP -d %C %!2
+BDF	,BUPDATE %C
+LDF	,LDF %C
+WUP	,WSP %C
+XDF	,XDF %C
+*	,ISH %C
+}
+;==========================================================================
+;・メニュー
+;==========================================================================
+M_pjump	= {	; [0] Path Jump
+A	= %h0
+B	= %h1
+C	= %h2
+D	= %h3
+E	= %h4
+F	= %h5
+G	= %h6
+H	= %h7
+I	= %h8
+J	= %h9
+||	= 
+1	= %0
+2	= %'USERPROFILE'\デスクトップ
+3	= LOG
+4	= SEND
+L	= BAKCUPLOG
+}
+M_Ccr	= {	; ^[Enter] ContextMenuへの追加分
+コピー(&C)	= %K"@C"
+移動(&M)	= %K"@M"
+ごみ箱へ(&D)	= %K"@D"
+削除(&T)	= %K"\@D"
+名前変更(&R)	= %K"@R"
+テキスト編集(&E)	= %K"@E"
+展開(&U)	= %K"@U"
+実行(&X)	= %K"@X"
+表示(&V)	= %K"@V"
+PPvで表示(&N)	= %K"@N"
+}
+M_edit	= {	; 一行編集メニューバー
+}
+MC_mdds	= {	; PPc 拡張D&D用挿入文字列
+P	= %FDC
+E	= %#FDC
+D	= %1
+}
+M_exec	= {						個人用実行メニュー
+API&32J	= %Ob,*CD"%0"%:WIN321.HLP
+API32&E	= %Ob,*CD"%0"%:WIN32.HLP
+BCC&55	= %Ob,cmd.exe /K PATH=BCC55\Bin%;%%PATH%%
+&BZ	= %Ob,*CD"%0"%:BZ.EXE
+&CMD	= %Ob,cmd.exe
+&KTX	= %Ob,*CD"%0"%:KTXWIN32.EXE
+&GREP	= %Ob,*CD"%0"%:WZEDITOR.EXE /fwzGrep
+&MAIL	= %Ob,*CD"%0"%:wzeditor.exe /fwzMail
+&-IE	= %Ob,*CD"%0"%:IEXPLORE.EXE
+&PALM	= %Ob,*CD"%0"%:palm.exe
+&VNC	= %Ob,*CD"%0"%:vncviewer.exe
+DELNULLDIR	= %Q"DeleteNullDir?" %: FOR /R "%1" %%h in (.) do rd /q %%h
+Virus&Scan	= "%'CommonProgramFiles'%\Network Associates\VirusScan Engine\4.0.xx\SCAN.EXE" *.* /manalyze /mime /mailbox /panalyze /program /streams /sub /unzip
+}
+M_bin	= {	** comment **
+&UUEX	= UUEX -P57 -s -N  %C
+&1 ISH 7bit	= ISH %C /s7
+&2 ISH 8bit	= ISH %C /s8
+&3 ISH SJIS	= ISH %C /ss
+}
+M_vmenu	= { PPv表示履歴
+cpLog	= %'APPDATA'\TOROID\ClockPod\CLOCKPOD.LOG
+--	= 
+1	= %hv0
+2	= %hv1
+3	= %hv2
+4	= %hv3
+5	= %hv4
+6	= %hv5
+7	= %hv6
+8	= %hv7
+}
+;==========================================================================
+;・Hidden Menu
+;==========================================================================
+HM_ppc	= {	; PPc(前半が上段、後半が下段
+Root	, _CYA,_AUTO = @'\'
+allM	, _AUTO,_AUTO = @HOME
+Driv	, _AUTO,_AUTO = @\L
+Copy	, _AUTO,_AUTO = @C
+Edit	, _AUTO,_AUTO = E
+Pack	, _AUTO,_AUTO = P
+Ren 	, _AUTO,_AUTO = @R
+Sort	, _AUTO,_AUTO = @S
+MkDr	, _AUTO,_AUTO = @K
+Tree	, _AUTO,_AUTO = @T
+Shel	, _AUTO,_AUTO = @H
+Up  	, _CYA,_AUTO = @BS
+revM	, _AUTO,_AUTO = @\HOME
+Pjmp	, _AUTO,_AUTO = @0
+Move	, _AUTO,_AUTO = @M
+View	, _AUTO,_AUTO = @N
+Unpk	, _AUTO,_AUTO = @U
+Del 	, _AUTO,_AUTO = @D
+Writ	, _AUTO,_AUTO = @W
+Wid 	, _AUTO,_AUTO = @';'
+Attr	, _AUTO,_AUTO = @A
+Find	, _AUTO,_AUTO = @F
+Exec	, _AUTO,_AUTO = @X
+EXEM	, _WHI,_AUTO , %M_exec
+}
+HM_ppv	= {	; PPv
+disp	, _AUTO,_AUTO = @':'
+code	, _AUTO,_AUTO = @'@'
+Find	, _AUTO,_DBLU = @F
+F ^ 	, _AUTO,_DBLU = @'['
+F v 	, _AUTO,_DBLU = @']'
+EXEC	, _WHI,_AUTO , %M_exec
+}
+;==========================================================================
+;・キー割り当て
+;==========================================================================
+K_edit	= {	; 文字列編集
+\' '	= @' '
+F6	= @TAB
+}
+KB_edit	= {	; PPb 文字列編集
+\' '	= @' '
+^H	= @BS
+^D	= @DEL
+V_HF2	,%k"&KANJI"
+}
+KC_main	= {	; PPc メイン窓
+B	,%"Binary Convert" %M_bin
+\P	,%"Pack File Ex" %M_xpack
+P	,%"Pack File" %M_xpack,!"lh&5"
+'['	,*CURSOR 9,-1,0,B010,0,B010
+']'	,*CURSOR 9,1,0,B010,0,B010
+','	,%M_exec
+\L	= @0
+E	,%"Text edit"%Orib,%'editor' %{%FDC%}
+}
+KV_main	= {	; PPv メイン窓
+1	= @END
+2	= @DOWN
+3	= @PDOWN
+4	= @LEFT
+6	= @RIGHT
+7	= @HOME
+8	= @UP
+9	= @PUP
+','	,%M_exec
+0	,%J%M_vmenu
+E	,%"Text edit"%Orib,%'editor' %{%FDC%}
+}
+K_tray	= {	; PPtray ホットキー(キー指定不可 & V_xx 形式を推奨)
+&\V	,*focus PPV[
+}
+;==========================================================================
+;・マウスクリック割り当て
+;==========================================================================
+MC_click	= {	; PPc メイン窓
+LD_FRAM	= @&F6
+LD_MENU	= @'^'
+LD_LINE	= @'^'
+LD_SPC	= @BS
+LD_INFO	= @BS
+LD_ICON	,%Z
+LD_MARK	= @^\A
+&LD_ICON	= @&ENTER
+LD_ENT	= @ENTER
+&LD_ENT	= @&ENTER
+R_FRAM	= @&SPACE
+R_SCRL	= @&SPACE
+R_MENU	= @&SPACE
+R_LINE	= @\L
+R_HMNU	= @\L
+R_ZOOM	,%I"zoom"
+R_MINI	,%I"mini"
+R_SPC	,%z%FVD
+R_SYSM	,%I"sys"
+R_TITL	,%I"title"
+R_CLOS	,%I"xlos"
+M_ZOOM	,%I"zoom"
+M_MINI	,%I"mini"
+M_SYSM	,%I"sys"
+M_TITL	,%I"title"
+M_CLOS	,%I"xlos"
+R_INFO	= @\L
+R_ICON	= @^ENTER
+\R_ICON	= @^\F10
+R_ENT	= @^ENTER
+\R_ENT	= @^\F10
+W_FRAM	= @&SPACE
+W_LINE	= @\ESC
+W_HMNU	= @\ESC
+W_SPC	= @\ESC
+W_INFO	= @\ESC
+W_ICON	= @N
+W_ENT	= @N
+M_FRAM	= @&SPACE
+M_SCRL	= @&SPACE
+M_LINE	= @\ESC
+M_HMNU	= @\ESC
+M_SPC	= @\ESC
+M_INFO	= @\ESC
+M_ICON	= @N
+M_ENT	= @N
+^LD_MARK	= @^\A
+^LD_ENT	= @^\A
+RG_L	= @^LEFT
+RG_R	= @^RIGHT
+X_LINE	= @^LEFT
+X_HMNU	= @^LEFT
+X_SPC	= @^LEFT
+X_INFO	= @^LEFT
+Y_LINE	= @^RIGHT
+Y_HMNU	= @^RIGHT
+Y_SPC	= @^RIGHT
+Y_INFO	= @^RIGHT
+X_ICON	= @^LEFT
+X_ENT	= @^LEFT
+Y_ICON	= @^RIGHT
+Y_ENT	= @^RIGHT
+}
+MV_click	= {	; PPv メイン窓
+LD_FRAM	= @&F6
+LD_MENU	= @'^'
+LD_LINE	= @'^'
+LD_SPC	,%Z
+&LD_SPC	,%z,properties
+R_FRAM	= @&SPACE
+R_SCRL	= @&SPACE
+R_MENU	= @&SPACE
+R_SPC	= @^ENTER
+\R_SPC	,%z
+W_FRAM	= @&SPACE
+W_HMNU	= @\ESC
+W_LINE	= @\ESC
+W_SPC	= @\ESC
+M_HMNU	= @\ESC
+M_LINE	= @\ESC
+M_SPC	= @\ESC
+}
+MT_icon	= {	; PPtray (ボタン種)_ICON のコマンド指定のみ有効
+LD_ICON	,%E
+}
+;==========================================================================
+;・おまけ/PPc,PPvの背景画像と透過処理
+;==========================================================================
+X_bg	= { 
+}
+X_fles	= 0	; 画面のちらつき対策を 0:しない 1:する
+;==========================================================================
+;・ファイル操作  GUI mode での操作を推奨
+;==========================================================================
+X_fopt	= {	** comment ** 
+Copy	= 0,0,0,0,0,0,B011111,B100000,1,1,1,0,0,%2%\,,001
+Move	= 0,0,0,0,0,0,B011111,B100000,0,1,1,0,0,%2%\,,001
+Rename	= 0,0,1,0,1,1,B111111,B000000,0,1,1,0,0,,,001
+2HDsprit	= 0,0,0,0,0,0,B011111,B100000,1,0,0,0,1457664,A:\,,001
+Append	= 1,6,0,0,0,0,B011111,B100000,1,0,0,0,0,%2%\,%C,001
+DelSPC	= 0,0,0,0,1,0,B011111,B100000,0,1,1,0,0,,,001
+Copy2	= 0,0,0,0,0,0,B011111,B100000,1,1,1,1,0,%2%\,,001
+}
+;==========================================================================
+;・フォント  GUI mode での操作を推奨
+;==========================================================================
+F_mes	= -12,0,0,0,400,0,0,0,128,3,2,1,49,ＭＳ ゴシック	; 汎用
+X_lspc	= 0	; 汎用の行間隔
+F_dlg	= -12,0,0,0,400,0,0,0,128,3,2,1,49,ＭＳ ゴシック	; ダイアログ
+F_tree	= 	; ツリー
+F_fix	= 	; PPv固定ピッチ
+;==========================================================================
+;・色の定義
+;==========================================================================
+C_back	= H2f4000	; 背景色、_AUTO可
+C_mes	= H0C88f0	; ステータス行の項目名、_AUTO可
+C_info	= _DWHI	; ステータス行の内容、_AUTO可
+C_res	= _AUTO,_AUTO	; 報告(前景色,背景色)_AUTO可
+C_line	= _CYA,_RED	; 境界線(通常,Gray)
+CC_tree	= _AUTO,_AUTO	; ツリー(文字色,背景色)_AUTO可
+;** PPc 関連 --------
+;	 エントリ属性(ファイル等の文字色)
+; メッセージ,「.」,「..」,ラベル,ディレクトリ,システム,隠し
+; 読出専用,通常,圧縮 の順
+C_entry	= _WHI,_WHI,_CYA,_RED,_CYA,_MAG,_BLU,_GRE,H0C88f0,_SBLU
+;	 エントリ状態(ファイルの背景色等)
+; メッセージ,削除,通常,不明,更新,追加,NoFocus,枠,下線,マーク,通常(偶数行)
+C_eInfo	= _AUTO,_DRED,_AUTO,_DBLA,_DBLU,_DCYA,_DWHI,_BRO,_GRE,_WHI,_AUTO
+C_ext	= {	; 拡張子色
+EXE	= _DBRO
+LZH	= _DCYA
+BAT	= _DBRO
+COM	= _DBRO
+CMD	= _DBRO
+ZIP	= _DCYA
+ZOO	= _DCYA
+ARJ	= _DCYA
+CAB	= _DCYA
+ISH	= _DCYA
+RAR	= _DCYA
+JPG	= _DWHI
+GIF	= _DWHI
+BMP	= _DWHI
+C	= _WHI
+JPE	= _DWHI
+JPEG	= _DWHI
+CPP	= _WHI
+H	= _WHI
+HPP	= _WHI
+MAK	= _WHI
+RC	= _WHI
+RH	= _WHI
+}
+;** PPv 関連 --------
+CV_boun	= _DBLA	; 端線
+CV_lf	= _BRO	; 改行文字
+CV_tab	= _DBLU	; タブ
+CV_link	= _DBLA	; リンク
+;	 文字色/エスケープシーケンス(ESC[m)の色割り当て。
+;	  黒、赤、緑、青、黄、水、紫、白(通常色) の順
+CV_char	= _AUTO,_RED,_GRE,_BLU,_DBRO,_CYA,_MAG,_GRAY
+;** PPb 関連 --------
+; CONSOLE系(CB_xxxx)のエイリアス（これら複数を"+"か"|"で連結できる）
+;	_BLA   _BLU   _RED   _MAG   _GRE    _CYA   _BRO   _WHI
+;	_DBLA  _DBLU  _DRED  _DMAG  _DGRE   _DCYA  _DBRO  _DWHI
+;	R_BLA  R_BLU  R_RED  R_MAG  R_GRE   R_CYA  R_BRO  R_WHI
+;	R_DBLA R_DBLU R_DRED R_DMAG R_DGRE  R_DCYA R_DBRO R_DWHI
+;	_TL _UL _LL _RL
+
+CB_edit	= _CYA+R_DBLA+_UL,_BLA+R_CYA+_UL,_BLU+R_DBLA+_UL,_BLA+R_BLU+_UL	; 編集行,反転色,選択時,反転
+CB_com	= _BRO+R_BLA	; 実行内容
+P_susie	= {	; Susie plug-in(自動登録される) 形式,対応ファイル
+; B0:=1 IN形式	B1:=1 AM形式
+IFHG.SPI	= B01,.hg
+IFMAG.SPI	= B01,.mag,.mki
+ifmaki.SPI	= B01,.mki
+IFPCD.SPI	= B01,.pcd
+IFPI.SPI	= B01,.pi
+ifdxfft.spi	= B01,.dxf
+ifpsd.spi	= B01,.PSD
+}
+;--------------------------------------------------------------------------

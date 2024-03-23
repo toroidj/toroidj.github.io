@@ -1,0 +1,1792 @@
+Mes0409	=#{ English ; 0409 is Locale ID (LCID)
++|0000	196
+0001	OK
+0002	Cancel
+0003	Abort(&A)
+0004	Retry(&R)
+0005	Ignore(&I)
+0006	Yes(&Y)
+0007	No(&N)
+7005	extension(&E)
+7007	Option(&O)
+7009	&...
+700A	(&L)
+7011	Execute
+7012	Wait for PPb...
+7013	Execute with self(&S)
+7014	Execute with new PPb(&N)
+7018	Enter Login Password
+7019	Path
+701D	Connect at relogin(&C)
+701E	Username(&U)
+701F	Password(&P)
+7020	File Operations
+7022	Only new date(&N)
+7023	Rename(&R)
+7024	Overwrite(&O)
+7025	Skip(&S)
+7026	With archive(&A)
+7027	Add number(&B)
+7028	Append(&P)
+7029	All same action(&W)
+702A	Upper case(&U)
+702B	Lower case(&L)
+702C	Forced 8.3(&F)
+702D	Delete wrong space(&G)
+702E	Delete numbers(&B)
+702F	Readonly(&R)
+7030	Archive(&A)
+7031	Hidden(&H)
+7032	System(&X)
+7034	Copy Security attribute(&E)
+7035	Skip slight error(&K)
+7036	Auto 'All' check(&U)
+703F	Same Name Action
+7040	Name Filter
+7041	Attributes
+7042	Dest(&D)
+7043	Rename(&E)
+7044	Divide size(&V)
+7045	Serial Number(&N)
+7047	Copy SACL(&C)
+7048	Directory(&D)
+7049	Burst/self buffering(&G)
+704A	Flat/don't make tree(&L)
+704B	Keep directories(&K)
+704C	log window(&G)
+704D	Undo Log(&U)
+704E	Extract '%'(&A)
+704F	AutoReadonly Off(&O)
+7050	Back up old file(&V)
+7051	First sheet(&S)
+7052	File name(&N)
+7053	Dir name fix(&D)
+7054	Silent create new directory warning(&S)
+7055	Low priority(&L)
+7056	Source entry
+7057	Destination entry
+7058	Attribute\nFile Size\nCreate Time\nWrite Time\nAccess Time
+7059	no wait with Result(&R)
+705A	&3:Option
+705C	&2:Rename
+705E	&1:General
+7062	Use all reaction(&U)
+7063	add delay list(&D)
+7064	Different Size(&Z)
+7068	Rename file on destination(&V)
+7070	Prevent from entering sleep(&P)
+7071	Allow Decrypted destination(&D)
+7072	Make Join batch(&J)
+7073	Source Name
+7074	Count total size(&C)
+7075	check Exist first(&E)
+7076	serialize operation(&Z)
+7077	Move after close file(&W)
+7078	Fix extention name(&Y)
+7079	Log &4
+707A	Link for symbolic link
+707B	Remove symbolic link sources(&H)
+7400	Test(&T)
+7402	Command list
+7410	File
+7411	Customize data(&C)
+7412	Store by text(&S)
+7413	Append by text(&A)
+7414	Update by text(&U)
+7415	Dump to text(&D)
+7416	Initialize(&I)
+7417	History data(&H)
+7418	Dump to text(&O)
+7419	Initialize(&R)
+741A	Key check(&K)
+741C	Associate folder(&P)
+741D	Deassociate folder(&U)
+741E	Open folder with PPc(&F)
+741F	Hide console(&L)
+7421	Edit and append(&E)
+7429	Customize by edited text
+742C	Append(&A)
+742D	Use text(&E)
+742E	Result(&R)
+7430	Colors
+7433	Item(&I)
+7436	Append(&A)
+7437	Delete(&D)
+7438	Word list(&I)
+7439	Color(&C)
+743B	Detail(&E)
+743C	Underline(&U)
+743E	Sort by extention(&X)
+743F	Sort by color(&L)
+7450	File types
+7457	(O E_...)(&O)
+7458	Type name(&I)
+7459	Types(&Y)
+7460	Keys
+7461	Mouses
+7462	Buttons
+7464	Key(&S)
+746A	←
+746B	↑
+746C	↓
+746D	→
+746F	List
+7470	Susie
+7472	susie information
+7473	Use(&U)
+7474	Detail(&P)
+7476	List(&Y)
+7477	Default extention(&D)
+7478	Auto detect(&A)
+7479	Extention(&P)
+747A	Target (.bmp,.dib)(&G)
+747B	Disable UNICODE API(&N)
+7480	misc
+7483	ExEdit(&E)
+7490	Menus
+7491	Up(&U)
+7492	Down(&W)
+7493	Short cut Key(&K)
+7495	Separator(&S)
+7496	Foreground Color(&F)
+7497	Background Color(&B)
+7498	Button edit(&B)
+74E2	save(&V)
+74E3	Delete(&D)
+74E5	Insert(&I)
+74E6	Detail(&X)
+74EA	Macro letter(&M)
+74EC	Comment(&C)
+74ED	Commands(&L)
+74EF	Detail(&X)
+74F0	General
+74FC	Find(&F)
+7600	Push use key, and click 'OK'
+7602	extend mode
+7604	(require with 'NULL' cust)
+7608	Colors
+760C	Highlight Colors
+760D	Top(&T)
+760E	Bottom(&B)
+7610	Display formats
+7617	Hide(have comment, &C)
+7618	Full wide(&L)
+7619	Full Name length(&N)
+761C	Show items(&F)
+761D	Items list(&Y)
+761E	Max name length(&M)
+77FD	Refer(&F)
+77FE	Save(&S)
+77FF	Apply(&A)
+7800	Attributes
+7801	Attributes(&B)
+7802	Create(&1)
+7803	Write(&2)
+7804	Access(&3)
+7805	(&C)
+7806	(&W)
+7807	(&Q)
+7808	Old
+7809	New
+780A	Modify Directory(&M)
+780B	detail(&X)
+780C	Readonly(&R)
+780D	Hidden(&H)
+780E	System(&S)
+780F	Archive(&A)
+7810	Compression(&P)
+7811	Encryption(&E)
+7812	subdirectory(&D)
+7813	Index(&I)
+7814	Temporary(&T)
+7815	Offline(&O)
+7840	Drive information
+7841	Drive name
+7842	Label(&L)
+7843	Disk type
+7844	Serial number
+7845	File system
+7846	Used space
+7847	Free space
+7848	Real free
+7849	Total space
+784A	Bytes/Sector
+784B	Bytes/Cluster
+784C	Maximum Filename length
+784D	Bytes
+784E	Clusters
+7860	Case preserved
+7861	Case sensitive
+7862	UNICODE
+7863	ACLS
+7864	File compress
+7865	Volume compression
+7866	Named streams
+7867	Quotas
+7868	Sparse
+7869	Reparse
+786A	Remote
+786B	Object IDS
+786C	Encryption
+786D	ReadOnly
+786E	Sequential write once
+786F	Transactions
+7870	Hardlinks
+7871	Extended attributes
+7872	Open by file ID
+7873	USN Journal
+7874	Integrity streams
+7875	Block refcounting
+7876	Sparse VDL
+7877	DAX,direct access
+7881	Directory Mask(&D)
+7882	Real time Mask(&M)
+7884	format(&T)
+7885	Word match(&W)
+78C0	Incremental search
+78C2	Up(&U)
+78C3	Down(&D)
+78C4	Mark(&M)
+78C5	Front(&F)
+78C6	Roma(&O)
+78C7	Details(&T)
+78D0	PPc Window setting
+78D1	Double Boot(&D)
+78D2	Double Close(&C)
+78D3	Double Active(&A)
+78D4	Joint Window(_)(&J)
+78D5	Left/Right(&L)
+78D6	Up/Down(&U)
+78D7	Piled(&P)
+78D8	Fix Size(&S)
+78D9	Fix Active PPc(&F)
+78DA	Size(&Z)
+78DB	Size+Position(&O)
+78DC	Combo(&M)
+78E0	Sort Detail
+78E2	Case(&C)
+78E3	Kana(&K)
+78E4	Non space(&N)
+78E5	Symbols(&Y)
+78E6	Wide(&W)
+78E7	String sort(&T)
+78E8	Number(&U)
+78EC	Last Entry(&E)
+78ED	Reverse &1
+78EE	Reverse &2
+78EF	Reverse &3
+78F0	Where is file?
+78F1	Source(&S)
+78F3	File name(&N)
+78F5	And,Filename(&A)
+78FA	Search marks(&M)
+78FB	Have Directory(&H)
+78FC	SubDirectory(&U)
+78FD	Virtual FS(&V)
+7900	Compare mark Detail
+7910	General
+792A	Access Time:
+792B	Modify Time:
+792C	Create Time:
+792D	Size:
+792E	Path:
+792F	Type:
+7C00	Select Paste Type
+7C08	Print
+7C0A	Now Printing...
+ACET	\n, and %d application
+ADDE	D&D emulate(&D)
+ADDH	D&D hook(&D)
+ADDP	Post files
+ADDR	Right button D&D(&D)
+ADHD	This file is using by applications;\n
+ADTE	Enter a title
+AICP	Add check pattern
+ALLI	All
+ANSP	Stop animate
+ASRA	Aspect rate
+ASTL	Add start list
+BRAK	Job breaked
+BREX	Need regexp library
+BRKD	Broken data
+BUSY	Busy...
+CAOF	Cache : off
+CAON	Cache : on
+CCAN	Cancel
+CCMC	All matched
+CCMP	Compare completed
+CDAT	Attributes - Time - Name(&A)
+CDCM	Comments(&M)
+CDD1	Details1(&D)
+CDD2	Details2(&4)
+CDFN	Fullname(&N)
+CDI1	Icons 1(&5)
+CDI2	Icons 2(&6)
+CDI3	Icons 3(&7)
+CDID	Icon details(&I)
+CDL1	List1(&L)
+CDL2	List&2
+CDL3	List&3
+CDT1	Thumbnails1(&T)
+CDT2	Thumbnails2(&8)
+CDT3	Thumbnails3(&9)
+CMP1	Same SHA-1(&H)
+CMPA	Same size && time(&A)
+CMPB	Same Binary(&B)
+CMPC	Comment(&C)
+CMPD	Detail...(&D)
+CMPE	Exist file(&E)
+CMPF	Filename without extention(&F)
+CMPH	Compare Hash to Clipboard(&C)
+CMPI	file size(no name check, &I)
+CMPL	Large file(&L)
+CMPM	comment(1window, &M)
+CMPN	new File(&F)
+CMPQ	same size, any name(&Q)
+CMPS	file Size(&S)
+CMPT	Time stamp(&T)
+CMPW	alone file(&O)
+CMPX	Exist(with dir, &X)
+CMPZ	same file size(1 window, &Z)
+COMP	completed.
+COMT	comment
+COSE	split extension(&S)
+CPDN	Clip done
+CPML	Leave Select mode
+CPMS	Select mode
+CPPN	Clip dir done
+CPTX	Clip
+CRSS	Save setting
+CTHE	Hook Edit(&E)
+CUTR	Cut ready
+DDAB	Add button
+DDAI	Add item to tree
+DDAL	Add item to listfile
+DDCM	Can\'t move on
+DDCP	Copy to(&C)
+DDDP	Duplicate on(&D)
+DDDT	Detail(&A)
+DDET	another type...(&E)
+DDJP	Jump from(&J)
+DDLI	Shortcut to(&S)
+DDML	Make List file(&L)
+DDMV	Move to(&M)
+DDOP	Open to(&O)
+DDSC	Shortcut on(&S)
+DDSW	Swap to(&W)
+DDTX	text(&t)
+DEFA	default
+DEXT	Delete %s
+DICD	CD/DVD/BD...
+DIFI	Fixed
+DIRA	Ramdisk
+DIRE	Remote
+DIRM	Removable
+DIRS	<dir>
+DREN	directory(&I)
+DSAR	Asynchronous read(&A)
+DSCA	Cancel(&C)
+DSCV	Cache view(&C)
+DSEI	Entry icon(&Y)
+DSFO	&0:Force
+DSHO	&0:Default
+DSIA	overlay(safety)
+DSIB	blank
+DSIF	frame
+DSIH	overlay(no cache)
+DSII	information setting
+DSIL	information line icon
+DSIN	normal
+DSIO	with overlay
+DSIS	simple
+DSIT	through
+DSIW	no show
+DSMA	Magnify thumbnail
+DSMI	Minify thumbnail
+DSSD	-save cache to Disk(&D)
+DSSE	-save cache Every time(&E)
+DSSM	Slow mode(&S)
+DSTA	&4:Archive
+DSTD	&5:Directory mode
+DSTE	&3:Temporality
+DSTF	&4:Listfile
+DSTL	&2:This path and subdir
+DSTP	&1:This path
+DSTS	&6:Path separate
+DSWM	Watch modified(&W)
+EACO	Already counting
+EBDK	%s is bad key name
+EBPC	bad *pane command : %s
+EBRK	Braket error
+EBRV	Require Windows Vista or later.
+EBSG	%s is bad signature
+EBWA	Bad wildcard attributes
+EBWS	Bad filesystem
+EC32	comdlg32.dll load error
+ECAL	Calculation error: %s
+ECDR	Can\'t unpack
+ECFD	'Full' can't multi use.
+ECFL	Customize area flow
+ECHF	Check report fault log.
+ECME	ContextMenu Error
+ECPL	frame read error
+ECPR	Can't change page with rotation.
+ECPS	this frame is not full support
+ECUD	Can\'t execute undo.
+EDAD	DD faulture(&D)
+EDAL	Select All(&A)
+EDBL	Block mode(&B)
+EDCA	Cancel(&N)
+EDCP	Copy(&C)
+EDCU	Cut(&T)
+EDDL	Delete operation error :%s
+EDEC	encode(&e)
+EDEL	Can not delete
+EDET	types(&t)
+EDIT	Edit
+EDPA	Paste(&P)
+EDTD	Temporary directory delete faulture
+EECR	Item '%s' not find in %s
+EEFT	Can't execute %s
+EENF	Entry not found
+EENM	e number error
+EFAL	faulture
+EFLW	Buffer flow
+EFUT	function: missing ')'.
+EHKY	Hot key(%s) register error
+EIFC	%%F not support: %c
+EKCD	Key error
+EKFT	Key code error
+EKNF	Keyword not found
+ELST	Erase from list(&L)
+ELTA	Taget list make error
+EMDI	Error (Require without file divide mode)
+EMEU	Menu '%s' create error
+EMUT	%%*%s missing ')'.
+ENFF	Not found %s
+ENFT	Not found target
+ENFU	Not found %%*%s
+ENOM	Not enough memories
+ENSO	Not support
+ENSP	Separetor \'%c\' not found
+ENUD	%s is not UnXXX
+EOEC	Can't register more PPc.
+EOFI	open file error
+EOLT	Size too long.
+EPBY	Use PPb error(%s)
+EPRM	Parameter error
+EPTH	Path Error
+EREG	Regular expression error : %s
+ESCT	Short cut error
+ESEP	Separator not found
+ESHO	Can't access to now open archive.
+ETMW	Too many format character 'W'/'w'
+EUFM	Unknown format
+EUKW	Unknown keyword
+EUOP	Unknown option: %s
+EUXC	Unknown command: *%s
+EVFA	Download file is wrong.
+EWFT	W format error
+EWLD	wildcard error
+EWLG	wildcard too long
+EWNF	Can\'t support on NTFS
+EWRT	Error writing
+EWUS	Use unsupport attributes on this matching
+EXEF	execute...
+EXEX	file exists
+EXIT	Exit(&X)
+EXNF	New creates
+EXNW	New file exists
+EXOL	Old file exists
+FBAC	Action(I):
+FBAK	Backup fault.
+FBDW	PPb critical error
+FDLW	PPx system table is broken %04X
+FEWE	Found file seems extracting in the wrong place
+FEXP	Explorer Folder
+FIXE	This file seems type is %s and %s.\nThis file extension is not necessary to modify.
+FIXH	PPffix check extension type, when dropped on this icon.
+FIXM	This file seems type is %s and %s.\nModify file extension?
+FIXU	File type is unknown.
+FLAC	all completed
+FLCA	Cancelled
+FLER	errors
+FLEX	existed
+FLLS	skipped
+FLNO	No operate
+FLOD	<loading>
+FLPC	partially completed
+FLTC	No exist
+FLTE	Exist
+FMYF	Drive list
+FNET	Network PC
+FOCA	Cancel
+FOCL	Close
+FOCO	Continue
+FOCP	Pause
+FOCS	Skip
+FOFC	Compare(&C)
+FOOK	OK
+FOST	Start
+FUPD	Directory not found, and move parent directory
+FUPR	Directory not found, and move root directory
+GDAH	Zoom frame height
+GDAI	Auto zoom
+GDAR	Auto Frame size
+GDAW	Zoom frame width
+GDFI	Zoom in frame
+GDFR	Frame size
+GSIG	Signature is good.
+HDRA	Attributes
+HDRC	Date Created
+HDRD	Date
+HDRE	Date Accessed
+HDRN	Name
+HDRS	Size
+HELP	help
+HIST	histories
+HPDN	Http Done.
+IANI	Animate : [P]
+IDIR	Directory(&D)
+IDIV	Divide page mode([<][>], All read:[/])
+IFCN	File counting...
+IGAN	Animate(&M)
+IGNP	Next page(&N)
+IGPP	Prev page(&P)
+IICC	Include color profile
+ILFI	List File(&L)
+IMAB	Cancel(&A)
+IMCA	Cancel(&N)
+IMIG	Igonre(&I)
+IMNO	No(&N)
+IMOK	OK
+IMRE	Retry(&R)
+IMSK	Skip(&I)
+IMST	Start(&Y)
+IMTC	Cancel(&C)
+IMYE	Yes(&Y)
+IMYK	OK(&Y)
+IPAG	multi page
+ISEA	Incremental search mode
+ITCK	Keep highlight after closing(&K)
+ITCM	Comment(&C)
+ITFE	name extention(&E)
+ITFN	Filename(&N)
+ITHA	Highlight all(&G)
+ITHL	Highlight(&H)
+ITIP	Include path(&P)
+ITMA	Mark all(&A)
+ITMO	Check Mark(&M)
+ITSH	Highlight match entry(&L)
+JLER	ERROR>
+JLEX	execute>
+JLPA	pause>
+JLWA	wait>
+JMAE	Extract
+JMAL	All
+JMAP	Archive
+JMAT	Attributes
+JMCL	Clip
+JMCO	Compare
+JMCP	Copy
+JMCR	Clear
+JMCS	Size Count
+JMCU	Cut
+JMDE	Delete
+JMJO	Job
+JMLI	Link/Junction
+JMMO	Move
+JMMR	Mirror
+JMPA	Paste
+JMPR	Properties
+JMPS	Paste Shortcut
+JMPV	Preview
+JMRE	Rename
+JMRU	Execute
+JMSH	Shortcut
+JMSL	Symlink
+JMTE	Text Edit
+JMUN	Undo
+JNCL	CLSID(&C)
+JNHL	ハードリンク一覧(&H)
+JNJL	link(&l)
+JNSH	shortcut(&s)
+JNST	stream(&T)
+JPCL	CLSID(pair window, &I)
+JPDI	show pair window(&P)
+JPHL	反対窓でハードリンク一覧(&P)
+JPJL	link(pair window, &R)
+JPLN	Jump link
+JPSH	shortcut(pair window, &P)
+JPST	stream(pair window, &W)
+JWOF	Join window: off
+JWON	Join window: on
+KWAT	\nPress any key to continue.
+LCOK	no error.
+LDAD	address
+LDDR	drives
+LDIN	input
+LDOL	Lock
+LDOS	Separator
+LDSI	XC_inf
+LDST	XC_stat
+LERE	Erased Entry from list.
+LGAP	Append
+LGCR	Create
+LGDE	Delete
+LGER	Error
+LGOW	Overwrite
+LGWA	Warning
+LHIL	Highlight
+LHIO	Highlight off
+LMAK	Mark
+LOAD	loading
+LRMA	Reverse mark
+LUMA	Unmark
+LYCA	Pane title(&C)
+LYCI	Common Information line(&N)
+LYDB	Dock Bottom(&B)
+LYDT	Dock Top(&D)
+LYHA	Header(&H)
+LYHL	horizontal layout(&Z)
+LYIL	Information line(&I)
+LYJL	Job list(&J)
+LYLG	Log(&G)
+LYME	Menu bar(&M)
+LYOT	Others(&X)
+LYSA	Standerd address bar(&A)
+LYSC	Scroll bar(&O)
+LYSL	Status line(&S)
+LYSS	Swap scroll bar(&P)
+LYST	Standerd Toolbar(&T)
+LYTI	Title bar(&L)
+LYTL	Touch layout(&Y)
+LYTR	Tree(&R)
+LYUS	Unique settings for each combo window(&U)
+LYWM	Window...(&W)
+MBCP	Clip message text
+MCOP	open(&o)
+MCPL	play(&p)
+MCPR	print(&p)
+MCRC	Edit common menu(&C)
+MCRD	Set default select(&D)
+MCRE	Set default command(&E)
+MCRK	Run as(&A)
+MCRV	Run as administrator(&A)
+MCRX	Edit filename-extention menu(&X)
+MDLC	With shift : Delete
+MEAD	Add Item(&A)
+MEDE	Delete Item(&D)
+MEDL	Duplicate line(&D)
+MEDM	original menu
+MEDT	Edit Menu(&E)
+MEED	edit menu(&T)
+MEFI	file menu(&M)
+MEFS	Insert find str(&I)
+MEMD	Modify Item(&M)
+MERE	Rename Item name(&R)
+MERO	Read only(&V)
+MERS	Regexp serach(&X)
+MEST	settings menu
+MEWW	Word wrap(&W)
+MGNR	General(&G)
+MIGE	Need MIGEMO.DLL
+MSAV	Save setting
+MSCL	close button
+MSEN	entry area
+MSFR	window frame
+MSHA	Column header
+MSHM	Hidden menu
+MSIC	icon area
+MSIF	information lines
+MSLI	status line
+MSMA	make symbol
+MSME	menu bar
+MSMI	minimize button
+MSPA	path bar
+MSSC	scroll bar
+MSSP	blank area
+MSSY	window icon
+MSTA	entry tail
+MSTB	tab button
+MSTI	title bar
+MSTS	tab space
+MSZO	maximize button
+MTCL	Close Tree(&X)
+MTDL	Drive
+MTDR	use Rename Dialog(&D)
+MTDS	Directory Settings
+MTED	Eject
+MTFA	Favorites(&A)
+MTFO	Folder tree(T)
+MTFP	Focus PPc(&F)
+MTMI	Simple icon(&M)
+MTNF	Create folder(&C)
+MTNU	Create User tree(&U)
+MTNW	New
+MTOL	icon overlay(&O)
+MTPL	PPc list(&P)
+MTRL	Reload(&R)
+MTRS	Run as self
+MTRT	Reload
+MTSB	Show tool bar(&B)
+MTSC	Shell Context
+MTSH	Show proteced folder(&H)
+MTSI	Show icon(&S)
+MTSL	Line(&L)
+MTSN	Single Node(&N)
+MTSO	Sort
+MTSS	Sync-select(&Y)
+MTST	Settings(&S)
+MTUE	Customize User list(&M)
+MTVF	View
+MWOP	Wait
+NEWD	Enter new disk
+NEWF	(new file)
+NEWI	new
+NITX	Text File\t.txt(&T)
+NOEL	no match any file
+NOIC	Setup is not completed. It is better to execute a SETUP.EXE.
+NOMF	Disable show memo
+NOMI	No more information
+NOMN	Show memo
+NOTX	String not found.
+NRGU	Width change: drag status, [, ], {, }
+NWDN	TEMPDIR
+NWFN	TEMPFILE
+OPSA	Open selected Address(&A)
+OWDT	Directory types(&Y)
+OWIT	Send to(&N)
+PACI	individual archive
+PACO	other
+PACT	Archive type
+PJAD	Add path
+PJCP	ControlPanel
+PJDE	Desktop
+PJDL	DriveList
+PJMD	MyDocuments
+PJRB	Recycled bin
+QABO	Break job?
+QBAK	Backup path?
+QCOM	Continue action With marked entry off screen?
+QCRD	Create new directory?
+QDAC	Delete action?
+QDDL	Delete Delayed list?
+QDDO	Start delayed list task?
+QDFA	Delete file of special attributes?
+QDKM	Delete key setting?
+QDL1	delete?
+QDL2	,,,\n
+QDL3	entries delete?\n
+QDL4	erase form tree?
+QDRC	Yes\tDuplicate reparse point\nNo\tCopy files
+QDRD	Move to recycle bin?
+QDRP	Yes\tDelete reparse point\nNo\tDelete reparse point  & files
+QEFD	%s\n existed, delete?
+QETF	Extract file to temporary path?
+QEWE	This file seems extracting in the wrong place. Extract?
+QICU	Initialize customize, ok?
+QIHI	Initialize history, ok?
+QISD	%s is drive name?\nYes\tdrive name\nNo\tdirectory name\n
+QMCF	Create comments file?
+QOSL	File size too large. Read file image partially?
+QPPC	Quit PPc?
+QPPV	Quit PPv?
+QRCC	Register PPc to context menu?
+QRLA	Remove this language?
+QRLT	Reload text file?
+QSAM	Over write ok?
+QSAN	Found %d same name files. Select processing method.
+QSAO	Found same name file. Select processing method.
+QSAV	Save edited data?
+QSDP	Setting as dest path of pair windows?
+QSIZ	Need PPx's shutdown, ok?
+QSP2	This drive seems need to divide by 2G bytes. Divide file?
+QSPT	No free space. Divide file?
+QSPW	Seems no free space. Divide file?
+QSUD	Start undo?
+QSXS	Waiting synchronizing...
+QTWP	Connect TORO's Library?
+QUPD	Update customize?\n\nYes\tBackup & update\nNo\tUpdate without backup\nCancel\tNo update\n
+QUSV	Write using viewer application
+QWRD	Order write?
+REGP	Select and Regist program
+RKAL	Key command reentry error.
+RRPC	Require restart PPc
+RTPC	Require restart PPc, soon
+SACO	Size count... [PAUSE]:Break
+SAUT	Auto
+SAVE	Save
+SAVP	Save position
+SCMP	Start Compare
+SDPF	Set dump file
+SHCM	Shell Context menu(&S)
+SIOF	Sync Information:Off
+SION	Sync Information:On
+SJLN	Jump to line...(&J)
+SJTE	End of text(&C)
+SJTT	Top of text(&R)
+SJWE	End of window(&X)
+SJWT	Top of window(&E)
+SLMD	Enter slow mode
+SNAN	(add number)
+SNAP	(append)
+SNBK	(backup)
+SNCN	(change name)
+SNCP	(copy)
+SNDE	(delete)
+SNKP	(keep)
+SNLN	(link)
+SNMV	(move)
+SNOW	(overwrite)
+SNRE	(restore)
+SNSK	(skip)
+SPOF	Sync properties : off
+SPON	Sync properties : on
+SPPF	Sync path : off
+SPPN	Sync path : on
+SSRP	Input program path(%s)
+SSRT	sorting...
+SVOF	Sync View : off
+SVON	Sync View : on
+SWCA	Word case transfer
+SWCZ	Zen/han transfer(&Z)
+SWPD	move window to desktop
+TABB	swap tab(&B)
+TABC	Close(&C)
+TABD	Default Color(&D)
+TABE	Eject(&E)
+TABH	Hide(&H)
+TABI	Save tab width(&V)
+TABK	select tab by key(&K)
+TABL	Lock(&L)
+TABN	New tab(&N)
+TABP	new Pane(&P)
+TABR	color(&O)
+TABS	closed PPc(&S)
+TABW	swap pane(&W)
+TACG	new group(&G)
+TACL	close left(&F)
+TACM	rename group(&M)
+TACP	close pane(&A)
+TACR	close Right(&R)
+TACT	show selector(&T)
+TACU	show all group(&U)
+TAPN	Append Filename
+TASR	Aspect rate(X ppi x Y ppi)
+TATR	Attribute
+TC22	SHA-224(&2)
+TC25	SHA-256(&5)
+TC32	CRC32(&C)
+TCFC	File type(&T)
+TCHL	Hard links(&H)
+TCHP	Unpack(http)
+TCIT	Info Tip text(&P)
+TCLE	Column Extention(&T)
+TCLP	Linked path(&K)
+TCLR	Clear(&L)
+TCM5	MD5(&M)
+TCME	Edit comment(&E)
+TCMT	Comment(&T)
+TCOW	Owner(&O)
+TCS1	SHA-1(&S)
+TDAD	DnD Window List
+TDEL	Delete
+TDFO	Delayed file operation
+TDUP	Dup
+TEDJ	Enter editor\'s line locate option
+TEHC	Highlight (%s)
+TEIF	Entry information
+TENN	Enter new name
+TEXE	Execute
+TFAC	PPc file action
+TFCP	Compare
+TFEM	Find mask
+TFMK	Find Mark
+TFNX	Find next
+TFPV	Find previous
+TFUM	Find Unmark
+THIL	Highlight words
+TINS	Input new menu item name
+TISD	Path fix
+TLDS	Logdisk
+TLNO	Jump line number
+TMCD	Disable checkered of transparent
+TMCE	Enable checkered of transparent
+TMCF	Create comments file
+TMHL	Hard link
+TMKD	make directory
+TMKF	make file
+TOCH	enter touch mode
+TPAC	Pack file:
+TPCL	PPc log
+TPST	margin(mm) left, top, right, bottom,  Image-DPI(-1:one Page, -2:Fill width, -3:Fill height)
+TPTX	Plain text(&T)
+TRDE	Read entry
+TREC	Continuous rename
+TREN	Rename
+TRER	Show reference
+TSAN	Save action name
+TSCP	Select text code page
+TSDR	Select directory
+TSEI	Sync Entry information
+TSFN	Select file
+TSHL	sHell
+TSMD	Module(&T)
+TSVN	Save Filename
+TTAB	TAB SIZE
+TTRE	Tree
+TTWP	Jump web site
+TUPA	Unpack archive
+TVTC	columns(0:no warp, -1:fit window)
+TVTR	image width
+TWRD	Write entry order
+TXAT	All text
+TXSL	Selected lines
+UCMD	:Unknown command
+UDED	Update entry data(&.)
+UNKN	Unknown
+UPED	Updated %s
+USTD	Action is unsupported this directory
+VBAB	Add button bitmap(&A)
+VBCD	[button text/]tip name
+VBCL	x_xxx
+VBCR	extention
+VBDB	Default button List(&L)
+VBEI	extention / wildcard
+VBFI	Word or X_xxx
+VBMA	key name
+VBPJ	item name
+VBRB	Reference of buttons list bitmap: %s(&R)
+VBRK	(blank)
+VCAU	auto
+VCBA	item text
+VCBB	item back
+VCBC	caption
+VCBD	caption back
+VCBE	PPb edit line
+VCBF	frame text
+VCBG	frame back
+VCBH	directory text
+VCBI	directory back
+VCBK	back ground
+VCBO	PPb popup
+VCBP	PPb palettes(Vista)
+VCBR	PPb execute log
+VCBS	edit text
+VCBT	edit back
+VCBU	selected text
+VCBV	selected back
+VCBW	log text
+VCBX	log back
+VCBY	log selected text
+VCBZ	log selected back
+VCCA	caption, tab
+VCCC	PPv control charctor
+VCCL	PPv cursor line
+VCCT	Colors theme(Some colors, require restart PPx)
+VCDA	text
+VCDB	back
+VCDI	disable
+VCEA	label
+VCEB	PPc entry back
+VCEC	current
+VCED	directory
+VCEE	encrypted
+VCEF	special
+VCEH	hidden
+VCEI	virtual
+VCEL	link
+VCEM	message
+VCEN	normal
+VCEO	compressed
+VCEP	parent
+VCER	readonly
+VCES	system
+VCET	PPc entry text
+VCFD	Frame and Dialog
+VCFE	PPc file extension
+VCFF	selected text
+VCFG	selected back
+VCFH	pair text
+VCFI	pair back
+VCFJ	normal text
+VCFK	normal back
+VCFL	tab x button
+VCFM	tab x back
+VCFN	tab active text
+VCFO	tab active back
+VCFP	tab selected text
+VCFQ	tab selected back
+VCFR	tab normal text
+VCFS	tab normal back
+VCHF	find
+VCHL	PPv highlight
+VCIA	PPc info 1st
+VCIB	PPc info 2nd
+VCIN	value text
+VCJA	message
+VCJB	deleted
+VCJC	normal
+VCJD	gray state
+VCJE	modified
+VCJF	appended
+VCJG	no focus
+VCJH	frame
+VCJI	underline
+VCJJ	marked
+VCJK	normal(even line)
+VCJL	selected
+VCJM	grid
+VCJN	highlight1
+VCJO	highlight2
+VCJP	highlight3
+VCJQ	highlight4
+VCJR	highlight5
+VCJS	highlight6
+VCJT	highlight7
+VCJU	highlight8
+VCJV	mouse hover
+VCJW	inactive back(blend color)
+VCLA	log, address, job
+VCLF	PPv line feed charctor
+VCLG	first line
+VCLH	second line
+VCLI	line
+VCLK	PPv link
+VCLL	gray
+VCLM	normal
+VCLN	PPv line number
+VCME	message text
+VCOT	other
+VCPB	blue
+VCPC	green
+VCPD	cyan
+VCPE	red
+VCPF	magenta
+VCPG	yellow
+VCPI	gray
+VCPJ	light blue
+VCPK	light green
+VCPL	light cyan
+VCPM	light red
+VCPN	light magenta
+VCPO	light yellow
+VCPP	light white
+VCPQ	black(back)
+VCPR	white(default)
+VCRE	report
+VCTA	PPv tab charctor
+VCTB	before edit
+VCTC	black for CRT
+VCTD	Dark for LCD
+VCTE	Light for LCD
+VCTF	White for CRT
+VCTG	PPv tag
+VCTH	OS colors(GDI)
+VCTI	tip window
+VCTR	tree
+VCTS	comment
+VCTT	tag
+VCVA	(reserverd)
+VCVB	PPv bound line
+VCVC	old line
+VCVD	bookmark
+VCVE	PPv line back extra
+VCVT	PPv text, back
+VCWA	Frame light
+VCWB	Frame face
+VCWC	Frame shadow
+VCWD	(heavy)Window face
+VCWE	(heavy)Dialog face
+VCWF	(heavy)Window Text
+VCWG	Highligh back
+VCWH	Highlight text
+VCWI	gray text, for dark mode
+VCWJ	(heavy)Dialog Text, for dark mode
+VCWK	edge line, for dark mode
+VCWL	focus back, for dark mode
+VCWS	PPv wide space
+VDLA	name width
+VDLC	color
+VDLD	width
+VDLE	Language list download error
+VDLF	format
+VDLH	height
+VDLI	ID(1-9)
+VDLN	next line
+VDLT	text
+VDLV	value name
+VDLW	width
+VDLX	extention width
+VDLY	type
+VDLZ	size
+VDMB	check symbol
+VDME	show entries count
+VDMF	short filename
+VDMG	Indent(pixels)
+VDMI	user text
+VDMJ	trim right space
+VDMM	mark
+VDMN	image
+VDMP	page No.
+VDMQ	list layout type
+VDMS	blank for edge
+VDMT	time detail
+VDMU	ex-comment
+VDMV	ID string value
+VDMZ	size[,]
+VDNA	attributes
+VDNB	check box
+VDNC	comment
+VDND	disk space
+VDNE	entry count
+VDNF	filename
+VDNG	Indent(letters)
+VDNH	line[-]
+VDNI	item text
+VDNL	line[|]
+VDNM	mark symbol
+VDNN	icon
+VDNO	text color
+VDNP	all pages
+VDNR	directory
+VDNS	blank
+VDNT	time(write)
+VDNU	columns extention
+VDNV	volume label
+VDNX	modules
+VDNY	directory type
+VDNZ	size
+VEAA	Archive DLL
+VEAB	alias
+VEAC	Item list for priority and delete(&I)
+VEAD	(&I)alias name = value
+VECA	PPc view style
+VECC	Item(&I)
+VEDA	Async read,
+VEDB	directory settings
+VEDC	cache,
+VEDD	Item(&I)
+VEDH	no check,
+VEDI	information icon settings,
+VEDL	cursor line icon settings,
+VEDN	No save async cache,
+VEDO	sort settings,
+VEDS	Async & cache save,
+VEEA	Delayed list
+VEEC	(&I)
+VEFA	*file actions
+VEFC	I only delete(&I)
+VEGA	id saved host
+VEGC	I only delete(&I)
+VEHA	PPv highlight text
+VEHC	file name
+VEHD	directories
+VEHF	fullpath name
+VEHG	general
+VEHH	command line
+VEHM	mask
+VEHN	digits
+VEHP	PPc directory
+VEHR	roma search
+VEHS	search
+VEHU	User - u
+VEHV	PPv filename
+VEHW	PC names
+VEHX	User - x
+VEIA	PPc 1st information
+VEJA	PPc 2nd information
+VEKA	Checked applications
+VEKC	(&I)
+VELA	PPv text columns
+VELC	Columns(0:full -1:window width)(&C)
+VELH	Item(&I)
+VEMA	wavename / comp. commands
+VEMC	(&I) type = wav name / commandline
+VENA	Window position
+VENC	(&I)
+VENL	PPc extentions icon
+VEOA	PPv option
+VEOC	Item(&I)
+VEPA	Path
+VEPC	ID = path/layout(&I)
+VESA	Add(&A)
+VESB	PPc status line
+VESC	(&I)
+VESE	Edit(&A)
+VETA	PPv,PPe tab columns
+VETC	Item(&I)
+VEUA	User command
+VEUC	(&I) command name = value(%*arg(n)
+VEVA	User data
+VEVC	(&I) Item name = value
+VEYA	Other configs
+VEYC	(&I) Item name = value
+VFSL	VFS load
+VFSU	VFS unload
+VHDE	default setting
+VHPC	PPc hidden menu
+VHPV	PPv hidden menu
+VIMC	||\x9insert new column separator
+VIMF	insert selected filename
+VIMI	\\t\tinsert indent
+VIMK	&&\x9insert shortcut key prefix
+VIML	*launch \tset current dir. on file, and execute
+VIMN	Enter menu name (M_xxx)
+VIMS	--\x9insert separator
+VIMY	insert key code...
+VKAL	PPc Auto DD list(&D)
+VKBL	PPb list
+VKBR	PPb reference
+VKCG	PPc general
+VKCI	PPc incremental search
+VKCT	PPc tree
+VKED	line edit and PPe
+VKLI	line edit(with K_edit)
+VKPB	PPb edit
+VKPC	PPv text caret mode
+VKPE	PPe(with K_edit)
+VKPT	PPv page text mode
+VKPV	PPv general
+VKTR	general tree
+VKTY	PPtray hotkey
+VKVI	PPv image mode
+VLBN	Button name
+VLDT	Detail
+VLFF	Press F4 key for list
+VLHT	tilt left
+VLIL	Action(&I)
+VLIN	Item name
+VLIT	tilt right
+VLLC	Left button
+VLLD	left double
+VLLH	left press & hold
+VLMC	middle button
+VLMD	middle double
+VLMH	middle press & hold
+VLMI	Item name
+VLRC	right button
+VLRD	right double
+VLRG	right gesture
+VLRH	right press & hold
+VLTA	Target area
+VLTB	Button
+VLTK	Key
+VLTM	Key name
+VLTN	Type name
+VLWC	R & L button
+VLWH	R & L press & hold
+VLXC	4th button
+VLXD	4th double
+VLXH	4th press & hold
+VLYC	5th button
+VLYD	5th double
+VLYH	5th press & hold
+VMCB	PPc menu bar
+VMCR	PPc extra context
+VMDI	PPc folder context
+VMEB	PPe menu bar
+VMEC	line edit, context menu
+VMEP	PPc extra pack \\[P]
+VMET	(O M_...)(&O)
+VMIL	Item(&I)
+VMLB	line edit, menu bar
+VMMD	PPc insert text DD(&D)
+VMOB	PPc other convert [B]
+VMPJ	PPc path jump [0]
+VMSO	PPc sort
+VMTA	PPc tab menu &[-]
+VMVB	PPv menu bar
+VMVC	PPv extra context
+VMWI	wildcards
+VMWS	PPc where is,source
+VNMA	aux: settings
+VNMB	PPx menu bar
+VNMC	Extention menus
+VNMG	General
+VNMO	other settings
+VOLF	Jump online language file list
+VOPF	Load from file
+VPPC	PPc
+VPPI	PPtray
+VPPV	PPv
+VQBA	It seems disable
+VQDT	Delete %s?
+VQKM	Add comment key short cut to MC_menu and MV_menu?
+VQNA	Setting is not preserved. Really quit?
+VRCT	PPc toolbar
+VRDF	Restore default setting?
+VREF	refer
+VRFM	Line edit bar (mouse)
+VRFP	Line edit bar (pen)
+VRFT	Line edit bar (touch)
+VRTB	Retry action by reload bitmap
+VRTT	Tree toolbar
+VRVT	PPv toolbar
+VTAI	Tail mode(&A)
+VTBA	Select toolbar image.
+VTBU	Select toolbar button image.
+VTDC	Document
+VTHE	Hex
+VTIM	Image
+VTNM	new(Save button right click)
+VTOE	Select application.
+VTRI	Raw Image
+VTTX	Text
+VUSD	Unsupport this image
+VXCR	PPc Enter
+VXSC	PPc,PPv Shift + Enter
+VXTV	PPc tip preview
+VXUP	PPc unpack[U}
+VYCP	clip
+VYCT	cut
+VYCU	customize
+VYDL	delete
+VYFA	add favorites
+VYFC	copy entry
+VYFM	move entry
+VYFN	Free Network drive
+VYFT	tree pane
+VYFV	favorites
+VYFW	forward
+VYJP	jump to parent
+VYLD	change drive
+VYLG	open directory
+VYND	new directory
+VYNE	new entry
+VYNU	Allocate Network drive
+VYOU	operation undo
+VYPE	previous
+VYPP	properties
+VYPS	paste
+VYSD	sort by date
+VYSN	sort by name
+VYSO	sort
+VYSZ	sort by size
+VYTR	tree
+VYVS	view style
+VYWS	find file
+WITD	Need WININET.DLL
+WKSI	Keyname seems invalid
+WLLP	Long path directory
+WNMM	Warning : unsupport macro charcter.
+WNOA	No \'@\' prefix
+WUML	width unmatch line %d(this width:%d, max width:%d)
+XAAC	refresh all PPc
+XACD	Make archive name folder
+XACR	Save & restore directory position
+XALT	Disable menu by ALT
+XARD	Async load directory
+XASP	Enable mouse activate window action
+XASR	reload cursor position
+XASS	sorted cursor position
+XAST	attribued list
+XASU	file copied list
+XASV	deleted list
+XASW	renamed list
+XASX	activated list
+XAUT	auto
+XAWE	externd wheel
+XAWI	Auto width change with view style
+XBC0	show common info. line
+XBC1	show address bar
+XBC2	common tree
+XBC3	show common log
+XBC4	stack layout pane
+XBC5	show always
+XBC6	resizeable combo window
+XBC7	tiny window control
+XBC8	show tool bar
+XBC9	header
+XBCA	show pane caption
+XBCB	show title bar
+XBCC	show menu bar
+XBCD	Show tab per pane
+XBCE	force common log
+XBCF	delay show common log
+XBCG	Fixed tab width
+XBCH	Multi line tab
+XBCI	tab colored
+XBCJ	Show tab per pane2
+XBCK	new tab to active right
+XBCL	new tab width sort
+XBCM	up dir tab after close
+XBCO	next combo
+XBCP	min close
+XBCQ	Reuse same path pane
+XBCR	default lock
+XBCS	no move tab
+XBD0	fix tab area width
+XBD2	tiny scroll bar
+XBD3	Reset tab on boot
+XBD4	Dialog move to center on pane
+XBD5	bottom tab
+XBD6	close button
+XBD7	use PPc ID "Zxxx" in Combo ID "A"
+XBD8	auto hide close button
+XBD9	keep panes wide rate with delete one pane
+XBDA	Over pane on tab null space
+XBEP	Error sound
+XBGS	show selected tab groups
+XBGT	show tab group selector
+XBRO	Web Browser
+XBSY	logged lines
+XBSZ	console show lines
+XBTA	opaqued PPv window
+XBTB	picture bright(%)
+XBTL	show tab
+XBTM	show LF
+XBTN	show box space
+XBTO	opaqued window
+XBTP	picture path
+XBTY	show back picture
+XBUW	(UNICODE ver.)calculate char. width
+XCAC	Cache directory
+XCAL	tiny Calculator
+XCAR	Auto save default entry context menu selection
+XCBS	Burst buffer size
+XCBT	in file size of auto enable Burst mode
+XCBU	Min file size of disable file cache
+XCCD	dumpped text charcter set
+XCDC	Sum file sizes button
+XCLD	Cursor type
+XCLE	Marked type
+XCMB	Combo window(require restart PPc)
+XCMC	use combo
+XCPA	tab caption
+XCPG	scroll mode
+XCPS	list file
+XCTA	no count
+XCTB	stop at 10sec
+XCTC	stop at 10sec
+XCTD	no stop
+XCTT	Count size
+XCWT	Comment save
+XDDX	Enter dir. time by hover in DnD
+XDIN	Icon file for directory
+XDLF	Drive list
+XDLG	Drive menu(\[L])
+XDLH	Drive jump([1]...[9])
+XDLI	show (Limit) on caption(require restart PPx)
+XDLJ	PC List(\\.\\pcname)
+XDLO	archiver log
+XDLP	error log
+XDLQ	all log
+XDPM	Show mask on caption
+XDSA	Show icon on information area
+XDSB	Default entries icon
+XDSS	Enable screen scaling
+XDST	Sort/Mask/View style default target
+XEDI	Text Editor
+XEDL	Text Editor point line prefix
+XEED	hooked editbox
+XELE	Use high execution level on update
+XEMV	Ring shift on INS/DEL
+XEOC	Error flash
+XESB	show reference
+XESC	with extension
+XESD	first position
+XESE	rename dialog
+XESF	top
+XESG	ext
+XESH	bottom
+XESI	select
+XETS	extension
+XEXL	extension maximum length
+XEXM	Enable maked files with enter
+XEXS	alarm new executive file
+XFAT	fix time for FAT
+XFCO	PPb(Console host, Vista)
+XFCT	tab and header
+XFDI	when fill directory, without file entry
+XFDL	dialog
+XFEC	filename color
+XFFI	Fix for left text draw
+XFFX	fixed extention is lower case
+XFIX	PPv fix
+XFL0	List lines
+XFL1	Partial Match
+XFL2	Auto show(OS)
+XFL3	Auto show1
+XFL4	Auto show2
+XFL5	Auto show3
+XFL6	list show time(ms)
+XFL7	listing timeout time(ms)
+XFL8	List min length
+XFLE	fix flicker
+XFLS	fill list
+XFME	general
+XFOA	unlimit
+XFOB	limited
+XFOC	serialized(max 32 jobs)
+XFOW	Background copy
+XFST	Fast read list
+XFSV	File save directory
+XFTR	tree
+XFUF	PPv proportional(without size)
+XGMD	Careful swap([G])
+XGST	Use gesture
+XHIR	Keep cursor positions
+XHSR	Keep directory positions
+XIAC	Enable screen reader
+XIFX	icon size on information area
+XIMC	zoom
+XIMD	zoom type
+XIME	control IME off
+XING	Gray view
+XISA	incremental search
+XITO	search timeout(ms)
+XIXO	Animate(require restart PPv)
+XIXP	Modify background(require restart PPv)
+XIXQ	Apply color profile(require restart PPv)
+XJIA	no flash
+XJIB	back flash
+XJIC	flash
+XJID	sound
+XJIE	silence
+XJIF	back sound
+XJIG	sound
+XJIH	wave file
+XJIN	Acion in show dialog
+XJIO	Action in complete
+XJLA	show
+XJLB	show
+XJLC	show always on combo PPc window
+XJLD	hide dialog with show job list
+XJLS	Show job list window
+XJLT	job list
+XKRA	reflexive key alieas
+XKTR	PPc hotkey
+XLAG	Display language
+XLDM	Show menu with left button DD(&D)
+XLDN	Always show menu self window
+XLDO	Drop default mode
+XLGA	completed
+XLGB	source path
+XLGC	destination path
+XLGD	backup
+XLGE	Common log to file(X_save) saving
+XLGG	skip
+XLGH	Show operation-log types
+XLGI	make folder
+XLIC	Entry click range
+XLLZ	large file read mode
+XLNM	show line number
+XLOG	Logging
+XLSP	general line space
+XLT0	focus next item
+XLT1	enable customize & fill name
+XLT2	forward
+XLT3	partial
+XLT4	partial and select
+XLT5	migemo
+XLT6	reserved1
+XLT7	reserved2
+XLTB	use TAB fill
+XLTC	fill mode
+XMDD	Enable edit box DD(&D)
+XMEN	close menu on undefined key
+XMIF	minimized focus fix
+XMIS	misc
+XMLE	Show multi line
+XMON	Force multi monitor mode
+XMPA	max pane
+XMPB	first pane
+XMSD	Directory label
+XMSL	Explorer link click
+XMSM	Mark from last mark(shift+click)
+XMVD	Out of window by Up/down cursor
+XMVE	Out of range by Up/down cursor
+XMVL	Out of window by left/right cursor
+XMVM	Out of range by left/right cursor
+XMWI	Menu columns(require restart PPx)
+XNBF	always show cursor on window
+XNCP	new text charcter set
+XNFT	Format size(Z)
+XNFU	Format size(z)
+XNFV	Format size(Dx,mS)
+XNFW	Format size(Dx,ms)
+XNOO	no
+XOCG	thumb nail image
+XOCH	show icon on thumb nail image
+XOCI	show(use explorer)
+XOCJ	show file text
+XOCK	Reduce image in rectangle
+XOCL	show in archive
+XOCM	cache to thumbnail.jpg
+XODR	Drive name fill
+XODS	alpha
+XODT	alpha and digit
+XOFF	off
+XOND	Default new folder name(support %x)
+XONF	Default new file name(support %x)
+XONN	on
+XPM0	Large width
+XPM1	Large height
+XPM2	Disable start drag
+XPM3	Disable hidden menu
+XPM4	Open entry with single touch
+XPM5	Auto window pair direction
+XPM6	Disable action with active
+XPMB	show command bar
+XPMC	Touch mode
+XPMD	mouse click
+XPME	touch
+XPMF	pen tap
+XPRS	print
+XPRT	margin
+XPRU	image scale
+XPSA	disable
+XPSB	disable(show dir)
+XPSC	enable
+XPSD	enable and skip
+XPSK	archive directory
+XPSL	Hilight pointed entry
+XPTG	use pair path as before active window without combo window
+XRCH	migemo cache letters
+XRCL	use PPc list
+XREY	use Regexp library
+XRRT	start reload time(active,sec)
+XRRU	start reload time(no active,sec)
+XRTR	for input directory
+XRTS	no sub window
+XRTT	tree(1 ppc only)
+XRTU	tree
+XSAT	&\[alphabet] action
+XSAV	Backup directory
+XSDI	extension in directory
+XSEM	first letter search
+XSLW	Coefficient for slow read
+XSPS	one process
+XSR0	rewrite
+XSR1	part1
+XSR2	part2
+XSRM	Scroll
+XSTP	Show long name tip
+XSTQ	Show file information tip on hover
+XSTR	Show preview by click entry tail
+XSTS	preview show position
+XSTV	preview show type
+XSUS	Susie directory
+XSVZ	sync view size
+XSZM	Sumed file size
+XTAB	tab bar(require restart PPc)
+XTAM	terminal command
+XTCH	PPb on default terminal
+XTDD	Enable text DD(&D)
+XTDR	Show [.] entry
+XTDS	Show [..] entry
+XTDT	Show [.][..] always
+XTFO	Other settings are over Option tag of the File operation dialog.
+XTMD	always cursor mode
+XTRA	show icon
+XTRB	overlay
+XTRC	simple icon
+XTRD	tool bar
+XTRE	Tree window
+XTRF	rename dialog
+XTRG	sync-view
+XTRH	show proteced folder
+XTRY	Use Task Tray
+XTSB	bundle Taskbar button(after Win7, require restart PPx)
+XTWI	pixcel
+XTWT	on Windows Terminal
+XUCS	show line cursor
+XUIN	Icon file for unknowns
+XULH	Height of underline cursor
+XUNB	Execute UNxxx on Background
+XUNF	proportional text
+XUP0	select action
+XUP1	no action
+XUP2	notify
+XUP3	update,notify
+XUP4	update,notify,backup
+XUP5	update
+XUP6	update,backup
+XUPM	Customize update
+XUUE	Server access error.
+XUUN	Not found update file.
+XUUQ	Find version %s. Update from %s?
+XUX1	Windows standard(GDI)
+XUX2	Dark
+XUX3	Light
+XUXT	Dark mode for dialog, menu(Win10 1903, require restart PPx)
+XVDA	scrool button
+XVDB	select button
+XVDC	move window button
+XVDD	use auto scroll
+XVDE	Use gesture
+XVIE	File Viewer
+XVLF	left margin
+XVNM	logical line number
+XVPS	Show position by PPc called
+XVZS	change seleted range
+XWBC	new ppb
+XWBD	dialog time(sec)
+XWDE	Delete check directory with file
+XWDF	Delete check with marked entry off screen
+XWDG	Delete check attribute
+XWDH	Skip slight error(file not found).
+XWDL	Show dialog to recycled
+XWDM	Show dialog to delete
+XWHE	Whell lines
+XWPB	use ppb
+XWSZ	read check
+XXES	Extend shiftkey
+XXFC	File Compare command(%FDC source,%2 dest)
+XYES	yes
+YGBJ	break job
+YGBW	behind to window
+YGCZ	clear zoom window
+YGEX	exit
+YGFD	free define
+YGMD	window move to down
+YGMH	small window height
+YGML	window move to left
+YGMR	window move to right
+YGMU	window move to up
+YGMZ	minimize
+YGOW	opaque window
+YGPW	transparent window
+YGRP	restore window position
+YGSH	show help
+YGSM	system menu
+YGSP	save window position
+YGSW	small window width
+YGTW	top to window
+YGWH	wide window height
+YGWW	wide window width
+YGZI	zoom in window
+YGZO	zoom out window
+YTGG	general
+YTGW	general window action
+ZGHL	Help; right click or F1 key
+ZTCC	Cursor
+ZTCD	Display(completed)
+ZTCE	Entry search
+ZTCI	Icon
+ZTCL	Layout and tab bar
+ZTCM	Cursor move
+ZTCN	Cursor detail
+ZTCO	Operations
+ZTCV	View
+ZTDR	Draw
+ZTFO	File Operation
+ZTFS	Font
+ZTGR	General
+ZTLE	Line editor
+ZTNS	no support
+ZTOP	Operation
+ZTOT	Others
+ZTPB	PPb - console
+ZTPC	PPc - file manager
+ZTPE	PPe - text editor
+ZTPF	PPffix - extention renamer
+ZTPU	PPcust - customizer
+ZTPV	PPv - file viewer
+ZTPY	PPtray
+ZTVD	Drag
+ZTVI	Image view
+ZTVT	Text view
+};ikhbedhnljljekajlificpebjbdkbjjabkloelepnjjnnciglmbggheealhomagjmnajjchmmpcgehcolfkfepmdeaackbnchjadgbfiklkajoebckohoihnempgdeegaie 

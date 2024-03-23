@@ -1,0 +1,145 @@
+X_lspc	= 1
+X_combos	= B1100000111,0
+X_win	={
+CA	= B10010001
+}
+X_rtree	=1
+X_rclst	=1
+XC_pmsk	=1,0
+XC_page	=1
+XC_msel	=1,0
+XC_nsbf	=0
+XC_exem	=1
+XC_seat	=1
+X_arcdr	=2
+XC_celD	=_AUTO,_AUTO,6,7
+XC_celF	={
+A	=s1NwF9,5zK7S1T14s2
+B	=s1NwF9,5zK7S1T14s2
+}
+MC_celS	={
+default	=s1NwF9,5zK7S1T14s2
+}
+X_iexo	=1,1,1
+E_cr	={
+EXE	,%M_Ccr,!open
+*	=@Z
+}
+KC_main	={
+\A	=@A
+\B	,%"Binary Convert" %M_bin
+\C	=@C
+\D	=@D
+\E	,%"JMTE|Text edit"%Orib,editor %{%FDC%}
+\G	=@G
+\H	=@H
+\I	=@I
+\J	=@J
+\M	=@M
+\P	,*pack "%2%\|%X|" %Or-
+\Q	=@Q
+\U	=@U
+\X	=@X
+\Z	=@Z
+^B	=@0
+^D	=@D
+^E	=@J
+^H	=@^\LEFT
+^I	=@0
+^L	=@L
+^O	=@O
+^N	=@\F11
+^R	=@F5
+^U	=@\U
+^W	=@Q
+^\D	=@D
+^\N	=@K
+^DOWN	=@&DOWN
+^LEFT	=@&LEFT
+^RIGHT	=@&RIGHT
+^UP	=@&UP
+&D	=@^G
+&P	=@\Y
+&\P	=@^\I
+&LEFT	=@^LEFT
+&RIGHT	=@^RIGHT
+&UP	=@BS
+A	=@~A
+B	=@~B
+C	=@~C
+D	=@~D
+E	=@~E
+F	=@~F
+G	=@~G
+H	=@~H
+I	=@~I
+J	=@~J
+K	=@~K
+L	=@~L
+M	=@~M
+N	=@~N
+O	=@~O
+P	=@~P
+Q	=@~Q
+R	=@~R
+S	=@~S
+T	=@~T
+U	=@~U
+V	=@~V
+W	=@~W
+X	=@~X
+Y	=@~Y
+Z	=@~Z
+DEL	=@D
+\DEL	=@\D
+\INS	=@DEL
+UP	=@^END @UP
+DOWN	=@^END @DOWN
+LEFT	=@^END @LEFT
+RIGHT	=@^END @RIGHT
+PUP	=@^END @PUP
+PDOWN	=@^END @PDOWN
+HOME	=@^END @'<'
+END	=@^END @'>'
+\UP	,*cursor 0,-1,4,B1000,0,B010
+\DOWN	,*cursor 0, 1,4,B1000,0,B010
+\LEFT	,*cursor 4,-1,4,B1000,0,B010
+\RIGHT	,*cursor 4, 1,4,B1000,0,B010
+\PUP	,*cursor 8,-1,5,B1010,0,B010
+\PDOWN	,*cursor 8, 1,5,B1010,0,B010
+\HOME	,*cursor 8,-10000000,5,B1000,0,B010
+\END	,*cursor 8, 10000000,5,B1000,0,B010
+^UP	=@UP
+^DOWN	=@DOWN
+^LEFT	=@LEFT
+^RIGHT	=@RIGHT
+^PUP	=@PUP
+^PDOWN	=@PDOWN
+^SPACE	=@^\A
+^HOME	=@'<'
+^END	=@'>'
+F4	,%k"F4" %K"@^G"
+F8	=@\RIGHT
+\F8	=@\LEFT
+}
+-|MC_sort	=
+MC_sort	={
+&%G"SRTN|N:Name	=0,-1,-1,B11111,1
+&%G"SRTE|E:Ext	=1,-1,-1,B11111,1
+&%G"SRTS|S:file Size	=2,-1,-1,B11111,1
+&%G"SRTT|T:Time stamp	=3,-1,-1,B11111,1
+&%G"SRTC|C:Create time	=4,-1,-1,B11111,1
+&%G"SRTA|A:Access time	=5,-1,-1,B11111,1
+&%G"SRTM|M:Mark	=6,-1,-1,B11111,1
+&%G"SRTH|H:Changed	=7,-1,-1,B11111,1
+&%G"SRTO|O:Comment	=17,-1,-1,B11111,1
+&%G"SRTX|X:Ext color	=20,-1,-1,B11111,1
+--	=
+&%G"SRTR|R:Attributes	=16,-1,-1,B11111,1
+&%G"SRTP|P:Plain	=19,-1,-1,B00000,1
+&%G"CMPD|D:Detail...	=
+&%G"SORG|F:no effect	=-1,-1,-1,B11111,1
+--	=
+&%G"STAC|G:Ascending	=ascending
+&%G"STDE|I:Descending	=descending
+}

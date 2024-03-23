@@ -1,0 +1,787 @@
+.ZTGR|General全般
+	ZGHL|Help; right click or F1 key※ 右クリックか [F1] で項目の説明
+	XLAG|Display language/表示言語:X_LANG=L
+	XIAC|Enable screen readerPPc,PPvでスクリーンリーダ対応(不安定になること有):X_iacc=?1:0
+	XELE|Use high execution level on updatePPxの更新には昇格/管理者権限を使用:_Setup:elevate=?s1:0
+	XLOG|Loggingステータス行などのログをファイルに保存する:X_log=?2130799371:0
+	XSAV|Backup directoryカスタマイズバックアップ＆ログの保存場所:X_save=PD
+	XCAC|Cache directory各種キャッシュの保存場所:X_cache=PD
+	XSUS|Susie directory(require restart PPx)Susie plug-inがあるディレクトリ(要PPx再起動):P_susieP=PD
+	XBRO|Web Browserデフォルトブラウザ:A_exec:browser=N
+	XEDI|Text Editorデフォルトテキストエディタ:A_exec:editor=N
+	XEDL|Text Editor point line prefixテキストエディタの行番号指定オプション:A_exec:editorL=<s
+	XVIE|File viewerファイルビューア:A_exec:viewer=N
+	XFSV|File save directoryファイルのデフォルト保存先:_others:SaveDir=PD
+	XUPM|Customize updateカスタマイズ内容の自動更新方法
+		XUP0|select action毎回処理方法を選択:X_upm=@0
+		XUP1|no action何もしない:X_upm=@1
+		XUP2|notifyバージョン通知のみ:X_upm=@2
+		XUP3|update,notify更新後通知(バックアップ無):X_upm=@3
+		XUP4|update,notify,backup更新後通知(バックアップ有):X_upm=@4
+		XUP5|update更新・非通知(バックアップ無):X_upm=@5
+		XUP6|update,backup更新・非通知(バックアップ有):X_upm=@6
+..ZTFS|Fontフォント
+	XFME|general汎用:F_mes=F
+	XLSP|general line space汎用 の行間隔:X_lspc=<d/0
+	XFDL|dialogダイアログ:F_dlg=F
+	XFTR|treeツリー:F_tree=F
+	XFCT|tab and header(require restart PPx)タブ・ヘッダ(要PPx再起動):F_ctrl=F
+	XFIX|PPv fixPPv固定ピッチ:F_fix=F
+	XFUX|PPv proportionalPPvプロポーショナル:F_unfix=F
+	XFCO|PPb(Console host, Vista)PPb(コンソールホスト, Vista以降):F_con=F
+	XFFI|Fix for left text draw文字の右端が表示されない対策を行う:X_ffix=?1:0
+..ZTDR|Draw画面
+	XDSS|Enable screen scaling画面のスケーリング対応:X_DSS=?-1:0
+	XSRM|Scrollスクロール処理の方法
+		XSR0|rewrite全書換(低性能GPU向):X_scrm=@0
+		XSR1|part1部分1:X_scrm=@1
+		XSR2|part2部分2(最速?):X_scrm=@2
+	XTRY|Use Task Tray最小化時にタスクトレイに入れる(要PPtray):X_tray=?1:0
+		XKTR|PPc hotkeyPPcを呼び出すキー:K_tray=c
+	XMWI|Menu columns(require restart PPx)メニューの最大桁数(要PPx再起動):X_mwid=<d/60
+	XDLI|show (Limit) on caption(require restart PPx)権限制限時(Vista以降)に「(Limit)」とタイトルバーに表示(要PPx再起動):X_dlim=?1/1:0
+	XTSB|bundle Taskbar button(after Win7, require restart PPx)Win7以降でPPxを１つのタスクバーボタンにまとめる(要PPx再起動):X_tskb=?2/2:0
+	XUXT|Dark mode for dialog, menu(Win10 1903, require restart PPx)ダイアログやメニュー等のダークモード(Win10 1903以降, 要PPx再起動, 色タブの配色テーマも参照)
+		XOFF|noneなし:X_uxt=@L-3/-3
+		XUX1|Windows standard(GDI)Windows準拠(GDI):X_uxt=@L-2
+		XAUT|auto自動:X_uxt=@L-1
+		XUX2|Dark黒(ダークモード):X_uxt=@L0/-3
+		XUX3|Light白:X_uxt=@L1
+	Window corner(Win11, require restart PPx)窓の角形状(Win11, 要PPx再起動)
+		systemシステム:X_uxt+4=@0
+		angle丸めなし:X_uxt+4=@1
+		large round大きな丸め:X_uxt+4=@2
+		small round小さな丸め:X_uxt+4=@3
+..ZTOP|Operation操作
+	XMON|Force multi monitor mode強制でマルチモニタとみなした動作をする:X_mmon=?1:0
+	XMEN|close menu on undefined keyメニューをショートカット未定義のキーで閉じる:X_menu=?1/1:0
+	XALT|Disable menu by ALTALTキーのみでメニューにしない:X_alt=?1:0
+	XIME|control IME offIME制御をして、不要なときはOFFにする:X_IME=?1:0
+	XBEP|Error soundエラー時などでサウンドを鳴らす:X_beep=?175:0
+	XEOV|Error flash一行メッセージ表示時にタイトルバーを点滅する:X_evoc=?1:0
+	XPMC|Touch modeタッチ操作モード
+		XAUT|auto自動切替:X_pmc=@-1/-1
+		XOFF|off無効:X_pmc=@0/-1
+		XONN|on有効:X_pmc=@1
+			XPM0|Large widthタッチ領域の幅を広くする:X_pmc+4=?B0!
+			XPM1|Large heightタッチ領域の高さを広くする:X_pmc+4=?B1!
+			XPM2|Disable start dragドラッグ開始を無効にする:X_pmc+4=?B2!
+			XPM3|Disable hidden menu隠しメニューを無効:X_pmc+4=?B3!
+			XPM4|Open entry with single touchタッチで開く動作(ダブルクリック):X_pmc+4=?B4!
+			XPM5|Auto window pair direction最大化+一体化の２窓の並びを縦横自動変更:X_pmc+4=?B5!
+			XPM6|Disable action with activeアクティブ化時のタッチ操作を無効:X_pmc+4=?B6!
+	XJIN|Acion in show dialogダイアログ表示時・選択要求時の通知方法
+		XJIA|no flash点滅しない:X_jinfo=@0
+		XJIB|back flash裏側のとき点滅:X_jinfo=@1
+		XJIC|flash常に点滅:X_jinfo=@2
+		XJID|sound通知音
+			XJIE|silence音を出さない:X_jinfo+4=@0
+			XJIF|back sound裏側のとき音:X_jinfo+4=@1
+			XJIG|sound常に音:X_jinfo+4=@2
+			XJIH|wave file使用するwavファイル:X_jinfc:showwav=N
+	XJIO|Action in complete実行完了時の通知方法
+		XJIA|no flash点滅しない:X_jinfo+8=@0
+		XJIB|back flash裏側のとき点滅:X_jinfo+8=@1
+		XJIC|flash常に点滅:X_jinfo+8=@2
+		XJID|sound通知音
+			XJIE|silence音を出さない:X_jinfo+12=@0
+			XJIF|back sound裏側のとき音:X_jinfo+12=@1
+			XJIG|sound常に音:X_jinfo+12=@2
+			XJIH|wave file使用するwavファイル:X_jinfc:compwav=N
+	XXES|Extend shiftkey拡張シフトキーに使用するキー:X_es=K
+	XASP|Enable mouse activate window actionクリックによるアクティブ化時にクリック動作を行う:X_askp=?0/0:1
+	XWHE|Whell linesホイール１目盛り分の行数:X_wheel=<i/3
+..ZTLE|Line editor各種一行編集
+	XMLE|Show multi line一行編集を複数行表示にする:X_mled=?1:0
+	XLTB|use TAB fillTABキーの動作は
+		XLT0|focus next item次の項目へフォーカス変更:X_ltab=@0
+		XLT1|enable customize & fill name補完動作 & カスタマイズ有効:X_ltab=@1
+	XLTC|fill mode補完するときの検索動作
+		XLT2|forward前方一致:X_ltab+4=@1
+		XLT3|partial部分一致:X_ltab+4=@2
+		XLT4|partial and select部分一致,非共通部を選択:X_ltab+4=@3
+		XLT5|migemo部分一致,migemo:X_ltab+4=@4
+		XLT6|separated by dot開発中(ドット区切りのand検索):X_ltab+4=@5
+		XLT7|separated by dot, and migemo開発中(ドット区切りのandとmigemo検索):X_ltab+4=@6
+		XLT8|regexp開発中(正規表現検索):X_ltab+4=@7
+	XFDI|when fill directory, without file entry補完でディレクトリ入力の時は、ディレクトリ以外を候補にしない:X_fdir=?1/1:0
+	XFLS|fill list補完の結果を一覧表示
+		XOFF|Disableしない:X_flst=@0
+		XONN|Enableする:X_flst=@1
+		XFL2|Auto show(OS)自動補完する(OSの機能を利用,おまけ機能):X_flst=@2
+		XFL3|Auto show1自動補完する(1枚表示):X_flst=@3
+		XFL4|Auto show2自動補完する(2枚表示):X_flst=@4
+		XFL5|Auto show3自動補完する(2枚表示+α):X_flst=@5
+		XFL1|Partial Match部分一致で列挙する:X_flst+4=?1/1:0
+		XFL8|List min length一覧の最低表示文字数(一覧表示幅):X_flst+8=<d
+		XFL0|List lines一覧の行数:X_flst+12=<d
+		XFL6|list show time(ms)一覧の強制表示時間(ms):X_flto=<d
+		XFL7|listing timeout time(ms)一覧作成打ち切り時間(ms):X_flto+4=<d
+	XESE|rename dialog名前編集
+		XESD|first positionカーソルの位置
+			XESF|top先頭:X_esel=@0/1
+			XESG|ext拡張子前:X_esel=@1/1
+			XESH|bottom末尾:X_esel=@2
+			XESI|select選択:X_esel+4=?1/1:0
+		XESC|with extension名前と拡張子を分離しない:X_esel+8=?1/1:0
+		XESB|show reference変更前の名前を表示する:X_esel+12=?1/1:0
+	XPMB|show command barコマンドバーを表示する
+		XPMD|mouse clickマウスクリック時:X_pmc+8=?B7!
+		XPME|touchタッチ時:X_pmc+4=?B7!
+		XPMF|pen tapペンタップ時:X_pmc+12=?B7!
+	XCAL|tiny Calculator数式が入力されたら計算して、結果を表示する:X_calc=?1:0
+..ZTFO|File Operationファイル操作コマンド(PPcの[C]や *file)
+	XTFO|Other settings are over Option tag of the File operation dialog.その他の設定は、ファイル操作ダイアログのその他タグにあります。設定ボタンの設定保存で保存します。
+	XFOW|Background copyコピーや展開の並行実行
+		XFOA|unlimit常に同時並行実行:X_fopw=@0
+		XFOB|limited同時に１つのみ実行(数制限無し):X_fopw=@1
+		XFOC|serialized(max 32 jobs)１つのみ、指定した順番に実行(32超は待機無し):X_fopw=@2
+	XJLS|Show job list window処理の一覧表示を
+		XNOO|noしない:X_jlst=@0
+		XJLA|show必要なときのみ表示(固定位置):X_jlst=@1
+		XJLB|show必要なときのみ表示(現在窓の右):X_jlst=@2
+		XJLC|show always on combo PPc window一体化PPc上に常時表示:X_jlst=@3
+		XJLD|hide dialog with show job list処理の一覧表示時は、処理中のファイル操作ダイアログを隠す:X_jlst+4=?1:0
+	XFAT|fix time for FAT時刻の比較はFATによる誤差(±2秒)を考慮する:X_fatim=?1:0
+	XCBS|Burst buffer sizeバーストモードバッファの大きさ(単位はKbytes):X_cbsz=<d
+	XCBT|Min file size of auto enable Burst modeバーストモードを自動適用する最小ファイルサイズ(単位はKbytes):X_cbsz+4=<d/0
+	XCBU|Min file size of disable file cacheキャッシュ使用を止める最小ファイルサイズ(単位はKbytes):X_cbsz+8=<d/64000
+	XXFC|File Compare commandFCボタンで実行するコマンド(%FDC source,%2 dest):X_fc=<s
+	XWDE|Delete check directory with file削除時にディレクトリ内にファイルがあったら警告する:X_wdel=?B0
+	XWDF|Delete check with marked entry off screen削除時に画面外マークがあったら警告する:X_wdel=?B4
+	XWDG|Delete check attribute削除時に読み取り専用/隠し/システム属性があれば警告する:X_wdel+4=?7/0:0
+	XWDH|Skip slight error(file not found).軽微エラー(削除対象無し)は無視する:X_wdel=?B5
+	XCTT|Count size処理ファイル数算出の自動中止を
+		XCTA|no countしない:X_cntt=@0
+		XCTB|stop at 10sec10秒で中止:X_cntt=@10
+		XCTC|stop at 10sec30秒で中止:X_cntt=@30
+		XCTD|no stop中止しない:X_cntt=@100000
+	XLGH|Show operation-log types処理結果ログの出力項目
+		XLGA|completed完了通知:X_flogh=?B0!
+		XLGB|source path処理元パス:X_flogh=?B1!
+		XLGC|destination path処理先パス:X_flogh=?B2!
+		XLGD|backupバックアップ:X_flogh=?B3!
+		XLGG|skipスキップ:X_flogh=?B4!
+		XLGI|make folderフォルダ作成:X_flogh=?B5!
+..ZTOT|Othersその他
+	XKRA|reflexive key alieasキー割当ての再帰エイリアスを有効にする:X_keyra=?1:0
+	XTRE|Tree windowツリー窓
+		XTRA|show iconアイコン表示をする:X_tree=?B0
+			XTRB|overlayアイコンオーバレイを表示する:X_tree=?B8!
+			XTRC|simple iconアイコンを簡易表示して高速化する:X_tree=?B1
+		XTRD|tool barツールバーを表示する:X_tree=?B2
+		XTRF|rename dialog名前変更ダイアログを使う:X_tree=?B3
+		XTRG|sync-viewPPc上ツリー窓で選択したとき、PPcを同期表示:X_tree=?B4
+		XTRH|show proteced folder保護されたシステムフォルダを表示:X_tree=?B5
+	XODR|Drive name fillパス入力時に１文字だけ入力したときは、ドライブ名にするか
+		XNOO|noしない:X_odrv=@0/1
+		XODS|alpha英字のみする:X_odrv=@1/1
+		XODT|alpha and digit英数字ならする:X_odrv=@2
+	XRTR|for input directoryディレクトリ入力方法は
+		XRTS|no sub window常にテキストのみ:X_rtree=@0
+		XRTT|tree(1 ppc only)1枚時ツリーで選択:X_rtree=@1
+		XRTU|tree常にツリーで選択:X_rtree=@2
+	XRCL|use PPc listディレクトリ入力は、起動中PPcが３枚以上であればPPc一覧から選択する:X_rclst=?1:0
+	XSVZ|sync view size連動ビューで表示するファイルサイズの最大値
+		4MBytes:X_svsz=@4000000
+		10MBytes:X_svsz=@10000000
+		XMIS|miscその他:X_svsz=<d
+	XWSZ|read checkファイルの読み込みで警告する大きさ
+		20MBytes:X_wsiz=@20000000
+		40MBytes:X_wsiz=@40000000
+		XMIS|miscその他:X_wsiz=<d
+	XWPB|use ppb実行時にPPbが必要なとき、空きPPbがなければ
+		XNOO|noPPbなしで実行:X_wppb=@-1
+		XWBC|new ppb新規PPbで実行:X_wppb=@-2
+		XWBD|dialog time(sec)指定秒後ダイアログを表示:X_wppb=<i
+	XREY|use Regexp library使用する正規表現は
+		bregonig.dll/BRegExp.dll/IRegExpbregonig.dll/RegExp.dllを優先し、なければIRegExp:X_retyp=@0
+		bregonig.dll/BRegExp.dllbregonig.dll/BRegExp.dll(Perl互換)のみ:X_retyp=@1
+		IRegExpIRegExp(WSH)のみ:X_retyp=@2
+	XDLO|archiver log書庫操作時のログ出力
+		XNOO|no outputなし:X_dlog=@0
+		XDLP|error logエラー時のみ:X_dlog=@1
+		XDLQ|all log全て(※ログ窓がないときはエラー時のみ):X_dlog=@2
+.ZTPC|PPc
+	XSPS|one process複数PPcを１プロセスで実行する:X_sps=?1:0
+	XPSK|archive directory書庫等内のディレクトリ仮想移動を有効に
+		XPSA|disableしない(ファイル名のみ表示):XC_pmsk=@-1
+		XPSB|disable(show dir)しない(平坦):XC_pmsk=@0
+		XPSC|enableする:XC_pmsk=@1
+		XPSD|enable and skipする(空の上位階層をスキップ):XC_pmsk=@2
+	XCPS|list fileList File内のファイル名表示は
+		filenameファイル名のみ表示:XC_pmsk+4=@-1
+		show dir平坦:XC_pmsk+4=@0
+	XETS|extensionファイルの判別順は(%ME_cr等)
+		type,extension種別→拡張子等の順:X_exts=@0
+		registratedE_xxの登録順:X_exts=@1
+	XSDI|extension in directoryディレクトリ中の「.」以降を拡張子として扱う(再読込後有効):XC_sdir=?1:0
+	XEXL|extension maximum length拡張子とみなして分離する最大長さ
+		length文字数:X_extl=<i
+		unlimit無制限:X_extl=@-1
+	XUNB|Execute UNxxx on BackgroundUNxxxを別プロセスで動作(要PPTRAY.EXE)
+		XNOO|noしない:X_unbg=@0
+		XYES|yes通常の優先度でさせる:X_unbg=@1
+		no priority他のプロセスより優先度を下げてさせる:X_unbg=@3
+	XACD|Make archive name folder書庫内ファイルの全展開時に書庫名のフォルダを作成
+		XNOO|noしない:X_arcdr=@0
+		XYES|yesする:X_arcdr=@1
+		XAUT|auto自動(書庫内が１フォルダにまとまっていないときにする):X_arcdr=@2
+	XCWT|Comment saveコメントを編集したときの保存は
+		\[W]手動(\[W]):XC_cwrt=@0
+		Dialog確認してから保存:XC_cwrt=@1
+		XAUT|auto自動保存:XC_cwrt=@2
+	XFST|Fast read list一覧取得を少し高速化する(Windows7以降)
+		XNOO|noしない:X_fstff=@0/1
+		large fetch使用メモリを増やして高速化:X_fstff=@1/1
+		large fetch + skip 8.3 name使用メモリ増 + 8.3形式名を省略して高速化:X_fstff=@2
+	XSLW|Coefficient for slow read低速モードを開始する係数(大きいほど鈍感,-1 無効):X_Slow=<i
+	XARD|Async load directory非同期によるディレクトリ読み込み/キャッシュ付読み込み
+		Use Times非同期読み込みに切り替える時間(10で1秒):X_ardir=<d
+		Use 1s Time0.5秒待機後非同期に切り替える:X_ardir=@5
+		Mem cache size(mega)メモリキャッシュとして保存する大きさ(単位M):X_ardir+4=<d
+		All directory全ディレクトリで有効にする(個別指定はXC_dsetを編集):XC_dset:*=?B2
+		Always refresh cache常に読込内容でキャッシュ更新(チェック無：キャッシュ使用時のみ更新):XC_dset:*=?B3
+	XHSR|Keep directory positions表示ディレクトリ・カーソル位置の履歴
+		XNOO|no記憶しない:X_hisr=@0/1
+		Always, and use current directory or next line setting常に記憶する。記憶した履歴をカレントディレクトリ再現や、次の行のカーソル位置設定に用いる。:X_hisr=@1/1
+	XACR|Save & restore directory positionディレクトリ内移動後、以前のカーソル位置を再現する:X_acr+4=?1/1:0
+	XONF|Default new file name(support %x)新規ファイル名(マクロ文字使用可):_others:NewFile=<s
+	XOND|Default new folder name(support %x)新規ディレクトリ名(マクロ文字使用可):_others:NewDir=<s
+	XPTG|use pair path as before active window without combo window独立窓・連結窓のとき、反対パス(%2等)を反対窓から直前アクティブ窓に変更する:X_prtg=?1:0
+	XBD2|tiny scroll bar(障害対策)スクロールバーを省リソース表示する:X_combos+4=?B2
+	XBC7|tiny window control(障害対策)特定の窓で異常があるときに設定する:X_combos=?B7
+..ZTCL|Layout and tab bar画面構成・タブ
+	XCMB|Combo window(require restart PPc)一体化関連(要PPc再起動)
+		XCMC|use combo複数PPcを一体化させ、１ウィンドウにする:X_combo=?1:0
+		XBD7|use PPc ID "Zxxx" in Combo ID "A"ID A の一体化窓でも常に "Zxxx"形式IDを使用する:X_combos+4=?B7
+		XBCB|show title barタイトルバーを表示:X_combos=?B11!
+		XBCC|show menu barメニューバーを表示:X_combos=?B12!
+		XBC8|show tool bar標準ツールバー(B_cdef)を表示:X_combos=?B8
+		XBC1|show address bar標準アドレスバーを表示:X_combos=?B1
+		XBCA|show pane caption各PPcのキャプションを表示:X_combos=?B10!
+		XBC0|show common info. line情報行を共用にして表示:X_combos=?B0
+		XBC2|common treeツリーを共用にする:X_combos=?B2
+		XBC3|show common log共用ログ窓を表示する:X_combos=?B3
+		XBCE|force common log共用ログ窓にファイル操作ログを強制表示する:X_combos=?B14!
+		XBCF|delay show common log共用ログ窓で大量ログの高速化(間引き処理)をする:X_combos=?B15!
+		XLGE|Common log to file(X_save) saving共用ログ窓のログをファイルに保存する(X_save):X_log=?B14
+		XMPB|first pane起動時のペイン数:X_mpane+4=<i
+			XBCP|min close窓を閉じるときに起動時ペイン数未満になるなら一体化窓を閉じる:X_combos=?B25
+		XMPA|max pane最大同時表示ペイン数:X_mpane=<i
+			XBCO|next combo[F11]で最大ペイン数を超えたら新規一体化窓:X_combos=?B24
+		XBC4|stack layout paneペインを上下に並べる:X_combos=?B4
+		XBC6|resizeable combo windowペインの増減時に、一体窓の大きさも変更する:X_combos=?B6
+			XBD9|keep panes wide rate with delete one pane↑が無効の時、ペイン減少時に各ペインの間隔比を維持:X_combos+4=?B9
+		XBD4|Dialog move to center on paneダイアログをペインの位置に表示させる:X_combos+4=?B4!
+		XBC9|headerヘッダを表示:X_combos=?B9
+		XJLT|job listファイル操作処理の一覧表示:X_jlst=?2:0
+	XTAB|tab bar(require restart PPc)タブの動作(要PPc再起動)
+		XBD5|bottom tabタブを一覧ペインの下に表示:X_combos+4=?B5
+		XBD3|Reset tab on boot起動時にタブ並びを復元しない:X_combos+4=?B3
+		XBC5|show alwaysタブ列を常時表示:X_combos=?B5
+		XBCD|Show tab per paneタブ列をペイン毎に表示する:X_combos=?B13
+			XBCJ|Show tab list per pane↑が有効のとき、タブ一覧もペイン毎に独立:X_combos=?B19
+			XBD0|fix tab area width横配列時、タブ列表示の幅を固定にする:X_combos+4=?B0
+			XBDA|Over pane on tab null space横配列時、ペインの高さをタブ列表示の空行部まで拡張する:X_combos+4=?B10
+		XBCI|tab coloredタブを着色する:X_combos=?B18
+		XBD6|close button閉じるボタンを表示する:X_combos+4=?B6!
+			XBD8|auto hide close button閉じるボタンを自動で隠す:X_combos+4=?B8!
+		XBCG|Fixed tab widthタブ幅を固定:X_combos=?B16
+			XTWI|pixcel幅:X_twid=<i
+		XBCH|Multi line tabタブ列の多段表示:X_combos=?B17
+			XBCS|no move tabタブ位置を固定 ※タブ形状が変化:X_combos=?B28
+		XCPA|tab captionタブのキャプション表示
+			pathパスのみ:X_tcap=@s0
+			[id]path[id]パス:X_tcap=@s1
+			userユーザ定義(%可):X_tcap=<s
+		XBGS|show selected tab groupsアクティブ・選択中のタブグループのみ常時表示:X_combos+4=?B11
+		XBGT|show tab group selectorタブグループを選択するタブを表示:X_combos+4=?B12!
+		XBCL|new tab width sort新規タブは名前順となる位置:X_combos=?B21
+		XBCK|new tab to active right新規タブはアクティブタブの右隣:X_combos=?B20
+		XBCM|up dir tab after close窓を閉じたときに親ディレクトリタブがあれば、そこに移動:X_combos=?B22
+		XBCQ|Reuse same path paneロック中のディレクトリ移動時に、既存の同パス窓に移動する:X_combos=?B26
+		XBCR|default lockディレクトリ移動は新規タブにする(ロック状態を初期値にする):X_combos=?B27
+	.※窓別の設定項目は各PPx上のレイアウトや*layoutコマンドで設定できます
+..ZTCV|View表示
+	XTDR|Show [.] entryこのディレクトリ「.」を表示する:XC_tdir=?1:0
+	XTDS|Show [..] entry親ディレクトリ「..」を表示する:XC_tdir+4=?1/1:0
+	XTDT|Show [.][..] always相対ディレクトリ「.」「..」を上の設定で強制表示する:XC_tdir+8=?1/0:0
+	XMSD|Directory labelディレクトリを表すラベル(漢字は末尾が化けることあり):Mes:DIRS=<s
+	XDPM|Show mask on caption現在のエントリマスク文字列をタイトルバーに表示する:XC_dpmk=?1:0
+	XAWI|Auto width change with view styleエントリ表示幅が変わったら窓幅を調節する:XC_awid=?1:0
+	XING|Gray view現在窓以外はグレー調にする:X_inag=?1:0
+	XPSL|Hilight pointed entryマウスポインタ上のエントリ背景色を変化させる:X_poshl=?1/1:0
+	XSTP|Show long name tipファイル名が表示しきれないときチップ表示
+		XNOO|noしない:X_stip=@0
+		0.3 sec later0.3秒後:X_stip=@300
+		1 sec１秒後:X_stip=@1000
+		2 sec２秒後:X_stip=@2000
+		otherその他:X_stip=<i
+	XSTQ|Show file information tip on hoverマウスポインタが滞在しているエントリの情報をチップ表示
+		XNOO|noしない:X_stip+8=@0
+		0.5 sec0.5秒後:X_stip+8=@500
+		1 sec１秒後:X_stip+8=@1000
+		2 sec２秒後:X_stip+8=@2000
+		otherその他:X_stip+8=<i
+	XSTR|Show preview by click entry tailエントリ右端クリックでプレビュー表示
+		XNOO|noしない:X_stip+16=@0
+		XYES|yesする:X_stip+16=@32
+		tail wideクリック幅:X_stip+16=<i
+	XSTV|preview show typeプレビュー表示の既定表示方法
+		PPv:E_Tipview:*=@e
+		Preview on explorerエクスプローラーのプレビュー表示相当:E_Tipview:*=@e*appview
+		Text for Windows searchWindows serch 用テキスト:E_Tipview:*=@e*apptext
+		その他:E_Tipview:*=<e
+	XSTS|preview show positionプレビュー表示の表示位置
+		near cursorカーソルそば:X_stip+32=@0
+		pair pane反対窓上:X_stip+32=@1
+		combo window一体化窓上(キーボード操作向け):X_stip+32=@2
+		this pane現在窓(キーボード操作向け):X_stip+32=@4
+		on PPvPPv上:X_stip+32=@8
+	XNFT|Format size(Z)ファイルサイズ表示Z(桁区切り無)で
+		unit space単位用に１桁確保する:X_nfmt=?B3/30
+		1024 unit1024で単位計算する:X_nfmt=?B4/30
+		min kkを最低の単位にする:X_nfmt=?B6/3
+		min MMを最低の単位にする:X_nfmt=?B7/3
+		Use decimal point小数点表示を優先使用する(要7桁):X_nfmt=?B9/30
+	XNFU|Format size(z)ファイルサイズ表示z(桁区切り有)で
+		unit space単位用に１桁確保する:X_nfmt+4=?B3/3
+		1024 unit1024で単位計算する:X_nfmt+4=?B4/3
+		min kkを最低の単位にする:X_nfmt+4=?B6/3
+		min MMを最低の単位にする:X_nfmt+4=?B7/3
+		Use decimal point小数点表示を優先使用する(要7桁):X_nfmt+4=?B9/3
+	XNFV|Format size(Dx,mS)ディスク・マークサイズ表示DX,mS(桁区切り無)で
+		unit space単位用に１桁確保する:X_nfmt+8=?B3/30
+		1024 unit1024で単位計算する:X_nfmt+8=?B4/30
+		min kkを最低の単位にする:X_nfmt+8=?B6/3
+		min MMを最低の単位にする:X_nfmt+8=?B7/3
+		Use decimal point小数点表示を優先使用する(要7桁):X_nfmt+8=?B9/30
+	XNFW|Format size(Dx,ms)ディスク・マークサイズ表示Dx,ms(桁区切り有)で
+		unit space単位用に１桁確保する:X_nfmt+12=?B3/3
+		1024 unit1024で単位計算する:X_nfmt+12=?B4/3
+		min kkを最低の単位にする:X_nfmt+12=?B6/3
+		min MMを最低の単位にする:X_nfmt+12=?B7/3
+		Use decimal point小数点表示を優先使用する(要7桁):X_nfmt+12=?B9/3
+...ZTCC|Cursorカーソル／マーク表示方法
+	XULH|Height of underline cursorカーソル／マークに使用する下線の高さ:XC_ulh=<d/2
+	XCLD|Cursor typeカーソルの形状は
+		Reverse color文字/背景色を反転:XC_celD+8=@1
+		Negative color色をネガ反転:XC_celD+8=@2
+		Box枠で囲う:XC_celD+8=@3
+		Underline下線を引く:XC_celD+8=@4
+		mark「*」の有無:XC_celD+8=@5
+		Dotted box点線枠で囲う:XC_celD+8=@6
+		Selected color背景をエントリ状態の「選択」色にする:XC_celD+8=@7
+	XCLE|Marked typeマークの形状は
+		Reverse color文字/背景色を反転:XC_celD+12=@1
+		Negative color色をネガ反転:XC_celD+12=@2
+		Box枠で囲う:XC_celD+12=@3
+		Underline下線を引く:XC_celD+12=@4
+		mark「*」の有無:XC_celD+12=@5
+		Dotted box点線枠で囲う:XC_celD+12=@6
+		Selected color背景をエントリ状態の「選択」色にする:XC_celD+12=@7
+...ZTCI|Iconアイコン・ファイル名・拡張子表示
+	XFEC|filename colorファイル名の文字色は
+		attributes color属性別の色:XC_fexc=@0
+		extension color拡張子別の色:XC_fexc=@1
+		explorer like属性別(エクスプローラ風、サイズ欄の色):XC_fexc=@2
+	display attributs color色に反映するファイル属性は(要再読込)
+		noneなし:XC_fexc+4=@16
+		basic基本:XC_fexc+4=@31/31
+		onlineオンライン拡張のみ:XC_fexc+4=@5575696
+		basic+onlineオンライン拡張+基本:XC_fexc+4=@5575711
+		extend全拡張:XC_fexc+4=@8380255
+	Accurately calculate the width of file nameファイル名の幅計算を正確にする(低速):X_acf=?1/1:0
+	XDSA|Show icon on information areaカーソル位置のアイコンを上側(情報行)に
+		hideアイコン表示せず、詰める:XC_dset:*+4=@w0
+		hide and blankアイコン表示せず、空欄にする:XC_dset:*+4=@w1
+		hide and boxアイコン表示せず、枠のみにする:XC_dset:*+4=@w2
+		tiny icon拡張子で決定したアイコンを表示(高速):XC_dset:*+4=@w3
+		normal icon拡張子＋ファイルの内容で決定したアイコンを表示(中速):XC_dset:*+4=@w4
+		overlay icon with cache拡張子＋ファイルの内容＋オーバレイアイコン(やや低速):XC_dset:*+4=@w5
+		overlay icon(no cache)拡張子＋ファイルの内容＋オーバレイアイコン(キャッシュ無し,低速):XC_dset:*+4=@w6
+		overlay icon(no cache,single)拡張子＋ファイルの内容＋オーバレイアイコン(キャッシュ無し,低速,異常終了対策付):XC_dset:*+4=@w7
+	XIFX|icon size on information area上側(情報行)に表示するアイコンの大きさ
+		XAUT|auto自動:XC_ifix=@0
+		32:XC_ifix=@32
+		otherその他:XC_ifix=<i
+	XDSB|Default entries icon一覧の各行に表示させるアイコンの読み込み処理は
+		Use information area icon settings情報行アイコンの設定を流用:XC_dset:*+6=@w0
+		no loadアイコン取得せず、「?」にする:XC_dset:*+6=@w1
+		tiny icon拡張子で決定したアイコンを表示(高速):XC_dset:*+6=@w3
+		normal icon拡張子＋ファイルの内容で決定したアイコンを表示(中速):XC_dset:*+6=@w4
+		overlay icon with cache拡張子＋ファイルの内容＋オーバレイアイコン(やや低速):XC_dset:*+6=@w5
+		overlay icon(no cache)拡張子＋ファイルの内容＋オーバレイアイコン(キャッシュ無し,低速):XC_dset:*+6=@w6
+		overlay icon(no cache,single)拡張子＋ファイルの内容＋オーバレイアイコン(キャッシュ無し,低速,異常終了対策付):XC_dset:*+6=@w7
+	XOCG|thumb nail image表示書式に画像(n)を使用したときのサムネイル処理
+		XOCH|show icon on thumb nail image画像枠内にアイコンを表示
+			XNOO|noしない:XC_ocig=@0
+			showする(画像の右下表示):XC_ocig=@1
+			show(if no image)画像があるなら、しない:XC_ocig=@2
+		XOCI|show(use explorer)エクスプローラ互換画像取得(不安定かも)
+			XNOO|noしない:XC_ocig+4=@0/0
+			XYES|useする:XC_ocig+4=@1
+			low prioritySusie優先:XC_ocig+4=@2
+		XOCJ|show file textテキストファイルの内容を表示
+			XNOO|noしない:XC_ocig+16=@0/4
+			XYES|useする(4字以上):XC_ocig+16=@4/4
+			min length表示開始する最小文字数:XC_ocig+16=<d/4
+		XOCK|Reduce image in rectangle画像全体が表示できるように縮小
+			XNOO|noしない:XC_ocig+24=@1
+			XYES|yes常時する:XC_ocig+24=@0/0
+			lower size rate画像縦横比が指定値未満のときにする:XC_ocig+24=<d/0
+		XOCL|show in archive書庫内でも取得する(不安定、低速、経過ダイアログ表示有り):XC_ocig+8=?1/0:0
+		XOCM|cache to thumbnail.jpg取得した画像をキャッシュする(保存先は名前付ストリームの thumbnail.jpg):XC_ocig+12=?1/0:0
+	XDIN|Icon file for directoryディレクトリ用のアイコン(空欄なら自動):X_dicn=ND
+	XUIN|Icon file for unknowns不明のアイコン用のアイコン(空欄なら内蔵):X_uicn=ND
+..ZTCO|Operations操作
+	XLDM|Show menu with left button D&D左D&D時に、必ずメニューを表示:X_lddm=?1:0
+	XLDN|Always show menu self window自窓内の左D&D時に、必ずメニューを表示:X_lddm+4=?1/1:0
+	XLDO|Drop default mode左D&Dのデフォルト動作は(※PPc以外へのドロップは、ドロップ先に依存)
+		Auto by drive同ドライブなら移動(エクスプローラ互換):X_lddm+8=@0
+		Copy複写:X_lddm+8=@1
+		Move移動:X_lddm+8=@2
+	XDDX|Enter dir. time by hover in DnDドラッグ中のホバーによるディレクトリ移動の時間
+		XOFF|off無効:X_ddex=@0/1
+		4 sec4秒:X_ddex=@4000
+		5 sec5秒:X_ddex=@5000/5000
+		millisecondその他(ms):X_ddex=<d/5000
+	XMDD|Enable edit box D&Dエディットボックスなどへの拡張D&Dを有効にする:XC_mdd=?1/1:0
+	XTDD|Enable text D&Dテキスト形式のD&Dを行う(要注意):X_tdd=?1/1:0
+	XCAR|Auto save default entry context menu selectionEnter/ダブルクリック(M_Ccr等)で拡張子の選択肢を自動記憶する:X_acr=?1:0
+	XEMV|Ring shift on INS/DELINS/DELによるエントリ位置移動をリング方式にする:XC_emov=?1:0
+	XGMD|Careful swap([G])窓交換なしで[G]を処理する(低速):XC_gmod=?1:0
+	XSZM|Summed file size算出したディレクトリサイズは
+		no save記録しない:XC_szcm=@0
+		store to commentコメントに登録:XC_szcm=@1
+		loggedログ窓に出力:XC_szcm=@3
+		store to historyヒストリに保存して読み込み時に表示:XC_szcm=@2
+		store counted files to commentファイル数等をコメントに登録:XC_szcm+4=?1/0:0
+	XDST|Sort/Mask/View style default targetソート・マスク・表示形式の設定変更時の初期対象
+		Window ID窓別:X_dsst=@4
+		This pathこのパス限定:X_dsst=@2
+		This branchこのパス以降:X_dsst=@3
+	XDLF|Drive listドライブリストの挙動設定
+		Jump to root選択したドライブのルートに移動する(チェック無：カレントに移動):X_dlf=?B0
+		Listed drives使用可能ドライブ名一覧を列挙する:X_dlf=?B3!
+			show memoマイコンピュータの表示名も併記する:X_dlf=?B2
+		Listed network share points in historiesネットワーク共有(\\pc\share)をヒストリから抽出して列挙する:X_dlf=?B4!
+		Listed Menuメニューの内容を列挙する:X_dlf=?B5!
+			show menu item path項目はメニューの表示内容で表示する:X_dlf=?B1
+			menu name使用するメニューM_pjumpからM_drivesにする:X_dlf=?B7
+		Show drive list with jumped parent親ディレクトリに戻る操作でドライブリストを表示する:X_dlf=?B6!
+	XDLG|Drive menu(\[L])ドライブメニュー(PPc \[L])の挙動設定
+		Jump to root選択したドライブのルートに移動する(チェック無：カレントに移動):X_dlf+4=?B0
+		show total spaceドライブ総容量を表記(容量計算のためにハードディスクの電源が入ることあり):X_dlf+4=?B8
+	XDLH|Drive jump([1]...[9])ドライブジャンプ(PPc [1]～[9])の挙動設定
+		Jump to root選択したドライブのルートに移動する(チェック無：カレントに移動):X_dlf+8=?B0
+		Exclude other PPc path他のPPcで表示するパス以外に移動する(※一つ上の項目が無効の時):X_dlf+8=?B7
+	XDLJ|PC List(\\.\\pcname)PC一覧(\\.\\pcname)の挙動設定
+		Listed PC in histories(No FD)PCをヒストリから抽出して列挙(探索無効時):X_dlf+12=?B4!
+		add C$共有一覧に「C$」を追加する:X_dlf+12=?B9
+	XWDL|Show dialog to recycledごみ箱削除([D])の開始確認を常に行う(確認なしはごみ箱のプロパティで):X_wdel+12=?1/1:0
+	XWDM|Show dialog to delete削除(\[D])の開始確認を
+		XNOO|noしない:X_wdel+8=@0/1
+		yes(OK)する。フォーカスは「OK」:X_wdel+8=@1/1
+		yes(cancel)する。フォーカスは「キャンセル」:X_wdel+8=@2
+...ZTCM|Cursor moveカーソル移動・クリック挙動
+	XMSL|Explorer link clickエントリクリック動作はExplorer風にする:XC_msel=?1:0
+	XMSM|Mark from last mark(shift+click)[Shift]+クリック動作を直前マークからの範囲選択にする:XC_msel+4=?1:0
+	XNBF|always show cursor on windowスクロールバー使用時でもカーソルは画面外に移動させない:XC_nsbf=?1:0
+	XCPG|scroll mode窓越えカーソル移動はスクロールする:XC_page=?1:0
+		fix linesスクロールするときの上下端部の移動抑制行数:XC_smar=<i/2
+		fix areaスクロールしない時、エントリが画面内に収まるときの揃える方法
+			pack空欄を詰める:XC_fwin=@0
+			fix columes列単位:XC_fwin=@1
+			fix pagesページ単位:XC_fwin=@2
+	XLIC|Entry click rangeエントリを選択可能な範囲は
+		All line行全体:XC_limc=@0
+		Entry name areaエントリ名表示欄 限定:XC_limc=@1
+		On entry name lettersエントリ名の上 限定:XC_limc=@2
+	XGST|Use gestureマウス右ボタンでジェスチャーを使用
+		XNOO|noしない:XC_Gest=@0
+		XYES|yes使う(D&D不可):XC_Gest=@1
+		yes and enable D&D使う(D&D可):XC_Gest=@2
+	XEXM|Enable maked files with enterダブルクリック,[Enter],[Z]はマークエントリを対象にする:XC_exem=?1:0
+	XCDC|Sum file sizes buttonディレクトリ選択時、マウス割当てを無視してサイズ計算を行うのは
+		center button中／ホイールクリック:XC_cdc=?B3/24
+		left+right左右同時クリック:XC_cdc=?B4/24
+...ZTCN|Cursor detailカーソル移動詳細
+	XMVD|Out of window by Up/down cursor上下カーソルキーで窓外に移動したときは
+		stopped width repeatキーリピート時は停止:XC_mvUD+12=?B0
+		jump to bound端まで移動していないときは端まで移動:XC_mvUD+12=?B1
+		jump to pair window移動方向が隣接窓側なら窓移動する:XC_mvUD+12=?B2
+		width mark(Explorer like)移動時にマークする(Explorer風選択):XC_mvUD+12=?B3
+		stop移動停止:XC_mvUD+8=@0
+		jump to up/down bound画面反対(線対称):XC_mvUD+8=@1
+		jump to angle bound画面反対(点対称):XC_mvUD+8=@2
+		line scroll一行分スクロール(要スクロール設定):XC_mvUD+8=@3
+		column scroll一桁分スクロール:XC_mvUD+8=@4
+		pageページ切替:XC_mvUD+8=@5
+		half page半ページ切替:XC_mvUD+8=@15
+		jump to parent親ディレクトリへ:XC_mvUD+8=@6
+		change driveドライブ選択:XC_mvUD+8=@7
+		use left/right key[←]/[→]使用:XC_mvUD+8=@8
+		use page up/down keypage up/down使用:XC_mvUD+8=@9
+		previous PPc前のPPcへ:XC_mvUD+8=@10
+		next PPc次のPPcへ:XC_mvUD+8=@11
+		previous drive前のドライブへ:XC_mvUD+8=@12
+		next drive次のドライブへ:XC_mvUD+8=@13
+		jump to pair反対窓のPPcへ:XC_mvUD+8=@14
+	XMVE|Out of range by Up/down cursor上下カーソルキーで先頭／末端外に移動したときは
+		stopped width repeatキーリピート時は停止:XC_mvUD+20=?B0
+		jump to bound端まで移動していないときは端まで移動:XC_mvUD+20=?B1
+		jump to pair window移動方向が隣接窓側なら窓移動する:XC_mvUD+20=?B2
+		width mark(Explorer like)移動時にマークする(Explorer風選択):XC_mvUD+20=?B3
+		stop移動停止:XC_mvUD+16=@0
+		jump to up/down bound画面反対(線対称):XC_mvUD+16=@1
+		jump to angle bound画面反対(点対称):XC_mvUD+16=@2
+		line scroll一行分スクロール(要スクロール設定):XC_mvUD+16=@3
+		column scroll一桁分スクロール:XC_mvUD+16=@4
+		pageページ切替(一周する):XC_mvUD+16=@5
+		half page半ページ切替(一周する):XC_mvUD+16=@15
+		jump to parent親ディレクトリへ:XC_mvUD+16=@6
+		change driveドライブ選択:XC_mvUD+16=@7
+		use left/right key[←]/[→]使用:XC_mvUD+16=@8
+		use page up/down keypage up/down使用:XC_mvUD+16=@9
+		previous PPc前のPPcへ:XC_mvUD+16=@10
+		next PPc次のPPcへ:XC_mvUD+16=@11
+		previous drive前のドライブへ:XC_mvUD+16=@12
+		next drive次のドライブへ:XC_mvUD+16=@13
+		jump to pair反対窓のPPcへ:XC_mvUD+16=@14
+	XMVL|Out of window by left/right cursor左右カーソルキーで窓外に移動したときは
+		stopped width repeatキーリピート時は停止:XC_mvLR+12=?B0
+		jump to bound端まで移動していないときは端まで移動:XC_mvLR+12=?B1
+		jump to pair window移動方向が隣接窓側なら窓移動する:XC_mvLR+12=?B2
+		width mark(Explorer like)移動時にマークする(Explorer風選択):XC_mvLR+12=?B3
+		stop移動停止:XC_mvLR+8=@0
+		jump to up/down bound画面反対(線対称):XC_mvLR+8=@1
+		jump to angle bound画面反対(点対称):XC_mvLR+8=@2
+		line scroll一行分スクロール(要スクロール設定):XC_mvLR+8=@3
+		column scroll一桁分スクロール:XC_mvLR+8=@4
+		pageページ切替:XC_mvLR+8=@5
+		half page半ページ切替:XC_mvLR+8=@15
+		jump to parent親ディレクトリへ:XC_mvLR+8=@6
+		change driveドライブ選択:XC_mvLR+8=@7
+		use page up/down keypage up/down使用:XC_mvLR+8=@9
+		previous PPc前のPPcへ:XC_mvLR+8=@10
+		next PPc次のPPcへ:XC_mvLR+8=@11
+		previous drive前のドライブへ:XC_mvLR+8=@12
+		next drive次のドライブへ:XC_mvLR+8=@13
+		jump to pair反対窓のPPcへ:XC_mvLR+8=@14
+	XMVM|Out of range by left/right cursor左右カーソルキーで先頭／末端外に移動したときは
+		stopped width repeatキーリピート時は停止:XC_mvLR+20=?B0
+		jump to bound端まで移動していないときは端まで移動:XC_mvLR+20=?B1
+		jump to pair window移動方向が隣接窓側なら窓移動する:XC_mvLR+20=?B2
+		width mark(Explorer like)移動時にマークする(Explorer風選択):XC_mvLR+20=?B3
+		stop移動停止:XC_mvLR+16=@0
+		jump to up/down bound画面反対(線対称):XC_mvLR+16=@1
+		jump to angle bound画面反対(点対称):XC_mvLR+16=@2
+		line scroll一行分スクロール(要スクロール設定):XC_mvLR+16=@3
+		column scroll一桁分スクロール:XC_mvLR+16=@4
+		pageページ切替(一周する):XC_mvLR+16=@5
+		half page半ページ切替(一周する):XC_mvLR+16=@15
+		jump to parent親ディレクトリへ:XC_mvLR+16=@6
+		change driveドライブ選択:XC_mvLR+16=@7
+		use page up/down keypage up/down使用:XC_mvLR+16=@9
+		previous PPc前のPPcへ:XC_mvLR+16=@10
+		next PPc次のPPcへ:XC_mvLR+16=@11
+		previous drive前のドライブへ:XC_mvLR+16=@12
+		next drive次のドライブへ:XC_mvLR+16=@13
+		jump to pair反対窓のPPcへ:XC_mvLR+16=@14
+...ZTCE|Entry searchインクリメンタルサーチ・頭文字検索
+	XSAT|&\[alphabet] action&\[英数字]又は[無変換]の動作は
+		first letter search頭文字検索:XC_seat=@0
+		incremental searchインクリメンタルサーチ:XC_seat=@1
+		hybrid search頭文字検索/インクリメンタルサーチ兼用:XC_seat=@2
+	XITO|search timeout(ms)&\[英数字]によるインクリメンタルサーチのタイムアウト時間(ms):XC_ito=<d/900
+	XSEM|first letter search頭文字検索の検索開始位置は
+		start top新規は先頭:XC_seam=@0
+		start cursor常にカーソル:XC_seam=@1
+	XISA|incremental searchインクリメンタルサーチの動作
+		use migemoローマ字入力(migemo)を使用する:XC_isea=?w2:0
+		search partial検索文字の部分一致を行う(ローマ字有効時は常時有効):XC_isea+2=?b1:0
+		target検索対象は
+			filenameファイル名:XC_isea+3=?B0
+				ext.拡張子も含める(ローマ字有効時は常時有効):XC_isea+3=?B2
+			commentコメント:XC_isea+3=?B1
+		highlightハイライト表示を行う:XC_isea+4=?1/1:0
+		write word to history on dialogダイアログで入力した検索文字をヒストリに記憶する:XC_isea+8=?8192/0:0
+	XRCH|migemo cache lettersローマ字検索キャッシュを行う最長文字数(要ヒストリサイズ拡張):X_rscah=<d/2
+..ZTCD|Display(completed)ディレクトリの更新方法
+	XASR|reload cursor position再読込([.]等)で、ディレクトリを読み込んだ後のカーソル位置は
+		display pos.以前と同じ画面上の位置:XC_acsr=@0
+		entry pos.以前と同じ名前のエントリの位置:XC_acsr=@1
+	XASS|sorted cursor positionソート([S],\[S])で、ソート後のカーソル位置は
+		display pos.以前と同じ画面上の位置:XC_acsr+4=@0
+		entry pos.以前と同じ名前のエントリの位置:XC_acsr+4=@1
+	XAST|attribued list属性変更([A])で、完了後の表示は
+		refresh更新:XC_alst=@0
+		refresh and hide deleted entry更新(非表示):XC_alst=@1
+		refresh and hide unmarked & deleted entry更新(マークがないときは再読込):XC_alst=@2
+		refresh / reload更新(非表示,マークがないときは再読込):XC_alst=@3
+		reload再読込:XC_alst=@4
+	XASU|file copied listコピー([C]),移動([M])で、完了後の表示は
+		refresh更新:XC_alst+4=@0
+		refresh and hide deleted entry更新(非表示):XC_alst+4=@1
+		refresh and hide unmarked & deleted entry更新(マークがないときは再読込):XC_alst+4=@2
+		refresh / reload更新(非表示,マークがないときは再読込):XC_alst+4=@3
+		reload再読込:XC_alst+4=@4
+	XASV|deleted list削除([D],\[D])で、完了後の表示は
+		refresh更新:XC_alst+8=@0
+		refresh and hide deleted entry更新(非表示):XC_alst+8=@1
+		refresh and hide unmarked & deleted entry更新(マークがないときは再読込):XC_alst+8=@2
+		refresh / reload更新(非表示,マークがないときは再読込):XC_alst+8=@3
+		reload再読込:XC_alst+8=@4
+	XASW|renamed list名前変更([R])で、完了後の表示は
+		refresh更新:XC_alst+12=@0
+		refresh and hide deleted entry更新(非表示):XC_alst+12=@1
+		refresh and hide unmarked & deleted entry更新(マークがないときは再読込):XC_alst+12=@2
+		refresh / reload更新(非表示,マークがないときは再読込):XC_alst+12=@3
+		reload再読込:XC_alst+12=@4
+	XASX|activated listアクティブ時に更新するときの表示は
+		XNOO|nothing何もしない:XC_alst+16=@-1
+		refresh更新:XC_alst+16=@0
+		refresh and hide deleted entry更新(非表示):XC_alst+16=@1
+		refresh and hide unmarked & deleted entry更新(マークがないときは再読込):XC_alst+16=@2
+		refresh / reload更新(非表示,マークがないときは再読込):XC_alst+16=@3
+		reload[should not use]再読込【非推奨】:XC_alst+16=@4
+	XAAC|refresh all PPc属性変更、コピー、削除等の終了を全PPcに通知し、更新等する:XC_alac=?1/1:0
+	XRRT|start reload time(active,sec)アクティブ時の更新検出後、読み込みを待つ秒数(0は不可):XC_rrt=<d
+	XRRU|start reload time(no active,sec)非アクティブ時の更新検出後、読み込みを待つ秒数(0は不可):XC_rrt+4=<d
+.ZTPV|PPv
+	XAWE|externd wheel窓外のホイールは、マウス上の窓を対象にする:X_awhel=?1/1:0
+	XLLZ|large file read mode大きなファイルの読み込み方法
+		dialogその場で選択する:X_llsiz=@0
+		read all全て読み込む:X_llsiz=@1
+		partial read部分読み込み:X_llsiz=@2
+		no read読み込み中止:X_llsiz=@3
+	XVPS|Show position by PPc calledPPcから開いたときの表示位置(試作)
+		no fix独立表示:X_vpos=@0/0
+		on PPc(on pane)PPc上(ペイン上):X_vpos=@1
+		on pair PPc反対窓PPc上:X_vpos=@2
+		on Combo window一体化窓:X_vpos=@3
+	XMIF|minimized focus fix最小化時に呼び出し元を強制アクティブ処理
+		XNOO|noしない:XV_minf=@0
+		use type1する(方法1):XV_minf=@1
+		use type2する(方法2):XV_minf=@2
+	XHIR|Keep cursor positions表示ファイル・カーソル位置・表示設定の履歴
+		XNOO|No記憶しない:X_hisr+4=@0/1
+		Always, and restore positions常に記憶する。記憶した履歴を用いてカーソル位置や表示設定を再現する。:X_hisr+4=@1/1
+		changed settings表示位置を変えたり、表示方法を変えたりしたら記憶する:X_hisr+4=@2
+	XPRS|print印刷
+		XPRT|margin余白
+			left(mm)左余白(mm):X_prts=<i
+			top(mm)上余白(mm):X_prts+4=<i
+			right(mm)右余白(mm):X_prts+8=<i
+			bottom(mm)下余白(mm):X_prts+12=<i
+		XPRU|image scale画像解像度
+			DPI画像の印刷解像度(dpi):X_prts+16=<i
+			full scale1ページ全体:X_prts+16=@-1
+			full width横幅一杯:X_prts+16=@-2
+			full height縦一杯:X_prts+16=@-3
+			semi fix(200,400,full)200,400,ページ全体切り替え:X_prts+16=@0
+..ZTVT|Text viewテキスト表示
+	XTMD|always cursor mode常にキャレットモードにする:XV_tmod=?1:0
+	XUNF|proportional textプロポーショナルフォントを使用する:XV_unff=?1:0
+	XVZS|change seleted range文字を選択する範囲を選択方向に応じて変える:X_vzs=?1/1:0
+	XVNM|logical line number途中で折り返しても１行として扱う(論理行番号):XV_numt=?1/1:0
+	XLNM|show line number左端に行番号を表示する:XV_lnum=?1:0
+	XVLF|left margin左余白幅:XV_left=<d
+	XBTL|show tabタブを記号表示
+		XNOO|noしない:XV_bctl=@0
+		XYES|yesする:XV_bctl=@1
+		speed高速表示(表示されない場合あり):XV_bctl=@2
+		XAUT|auto speed高速表示(自動切替):XV_bctl=@3
+	XBTM|show LF改行を記号表示
+		XNOO|noしない:XV_bctl+4=@0
+		XYES|yesする:XV_bctl+4=@1
+		speed高速表示(表示されない場合あり):XV_bctl+4=@2
+		XAUT|auto speed高速表示(自動切替):XV_bctl+4=@3
+	XBTN|show box space2byte空白を記号表示
+		XNOO|noしない:XV_bctl+8=@0
+		XYES|yesする:XV_bctl+8=@1
+..ZTVI|Image view画像表示
+	XIXO|Animate(require restart PPv)アニメーション表示(要PPv再起動):X_iexo=?1:0
+	XIXP|Modify background(require restart PPv)透過部分の加工(要PPv再起動):X_iexo+4=?1:0
+	XIXQ|Apply color profile(require restart PPv)カラープロファイルの適用(要PPv再起動):X_iexo+8=?1:0
+	XIMD|zoom typePPv[A]の拡大縮小設定
+		100%:XV_imgD:VA=@0
+		frame zoom窓枠に合わせて拡大縮小:XV_imgD:VA=@-1
+		auto zoom窓枠より大きいときは窓枠に合わせて縮小:XV_imgD:VA=@-2
+		fix frame size窓枠の大きさを調節する:XV_imgD:VA=@-3
+		auto frame size窓枠調節&自動縮小:XV_imgD:VA=@-4
+		zoom frame width幅を窓枠に合うように縮小:XV_imgD:VA=@-5
+		zoom frame height高さを窓枠に合うように縮小:XV_imgD:VA=@-6
+		auto zoom aspect画像の縦横比で調整:XV_imgD:VA=@-7
+		user任意倍率:XV_imgD:VA=<i
+	XIMC|zoomPPv[A]の拡大縮小時表示方法
+		white paper白地に黒文字(文書用、高速):XV_imgD:VA+4=@1
+		black paper黒字に白文字(文書用、高速):XV_imgD:VA+4=@2
+		colorカラー(高速):XV_imgD:VA+4=@3
+		smooth混合(中速):XV_imgD:VA+4=@4
+		area average平均画素法(低速):XV_imgD:VA+4=@20
+..ZTVD|Dragドラッグ挙動
+	XVDD|use auto scrollドラッグ時にオートスクロールを使用する:XV_dds=?1:0
+	XVDE|Use gestureマウス右ボタンでジェスチャーを使用する:XV_drag+12=?2:0
+	XVDA|scrool buttonドラッグスクロールを開始するボタン
+		XNOO|noなし:XV_drag=@0
+		left左:XV_drag=@1
+		right右:XV_drag=@2
+		center中/ホイール:XV_drag=@3
+	XVDB|select button範囲選択を開始するボタン
+		XNOO|noなし:XV_drag+4=@0
+		left左:XV_drag+4=@1
+		right右:XV_drag+4=@2
+		center中/ホイール:XV_drag+4=@3
+	XVDC|move window buttonドラッグ窓移動を開始するボタン
+		XNOO|noなし:XV_drag+8=@0
+		left左:XV_drag+8=@1
+		right右:XV_drag+8=@2
+		center中/ホイール:XV_drag+8=@3
+.ZTPB|PPb
+	XBSZ|console show linesコンソールの表示行数:XB_size+6=<w
+	XBSY|logged linesコンソールの全体(バックログ)行数:XB_size+2=<w
+	XBUW|(UNICODE ver.)calculate char. width(UNICODE版)正確なカーソル位置取得を行う:XB_uwid=?1:0
+	XTAM|terminal command仮想端末として使用するソフト
+		XTCH|Default terminal通常の仮想端末を使用:X_term=@s
+		XTWT|use Windows TerminalWindows Terminalを使用:X_term=@swt.exe
+		XTAM|terminal command端末として使用するソフト:X_term=<s
+.ZTPE|PPe
+	XUCS|show line cursorカーソル位置に下線を使う:X_ucsr=?1:0
+	XNCP|new text charcter set新規時の文字コード
+		system localeシステム設定:X_newcp=@3:3
+		UTF-8(BOM):X_newcp=@10
+		UTF-8:X_newcp=@65001
+		latin1:X_newcp=@1252
+		S-JIS:X_newcp=@932
+		code page:X_newcp=<d/0
+.ZTPY|PPtray 
+	XEED|hooked editboxエディットボックス拡張を外部に提供する:X_eedit=?1:0
+.ZTPF|PPffix
+	XFFX|fixed extention is lower case変更する拡張子を小文字に固定する:X_ffxl=?1:0
+.ZTPU|PPcust
+	XCCD|dumpped text charcter set書き出すテキスト形式設定ファイルの文字コード(バックアップは既定値限定)
+		default既定(システム/UTF-16LE):X_ccode=@0:0
+		system localeシステム設定:X_ccode=@1
+		UTF-8(BOM):X_ccode=@2
+		UTF-8:X_ccode=@65001
+		S-JIS:X_ccode=@932
+.ZTNS|no supportおまけ
+	XEXS|alarm new executive file初めて実行する実行可能ファイルを警告する:X_execs=?1:0
+	XFLE|fix flicker画面のちらつき対策:X_fles=?1:0
+	XBTY|show back picturePPc,PPv の背景に画像を表示
+		XNOO|noしない:X_bg:Type=@s0
+		left左上:X_bg:Type=@s1
+		right右上:X_bg:Type=@s3
+		sync desktopデスクトップと同じ位置:X_bg:Type=@s10
+		combo window一体化窓内で揃える:X_bg:Type=@s20
+	XBTP|picture path使用画像(空欄→デスクトップと同じ):X_bg:Path=N
+	XBTB|picture bright(%)背景画像の明るさ(%):X_bg:Bright=<
+	XBTO|opaqued window窓全体を透けるようにする／不透明度(PPx共用,%):X_bg:Opaque=<
+		XOFF|off透けない:X_bg:Opaque=@s100
+		half半透明:X_bg:Opaque=@s80
+		use透ける(背景色が透明):X_bg:Opaque=@s0
+		use aero(on vista,7)透ける(aero使用,vista,7のみ):X_bg:Opaque=@s-1
+	XBTA|opaqued PPv window窓全体を透けるようにする／不透明度(PPv[A]専用,%):X_bg:O_VA=<

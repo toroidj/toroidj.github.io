@@ -1,0 +1,753 @@
+;------------------------------------------------------------------------------
+;	K-Launcher				～カスタマイズファイル～
+;
+;・TAB コードと,｢;｣ 以降は無視されます
+;・文字列部分においては空白も有効です
+;・英大文字･小文字の区別があります
+;・数値指定
+;	1234  10進数		Habcd  16進数		B0101  2進数
+;------------------------------------------------------------------------------
+;				各種設定
+;==============================================================================
+;------- ﾊｰﾄﾞ 環境 -----
+T_width	= 80		; 画面桁数
+T_height= 24		; 画面行数 - 1
+X_back	= 1		; ｸﾞﾗﾌｨｯｸ 処理		0:しない   1:する
+X_disp	= 0		;(AS) INT 29H ｻﾎﾟｰﾄ	0:しない   1:する
+X_ekey	= 1		;(PC/V) 拡張 ｷｰ ｻﾎﾟｰﾄ	0:しない   1:する
+X_skey	= 0		; 記号keyのSHIFT状態	0:無効     1:有効
+X_beep	= 1		; Beep 音を使用		0:しない   1:する
+X_line	= 1		; 現在の画面行数に追従	0:しない   1:する
+X_ssf	=
+X_sst	= 0		; ｽｸﾘｰﾝｾｰﾊﾞの起動時間	0:使用禁止
+;
+;------- 実行環境 ------
+X_shell	= /C 		; COMMAND.COM のｵﾌﾟｼｮﾝ
+X_tmpf	= FILES.$$$	; ﾚｽﾎﾟﾝｽﾌｧｲﾙ ﾌｧｲﾙ名
+X_tdir	= 0		; KLTREE.DAT 出力位置	0:各root   1:X_save
+X_hist	= 1		; KL_HIST.DAT を出力	0:しない   1:する
+X_save	=
+;
+;------- 全般 ----------
+X_time	= 0		; 時刻表示		0:する	   1:しない
+X_func	= 0		; ﾌｧﾝｸｼｮﾝｷｰ一覧を表示	0:しない   1:する
+X_unuse	= 0		; ﾀｲﾄﾙ & 時刻の位置	0:下	   1:上
+X_sysl	= 0		; FEP 用に最下行を確保	0:しない   1:する
+;
+X_mark	= B111111010000	; 手動 Mark の制限	b6:Subdir   b7:System b8:Hidden
+X_markA	= B011100000000	; 自動 Mark の制限	b9:Readonly b10:Normalb11:LFN
+X_mask	= B011111	; 読込み可能な属性	b0:Readonly b1:Hidden b2:System
+X_datr	= B010000	; 削除確認を求める属性	b3:Label    b4:Subdir b5:Arc
+X_dsatr	= B000000	; Subdir 下での X_datr
+X_sort	= B011111	; Sortで並び変える属性
+X_copy	= 0		; 同名ﾌｧｲﾙへの対応は	0:発見時   1:New date 2:Rename
+			;  3:Overwrite	4:Skip	5:Archive  6:開始時   7:毎回
+;
+;------- ﾌｧｲﾗｰ 窓 ------
+X_swin	= 1		; ﾌｧｲﾗｰ 窓の枚数	0:１枚	   1:２枚
+X_site	= 0		; 分割方法		0:左右	   1:上下
+X_site1 = 1		; 起動時１枚目窓のパス	0:ｶﾚﾝﾄdir  1:終了時と同じ
+X_fbox	= 1		; 窓枠の大きさは	0:固定	   1:可変
+X_fwin	= 1		; 極力窓一杯に表示	0:しない   1:する
+X_Elong	= 0		; 異常 LFN の自動削除	0:しない   1:する
+X_ftype	= 0		; ﾌｧｲﾙ 名の小文字表示	0:しない   1:ﾌｧｲﾙのみ 3:全部
+;
+;------- ﾌｧｲﾗｰ 窓 操作 -
+X_hpage	= 0		; Page 移動量は		0:全画面   1:半画面
+X_page	= 0		; Page 切替で一周	0:しない   1:する
+X_curh	= 0		; ←→で窓枠を越えると	0:自動	   1:常にK_Xwin
+X_curlim= 0		; ↑↓で一周		0:しない   1:する
+X_updown= 0		; ↑↓で端を越えると	0:画面反対 1:Page切替 2:ｽｸﾛｰﾙ
+X_markP	= 1		; Mark 後,端を越えると	0:画面反対 1:Page切替 2:ｽｸﾛｰﾙ
+X_markS	= 1		; Mark ﾌｧｲﾙの総ｻｲｽﾞ数は	0:同枠ｸﾗｽﾀ 1:反対ｸﾗｽﾀ 2:無加工
+X_emov	= 0		; ｴﾝﾄﾘ の移動方法	0:ｽﾀｯｸ	   1:ﾘﾝｸﾞ
+X_Eret	= 1		; [Enter]でﾏｰｸを無視	0:しない   1:する
+X_qdir	= 0		; [ESC]時 ﾃﾞｨﾚｸﾄﾘは	0:現在位置 1:起動時
+X_qsure	= 1		; 終了時に確認を	0:しない   1:する
+;
+;------- 一行編集 ------
+X_ins	= 1		; 文字列入力は		0:上書	   1:挿入
+X_schr	= \ .		; 単語の区切り文字
+;
+;------- 補助窓 --------
+X_subw	= 0		; 補助窓を使用		0:しない   1:する
+X_siteL	= 15		; [:]の補助窓の行数
+;
+;------- 内蔵 ﾋﾞｭﾜｰ ----
+X_viewid= 999		; 最大桁数
+X_viewm	= B10000	; 各種設定		b0:行ｶｰｿﾙ	b1:保持view
+			;	b2:連動view	b3:常に全画面	b4:検索の同一視
+X_viewp	= 0		; PgUP/DOWN の単位	0:全画面   1:1行残す
+X_view4	= C,H,CPP,HPP	; 4tab 表示の拡張子
+X_viewc	= H1F		; 改行文字
+;
+;------- ﾌｧｲﾗｰ窓 項目毎表示
+;	左,右,補助 の順
+X_swid	={		; 1ｴﾝﾄﾘ を表示する幅	16～48
+	40,40,40	; 左,右,補助 の順
+}
+X_tree	= {		; 各窓の表示形態	B0:Tree表示	B1:連動窓
+	0,0,1		; 左,右,補助 の順
+}
+X_fdt	={		; 表示する形式		b0(E):K/M 使用	b1(W):1文字幅広
+				;		b1(W):0=通常 1=1文字余分に表示
+	B0000,B0000,B0000	; 左,右,補助 の順
+}
+Drvmode = {		;ドライブアクセスに関する設定
+	;b0-3	読み込み後のファイルソート
+	;		0000		ソートしない
+	;		0001,0101	名前順
+	;		0010,0110	拡張子順
+	;		0011,0111	ﾌｧｲﾙｻｲｽﾞ順
+	;		0100,1000	時刻順
+	;b4	ダイレクトアクセスを許可	0:しない   1:する
+	;b5	削除ﾌｧｲﾙ表示(ﾀﾞｲﾚｸﾄ読込みのみ)	0:しない   1:する
+	;b6	高速空き容量計算を禁止		0:しない   1:する
+	;b7	このドライブへの移動を抑制	0:しない   1:する
+
+;  Ａ	     Ｂ        Ｃ	 Ｄ	   Ｅ	     Ｆ        Ｇ	 Ｈ
+[DOSV]
+;b10010000,b10010000,b00010000,b00000000,b00010000,b01010000,b00010000,b00010000
+b00010000,b10010000,b00010000,b00010000,b00010000,b01010000,b00010000,b00010000
+![DOSV]
+b00010000,b00010000,b00010000,b00000000,b00010000,b01010000,b00010000,b00010000
+[ALL]
+;  Ｉ        Ｊ        Ｋ        Ｌ        Ｍ        Ｎ        Ｏ        Ｐ
+b00010000,b00010000,b00010000,b00010000,b00010000,b00010000,b00010000,b00010000
+;  Ｑ        Ｒ        Ｓ        Ｔ        Ｕ        Ｖ        Ｗ        Ｘ
+b00010000,b00010000,b00010000,b00010000,b00010000,b00010000,b00010000,b00000000
+;  Ｙ	     Ｚ        UNC
+b00010000,b00010000,b00000000
+}
+;==============================================================================
+;				拡張子実行の登録
+;
+;・拡張子は,ワイルドカード｢?｣対応
+;・一番最後はデフォルトの設定（拡張子は不用）
+;
+;●ｵﾌﾟｼｮﾝ
+; M	ﾏｸﾛ 展開前に編集		; A	ﾃﾞｨﾚｸﾄﾘ の末尾を｢xx\*.*｣に
+; E	全体の編集			; C	編集 ｶｰｿﾙ は末尾(無指定:先頭)
+; e	連続実行時の(全体/部分)編集なし	; c	｢実行内容｣がない場合は ｺﾏﾝﾄﾞﾗｲﾝ
+; W	実行後のキー入力待ち		; h	部分編集を ﾋｽﾄﾘｰ に保存しない
+; w	連続実行時のキー待ち		; H	全体を ﾋｽﾄﾘｰ に保存しない
+; S	高速実行(180K 空きﾒﾓﾘが減る)	; O	実行後 ｶｰｿﾙ を下に移動
+; R	ﾃﾞｨﾚｸﾄﾘ の再読込をしない(要S)	; T	実行後 %TMP%files.$$$ を削除
+; r	ﾏｰｸ ﾌｧｲﾙ 全てを処理		; K	画面消去抑制
+;
+;●ﾏｸﾛ 記号
+; %%	% 自身(%;も)			; %:	ｺﾏﾝﾄﾞの区切り(ﾏﾙﾁｽﾃｰﾄﾒﾝﾄ)
+; %x	反対窓を対象に（%C,%@,%#,%R）	; %\	直前に｢\｣がない場合付加
+; %Mn	n 番の M_sub			; %mn	n 番の E_sub
+; %J…	ﾌｧｲﾙｼﾞｬﾝﾌﾟ			; %j…	ﾃﾞｨﾚｸﾄﾘｼﾞｬﾝﾌﾟ
+; %"…"	ｺﾒﾝﾄ の表示内容			; %'…'	環境変数「…」の内容
+; %Kn	n 番の ｷｰﾏｸﾛ
+; %S"…"  ｻﾌﾞﾃﾞｨﾚｸﾄﾘ が対象であると "…" 内が有効
+;
+;-- ﾃﾞｨﾚｸﾄﾘ
+; %0	KL がある ﾃﾞｨﾚｸﾄﾘ
+; %1	ｶｰｿﾙ 位置の ﾃﾞｨﾚｸﾄﾘ		; %2	ｶｰｿﾙ の反対位置の ﾃﾞｨﾚｸﾄﾘ
+;
+;-- 実行対象
+; %C	name + ext
+; %X	name				; %T	ext
+; %@	ﾚｽﾎﾟﾝｽﾌｧｲﾙ			; %A	%C,%@ 自動切替
+; %#n	列挙指定			; %rn	マーク時のみ列挙
+;
+;-- ｶｰｿﾙ 位置
+; %R	name + ext
+; %Y	name				; %t	ext
+;
+;-- ﾋｽﾄﾘ 内容
+; %Hn	n 番の M_exec			; %hn	n 番の M_pjump
+;
+;-- 編集
+; %!x	%!C 等とするとその部分を編集	; %$x	キャッシュ付 %!x
+; %E	ﾊﾟﾗﾒｰﾀ 入力			; %P	パス入力（絶対指定に変換）
+;
+;-- ﾋﾞｭﾜｰ
+; %v	内蔵 ﾋﾞｭﾜｰ を起動		; %V	ビュー中の ﾌｧｲﾙ 名
+; %Ln	ビュー中の行位置		; %ln	内蔵 ﾋﾞｭﾜｰ の ｶｰｿﾙ 位置文字列
+;==============================================================================
+;-------------------------------------- [RETURN]
+E_ret	= {				;実行ファイル
+	EWC	,COM, %C 
+	EWC	,EXE, %C 
+	EWC	,BAT, %C 
+
+;		,ARJ,ARJ L %C>%'TMP'%\$%v1%'TMP'%\$
+;		,LZH,LHA L -x %C>%'TMP'%\$%v1%'TMP'%\$
+;		,PMA,PMA L %C>%'TMP'%\$%v1%'TMP'%\$
+;		,ZIP,PKUNZIP -v %C>%'TMP'%\$%v1%'TMP'%\$
+
+					;アーカイバ
+	WS	,ARC,UNPACK -v %C
+	WS	,ARJ,ARJ L %C
+	WSR	,LZH,LHA32 L %C
+	WS	,LZS,LHA32 L %C
+	WS	,PMA,PMA L %C
+	WS	,ZIP,PKUNZIP -v %C
+	WS	,ZOO,ZOO L %C
+	WS	,DLZ,DLH L %C
+	WS	,??Z,GZIP -l %C
+	WS	,?Z ,GZIP -l %C
+	WS	,Z  ,GZIP -l %C
+					;差分処理
+	WS	,BDF,BUPDATE -v %C
+	WS	,LDF,LDF -l %C
+	WS	,WUP,WSP -D %C
+					;音楽(PCM)
+		,PC8,HDPLAY -V8 %C
+		,PM8,HDPLAY -V4 %C
+		,PHL,HDPLAY -V4 %C
+		,PCM,PCM %C
+		,SPK,PCM %C
+		,SND,PCM %C
+		,AU ,PCMPLAY %C
+		,WAV,PCMPLAY %C -v5
+		,PCM,PCMPLAY %C
+		,SPB,PCMPLAY %C
+		,SPK,PCMPLAY %C
+		,SND,PCMPLAY %C
+		,AIF,PCMPLAY %C
+					;音楽(FM)
+		,OPI,PLAY %C
+		,OVI,PLAY %C
+		,OZI,PLAY %C
+		,SMO,SMP %C
+					;音楽(MIDI)
+		,MID,MRP -B20 -GS %C
+		,STD,MRP -B20 -GS %C
+		,RCP,MRP -B20 -GS %C
+		,RMI,MRP -B20 -GS %C
+		,SNG,MIMPIV4 /E/SC/GS %C
+		,MCP,MIMPIV4 /E/SC/GS %C
+		,MM2,MIMPIV4 /E/SC/GS %C
+		,SEQ,MIMPIV4 /E/SC/GS %C
+		,MMC,MIMPIV4 /E/SC/GS %C
+					;画像
+	W	,ARV,ARV %C
+		,BMP,WML21 /0 /K2 %C
+		,FAR,FAR -k %C
+		,GIF,MJL -d800,500,16 -K %C
+	W	,GRA,QLD %C
+		,JPE,MJL -d800,500,16 -K %C
+		,JPG,MJL -d800,500,16 -K %C
+	W	,KT4,KTYL %C
+		,MAG,WML21 /0 /K2 %C
+		,MKI,WML21 /0 /K2 %C
+		,PIC,MJL -d800,500,16 -K %C
+	W	,PT1,PT1LD %C
+	W	,SC5,PCG %C
+	W	,SC7,PCG %C
+	W	,SC8,PCG %C
+		,TIF,WML21 /0 /K2 %C
+	W	,ZIM,ZIMLOAD %C
+	W	,HG ,HGL %C
+		,PI ,WML21 /0 /K2 %C
+		,Q0 ,MJL -d800,500,16 -K %C
+	Ww	,Q4 ,HSX %C
+
+		,MSL,MASL %C
+	ECWw	,MAK,MAKE -f%C
+	ECWw	,MAKEFILE.,MAKE -f%C
+
+	E	,DOT,START %C
+	E	,XLS,START %C
+	E	,MAC,KMC %C
+
+	H	,   ,%v
+}
+;-------------------------------------- \[RETURN]
+E_Ret	= {
+		,   ,Vz %#10%x%r10
+}
+;--------------------------------------	[U]npack
+E_unpack= {
+	We	,ARC,UNPACK %C %!2
+	We	,ARJ,ARJ X %C %!2
+	HWe	,HA ,HA X %C
+	We	,LZH,LHA32 X %C %!2%\
+	We	,LZS,LHA32 X %C %!2%\
+	We	,PMA,PMA X %C %!2
+	We	,ZIP,PKUNZIP -d %C %!2
+	We	,ZOO,ZOO -E %C %!2
+	We	,DLZ,DLH E %C %!2
+	We	,TAR,TAR xvf %C -o %!2
+	We	,??_,EXPAND -r %C %!2
+	We	,??Z,GZIP -d %C %!2
+	We	,?Z ,GZIP -d %C %!2
+	We	,Z  ,GZIP -d %C %!2
+				;差分
+	We	,BDF,BUPDATE %C
+	We	,LDF,LDF %C
+	We	,WUP,WSP %C
+	e	,   ,ISH %C%:UUDX %C
+}
+;-------------------------------------- 補助拡張子実行
+;空白拡張子を区切りとして,0 番から順番に
+E_sub	= {
+				;#0	簡易アーカイブモードでの展開
+	We	,LZH,LHA32 X %C %!2%\ %l
+	We	,ARJ,ARJ X %C %!2 %l
+	We	,PMA,PMA X %C %!2 %l
+	We	,ZIP,PKUNZIP -d %C %!2 %l61
+		,   ,		;#1	簡易アーカイブモードでの削除
+	WE	,LZH,LHA32 D %C %l
+	WE	,ARJ,ARJ D %C %l
+	E	,PMA,:Can't exec !
+	WE	,ZIP,PKZIP -d %C %l61
+		,   ,
+}
+;==============================================================================
+;				メニュー関係
+;==============================================================================
+;-------------------------------------- [0]ﾀﾞｲﾚｸﾄﾊﾟｽ 移動
+M_pjump = {
+	A,		,,%h1
+	B,		,,%h2
+	C,		,,%h3
+	D,		,,%h4
+	E,		,,%h5
+	F,		,,%h6
+	G,		,,%h7
+	H,		,,%h8
+	--,		,,
+	1,		,,%0
+[DOSV]
+	2,		,,F:\TERM\DATA
+	3,		,,F:\TERM\LOG
+	4,		,,F:\TERM\SEND
+	5,		,,%'TMP'
+	6,		,,C:\SOU\HTML
+;	7,		,,\\TOWER\B\TAKAHASI\TEMP
+	8,		,,C:\post
+	9,		,,C:\WINDOWS\ﾃﾞｽｸﾄｯﾌﾟ
+[98]
+	2,		,,B:\KTX\DOWN
+	3,		,,B:\KTX\LOG
+	4,		,,B:\KTX\mac
+	5,		,,%'TMP'
+	7,		,,B:\TAKAHASI\TEMP
+	8,		,,\\TAKA\私書箱
+	9,		,,\\TAKA\高橋文書
+[ALL]
+	,,,
+}
+;-------------------------------------- [,]起動メニュー
+M_exec = {
+	K,ＫmTermX	,,KT
+	R,Rdisk		,,BIONEC %:RDISK /MC
+	r,Rdisk解除	,,RDISK /R%:BIONEC /R
+	X,		,,MLR %C
+	L,KL cust	,,Vz %0%\KLV.CFG %: KLCUST %0%\KLV.CFG %0
+	9,KL98 再構築	,,MAKE -fKL98.MAK
+	V,KL 全再構築	,,MAKE -fKLv.MAK
+	A,Asm(COM)	,,CASM %X
+	E,Asm(EXE)	,,EASM %X
+	S,Asm(SYS)	,,SASM %X
+	T,Asm(OBJ)	,,TASM %X
+	C,Compile(C)	,,TCC %C
+	D,		,,DUMP %C
+	M,		,,MDE %C
+	U,		,,UNDELETE
+	F,Whereis	,S,%" Find file "dir /s /b %P>%'TMP'%\$%v1%'TMP'%\$ %J
+	H,単純リセット	,,HSB R
+	1,log PACK	,r,TXTUTY  /B /D /T- %C
+	Z,log PACK	,WC,GREP %!X I:\00CDROM\filename.txt
+	s,SPLIT		,,BSPLIT -1250304 %C
+	e,CD Eject	,,CDPLAY e
+	f,144FORMAT	,,FORMAT D: /4 /U
+	W,		,,start winword /n
+	,,,
+}
+;-------------------------------------- 補助ﾒﾆｭｰ
+;｢,,,｣を区切りとして,0 番から順番に
+M_sub = {
+				;#0	[B]バイナリ変換
+	I,ISH		,,%M1
+	U,UUEX		,,UUEX -P57 -s -N %C
+	,,,
+				;#1	ISH
+	1,7bit		,,ISH %C /s7
+	2,8bit		,,ISH %C /s8
+	3,SJIS		,,ISH %C /ss
+	,,,
+	0,lh0		,WAC,LHA32 A -z %!2 %@ %S"-r -x"
+	1,lh1		,WAC,LHA32 A -o1 %!2 %@ %S"-r -x"
+	5,lh5		,WAC,LHA32 A -o2 %!2 %@ %S"-r -x"
+	6,lh6		,WAC,LHA32 A %!2 %@ %S"-r -x"
+	Z,zip		,WAC,PKZIP %!2 %@
+	O,zoo		,WACr,ZOO a %!2 %#
+	,,,
+}
+;-------------------------------------- [;]表示桁数
+; 表示形式	b0(E):K/M 使用	b1(W):1文字幅広	b2(w):8192で切替
+;		b3(S):ｻｲｽﾞ幅広	b4(R):｢>｣付加無
+M_wid = {
+	2,		,,40
+	3,		,,25
+	4,		,EW,20
+	5,		,,16
+
+	0,		,,48
+	1,		,E,44
+	6,		,W,42
+	7,		,E,39
+	7,		,Ew,40
+	7,		,EwS,40
+	,,,
+}
+;==============================================================================
+;キー割り当ての変更：変更後の ｷｰ = ﾃﾞﾌｫﾙﾄのｷｰ
+;ｺﾏﾝﾄﾞ 実行キー割当：変更後の ｷｰ ,ｵﾌﾟｼｮﾝ,実行内容
+
+;SHIFT,CTRL,ALT はそれぞれ \,^,& を付加
+;特殊なキーは次のように書く
+;	',',' ','=',ESC,LEFT,RIGHT,UP,DOWN,PUP,PDOWN,ENTER
+;	BS,TAB,INS,DEL,HOME,END,HELP,XFER,NFER,F1～F15,NULL
+;==============================================================================
+A_genr = {			;共通
+^[	= ESC
+^]	= HELP
+^A	= \LEFT
+^C	= \DOWN
+^D	= RIGHT
+^E	= UP
+^F	= \RIGHT
+^G	= DEL
+^H	= BS
+^I	= TAB
+^M	= ENTER
+^R	= \UP
+^S	= LEFT
+^V	= INS
+^X	= DOWN
+^W	= HOME
+^Z	= END
+}
+A_edit = {			;文字列入力時
+^T	= \BS
+^Y	= \DEL
+&Q	= &1
+&W	= &2
+}
+A_main = {			;ファイル選択時
+;\Y	,,%K0
+;Y	,,MJL -d800,500,16 -K *.*
+N	= \V
+PUP	= \UP		; この２つの設定をはずすと,PgUP/DOWN で
+PDOWN	= \DOWN		; スクロール方式のページ切り替え
+\LEFT	= PUP
+\RIGHT	= PDOWN
+B	,H	,%" Bincnv "	%M0
+\C	,H	,%" Copy "	zcopy %@ %!2 /x %S"/s"
+E	,H	,%" Edit "	Vz %E
+\M	,H	,%" Move "	zcopy %@ %!2 /m /x %S"/s"
+P	,WAC	,%" Pack "	LHA32 A -o2 %!2 %@ %S"-r -x"
+\P	,	,%" Pack "	%M2
+V	,H	,%" View "	MIEL %C
+X	= @H ' ' @&C ' ' @\LEFT
+F2	= @H ' ' @&C ' ' @\LEFT
+F3	= C
+F4	= D
+F5	= R
+F6	= S
+F7	= F
+F8	= T
+F9	,H	,%" Edit "	Vz %!#
+F10	= U
+\F1	= A
+\F2	= I
+\F3	= M
+\F4	= \D
+\F5	= K
+\F6	= H
+\F7	= W
+\F8	= \W
+\F9	= ','
+\F10	= 0
+}
+A_view = {			;ビュワー
+F3	= <
+F4	= >
+F5	= PDOWN
+F6	= PUP
+F7	= F
+F8	= B
+\F7	= ']'
+\F8	= '['
+\ENTER	,H	,Vz %V -%L
+V	,H	,MIEL -J%L0 %V
+D	,	,%"Delete"	%m1
+U	,	,%"Unpack"	%m0
+\J	,E	,%J%l
+}
+A_menu	= {			;メニュー
+}
+A_sel	= {			;選択
+}
+A_esub	= {			;編集補助窓
+}
+;==============================================================================
+;			ファンクションキー表示
+
+;途中で色を変える時は「%色%」
+;==============================================================================
+;ファイラー
+F_main	=    %R_CYA% Help %_CYA% %R_CYA% eXec %_CYA% %R_CYA% Copy %_CYA% %R_CYA%Delete%_CYA% %R_CYA%Rename%_CYA%    %R_CYA% Sort %_CYA% %R_CYA% Find %_CYA% %R_CYA% Tree %_CYA% %R_CYA% Edit %_CYA% %R_CYA%Unpack
+
+F_Main	=    %R_CYA%Attrib%_CYA% %R_CYA% Info %_CYA% %R_CYA% Move %_CYA% %R_CYA%Delete%_CYA% %R_CYA% Mkdir%_CYA%    %R_CYA% sHell%_CYA% %R_CYA% Write%_CYA% %R_CYA%Refesh%_CYA% %R_CYA%Exec M%_CYA% %R_CYA%Path J
+
+;内蔵ビュワー
+F_view	=    %R_CYA%______%_CYA% %R_CYA%______%_CYA% %R_CYA% Top  %_CYA% %R_CYA%Bottom%_CYA% %R_CYA%Next P%_CYA%    %R_CYA%Back P%_CYA% %R_CYA%F Find%_CYA% %R_CYA%B Find%_CYA% %R_CYA%______%_CYA% %R_CYA%______
+
+F_View	=    %R_CYA%______%_CYA% %R_CYA%______%_CYA% %R_CYA%______%_CYA% %R_CYA%______%_CYA% %R_CYA%______%_CYA%    %R_CYA%______%_CYA% %R_CYA%F Next%_CYA% %R_CYA%B Next%_CYA% %R_CYA%______%_CYA% %R_CYA%______
+
+;==============================================================================
+;				色の定義
+
+;(1)	全機種で同じ色
+;	_BLA : 黒	_BLU : 青	_RED : 赤	_MAG : 紫
+;	_GRE : 緑	_CYA : 水色	_BRO : 黄色	_WHI : 白
+;	※ 頭に ｢R｣ を付加すると反転
+
+;(2)	98 / 98LT / U1 用
+;	b7-5	000:黒 001:青 010:赤 011:紫 100:緑 101:水色 110:黄色 111:白
+;	b4	1 = ﾊﾞｰﾁｶﾙﾗｲﾝ
+;	b3	1 = 下線		b2	1 = 反転
+;	b1	1 = 点滅		b0	1
+
+;(3)	DOS/V & PC 用
+;	b7-4	背景色			b3-0	前景色
+;	※ b7 が点滅の場合がある
+;	※ 色(1000 を足すと明るくなる)
+;		0000:黒	0001:青	0010:緑	0011:水
+;		0100:赤	0101:紫 0110:黄 0111:白
+;
+;(4)	J3100 用
+;	H07	通常			H06	ボールド
+;	H08	下線			H70	反転
+;
+;(5)	FM 用
+;	b7	1 = 点滅		b6	1 = 反転
+;	b5	1 = 垂線		b4	1 = 上線
+;	b3	1 = 下線
+;	b2-0	000:黒 001:青 010:赤 011:紫 100:緑 101:水色 110:黄色 111:白
+;
+;(6)	ANSI 用		文字指定のみ
+;
+;(7)	88VA 用
+;	b7	1 = 暗色
+;	b6-4	000:黒 001:青 010:赤 011:紫 100:緑 101:水色 110:黄色 111:白
+;	b3	1 = 下線		b2	1 = 反転
+;	b1	1 = 点滅		b0	0
+;==============================================================================
+C_err		= _RED		;エラー表示
+C_info		= H07		;情報関係
+C_input		= H07		;入力文字
+C_mark		= H07		;マーク
+C_mes		= _BRO		;メッセージ
+C_space		= H07		;空白部分
+C_time		= _BRO		;時刻
+C_title		= _BLU		;タイトル
+C_vcur		= R_BRO		;(View)カーソル
+C_vfile		= H30		;(View)表示中ファイル名
+C_vlf		= _BRO		;(View)改行文字
+C_vtext		= H07		;(View)文字
+C_winbox	= H03		;ウィンドウ枠
+C_winbmes	= H03		;ウィンドウ枠上の文字
+
+C_backR		= 2		;背景の赤 ﾊﾟﾚｯﾄ
+C_backG		= 2		;背景の緑 ﾊﾟﾚｯﾄ
+C_backB		= 16		;背景の青 ﾊﾟﾚｯﾄ
+
+				;各種類のファイルの色
+Color = {		;非選択時--------
+		H07	;System message
+		_BLU	;Delete
+		H07	;This directory
+		H03	;Up directory
+		_RED	;Label
+		H07	;Tree
+		_CYA	;Sub directory
+		_MAG	;System
+		_BLU	;Hidden
+		_GRE	;Read only
+		_BRO	;Normal
+		H07	;Long File Name
+
+			;選択時----------
+		H70	;System message
+		R_BLU	;Deleted
+		H70	;This directory
+		H30	;Up directory
+		R_RED	;Label
+		H70	;Tree
+		R_CYA	;Sub directory
+		R_MAG	;System
+		R_BLU	;Hidden
+		R_GRE	;Read only
+		R_BRO	;Normal
+		H70	;Long File Name
+}
+				;ディスクの状態
+C_disk = {
+		_BRO	;ﾀﾞｲﾚｸﾄｱｸｾｽ非対応
+		_RED	;Long entry 削除要求
+		_GRE	;ﾀﾞｲﾚｸﾄｱｸｾｽ対応
+		H07	;ﾀﾞｲﾚｸﾄｱｸｾｽ使用
+}
+				;メニューの項目
+C_menu = {		;非選択時--------
+		_BRO	;ｼｮｰﾄｶｯﾄ文字
+		H07	;項目
+
+			;選択時----------
+		R_BRO	;ｼｮｰﾄｶｯﾄ文字
+		H70	;項目
+}
+;==============================================================================
+;			システムメッセージ
+;
+;		変更可はメッセージとショートカットキーだけ!!
+;==============================================================================
+S_copy	= {		; [C][M]	複写・移動
+	N,New date only		,1,
+	R,Rename at first	,2,
+	O,Overwrite		,3,
+	S,Skipped same file	,4,
+	A,Archive only		,5,
+	,,,
+}
+S_comp	= {		; [O]		比較マーク
+	F,new File	,1,
+	T,Time stamp	,2,
+	E,Exist		,3,
+	S,file Size	,4,
+	,,,
+}
+S_sort	= {		; [S],\[S]	ソート
+	C,Cancel	,0,
+	N,Name -> ext	,1,
+	E,Ext -> name	,2,
+	S,file Size	,3,
+	T,Time stamp	,4,
+	M,Mark		,9,
+	n,R)Name -> ext	,5,
+	e,R)Ext -> name	,6,
+	s,R)file Size	,7,
+	t,R)Time stamp	,8,
+	m,R)Mark	,10,
+	,,,
+}
+S_error	= {		; DOS の各種エラー（コメントのみの行は不可）
+	RESERVED				; 00
+	Invalid function
+	File not found
+	Path not found
+	Too many open files
+	Access denied
+	Invalid handle
+	MCB destroyed
+	Insufficiend memory
+	Invalid memory block address
+	Invalid environment
+	Invalid format
+	Invalid access code
+	Invalid data
+	RESERVED
+	Invalid drive
+	Attempt to remove the current directory	; 10
+	Not same device
+	No more files
+	Disk is write-protected	; 00 Int 24H fauilure
+	Bad disk unit		; 01
+	Drive not ready		; 02
+	Invalid disk command	; 03
+	CRC error		; 04
+	Invalid length		; 05
+	Seek error		; 06
+	Not an MS-DOS disk	; 07
+	Sector not found	; 08
+	Out of paper		; 09
+	Write fault		; 0a
+	Read fault		; 0b
+	General faliure		; 0c
+	Sharing violation			; 20
+	Lock violation
+	Wrong disk
+	FCB unavailable
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED				; 30
+	RESERVED
+	Network request not supported
+	Remote computer not listening
+	Duplicate name on network
+	Network name not found
+	Network busy
+	Network device no longer exists
+	Net BIOS command limit exceeded
+	Network adapter hardware error
+	Incorrect response from network
+	Unexpected network error
+	Incompatible remote adapter
+	Print queue full
+	Queue not full
+	Not enough space for print file
+	Network name was deleted		; 40
+	Access denied
+	Network device type incorrect
+	Network name not found
+	Network name limit exceeded
+	Net BIOS session limit exceeded
+	Temporarily paused
+	Network request not accepted
+	Print or disk redirection is paused
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	RESERVED
+	File exists				; 50
+	RESERVED
+	Can not make
+	Interrupt 24H failure
+	Out of structures
+	Already assigned
+	Invalid password
+	Invalid parameter
+	Net write fault
+	RESERVED
+	System component not loaded		; 5a,計91行
+}
+;==============================================================================
+;				キーマクロ
+;
+;内部機能は出来るだけ「@A」形式に
+;==============================================================================
+K_load	=
+K_nlog	= \I			; [L] で何も入力がない
+K_ren	=
+K_BS	= \L			; [BS] で ﾙｰﾄﾃﾞｨﾚｸﾄﾘ の時
+K_Lwin	= \TAB			; [←] でカーソルが左端の時
+K_Rwin	= \TAB			; [→] でカーソルが右端の時
+K_macro = {			; %K の指定
+	X_markA=B100000000000 * X_markA=B011100000000 @\D
+	@C HOME			; %K0 コピーでディレクトリ入力なし
+	+ HOME *.LOG ENTER @C	; %K2 *.LOG ファイルをコピーする準備
+;	@H %J%0% '\' KL.CFG ENTER \V < @F HOME E_ret ENTER ;%K3 E_retを編集準備
+}

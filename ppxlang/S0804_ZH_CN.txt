@@ -1,0 +1,1522 @@
+﻿Mes0804	=#{ ZH_CN
+0000	1812
+0001	好的
+0002	取消
+0003	中止(&A)
+0004	重试(&R)
+0005	忽略(&I)
+0006	是(&Y)
+0007	非(&N）
+7005	扩展名(&E)
+7007	选项(&O)
+7011	执行
+7012	等PPb...
+7013	与 self(&s) 一起执行
+7014	用新的 PPb(&n) 执行
+7018	输入登录密码
+7019	小路
+701D	重新登录时连接(&C)
+701E	用户名(&U)
+701F	密码(&P)
+7020	文件操作
+7022	只有新日期(&n)
+7023	重命名(&R)
+7024	覆盖(&O)
+7025	跳过(&S)
+7026	带存档(&a)
+7027	添加号码(&b)
+7028	追加(&p)
+7029	所有相同的动作(&W)
+702A	大写（&U）
+702B	小写(&L)
+702C	强制 8.3(&F)
+702D	删除错误的空格(&G)
+702E	删除号码(&B)
+702F	只读(&R)
+7030	存档(&A)
+7031	隐藏(&H)
+7032	系统(&X)
+7034	复制安全属性(&E)
+7035	略过小错误(&K)
+7036	自动“全部”检查（&U）
+703F	同名动作
+7040	名称过滤器
+7041	属性
+7042	目的地(&D)
+7043	重命名(&E)
+7044	分割尺寸(&V)
+7045	序列号(&N)
+7047	复制 SACL(&C)
+7048	目录(&D)
+7049	突发/自缓冲(&G)
+704A	扁平/不造树(&L)
+704B	保留目录(&K)
+704C	日志窗口(&G)(&G)
+704D	撤销日志(&U)
+704E	提取'%'(&A)
+704F	自动只读关闭(&O)
+7050	备份旧文件(&V)
+7051	第一张(&1)
+7052	文件名(&n)
+7053	目录名称修复(&D)
+7054	静默创建新目录警告(&S)
+7055	低优先级(&L)
+7056	来源条目
+7057	目的地入口
+7058	属性\n文件大小\n创建时间\n写入时间\n访问时间
+7059	无需等待 Result(&R)
+705A	&3:选项
+705C	&2:重命名
+705E	&1:一般
+7062	使用所有反应（&U）
+7063	添加延迟列表(&D)
+7064	不同尺寸(&Z)
+7068	重命名目标文件（&V）
+7070	防止进入睡眠(&P)
+7071	允许解密目的地(&D)
+7072	使连接批处理(&J)
+7073	来源名称
+7074	计数总大小(&C)
+7075	检查先存在(&E)
+7076	序列化操作(&Z)
+7077	关闭文件后移动
+7078	修复扩展(&Y)
+7079	日志&4
+7400	测试(&T)
+7402	命令列表
+7410	文件
+7411	自定义数据(&C)
+7412	按文本存储(&S)
+7413	通过文本附加(&A)
+7414	文字更新(&U)
+7415	转储到文本（&D）
+7416	初始化(&I)
+7417	历史数据(&H)
+7418	转储到文本(&o)
+7419	初始化(&R)
+741A	密钥检查(&K)
+741C	关联文件夹(&P)
+741D	取消关联文件夹(&U)
+741E	用 Ppc(&f) 打开文件夹
+741F	隐藏控制台(&L)
+7421	编辑和追加(&E)
+7429	通过编辑的文本自定义
+742C	追加(&A)
+742D	使用文本(&E)
+742E	结果(&R)
+7430	颜色
+7433	项目(&I)
+7436	追加(&A)
+7437	删除(&D)
+7438	单词列表(&I)
+7439	颜色(&C)
+743B	详细信息(&E)
+743C	下划线(&U)
+743E	按扩展名排序(&X)
+743F	按颜色排序(&L)
+7450	文件类型
+7457	(O E_...)(&O)
+7458	类型名称(&I)
+7459	类型(&Y)
+7460	钥匙
+7461	鼠标
+7462	纽扣
+7464	键(&S)
+746A	←
+746B	↑
+746C	↓
+746D	→
+746F	列表
+7470	苏茜
+7472	苏西信息
+7473	使用(&U)
+7474	详细信息(&P)
+7476	列表(&Y)
+7477	默认扩展名(&D)
+7478	自动检测(&A)
+7479	扩展(&P)
+747A	"目标 (.bmp,.dib)(&G)"
+7480	杂项
+7490	菜单
+7491	向上(&U)
+7492	向下(&W)
+7493	快捷键(&K)
+7495	分隔符(&S)
+7496	前景色(&F)
+7497	背景色(&B)
+7498	按钮编辑(&B)
+74E2	保存(&V)
+74E3	删除(&D)
+74E5	插入(&I)
+74E6	详细信息(&X)
+74EA	宏字母(&M)
+74EC	评论(&C)
+74ED	命令(&L)
+74EF	详细信息(&X)
+74F0	一般的
+74FC	查找(&F)
+7600	按使用键，然后单击“确定”
+7602	扩展模式
+7604	（需要 'NULL' 客户）
+7608	颜色
+760C	突出显示颜色
+760D	顶部(&T)
+760E	底部(&B)
+7610	显示格式
+7617	隐藏(评论)(&C)
+7618	全宽(&L)
+7619	全名长度(&N)
+761C	显示项目(&F)
+761D	物品清单(&Y)
+77FD	参考(&F)
+77FE	保存(&S)
+77FF	申请(&A)
+7800	属性
+7801	属性(&B)
+7802	创建(&1)
+7803	写(&2)
+7804	访问(&3)
+7805	（＆C）
+7806	(&W)
+7807	(&Q)
+7808	老的
+7809	新的
+780A	修改目录(&M)
+780B	详细信息(&X)
+780C	只读(&R)
+780D	隐藏(&H)
+780E	系统(&S)
+780F	存档(&A)
+7810	压缩（&P）
+7811	加密(&E)
+7812	子目录(&D)
+7813	索引(&I)
+7814	临时(&T)
+7815	离线(&O)
+7840	驱动器信息
+7841	驱动器名称
+7842	体积
+7843	磁盘类型
+7844	序列号
+7845	文件系统
+7846	已用空间
+7847	可用空间
+7848	真正免费
+7849	整体空间
+784A	字节/扇区
+784B	字节/簇
+784C	最大文件名长度
+784D	字节
+784E	集群
+7860	大小写保留
+7861	区分大小写
+7862	统一编码
+7863	ACL
+7864	文件压缩
+7865	体积压缩
+7866	命名流
+7867	配额
+7868	疏
+7869	重新解析
+786A	偏僻的
+786B	对象标识符
+786C	加密
+786D	只读
+786E	顺序写入一次
+786F	交易
+7870	硬链接
+7871	扩展属性
+7872	按文件 ID 打开
+7873	美国海军杂志
+7874	完整性流
+7875	块引用计数
+7876	稀疏 VDL
+7877	DAX，直接访问
+7881	目录掩码(&D)
+7882	实时遮罩(&M)
+7884	格式(&T)
+7885	字匹配(&W)
+78C0	增量搜索
+78C2	向上(&U)
+78C3	向下(&D)
+78C4	马克(&M)
+78C5	正面(&F)
+78C6	罗马(&O)
+78C7	详细信息(&T)
+78D0	Ppc 窗口设置
+78D1	双启动(&D)
+78D2	双关(&C)
+78D3	双主动(&A)
+78D4	联合窗口(_)(&J)
+78D5	左/右(&L)
+78D6	向上/向下(&U)
+78D7	堆积(&P)
+78D8	固定尺寸(&S)
+78D9	修复活动 PPC(&F)
+78DA	尺寸(&z)
+78DB	尺寸+位置(&O)
+78DC	组合(&M)
+78E0	排序细节
+78E2	案例(&C)
+78E3	假名(&K)
+78E4	非空格(&N)
+78E5	符号(&Y)
+78E6	宽(&W)
+78E7	字符串排序(&T)
+78E8	数字(&U)
+78EC	最后条目(&E)
+78ED	反转 &1
+78EE	反转&2
+78EF	反转&3
+78F0	档案在哪里？
+78F1	来源(&S)
+78F3	文件名(&N)
+78F5	和，文件名（&A）
+78FA	搜索标记(&m)
+78FB	有目录(&H)
+78FC	子目录(&U)
+78FD	虚拟FS(&V)
+7900	比较标记细节
+7910	一般的
+792A	访问时间：
+792B	修改时间：
+792C	创建时间：
+792D	尺寸：
+792E	小路：
+792F	类型：
+7C00	选择粘贴类型
+7C08	打印
+7C0A	正在打印...
+ACET	\n 和 %d 个应用程序
+ADDE	D&D 模拟(&D)
+ADDH	D&D挂钩(&D)
+ADDP	发布文件
+ADDR	右键 D&D(&D)
+ADHD	应用程序正在使用此文件；\n
+ADTE	输入标题
+AICP	添加检查模式
+ALLI	全部
+ANSP	停止动画
+ASRA	纵横比
+ASTL	添加启动列表
+BRAK	工作中断
+BREX	需要正则表达式库
+BRKD	损坏的数据
+BUSY	忙碌的...
+CAOF	缓存：关闭
+CAON	缓存：开
+CCAN	取消
+CCMC	全部匹配
+CCMP	比较完成
+CDAT	属性 - 时间 - 名称（&A）
+CDCM	评论(&m)
+CDD1	详情1(&D)
+CDD2	详情2(&4)
+CDFN	全名(&n)
+CDI1	图标 1(&5)
+CDI2	图标 2(&6)
+CDI3	图标 3(&7)
+CDID	图标详细信息(&I)
+CDL1	列表1(&L)
+CDL2	列表&2
+CDL3	列表&3
+CDT1	缩略图 1(&T)
+CDT2	缩略图 2(&8)
+CDT3	缩略图 3(&9)
+CMP1	相同的 SHA-1(&H)
+CMPA	相同大小&&时间(&A)
+CMPB	相同的二进制（&B）
+CMPC	评论(&C)
+CMPD	详细...(&D)
+CMPE	现有文件(&E)
+CMPF	没有扩展名的文件名(&F)
+CMPH	将哈希与剪贴板（&C）进行比较
+CMPI	文件大小（无名称检查，&I）
+CMPL	大文件(&L)
+CMPM	评论（1个窗口，&M）
+CMPN	新文件(&F)
+CMPQ	相同尺寸，任意名称（&Q）
+CMPS	文件大小(&S)
+CMPT	时间戳(&T)
+CMPW	单独文件(&O)
+CMPX	存在（带目录，&X）
+CMPZ	相同的文件大小（1 个窗口，&Z）
+COMP	完全的。
+COMT	评论
+CPDN	剪辑完成
+CPML	离开选择模式
+CPMS	选择模式
+CPPN	剪辑目录完成
+CPTX	夹子
+CRSS	保存设置
+CTHE	钩子编辑(&E)
+CUTR	切好
+DDAB	添加按钮
+DDAI	将项目添加到树
+DDAL	将项目添加到列表文件
+DDCM	无法继续
+DDCP	复制到(&C)
+DDDP	复制 (&D)
+DDDT	详细信息(&a)
+DDET	另一种类型...(&E)
+DDJP	跳转自(&J)
+DDLI	快捷方式（&S）
+DDML	制作列表文件(&L)
+DDMV	移至(&M)
+DDOP	开到(&O)
+DDSC	(&S) 上的快捷方式
+DDSW	交换到(&W)
+DDTX	文本(&t)
+DEFA	默认
+DEXT	删除 %s
+DICD	CD/DVD/BD...
+DIFI	固定的
+DIRA	虚拟磁盘
+DIRE	偏僻的
+DIRM	可拆卸的
+DIRS	<目录>
+DREN	目录(&I)(&i)
+DSAR	异步读取(&A)
+DSCA	取消(&C)
+DSCV	缓存视图(&C)
+DSEI	输入图标(&Y)
+DSFO	&0:力
+DSHO	&0:默认
+DSIA	覆盖（安全）
+DSIB	空白的
+DSIF	框架
+DSIH	覆盖（无缓存）
+DSII	信息设置
+DSIL	信息线图标
+DSIN	普通的
+DSIO	有覆盖
+DSIS	简单的
+DSIT	通过
+DSIW	没有出现
+DSMA	放大缩略图
+DSMI	缩小缩略图
+DSSD	- 将缓存保存到磁盘（&D）
+DSSE	- 每次都保存缓存（&E）
+DSSM	慢速模式(&S)
+DSTA	&4:存档
+DSTD	&5:目录模式
+DSTE	&3:时间性
+DSTF	&4:列表文件
+DSTL	&2:这个路径和子目录
+DSTP	&1:这条路
+DSTS	&6:路径分离
+DSWM	手表修改(&W)
+EACO	已经在数
+EBDK	%s 是错误的键名
+EBPC	错误的 * 窗格命令：%s
+EBRK	刹车错误
+EBRV	需要 Windows Vista 或更高版本。
+EBSG	%s 是错误的签名
+EBWA	错误的通配符属性
+EBWS	错误的文件系统
+EC32	comdlg32.dll 加载错误
+ECAL	计算错误：%s
+ECDR	打不开
+ECFD	“完整”不能多次使用。
+ECFL	自定义区域流
+ECHF	检查报告故障日志。
+ECME	上下文菜单错误
+ECUD	无法执行撤消。
+EDAD	DD故障(&D)
+EDAL	全选(&A)
+EDBL	块模式(&B)
+EDCA	取消(&N)
+EDCP	复制(&C)
+EDCU	剪切(&T)
+EDDL	删除操作错误:%s
+EDEC	编码(&e)
+EDEL	不能删除
+EDET	类型(&t)
+EDIT	编辑
+EDPA	粘贴（&P）
+EDTD	临时目录删除故障
+EECR	在 %s 中找不到项目“%s”
+EEFT	无法执行 %s
+EENF	未找到条目
+EENM	e号码错误
+EFAL	故障
+EFLW	缓冲流
+EFUT	功能：缺少')'。
+EHKY	热键（%s）注册错误
+EIFC	%%F 不支持：%c
+EKCD	关键错误
+EKFT	键码错误
+EKNF	未找到关键字
+ELST	从列表中删除(&l)
+ELTA	目标列表出错
+EMDI	错误（需要没有文件分割模式）
+EMEU	菜单“%s”创建错误
+EMUT	%%*%s 缺少“)”。
+ENFF	未找到 %s
+ENFT	未找到目标
+ENFU	未找到 %%*%s
+ENOM	回忆不够
+ENSO	不支持
+ENSP	未找到分隔符 \'%c\'
+ENUD	%s 不是 UnXXX
+EOEC	无法注册更多 PPc。
+EOFI	打开文件错误
+EOLT	尺寸过长。
+EPBY	使用 PPb 错误(%s)
+EPRM	参数错误
+EPTH	路径错误
+EREG	正则表达式错误：%s
+ESCT	捷径错误
+ESEP	未找到分隔符
+ESHO	无法访问现在打开的存档。
+ETMW	太多的格式字符 'W'/'w'
+EUFM	未知格式
+EUKW	未知关键字
+EUOP	未知选项：%s
+EUXC	未知命令：*%s
+EVFA	下载文件有误。
+EWFT	W 格式错误
+EWLD	通配符错误
+EWLG	通配符太长
+EWNF	不支持 NTFS
+EWRT	写入错误
+EWUS	在此匹配项上使用不支持属性
+EXEF	执行...
+EXEX	文件已存在
+EXIT	退出(&x)
+EXNF	新创造
+EXNW	新文件存在
+EXOL	旧文件存在
+FBAC	行动:(&i)
+FBAK	备份故障。
+FBDW	PPb 严重错误
+FDLW	PPx 系统表已损坏 %04X
+FEWE	找到的文件似乎在错误的地方提取
+FEXP	资源管理器文件夹
+FIXE	此文件似乎类型为 %s 和 %s。\n此文件扩展名无需修改。
+FIXH	PPffix 检查扩展类型，当放置在此图标上时。
+FIXM	这个文件的类型似乎是 %s 和 %s。\n修改文件扩展名？
+FIXU	文件类型未知。
+FLAC	全部完成
+FLCA	取消
+FLER	错误
+FLEX	存在
+FLLS	跳过
+FLNO	无操作
+FLOD	<加载>
+FLPC	部分完成
+FLTC	不存在
+FLTE	存在
+FMYF	驱动器列表
+FNET	网络电脑
+FOCA	取消
+FOCL	关闭
+FOCO	继续
+FOCP	暂停
+FOCS	跳过
+FOFC	比较(&C)
+FOOK	好的
+FOST	开始
+FUPD	未找到目录，并移动父目录
+FUPR	找不到目录，移动根目录
+GDAI	自动填充
+GDAR	自动框
+GDFI	填
+GDFR	框架
+GSIG	签名很好。
+HDRA	属性
+HDRC	创建日期
+HDRD	日期
+HDRE	访问日期
+HDRN	姓名
+HDRS	尺寸
+HELP	帮助
+HIST	历史
+HPDN	Http 完成。
+IANI	动画 : [P]
+IDIR	目录(&D)
+IDIV	"分页模式([<][>], 全部读:[/])"
+IFCN	文件计数...
+IGAN	动画(&m)
+IGNP	下一页(&N)
+IGPP	上一页(&P)
+IICC	包括颜色配置文件
+ILFI	列表文件(&L)
+IMAB	取消(&A)(&a)
+IMCA	取消(&N)
+IMIG	伊贡雷(&I)
+IMNO	非）
+IMOK	好的
+IMRE	重试(&R)
+IMSK	跳过(&I)
+IMST	开始(&Y)
+IMTC	取消(&C)
+IMYE	是(&Y)
+IMYK	好的(&Y)
+IPAG	多页
+ISEA	增量搜索模式
+ITCK	关闭后保持高亮(&K)
+ITCM	评论(&C)
+ITFE	名称扩展(&E)
+ITFN	文件名(&N)
+ITHA	突出显示所有（&G）
+ITHL	高亮(&H)
+ITMA	全部标记(&A)
+ITMO	复选标记(&M)
+ITSH	高亮匹配条目(&L)
+JLER	错误>
+JLEX	执行>
+JLPA	暂停>
+JLWA	等待>
+JMAE	提炼
+JMAL	全部
+JMAP	档案
+JMAT	属性
+JMCL	夹子
+JMCO	相比
+JMCP	复制
+JMCR	清除
+JMCS	尺寸计数
+JMCU	切
+JMDE	删除
+JMJO	工作
+JMLI	链接/交汇点
+JMMO	移动
+JMMR	镜子
+JMPA	粘贴
+JMPR	特性
+JMPS	粘贴快捷方式
+JMPV	预览
+JMRE	改名
+JMRU	执行
+JMSH	捷径
+JMSL	符号链接
+JMTE	文字编辑
+JMUN	撤消
+JNCL	CLSID(&C)
+JNJL	链接(&l)
+JNSH	快捷方式(&s)
+JNST	流（&T）
+JPCL	CLSID（对窗口，&I）
+JPDI	显示对窗口(&P)
+JPJL	链接（对窗口，&R）
+JPLN	跳转链接
+JPSH	快捷方式（对窗口）(&p)
+JPST	流（对窗口）（&w）
+JWOF	加入窗口：关闭
+JWON	加入窗口：开
+KWAT	\n按任意键继续。
+LCOK	没有错误。
+LDAD	地址
+LDDR	驱动器
+LDIN	输入
+LDOL	锁
+LDOS	分隔器
+LDSI	XC_inf
+LDST	XC_stat
+LERE	从列表中删除条目。
+LGAP	附加
+LGCR	创建
+LGDE	删除
+LGER	错误
+LGOW	覆盖
+LGWA	警告
+LHIL	强调
+LHIO	高亮关闭
+LMAK	标记
+LOAD	加载
+LRMA	反标
+LUMA	取消标记
+LYCA	窗格标题(&C)
+LYCI	公共信息行(&N)
+LYDB	船坞底部(&B)
+LYDT	船坞顶部(&D)
+LYHA	标题(&H)
+LYIL	信息线(&I)
+LYJL	工作清单(&J)
+LYLG	日志(&G)
+LYME	菜单栏(&M)
+LYOT	其他(&X)
+LYSA	标准地址栏(&a)
+LYSC	滚动条(&O)
+LYSL	状态行(&S)
+LYSS	交换滚动条(&P)
+LYST	标准工具栏(&T)
+LYTI	标题栏(&L)
+LYTR	树(&R)
+LYWM	窗口...(&W)
+MBCP	剪辑消息文本
+MCOP	打开(&o)
+MCPL	播放(&p)
+MCPR	打印(&p)
+MCRC	编辑常用菜单(&c)
+MCRD	设置默认选择(&d)
+MCRE	设置默认命令(&E)
+MCRK	运行方式(&a)
+MCRV	以管理员身份运行(&a)
+MCRX	编辑文件名扩展菜单(&X)
+MDLC	随着班次：删除
+MEAD	添加项目(&A)
+MEDE	删除项目(&D)
+MEDT	编辑菜单(&E)
+MEMD	修改项目(&M)
+MERE	重命名项目名称(&R)
+MGNR	一般(&G)
+MIGE	需要 MIGEMO.DLL
+MSAV	保存设置
+MSCL	关闭按钮
+MSEN	入口区
+MSFR	窗框
+MSHA	列标题
+MSHM	隐藏菜单
+MSIC	图标区
+MSIF	信息专线
+MSLI	状态行
+MSMA	制作符号
+MSME	菜单栏
+MSMI	最小化按钮
+MSPA	路径栏
+MSSC	滚动条
+MSSP	空白区域
+MSSY	窗口图标
+MSTA	入口尾部
+MSTB	标签按钮
+MSTI	标题栏
+MSTS	制表符空间
+MSZO	最大化按钮
+MTCL	关闭树(&X)
+MTDL	驾驶
+MTDR	使用重命名对话框(&D)
+MTDS	目录设置
+MTED	喷射
+MTFA	收藏夹(&A)
+MTFO	文件夹树(&t)
+MTFP	焦点PPc(&F)
+MTMI	简单图标(%M)
+MTNF	创建文件夹(&C)
+MTNU	创建用户树(&U)
+MTNW	新的
+MTOL	图标叠加(&o)
+MTPL	PPc 列表(&P)
+MTRL	重新加载(&R)
+MTRS	像自己一样奔跑
+MTRT	重新加载
+MTSB	显示工具栏(&b)
+MTSC	外壳上下文
+MTSH	显示受保护的文件夹(&H)
+MTSI	显示图标(&S)
+MTSL	线(&L)
+MTSN	单节点(&N)
+MTSO	种类
+MTSS	同步选择(&Y)
+MTST	设置(&S)
+MTUE	自定义用户列表(&M)(&m)
+MTVF	看法
+MWOP	等待
+NEWD	输入新磁盘
+NEWF	（新文件）
+NEWI	新的
+NITX	文本文件\t.txt(&T)
+NOEL	不匹配任何文件
+NOIC	设置未完成。最好执行一个 SETUP.EXE。
+NOMF	禁用显示备忘录
+NOMI	没有更多信息
+NOMN	显示备忘录
+NOTX	未找到字符串。
+NWDN	TEMPDIR
+NWFN	临时文件
+OPSA	打开选定的地址(&A)
+OWDT	目录类型(&Y)
+OWIT	发送到(&N)
+PACI	个人档案
+PACO	其他
+PACT	档案类型
+PJAD	添加路径
+PJCP	控制面板
+PJDE	桌面
+PJDL	驱动器列表
+PJMD	我的文件
+PJRB	回收箱
+QABO	中断工作？
+QBAK	备份路径？
+QCOM	继续操作 屏幕上有标记的条目？
+QCRD	创建新目录？
+QDAC	删除操作？
+QDDL	删除延迟列表？
+QDDO	启动延迟列表任务？
+QDFA	删除特殊属性的文件？
+QDKM	删除键设置？
+QDL1	删除？
+QDL2	",,,\n"
+QDL3	条目删除？\n
+QDL4	擦除表格树？
+QDRC	是\t重复重解析点\n否\t复制文件
+QDRD	移动到回收站？
+QDRP	是\t删除重解析点\n否\t删除重解析点和文件
+QEFD	%s\n 存在，删除？
+QETF	将文件解压缩到临时路径？
+QEWE	该文件似乎在错误的位置提取。提炼？
+QICU	初始化自定义，好吗？
+QIHI	初始化历史，好吗？
+QISD	%s 是驱动器名称吗？\n是\t驱动器名称\n否\t目录名称\n
+QMCF	创建评论文件？
+QOSL	文件过大。部分读取文件图像？
+QPPC	退出 PPC？
+QPPV	退出PPV？
+QRCC	将 PPC 注册到上下文菜单？
+QRLA	移除此语言？
+QSAM	写完了好吗？
+QSAN	找到 %d 个同名文件。选择处理方式。
+QSAO	找到同名文件。选择处理方式。
+QSAV	保存编辑的数据？
+QSDP	设置为对窗口的目标路径？
+QSIZ	需要关闭PPx，好吗？
+QSP2	这个驱动好像需要除以2G字节。分割文件？
+QSPT	没有空闲空间。分割文件？
+QSPW	好像没有空闲空间。分割文件？
+QSUD	开始撤消？
+QSXS	正在等待同步...
+QTWP	连接 TORO 的图书馆？
+QUPD	更新自定义？\n\n是\t备份和更新\n否\t更新没有备份\n取消\t不更新\n
+QUSV	使用查看器应用程序编写
+QWRD	命令写？
+REGP	选择并注册程序
+RKAL	键命令重输入错误。
+RRPC	需要重启PPc
+RTPC	需要重新启动 PPC，很快
+SACO	大小计数... [PAUSE]:Break
+SAUT	汽车
+SAVE	节省
+SAVP	保存位置
+SCMP	开始比较
+SDPF	设置转储文件
+SHCM	Shell 上下文菜单(&S)
+SIOF	同步信息：关闭
+SION	同步信息：开
+SLMD	进入慢速模式
+SNAN	（加号码）
+SNAP	（附加）
+SNBK	（备用）
+SNCN	（更换名字）
+SNCP	（复制）
+SNDE	（删除）
+SNKP	（保持）
+SNLN	（关联）
+SNMV	（移动）
+SNOW	（覆盖）
+SNRE	（恢复）
+SNSK	（跳过）
+SPOF	同步属性：关闭
+SPON	同步属性：开启
+SPPF	同步路径：关闭
+SPPN	同步路径：开启
+SSRP	输入程序路径(%s)
+SSRT	排序...
+SVOF	同步视图：关闭
+SVON	同步视图：开
+SWPD	将窗口移动到桌面
+TABC	关闭(&C)
+TABD	默认颜色(&D)
+TABE	弹出(&E)
+TABH	隐藏(&H)
+TABI	保存标签宽度(&S)
+TABK	按键选择选项卡（&k）
+TABL	锁(&L)
+TABN	新标签(&N)
+TABP	新窗格(&P)
+TABR	颜色(&O)
+TABS	封闭式PPc(&S)
+TABW	交换窗格(&W)
+TACL	关闭左(&F)
+TACP	关闭窗格(&A)
+TACR	关闭右（&R）
+TAPN	附加文件名
+TATR	属性
+TC22	SHA-224(&2)
+TC25	SHA-256(&5)
+TC32	CRC32(&C)
+TCFC	文件类型(&t)
+TCHL	硬链接(&H)
+TCHP	解包(http)
+TCIT	信息提示文本(&P)
+TCLE	列扩展(&T)
+TCLR	清除(&l)
+TCM5	MD5(&M)
+TCME	编辑评论(&E)
+TCMT	评论(&T)
+TCOW	所有者(&O)
+TCS1	SHA-1(&S)
+TDAD	免打扰窗口列表
+TDEL	删除
+TDFO	延迟文件操作
+TDUP	重复
+TEDJ	输入编辑器的行定位选项
+TEHC	强调）
+TEIF	参赛信息
+TENN	输入新名称
+TEXE	执行
+TFAC	Ppc 文件操作
+TFCP	相比
+TFEM	寻找面具
+TFMK	找马克
+TFUM	查找取消标记
+THIL	突出显示单词
+TINS	输入新的菜单项名称
+TISD	路径修复
+TLDS	日志磁盘
+TLNO	电话号码
+TMCD	禁用方格的透明
+TMCE	启用方格的透明
+TMCF	创建注释文件
+TMHL	硬链接
+TMKD	制作目录
+TMKF	制作文件
+TOCH	进入触摸模式
+TPAC	打包文件：
+TPCL	Pc日志
+TPTX	纯文本(&T)
+TRDE	读取条目
+TREC	连续重命名
+TREN	改名
+TRER	显示参考
+TSAN	保存动作名称
+TSCP	选择文本代码页
+TSDR	选择目录
+TSEI	同步条目信息
+TSFN	选择文件
+TSHL	贝壳
+TSMD	模块(&T)
+TSVN	保存文件名
+TTAB	标签尺寸
+TTRE	树
+TTWP	跳转网站
+TUPA	解压存档
+TWRD	写进场单
+TXAT	所有文字
+TXSL	选线
+UCMD	：未知的命令
+UDED	更新条目数据(&.)
+UNKN	未知
+UPED	更新了 %s
+USTD	此目录不支持操作
+VBAB	添加按钮位图(&A)
+VBCD	[按钮文字/]提示名称
+VBCL	x_xxx
+VBCR	延伸
+VBDB	默认按钮列表(&L)
+VBEI	扩展名/通配符
+VBFI	字或 X_xxx
+VBMA	键名
+VBPJ	项目名称
+VBRB	按钮列表位图参考：%s(&R)
+VBRK	（空白的）
+VCAU	汽车
+VCBE	PPb 编辑行
+VCBK	背景
+VCBP	PPb 调色板(Vista)
+VCBR	PPb 执行日志
+VCBS	编辑文本
+VCBT	编辑回来
+VCBU	选定的文本
+VCBV	选择回来
+VCBW	日志文本
+VCBX	重新登录
+VCBY	记录所选文本
+VCBZ	日志选择回来
+VCCA	标题、标签
+VCCC	PPv 控制符
+VCCL	PPv 光标线
+VCCT	颜色主题（部分颜色，需要重启PPx）
+VCDA	文本
+VCDB	背部
+VCDI	禁用
+VCEA	标签
+VCEB	Ppc 条目返回
+VCEC	当前的
+VCED	目录
+VCEE	加密
+VCEF	特别的
+VCEH	隐
+VCEI	虚拟的
+VCEL	关联
+VCEM	信息
+VCEN	普通的
+VCEO	压缩的
+VCEP	父母
+VCER	只读
+VCES	系统
+VCET	Ppc 输入文本
+VCFD	框架和对话框
+VCFE	.PPc 文件扩展名
+VCFF	选定的文本
+VCFG	选择回来
+VCFH	配对文本
+VCFI	对回
+VCFJ	普通文本
+VCFK	正常的背部
+VCFL	标签 x 按钮
+VCFM	标签 x 返回
+VCFN	选项卡活动文本
+VCFO	选项卡活动回来
+VCFP	选项卡选定的文本
+VCFQ	标签选择回来
+VCFR	标签普通文本
+VCFS	标签正常返回
+VCHF	找
+VCHL	PPv 亮点
+VCIA	PPC信息第一
+VCIB	PPC信息第二
+VCIN	值文本
+VCJA	信息
+VCJB	已删除
+VCJC	普通的
+VCJD	灰色状态
+VCJE	修改的
+VCJF	附加
+VCJG	没有焦点
+VCJH	框架
+VCJI	强调
+VCJJ	标记
+VCJK	正常（偶数线）
+VCJL	选中
+VCJM	网格
+VCJN	亮点1
+VCJO	亮点2
+VCJP	亮点3
+VCJQ	亮点4
+VCJR	亮点5
+VCJS	亮点6
+VCJT	亮点7
+VCJU	亮点8
+VCJV	鼠标悬停
+VCJW	不活动的背面（混合颜色）
+VCLA	日志、地址、工作
+VCLF	PPv 换行符
+VCLG	第一行
+VCLH	第二行
+VCLI	线
+VCLK	视频链接
+VCLL	灰色的
+VCLM	普通的
+VCLN	PPv 行号
+VCME	消息文本
+VCOT	其他
+VCPB	蓝色
+VCPC	绿色
+VCPD	青色
+VCPE	红色的
+VCPF	品红
+VCPG	黄色
+VCPI	灰色的
+VCPJ	浅蓝
+VCPK	浅绿色
+VCPL	淡青色
+VCPM	红灯
+VCPN	浅洋红色
+VCPO	淡黄色
+VCPP	浅白色
+VCPQ	黑色（背面）
+VCPR	白色（默认）
+VCRE	报告
+VCTA	PPv 标签字符
+VCTB	编辑前
+VCTC	CRT 黑色
+VCTD	LCD 暗
+VCTE	LCD灯
+VCTF	CRT 白色
+VCTG	PPv 标签
+VCTH	操作系统颜色(GDI)
+VCTI	提示窗口
+VCTR	树
+VCTS	评论
+VCTT	标签
+VCVA	（保留）
+VCVB	PPv 界线
+VCVC	老线路
+VCVD	书签
+VCVE	PPv 线回额外
+VCVT	PPv 文本，返回
+VCWA	框架灯
+VCWB	框架面
+VCWC	框架阴影
+VCWD	（重）窗面
+VCWE	（重）对话面
+VCWF	（重）窗口文字
+VCWG	高亮回来
+VCWH	突出显示文本
+VCWI	灰色文本，用于暗模式
+VCWJ	（重）对话框文本，用于暗模式
+VCWK	边缘线，用于暗模式
+VCWL	向后对焦，用于暗模式
+VCWS	PPv宽空间
+VDLA	名称宽度
+VDLC	颜色
+VDLD	宽度
+VDLE	语言列表下载错误
+VDLF	格式
+VDLH	高度
+VDLI	身份证（1-9）
+VDLN	下一行
+VDLT	文本
+VDLV	值名称
+VDLW	宽度
+VDLX	扩展宽度
+VDLY	类型
+VDLZ	尺寸
+VDMB	复选标记
+VDME	显示条目
+VDMF	短文件名
+VDMG	缩进（像素）
+VDMI	用户文本
+VDMM	标记
+VDMN	图片
+VDMP	页码
+VDMS	边空白
+VDMT	时间细节
+VDMU	除评论
+VDMV	id 字符串值
+VDMZ	尺寸[，]
+VDNA	属性
+VDNB	复选框
+VDNC	评论
+VDND	磁盘空间
+VDNE	条目数
+VDNF	文档名称
+VDNG	缩进（字母）
+VDNH	线[-]
+VDNI	项目文本
+VDNL	行[|]
+VDNM	标记符号
+VDNN	图标
+VDNO	文字颜色
+VDNP	所有页面
+VDNR	目录
+VDNS	空白的
+VDNT	时间（写）
+VDNU	列扩展
+VDNV	体积标识
+VDNX	模块
+VDNY	目录类型
+VDNZ	尺寸
+VEAA	存档 DLL
+VEAB	别名
+VEAC	优先级和删除（&I）的项目列表
+VEAD	I 别名 = 值(&I)
+VECA	Ppc 视图样式
+VECC	项目(&I)
+VEDA	异步读取，
+VEDB	目录设置
+VEDC	缓存，
+VEDD	项目(&I)
+VEDH	没有检查，
+VEDI	信息图标设置，
+VEDL	光标线图标设置，
+VEDN	没有保存异步缓存，
+VEDO	排序设置，
+VEDS	异步和缓存保存，
+VEEA	延迟清单
+VEEC	我(&我)
+VEFA	*文件操作
+VEFC	我只删除(&I)
+VEGA	id 保存的主机
+VEGC	我只删除(&I)
+VEHA	PPv 高亮文本
+VEHC	文档名称
+VEHD	目录
+VEHF	全路径名
+VEHG	一般的
+VEHH	命令行
+VEHM	面具
+VEHN	数字
+VEHP	Ppc目录
+VEHR	罗马搜索
+VEHS	搜索
+VEHU	用户 - 你
+VEHV	PPv 文件名
+VEHW	电脑名称
+VEHX	用户 - x
+VEIA	PPC 1 信息
+VEJA	PPC 2nd 信息
+VEKA	检查的应用程序
+VEKC	我(&我)
+VELA	PPv 文本列
+VELC	列（0：满 -1：窗口宽度）(&C)
+VELH	项目(&I)
+VEMA	波名/复合。命令
+VEMC	(&I) 类型 = wav 名称/命令行
+VENA	窗口位置
+VENC	我(&我)
+VEOA	PPv 选项
+VEOC	项目(&I)
+VEPA	小路
+VEPC	ID = 路径/布局（&I）
+VESA	添加(&A)
+VESB	PPC 状态行
+VESC	（＆一世）
+VESE	编辑(&A)
+VETA	PPv、PPe 选项卡列
+VETC	项目(&I)
+VEUA	用户命令
+VEUC	(&I) 命令名 = 值(%*arg(n)
+VEVA	用户数据
+VEVC	(&I) 项目名称 = 值
+VEYA	其他配置
+VEYC	(&I) 项目名称 = 值
+VFSL	VFS负载
+VFSU	VFS 卸载
+VHDE	默认设置
+VHPC	PPC隐藏菜单
+VHPV	ppv隐藏菜单
+VIMC	||\x9插入新的列分隔符
+VIMF	插入选定的文件名
+VIMI	\\t\tinsert 缩进
+VIMK	&&\x9 插入快捷键前缀
+VIML	*launch \tset 当前目录。在文件上，并执行
+VIMN	输入菜单名称 (M_xxx)
+VIMS	＃姓名？
+VIMY	插入关键代码...
+VKAL	Ppc自动DD列表(&D)
+VKCG	PP通用
+VKCI	PPC增量搜索
+VKCT	PPC树
+VKED	行编辑和 PPe
+VKLI	行编辑（使用 K_edit）
+VKPB	聚丙烯
+VKPC	PPv 文本插入符号模式
+VKPE	PPe（带 K_edit）
+VKPT	PPv页面文本模式
+VKPV	PPv 一般
+VKTR	一般树
+VKTY	Ptray 热键
+VKVI	PPv图像模式
+VLBN	按钮名称
+VLDT	细节
+VLFF	按 F4 键查看列表
+VLHT	向左倾斜
+VLIL	动作(&i)
+VLIN	项目名称
+VLIT	向右倾斜
+VLLC	左键
+VLLD	左双
+VLLH	左键按住
+VLMC	中键
+VLMD	中双
+VLMH	中键按住
+VLMI	项目名称
+VLRC	右键
+VLRD	右双
+VLRG	正确的手势
+VLRH	右键按住
+VLTA	目标区域
+VLTB	按钮
+VLTK	钥匙
+VLTM	键名
+VLTN	类型名称
+VLWC	R & L 按钮
+VLWH	R & L 按住
+VLXC	第四个按钮
+VLXD	第四双
+VLXH	第四次按住
+VLYC	第 5 个按钮
+VLYD	第五双
+VLYH	第 5 次按住
+VMCB	PPC 菜单栏
+VMCR	PPC 额外上下文
+VMDI	Ppc 文件夹上下文
+VMEB	Ppe 菜单栏
+VMEC	行编辑，上下文菜单
+VMEP	Ppc 额外包\\[P]
+VMET	(O M_...)(&O)
+VMIL	项目(&I)
+VMLB	行编辑，菜单栏
+VMMD	Ppc 插入文本 DD(&D)
+VMOB	PPc 其他转换 [B]
+VMPJ	Ppc 路径跳转 [0]
+VMSO	PP排序
+VMTA	Ppc 选项卡菜单 &[-]
+VMVB	PPv 菜单栏
+VMVC	PPv 额外上下文
+VMWI	通配符
+VMWS	Ppc在哪里，来源
+VNMA	辅助：设置
+VNMB	PPx 菜单栏
+VNMC	扩展菜单
+VNMG	一般的
+VNMO	其他设置
+VOLF	跳转在线语言文件列表
+VOPF	从文件加载
+VPPC	聚氯乙烯
+VPPI	托盘
+VPPV	PPV
+VQBA	好像禁用了
+VQDT	删除 %s？
+VQKM	MC_menu 和 MV_menu 添加评论键快捷方式？
+VQNA	不保留设置。真的放弃了吗？
+VRCT	Ppc工具栏
+VRDF	恢复默认设置？
+VREF	参考
+VRFM	行编辑栏（鼠标）
+VRFP	行编辑栏（笔）
+VRFT	行编辑栏（触摸）
+VRTB	通过重新加载位图重试操作
+VRTT	树形工具栏
+VRVT	PPv 工具栏
+VTAI	尾部模式(&a)
+VTBA	选择工具栏图像。
+VTBU	选择工具栏按钮图像。
+VTDC	文档
+VTHE	十六进制
+VTIM	图片
+VTNM	新建（保存按钮右键单击）
+VTOE	选择应用程序。
+VTRI	原始图像
+VTTX	文本
+VUSD	不支持此图片
+VXCR	进入
+VXSC	"PPc,PPv Shift + Enter"
+VXTV	Ppc 提示预览
+VXUP	Ppc解包[U}
+VYCP	夹子
+VYCT	切
+VYCU	定制
+VYDL	删除
+VYFA	添加收藏夹
+VYFC	复制条目
+VYFM	移动条目
+VYFN	免费网络驱动器
+VYFT	树窗格
+VYFV	收藏夹
+VYFW	向前
+VYJP	跳转到父级
+VYLD	改变驱动器
+VYLG	打开目录
+VYND	新目录
+VYNE	新条目
+VYNU	分配网络驱动器
+VYOU	操作撤销
+VYPE	以前的
+VYPP	特性
+VYPS	粘贴
+VYSD	按日期排序
+VYSN	按名称分类
+VYSO	种类
+VYSZ	按大小排序
+VYTR	树
+VYVS	视图样式
+VYWS	查找文件
+WITD	需要WININET.DLL
+WKSI	键名似乎无效
+WLLP	长路径目录
+WNMM	警告：不支持宏字符。
+WNOA	没有 \'@\' 前缀
+WUML	宽度不匹配行 %d（此宽度：%d，最大宽度：%d）
+XACD	制作存档名称文件夹
+XACR	保存和恢复目录位置
+XALT	按 ALT 禁用菜单
+XARD	异步加载目录
+XASP	启用鼠标激活窗口操作
+XAUT	汽车
+XBC0	显示公共信息。线
+XBC1	显示地址栏
+XBC2	普通树
+XBC3	显示公共日志
+XBC4	堆栈布局窗格
+XBC5	总是显示
+XBC6	可调整大小的组合窗口
+XBC7	小窗口控制
+XBC8	显示工具栏
+XBC9	标题
+XBCA	显示窗格标题
+XBCB	显示标题栏
+XBCC	显示菜单栏
+XBCD	每个窗格显示选项卡
+XBCE	强制公共日志
+XBCF	延迟显示公共日志
+XBCG	固定标签宽度
+XBCH	多行选项卡
+XBCI	标签颜色
+XBCJ	每个窗格显示选项卡2
+XBCK	新标签到活动右侧
+XBCL	新标签宽度排序
+XBCM	关闭后向上目录选项卡
+XBCO	下一个组合
+XBCP	分钟关闭
+XBCQ	重用相同的路径窗格
+XBCR	默认锁
+XBCS	没有移动标签
+XBD0	固定选项卡区域宽度
+XBD2	小滚动条
+XBD3	启动时重置选项卡
+XBD4	对话框移至窗格中央
+XBD5	底部标签
+XBD6	关闭按钮
+XBD7	在组合 ID“A”中使用 Ppc ID“Zxxx”
+XBD8	自动隐藏关闭按钮
+XBEP	错误声音
+XBRO	网页浏览器
+XCAC	缓存目录
+XCAL	微型计算器
+XCBS	突发缓冲区大小
+XCBT	在自动启用突发模式的文件大小
+XCBU	禁用文件缓存的最小文件大小
+XCMB	组合窗口（需要重启PPc）
+XCMC	使用组合
+XCPA	标签标题
+XCPS	列表文件
+XCTT	计数大小
+XCWT	评论保存
+XDLI	在字幕上显示（限制）（需要重新启动 PPx）
+XDLO	归档日志
+XDSS	启用屏幕缩放
+XEDI	文本编辑器
+XEDL	文本编辑器点线前缀
+XELE	在更新时使用高执行级别
+XEOC	错误闪烁
+XESE	重命名对话框
+XETS	延期
+XEXL	扩展最大长度
+XFAT	修复 FAT 的时间
+XFCO	PPb(Vista)
+XFCT	选项卡和标题
+XFDI	填充目录时，没有文件入口
+XFDL	对话
+XFFI	修复左文字绘制
+XFIX	PPv 修复
+XFLS	填写清单
+XFME	一般的
+XFOW	背景副本
+XFST	快速阅读列表
+XFTR	树
+XFUF	PPv 成比例
+XHSR	保持目录位置
+XIAC	启用屏幕阅读器
+XIME	控制输入​​法关闭
+XJIN	显示对话框中的 Acion
+XJIO	动作完成
+XJLS	显示作业列表窗口
+XJLT	工作清单
+XKRA	反身键别名
+XKTR	Ppc热键
+XLAG	显示语言
+XLGE	公共日志到文件（X_save）保存
+XLGH	显示操作日志类型
+XLOG	日志记录
+XLSP	一般行距
+XLTB	使用 TAB 填充
+XLTC	填充模式
+XMEN	在未定义的键上关闭菜单
+XMLE	显示多行
+XMON	强制多显示器模式
+XMPA	最大窗格
+XMPB	第一个窗格
+XMWI	菜单栏（需要重启PPx）
+XNOO	不
+XODR	驱动器名称填写
+XOFF	离开
+XOND	默认新文件夹名称（支持 %x）
+XONF	默认新文件名（支持 %x）
+XONN	在
+XPMB	显示命令栏
+XPMC	触控方式
+XPSK	存档目录
+XPTG	使用没有组合窗口的活动窗口之前的成对路径
+XRCL	使用PPc列表
+XREY	正则表达式
+XRTR	用于输入目录
+XSAV	备份目录
+XSDI	目录中的扩展名
+XSLW	慢读系数
+XSPS	一个过程
+XSR0	改写
+XSR1	第1部分
+XSR2	第2部分
+XSRM	滚动
+XSUS	苏西目录
+XSVZ	同步视图大小
+XTAB	标签栏（需要重启PPc）
+XTFO	其他设置在文件操作对话框的选项标签上。
+XTRE	树窗
+XTRY	使用任务托盘
+XTSB	捆绑任务栏按钮（Win7后，需要重启PPx）
+XTWI	像素
+XUNB	在后台执行 UNxxx
+XUP0	选择动作
+XUP1	没有行动
+XUP2	通知
+XUP3	更新，通知
+XUP4	更新、通知、备份
+XUP5	更新
+XUP6	更新、备份
+XUPM	自定义更新
+XUUE	服务器访问错误。
+XUUN	未找到更新文件。
+XUUQ	查找版本 %s。从 %s 更新？
+XUX1	视窗标准 (GDI)
+XUX2	黑暗的
+XUX3	光
+XUXT	对话框、菜单的暗模式（Win10 1903，需要重启PPx）
+XVIE	文件查看器
+XWDE	删除带有文件的检查目录
+XWDF	删除带有标记条目关闭屏幕的检查
+XWDG	删除检查属性
+XWDH	跳过轻微错误（未找到文件）。
+XWHE	轮线
+XWPB	使用ppb
+XWSZ	阅读检查
+XXES	扩展shift键
+XXFC	文件比较命令（%FDC 源，%2 目标）
+XYES	是的
+YGBJ	中断工作
+YGBW	窗户后面
+YGCZ	清除缩放窗口
+YGEX	出口
+YGFD	自由定义
+YGMD	窗口向下移动
+YGMH	小窗高
+YGML	窗口向左移动
+YGMR	窗口向右移动
+YGMU	窗口向上移动
+YGMZ	最小化
+YGOW	不透明的窗户
+YGPW	透明窗
+YGRP	恢复窗口位置
+YGSH	显示帮助
+YGSM	系统菜单
+YGSP	保存窗口位置
+YGSW	小窗口宽度
+YGTW	从上到窗
+YGWH	宽窗高
+YGWW	宽窗宽
+YGZI	放大窗口
+YGZO	缩小窗口
+YTGG	一般的
+YTGW	一般窗口操作
+ZGHL	帮助;右键单击或 F1 键
+ZTCC	光标
+ZTCD	展示（完成）
+ZTCE	条目搜索
+ZTCI	图标
+ZTCL	布局和标签栏
+ZTCM	光标移动
+ZTCN	光标详细信息
+ZTCO	操作
+ZTCV	看法
+ZTDR	画
+ZTFO	文件操作
+ZTFS	字体
+ZTGR	一般的
+ZTLE	行编辑器
+ZTNS	没有支持
+ZTOP	手术
+ZTOT	其他
+ZTPB	PPb - 控制台
+ZTPC	PPC——文件管理器
+ZTPE	PPe - 文本编辑器
+ZTPF	PPffix - 扩展重命名器
+ZTPU	PPcust - 定制器
+ZTPV	PPv - 文件查看器
+ZTPY	托盘
+ZTVD	拖
+ZTVI	图像视图
+ZTVT	文本视图
+};jgliahokgkfclffafhedgpfbnnflnjkdcipaimodgnmffioloiiljlohlmcgagghngkchpnfieelcimbblnpkiopfabkhilfhmoobhjoipgdofhlopjnibdfgbaniohlaie 

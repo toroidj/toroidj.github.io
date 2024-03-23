@@ -1,0 +1,872 @@
+X_scrm	=2
+X_tray	=0
+X_mwid	=60
+X_dlim	=0
+X_dss	=-1
+X_tskb	=2
+^|X_uxt	=-3,0
+X_LANG	=0
+^|X_pmc	=-1,0,B110001111111,0
+X_tous	=50,120,85,60
+X_mmon	=0
+X_menu	=1
+X_alt	=1
+X_IME	=1
+X_beep	=B10101111
+X_evoc	=0
+X_jinfo	=1,0,1,0
+^|X_lddm	=0,1,0
+X_ddex	=5000
+X_tdd	=0
+XC_mdd	=1
+X_es	=NFER
+X_wheel	=3
+X_askp	=0
+X_ltab	=0,2
+X_fdir	=1
+X_mled	=1
+^|X_flst	=3,1,0,14
+X_flto	=300,0
+X_calc	=1
+^|X_esel	=1,1,1,1
+X_jlst	=0,0
+X_fopw	=0
+X_fatim	=0
+^|X_cbsz	=8192,0,64000
+X_fc	=fc %FCD "%2"
+^|X_wdel	=B110001,0,1,1
+X_flogh	=0
+^|X_acr	=0,1
+X_log	=0
+X_dlog	=2
+X_wnam	=0
+X_keyra	=0
+X_upm	=0
+X_exts	=0
+X_extl	=20
+^|X_tree	=B00011111,0,0,0,0
+X_odrv	=0
+X_rtree	=0
+X_rclst	=0
+X_svsz	=10000000
+X_wsiz	=40000000
+^|X_dlf	=B10000100,B0,B10000000,0
+X_wppb	=3
+X_retyp	=0
+X_iacc	=0
+X_hisr	=1,1
+XC_mvUD	=0,1,4,0,0,B10
+XC_mvLR	=4,1,4,0,0,B10
+XC_mvPG	=8,1,5,0,0,B10
+XC_mvSC	=3,1,4,0,0,B10
+XC_mvWH	=3,1,4,0,0,B10
+X_combo	=0
+^|X_combos	=B0000000001000010000000000001,0
+X_mpane	=2,1
+X_tcap	=0
+X_twid	=96,0
+^|XC_pmsk	=1,0
+X_sps	=0
+XC_page	=0
+XC_smar	=2
+XC_fwin	=1
+^|XC_msel	=0,0
+XC_limc	=0
+XC_cdc	=B011000
+XC_nsbf	=1
+XC_exem	=0
+XC_emov	=0
+XC_gmod	=0
+^|XC_szcm	=0,0
+X_dsst	=4,1
+X_cntt	=10
+XC_seat	=0
+XC_seam	=0
+X_unbg	=1
+X_arcdr	=0
+XC_cwrt	=1
+XC_Gest	=2
+X_fstff	=1
+X_Slow	=50
+^|XC_rrt	=2,5,-1
+X_prtg	=0
+^|X_ardir	=5,10
+^|XC_rmsk	=1,0,0,0
+^|XC_rmrk	=1,0,0,0
+^|XC_isea	=0,1,1,1,0
+XC_ito	=900
+X_rscah	=2
+XC_acsr	=0,0
+^|XC_alst	=3,0,3,3,0
+XC_alac	=1
+X_mcc	='*',' ',H2713,H2610,H2611,'#'
+XC_stat	=_AUTO,_AUTO,0,0,
+XC_inf1	=_DWHI,_AUTO,0,0,cFC
+XC_inf2	=_AUTO,_AUTO,0,5,fE8,5z10S1T17S1A10
+XC_celD	=_AUTO,_AUTO,1,5
+XC_celF	={
+A	=Mw40F16,5z10S1T14s1
+}
+MC_celS	={
+%G"CDL1|&List1	=Mw40F16,5z10S1T14s1
+%G"CDL2|List&2	=s1Mw40F16,5z10S1T17s2
+%G"CDL3|List&3	=MF17,5z7S1T14s1
+%G"CDD1|&Details1	=MwF16,5z10S1T14s1
+%G"CDD2|Details2(&4)	=s1MwF16,5z10S1T17s2
+%G"CDFN|Full&name	=MW80F9,5z10S1T14s1
+%G"CDI1|Icons1(&5)	=Nw40F16,5z10S1T14s1
+%G"CDI2|Icons2(&6)	=Nw40F9s1
+%G"CDI3|Icons3(&7)	=N32wF41,5s1/z10S1T14S1C20s1
+%G"CDID|&Icon details	=NwF16,5z10S1T14s1
+%G"CDT1|&Thumbnails1	=ns1
+%G"CDT2|Thumbnails2(&8)	=n8,3C34/w255F29,5/z10S1T14S1A8s1
+%G"CDT3|Thumbnails3(&9)	=n10,4C34s1/w255FM29,5s1/w255FM29,5s1/z10S1T14S1A8s1
+%G"CDCM|Co&mments	=MF8,5cz10cS1cT14C25s1
+%G"CDAT|&Atr-Time-Name	=MA10S1T17S1wF8s1
+}
+XC_ifix	=0
+^|XC_tdir	=1,1,0
+XC_dpmk	=0
+XC_sdir	=0
+^|XC_fexc	=0,B11111
+X_acf	=1
+^|X_stip	=2000,1,0,2,32,4,256,256,0
+XC_ulh	=2
+^|XC_ocig	=1,2,0,0,4,256,5
+XC_awid	=0
+X_inag	=1
+X_poshl	=1
+X_nfmt	=B1000001010,B1000000011,B1000001010,B1000000011
+XC_dset	={
+*	=B0,5,0,0,-1,-1,B11111,B1,
+\\	=B10100,-1,-1,-1,-1,-1,B0,B1,
+archive	=B10000,-1,-1,0,-1,-1,B11111,B1,mask:
+?|aux:	=B11110000000000000010,-1,-1,-1,-1,-1,B011111,B1,
+}
+X_awhel	=1
+X_llsiz	=2
+XV_tmod	=0
+XV_unff	=0
+X_vzs	=1
+XV_numt	=1
+XV_lnum	=0
+XV_bctl	=3,3,0
+XV_ctls	=H21b5,Hffec,H2190,H2192,H21a7,H2190
+XV_left	=2
+X_vpos	=0
+XV_minf	=2
+^|X_prts	=20,15,10,10,0
+^|X_iexo	=0,0,0
+XV_tab	={
+4	=.c,.cpp,.h,.hpp,.rc,.rh,.pl
+}
+XV_dds	=1
+^|XV_drag	=1,2,3,0
+XB_size	=80,4000,80,30
+XB_uwid	=0
+X_chidc	=1
+X_ccode	=0
+X_newcp	=3
+X_ucsr	=1
+X_eedit	=0
+X_ffxl	=0
+X_execs	=0
+X_fles	=0
+X_bg	={
+Bright	=100
+Opaque	=100
+Type	=0
+Path	=
+}
++0.45|E_cr	={
+BAT	,%M_Ccr,!X
+EXE	,%M_Ccr,O
+COM	,%M_Ccr,!X
+:EXE32C	,%M_Ccr,!X
+:EXEX64C	,%M_Ccr,!X
+:EXEARM64C	,%M_Ccr,!X
+:EXEDOS	,%M_Ccr,!X
+:SCR	,%M_Ccr,O
+:HELP	,%M_Ccr,O
+.	,%M_Ccr,!V
+DOC	,%M_Ccr,!V
+TXT	,%M_Ccr,!V
+:UTEXT	,%M_Ccr,!V
+:DOC95	,%M_Ccr,!V
+:DOC97	,%M_Ccr,!V
+:DOCX	,%M_Ccr,!V
+JPEG	,%M_Ccr,!V
+:JPEG	,%M_Ccr,!V
+BMP	,%M_Ccr,!V
+:BMP	,%M_Ccr,!V
+:DIR	=C_DIR
+:LHA	=C_DIR
+:PKZIP	=C_DIR
+:CAB	=C_DIR
+:XLF	=C_DIR
+GZ	=C_DIR
+7Z	=C_DIR
+CAB	=C_DIR
+RAR	=C_DIR
+:XVBS	,%"Script" *script %{%R,%|%}
+:XJS	,%"Script" *script %{%R,%|%}
+MAKEFILE.	,%{MAKE %|%}
+MAK	,%{MAKE -f%C%}
+}
+E_scr	={
+*	,%"JMTE|Text edit"%Orib,editor %FDC
+}
+E_unpack2	={
+ARC	,UNPACK %C %!2
+ARJ	,ARJ X %C %!2
+LZH	,LHA X %C %!2%\
+LZS	,LHA X %C %!2%\
+RAR	,UNRAR X %C %!2
+PMA	,PMA X %C %!2
+ZIP	,PKUNZIP -d %C %!2
+TAR	,TAR xvf %C -o %!2
+TAZ	,TAR xvf %C -o %!2
+TGZ	,TAR xvf %C -o %!2
+??_	,EXPAND -r %C %!2
+*Z	,GZIP -d %C %!2
+BDF	,BUPDATE %C
+LDF	,LDF %C
+WUP	,WSP %C
+MSI	,msiexec /a "%C" targetdir="%!2" /qn
+}
+M_pjump	={
+A	=%h0
+B	=%h1
+C	=%h2
+D	=%h3
+E	=%h4
+F	=%h5
+G	=%h6
+H	=%h7
+I	=%h8
+J	=%h9
+||	=
+%G"PJDE|Desktop"(&S)	=shell:DesktopFolder\
+%G"PJDL|DriveList"(&L)	=:
+%G"PJCP|ControlPanel"(&P)	=shell:ControlPanelFolder\
+%G"PJRB|Recycled bin"(&R)	=shell:RecycleBinFolder\
+%G"PJMD|MyDocuments"(&M)	=shell:Personal\:
+PPx(&1)	=%0
+}
+M_drives	={
+PC	=#17:\
+}
+M_tabc	={
+--	=
+%G"JMPA|Paste"(&P)	=%K"@^V"
+--	=
+}
+M_Ccr	={
+%G"JMCP|Copy"(&C)	=%K"@C"
+%G"JMMO|Move"(&M)	=%K"@M"
+%G"JMAE|Unpack"(&U)	=%K"@U"
+%G"JMRU|Execute"(&X)	=%K"@X"
+%G"JMTE|Text Edit"(&E)	=%"JMTE|Text edit"%Orib,editor %FDC
+PP&v	=%K"@N"
+%G"JMPV|Preview"(&I)	=*entrytip preview
+--	=
+%G"JMCU|Cut"(&T)	=%K"@^X"
+%G"JMCL|Clip"(&L)	=%K"@^C"
+%G"JMPA|Paste"(&P)	=%K"@^V"
+--	=
+%G"PJRB|To Recycle bin"(&D)=%K"@D"
+%G"JMDE|Delete"(&Q)	=%K"\@D"
+%G"JMRE|Rename"(&A)	=%K"@R"
+--	=
+%G"JMPR|Properties"(&R)	=%z,properties
+}
+M_Ccr.exe	={
++1.29|%G"MTRS|Run as self"(&.)	=*set __COMPAT_LAYER=RunAsInvoker %: %FDC %: *set __COMPAT_LAYER=
+}
++0.44|MC_sort	={
+&%G"SRTN|N:Name	=0,-1,-1,B11111,1
+&%G"SRTE|E:Ext	=1,-1,-1,B11111,1
+&%G"SRTS|S:file Size	=2,-1,-1,B11111,1
+&%G"SRTT|T:Time stamp	=3,-1,-1,B11111,1
+&%G"SRTC|C:Create time	=4,-1,-1,B11111,1
+&%G"SRTA|A:Access time	=5,-1,-1,B11111,1
+&%G"SRTM|M:Mark	=6,-1,-1,B11111,1
+&%G"SRTH|H:Changed	=7,-1,-1,B11111,1
+&%G"SRTO|O:Comment	=17,-1,-1,B11111,1
+&%G"SRTX|X:Ext color	=20,-1,-1,B11111,1
+&%G"SRTI|I:Numbers name	=0,-1,-1,B11111,B11000000000000000000000001
+--	=
+&%G"STnR|n:R)Name	=8,-1,-1,B11111,1
+&%G"STeR|e:R)Ext	=9,-1,-1,B11111,1
+&%G"STsR|s:R)file Size	=10,-1,-1,B11111,1
+&%G"STtR|t:R)Time stamp	=11,-1,-1,B11111,1
+&%G"STcR|c:R)Create time	=12,-1,-1,B11111,1
+&%G"STaR|a:R)Access time	=13,-1,-1,B11111,1
+&%G"STmR|m:R)Mark	=14,-1,-1,B11111,1
+&%G"SThR|h:R)Changed	=15,-1,-1,B11111,1
+&%G"SToR|o:R)Comment	=18,-1,-1,B11111,1
+&%G"STxR|x:R)Ext color	=21,-1,-1,B11111,1
+--	=
+&%G"SRTR|R:Attributes	=16,-1,-1,B11111,1
+&%G"SRTP|P:Plain	=19,-1,-1,B00000,1
+%G"CMPD|&D:Detail...	=
+&%G"SORG|F:no effect	=-1,-1,-1,B11111,1
+}
+MC_mdds	={
+P	=%FDC
+E	=%#FDC
+D	=%1
+}
+M_ppvc	={
+Google	=*launch %g'browser' http://www.google.co.jp/search?q=%*selecttext(u)&ie=utf-8&oe=utf-8
+Yahoo!	=*launch %g'browser' http://search.yahoo.co.jp/search?tt=c&ei=UTF-8&fr=sfp&aq=-1&oq=&p=%*selecttext(u)
+Bing	=*launch %g'browser' http://www.bing.com/search?q=%*selecttext(u)&scope=web&filt=all
+}
+M_bin	={
+&FC	=FC /b %C "%2\%C"
+&Hex dump	=*ppv "%C" -r -hex
+}
++0.43|M_xpack	={
+lh&0	=%uUNLHA32.DLL,A -z %ef"%{%2%\%|%X%|%}" %@ %S"-r2x"
+lh&1	=%uUNLHA32.DLL,A -o1a1 %ef"%{%2%\%|%X%|%}" %@ %S"-r2x"
+lh&5	=%uUNLHA32.DLL,A -jm2a1 %ef"%{%2%\%|%X%|%}" %@ %S"-r2x"
+lh&6	=%uUNLHA32.DLL,A -a1 %ef"%{%2%\%|%X%|%}" %@ %S"-r2x"
+lhaSFX(DOS-&S)	=%uUNLHA32.DLL,S %ec"%C" -x0
+lhaSFX(DOS-&L)	=%uUNLHA32.DLL,S %ec"%C" -x1
+lhaSFX(&WIN16)	=%uUNLHA32.DLL,S %ec"%C" -jw
+lhaSFX(WIN&32)	=%uUNLHA32.DLL,S %ec"%C" -gw
+&CAB	=%uCAB32.DLL,-a -r %ef"%{%2%\%|%X%|%}" %@
+&7zip	=%u7-ZIP64.DLL,a %ef"%{%2%\%|%X%|%}" %@ %S"-r"
+&7zip(pass)	= %u7-ZIP64.DLL,a %ef"%{%2%\%|%X%|%}" %@ %S"-r" -p
+zip(7-zip)	=%u7-ZIP64.DLL,a -tzip -mx=7 %ef"%{%2%\%|%X%|%}" %@ %S"-r"
+zip(7,pass)	=%u7-ZIP64.DLL,a -tzip -mx=7 %ef"%{%2%\%|%X%|%}" %@ %S"-r" -p
+zip(zip32j)	=%uZIP32J.DLL,%ef"%{%2%\%|%X%|%}" %@ %S"-r"
+||	=
+&TAR	=TAR cvf %{%2%\%|%X%|.tar%} %@
+}
+M_DirMenu	= {
+%G"MTVF|View"(&V)	=?viewmenu
+%G"MTSO|Sort"(&O)	=?sortmenu
+%G"MTRT|Reload"(&E)	=%K"@F5"
+%G"MTDL|Drive"(&D)	=?drivemenu
++1.48|%G"MTED|Eject"(&J)	=??eject
+%G"MTSC|Shell Context"(&C)	=%z%FVD
+--	=
+%G"JMPA|Paste"(&P)	=%K"@^V"
+%G"JMPS|Paste Shortcut"(&S)	=%K"@^\V"
+--	=
+%G"MTNW|New"(&W)	=?newmenu
+--=
++1.48|%G"MTDS|Dir. Settings"(&O)	= ?diroptionmenu
+%G"JMPR|Properties"(&R)	=%z%FVD,properties
+}
+HM_ppc	={
+Root	,_CYA,_AUTO =@'\'
+allM	,_AUTO,_AUTO =@HOME
+Driv	,_AUTO,_AUTO =@\L
+Copy	,_AUTO,_AUTO =@C
+Edit	,_AUTO,_AUTO =E
+Pack	,_AUTO,_AUTO =P
+Ren 	,_AUTO,_AUTO =@R
+Sort	,_AUTO,_AUTO =@S
+MkDr	,_AUTO,_AUTO =@K
+Tree	,_AUTO,_AUTO =@\T
+Exec	,_AUTO,_AUTO =@X
+Shel	,_AUTO,_AUTO =@H
+Up  	,_CYA,_AUTO =@BS
+revM	,_AUTO,_AUTO =@\HOME
+Pjmp	,_AUTO,_AUTO =@0
+Move	,_AUTO,_AUTO =@M
+View	,_AUTO,_AUTO =@N
+Unpk	,_AUTO,_AUTO =@U
+Del 	,_AUTO,_AUTO =@D
+Writ	,_AUTO,_AUTO =@W
+Wid 	,_AUTO,_AUTO =@';'
+Attr	,_AUTO,_AUTO =@A
+Find	,_AUTO,_AUTO =@F
+}
+HM_ppv	={	; PPV
+disp	,_AUTO,_AUTO =@':'
+code	,_AUTO,_AUTO =@'@'
+Find	,_AUTO,_DBLU =@F
+F ^ 	,_AUTO,_DBLU =@'['
+F v 	,_AUTO,_DBLU =@']'
+}
+B_cdef	= {
+Back	,0 = @^LEFT
+Next	,1 = @^RIGHT
+Parent	,28 = @BS
+--	,0 =
+Find	,17 = @^W
+Tree	,43 = @\T
+--	,0 =
+Copy	,6 = @^C
+Cut	,5 = @^X
+Paste	,7 = @^V
+--	,0 =
+Move to	,44 = @M
+Copy to	,45 = @C
+Delete	,10 = @D
+--	,0 =
+View	,23 = @';'
+Path	,2 = @0
+Properties	,15 = @&ENTER
+}
+B_vdef	= {
+print	,19 = @^P
+clip	,6 = @^C
+find	,17 = @F
+find next	,18 = @']'
+--	,0 =
+rotate L	,8 = @K
+rotate R	,9 = @L
+}
+B_tree	= {	TreeWindow
+Favorites	,2 , *tree 1
+Folder tree	,43 , *tree 0
+PPc List	,12 , *tree 2
+Focus PPc	,12 , *tree focusppc
+User Profile	,12 , *tree %'USERPROFILE'
+User tree	,11 , *tree M_treelist01
+Tree settings(Ctrl+T)	,4 = @^V_H54
++1.16|Close Tree	,23 , *tree off
+}
++1.79|B_flm	= {
+%G"JMCU|Cut"/	,-2,%K"@^X
+%G"JMCL|Clip"/	,-2,%K"@^C
+%G"JMPA|Paste"/	,-2,%K"@^V
+%G"JMAL|All"/	,-2,%K"@^A
+--	,0 =
+Menu/	,-2,%K"@APPS
+--	,0 =
+%G"JMDE|Delete"/	,-2,%K"@del
+%G"JMCR|Clear"/	,-2,%K"@^Y
+x/	,-2 =X
+}
++1.79|B_flp	= {
+<__/	,-2,%k"\left
+<--/	,-2,%K"@left
+-->/	,-2,%K"@right
+__>/	,-2,%k"\right
+%G"JMCU|Cut"/	,-2,%K"@^X
+%G"JMCL|Clip"/	,-2,%K"@^C
+%G"JMPA|Paste"/	,-2,%K"@^V
+%G"JMAL|All"/	,-2,%K"@^A
+--	,0 =
+Menu/	,-2,%K"@APPS
+--	,0 =
+%G"JMDE|Delete"/	,-2,%K"@del
+%G"JMCR|Clear"/	,-2,%K"@^Y
+x/	,-2 =X
+}
++1.79|B_flt	= {
+<___/	,-2,%k"\left
+<---/	,-2,%K"@left
+--->/	,-2,%K"@right
+___>/	,-2,%k"\right
+%G"JMCU|Cut"/	,-2,%K"@^X
+%G"JMCL|Clip"/	,-2,%K"@^C
+%G"JMPA|Paste"/	,-2,%K"@^V
+%G"JMAL|All"/	,-2,%K"@^A
+--	,0 =
+Menu/	,-2,%K"@APPS
+--	,0 =
+%G"JMDE|Delete"/	,-2,%K"@del
+%G"JMCR|Clear"/	,-2,%K"@^Y
+x/	,-2 =X
+}
+K_edit	={
+F6	=@TAB
+}
+KC_main	={
+'?'	,*range lastmark cursor
+B	,%"Binary menu" %M_bin
+E	,%"JMTE|Text edit"%Orib,editor %{%FDC%}
+P	,*pack "%2%\|%X|" %Or-
+\P	,%"Pack File Ex"%eSc,gfcp%M_xpack
+}
+KV_main	={
+1	=@END
+2	=@DOWN
+3	=@PDOWN
+4	=@LEFT
+6	=@RIGHT
+7	=@HOME
+8	=@UP
+9	=@PUP
+E	,%"JMTE|Text edit"%Orib,editor %{%FDC%}
+^LEFT	,%K-C"PREVITEM@N"
+^RIGHT	,%K-C"NEXTITEM@N"
+^UP	,%K-C"@\SPACE@N"
+^DOWN	,%K-C"@SPACE@N"
+}
+MC_click	={
+LD_FRAM	=@&F6
+R_FRAM	=@&SPACE
+W_FRAM	=@&SPACE
+M_FRAM	=@&SPACE
+LD_MENU	=@'^'
+R_MENU	=@&SPACE
+L_PATH	=@L
+R_PATH	,*layout
+LD_LINE	=@'^'
+R_LINE	,*layout
+W_LINE	=@\ESC
+M_LINE	=@\ESC
+X_LINE	=@^LEFT
+Y_LINE	=@^RIGHT
+LD_ICON	,%Z
+&LD_ICON	=@&ENTER
+R_ICON	=@^ENTER
+\R_ICON	=@\^F10
+W_ICON	=@N
+M_ICON	=@N
+X_ICON	=@^LEFT
+Y_ICON	=@^RIGHT
+LD_INFO	=@BS
+R_INFO	,%M_DirMenu
+W_INFO	=@\ESC
+M_INFO	=@\ESC
+X_INFO	=@^LEFT
+Y_INFO	=@^RIGHT
+R_HMNU	,%M_DirMenu
+W_HMNU	=@\ESC
+M_HMNU	=@\ESC
+X_HMNU	=@^LEFT
+Y_HMNU	=@^RIGHT
+LD_MARK	=@^\A
+R_MARK	,%M_DirMenu
+LD_ENT	=@ENTER
+^LD_ENT	=@^\A
+&LD_ENT	=@&ENTER
+R_ENT	=@^ENTER
+\R_ENT	=@\^F10
+W_ENT	=@N
+M_ENT	=@N
+X_ENT	=@^LEFT
+Y_ENT	=@^RIGHT
+?|R_TAIL	=@^ENTER
+LD_SPC	=@BS
+R_SPC	,%M_DirMenu
+W_SPC	=@\ESC
+M_SPC	=@\ESC
+X_SPC	=@^LEFT
+Y_SPC	=@^RIGHT
+R_SCRL	=@&SPACE
+M_SCRL	=@&SPACE
++1.54|LD_TABS	=@F11
+RG_L	=@^LEFT
+RG_R	=@^RIGHT
+}
+MV_click	={
+LD_FRAM	=@&F6
+LD_MENU	=@'^'
+LD_LINE	=@'^'
+LD_SPC	,%Z
+&LD_SPC	,%z,properties
+R_FRAM	=@&SPACE
+R_LINE	,*layout
+R_SCRL	=@&SPACE
+R_MENU	=@&SPACE
+R_SPC	=@^ENTER
+\R_SPC	, %z
+W_FRAM	=@&SPACE
+W_HMNU	=@\ESC
+W_LINE	=@\ESC
+W_SPC	=@\ESC
+W_FRAM	=@&SPACE
+M_HMNU	=@\ESC
+M_LINE	=@\ESC
+M_SPC	=@\ESC
+}
+MT_icon	={
+LD_ICON	,%E
+}
++0.46|X_fopt	={
+?|Copy	=0,0,0,0,0,B100,B011111,B100000,1,5,1,0,0,0,%2%\,,001
+?|Move	=0,0,0,0,0,B100,B011111,B100000,0,5,1,0,0,0,%2%\,,001
+Rename	=1,1,0,0,0,B100,B111111,B000000,0,1,1,1,0,0,,,001
+BurstCopy	=0,0,0,0,0,B000,B011111,B100000,1,5,1,0,1,0,%2%\,,001
+DirMirror	=0,0,0,0,0,B000,B011111,B100000,2,9,1,0,0,0,%2%\,,001
+Append	=1,6,0,0,0,B000,B011111,B100000,1,0,0,0,0,0,%2%\,%X,001
+Delete	=0,0,0,0,0,B000,B111111,B000000,5,1,1,0,0,0,,,001
+SafeDelete	=0,0,0,0,0,B000,B111111,B000000,5,9,1,0,0,0,,,001
+MakeShortCut	=0,0,0,0,0,B000,B011111,B100000,3,1,1,0,0,0,%2%\,,001
+Link	=0,0,0,0,0,B000,B011111,B100000,4,1,1,0,0,0,%2%\,,001
+2HDsplit	=0,0,0,0,0,B000,B011111,B100000,1,0,0,0,0,1457664,A:\,,001
+Undo	=1,2,0,0,0,B000,B011111,B100000,6,B101,1,0,0,0,,,001
+}
+X_lspc	=0
+X_ffix	=0
+C_back	=H202020
+C_mes	=H0080FF
+C_info	=HF7F7F7
+C_res	=_AUTO,_AUTO
+C_line	=_CYA,_RED
+CC_tree	=_AUTO,_AUTO
+C_tip	=_AUTO,_AUTO
+CC_log	=_AUTO,_AUTO
+^|C_capt	=_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO
+^|C_win	= _AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO
+^|C_entry	=_DWHI,_DWHI,HFFFF80,_RED,HFFC020,H8000FF,HFF8080,H80FF00,_DWHI,_SBLU,H80FF00,HFFFF80,H0000C0,H80FFFF
+^|C_eInfo	=_AUTO,_DRED,_AUTO,_DBLA,_DBLU,_DCYA,_DBLA,_BRO,_GRE,_WHI,_AUTO,_DGRE,_AUTO,_SBLU,_BRO,_CYA,_GRE,_RED,_MAG,_DRED,_AUTO,_DBLA
+C_ext	={
+BAT	=_DBRO
+CMD	=_DBRO
+COM	=_DBRO
+EXE	=_DBRO
+LNK	=_DBRO
+7Z	=_DCYA
+ARJ	=_DCYA
+BZ2	=_DCYA
+CAB	=_DCYA
+GZ	=_DCYA
+LZH	=_DCYA
+MSI	=_DCYA
+MSP	=_DCYA
+MST	=_DCYA
+RAR	=_DCYA
+RPM	=_DCYA
+SIT	=_DCYA
+TAR	=_DCYA
+XZ	=_DCYA
+ZIP	=_DCYA
+BMP	=_DWHI
+GIF	=_DWHI
+JPG	=_DWHI
+JPEG	=_DWHI
+ICO	=_DWHI
+MPO	=_DWHI
+PNG	=_DWHI
+PSD	=_DWHI
+TIF	=_DWHI
+AVI	=_DWHI
+MKV	=_DWHI
+MP4	=_DWHI
+MPEG	=_DWHI
+MPG	=_DWHI
+AAC	=_DWHI
+MP2	=_DWHI
+WAV	=_DWHI
+C	=_WHI
+CPP	=_WHI
+CS	=_WHI
+CSPROJ	=_WHI
+DOC	=_WHI
+DOCX	=_WHI
+DOT	=_WHI
+H	=_WHI
+HTM	=_WHI
+HTML	=_WHI
+JS	=_WHI
+MAK	=_WHI
+MD	=_WHI
+PDF	=_WHI
+PL	=_WHI
+PY	=_WHI
+RC	=_WHI
+RTF	=_WHI
+SLN	=_WHI
+TXT	=_WHI
+VBS	=_WHI
+VCPROJ	=_WHI
+XLS	=_WHI
+XLSX	=_WHI
+XML	=_WHI
+XML	=_WHI
+*	=_AUTO
+}
+CV_boun	=_DBLA
+CV_lcsr	=_DWHI
+CV_lnum	=_CYA,_GRAY
+^|CV_lbak	=_RED,_CYA,_AUTO
+CV_ctrl	=_DGRE
+CV_lf	=_BRO
+CV_tab	=_DBLU
+CV_spc	=_DBLU
+CV_link	=_WHI
+CV_syn	=_DGRE,_SBLU
+^|CV_hili	=_BLU,_BRO,_GRE,_CYA,_SBLU,_MAG,_RED,_MGRE,_DMAG
+CV_hkey	= {
+.c;.cpp;.h;.hpp;.rc;.rh	=_DGRE,void
+	_DGRE,typedef
+	_DGRE,static
+	_DGRE,struct
+	_DGRE,class
+	_DGRE,enum
+	>_DGRE,#include
+	>_DGRE,#if
+	>_DGRE,#else
+	>_DGRE,#endif
+	>_DGRE,#define
+	>_DGRE,#undef
+	>_DGRE,#pragma
+	>_DGRE,//
+	>_DGRE,/*
+	<_DGRE,*/
+eml	= _CYA,Subject:
+	_CYA,From:
+	_CYA,To:
+	_CYA,Received:
+}
+CV_char	=_DBLA,_RED,_GRE,_BLU,_DBRO,_CYA,_MAG,_WHI,_AUTO,_DRED,_DGRE,_DBLU,_DBRO,_DCYA,_DMAG,HA0A0A0
+CB_pals	=_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO
+CB_edit	=_BLA+R_DWHI+_UL,_DWHI+R_DCYA+_UL,_GRE+R_BLA+_UL,_BLA+R_GRE+_UL
+CB_com	=_BRO
+CB_pop	=_DGRE+R_DWHI,_DGRE+R_DWHI,_BLA+R_DWHI,_DWHI+R_DCYA,_DCYA+R_DWHI,_GRE+R_DCYA
+P_arc	= {
+UNZZIP64.DLL	= B00000010,7,UnZzip
+	i=.zip
+	a=-x > "%1" "%!2%\" *
+	e=-x -j > "%1" "%!2%\" %@
+	s=-x -j > "%1" "%2" "%C"
++1.28|7-ZIP64.DLL	= B10000000000010,8,SevenZip
+	i=.7z;.zip
+	a=x "%1" > "-o%!2" *
+	e=e "%1" > "-o%!2" %@
+	s=e "%1" > "%2" "%C"
+	y=7-ZIP32.DLL
+	p:7z= a > "%2" %@ %S"-r"
+	p:zip= a -tzip -mx=7 > "%2" %@ %S"-r"
+	eo:overwrite=-aoa
+	eo:skip=-aos
+	eo:password=-p%E
+	po:password=-p
+	po:AES256crypt=-mem=AES256
+	po:method:no compress=-mx=0
+	po:method:normal=-mx=5
+	po:method:high=-mx=7
+	po:method:ultra=-mx=9
+	po:exe=-sfx
+	po:split 10M=-v10m
+LMZIP64.DLL	= B1010000000010,7,Unzip
+	i=.zip
+	a=-j > "%1" "%!2%\"
+	e=> "%1" "%!2%\" %@
+	s=> "%1" "%2%\" "%C"
+	y=LMZIP32.DLL
+	p:zip=[Zip] > "%2" %@
+UNZIP32.DLL	= B1000000000011,7,UnZip
+	i=.zip
+	a=-x > "%1" "%!2%\" *
+	e=-x -j > "%1" "%!2%\" %@
+	s=-x -j > "%1" "%2" "%C"
+UNZZIP32.DLL	= B00000001,7,UnZzip
+	a=-x > "%1" "%!2%\" *
+	e=-x -j > "%1" "%!2%\" %@
+	s=-x -j > "%1" "%2" "%C"
++1.28|7-ZIP32.DLL	= B10000000000011,8,SevenZip
+	i=.7z;.zip
+	a=x "%1" > "-o%!2" *
+	e=e "%1" > "-o%!2" %@
+	s=e "%1" > "%2" "%C"
+	y=7-ZIP64.DLL
+	p:7z= a > "%2" %@ %S"-r"
+	p:zip= a -tzip -mx=7 > "%2" %@ %S"-r"
+	eo:overwrite=-aoa
+	eo:skip=-aos
+	eo:password=-p%E
+	po:password=-p
+	po:AES256crypt=-mem=AES256
+	po:method:no compress=-mx=0
+	po:method:normal=-mx=5
+	po:method:high=-mx=7
+	po:method:ultra=-mx=9
+	po:exe=-sfx
+	po:split 10M=-v10m
+LMZIP32.DLL	= B1010000000011,7,Unzip
+	i=.zip
+	a=-j > "%1" "%!2%\"
+	e=> "%1" "%!2%\" %@
+	s=> "%1" "%2%\" "%C"
+	y=LMZIP64.DLL
+	p:zip=[Zip] > "%2" %@
+UNRAR64J.DLL	= B100010000000010,5,Unrar
+	i=.rar
+	a=-x -u > "%1" "%!2%\"
+	e=-e -u -s > "%1" "%!2%\" %@
+	s=-e -u -s > "%1" "%2" "%C"
+UNRAR32.DLL	= B100010000000011,5,Unrar
+	i=.rar
+	a=-x -u > "%1" "%!2%\"
+	e=-e -u -s > "%1" "%!2%\" %@
+	s=-e -u -s > "%1" "%2" "%C"
++1.27|UNLHA32.DLL	= B00000011,4,Unlha
+	i=.lzh
+	a=X -a1jf0 > "%1" "%!2%\"
+	e=E -a1jf0 > "%1" "%!2%\" %@
+	s=E -a1jf0 > "%1" "%2" "%C"
+	p:lzh= A -a1 > "%2" %@ %S"-r2x"
+	p:lzh:SFX(WIN&32)= S "%C" -gw >
+	po:method:no compress(lh0)=-z
+	po:method:LHarc(lh1)=-o1
+	po:method:default(lh5)=-jm2
+CAB32.DLL	= B100000000011,2,Cab
+	i=.cab
+	a=-x -k > "%1" "%!2%\" *
+	e=-x -k -j > "%1" "%!2%\" %@
+	s=-x -k -j > "%1" "%2" "%C"
+	p:cab=-a -r > "%2" %@
+	eo:no dir=-j
+	eo:overwrite=-o
+	po:no progress=-i
++1.28|ZIP32J.DLL	= B00001011,0,Zip
+	p:zip= "%2" > %@ %S"-r"
+	po:password=-P
+	po:method:no compress=-0
+	po:method:normal=-6
+	po:method:high=-7
+	po:method:ultra=-9
+TAR64.DLL	= B00000010,6,Tar
+	i=.tar;.gz;.bz2;.xz;.z;.lzma
+	a=> -xvf "%1" -o "%!2"
+	e=> --use-directory=0 -xvf "%1" -o "%!2" %@
+	s=> --use-directory=0 --display-dialog=0 -xvf "%1" "%2" "%C"
+	p:tar=> -cvf "%2.tar" %@
+	p:gz=> -cvfz "%2.gz" %@
+	p:bz=> -cvfB "%2.bz2" %@
+	p:xz=> -cvfJ "%2.xz" %@
+	p:lzma=> --lzma -cvf "%2.lzma" %@
+	po:no progress=--display-dialog=0
+TAR32.DLL	= B00000011,6,Tar
+	i=.tar;.gz;.bz2;.xz;.z;.lzma
+	a=> -xvf "%1" -o "%!2"
+	e=> --use-directory=0 -xvf "%1" -o "%!2" %@
+	s=> --use-directory=0 --display-dialog=0 -xvf "%1" "%2" "%C"
+	p:tar=> -cvf "%2.tar" %@
+	p:gz=> -cvfz "%2.gz" %@
+	p:bz=> -cvfB "%2.bz2" %@
+	p:xz=> -cvfJ "%2.xz" %@
+	p:lzma=> --lzma -cvf "%2.lzma" %@
+	po:no progress=--display-dialog=0
+7zca64.DLL	= B10000000010,0,Szipca
+	a=x "%1" "%!2%\" *
+	e=e "%1" "%!2%\" %@
+	s=e "%1" "%2" "%C"
+UNARJ32J.DLL	= B00000001,1,Unarj
+	i=.arj
+	a=x > "%1" "%!2%\" *
+	e=e > "%1" "%!2%\" %@
+	s=e > "%1" "%2" "%C"
+7zca32.DLL	= B10000000001,0,Szipca
+	a=x "%1" "%!2%\" *
+	e=e "%1" "%!2%\" %@
+	s=e "%1" "%2" "%C"
+UNGCA32.DLL	= B00000001,3,UnGCA
+	i=.gca
+	a=E > "%1" "%!2%\"
+	e=EX -xx0 > "%1" "%!2%\" %@
+	s=EX -xx0 > "%1" "%2" "%C"
+}
++1.35|P_susie	= {
+axpdf.spi	= B010,.PDF
+ifpsd.spi	= B001,.PSD
+}
+V_http	=80
+_others	= {
+PackName	= zip - zipfldr
+PackCmd	= %uzipfldr.dll,A "%2"
+}
+-|_FTPid	=
+-|P_unx	=
+-|X_icbug	=
