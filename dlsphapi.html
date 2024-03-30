@@ -450,8 +450,8 @@ struct {
       000 : ディスクファイル
       001 : メモリ上のイメージ(未対応)
     R : 不明の拡張子の扱い
-      0 : 規定のファイル形式で保存する
-      1 : エラー 2 を返す
+      0 : 規定のファイル形式で保存する(またはエラー 2を返す)
+      1 : 常にエラー 2 を返す
     E : 追加情報(未実装)
       0 : 追加情報なし
       1 : 追加情報あり
@@ -484,7 +484,7 @@ AtoB Converter(<a href="https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html
 <a name="SUSIE_PROGRESS"></a><span class="prefix">typedef</span> <span class="type">int</span> (<span class="prefix">__stdcall</span> *SUSIE_PROGRESS)(<span class="type">int</span> nNum, <span class="type">int</span> nDenom, <span class="type">LONG_PTR</span> lData);</a>
 <pre>
   まず nNum == 0 でコールされ、nNum == nDenom になるまで
-  定期的に呼ばます。
+  定期的に呼ばれます。
   戻り値が 非0 の時、Plug-inは処理を中断します。
 </pre>
 
@@ -508,11 +508,11 @@ pHBInfo<br>
   Plug-inとしては * 以外の形式も使用できますが、設定で * のみの形式に制限できることを推奨します。<br>
 <pre>
   * BITMAPINFOHEADER (24bit のとき)
-  * BITMAPINFOHEADER + パレット (1/2/4/8bit のとき)
+  * BITMAPINFOHEADER + パレット (1/4/8bit のとき)
     BITMAPINFOHEADER + BITFIELDS (16/24/32bit のとき)
     BITMAPV5HEADER (24bit のとき)
-    BITMAPV5HEADER + パレット (1/2/4/8bit のとき)
-    BITMAPV5HEADER + パレット + カラープロファイル(1/2/4/8bit のとき)
+    BITMAPV5HEADER + パレット (1/4/8bit のとき)
+    BITMAPV5HEADER + パレット + カラープロファイル(1/4/8bit のとき)
     BITMAPV5HEADER + カラープロファイル(16/24/32bit のとき)
 </pre>
 pHBm<br>
@@ -527,7 +527,7 @@ Plug-in を使うアプリケーションとして完全対応したい場合は
 ・4/8bit RLE<br>
 ・8bit 以外の色深度(10bitグレーや 10bit * 3カラーなど)<br>
 <br>
-また、「BMP Suite」(<a href="https://entropymine.com/jason/bmpsuite/">https://entropymine.com/jason/bmpsuite/</a>)に上記仕様の BMP ファイルの例や、破損 BMP ファイルの例が用意されているので、これら例を読み込んでも異常動作を起こさないように対応することをお勧めします。<br>
+また、「BMP Suite」(<a href="https://entropymine.com/jason/bmpsuite/">https://entropymine.com/jason/bmpsuite/</a>)に上記仕様の BMP ファイルの例や、破損 BMP ファイルの例が用意されていますので、これら例を読み込んでも異常動作を起こさないように対応することをお勧めします。<br>
 <br>
 参考：ファイルに保存するときの配置<br>
  BITMAPFILEHEADER, BITMAPINFOHEADER, [パレット又はBITFIELDS], ビットマップ<br>
