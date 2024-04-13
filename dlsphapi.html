@@ -28,7 +28,7 @@ p { text-align: left; }
 --></style></head>
 <body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
 <div id="page">
-<div id="title"><H2>Susie 32bit / 64bit Plug-in の仕様(2024-3-16版)</H2>
+<div id="title"><H2>Susie 32bit / 64bit Plug-in の仕様(2024-4-13版)</H2>
 <hr></div>
 <div id="contents"><div id="contents2">
 <p>拙作 Susie 32bit / 64bit Plug-in の仕様です。</p>
@@ -66,7 +66,7 @@ Susie Plug-in として以下の拡張子が決められています。.spi と 
   GetArchiveInfoW を使ったときは、GetFileW / GetFileInfoW を使用する必要があります。<br>
   上記以外の UNICODE 版は ANSI 版と混在使用できます。</li>
 <li>IsSupported は仕様としてファイルハンドル指定ができますが、既存のファイルハンドル指定アプリケーションのための互換用仕様です。<br>
-  新規に使用しないでください。また、使用している場合はバッファ指定に置き換えることをおすすめします<br>
+  新規に使用しないでください。また、使用している場合はバッファ指定に置き換えることをおすすめします。<br>
   以前の 32bit Windows ではファイルハンドルが 16bit Windows との互換性のために 16bit に納まっていましたが、現在は 16bit を超えるようになり、誤動作するためです。</li></ul>
 <HR><H3><A NAME="apilist">API 一覧</A></H3>
 <ul>
@@ -362,7 +362,7 @@ struct {
 <pre>パラメータ<br>
 [in] <span class="type">LPCSTR / LPCWSTR</span> src
   入力がファイルの場合: ファイル名
-  メモリーの場合: ファイルイメージへのポインタ
+  メモリーの場合: ファイルイメージへのポインタ(読込み開始オフセット含む)
 [in] <span class="type">LONG_PTR</span> len
   入力がファイルの場合: 読込み開始オフセット、GetArchiveInfo で得られる positionをそのまま使う。※位置と関係ないインデックスとして使うこともあるので、ファイル位置として想定しない方が良い。
   メモリーの場合: データサイズ
@@ -407,7 +407,7 @@ struct {
 <pre>パラメータ
 [in] <span class="type">LPCSTR / LPCWSTR</span> buf
   入力がファイルの場合: ファイル名
-  メモリーの場合: ファイルイメージへのポインタ
+  メモリーの場合: ファイルイメージへのポインタ(読込み開始オフセット含む)
 [in] <span class="type">LONG_PTR</span> len
   入力がファイルの場合: 読込み開始オフセット、GetArchiveInfo で得られる positionをそのまま使う。※位置と関係ないインデックスとして使うこともあるので、ファイル位置として想定しない方が良い。
   メモリーの場合: データサイズ
@@ -429,7 +429,13 @@ struct {
 
 解説
   書庫ファイル中のファイル filename を指定して情報取得を行います。
+
+  src がファイル名の場合は、struct fileinfo/W 中の position を len として扱います。
+  src がメモリイメージの場合は、ファイルのメモリイメージの先頭から前記 position の分だけずらしたメモリを指定します。
+  len は struct fileinfo/W 中の compsize 以上が必要になります。
+
   lpInfo の内容は、GetArchiveInfo/W から得られる struct fileinfo/W と同じ内容なので、GetArchiveInfo/W を先に使っていたときは、GetFileInfo/W を使わなくても GetFile/W を使用できます。
+
   Susie は、この API を現在使用していません。
 
 実装
@@ -474,7 +480,7 @@ struct {
 
 解説
 AtoB Converter(<a href="https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html">https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html</a>)の API を参考にしています。<br>
-対応拡張子は、GetPluginInfo/W で得られる拡張子であり、「*.1st;*.2nd...」と複数記載されている場合は先頭の拡張子(.1st)のみ対応です。また、GetPluginInfo/W に列挙されていても対応していない場合があり，その時は規定の拡張子扱いになるか、エラー -2 になります。
+対応拡張子は、GetPluginInfo/W で得られる拡張子であり、「*.1st;*.2nd...」と複数記載されている場合は先頭の拡張子(.1st)のみ対応です。また、GetPluginInfo/W に列挙されていても対応していない場合があり，その時は規定の拡張子扱いになるか、エラー 2 になります。
 
 実装
 [IN] CreatePicture:独自API, オプション
@@ -543,7 +549,7 @@ Plug-in を使うアプリケーションとして完全対応したい場合は
 <li>Susie 0.47b は、トップダウンDIB に対応していません。<br>
 また、カタログ表示は更に多くの 16bit DIB, 32bit DIB が扱えない制限があります。</li>
 <li>アプリケーションは、IsSupported を必ず使用してください。その後の API でメモリ渡しを使うと、Plug-in がファイル名を受け取る唯一のチャンスとなるなど、他のAPIで不足している情報を集めることがあるためです。</li>
-<li>API は主に次の使い方がされます。<br>
+<li>API は主に次の使い方がされます。UNICODE 版APIを使うときも同じ順です。<br>
 IsSupported - GetPicture<br>
 IsSupported - GetPictureInfo - GetPicture<br>
 <br>
