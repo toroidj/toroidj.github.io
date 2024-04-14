@@ -140,7 +140,14 @@ Z_IME		=				; IME 状態が変化
 </UL>
 <HR><A HREF="./index.html">Homeへ戻る</A>
 <hr><address>Copyright(c)1997-2023 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
-<IMG SRC="http://toro.d.dooo.jp/ac/accimg.cgi?id=dlcfg" ALT="access counter用" WIDTH="20" HEIGHT="11"></div></div>
+<script>
+ async function getac() {
+  const res = await fetch("http://toro.d.dooo.jp/ac/accimg.cgi?id=dlcfgG");
+};
+getac();
+</script><noscript>
+  <img src="ac/accimg.cgi?id=dlcfg" alt="access counter用" width="20" height="11">
+</noscript></div></div>
 <div id="index">
 <strong><A HREF="./index.html">TORO's Library</A></strong>
 <H3>Software</H3>

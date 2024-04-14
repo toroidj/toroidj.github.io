@@ -115,8 +115,14 @@ table { background-color: #f6f69f; }
 　また、メール等で連絡があれば幸いです。</P>
 
 <hr><address>Copyright(c)1997-2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
-<IMG SRC="http://toro.d.dooo.jp/ac/accimg.cgi?id=home" ALT="access counter用" WIDTH="20" HEIGHT="11">
-</div></div>
+<script>
+ async function getac() {
+  const res = await fetch("http://toro.d.dooo.jp/ac/accimg.cgi?id=homeG");
+};
+getac();
+</script><noscript>
+  <img src="ac/accimg.cgi?id=home" alt="access counter用" width="20" height="11">
+</noscript></div></div>
 <div id="index">
 <H4>Software</H4>
 &nbsp;<A HREF="./slwin4.html">Windows</A><br>
