@@ -54,8 +54,10 @@ img { max-width: 100%; height: auto; }
   </td><td>- JasPer を使ったJPEG 2000用Susie Plug-in</td></tr>
   <tr><td>・<a href="#axcurico">Cursor / Icon Susie Plug-in</a>
   </td><td>- (アニメーション)カーソル、アイコン用Susie Plug-in</td></tr>
-  <tr><td>・<a href="#spextend">Extend convert Susie Plug-in</a>&nbsp;(<a href="#spextend1">+2</a>)
+  <tr><td>・<a href="#spextend">Extend convert Susie Plug-in</a>&nbsp;(<a href="#spextend1">+2</a>)&nbsp;(<a href="#spextend2">+3</a>)
   </td><td>- コマンドラインツールを使うSusie Plug-in</td></tr>
+  <tr><td>・<a href="#spextend_dev">Extend convert Susie Plug-in for developer</a>
+  </td><td>- アプリケーションの検証用Susie Plug-in</td></tr>
   <tr><td>・<a href="#ifmagick">ImageMagick Susie Plug-in</a>
   </td><td>- ImageMagick(DLL版)を使った非推奨Susie Plug-in</td></tr>
   <tr><td>・<a href="#runspx">Runspi / Runsph / Runspia</a>
@@ -95,6 +97,9 @@ axcurico
 spextend
 ./spextend13p1.zip
 ./spextend13p2.zip
+./spextend13p3.zip
+spextend_dev
+./spextend13p3.zip
 ifmagick
 ./ifmagick10.zip
 runspx
@@ -260,8 +265,9 @@ lossless JPEG表示対応と、RGBが各12bitの JPEG を簡易表示(正常表�
 axextend : cab の展開、pdf の展開(Ghostscript)、アニメーションGIF・マルチページTIFFの展開(ImageMagick)<br>
 ifextend : 画像の展開(ImageMagick)、動画の切り出し(FFmpeg)、32bit Susie Plug-inの使用(spibench)<br>
 <br>
-・マルチスレッド未対応<br>
- このPlug-inは、マルチスレッドに対応していません。<br><br>●<strong>変更点</strong><br>1.3→1.3+1<br>
+・マルチスレッド対応状況<br>
+ axextend は、マルチスレッドに対応していません。<br>
+ ifextend は、マルチスレッドに対応しています。<br><br>●<strong>変更点</strong><br>1.3→1.3+1<br>
 ・ifextend.cfg&nbsp;の&nbsp;spibench&nbsp;の記載を修正(Plug-in&nbsp;自体の修正なし)<br>
 <br>
 1.2→1.3<br>
@@ -276,6 +282,26 @@ ifextend : 画像の展開(ImageMagick)、動画の切り出し(FFmpeg)、32bit 
 <br>試験公開版です。 Version 1.3からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>1.3+1→1.3+2<br>
 ・(ifextend)BITMAPFILEHEADER&nbsp;の&nbsp;bfOffBits&nbsp;が&nbsp;0&nbsp;の&nbsp;BMP&nbsp;ファイルを読めるように<br>
 ・ARM64&nbsp;版を作成<br>
+
+<hr><a href="./slplugin.html">↑</a><a name="spextend2"><span>Extend convert Susie Plug-in</span></a> Version 1.3+3
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/spextend13p3.zip">spextend13p3.zip</a> ( 210 Kbytes,&nbsp;2024-4-27,&nbsp;Windows XP/2003 - 11/2022(32bit/64bit))<br>
+<br>試験公開版です。 Version 1.3からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>1.3+2→1.3+3<br>
+・(ifextend)マルチスレッドに対応<br>
+・実行するコマンドラインを表示する指定を追加(!log)<br>
+
+<hr><a href="./slplugin.html">↑</a><a name="spextend_dev"><span>Extend convert Susie Plug-in for developer</span></a> Version 1.3+3
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/spextend13p3.zip">spextend13p3.zip</a> ( 210 Kbytes,&nbsp;2024-4-27,&nbsp;Windows XP/2003 - 11/2022(32bit/64bit))<br>
+<br>試験公開版です。 Version 1.3からの差し替え分のみとなってます。<br><br>Susie Plug-in を使ったアプリケーションの開発者向けに<br>
+Extend convert Susie Plug-in を調整したものです。<br>
+<br>
+API の呼び出しをコンソールに出力する他、動作確認用のサンプル<br>
+画像・書庫を用意しています。<br>
+<br>
+・マルチスレッド対応状況<br>
+ axextend は、マルチスレッドに対応していません。<br>
+ ifextend は、マルチスレッドに対応しています。<br>
 
 <hr><a href="./slplugin.html">↑</a><a name="ifmagick"><span>ImageMagick Susie Plug-in</span></a> Version 1.0
 <br>
@@ -324,14 +350,7 @@ OpenArchive API のサブセットの API を用意しています。<br>
 ・ARM64版を追加<br>
 
 <hr><address>Copyright(c)1997-2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
-<script>
- async function getac() {
-  const res = await fetch("http://toro.d.dooo.jp/ac/accimg.cgi?id=slpluginG");
-};
-getac();
-</script><noscript>
-  <img src="ac/accimg.cgi?id=slplugin" alt="access counter用" width="20" height="11">
-</noscript></div></div>
+</div></div>
 <div id="index">
 <strong><a href="./index.html">TORO's Library</a></strong>
 <h3>Software</h3>
@@ -349,7 +368,12 @@ getac();
 &nbsp;<a href="./dlsrc.html">Source</a><br>
 &nbsp;<a href="./dlcfg.html">Config Memo</a><br>
 &nbsp;<a href="./dlw32api.html">Win32 API memo</a><br>
+&nbsp;<a href="dlsphapi.html">Susie Plugin API</a><br>
 <h3>Message Board</h3>
 &nbsp;<a href="http://toro.d.dooo.jp/wforum/wforum.cgi">Software</a>
+<h3>another sites</h3>
+&nbsp;<a href="http://toro.d.dooo.jp/index.html">toro.d.dooo.jp</a><br>
+&nbsp;<a href="https://toroidj.github.io/">toroidj.github.io</a><br>
+&nbsp;<a href="https://github.com/toroidj/">github.com/toroidj</a>
 </div>
 </div></body></html>

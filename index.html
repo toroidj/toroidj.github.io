@@ -44,7 +44,8 @@ table { background-color: #f6f69f; }
   <LI><A HREF="dldoslfn.html">DOS 上で LFN</A>(update:2007/11/04)</LI>
   <LI><A HREF="dlsrc.html">Source</A></LI>
   <LI><A HREF="dlcfg.html">Configuration file &amp; Memo</A>(update:2024/01/27)</LI>
-  <LI><A HREF="dlw32api.html">Win32 API memo</A>(update:2023/10/22)</LI>
+  <LI><A HREF="dlw32api.html">Win32 API memo</A>(update:2024/04/27)</LI>
+  <LI><A HREF="dlsphapi.html">Susie 32bit / 64bit Plug-in の仕様</A></LI>
  </UL>
 
 <HR><H3>Message Board</H3>
@@ -63,6 +64,11 @@ table { background-color: #f6f69f; }
  </UL>
 
 <HR><H4>更新情報</H4><PRE>
+2024/04/27 <a href="slppx.html#ppx2">Paper Plane xUI 1.96+2</a> を公開
+           <a href="dlsphapi.html">Susie Plugin API</a> のページを本公開
+           <a href="slwin4.html#tfilesign">tfilesign 1.2</a> を公開
+           <a href="slplugin.html#spextend">Extend convert Susie Plug-in 1.3+3</a> を公開
+           <a href="slplugin.html#spextend_dev">開発用 Extend convert Susie Plug-in 1.3+3</a> を公開
 2024/04/13 <a href="slplugin.html#ifgif">GIF import plug-in version 0.1.1.5</a> を公開
 2024/03/30 <a href="slppx.html#ppx1">Paper Plane xUI 1.96+1</a> を公開
            <a href="slppx.html#ppxdw1">Paper Plane xUI (DirectWrite版) 1.96+1</a> を公開
@@ -102,11 +108,6 @@ table { background-color: #f6f69f; }
            <a href="slppx.html#ppxdw3">Paper Plane xUI (DirectWrite版) 1.94+3</a> を再公開
 2024/01/07 <a href="slppx.html#ppx3">Paper Plane xUI 1.94+3</a> を公開
            <a href="slppx.html#ppxdw3">Paper Plane xUI (DirectWrite版) 1.94+3</a> を公開
-2023/12/23 <a href="slppx.html#ppx2">Paper Plane xUI 1.94+2</a> を公開
-           <a href="slppx.html#ppxdw2">Paper Plane xUI (DirectWrite版) 1.94+2</a> を公開
-2023/12/17 <a href="slppx.html#ppx1">Paper Plane xUI 1.94+1</a> を公開
-           <a href="slppx.html#ppxdw1">Paper Plane xUI (DirectWrite版) 1.94+1</a> を公開
-2023/12/02 <a href="slppx.html#ppxCV81">Paper Plane xUI V8 Module R3+1</a> を公開
 <A HREF="./record.html">過去の更新情報</A></PRE>
 
 <HR><H4>リンク・転載・掲載等について</H4><P>
@@ -115,14 +116,7 @@ table { background-color: #f6f69f; }
 　また、メール等で連絡があれば幸いです。</P>
 
 <hr><address>Copyright(c)1997-2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
-<script>
- async function getac() {
-  const res = await fetch("http://toro.d.dooo.jp/ac/accimg.cgi?id=homeG");
-};
-getac();
-</script><noscript>
-  <img src="ac/accimg.cgi?id=home" alt="access counter用" width="20" height="11">
-</noscript></div></div>
+</div></div>
 <div id="index">
 <H4>Software</H4>
 &nbsp;<A HREF="./slwin4.html">Windows</A><br>
@@ -139,7 +133,7 @@ getac();
 &nbsp;<A HREF="dlsrc.html">Source</A><br>
 &nbsp;<A HREF="dlcfg.html">Config Memo</A><br>
 &nbsp;<A HREF="dlw32api.html">Win32 API memo</A><br>
-&nbsp;<A HREF="dlsphapi.html">Susie Plugin API (beta)</A><br>
+&nbsp;<A HREF="dlsphapi.html">Susie Plugin API</A><br>
 <H4>Message Board</H4>
 &nbsp;<A HREF="http://toro.d.dooo.jp/wforum/wforum.cgi">Software</A><br>
 <H4>another sites</H4>

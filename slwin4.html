@@ -123,7 +123,7 @@ erexec
 zacls
 ./zacls06.zip
 tfilesign
-./tfilesign11.zip
+./tfilesign12.zip
 IMEredir
 ./IMEredirect10.zip
 dllfree
@@ -326,14 +326,16 @@ Link 時に起動している Link 対象を終わらせるために使います
 ・設定するアクセス権の種類の一覧を設定ファイルで指定するようにした<br>
 ・全体の挙動調整を行った<br>
 
-<hr><a href="./slwin4.html">↑</a><a name="tfilesign"><span>tfilesign</span></a> Version 1.1
+<hr><a href="./slwin4.html">↑</a><a name="tfilesign"><span>tfilesign</span></a> Version 1.2
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/tfilesign11.zip">tfilesign11.zip</a> ( 38 Kbytes,&nbsp;2016-11-19,&nbsp;Windows Vista/2008 - 10/2016)<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/tfilesign12.zip">tfilesign12.zip</a> ( 43 Kbytes,&nbsp;2024-4-27,&nbsp;Windows Vista/2008 - 11/2022)<br>
 <br>zip / exe / dll ファイルに簡易署名を付けたり、検証したりするためのソフトです。<br>
 ソフトの自動アップデート処理の際に偽造・改竄がされていないかを<br>
 検証するために作ったものであり、第三者機関による作成者の確認<br>
-機能がないので、作成者の保証のためには使えません。<br><br>●<strong>変更点</strong><br>1.0→1.1<br>
-・exeファイルの未使用部分に署名を埋め込む指定(sp)を追加<br>
+機能がないので、作成者の保証のためには使えません。<br>
+また、コードサイニング証明書としても機能しません。<br><br>●<strong>変更点</strong><br>1.1→1.2<br>
+・検証結果が表示されないことがあるのを修正<br>
+・任意ファイルの末尾に署名を追加する指定(sf)を追加<br>
 
 <hr><a href="./slwin4.html">↑</a><a name="IMEredir"><span>IME redirect PAD</span></a> Version 1.0
 <br>
@@ -379,14 +381,7 @@ IME redirect PAD は、該当プロセスでIMEを使って漢字入力するた
 SSTP server 機能付。<br>
 
 <hr><address>Copyright(c)1997-2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
-<script>
- async function getac() {
-  const res = await fetch("http://toro.d.dooo.jp/ac/accimg.cgi?id=slwin4G");
-};
-getac();
-</script><noscript>
-  <img src="ac/accimg.cgi?id=slwin4" alt="access counter用" width="20" height="11">
-</noscript></div></div>
+</div></div>
 <div id="index">
 <strong><a href="./index.html">TORO's Library</a></strong>
 <h3>Software</h3>
@@ -404,7 +399,12 @@ getac();
 &nbsp;<a href="./dlsrc.html">Source</a><br>
 &nbsp;<a href="./dlcfg.html">Config Memo</a><br>
 &nbsp;<a href="./dlw32api.html">Win32 API memo</a><br>
+&nbsp;<a href="dlsphapi.html">Susie Plugin API</a><br>
 <h3>Message Board</h3>
 &nbsp;<a href="http://toro.d.dooo.jp/wforum/wforum.cgi">Software</a>
+<h3>another sites</h3>
+&nbsp;<a href="http://toro.d.dooo.jp/index.html">toro.d.dooo.jp</a><br>
+&nbsp;<a href="https://toroidj.github.io/">toroidj.github.io</a><br>
+&nbsp;<a href="https://github.com/toroidj/">github.com/toroidj</a>
 </div>
 </div></body></html>

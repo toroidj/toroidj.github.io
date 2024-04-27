@@ -8673,8 +8673,8 @@ on|off指定は「1」か「0」でも指定でき、何も指定しない場合
 <br>
 &nbsp;&nbsp;注意1 : 常時実行するコマンドは X_jinfc:showcmd、特定の状況のみ使うときは -showcmd を使うことを想定しています。<br>
 &nbsp;&nbsp;注意2 : -k/-showcmd commands と空白区切りで記載した場合、後ろは全て <i>commands</i> と見なしますので、-k / -showcmd は一番最後に記載してください。また、マクロ文字を使うときは *file/*ppcfile の実行前に解釈されないよう、%(～%) 指定を用いたり、%%K などと % をエスケープすることを忘れないようにしてください。<br>
-&nbsp;&nbsp;        -initcmd:commands の場合は、後ろに他のオプションを記載可能です。<br>
-&nbsp;&nbsp;注意3 : *ppcfile の場合、-initcmd の実行時には既に実行元の窓が存在しないことがあり、%1, %C, %F等を使用すると動作がおかしくなることがあります。<br>
+&nbsp;&nbsp;        -showcmd:commands の場合は、後ろに他のオプションを記載可能です。<br>
+&nbsp;&nbsp;注意3 : *ppcfile の場合、-showcmd の実行時には既に実行元の窓が存在しないことがあり、%1, %C, %F等を使用すると動作がおかしくなることがあります。<br>
 <br>
 -compcmd <i>commands</i><br>
 -compcmd:<i>commands</i><br>
@@ -8909,13 +8909,15 @@ WSH VBScriptの場合は、置換(s/src/dest/)のみ使用できます。修飾�
 このため、約1Mbytesを超え、特殊な属性を持たないファイルをコピーする場合にこのモードを利用するようにすると、コピー中に他の作業を行うときでも、ストレス無く作業でき効果的です。<br>
 <br>
 <b>参考</b><br>
-通常のコピー(CopyFileEx)<br>
+通常のコピー(CopyFileEx, X_cbszの第3項目がファイルサイズより小さいとき)<br>
 ・読み書き並行、OSファイルキャッシュ使用、マルチストリームコピー有り<br>
 ・小さなファイルを多数コピーするときに最適<br>
-バーストモードコピー<br>
-・読み書き交互、自前ファイルバッファ(X_cbsz)、マルチストリームコピー無し<br>
+<br>
+バーストモードコピー(モード指定時またはX_cbszの第2項目がファイルサイズより大きいとき)<br>
+・読み書き交互、自前ファイルバッファ(X_cbsz 第1項目の大きさ)、マルチストリームコピー無し<br>
 ・同一物理ドライブ内で大きなファイルをコピーするときに最適<br>
-キャッシュ未使用コピー(CopyFileEx)<br>
+<br>
+キャッシュ未使用コピー(CopyFileEx, X_cbszの第3項目がファイルサイズより大きいとき)<br>
 ・読み書き並行、OSファイルキャッシュなし、マルチストリームコピー有り<br>
 ・異なる物理ドライブ間で大きなファイルをコピーするときに最適<br>
 <a href="#X_cbsz">バッファサイズの指定</a><br>
@@ -14798,5 +14800,4 @@ E-mail <a href="mailto:toroid.jp@gmail.com"><i>toroid.jp@gmail.com</i></a><br>
 WWW <a href="http://toro.d.dooo.jp/index.html" target="_top">http://toro.d.dooo.jp/index.html</a><br>
 <br>
  <i>Paper Plane xUI Copyright (c)1997-2024 TORO／高橋 良和</i><br>
-<img src="http://toro.d.dooo.jp/ac/accimg.cgi?id=ppxhelp" ALT="access counter用" WIDTH="20" HEIGHT="11">
 </body></html>

@@ -531,6 +531,7 @@ Plug-in を使うアプリケーションとして完全対応したい場合は
 ・32bit BGRA (透過画像)<br>
 ・カラープロファイル<br>
 ・4/8bit RLE<br>
+・BGR,BGRA 以外の BITFIELDS 指定(RGBA, ABGRなど)<br>
 ・8bit 以外の色深度(10bitグレーや 10bit * 3カラーなど)<br>
 <br>
 また、「BMP Suite」(<a href="https://entropymine.com/jason/bmpsuite/">https://entropymine.com/jason/bmpsuite/</a>)に上記仕様の BMP ファイルの例や、破損 BMP ファイルの例が用意されていますので、これら例を読み込んでも異常動作を起こさないように対応することをお勧めします。<br>
@@ -557,7 +558,7 @@ IsSupported - GetArchiveInfo - [GetFile]n<br>
 IsSupported - GetArchiveInfo - [GetFileInfo - GetFile]n<br>
 IsSupported - GetArchiveInfo - [IsSupported - GetFileInfo - GetFile]n</li>
 <li>ファイルサイズが 0、または画像ファイルのヘッダサイズに満たない大きさのファイルを、ファイル名かメモリイメージで渡されることがあります。Plug-in 側はこれらのファイルでも異常終了しないように対策する必要があります。</li>
-<li>複数のスレッドを使う場合、一連の操作(IsSupported～GetPicture/GetFile まで)は同じスレッドで行う必要があります。<br>
+<li>複数のスレッドを使う場合、一連の操作(IsSupported～GetPicture/GetFile まで)を同じスレッドで行う必要があります。<br>
 IsSupportedやGetArchiveInfoで得られた情報をスレッド単位でキャッシュしている場合があります。</li>
 </ul>
 </pre>
@@ -565,10 +566,10 @@ IsSupportedやGetArchiveInfoで得られた情報をスレッド単位でキャ�
 <HR><H3><A NAME="tests">テスト用プログラム</A></H3>
 動作確認用として次のファイルを用意しました。<br>
 <a href="./slplugin.html#runspx">Runspi / Runsph / Runspia</a><br>
-Plug-in の API を一通り試すことができます。<br>
+Plug-in と対応するファイルを読み込んで、Plug-in の API を一通り試すことができるコンソールアプリケーションです。<br>
 
-<a href="spxtests.zip">spxtests.zip</a><br>
-アプリケーション側は、ifextend.spi/sph, axextend.spi/sph で if_test1.test_if, ax_test1.test_ax を開くことができるか確認できます。<br>
+<a href="./slplugin.html#spextend-dev">Extend convert Susie Plug-in for developer</a><br>
+アプリケーションに読み込ませて、サンプル画像・サンプル書庫を扱えるかどうかを確認したり、API の使用状況をロギングしたりすることができる Plug-in です。<br>
 
 <HR><H3><A NAME="reference">参考資料</A></H3>
 Susie Plug-in 関係<br>
@@ -582,14 +583,7 @@ Windows Bitmap 関係<br>
 </ul>
 <hr><a href="index.html">Homeへ戻る</a>
 <hr><address>Copyright(c)2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
-<script>
- async function getac() {
-  const res = await fetch("http://toro.d.dooo.jp/ac/accimg.cgi?id=dlsphapiG");
-};
-getac();
-</script><noscript>
-  <img src="ac/accimg.cgi?id=dlsphapi" alt="access counter用" width="20" height="11">
-</noscript></div></div>
+</div></div>
 <div id="index">
 <strong><A HREF="./index.html">TORO's Library</A></strong>
 

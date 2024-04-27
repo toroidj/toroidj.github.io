@@ -439,6 +439,12 @@ Windows2000では 0 か 0 以外で解釈する。
 <br>
 これに関連して、新しいWindowsで追加されたフラグを指定する場合は、古いWindowsでエラーとなるため、どちらでも機能するようにするためにはバージョンによる場合分けが必要になる。
 <br>(2005-6-23)</DD>
+
+<dt>TLS(スレッドローカル記憶域)の割当て可能な数</dt>
+<dd>Windows 95,NT4 : 64 (TLS_MINIMUM_AVAILABLE)</dd>
+<dd>Windows 95SE,Me : 80 (TLS_MINIMUM_AVAILABLE + 16)</dd>
+<dd>Windows 2000～11 : 1088 (TLS_MINIMUM_AVAILABLE + 1024)</dd>
+<dd>(2024-4-27)</DD>
 </DL>
 
 <HR><H3><A NAME="unicode">UNICODE</A></H3>
@@ -480,16 +486,8 @@ Windows2000では 0 か 0 以外で解釈する。
 
 </DL>
 <HR><A HREF="index.html">Homeへ戻る</A>
-<hr><address>Copyright(c)1997-2017 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
-<script>
- async function getac() {
-  const res = await fetch("http://toro.d.dooo.jp/ac/accimg.cgi?id=dlw32apiG");
-};
-getac();
-</script><noscript>
-  <img src="ac/accimg.cgi?id=dlw32api" alt="access counter用" width="20" height="11">
-</noscript></div></div>
-<div id="index">
+<hr><address>Copyright(c)1997-2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+</div></div><div id="index">
 <strong><A HREF="./index.html">TORO's Library</A></strong>
 <H3>Software</H3>
 &nbsp;<A HREF="./slwin4.html">Windows</A><br>
@@ -506,6 +504,7 @@ getac();
 &nbsp;<A HREF="dlsrc.html">Source</A><br>
 &nbsp;<A HREF="dlcfg.html">Config Memo</A><br>
 &nbsp;<A HREF="dlw32api.html">Win32 API memo</A><br>
+&nbsp;<A HREF="dlsphapi.html">Susie Plugin API</A><br>
 <H3>Message Board</H3>
 &nbsp;<A HREF="http://toro.d.dooo.jp/wforum/wforum.cgi">Software</A>
 </div>
