@@ -28,7 +28,7 @@ p { text-align: left; }
 --></style></head>
 <body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
 <div id="page">
-<div id="title"><H2>Susie 32bit / 64bit Plug-in の仕様(2024-4-13版)</H2>
+<div id="title"><H2>Susie 32bit / 64bit Plug-in の仕様(2024-5-11版)</H2>
 <hr></div>
 <div id="contents"><div id="contents2">
 <p>拙作 Susie 32bit / 64bit Plug-in の仕様です。</p>
@@ -114,6 +114,7 @@ Plug-in に関する情報を取得します。Plug-in の種類、表示用の�
 [in] <span class="type">int</span> infono
  0  Plug-in APIバージョン
     "00IN" または "00AM" が返ります。本家仕様としては他の指定が挙げられていますが、実際には使用されていないので、この２つに限定しています。
+    ※ AtoB Converter(<a href="https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html">https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html</a>)の出力Plug-inでは "T0XN" が定義されています。
  1  Plug-in の名前、バージョン、Copyright
 
  2n+2  対応拡張子 ("*.JPG" "*.RGB;*.Q0" など。ワイルドカードを「;」で区切る)
@@ -188,13 +189,13 @@ Plug-in 定義の aboutダイアログ か 設定ダイアログを実行しま�
 <span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPictureInfoW(<span class="type">LPCWSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <a href="#PictureInfo">struct PictureInfo</a> *lpInfo);<br>
 
 <pre>パラメータ
-[in] <span class="type">LPCSTR / LPCWSTR</span> buf
+[in]  <span class="type">LPCSTR / LPCWSTR</span> buf
   入力がファイルの場合: ファイル名
   メモリーの場合: ファイルイメージへのポインタ
-[in] <span class="type">LONG_PTR</span> len
-  入力がファイルの場合: 読込み開始オフセット(MacBin対応のため)
+[in]  <span class="type">LONG_PTR</span> len
+  入力がファイルの場合: 読込み開始オフセット(<a href="#MacBin">MacBin対応</a>のため)
   メモリーの場合: メモリサイズ
-[in] <span class="type">int</span> flag
+[in]  <span class="type">int</span> flag
   追加情報 0000 0000 0000 0SSS
     SSS : 入力形式
       000 : ディスクファイル
@@ -245,8 +246,8 @@ Plug-in 定義の aboutダイアログ か 設定ダイアログを実行しま�
   入力がファイルの場合: ファイル名
   メモリーの場合: ファイルイメージへのポインタ
 [in]  <span class="type">LONG_PTR</span> len
-  入力がファイルの場合: 読込み開始オフセット(MacBin対応のため)
-  メモリーの場合: データサイズ
+  入力がファイルの場合: 読込み開始オフセット(<a href="#MacBin">MacBin対応</a>のため)
+  メモリーの場合: メモリサイズ
 [in]  <span class="type">int</span> flag
   追加情報 0000 0000 0000 0SSS
     SSS : 入力形式
@@ -281,13 +282,13 @@ Plug-in 定義の aboutダイアログ か 設定ダイアログを実行しま�
 <span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetArchiveInfo(<span class="type">LPCSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *lphInf);<br>
 <span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetArchiveInfoW(<span class="type">LPCWSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *lphInf);<br>
 <pre>パラメータ
-[in] <span class="type">LPCSTR / LPCWSTR</span> buf
-  入力がファイルの場合 ファイル名
-  メモリーの場合 ファイルイメージへのポインタ
-[in] <span class="type">LONG_PTR</span> len
-  入力がファイルの場合 読込み開始オフセット(MacBin対応のため)
-  メモリーの場合 データサイズ
-[in] <span class="type">int</span> flag
+[in]  <span class="type">LPCSTR / LPCWSTR</span> buf
+  入力がファイルの場合: ファイル名
+  メモリーの場合: ファイルイメージへのポインタ
+[in]  <span class="type">LONG_PTR</span> len
+  入力がファイルの場合: 読込み開始オフセット(<a href="#MacBin">MacBin対応</a>のため)
+  メモリーの場合: メモリサイズ
+[in]  <span class="type">int</span> flag
   追加情報 0000 0000 0000 0SSS
     SSS : 入力形式
       000 : ディスクファイル
@@ -479,7 +480,7 @@ struct {
   <a href="#errorcode">エラーコード</a>
 
 解説
-AtoB Converter(<a href="https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html">https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html</a>)の API を参考にしています。<br>
+AtoB Converter(<a href="https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html">https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html</a>)の 出力Plug-in を参考にしています。<br>
 対応拡張子は、GetPluginInfo/W で得られる拡張子であり、「*.1st;*.2nd...」と複数記載されている場合は先頭の拡張子(.1st)のみ対応です。また、GetPluginInfo/W に列挙されていても対応していない場合があり，その時は規定の拡張子扱いになるか、エラー 2 になります。
 
 実装
@@ -545,7 +546,7 @@ Plug-in を使うアプリケーションとして完全対応したい場合は
  BITMAPV5HEADER, [パレット又はBITFIELDS], ビットマップ, [カラープロファイル]<br>
 ※ BITMAPV5HEADERを使う場合は CF_DIBV5(BITMAPV5HEADER) と CF_DIB(BITMAPINFOHEADER) をこの順に登録する必要がある。
 <br>
-<HR><H3><A NAME="othrts">その他</A></H3>
+<HR><H3><A NAME="others">その他</A></H3>
 <ul>
 <li>Susie 0.47b は、トップダウンDIB に対応していません。<br>
 また、カタログ表示は更に多くの 16bit DIB, 32bit DIB が扱えない制限があります。</li>
@@ -560,16 +561,19 @@ IsSupported - GetArchiveInfo - [IsSupported - GetFileInfo - GetFile]n</li>
 <li>ファイルサイズが 0、または画像ファイルのヘッダサイズに満たない大きさのファイルを、ファイル名かメモリイメージで渡されることがあります。Plug-in 側はこれらのファイルでも異常終了しないように対策する必要があります。</li>
 <li>複数のスレッドを使う場合、一連の操作(IsSupported～GetPicture/GetFile まで)を同じスレッドで行う必要があります。<br>
 IsSupportedやGetArchiveInfoで得られた情報をスレッド単位でキャッシュしている場合があります。</li>
+<a name="MacBin"><li>MacBin(Mac Binary)対応について<br>
+Classic Mac OS(Mac OS X 以前の Mac OS) 上で作成した画像ファイルの一部には、画像本体(データフォーク)の先頭に追加される 128bytes のマックバイナリヘッダと、画像本体の後ろに追加されるリソースフォークがあり、そのまま読み込んでも画像として扱えないことがあります。<br>
+Susie Plug-in で MacBin 付き画像を扱う場合は、アプリケーション側で Susie Plug-in にファイルポインタを 128 バイト分ずらすことを指示したり、ファイル先頭から 128 バイト分ずらしたメモリを渡したりすることで対応する必要があります。</li>
 </ul>
 </pre>
 
 <HR><H3><A NAME="tests">テスト用プログラム</A></H3>
-動作確認用として次のファイルを用意しました。<br>
+動作確認用として次のテスト用プログラムを用意しました。<br>
 <a href="./slplugin.html#runspx">Runspi / Runsph / Runspia</a><br>
 Plug-in と対応するファイルを読み込んで、Plug-in の API を一通り試すことができるコンソールアプリケーションです。<br>
 
 <a href="./slplugin.html#spextend-dev">Extend convert Susie Plug-in for developer</a><br>
-アプリケーションに読み込ませて、サンプル画像・サンプル書庫を扱えるかどうかを確認したり、API の使用状況をロギングしたりすることができる Plug-in です。<br>
+アプリケーションに読み込ませて、サンプル画像・サンプル書庫を扱えるかどうかを確認したり、API の使用状況をロギングしたりすることができる Susie Plug-in です。<br>
 
 <HR><H3><A NAME="reference">参考資料</A></H3>
 Susie Plug-in 関係<br>
@@ -583,6 +587,7 @@ Windows Bitmap 関係<br>
 </ul>
 <hr><a href="index.html">Homeへ戻る</a>
 <hr><address>Copyright(c)2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+<img src="http://toro.d.dooo.jp/ac/accimg.cgi?id=dlsphapi" alt="access counter用" width="20" height="11">
 </div></div>
 <div id="index">
 <strong><A HREF="./index.html">TORO's Library</A></strong>
