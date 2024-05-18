@@ -48,11 +48,15 @@ img { max-width: 100%; height: auto; }
   </td><td>- 文字列関連の PPx Module</td></tr>
   <tr><td>・<a href="#ppxscr">Paper Plane xUI  Script Module</a>
   </td><td>- スクリプトを実行する PPx Module</td></tr>
+  <tr><td>・<a href="#ppxscr1">Paper Plane xUI  Script Module</a>
+  </td><td>- スクリプトを実行する PPx Module</td></tr>
   <tr><td>・<a href="#ppxCV8">Paper Plane xUI  V8 Script Module</a>
   </td><td>- Clear Script の V8 を利用して PPx 上で Javascript を実行する</td></tr>
   <tr><td>・<a href="#ppxCV81">Paper Plane xUI  V8 Script Module(R3+1)</a>
   </td><td>- Clear Script の V8 を利用して PPx 上で Javascript を実行する</td></tr>
   <tr><td>・<a href="#ppxCV82">Paper Plane xUI  V8 Script Module(R3+2)</a>
+  </td><td>- Clear Script の V8 を利用して PPx 上で Javascript を実行する</td></tr>
+  <tr><td>・<a href="#ppxCV83">Paper Plane xUI  V8 Script Module(R3+3)</a>
   </td><td>- Clear Script の V8 を利用して PPx 上で Javascript を実行する</td></tr>
   <tr><td>・<a href="#ppxqjs">Paper Plane xUI  QuickJS Script Module</a>
   </td><td>- QuickJSを利用して PPx 上で Javascript を実行する</td></tr>
@@ -116,14 +120,18 @@ ppxtext
 ./ppxtext8.zip
 ppxscr
 ./ppxscr21.zip
+ppxscr1
+./ppxscr21p1.zip
 ppxCV8
 ./ppxCV8R03.zip
 ppxCV81
 ./ppxCV8R03p1.zip
 ppxCV82
 ./ppxCV8R03p2.zip
+ppxCV83
+./ppxCV8R03p3.zip
 ppxqjs
-./ppxqjsT1.zip
+./ppxqjsT2.zip
 ppxdoclock
 ./DOCLOCK.LZH
 ppxdockshow
@@ -347,6 +355,13 @@ R19→R20<br>
 ・直前の&nbsp;PPx.Extract&nbsp;のエラーコードを取得できるようにした<br>
 ・64bit&nbsp;Arm&nbsp;版を追加<br>
 
+<hr><a href="./slppx.html">↑</a><a name="ppxscr1"><span>Paper Plane xUI  Script Module</span></a>
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxscr21p1.zip">ppxscr21p1.zip</a> ( 184 Kbytes,&nbsp;2024-5-18,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2022(32bit/64bit))<br>
+<br>●<strong>変更点</strong><br>R21→R21+1<br>
+・PPx.GetFileInformation&nbsp;で&nbsp;mode&nbsp;指定を有効にした(PPx&nbsp;1.97以降)<br>
+・PPx.Enumerator(JScript&nbsp;の&nbsp;new&nbsp;Enumerator相当)を追加<br>
+
 <hr><a href="./slppx.html">↑</a><a name="ppxCV8"><span>Paper Plane xUI  V8 Script Module</span></a>
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxCV8R03.zip">ppxCV8R03.zip</a> ( 12686 Kbytes,&nbsp;2023-10-14,&nbsp;Windows 7/2008R2 - 10/2022(32bit/64bit), .NET 4.x)<br>
@@ -371,11 +386,20 @@ R2<br>
 ・PPx.result&nbsp;で&nbsp;undefined,true,falseを受け付けたときの結果をWSH版と揃えた<br>
 ・PPx.GetFileInformation&nbsp;で&nbsp;mode&nbsp;指定を有効にした(PPx&nbsp;1.97以降)<br>
 
+<hr><a href="./slppx.html">↑</a><a name="ppxCV83"><span>Paper Plane xUI  V8 Script Module(R3+3)</span></a>
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxCV8R03p3.zip">ppxCV8R03p3.zip</a> ( 105 Kbytes,&nbsp;2024-5-18,&nbsp;Windows 7/2008R2 - 11/2022(32bit/64bit), .NET 4.x)<br>
+<br>試験公開版です。差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>R3+3<br>
+・PPx.Entry.DateCreated/DateLastModified/DateLastAccessedをECMAScript元期値に<br>
+・PPx.Enumerator(JScript&nbsp;の&nbsp;new&nbsp;Enumerator相当)を追加<br>
+
 <hr><a href="./slppx.html">↑</a><a name="ppxqjs"><span>Paper Plane xUI  QuickJS Script Module</span></a>
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxqjsT1.zip">ppxqjsT1.zip</a> ( 493 Kbytes,&nbsp;2024-5-11,&nbsp;Windows 10/2015 - 11/2022(64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxqjsT2.zip">ppxqjsT2.zip</a> ( 976 Kbytes,&nbsp;2024-5-18,&nbsp;Windows 10/2015 - 11/2022(64bit))<br>
 <br>QuickJS を利用して PPx 上で Javascript を実行する PPx Module です。<br>
-現在試験版です。<br>
+現在試験版です。<br><br>●<strong>変更点</strong><br>T2<br>
+・PPx.Entry.DateCreated等を追加<br>
+・PPx.Enumerator(JScript&nbsp;の&nbsp;new&nbsp;Enumerator相当)を追加<br>
 
 <hr><a href="./slppx.html">↑</a><a name="ppxdoclock"><span>doclock (Paper Plane xUI Dock Module)</span></a>
 <br>
@@ -473,7 +497,6 @@ R6→R7<br>
 ・64bit&nbsp;arm版&nbsp;(PPXJUNK64A.DLL)&nbsp;を追加<br>
 
 <hr><address>Copyright(c)1997-2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
-<img src="http://toro.d.dooo.jp/ac/accimg.cgi?id=slppx" alt="access counter用" width="20" height="11">
 </div></div>
 <div id="index">
 <strong><a href="./index.html">TORO's Library</a></strong>
