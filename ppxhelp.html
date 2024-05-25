@@ -4967,9 +4967,10 @@ PPc, PPv, 一行編集窓上からこのマクロ文字を使用すると、こ�
 他のPPxの内容を取得したい時に用います。<br>
 IDは、<a href="#ppxidformat">PPxのID指定方法</a>を参照してください。<br>
 ID指定がなければ実行元のPPxになります。C#等と、一体化窓を指定したときは、一体化窓上の現在窓になります。<br>
-※実行先で展開したいマクロ文字は&quot;%n&quot;ではなく、&quot;%%n&quot;と、&quot;%&quot;を２つ続けて記載してエスケープする必要があります。エスケープをしないと、実行元でマクロ文字が解釈されてしまいます。<br>
-※「&quot;」で括った中に「&quot;」を記載するときは「&quot;&quot;」とエスケープする必要があります。<br>
-※マクロ文字展開が実行先のみであれば、&quot;%(command%)&quot;とすることで「%」と「&quot;」のエスケープが不要となります。<br>
+※ 実行先で展開したいマクロ文字は&quot;%n&quot;ではなく、&quot;%%n&quot;と、&quot;%&quot;を２つ続けて記載してエスケープする必要があります。エスケープをしないと、実行元でマクロ文字が解釈されてしまいます。<br>
+※ 「&quot;」で括った中に「&quot;」を記載するときは「&quot;&quot;」とエスケープする必要があります。<br>
+※ マクロ文字展開が実行先のみであれば、&quot;%(command%)&quot;とすることで「%」と「&quot;」のエスケープが不要となります。<br>
+※ ID指定をしたときは、プロセス間で文字列の受け渡しを行うという、実行コストが大きい処理を行うため、不要なときは指定しないことがおすすめです。<br>
 <br>
 <i>例) echo %*extract(~&quot;%%FCD&quot;)</i><br>
 <i>例) echo %*extract(~&quot;%%*input(&quot;&quot;%%1&quot;&quot; -title:&quot;&quot;sample&quot;&quot;)&quot;)</i><br>
@@ -5355,6 +5356,10 @@ IDは、<a href="#ppxidformat">PPxのID指定方法</a>を参照してくださ�
 ID指定がなければ実行元のPPxになります。<br>
 <br>
 尚、*keycommand <i>[ID,]&quot;keycommand&quot;</i> と記載することも可能です。<br>
+<br>
+<b>キーコマンドの実行タイミング</b><br>
+ID 指定がない場合は、全てのキーコマンドを実行してから %K が終わります。<br>
+ID 指定がある場合は、キーコマンドの実行を指示(PostMessage)してから %K が終わります。このため、ID が別のPPxの場合は並行実行となります。ID が自身の場合は、%K の実行完了後、キーコマンドの実行が可能なタイミング(キー入力待ち時や、*wait n,1/2)でキーコマンドが実行されます。<br>
 <hr><br>
 <a name="sendkeymacro"><b>%k<i>&quot;key&quot;</i> キー入力エミュレート</b></a><br>
 <br>
@@ -6296,7 +6301,7 @@ IDで指定したPPx上でcommandを実行します。<br>
 <br>
 ・ command 中に空白がある場合でも「&quot;command&quot;」と括る必要はありません。<br>
 <br>
-・IDは、<a href="#ppxidformat">PPxのID指定方法</a>を参照してください。<br>
+・ IDは、<a href="#ppxidformat">PPxのID指定方法</a>を参照してください。<br>
 ID指定がなければ実行元のPPxで実行します。PPb(BA-BZ)に対しても使用可能です。<br>
 <br>
 <i>例) *execute CA,exec.bat</i><br>
