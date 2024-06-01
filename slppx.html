@@ -50,6 +50,8 @@ img { max-width: 100%; height: auto; }
   </td><td>- スクリプトを実行する PPx Module</td></tr>
   <tr><td>・<a href="#ppxscr1">Paper Plane xUI  Script Module</a>
   </td><td>- スクリプトを実行する PPx Module</td></tr>
+  <tr><td>・<a href="#ppxscr2">Paper Plane xUI  Script Module</a>
+  </td><td>- スクリプトを実行する PPx Module</td></tr>
   <tr><td>・<a href="#ppxCV8">Paper Plane xUI  V8 Script Module</a>
   </td><td>- Clear Script の V8 を利用して PPx 上で Javascript を実行する</td></tr>
   <tr><td>・<a href="#ppxCV81">Paper Plane xUI  V8 Script Module(R3+1)</a>
@@ -107,6 +109,8 @@ ppxscr
 ./ppxscr21.zip
 ppxscr1
 ./ppxscr21p1.zip
+ppxscr2
+./ppxscr21p2.zip
 ppxCV8
 ./ppxCV8R03.zip
 ppxCV81
@@ -116,7 +120,7 @@ ppxCV82
 ppxCV83
 ./ppxCV8R03p3.zip
 ppxqjs
-./ppxqjsT3.zip
+./ppxqjsT4.zip
 ppxdoclock
 ./DOCLOCK.LZH
 ppxdockshow
@@ -285,6 +289,12 @@ R19→R20<br>
 ・PPx.GetFileInformation&nbsp;で&nbsp;mode&nbsp;指定を有効にした(PPx&nbsp;1.97以降)<br>
 ・PPx.Enumerator(JScript&nbsp;の&nbsp;new&nbsp;Enumerator相当)を追加<br>
 
+<hr><a href="./slppx.html">↑</a><a name="ppxscr2"><span>Paper Plane xUI  Script Module</span></a>
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxscr21p2.zip">ppxscr21p2.zip</a> ( 189 Kbytes,&nbsp;2024-6-2,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2022(32bit/64bit))<br>
+<br>●<strong>変更点</strong><br>R21+1→R21+2<br>
+・PPx.CreateObject&nbsp;が&nbsp;OLE&nbsp;オブジェクトのイベントに対応(prefix指定)<br>
+
 <hr><a href="./slppx.html">↑</a><a name="ppxCV8"><span>Paper Plane xUI  V8 Script Module</span></a>
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxCV8R03.zip">ppxCV8R03.zip</a> ( 12686 Kbytes,&nbsp;2023-10-14,&nbsp;Windows 7/2008R2 - 10/2022(32bit/64bit), .NET 4.x)<br>
@@ -318,11 +328,19 @@ R2<br>
 
 <hr><a href="./slppx.html">↑</a><a name="ppxqjs"><span>Paper Plane xUI  QuickJS Script Module</span></a>
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxqjsT3.zip">ppxqjsT3.zip</a> ( 996 Kbytes,&nbsp;2024-5-25,&nbsp;Windows 10/2015 - 11/2022(64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxqjsT4.zip">ppxqjsT4.zip</a> ( 1070 Kbytes,&nbsp;2024-6-2,&nbsp;Windows 10/2015 - 11/2022(64bit))<br>
 <br>QuickJS を利用して PPx 上で Javascript を実行する PPx Module です。<br>
-現在試験版です。<br><br>●<strong>変更点</strong><br>T3<br>
+現在試験版です。<br><br>●<strong>変更点</strong><br>T4<br>
+・PPx.CreateObject&nbsp;が&nbsp;OLE&nbsp;オブジェクトのイベントに対応(prefix指定)<br>
+・PPx.CreateObject&nbsp;で得られるオブジェクトに関数&nbsp;_free_(),&nbsp;_()&nbsp;を追加<br>
+<br>
+T3<br>
 ・PPx.CreateObject&nbsp;が&nbsp;OLE&nbsp;オブジェクトを使用できるように<br>
 ・スクリプトをモジュール(import使用可)として実行するコマンド(*scriptm)を追加<br>
+<br>
+T2<br>
+・PPx.Entry.DateCreated等を追加<br>
+・PPx.Enumerator(JScript&nbsp;の&nbsp;new&nbsp;Enumerator相当)を追加<br>
 
 <hr><a href="./slppx.html">↑</a><a name="ppxdoclock"><span>doclock (Paper Plane xUI Dock Module)</span></a>
 <br>
