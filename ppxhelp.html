@@ -13770,19 +13770,20 @@ Configuration file &amp; Memo <a href="http://toro.d.dooo.jp/dlcfg.html" target=
   例) PPxディレクトリ\Susie に Susie Plug-in を用意できるようにする。<br>
   P_susieP = susie<br>
 <br>
-・各種コマンドは %1 (PPxディレクトリ)からの相対指定で指定する。<br>
+・各種コマンドは %0 (PPxディレクトリ)からの相対指定で指定する。<br>
+  例) %0%\\command.exe<br>
 <br>
 ・環境変数は FIRSTEVENT を使って、起動時に一括登録できます。<br>
   例) 環境変数 path, CLANG を起動時に登録する<br>
   KC_main = {<br>
-  FIRSTEVENT = *set path+=%1\DLL;%1\BIN<br>
+  FIRSTEVENT = *set path+=%0\DLL;%0\..%\BIN<br>
       *set CLANG=C<br>
   }<br>
 <br>
 ・起動時に環境変数%PATH%に追加ディレクトリを指定すると、EXEファイルやDLLファイルをパス指定なしで使用できるようになります。<br>
   例) PPc を起動したときに、PPxディレクトリ\DLL と PPxディレクトリ\BIN に PATH を通し、これらのディレクトリに書庫DLLや各種コマンドを使用できるようにする。<br>
   KC_main = {<br>
-  FIRSTEVENT = *set path+=%1\DLL;%1\BIN<br>
+  FIRSTEVENT = *set path+=%0\DLL;%0\..%\BIN<br>
   }<br>
 <br>
 <hr><br>
