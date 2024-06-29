@@ -30,9 +30,9 @@ img { max-width: 100%; height: auto; }
 <div align="left">※ http://toro.d.dooo.jp からダウンロードできないときは、<a href="https://toroidj.github.io/slppx.html">https://toroidj.github.io</a> からダウンロードしてください。</div><hr></div>
 <div id="contents"><div id="contents2">
  <table border="0" summary="目録">
-  <tr><td>・<a href="#ppx">Paper Plane xUI</a>&nbsp;(<a href="#ppx1">+1</a>)
+  <tr><td>・<a href="#ppx">Paper Plane xUI</a>&nbsp;(<a href="#ppx1">+1</a>)&nbsp;(<a href="#ppx2">+2</a>)
   </td><td>- ファイル操作ツール集</td></tr>
-  <tr><td>・<a href="#ppxdw">Paper Plane xUI(DirectWrite版)</a>&nbsp;(<a href="#ppxdw1">+1</a>)
+  <tr><td>・<a href="#ppxdw">Paper Plane xUI(DirectWrite版)</a>&nbsp;(<a href="#ppxdw1">+1</a>)&nbsp;(<a href="#ppxdw2">+2</a>)
   </td><td>- DirectWriteを使用したPPx</td></tr>
   <tr><td>・<a href="#ppxarm">Paper Plane xUI(ARM64版)</a>
   </td><td>- 64bit ARM 版 Windows 用 PPX</td></tr>
@@ -66,7 +66,7 @@ img { max-width: 100%; height: auto; }
   </td><td>- Clear Script の V8 を利用して PPx 上で Javascript を実行する</td></tr>
   <tr><td>・<a href="#ppxCV84">Paper Plane xUI  V8 Script Module(R3+4)</a>
   </td><td>- Clear Script の V8 を利用して PPx 上で Javascript を実行する</td></tr>
-  <tr><td>・<a href="#ppxCV841">Paper Plane xUI  V8 Script Module(R3+4)</a>
+  <tr><td>・<a href="#ppxCV85">Paper Plane xUI  V8 Script Module(R3+5)</a>
   </td><td>- Clear Script の V8 を利用して PPx 上で Javascript を実行する</td></tr>
   <tr><td>・<a href="#ppxqjs">Paper Plane xUI  QuickJS Script Module</a>
   </td><td>- QuickJSを利用して PPx 上で Javascript を実行する</td></tr>
@@ -101,11 +101,16 @@ ppx
 ./ppx197p1.zip
 ./ppw197p1.zip
 ./ppx64197p1.zip
+./ppx197p2.zip
+./ppw197p2.zip
+./ppx64197p2.zip
 ppxdw
 ./ppxdw197.zip
 ./ppxdw64197.zip
 ./ppxdw197p1.zip
 ./ppxdw64197p1.zip
+./ppxdw197p2.zip
+./ppxdw64197p2.zip
 ppxarm
 ./ppxarm64197.zip
 ppxhelp
@@ -138,7 +143,7 @@ ppxCV83
 ./ppxCV8R03p3.zip
 ppxCV84
 ./ppxCV8R03p4.zip
-ppxCV841
+ppxCV85
 ./ppxCV8R03p5.zip
 ppxqjs
 ./ppxqjsT6.zip
@@ -237,6 +242,21 @@ PPc<br>
 ・ペイン間共用タブのタブグループの挙動を調整した(表示、*pane&nbsp;h+n&nbsp;の動作)<br>
 ・*logwindow&nbsp;&quot;表示文字列&quot;&nbsp;の表示文字列として改行文字を扱えるようにした<br>
 
+<hr><a href="./slppx.html">↑</a><a name="ppx2"><span>Paper Plane xUI</span></a> Version 1.97+2
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx197p2.zip">ppx197p2.zip</a> ( MultiByte版,&nbsp;663 Kbytes,&nbsp;2024-6-29,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppw197p2.zip">ppw197p2.zip</a> ( UNICODE版,676 Kbytes,&nbsp;2024-6-29,&nbsp;Windows NT 4.0 - Windows 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx64197p2.zip">ppx64197p2.zip</a> ( 64bit版,818 Kbytes,&nbsp;2024-6-29,&nbsp;Windows XP/2003 - Windows 11/2022 64bit)<br>
+<br>試験公開版です。 Version 1.97からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>1.97+1→1.97+2<br>
+All<br>
+・一行編集の自動補完でワイルドカードのエラーダイアログがでることがあるのを修正<br>
+PPc<br>
+・+1のビュワーで表示([V])で、マークファイルが対象になったのをカーソルに戻した<br>
+・複数ペイン共用タブの挙動調整(タブを閉じたとき、起動時のグループ選択タブ等)<br>
+・タブグループの切り替えコマンド(*pane&nbsp;selectgroup)を追加<br>
+・タブグループの初期名を指定可能に(_others:NewTabGroup)<br>
+・タブグループのD&amp;Dによるグループの入れ替えに対応<br>
+
 <hr><a href="./slppx.html">↑</a><a name="ppxdw"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 1.97
 <br><a href="image/ssppxdw.png"><img src="image/thppxdw.jpg" alt="動作画面" WIDTH="196" height="135"></a><br><br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw197.zip">ppxdw197.zip</a> ( 32bit版,&nbsp;1091 Kbytes,&nbsp;2024-5-25,&nbsp;Windows 7/2008 R2 - Windows 11/2022(32bit/64bit))<br>
@@ -252,6 +272,12 @@ PPc<br>
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw197p1.zip">ppxdw197p1.zip</a> ( 32bit版,&nbsp;725 Kbytes,&nbsp;2024-6-15,&nbsp;Windows 7/2008 R2 - Windows 11/2022(32bit/64bit))<br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw64197p1.zip">ppxdw64197p1.zip</a> ( 64bit版,831 Kbytes,&nbsp;2024-6-15,&nbsp;Windows 7/2008 R2 - Windows 11/2022 64bit)<br>
+<br>試験公開版です。 Version 1.97からの差し替え分のみとなってます。<br>
+
+<hr><a href="./slppx.html">↑</a><a name="ppxdw2"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 1.97+2
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw197p2.zip">ppxdw197p2.zip</a> ( 32bit版,&nbsp;728 Kbytes,&nbsp;2024-6-29,&nbsp;Windows 7/2008 R2 - Windows 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw64197p2.zip">ppxdw64197p2.zip</a> ( 64bit版,834 Kbytes,&nbsp;2024-6-29,&nbsp;Windows 7/2008 R2 - Windows 11/2022 64bit)<br>
 <br>試験公開版です。 Version 1.97からの差し替え分のみとなってます。<br>
 
 <hr><a href="./slppx.html">↑</a><a name="ppxarm"><span>Paper Plane xUI(ARM64版)</span></a> Version 1.97
@@ -398,7 +424,7 @@ R2<br>
 ・PPx.StayMode&nbsp;を追加<br>
 ・.NET&nbsp;コンポーネントの参照設定(PPx.AddReference)を追加<br>
 
-<hr><a href="./slppx.html">↑</a><a name="ppxCV841"><span>Paper Plane xUI  V8 Script Module(R3+4)</span></a>
+<hr><a href="./slppx.html">↑</a><a name="ppxCV85"><span>Paper Plane xUI  V8 Script Module(R3+5)</span></a>
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxCV8R03p5.zip">ppxCV8R03p5.zip</a> ( 183 Kbytes,&nbsp;2024-6-22,&nbsp;Windows 7/2008R2 - 11/2022(32bit/64bit), .NET 4.x)<br>
 <br>試験公開版です。差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>R3+5<br>
