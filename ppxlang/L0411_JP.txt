@@ -1,5 +1,5 @@
 +1.42|Mes0411	=#{ 日本語
-+|0000	196
++|0000	198
 0003	中止(&A)
 0004	再試行(&R)
 0005	無視(&I)
@@ -862,7 +862,7 @@ TABB	タブを入れ替える(&B)
 TABC	閉じる(&C)
 TABD	色なし(&D)
 TABE	独立窓にする(&E)
-TABH	隠す(&H)
++1.98|TABH	ペインを閉じる(&H)
 +1.92|TABI	タブ幅記憶(&V)
 TABK	タブをキーで選択(&K)
 TABL	ロック(&L)
@@ -878,6 +878,7 @@ TACP	ペインを閉じる(&A)
 TACR	右を全て閉じる(&R)
 TACT	グループ選択タブ(&T)
 TACU	全グループ表示(&U)
+TACV	グループを閉じる(&Q)
 TAPN	追加保存
 TASR	アスペクト比(X ppi x Y ppi)
 TATR	エントリ属性
@@ -1374,4 +1375,4 @@ XUUN	最新版です
 XUUQ	新しい %s があります。%s から更新しますか？
 -|7883	
 -|ITFC	
-};onpjclnodagimklpkeabjnmbpfmppejjbgjcdffnbhicphihjmpglcfdpjgglfclnjanhfcbochgcdmkacofcdoachhodcejnnkmhgiiidfocmngdmcffdfaahbnejgoaie 
+};kfnghgjjkkjfdcbejgbcejdjlefmlcinogigcmlmbdkoeemnjhflbhlmjlckoejhojpkinjnfahkalpnohlmmlelfdpjjbfigdplpcphikadnplfggbjdnpleekdfnacaie 

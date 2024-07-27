@@ -191,6 +191,7 @@ COM	,%M_Ccr,!X
 .	,%M_Ccr,!V
 DOC	,%M_Ccr,!V
 TXT	,%M_Ccr,!V
+MD	,%M_Ccr,!V
 :UTEXT	,%M_Ccr,!V
 :DOC95	,%M_Ccr,!V
 :DOC97	,%M_Ccr,!V

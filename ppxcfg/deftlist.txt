@@ -194,10 +194,11 @@
 		XNOO|noPPbなしで実行:X_wppb=@-1
 		XWBC|new ppb新規PPbで実行:X_wppb=@-2
 		XWBD|dialog time(sec)指定秒後ダイアログを表示:X_wppb=<i
-	XREY|use Regexp library使用する正規表現は
-		bregonig.dll/BRegExp.dll/IRegExpbregonig.dll/RegExp.dllを優先し、なければIRegExp:X_retyp=@0
-		bregonig.dll/BRegExp.dllbregonig.dll/BRegExp.dll(Perl互換)のみ:X_retyp=@1
+	XREY|use Regular Expressions library使用する正規表現は
+		bregonig.dll, BRegExp.dll, IRegExp, icu.dllbregonig.dll, BRegExp.dll, IRegExp, icu.dll の順に優先使用:X_retyp=@0
+		bregonig.dll, BRegExp.dllbregonig.dll / BRegExp.dll (Perl互換)のみ:X_retyp=@1
 		IRegExpIRegExp(WSH)のみ:X_retyp=@2
+		icu.dllicu.dll(Win10 1903 以降)のみ:X_retyp=@3
 	XDLO|archiver log書庫操作時のログ出力
 		XNOO|no outputなし:X_dlog=@0
 		XDLP|error logエラー時のみ:X_dlog=@1
@@ -295,8 +296,10 @@
 			pathパスのみ:X_tcap=@s0
 			[id]path[id]パス:X_tcap=@s1
 			userユーザ定義(%可):X_tcap=<s
-		XBGS|show selected tab groupsアクティブ・選択中のタブグループのみ常時表示:X_combos+4=?B11
-		XBGT|show tab group selectorタブグループを選択するタブを表示:X_combos+4=?B12!
+		XBGC|tab groupタブグループ
+			XBGS|show selected tab groupsアクティブ・選択中のタブグループのみ常時表示:X_combos+4=?B11
+			XBGT|show tab group selectorタブグループを選択するタブを表示:X_combos+4=?B12!
+			XBGD|group default nameグループ初期名:_others:NewTabGroup=<s
 		XBCL|new tab width sort新規タブは名前順となる位置:X_combos=?B21
 		XBCK|new tab to active right新規タブはアクティブタブの右隣:X_combos=?B20
 		XBCM|up dir tab after close窓を閉じたときに親ディレクトリタブがあれば、そこに移動:X_combos=?B22

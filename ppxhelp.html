@@ -197,12 +197,14 @@ PPx 自体を起動させるために必要なファイルのうち、別途用�
 <dt></dt><dd>動作確認 Ver.2.41</dd>
 <dt></dt><dd>UNIXやLinuxで使われている「tar」等の書庫を操作する為に 吉岡 恒夫氏他が DLL 化したものです。</dd>
 <dt></dt><dd><a href="http://www.csdinc.co.jp/archiver/" target="_top">http://www.csdinc.co.jp/archiver/</a></dd>
-<dt></dt><dd>※市丸 剛氏( <a href="http://ayakawa.o.oo7.jp/" target="_top">http://ayakawa.o.oo7.jp/</a> )が 64bit用に調整した内容が反映されています。</dd>
+<dt></dt><dd>※市丸 剛氏( <a href="http://ayakawa.x0.com/" target="_top">http://ayakawa.x0.com/</a> )が 64bit用に調整した内容が反映されています。</dd>
 <dt></dt>
 <dt>7-ZIP64.DLL</dt><dd>対応ファイル：.7z, .zip</dd>
 <dt></dt><dd>動作確認 Ver.9.20.00.02</dd>
 <dt></dt><dd>7-ZIP32.DLLを 市丸 剛氏が 64bit用に調整したものです。</dd>
-<dt></dt><dd><a href="http://ayakawa.o.oo7.jp/" target="_top">http://ayakawa.o.oo7.jp/</a></dd>
+<dt></dt><dd><a href="https://ayakawa.x0.com/" target="_top">https://ayakawa.x0.com/</a></dd>
+<dt></dt><dd>上記を基に、Yak!氏と x@rgs氏がファイル名の UTF-8 処理を強化したものが、配布されています。</dd>
+<dt></dt><dd><a href="https://frostmoon.sakura.ne.jp/" target="_top">https://frostmoon.sakura.ne.jp/</a></dd>
 <dt></dt>
 <dt>UNRAR64J.DLL</dt><dd>対応ファイル：.rar</dd>
 <dt></dt><dd>動作確認 Ver.0.12</dd>
@@ -210,11 +212,16 @@ PPx 自体を起動させるために必要なファイルのうち、別途用�
 <dt></dt><dd>また、unrar64.dll を併用します。</dd>
 <dt></dt><dd><a href="http://www.vesta.dti.ne.jp/~tsato/index.html" target="_top">http://www.vesta.dti.ne.jp/~tsato/index.html</a></dd>
 <dt></dt>
-<dt><b>その他</b></dt>
+<dt><b>その他(拙作)</b></dt>
 <dt>7zca32.dll, 7zca64.dll</dt><dd>対応ファイル：.7z, .zip, .lzh, .cab, .rar, .arj 等</dd>
-<dt></dt><dd>動作確認 Ver.0.4</dd>
+<dt></dt><dd>動作確認 Ver.0.5</dd>
 <dt></dt><dd>Igor Pavlov 氏作の「7zip」の 7z.dll を用いて各種書庫等の展開を可能にします。</dd>
 <dt></dt><dd>試作品ですが、64bit版で .cab, .lzh, .arj の書庫を展開したいときに活用できます。※ .lzh は -lh5- 形式のみです。</dd>
+<dt></dt>
+<dt>unzzip32.dll, unzzip64.dll</dt><dd>対応ファイル：.zip</dd>
+<dt></dt><dd>動作確認 Ver.1.0</dd>
+<dt></dt><dd>Zip 書庫の展開を可能にします。7-zip の Zip 書庫の部分展開は、時間が掛かるため（セントラルディレクトリを使わずにファイル全体を走査しているようです）、高速部分展開のために用意しています。</dd>
+<dt></dt>
 <dt></dt></dl><br>
 <a name="susie"></a><b>・Susie Plug-in(*.SPI, *.SPH, *.SPHA)</b> 対応ファイル：*.lzh, *.zip, *.jpg 等<br>
 <br>
@@ -245,21 +252,29 @@ PPcのクリップボードからのビットマップの貼り付けのとき�
 ・正規表現ライブラリ</b><br>
 <br>
 下記一覧のうち、いずれかがあれば正規表現によるファイル名の比較や、パターン指定による文字置換を行うことができます。<br>
-(2)bregonig.dll か(3)BREGEXP.DLL は、PPx と同じディレクトリか、環境変数 PATH で参照されるディレクトリに用意すれば使用します。<br>
+(1) bregonig.dll か (3) BREGEXP.DLL は、PPx と同じディレクトリか、環境変数 PATH で参照されるディレクトリに用意すれば使用します。<br>
 現在、どのライブラリを使用しているかを確かめるには、「%I&quot;%*regexp(?)」を実行してください。現在使用しているライブラリが表示されます。<br>
 <br>
-<b>(1)</b>Windows Script 2.0以上<br>
-Windows Script 2.0 以上に含まれている IRegExp を使用できます。<br>
-Windows Script は Windows98SE / Windows2000 以降であれば標準で 2.0以上がインストールされています。Windows95, 98, NT4.0は、別途インストールする必要があります。<br>
-尚、IRegExp は変換指定 ( tr/ ) を使用できません。<br>
-<br>
-<b>(2)</b>bregonig.dll<br>
+<b>(1) bregonig.dll</b><br>
 K.Takata 氏作の bregonig.dll <a href="http://k-takata.o.oo7.jp/" target="_top">http://k-takata.o.oo7.jp/</a> を使用できます。<br>
+正規表現エンジンとして、鬼車 (Oniguruma) を改良した鬼雲 (Onigmo, Oniguruma-mod) が使われています。<br>
+正規表現の書式については、bregonig.dll の配布書庫中のドキュメントを参照してください。<br>
 <br>
-<b>(3)</b>BREGEXP.DLL<br>
+<b>(2) icu.dll</b><br>
+Windows 10 1903 以降に標準でインストールされている icu.dll (International Components for Unicode,  <a href="http://site.icu-project.org/" target="_top">http://site.icu-project.org/</a>) を使用できます。<br>
+正規表現の書式については、 <a href="https://unicode-org.github.io/icu/userguide/strings/regexp.html" target="_top">https://unicode-org.github.io/icu/userguide/strings/regexp.html</a> を参照してください。<br>
+<br>
+<br>
+<b>(3) Windows Script 2.0以上</b><br>
+Windows Script 2.0 以上に含まれている IRegExp を使用できます。<br>
+Windows Script は Windows98SE / Windows2000 以降 ～ Windows 11 であれば標準で 2.0以上がインストールされています。Windows95, 98, NT4.0は、別途インストールする必要があります。<br>
+尚、IRegExp は、VBscript の一部であるために 2023/10 から非推奨になっており、Windows 11以降では無効化されている場合があります。そのときは有効化の作業が必要です<br>
+また、変換指定 ( tr/ ) を使用できません。<br>
+<br>
+<b>(4) BREGEXP.DLL</b><br>
 Tatsuo Baba 氏作の BREGEXP.DLL <a href="http://www.hi-ho.ne.jp/babaq/index.html" target="_top">http://www.hi-ho.ne.jp/babaq/index.html</a> を使用できます。<br>
-尚、bregexp は、UNICODE文字に対応していません。Shift_JISの範囲に限定されます。<br>
-64bit版bregexpはありません。<br>
+尚、bregexp は、UNICODE文字に対応していないため、UNICODE / 64版では、Shift_JIS の範囲外の文字が &quot;?&quot; 等に変換されます。<br>
+また、64bit版がなく、2004/04/29 以降はメンテナンスされていないため、非推奨とします。<br>
 <a name="CMigemo"></a><br>
 <b>・C/Migemo</b><br>
 <br>
@@ -988,7 +1003,7 @@ VA～VZ の ID が割り当てられます。<br>
 ID指定の詳細は、<a href="#ppxidformat">PPxのID指定方法</a> を参照してください。<br>
 <hr>
 <a name="unicode"></a><a name="MultiByte 版と UNICODE 版の違い"></a><h3>全般 - MultiByte 版と UNICODE 版の違い</h3><br>
-<a name="MultiByte"></a><a name="UNICODE"></a>MultiByte版とUNICODE版との違いは、基本的にはパスやファイル名等の文字を扱う方法がMultiByteかUNICODEかであるという点です。しかし、これに伴って細かな相違点や版間の互換性があるのでここに説明します。<br>
+<a name="MultiByte"></a><a name="UNICODE"></a>MultiByte版とUNICODE版との違いは、基本的にはパスやファイル名等の文字を扱う方法が MultiByte(システムの文字コード) か UNICODE(UTF-16) かであるという点です。しかし、これに伴って細かな相違点や版間の互換性があるのでここに説明します。<br>
 <br>
 ※MultiByte版とUNICODE版のどちらかを使うといいのかがよく分からない場合、次を目安にしてください。<br>
 <br>
@@ -1009,7 +1024,7 @@ MultiByte版を使う<br>
 <br>
 ソフトウェア内では、いろいろな文字に固有の値を割り当てて扱いますが、この割当て方法に１つのみではなく、色々あります。<br>
 <br>
-<b>MultiByte文字</b>は、１文字を表すのに言語毎に文字の割当て方が違います。アメリカならANSI, ASCII(1byte固定)、日本ならShift_JIS(1又は2byte)などがあります。このため、扱う言語が変わると内容が変わっていなくても、正しい文字を示すことができなくなったり、パス区切り(\)を間違って解釈したりすることがあります。<br>
+<b>MultiByte文字</b>は、１文字を表すのに言語毎に文字の割当て方が違います。アメリカならANSI, ASCII(1byte固定)、日本ならShift_JIS(1又は2byte)、UTF-8 などがあります。このため、扱う言語が変わると内容が変わっていなくても、正しい文字を示すことができなくなったり、パス区切り(\)を間違って解釈したりすることがあります。<br>
 尚、PPxではMultiByte文字に用語統一していますが、同種の文字を表す単語として、OEM文字、DBCS(Double Byte Character Set)、MBCS(Multi Byte Character Set)等があります。<br>
 <br>
 <b>UNICODE文字</b>は、様々な言語の文字を同時に扱うために規格されたものなので、多くの言語の文字を扱うことができます。<br>
@@ -1017,9 +1032,11 @@ MultiByte版を使う<br>
 <hr><br>
 <b>相違点</b><br>
 <br>
-・Win9x系では、UNICODE版を使用できません。これは Win9x系が WinNT系のサブセットであることから来るOSの制限です。<br>
+・Win9x系では、UNICODE版を使用できません。これは Win9x系が WinNT系のサブセットであり、API が UNICODE 文字を扱えないことから来るOSの制限です。<br>
 <br>
-・各版で扱える文字が逆の版で扱えない場合があります。例えば、UNICODE文字は、MultiByte文字より扱うことができる文字の種類が多いので、UNICODE版で扱えた文字がMultiByte版で扱えない場合があります。逆に、MultiByte版で仕様外の文字を無理矢理使うことができる場合がありますが、このような文字はUNICODE版では扱えません。<br>
+・各版で扱える文字が逆の版で扱えない場合があります。例えば、UNICODE文字は、MultiByte文字より扱うことができる文字の種類が多いので、UNICODE版で扱えた文字がMultiByte版で扱えない場合があります。逆に、MultiByte版で仕様外の文字を無理矢理使うことができる場合がありますが、その文字はUNICODE版では扱えません。<br>
+<br>
+・MultiByte版は、UNICODE版で 約1000文字以上扱えた機能であっても、約1000文字以内の制限のままである機能があります。<br>
 <br>
 ・MultiByte版は、UNICODE版で扱えた長さのエントリ名が扱えない場合があります。例えば、漢字のみで書かれた200文字の長さのファイル名は、UNICODE版で扱うことができますが、MultiByte版では扱えません。<br>
 <br>
@@ -1037,7 +1054,7 @@ MultiByte版を使う<br>
 <br>
 ・UNICODE/Multibyte版間の機能の有無の差違は、Windowsの仕様によるもの以外はありません。<br>
 <br>
-・Multibyte版は、UNICODE版と文字数制限が異なる機能があります。<br>
+・Multibyte版は、UNICODE版よりも文字数制限が厳しい機能があります。<br>
  （UNICODE版よりも文字数が短くてもエラーになったり、末尾が省略されたりする機能があります。）<br>
 <br>
 ・Windowsの仕様による版間の機能の差違としては、次の通りです。<br>
@@ -4919,7 +4936,7 @@ filenameが指定されている時はそのファイルによる判別を行い
 <dt><b>i</b></dt><dd>起動完了まで待ちます。実行したアプリケーションの起動が完了するまで待ちます。GUIアプリケーションならウィンドウの表示がされたときが起動完了時になります。コンソールアプリケーションなら実行開始したときが起動完了時になります。</dd>
 <dt><b>I</b></dt><dd>PPxのキーコマンド(xx = key1 key2... や %K&quot;key1 key1&quot;)を実行しているときにエラーが発生しても、実行を中止しないで次のコマンドを実行します。ユーザによるキャンセル操作を行った場合は常に中止します。</dd>
 <dt><b>s</b></dt><dd>順番に一つずつ実行します。実行したアプリケーションが終了するまで待機し、終了してから次のコマンドを実行します。</dd>
-<dt><b>q</b></dt><dd>静かに待機します。上のオプション s による待機が一定時間経過すると、待機をキャンセルできるようにするダイアログを表示しますが、これを表示しないようにします。また、PPbの空き待ちダイアログも非表示にします。</dd>
+<dt><b>q</b></dt><dd>静かに待機します。オプション i, s による待機が一定時間経過すると、待機をキャンセルできるようにするダイアログを表示しますが、これを表示しないようにします。また、PPbの空き待ちダイアログも非表示にします。</dd>
 <dt><b>T</b></dt><dd>実行後、レスポンスファイル(%@, %a)を削除します。尚、%Os を指定しないと、アプリケーション実行中にレスポンスファイルを削除してしまうことがあります。</dd>
 <dt><b>W</b></dt><dd>(PPb)実行後キー入力待ちを行います。PPbで１つコマンドを実行した後に、「キーを押すと続行します...」を表示し、入力を待ちます。何かキーを押すか、マウスクリックした後に、次のコマンドを実行します。</dd>
 <dt></dt>
@@ -6102,7 +6119,9 @@ itemnameの頭に ?b:n; か ?c:n; が含まれているときは、指定した�
 <br>
 ※ %*regexp(&quot;%1&quot;,&quot;s#^(..).*#$1#&quot;) と、区切りに使用する記号を別の記号に変更することができます。<br>
 <br>
-※%*regexp(?) と指定したときは、使用する正規表現ライブラリの名称( IRegExp / bregonig / BREGEXP )が取得できます。<br>
+※%*regexp(?) と指定したときは、使用する正規表現ライブラリの名称 ( bregonig, BREGEXP, IRegExp, ICU ) が取得できます。ライブラリが見つからなかったり、読み込み失敗したときは none になります。<br>
+<br>
+※ 32bit 版で IRegExp, ICU を使用したとき、%*regexp の結果は 1000 文字以内に制限されます。<br>
 <hr><br>
 <a name="PPxCmd31"><b>%*screendpi(<i>[ID]</i>) 画面の解像度</b></a><br>
 <br>
@@ -7995,10 +8014,11 @@ parameterとして、どのペインかを表すIDが指定できます。<br>
 <dt>*pane newgroup <i>[pane] [&quot;group name&quot; [&quot;path&quot;]] [option]</i></dt>
 <dt></dt><dd>グループを１つ追加し、そこにタブを追加します。</dd>
 <dt></dt><dd>paneが指定されているときは、そのペインにタブを追加します。<a href="#paneopenclose">窓増減時の注意</a></dd>
-<dt></dt><dd>&quot;group name&quot; を指定すると、グループ名を指定できます。<b>必ず「&quot;」で括る必要があります。</b>未指定又は「&quot;&quot;」の時は、「group 連番」になります。</dd>
+<dt></dt><dd>&quot;group name&quot; を指定すると、グループ名を指定できます。<b>必ず「&quot;」で括る必要があります。</b>未指定又は「&quot;&quot;」の時は、「group 連番」になります。「group」は、 _others:NewTabGroup で変更できます。</dd>
 <dt></dt><dd>&quot;path&quot; を指定すると、そのパスを開きます。ただし、<b>必ず「&quot;」で括る必要があり、更に &quot;group name&quot; が必要です。</b>グループ名前を指定しなくても、*pane newgroup &quot;&quot; &quot;path&quot; 等とする必要があります。</dd>
 <dt></dt><dd>option は、*pane newtab -noactive -k %%K&quot;@^A&quot; などと、<a href="#ppcoption">起動時オプション</a> の -bootid, -k, -noactive を使用することができます。</dd>
-<dt></dt><dd>関連: newpane, newtab</dd>
+<dt></dt><dd>関連: selectgroup, newpane, newtab</dd>
+<dt></dt>
 <dt>*pane newpane <i>[ID] [&quot;path&quot;] [option]</i></dt>
 <dt></dt><dd>ペインを１つ追加します。追加したペインに表示される窓は、IDが指定されていればそのIDの窓です。IDが無ければ、新規PPcを用意します。<a href="#paneopenclose">窓増減時の注意</a></dd>
 <dt></dt><dd>&quot;path&quot; を指定すると、そのパスを開きます。<b>必ず「&quot;」で括る必要があります。</b></dd>
@@ -8021,6 +8041,13 @@ parameterとして、どのペインかを表すIDが指定できます。<br>
 <dt>*pane select <i>[ID][,pane ID]</i></dt>
 <dt></dt><dd>指定したIDにフォーカスを設定します。ペインが設定されていなければ現在ペインを指定したIDに変更します。pane IDが指定されていれば、そのペインを切り替え対象にします。</dd>
 <dt></dt><dd>関連: change, focus</dd>
+<dt></dt>
+<dt>*pane selectgroup <i>[ID][&quot;group name&quot;|g(index)]</i></dt>
+<dt></dt><dd>指定したIDがあるペインのタブグループを変更します。</dd>
+<dt></dt><dd>&quot;group name&quot; を指定した場合は、該当グループ名のグループに変更します。</dd>
+<dt></dt><dd>頭に g を付けた値はグループの位置で指定します。</dd>
+<dt></dt><dd>例) g0 = １番目グループ   g+1 = 次のグループ   g-1 = 前のグループ</dd>
+<dt></dt><dd>関連: newgroup</dd>
 <dt></dt>
 <dt>*pane shift <i>[ID], dir</i></dt>
 <dt></dt><dd>指定したIDのペインをdirで指定した量だけ左右に移動します。</dd>
@@ -8905,6 +8932,7 @@ tr/変換対象文字/変換文字/<br>
 <a href="#BREGEXP">正規表現ライブラリ</a>があれば正規表現が使用できます。使用する正規表現はライブラリに依存します。ライブラリの切り替えはX_retypで指定できます。<br>
  bregonig.dll : Perl 互換 <a href="http://k-takata.o.oo7.jp/mysoft/bregonig.html" target="_top">http://k-takata.o.oo7.jp/mysoft/bregonig.html</a><br>
  bregexp.dll : Perl 互換 <a href="http://www.hi-ho.ne.jp/babaq/bregexp.html" target="_top">http://www.hi-ho.ne.jp/babaq/bregexp.html</a><br>
+ icu.dll : <a href="https://unicode-org.github.io/icu/userguide/strings/regexp.html" target="_top">https://unicode-org.github.io/icu/userguide/strings/regexp.html</a><br>
  IRegExp : WSH VBScript <a href="https://learn.microsoft.com/ja-jp/previous-versions/windows/scripting/cc392437(v=msdn.10)" target="_top">https://learn.microsoft.com/ja-jp/previous-versions/windows/scripting/cc392437(v=msdn.10)</a><br>
 Perl互換の場合は、正規表現による置換(s/src/dest/)とパターンによる変換(tr/src/dest/)を使用できます。修飾子はgicds等が指定できます。<br>
 WSH VBScriptの場合は、置換(s/src/dest/)のみ使用できます。修飾子はgiが指定できます。変換(tr/src/dest/)はbregonig.dll か bregexp.dllを使用します。<br>
@@ -10169,12 +10197,14 @@ PPcのごみ箱に移動して削除[D]を使うとき、エクスプローラ�
 ワイルドカードなどの正規表現に、どの<a href="#BREGEXP">正規表現ライブラリ</a>を使用するかどうかの設定です。文字の範囲指定の時、UNICODE順かShift_JIS順かに気を付ける必要があります。<br>
 bregonig.dllは、MultiByte/UNICODE対応で、Perl互換の正規表現が使えます。<br>
 BRegExp.dllは、MultiByte用なので、UNICODE版で使用するときに使用できる文字の制限がありますが、Perl互換の正規表現が使えます。<br>
-IRegExp はWindows Script Host(WSH)の正規表現ライブラリで、UNICODEに対応しています。<br>
+IRegExp は Windows Script Host(WSH) の正規表現ライブラリで、UNICODEに対応しています。<br>
+icu.dll は、UNICODEに対応しています。<br>
 bregonig.dllと、BRegExp.dllの両方があった場合は、bregonig.dllを使用します。<br>
 <br>
-0 bregonig.dllかBRegExp.dllを優先して使用し、なければIRegExpを使用します。<br>
-1 bregonig.dllかBRegExp.dll(Shift_JIS相当限定, Perl互換)のみを使用し、無ければエラーになります。<br>
-2 IRegExp(UNICODE対応)のみを使用し、無ければエラーになります。<br>
+0 bregonig.dll, BRegExp.dll, IRegExp, icu.dll の順に優先して使用します。<br>
+1 bregonig.dll か BRegExp.dll(Shift_JIS相当限定, Perl互換)のみを使用し、無ければエラーになります。<br>
+2 IRegExp のみを使用し、無ければエラーになります。<br>
+3 icu.dll のみを使用し、無ければエラーになります。<br>
 <hr><br>
 <a name="X_execs"><b>X_execs</b></a>&nbsp;&nbsp;(おまけ)初めて実行する実行可能ファイルを警告<br>
 <br>
@@ -13155,6 +13185,7 @@ PPc<br>
 　<b>exdset</b> 1 を指定すると、<a href="#XC_dset">XC_dset</a>で、<a href="#wildcard">ワイルドカード</a>や -ppx: 指定ができるようになります。<br>
 　<b>imgext</b> クリップボードの貼り付け(^[V]) でファイルでない bmp画像を貼り付けて保存するときの画像ファイルの種類を、拡張子で指定します。初期値は png です。拙作 WIC Susie Plug-in を使用しているときは、png, jpg, bmp, gif, tif, jxr, wdp が指定可能です。<br>
 　<b>newtab</b> 新規タブを開いたとき開くパスを指定します。マクロ文字が使用できます。<br>
+　<b>NewTabGroup</b> タブグループを作成するときに使用される初期名です。<br>
 　<b>PPcFopMode</b> ファイル操作(*ppcfile)の動作を指定します。<br>
 　ファイル操作ダイアログを正常に閉じることができないとき、「PPcFile: Fixed Thread terminate lock」が通知されます。この項目を 1 又は 2 に設定するとこの現象を回避できます。<br>
 　0 又は 未設定  通常の動作(4相当)です。<br>
@@ -13762,7 +13793,7 @@ Configuration file &amp; Memo <a href="http://toro.d.dooo.jp/dlcfg.html" target=
 動作画面 <a href="http://toro.d.dooo.jp/ssppx.html" target="_top">http://toro.d.dooo.jp/ssppx.html</a> にいくつかサンプルを用意しています。<br>
 <hr><br>
 <a name="HowToCust2"><b> ポータブル化</b></a><br>
-<a name="ポータブル化"><b>ポータブル化</b></a>ポータブル化（インストールディレクトリのみで使用可能にする）を行うには以下の項目を確認してください。<br>
+<a name="ポータブル化"><b>ポータブル化</b></a>（インストールディレクトリのみで使用可能にする）を行うには以下の項目を確認してください。<br>
 <br>
 ・設定ファイルを実行ファイルと同じ場所に用意する作業が必要です。(<a href="#changedatpath">変更方法</a>)<br>
 <br>
@@ -13771,21 +13802,21 @@ Configuration file &amp; Memo <a href="http://toro.d.dooo.jp/dlcfg.html" target=
   P_susieP = susie<br>
 <br>
 ・各種コマンドは %0 (PPxディレクトリ)からの相対指定で指定する。<br>
-  例) %0%\\command.exe<br>
+  例) %0%\command.exe<br>
 <br>
 ・環境変数は FIRSTEVENT を使って、起動時に一括登録できます。<br>
-  例) 環境変数 path, CLANG を起動時に登録する<br>
-  KC_main = {<br>
-  FIRSTEVENT = *set path+=%0\DLL;%0\..%\BIN<br>
-      *set CLANG=C<br>
-  }<br>
-<br>
+  例) 環境変数 path, CLANG を起動時に登録する<pre>
+  KC_main = {
+  FIRSTEVENT = *set path+=%0%\DLL;%0%\..\BIN
+      *set CLANG=C
+  }
+</pre><br>
 ・起動時に環境変数%PATH%に追加ディレクトリを指定すると、EXEファイルやDLLファイルをパス指定なしで使用できるようになります。<br>
-  例) PPc を起動したときに、PPxディレクトリ\DLL と PPxディレクトリ\BIN に PATH を通し、これらのディレクトリに書庫DLLや各種コマンドを使用できるようにする。<br>
-  KC_main = {<br>
-  FIRSTEVENT = *set path+=%0\DLL;%0\..%\BIN<br>
-  }<br>
-<br>
+  例) PPc を起動したときに、PPxディレクトリ\DLL と PPxディレクトリ\BIN に PATH を通し、これらのディレクトリに書庫DLLや各種コマンドを使用できるようにする。<pre>
+  KC_main = {
+  FIRSTEVENT = *set path+=%0%\DLL;%0%\..\BIN
+  }
+</pre><br>
 <hr><br>
 <a name="HowToCust3"><b> キーカスタマイズの方法</b></a><br>
 <br>
@@ -14239,6 +14270,79 @@ P_susie 中の該当名の設定を「B000」に変更すると、使用禁止�
 また、特に指定をしないと、Plug-inが指定している拡張子にかかわらず全ての種類のファイルに対してPlug-inが対応しているかどうかをチェックします。カスタマイザで、既定の拡張子 を指定して「拡張子設定」を行うと、その拡張子のみPlug-inによるチェックを行います。<br>
 <br>
 普段は使用しないで、手動で指定（PPcのCtrl+Enterメニューの移動形式や \[U] で指定 / PPv の [:] で指定）したいときは、「自動判別」のチェックを外してください。<br>
+<br>
+<br>
+<b>統合アーカイバDLL の挙動変更</b><br>
+統合アーカイバDLL は、 P_arc に記載した内容をしたがって利用しています。このため、細かい挙動は、P_arc の記載内容を各種 DLL のマニュアルに従って変更することで、挙動を変えることができます。<br>
+<br>
+<b>7-zip32/64.dll の調整例</b><br>
+・初期設定では、１ファイル展開（PPvによる表示等）の経過ダイアログを表示しています。<br>
+　ダイアログ表示が目障りの場合、下記設定にように１ファイル展開( s )に -hide オプションを指定することで、ダイアログ表示をなくすことができます。ただし、中断操作ができなくなります。<br>
+<br>
+・7z.dll 対応版 7-zip32/64.dll (x@rgs氏製作)の各種書庫対応を有効するには、下記設定例のように書庫検知方法 8 から 0 にする必要があります。<br>
+　ただし、7-zip32/64.dll が使用して書庫検知を行うため、PPc の Enter 等のファイル判別に要する時間が増えます。<br>
+<pre>
+P_arc&nbsp;&nbsp;= {
+7-ZIP64.DLL&nbsp;&nbsp;= B10000000000010,0,SevenZip
+&nbsp;&nbsp;i=.7z;.zip
+&nbsp;&nbsp;a=x &quot;%1&quot;&gt; &quot;-o%!2&quot; *
+&nbsp;&nbsp;e=e &quot;%1&quot;&gt; &quot;-o%!2&quot; %@
+&nbsp;&nbsp;s=e &quot;%1&quot; -hide&gt; &quot;%2&quot; &quot;%C&quot;
+&nbsp;&nbsp;y=7-ZIP32.DLL
+&nbsp;&nbsp;p:7z= a&gt; &quot;%2&quot; %@ %S&quot;-r&quot;
+&nbsp;&nbsp;p:zip= a -tzip -mx=7&gt; &quot;%2&quot; %@ %S&quot;-r&quot;
+&nbsp;&nbsp;eo:overwrite=-aoa
+&nbsp;&nbsp;eo:skip=-aos
+&nbsp;&nbsp;eo:password=-p%E
+&nbsp;&nbsp;po:password=-p
+&nbsp;&nbsp;po:AES256crypt=-mem=AES256
+&nbsp;&nbsp;po:method:no compress=-mx=0
+&nbsp;&nbsp;po:method:normal=-mx=5
+&nbsp;&nbsp;po:method:high=-mx=7
+&nbsp;&nbsp;po:method:ultra=-mx=9
+&nbsp;&nbsp;po:exe=-sfx
+&nbsp;&nbsp;po:split 10M=-v10m
+7-ZIP32.DLL&nbsp;&nbsp;= B10000000000011,8,SevenZip
+&nbsp;&nbsp;i=.7z;.zip
+&nbsp;&nbsp;a=x &quot;%1&quot;&gt; &quot;-o%!2&quot; *
+&nbsp;&nbsp;e=e &quot;%1&quot;&gt; &quot;-o%!2&quot; %@
+&nbsp;&nbsp;s=e &quot;%1&quot; -hide&gt; &quot;%2&quot; &quot;%C&quot;
+&nbsp;&nbsp;y=7-ZIP64.DLL
+&nbsp;&nbsp;p:7z= a&gt; &quot;%2&quot; %@ %S&quot;-r&quot;
+&nbsp;&nbsp;p:zip= a -tzip -mx=7&gt; &quot;%2&quot; %@ %S&quot;-r&quot;
+&nbsp;&nbsp;eo:overwrite=-aoa
+&nbsp;&nbsp;eo:skip=-aos
+&nbsp;&nbsp;eo:password=-p%E
+&nbsp;&nbsp;po:password=-p
+&nbsp;&nbsp;po:AES256crypt=-mem=AES256
+&nbsp;&nbsp;po:method:no compress=-mx=0
+&nbsp;&nbsp;po:method:normal=-mx=5
+&nbsp;&nbsp;po:method:high=-mx=7
+&nbsp;&nbsp;po:method:ultra=-mx=9
+&nbsp;&nbsp;po:exe=-sfx
+&nbsp;&nbsp;po:split 10M=-v10m
+}
+</pre><br>
+<br>
+<br>
+<b>unrar32/64.dll の調整例</b><br>
+・初期設定では、１ファイル展開（PPvによる表示等）の経過ダイアログを表示しています。<br>
+　ダイアログ表示が目障りの場合、下記設定にように１ファイル展開( s )に -q オプションを指定することで、ダイアログ表示をなくすことができます。ただし、中断操作ができなくなります。<br>
+<br>
+<pre>
+P_arc&nbsp;&nbsp;= {
+UNRAR64J.DLL&nbsp;&nbsp;= B10100010000000010,5,Unrar
+&nbsp;&nbsp;i=.rar
+&nbsp;&nbsp;a=-x -u&gt; &quot;%1&quot; &quot;%!2%\&quot;
+&nbsp;&nbsp;e=-e -u -s&gt; &quot;%1&quot; &quot;%!2%\&quot; %@
+&nbsp;&nbsp;s=-e -u -s -q&gt; &quot;%1&quot; &quot;%2&quot; &quot;%C&quot;
+UNRAR32.DLL&nbsp;&nbsp;= B10100010000000011,5,Unrar
+&nbsp;&nbsp;i=.rar
+&nbsp;&nbsp;a=-x -u&gt; &quot;%1&quot; &quot;%!2%\&quot;
+&nbsp;&nbsp;e=-e -u -s&gt; &quot;%1&quot; &quot;%!2%\&quot; %@
+&nbsp;&nbsp;s=-e -u -s -q&gt; &quot;%1&quot; &quot;%2&quot; &quot;%C&quot;
+}
+</pre><br>
 <hr>
 <a name="trouble"></a><a name="全般"></a><h3>トラブル、対策 - 全般</h3><br>
 ・<a href="#trouble1"> 起動しない</a><br>
