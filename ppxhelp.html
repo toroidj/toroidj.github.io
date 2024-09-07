@@ -5446,8 +5446,8 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 <a href="#PPxCmd112">PPc</a><br>
 <a href="#PPxCmd157">PPc / PPv</a><br>
 <a href="#PPxCmd158">PPv</a><br>
-<a href="#PPxCmd166">ツリー窓</a><br>
-<a href="#PPxCmd167">Windowsログイン・電源管理</a><br>
+<a href="#PPxCmd167">ツリー窓</a><br>
+<a href="#PPxCmd168">Windowsログイン・電源管理</a><br>
 <hr><br>
 
 <a name="PPxCmd1"><b>PPx共用</b></a><br>
@@ -5636,13 +5636,14 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 ・<a href="#PPxCmd163">*jumpline <i>[L|Y][行番号][,桁番号]</i> 行番号指定カーソル移動</a><br>
 ・<a href="#PPxCmd164">%*selecttext 選択テキスト</a><br>
 ・<a href="#PPxCmd165">*viewoption <i>各種オプション</i> 表示関係オプション</a><br>
+・<a href="#PPxCmd166"> %*viewoption <i>各種オプションの状態を取得</i></a><br>
 <hr><br>
 
-<a name="PPxCmd166"><b>ツリー窓</b></a><br>
+<a name="PPxCmd167"><b>ツリー窓</b></a><br>
 ・<a href="#treecmd">*tree type ツリー窓の操作(PPc, 一行編集)</a><br>
 <hr><br>
 
-<a name="PPxCmd167"><b>Windowsログイン・電源管理</b></a><br>
+<a name="PPxCmd168"><b>Windowsログイン・電源管理</b></a><br>
 ・*screensaver スクリーンセーバを起動<br>
 ・*monitoroff モニタを省電力モードにする<br>
 ・*lockpc コンピュータをロックする<br>
@@ -6055,7 +6056,7 @@ itemnameの頭に ?b:n; か ?c:n; が含まれているときは、指定した�
 <hr><br>
 <a name="InsertSource"><b>%*InsertSource(<i>filename [-notrim]</i>) テキストファイル（コマンドライン）の挿入</b></a><br>
 <br>
-バッチファイルとして使用するテキストファイルを挿入します。<br>
+バッチファイルとして使用するテキストファイルをコマンドラインに挿入します。<br>
 テキストファイルに記載されたマクロ文字を展開したり、コマンドが実行されたりします。テキストファイルの末尾の改行は１つ分削除されます。-notrim オプションを付けると削除しません。<br>
 例) %*insertsource(&quot;c:\command\ppx_batch.txt&quot;) ppx_batch.txt の内容をバッチ実行します。<br>
 <hr><br>
@@ -6549,16 +6550,29 @@ command の先頭の文字が「-」や「/」のときは、「&quot;-…&quot;
 <b>-newgroup</b>&nbsp;&nbsp;プロセスグループを分離します。プロセスグループは、コンソールでCtrl+C / Ctrl+Breakを行ったときのシグナルが送信される範囲となります。<br>
 <br>
 <b>-pos:x,y</b>&nbsp;&nbsp;表示位置を指定します。前回の表示位置で表示するソフトに対しては機能しません。このため、cmd.exe等の一部のソフトのみ使用できます。<br>
+<br>
 <b>-size:width,height</b>&nbsp;&nbsp;窓の大きさを指定します。前回の表示位置で表示するソフトに対しては機能しません。このため、一部のソフトのみ使用できます。<br>
 <br>
-<b>-log[:utf8]</b>&nbsp;&nbsp;コンソールアプリの標準出力をログ窓に表示します。PPcからの実行の時のみ有効です。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;オプションとしてutf8を指定すると出力の文字コードをUTF-8として扱います。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※utf8オプションはMultiByte版では機能しません。<br>
+<b>-io[:option1[,option2...]]</b>&nbsp;&nbsp;標準入出力関係の指定を行います。<br>
+&nbsp;&nbsp;数値&nbsp;&nbsp;標準入出力のコードページを数値で指定します。<br>
+&nbsp;&nbsp;utf8, utf16, unicode, system, ansi, sjis, us<br>
+&nbsp;&nbsp;&nbsp;&nbsp;標準入出力のコードページを変更します。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;規定値は system(sjis) か utf16 の自動判別です。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;自動判別は、１文字目が、utf16 の英数字かどうかで判別しています。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;誤検出した場合は、コードページを明示してください。<br>
+&nbsp;&nbsp;ppe&nbsp;&nbsp;標準出力・エラー出力の結果を PPe を１枚開いて出力します。<br>
+&nbsp;&nbsp;send,&quot;text&quot;&nbsp;&nbsp;文字列 &quot;text&quot; を標準入力に出力します。<br>
+&nbsp;&nbsp;string,&quot;text&quot;&nbsp;&nbsp;send は改行を付加します。string は改行無しです。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;また、現在はtextに改行を含めることはできません。<br>
+&nbsp;&nbsp;log&nbsp;&nbsp;標準出力・エラー出力をログ窓に表示します。-log と同じです。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;log と ppe を同時に指定するとログ窓とPPeに表示します。<br>
+<br>
+<b>-log[:option1[,option2...]]</b>&nbsp;&nbsp;標準出力・エラー出力の結果をログ窓に表示します。-io:log と同じです。<br>
 <br>
 関連 <a href="#execute">実行処理</a>, <a href="#launch">*launch</a>, <a href="#start">*start</a>, <a href="#zapfile">%Z</a>, <a href="#wait">*wait</a>, <a href="#optionmacro">%O</a><br>
 <hr><br>
 <a name="runfunc"><b>%*run(<i>[options] command [parameter])</i> commandを実行し結果を返す</b></a><br>
-command を実行したときの標準出力・標準エラー出力を戻り値にします。<br>
+command を実行したときの標準出力・標準エラー出力を戻り値にします。標準出力・エラー出力の文字コードは、指定が無ければシステムのコードページ、-io:utf8 等と指定すればその文字コードになります。<br>
 options は <a href="#run">*run</a> と同じです。<br>
 command や parmeter 中に括弧 (,) を含む場合は %(  %) で括る必要があります。<br>
 <hr><br>
@@ -8558,6 +8572,7 @@ option<br>
  テキスト表示コード(-ibm等)<br>
  SI/SO(-siso:off等)<br>
  ESCシーケンス(-esc)<br>
+ MIME(quoted-printable, BASE64)解析(-mime)<br>
  「&lt;～&gt;」タグ(-tag)<br>
  タブ桁数(-tab:n)<br>
  桁数(-width:n)<br>
@@ -8567,6 +8582,21 @@ option<br>
 <br>
  ※特定の種類のファイルに対してオプションを常時指定したいときは、<a href="#XV_opts">XV_opts</a>で指定できます。<br>
  ※タブ桁数、桁数については専用の設定 <a href="#XV_tab">XV_tab</a>, <a href="#XV_cols">XV_cols</a> が用意されています。<br>
+<hr><br>
+<a name="PPxCmd166"><b> %*viewoption <i>各種オプションの状態を取得</i></b></a><br>
+<br>
+ 以下の設定を、<a href="#ppvoptions">起動時オプション</a>の形式で取得します。<br>
+ 出力例) -TEXT -SYSTEM -mime:0 -tag:0<br>
+<br>
+ 表示形式(-hex等)<br>
+ テキスト表示コード(-ibm等)<br>
+ ESCシーケンス(-esc)<br>
+ MIME(quoted-printable, BASE64)解析(-mime)<br>
+ 「&lt;～&gt;」タグ(-tag)<br>
+ アニメーション(-animate) ※アニメーションが可能の時に出力されます。<br>
+ カラープロファイル(-colorprofile) ※プロファイルがある時に出力されます。<br>
+<br>
+<br>
 <hr><br>
 
 <b>ツリー窓</b><br>
