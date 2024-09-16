@@ -30,9 +30,9 @@ img { max-width: 100%; height: auto; }
 <div align="left">※ http://toro.d.dooo.jp からダウンロードできないときは、<a href="https://toroidj.github.io/slppx.html">https://toroidj.github.io</a> からダウンロードしてください。</div><hr></div>
 <div id="contents"><div id="contents2">
  <table border="0" summary="目録">
-  <tr><td>・<a href="#ppx">Paper Plane xUI</a>&nbsp;(<a href="#ppx1">+1</a>)&nbsp;(<a href="#ppx2">+2</a>)&nbsp;(<a href="#ppx3">+3</a>)
+  <tr><td>・<a href="#ppx">Paper Plane xUI</a>&nbsp;(<a href="#ppx1">+1</a>)&nbsp;(<a href="#ppx2">+2</a>)&nbsp;(<a href="#ppx3">+3</a>)&nbsp;(<a href="#ppx4">+4</a>)
   </td><td>- ファイル操作ツール集</td></tr>
-  <tr><td>・<a href="#ppxdw">Paper Plane xUI(DirectWrite版)</a>&nbsp;(<a href="#ppxdw1">+1</a>)&nbsp;(<a href="#ppxdw2">+2</a>)&nbsp;(<a href="#ppxdw3">+3</a>)
+  <tr><td>・<a href="#ppxdw">Paper Plane xUI(DirectWrite版)</a>&nbsp;(<a href="#ppxdw1">+1</a>)&nbsp;(<a href="#ppxdw2">+2</a>)&nbsp;(<a href="#ppxdw3">+3</a>)&nbsp;(<a href="#ppxdw4">+4</a>)
   </td><td>- DirectWriteを使用したPPx</td></tr>
   <tr><td>・<a href="#ppxarm">Paper Plane xUI(ARM64版)</a>
   </td><td>- 64bit ARM 版 Windows 用 PPX</td></tr>
@@ -59,6 +59,8 @@ img { max-width: 100%; height: auto; }
   <tr><td>・<a href="#ppxscr5">Paper Plane xUI  WSH Script Module(R21+5)</a>
   </td><td>- スクリプトを実行する PPx Module</td></tr>
   <tr><td>・<a href="#ppxscr6">Paper Plane xUI  WSH Script Module(R21+6)</a>
+  </td><td>- スクリプトを実行する PPx Module</td></tr>
+  <tr><td>・<a href="#ppxscr7">Paper Plane xUI  WSH Script Module(R21+7)</a>
   </td><td>- スクリプトを実行する PPx Module</td></tr>
   <tr><td>・<a href="#ppxCV8">Paper Plane xUI  V8 Script Module</a>
   </td><td>- Clear Script の V8 を利用して PPx 上で Javascript を実行する</td></tr>
@@ -115,6 +117,9 @@ ppx
 ./ppx198p3.zip
 ./ppw198p3.zip
 ./ppx64198p3.zip
+./ppx198p4.zip
+./ppw198p4.zip
+./ppx64198p4.zip
 ppxdw
 ./ppxdw198.zip
 ./ppxdw64198.zip
@@ -124,6 +129,8 @@ ppxdw
 ./ppxdw64198p2.zip
 ./ppxdw198p3.zip
 ./ppxdw64198p3.zip
+./ppxdw198p4.zip
+./ppxdw64198p4.zip
 ppxarm
 ./ppxarm64198.zip
 ppxhelp
@@ -150,6 +157,8 @@ ppxscr5
 ./ppxscr21p5.zip
 ppxscr6
 ./ppxscr21p6.zip
+ppxscr7
+./ppxscr21p7.zip
 ppxCV8
 ./ppxCV8R03.zip
 ppxCV81
@@ -165,7 +174,7 @@ ppxCV85
 ppxCV86
 ./ppxCV8R03p6.zip
 ppxqjs
-./ppxqjsT11.zip
+./ppxqjsT12.zip
 ppxdoclock
 ./DOCLOCK.LZH
 ppxdockshow
@@ -282,6 +291,19 @@ PPv<br>
 ・*zoom実行時のメッセージ表示をなくした<br>
 ・表示設定を取得する関数を追加(%*viewoption)<br>
 
+<hr><a href="./slppx.html">↑</a><a name="ppx4"><span>Paper Plane xUI</span></a> Version 1.98+4
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx198p4.zip">ppx198p4.zip</a> ( MultiByte版,&nbsp;748 Kbytes,&nbsp;2024-9-16,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppw198p4.zip">ppw198p4.zip</a> ( UNICODE版,763 Kbytes,&nbsp;2024-9-16,&nbsp;Windows NT 4.0 - Windows 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx64198p4.zip">ppx64198p4.zip</a> ( 64bit版,904 Kbytes,&nbsp;2024-9-16,&nbsp;Windows XP/2003 - Windows 11/2022 64bit)<br>
+<br>試験公開版です。 Version 1.98からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>1.98+3→1.98+4<br>
+All<br>
+・一行編集を閉じたときにCLOSEEVENTキーを実行するようにした<br>
+PPv<br>
+・X_iexo=1でiftwicを使用してもアニメーションが開始されない事があるのを修正<br>
+・*zoom&nbsp;-notify&nbsp;倍率&nbsp;の時はメッセージを表示するように<br>
+・現在の表示倍率の取得をできるように(%*zoom)<br>
+
 <hr><a href="./slppx.html">↑</a><a name="ppxdw"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 1.98
 <br><a href="image/ssppxdw.png"><img src="image/thppxdw.jpg" alt="動作画面" WIDTH="196" height="135"></a><br><br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw198.zip">ppxdw198.zip</a> ( 32bit版,&nbsp;1097 Kbytes,&nbsp;2024-7-27,&nbsp;Windows 7/2008 R2 - Windows 11/2022(32bit/64bit))<br>
@@ -289,7 +311,7 @@ PPv<br>
 <br>PPc と PPv のメインウィンドウを DirectWrite/Direct2D で描画するようにした PPx です。<br>
 従来のGDI表示でできなかった Unicode の複雑な合字表示や、Windows 8.1 以降の色つきの絵文字の表示が可能です。<br>
 <br>
-履歴は<a href=&quot;#ppx&quot; >通常版 PPx</a> を参照してください。<br>
+履歴は<a href="#ppx" >通常版 PPx</a> を参照してください。<br>
 <br>
 ※Version 1.75 から 32bit版と 64bit版を分けました。<br>
 
@@ -311,12 +333,18 @@ PPv<br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw64198p3.zip">ppxdw64198p3.zip</a> ( 64bit版,936 Kbytes,&nbsp;2024-9-7,&nbsp;Windows 7/2008 R2 - Windows 11/2022 64bit)<br>
 <br>試験公開版です。 Version 1.98からの差し替え分のみとなってます。<br>
 
+<hr><a href="./slppx.html">↑</a><a name="ppxdw4"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 1.98+4
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw198p4.zip">ppxdw198p4.zip</a> ( 32bit版,&nbsp;810 Kbytes,&nbsp;2024-9-16,&nbsp;Windows 7/2008 R2 - Windows 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw64198p4.zip">ppxdw64198p4.zip</a> ( 64bit版,937 Kbytes,&nbsp;2024-9-16,&nbsp;Windows 7/2008 R2 - Windows 11/2022 64bit)<br>
+<br>試験公開版です。 Version 1.98からの差し替え分のみとなってます。<br>
+
 <hr><a href="./slppx.html">↑</a><a name="ppxarm"><span>Paper Plane xUI(ARM64版)</span></a> Version 1.98
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxarm64198.zip">ppxarm64198.zip</a> ( 1384 Kbytes,&nbsp;2024-7-27,&nbsp;Windows10,11(Arm64))<br>
 <br>64bit ARM 版 Windows 用 PPx です。<br>
 <br>
-履歴は<a href=&quot;#ppx&quot; >通常版 PPx</a> を参照してください。<br>
+履歴は<a href="#ppx" >通常版 PPx</a> を参照してください。<br>
 <br>
 migemoが必要なときは、<a href="https://toroidj.github.io/ppx/cmigemo-arm64.zip" >cmigemo-arm64.zip</a>を使用し、辞書は従来のものを使用してください。<br>
 
@@ -428,6 +456,12 @@ R19→R20<br>
 ・*script&nbsp;:インスタンス番号,スクリプトファイル名で同名常駐時は&nbsp;ppx_resume実行<br>
 ・常駐インスタンスの情報を取得する関数(%*stayinfo)を追加<br>
 
+<hr><a href="./slppx.html">↑</a><a name="ppxscr7"><span>Paper Plane xUI  WSH Script Module(R21+7)</span></a>
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxscr21p7.zip">ppxscr21p7.zip</a> ( 261 Kbytes,&nbsp;2024-9-16,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2022(32bit/64bit))<br>
+<br>●<strong>変更点</strong><br>R21+6→R21+7<br>
+・ppx_finally&nbsp;を一行編集終了時に実行できるように(要&nbsp;PPx&nbsp;1.98+4)<br>
+
 <hr><a href="./slppx.html">↑</a><a name="ppxCV8"><span>Paper Plane xUI  V8 Script Module</span></a>
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxCV8R03.zip">ppxCV8R03.zip</a> ( 12686 Kbytes,&nbsp;2023-10-14,&nbsp;Windows 7/2008R2 - 10/2022(32bit/64bit), .NET 4.x)<br>
@@ -486,9 +520,13 @@ R2<br>
 
 <hr><a href="./slppx.html">↑</a><a name="ppxqjs"><span>Paper Plane xUI  QuickJS Script Module</span></a>
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxqjsT11.zip">ppxqjsT11.zip</a> ( 1141 Kbytes,&nbsp;2024-9-7,&nbsp;Windows 10/2015 - 11/2022(64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxqjsT12.zip">ppxqjsT12.zip</a> ( 1141 Kbytes,&nbsp;2024-9-16,&nbsp;Windows 10/2015 - 11/2022(64bit))<br>
 <br>QuickJS を利用して PPx 上で Javascript を実行する PPx Module です。<br>
-現在試験版です。<br><br>●<strong>変更点</strong><br>T11<br>
+現在試験版です。<br><br>●<strong>変更点</strong><br>T12<br>
+・ppx_finally&nbsp;を一行編集終了時に実行できるように(要&nbsp;PPx&nbsp;1.98+4)<br>
+・PPx.Arguments.Item(-1)が実装させていなかったのを修正<br>
+<br>
+T11<br>
 ・*script&nbsp;:インスタンス番号,スクリプトファイル名で同名常駐時は&nbsp;ppx_resume実行<br>
 ・常駐インスタンスの情報を取得する関数(%*stayinfo)を追加<br>
 <br>

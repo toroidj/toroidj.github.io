@@ -5446,8 +5446,8 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 <a href="#PPxCmd112">PPc</a><br>
 <a href="#PPxCmd157">PPc / PPv</a><br>
 <a href="#PPxCmd158">PPv</a><br>
-<a href="#PPxCmd167">ツリー窓</a><br>
-<a href="#PPxCmd168">Windowsログイン・電源管理</a><br>
+<a href="#PPxCmd168">ツリー窓</a><br>
+<a href="#PPxCmd169">Windowsログイン・電源管理</a><br>
 <hr><br>
 
 <a name="PPxCmd1"><b>PPx共用</b></a><br>
@@ -5637,13 +5637,14 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 ・<a href="#PPxCmd164">%*selecttext 選択テキスト</a><br>
 ・<a href="#PPxCmd165">*viewoption <i>各種オプション</i> 表示関係オプション</a><br>
 ・<a href="#PPxCmd166"> %*viewoption <i>各種オプションの状態を取得</i></a><br>
+・<a href="#PPxCmd167"> %*zoom([notify]) <i>表示倍率の取得</i></a><br>
 <hr><br>
 
-<a name="PPxCmd167"><b>ツリー窓</b></a><br>
+<a name="PPxCmd168"><b>ツリー窓</b></a><br>
 ・<a href="#treecmd">*tree type ツリー窓の操作(PPc, 一行編集)</a><br>
 <hr><br>
 
-<a name="PPxCmd168"><b>Windowsログイン・電源管理</b></a><br>
+<a name="PPxCmd169"><b>Windowsログイン・電源管理</b></a><br>
 ・*screensaver スクリーンセーバを起動<br>
 ・*monitoroff モニタを省電力モードにする<br>
 ・*lockpc コンピュータをロックする<br>
@@ -8454,6 +8455,8 @@ font の大きさを % で指定します。符号「+」「-」があるとき�
 *zoom font +10,3  幅を10文字分、高さを3文字分増やします。<br>
 <br>
 <b>・PPv</b><br>
+PPv の *zoom は *zoom -notify [auto|font|image] 値 と、頭に「-notify」を追加したときは、ステータス行に変更した倍率を表示します。また、%*zoom / %*zoom(notify) で現在の値を取得できます。<br>
+<br>
 <b>値指定のみ</b><br>
 XV_imgDの第1引数と同じです。<br>
 -1&nbsp;&nbsp;窓枠に合う大きさに画像を拡大・縮小します<br>
@@ -8596,6 +8599,12 @@ option<br>
  アニメーション(-animate) ※アニメーションが可能の時に出力されます。<br>
  カラープロファイル(-colorprofile) ※プロファイルがある時に出力されます。<br>
 <br>
+<br>
+<hr><br>
+<a name="PPxCmd167"><b> %*zoom([notify]) <i>表示倍率の取得</i></b></a><br>
+<br>
+SetimgD や *zoom で設定した表示倍率を取得します。<br>
+%*zoom(notify) と指定したときは、ステータス行に表示する文字列（「120%」「自動縮小」等）が取得できます。<br>
 <br>
 <hr><br>
 
@@ -9343,7 +9352,7 @@ PPxのキーに割り当てられていないコマンドの一部は、次の�
 <dt><a name="イベント"></a>(イベント用)</dt>
 <dt> これらのキーは、キー入力に用いられませんが、カスタマイズで登録しておくことで特定の条件の時に使用されます。</dt>
 <dt> <a name="FIRSTEVENT"><b>FIRSTEVENT</b></a></dt><dd>(PPc KC_main)窓を1枚開いた直後に使用します。一体化窓の時は窓/タブ毎に使用します。</dd>
-<dt></dt><dd>(PPv KV_main, PPb KB_edit)起動直後に使用します。</dd>
+<dt></dt><dd>(PPv KV_main, PPb KB_edit, PPtray K_tray)起動直後に使用します。</dd>
 <dt></dt><dd>(一行編集窓, アドレスバー等の文字列入力 K_lied, K_editのいずれか)一行編集窓が開いたときに使用します。</dd>
 <dt></dt><dd>(PPe K_ppe, K_editのいずれか)PPeが開いたときに使用します。</dd>
 <dt></dt><dd>(ファイル操作、ファイル検索等ダイアログ、ログ窓、入力バー等 K_edit)ファイル操作、ファイル検索等の一行編集ダイアログでない文字列編集を開いたときに使用します。</dd>
@@ -9361,9 +9370,11 @@ PPxのキーに割り当てられていないコマンドの一部は、次の�
 <dt></dt><dd>尚、状況によっては、既にアクティブになっているときに更に生じたりすることがあります。このため、トグル処理をしていると動作がおかしくなる場合があります。</dd>
 <dt></dt>
 <dt> <a name="CLOSEEVENT"><b>CLOSEEVENT</b></a></dt>
-<dt> </dt><dd>(PPc KC_main, PPv KV_main, KV_img, KV_page)窓を1枚閉じた直後に使用します。</dd>
+<dt> </dt><dd>(PPc KC_main)窓を1枚閉じた直後に使用します。</dd>
+<dt></dt><dd>(PPv KV_main, KV_img, KV_page, PPb KB_edit, PPtray K_tray)終了時に使用します。</dd>
+<dt></dt><dd>(一行編集窓等 K_lied, K_editのいずれか)一行編集窓を閉じるときに使用します。</dd>
 <dt></dt><dd>CLOSEEVENTは、閉じた後の後始末をしたり、フォーカス制御をするときなどに使用できます。</dd>
-<dt></dt><dd>※このイベントによるプロセスの生成(アプリケーションの実行)は避けてください。ログオフ時・シャットダウン時は新たなプロセス生成ができないため、意図した動作をしない場合があります。</dd>
+<dt></dt><dd>※このイベントによるウィンドウの表示や、プロセスの生成(アプリケーションの実行)は避けてください。ログオフ時・シャットダウン時は新たなプロセス生成ができないため、意図した動作をしない場合があります。</dd>
 <dt></dt>
 <dt> <a name="LOADEVENT"><b>LOADEVENT</b></a></dt>
 <dt> </dt><dd>(PPc KC_main)ディレクトリの読み込みが完了したときに使用します。※動的カスタマイズで、PPc 起動後に追加したときは %K&quot;LOADCUST&quot; を使わないと反映されません。</dd>
@@ -13301,15 +13312,20 @@ PPxがインストールされているディレクトリに、PPx Module(PPX*.D
 <hr>
 <a name="スクリプト"></a><a name="マクロ"></a><a name="ppxscr"></a>
 <a name="ModuleScript"></a><a name="Script Module"></a><h3>PPx Module - Script Module</h3><br>
-Script Moduleは、スクリプトで機能拡張するためのDLL形式のPPx Moduleです。<br>
-別途配布している、PPXSCR.DLL / PPXSCR64.DLL をPPxと同じディレクトリに用意することで、WSH(Windows Scripting Host) のように JscriptやVBscript等のスクリプトを実行することができます。<br>
+Script Module は、スクリプトで機能拡張するための DLL 形式の PPx Module です。<br>
 <br>
-PPx 上で「*script スクリプトファイル名」を実行することでスクリプトを実行することができます。<br>
+別途配布している DLL を PPx と同じディレクトリに用意することで、スクリプトを実行することができます。<br>
+PPx 上で「*script スクリプトファイル名」を実行することでスクリプトを実行することができ、PPx オブジェクトから PPx の各種情報を取得したり、操作を行ったりできます。<br>
 <br>
-詳細は、Script Module配布書庫中のPPXSCR.TXTを参照してください。<br>
+また、スクリプトの言語は、モジュールによって異なります。<br>
+・WSH Script Module    Jscript, VBscript 等<br>
+・V8 Script Module    Javascript(ECMAScript 2021)<br>
+・QuickJS Script Module    Javascript(ECMAScript 2023)<br>
+<br>
+詳細は、各 Script Module 配布書庫中のマニュアルを参照してください。<br>
 <hr>
 <a name="ModuleDock"></a><a name="Dock Module"></a><h3>PPx Module - Dock Module</h3><br>
-Dock Moduleは、ツールバー(<a href="#X_dock">X_dock</a>)に登録するEXE形式のPPx Moduleです。ツールバーのボタン機能や、各種情報の表示のための拡張に使います。<br>
+Dock Moduleは、ツールバー(<a href="#X_dock">X_dock</a>)に登録する EXE 形式の PPx Module です。ツールバーのボタン機能や、各種情報の表示のための拡張に使います。<br>
 <a name="dockexe"></a><br>
 <b>X_dockに登録可能な実行ファイルと仕様</b><br>
 ※スクリーンセーバも登録できます。<br>
@@ -13363,10 +13379,16 @@ int WINAPI ModuleEntry(PPXAPPINFOW *ppxa, DWORD cmdID, PPXMODULEPARAM pxs);<br>
 cmdID には、呼び出した理由が入ります。<br>
 <br>
 <b>PPXM_INFORMATION</b> (サンプル:Position Module, Key Module等)<br>
-PPxがモジュールの読み込みを行った後にこのIDで呼び出します。PPXMINFOSTRUCT(pxs.info)に各種情報を書き込んで通知することにより、モジュールの余分な呼び出しをなくして高速化できます。※PPXM_INFORMATIONを処理しなくても動作します。<br>
+PPxがモジュールの読み込みを行った後にこのIDで呼び出します。PPXMINFOSTRUCT(pxs.info)に各種情報を書き込んで通知することにより、モジュールの余分な呼び出しをなくして高速化できます。※PPXM_INFORMATION を処理しない場合は、PPXMEVENT_COMMAND / PPXMEVENT_FUNCTION の実行のみ可能です。<br>
 <br>
 <b>PPXMEVENT_CLEANUP</b> (サンプル:CFX Module)<br>
 PPxがモジュールの使用を終了し、DLLを解放するときにこのIDで呼び出します。リソースの解放等をこのタイミングで行うことができます。<br>
+<br>
+<b>PPXMEVENT_CLOSETHREAD</b> (サンプル:各種 Script Module)<br>
+PPXCMDID_REQUIRE_CLOSETHREAD を実行したスレッドが終了する直前にこのIDで呼び出します。リソースの解放等をこのタイミングで行うことができます。尚、PPx の該当スレッドのリソースが解放させているため、ppxa-&gt;Function はほとんど使用できません。<br>
+<br>
+<b>PPXMEVENT_DESTROY</b> (サンプル:各種 Script Module)<br>
+PPx、PPcの各窓、一行編集、ダイアログ等が閉じるとき、具体的に言えば、CLOSEEVENTキーの実行直後にこのIDで呼び出します。リソースの解放等をこのタイミングで行うことができます。<br>
 <br>
 <b>PPXMEVENT_COMMAND, PPXMEVENT_FUNCTION</b> (サンプル:Position Module, Window Module, Message Module等)<br>
 コマンドモジュール・関数モジュールの呼び出しです。<br>
