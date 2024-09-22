@@ -1036,7 +1036,7 @@ MultiByte版を使う<br>
 <br>
 ・各版で扱える文字が逆の版で扱えない場合があります。例えば、UNICODE文字は、MultiByte文字より扱うことができる文字の種類が多いので、UNICODE版で扱えた文字がMultiByte版で扱えない場合があります。逆に、MultiByte版で仕様外の文字を無理矢理使うことができる場合がありますが、その文字はUNICODE版では扱えません。<br>
 <br>
-・MultiByte版は、UNICODE版で 約1000文字以上扱えた機能であっても、約1000文字以内の制限のままである機能があります。<br>
+・MultiByte版は、UNICODE版で各種パラメータとして 約1000文字以上扱えた機能であっても、約1000文字以内の制限のままである機能があります。<br>
 <br>
 ・MultiByte版は、UNICODE版で扱えた長さのエントリ名が扱えない場合があります。例えば、漢字のみで書かれた200文字の長さのファイル名は、UNICODE版で扱うことができますが、MultiByte版では扱えません。<br>
 <br>
@@ -2797,10 +2797,11 @@ SETUP.EXE で エクスプローラ の機能割当てをおこなったとき�
 ・00-01-02, 00/01/02, 2000-1-2, H15-1-2, 1-2, 2等の形式で入力できます<br>
 ・項目間の区切り文字は英数字以外であれば「-」や「/」等、どれでも可です<br>
 ・年が２桁で入力されている場合、00-79:20xx 80-99:19xx に変換します<br>
-・元号入力ができます（H:平成, S:昭和, M:明治, R:令和, 例)H130102）<br>
+・元号入力ができます（R:令和, H:平成, S:昭和, T:大正, M:明治, 例)H130102）<br>
 ・各項目が２桁ずつであれば、区切り文字を省略できます(例)000102<br>
 ・１項目分の場合は、日だけを入力したとします<br>
 ・２項目分の場合は、月と日を入力したとします<br>
+・マウスの場合は、カレンダからの入力もできます<br>
 <br>
 <b>時刻(時:分:秒.ミリ秒)</b><br>
 ・00:01:02, 00:01:02.345, 00 01 02, 01:02, 01等の形式で入力できます<br>
@@ -4811,18 +4812,25 @@ line2&quot;<br>
 <b>%si&quot;LoadCommand&quot;</b> ディレクトリ読み込み時に使用した XC_dset の cmd: (読み込み後実行するコマンド) の内容です。<br>
 <b>%si&quot;TipCommand&quot;</b> *entrytip preview -c command で指定した「command」の保存に使用します。<br>
 <b>%si&quot;TipText&quot;</b> *entrytip &quot;text&quot; で指定した「text」の保存に使用します。<br>
+<b>%si&quot;TipWnd&quot;</b> *entrytip で表示したチップ表示ウィンドウのウィンドウハンドルです。<br>
 <b>%si&quot;SyncPathThis&quot;, %si&quot;SyncPathPair&quot;</b> 連動パス(^[Y])の基準となるパスです。<br>
+<b>%si&quot;LineMsgKeep&quot;</b> *linemessage !K&quot;text で指定した「text」の保存に使用します。<br>
+<b>%si&quot;NewPath&quot;, %si&quot;RootPath&quot;</b> aux: パスのイベントで使用します。<br>
 <br>
 <b>PPv 内で使用</b><br>
 <b>%si&quot;Highlight&quot;</b> 単語ハイライト(\[F])の対象となる単語列です。<br>
+<b>%si&quot;LineMsgKeep&quot;</b> *linemessage !K&quot;text で指定した「text」の保存に使用します。<br>
 <br>
 <b>実行処理中に使用</b><br>
-<b>%so&quot;title&quot;</b> %&quot;タイトル&quot; で保存した内容。ここを書き換えると、一行編集や%O, %I で表示されるタイトルバーのキャプションが変わります。<br>
+<b>%so&quot;title&quot;</b> %&quot;タイトル&quot; で保存した内容。ここを書き換えると、その後実行する一行編集や%O, %I で表示されるタイトルバーのキャプションが変わります。<br>
 <b>%so&quot;EditText&quot;</b> キャッシュ付き部分編集(%$)で編集した内容を保存します。<br>
 <b>%so&quot;response&quot;</b> レスポンスファイル生成(%@, %a)で生成したレスポンスファイルのファイル名を保存します。<br>
+<b>%so&quot;PID&quot;, %so&quot;TID&quot;</b> *run -wait:later で実行したプロセス・スレッドのIDです。<br>
 <br>
 <b>PPe・一行編集 内で使用</b><br>
 <b>%se&quot;filename&quot;</b> テキストファイル保存に用いたファイル名です。<br>
+<b>%se&quot;Edit_OptionCmd&quot;</b> オプションボタンを押したときに実行するコマンドラインです。<br>
+<b>%se&quot;Edit_OptionTitle&quot;</b> オプションボタンの表示名です。<br>
 <br>
 ・変数名を指定しない場合は、現在登録されている環境変数の一覧をメニューで表示します。<br>
 <br>
@@ -5435,19 +5443,19 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 誤解釈されない記載例) *command &quot;%*func1(&quot;%*func2(&quot;param&quot;)&quot;)&quot;<br>
 <hr><br>
 <a href="#PPxCmd1">PPx共用</a><br>
-<a href="#PPxCmd39">実行、実行制御</a><br>
-<a href="#PPxCmd54">各PPxの実行</a><br>
-<a href="#PPxCmd61">ファイル・ディレクトリ操作</a><br>
-<a href="#PPxCmd75">ファイル・ディレクトリ操作(PPc専用)</a><br>
-<a href="#PPxCmd80">ヒストリ・カスタマイズ操作</a><br>
-<a href="#PPxCmd88">PPb, PPe, 一行編集共通</a><br>
-<a href="#PPxCmd99">PPe, 一行編集</a><br>
-<a href="#PPxCmd108">PPb</a><br>
-<a href="#PPxCmd112">PPc</a><br>
-<a href="#PPxCmd157">PPc / PPv</a><br>
-<a href="#PPxCmd158">PPv</a><br>
-<a href="#PPxCmd168">ツリー窓</a><br>
-<a href="#PPxCmd169">Windowsログイン・電源管理</a><br>
+<a href="#PPxCmd40">実行、実行制御</a><br>
+<a href="#PPxCmd55">各PPxの実行</a><br>
+<a href="#PPxCmd62">ファイル・ディレクトリ操作</a><br>
+<a href="#PPxCmd76">ファイル・ディレクトリ操作(PPc専用)</a><br>
+<a href="#PPxCmd81">ヒストリ・カスタマイズ操作</a><br>
+<a href="#PPxCmd89">PPb, PPe, 一行編集共通</a><br>
+<a href="#PPxCmd100">PPe, 一行編集</a><br>
+<a href="#PPxCmd109">PPb</a><br>
+<a href="#PPxCmd113">PPc</a><br>
+<a href="#PPxCmd158">PPc / PPv</a><br>
+<a href="#PPxCmd159">PPv</a><br>
+<a href="#PPxCmd169">ツリー窓</a><br>
+<a href="#PPxCmd170">Windowsログイン・電源管理</a><br>
 <hr><br>
 
 <a name="PPxCmd1"><b>PPx共用</b></a><br>
@@ -5463,188 +5471,189 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 ・<a href="#PPxCmd19">*ime <i>0|1</i> IME状態の変更</a><br>
 ・<a href="#layout">*layout レイアウトメニューを表示</a><br>
 ・<a href="#linemessage">*linemessage <i>message</i> 一行メッセージを表示</a><br>
+・<a href="#ステータス行に表示された報告文字列を取得"> %*linemessage(<i>[-recent]</i>)</a><br>
 ・<a href="#choice">%*choice(option) 選択肢ダイアログの表示・項目の選択</a><br>
 ・%*F(<i>format,&quot;filename&quot;[,&quot;path&quot;]</i>) %*nameと同じ<br>
 ・<a href="#functionF">%*name(<i>format,&quot;filename&quot;[,&quot;path&quot;]</i>) ファイル名の加工</a><br>
-・<a href="#PPxCmd24">%*linkedpath(<i>filename</i>) リンクの対象パスの取得</a><br>
-・<a href="#PPxCmd25">%*addchar(<i>character</i>) 区切り等の文字の追加</a><br>
+・<a href="#PPxCmd25">%*linkedpath(<i>filename</i>) リンクの対象パスの取得</a><br>
+・<a href="#PPxCmd26">%*addchar(<i>character</i>) 区切り等の文字の追加</a><br>
 ・<a href="#menufunction">%*menu(<i>xxx</i>[,[!itemname]]) メニュー</a><br>
-・<a href="#PPxCmd26">%*noq(<i>text</i>) 「&quot;」の変換抑制</a><br>
+・<a href="#PPxCmd27">%*noq(<i>text</i>) 「&quot;」の変換抑制</a><br>
 ・<a href="#InsertSource">%*InsertSource(<i>filename [-notrim]</i>) テキストファイル（コマンドライン）の挿入</a><br>
-・<a href="#PPxCmd27">%*InsertValue(<i>filename [-notrim]</i>) テキストファイル（パラメータ）の挿入</a><br>
-・<a href="#PPxCmd28">%*ppxlist(<i>[+|-][filter]</i>) 起動中PPxのID列挙・数取得</a><br>
-・<a href="#PPxCmd29">%*regexp(<i>source</i>,<i>pattern</i>) 正規表現加工</a><br>
-・<a href="#PPxCmd31">%*screendpi(<i>[ID]</i>) 画面の解像度</a><br>
+・<a href="#PPxCmd28">%*InsertValue(<i>filename [-notrim]</i>) テキストファイル（パラメータ）の挿入</a><br>
+・<a href="#PPxCmd29">%*ppxlist(<i>[+|-][filter]</i>) 起動中PPxのID列挙・数取得</a><br>
+・<a href="#PPxCmd30">%*regexp(<i>source</i>,<i>pattern</i>) 正規表現加工</a><br>
+・<a href="#PPxCmd32">%*screendpi(<i>[ID]</i>) 画面の解像度</a><br>
 ・<a href="#maxlength">*maxlength <i>length</i> 展開最大文字数指定</a><br>
 ・*messagebox <i>&quot;text&quot;</i> メッセージ表示<br>
 ・<a href="#msgbox">*msgbox <i>&quot;text&quot;</i> メッセージ表示</a><br>
-・<a href="#PPxCmd33">*selectppx <i>[ID]</i> 指定PPxにフォーカス移動</a><br>
+・<a href="#PPxCmd34">*selectppx <i>[ID]</i> 指定PPxにフォーカス移動</a><br>
 ・<a href="#setcmd">*set <i>[valuename[+[+]]=[strings]]</i> 環境変数の設定、削除</a><br>
-・<a href="#PPxCmd34">*sound <i>[filename.wav]</i> WAVファイルを再生する</a><br>
+・<a href="#PPxCmd35">*sound <i>[filename.wav]</i> WAVファイルを再生する</a><br>
 ・<a href="#stringcmd">*string <i>[type],[valuename=[strings]]</i> 特殊環境変数の設定、削除</a><br>
-・<a href="#PPxCmd35">*touch <i>[off|touch|mouse|pen]</i> タッチ操作モードを手動切り替え</a><br>
+・<a href="#PPxCmd36">*touch <i>[off|touch|mouse|pen]</i> タッチ操作モードを手動切り替え</a><br>
 ・<a href="#checkupdate">*checkupdate <i>[p][y][n][f][i]</i> PPxの更新チェックとアップデート</a><br>
-・<a href="#PPxCmd36">%*errormsg(no) Win32 API エラーメッセージ</a><br>
-・<a href="#PPxCmd37">*psinfo プロセス内部情報</a><br>
-・<a href="#PPxCmd38">%*useapps(filename) 指定ファイルを使用しているプロセスの一覧</a><br>
+・<a href="#PPxCmd37">%*errormsg(no) Win32 API エラーメッセージ</a><br>
+・<a href="#PPxCmd38">*psinfo プロセス内部情報</a><br>
+・<a href="#PPxCmd39">%*useapps(filename) 指定ファイルを使用しているプロセスの一覧</a><br>
 <hr><br>
 
-<a name="PPxCmd39"><b>実行、実行制御</b></a><br>
+<a name="PPxCmd40"><b>実行、実行制御</b></a><br>
 ・<a href="#aliascmd">*alias <i>valuename=[strings]</i> コマンドエイリアスの設定、削除</a><br>
-・<a href="#PPxCmd40">*closeppx <i>[ID]</i> PPxを一括終了</a><br>
-・<a href="#PPxCmd41">*execute <i>ID,command</i> 指定PPx上で実行／リストファイル・ディレクトリの列挙実行</a><br>
+・<a href="#PPxCmd41">*closeppx <i>[ID]</i> PPxを一括終了</a><br>
+・<a href="#PPxCmd42">*execute <i>ID,command</i> 指定PPx上で実行／リストファイル・ディレクトリの列挙実行</a><br>
 ・%*errorlevel プロセス終了コード<br>
-・<a href="#PPxCmd43">%*exitcode プロセス終了コード</a><br>
+・<a href="#PPxCmd44">%*exitcode プロセス終了コード</a><br>
 ・<a href="#goto">*goto <i>label</i> labelへジャンプ</a><br>
 ・*if <i>formula</i> 数式の条件を満たしたら行を実行<br>
-・<a href="#PPxCmd45">*ifmatch <i>wildcards[,string]</i> ワイルドカード条件を満たしたら行を実行</a><br>
-・<a href="#PPxCmd46">*job 処理中コマンドの一覧</a><br>
-・<a href="#PPxCmd48">%*job 処理中コマンドの数</a><br>
+・<a href="#PPxCmd46">*ifmatch <i>wildcards[,string]</i> ワイルドカード条件を満たしたら行を実行</a><br>
+・<a href="#PPxCmd47">*job 処理中コマンドの一覧</a><br>
+・<a href="#PPxCmd49">%*job 処理中コマンドの数</a><br>
 ・<a href="#launch">*launch <i>[options] command [parameter]</i> commandをそのディレクトリで実行</a><br>
 ・<a href="#run">*run <i>[options] command [parameter]</i> commandを実行</a><br>
 ・<a href="#runfunc">%*run(<i>[options] command [parameter])</i> commandを実行し結果を返す</a><br>
 ・<a href="#shellmenu">*shellmenu <i>[pathname1[ pathname2...]] [options]</i> シェルコンテキストメニュー実行</a><br>
-・<a href="#PPxCmd50">*signal [PPbID],[command] PPbにCtrl+C等を送信</a><br>
-・<a href="#PPxCmd51">*skip 次の行を実行する</a><br>
+・<a href="#PPxCmd51">*signal [PPbID],[command] PPbにCtrl+C等を送信</a><br>
+・<a href="#PPxCmd52">*skip 次の行を実行する</a><br>
 ・<a href="#start">*start <i>[-launch][-command] name [parameter]</i> nameを拡張子判別実行する</a><br>
-・<a href="#PPxCmd52">*stop <i>[-n][formula]</i> 以降の実行を中止する</a><br>
-・<a href="#PPxCmd53">*return [value] ユーザコマンド・関数の終了</a><br>
+・<a href="#PPxCmd53">*stop <i>[-n][formula]</i> 以降の実行を中止する</a><br>
+・<a href="#PPxCmd54">*return [value] ユーザコマンド・関数の終了</a><br>
 ・<a href="#wait">*wait <i>[option][time[,1|2]]</i> 指定時間が経過するまで待機する</a><br>
 <hr><br>
 
-<a name="PPxCmd54"><b>各PPxの実行</b></a><br>
-・<a href="#PPxCmd55">*ppb <i>[-runas][param]</i> PPbを実行</a><br>
-・<a href="#PPxCmd56">*ppc <i>[-runas][param]</i>  PPcを実行</a><br>
+<a name="PPxCmd55"><b>各PPxの実行</b></a><br>
+・<a href="#PPxCmd56">*ppb <i>[-runas][param]</i> PPbを実行</a><br>
+・<a href="#PPxCmd57">*ppc <i>[-runas][param]</i>  PPcを実行</a><br>
 ・*ppv <i>[-runas][param]</i> PPvを実行<br>
 ・*pptray <i>[-runas][param]</i> PPtrayを実行<br>
 ・*ppffix <i>[param]</i> PPffixを実行<br>
 ・*ppcust <i>[param]</i> PPcustを実行<br>
 <hr><br>
 
-<a name="PPxCmd61"><b>ファイル・ディレクトリ操作</b></a><br>
-・<a href="#PPxCmd62">*cd <i>pathname</i> 作業ディレクトリ変更</a><br>
-・<a href="#PPxCmd63">*chopdir <i>path</i> ディレクトリの階層を減らす</a><br>
-・<a href="#PPxCmd64">*delete <i>entryname</i> ファイル・ディレクトリを削除</a><br>
-・<a href="#PPxCmd65">*file ファイル操作コマンド</a><br>
-・<a href="#PPxCmd70">*httpget <i>&quot;url&quot;,&quot;destname&quot;</i> httpでファイルを取得</a><br>
+<a name="PPxCmd62"><b>ファイル・ディレクトリ操作</b></a><br>
+・<a href="#PPxCmd63">*cd <i>pathname</i> 作業ディレクトリ変更</a><br>
+・<a href="#PPxCmd64">*chopdir <i>path</i> ディレクトリの階層を減らす</a><br>
+・<a href="#PPxCmd65">*delete <i>entryname</i> ファイル・ディレクトリを削除</a><br>
+・<a href="#PPxCmd66">*file ファイル操作コマンド</a><br>
+・<a href="#PPxCmd71">*httpget <i>&quot;url&quot;,&quot;destname&quot;</i> httpでファイルを取得</a><br>
 ・<a href="#makedir">*makedir <i>directoryname</i> ディレクトリを作成</a><br>
 ・<a href="#makefile">*makefile <i>filename</i> ファイルを作成</a><br>
-・<a href="#PPxCmd73">*pack <i>[!][filename][,indiv][,dllname,type[,option1[,option2...]]]</i> 書庫の作成</a><br>
-・<a href="#PPxCmd74">*rename <i>oldname,newname</i> ファイル・ディレクトリの名前を変更</a><br>
+・<a href="#PPxCmd74">*pack <i>[!][filename][,indiv][,dllname,type[,option1[,option2...]]]</i> 書庫の作成</a><br>
+・<a href="#PPxCmd75">*rename <i>oldname,newname</i> ファイル・ディレクトリの名前を変更</a><br>
 <hr><br>
 
-<a name="PPxCmd75"><b>ファイル・ディレクトリ操作(PPc専用)</b></a><br>
+<a name="PPxCmd76"><b>ファイル・ディレクトリ操作(PPc専用)</b></a><br>
 ・<a href="#autodragdrop">*autodragdrop <i>[caption[,id]][,r[,source path]]</i> 自動ドラッグ＆ドロップ</a><br>
-・<a href="#PPxCmd76">*execinarc 書庫内ファイルを使用できるようにする</a><br>
-・<a href="#PPxCmd77">*freedriveuse <i>[drivename]</i> 指定ドライブの使用を一時停止</a><br>
-・<a href="#PPxCmd78">*makelistfile <i>[filename][option]</i> ListFile出力</a><br>
+・<a href="#PPxCmd77">*execinarc 書庫内ファイルを使用できるようにする</a><br>
+・<a href="#PPxCmd78">*freedriveuse <i>[drivename]</i> 指定ドライブの使用を一時停止</a><br>
+・<a href="#PPxCmd79">*makelistfile <i>[filename][option]</i> ListFile出力</a><br>
 ・<a href="#ppcfile">*ppcfile <i>[!]action[...]</i> (PPc)[C]/[M]コマンドを実行</a><br>
-・<a href="#PPxCmd79">*unpack <i>path</i> 書庫の展開</a><br>
+・<a href="#PPxCmd80">*unpack <i>path</i> 書庫の展開</a><br>
 <hr><br>
 
-<a name="PPxCmd80"><b>ヒストリ・カスタマイズ操作</b></a><br>
+<a name="PPxCmd81"><b>ヒストリ・カスタマイズ操作</b></a><br>
 ・<a href="#addhistory">*addhistory <i>type,text</i> ヒストリに登録</a><br>
-・<a href="#PPxCmd82">*deletehistory <i>type,[ &quot;text&quot; | index ]</i>  ヒストリの削除</a><br>
+・<a href="#PPxCmd83">*deletehistory <i>type,[ &quot;text&quot; | index ]</i>  ヒストリの削除</a><br>
 ・<a href="#customize">*customize <i>[ ID=param | ID:SubID=param | ID:SubID,command | @filename ]</i>  部分カスタマイズ</a><br>
-・<a href="#PPxCmd85">*deletecust <i>[ &quot;ID&quot; | ID:SubID | ID,&quot;SubID&quot; | ID,index ]</i>  カスタマイズの削除</a><br>
-・<a href="#PPxCmd86">%*getcust(<i>[ID|ID:SubID]</i>)  カスタマイズ読み込み</a><br>
+・<a href="#PPxCmd86">*deletecust <i>[ &quot;ID&quot; | ID:SubID | ID,&quot;SubID&quot; | ID,index ]</i>  カスタマイズの削除</a><br>
+・<a href="#PPxCmd87">%*getcust(<i>[ID|ID:SubID]</i>)  カスタマイズ読み込み</a><br>
 ・<a href="#linecust">*linecust <i>[^]label,[ ID=param | ID:SubID=param | ID:SubID,command ]</i> 行操作カスタマイズ</a><br>
 ・<a href="#setcust">*setcust <i>[ ID=param | ID:SubID=param | ID:SubID,command | @filename ]</i>  カスタマイズ書き込み</a><br>
 <hr><br>
 
-<a name="PPxCmd88"><b>PPb, PPe, 一行編集共通</b></a><br>
+<a name="PPxCmd89"><b>PPb, PPe, 一行編集共通</b></a><br>
 ・*edit <i>[filename]</i> PPeで編集(終了待ちする)<br>
-・<a href="#PPxCmd90">*ppe <i>[filename]</i> PPeで編集(終了待ちしない)</a><br>
-・<a href="#PPxCmd91">%*edittext 編集テキスト</a><br>
-・<a href="#PPxCmd92">*insert <i>&quot;text&quot;</i> テキスト挿入</a><br>
-・<a href="#PPxCmd93">*insertsel <i>&quot;text&quot;</i> テキスト挿入と選択</a><br>
-・<a href="#PPxCmd94">*insertfile <i>filename</i> ファイル挿入(PPe)</a><br>
-・<a href="#PPxCmd95">*replace <i>&quot;text&quot;</i> 全テキスト入れ替え</a><br>
-・<a href="#PPxCmd96">*replacefile <i>filename</i> ファイルを開き直す(PPe)</a><br>
-・<a href="#PPxCmd97">%*cursortext カーソル位置テキスト</a><br>
-・<a href="#PPxCmd98">%*selecttext 選択テキスト</a><br>
+・<a href="#PPxCmd91">*ppe <i>[filename]</i> PPeで編集(終了待ちしない)</a><br>
+・<a href="#PPxCmd92">%*edittext 編集テキスト</a><br>
+・<a href="#PPxCmd93">*insert <i>&quot;text&quot;</i> テキスト挿入</a><br>
+・<a href="#PPxCmd94">*insertsel <i>&quot;text&quot;</i> テキスト挿入と選択</a><br>
+・<a href="#PPxCmd95">*insertfile <i>filename</i> ファイル挿入(PPe)</a><br>
+・<a href="#PPxCmd96">*replace <i>&quot;text&quot;</i> 全テキスト入れ替え</a><br>
+・<a href="#PPxCmd97">*replacefile <i>filename</i> ファイルを開き直す(PPe)</a><br>
+・<a href="#PPxCmd98">%*cursortext カーソル位置テキスト</a><br>
+・<a href="#PPxCmd99">%*selecttext 選択テキスト</a><br>
 <hr><br>
 
-<a name="PPxCmd99"><b>PPe, 一行編集</b></a><br>
-・<a href="#PPxCmd100">*completelist <i>[-set][-option]</i> 補完一覧リストの表示・設定</a><br>
-・<a href="#PPxCmd103">*defaultmenu Windows標準のエディットボックスメニューを表示</a><br>
+<a name="PPxCmd100"><b>PPe, 一行編集</b></a><br>
+・<a href="#PPxCmd101">*completelist <i>[-set][-option]</i> 補完一覧リストの表示・設定</a><br>
+・<a href="#PPxCmd104">*defaultmenu Windows標準のエディットボックスメニューを表示</a><br>
 ・<a href="#editmode">*editmode <i>option</i> 一行編集の各種設定の変更</a><br>
 ・<a href="#一行編集・PPeの情報取得"> %*editprop(<i>name</i>)</a><br>
-・<a href="#PPxCmd105">*find <i>[&quot;text&quot;][-back][-previous][-replace[:&quot;new text&quot;][-all][-dialog][-regexp]]</i> 文字列の検索・置換(一行編集・PPe)</a><br>
+・<a href="#PPxCmd106">*find <i>[&quot;text&quot;][-back][-previous][-replace[:&quot;new text&quot;][-all][-dialog][-regexp]]</i> 文字列の検索・置換(一行編集・PPe)</a><br>
 ・<a href="#input">%*input<i>[(option)]</i> 一行編集の結果を得る</a><br>
-・<a href="#PPxCmd106">*setcaption <i>text</i> キャプションの設定</a><br>
-・<a href="#PPxCmd107">*zenhan <i>[z|h]</i> 文字のa/ａ変換</a><br>
+・<a href="#PPxCmd107">*setcaption <i>text</i> キャプションの設定</a><br>
+・<a href="#PPxCmd108">*zenhan <i>[z|h]</i> 文字のa/ａ変換</a><br>
 ・<a href="#ppejump">*jumpline <i>[L|Y][行番号][,桁番号]</i> 行番号指定カーソル移動</a><br>
 <hr><br>
 
-<a name="PPxCmd108"><b>PPb</b></a><br>
+<a name="PPxCmd109"><b>PPb</b></a><br>
 ・<a href="#編集情報取得"> %*editprop(<i>name</i>)</a><br>
-・<a href="#PPxCmd110">*image <i>filename</i> 簡易画像表示</a><br>
-・<a href="#PPxCmd111">*option <i>[type]</i> PPbの編集動作設定</a><br>
+・<a href="#PPxCmd111">*image <i>filename</i> 簡易画像表示</a><br>
+・<a href="#PPxCmd112">*option <i>[type]</i> PPbの編集動作設定</a><br>
 <hr><br>
 
-<a name="PPxCmd112"><b>PPc</b></a><br>
+<a name="PPxCmd113"><b>PPc</b></a><br>
 ・<a href="#cachecmd">*cache <i>[on|off|task]</i> ディレクトリ読み込みキャッシュ</a><br>
-・<a href="#PPxCmd115">*capturewindow <i>caption</i> 任意ウィンドウの取り込み</a><br>
-・<a href="#PPxCmd116">*checkoffmark 画面外にマークしたエントリがあれば警告</a><br>
-・<a href="#PPxCmd117">*clearchange 更新状態表示の解除</a><br>
+・<a href="#PPxCmd116">*capturewindow <i>caption</i> 任意ウィンドウの取り込み</a><br>
+・<a href="#PPxCmd117">*checkoffmark 画面外にマークしたエントリがあれば警告</a><br>
+・<a href="#PPxCmd118">*clearchange 更新状態表示の解除</a><br>
 ・<a href="#clipentry">*clipentry <i>[text|file]</i> 選択エントリのクリップ(コピー)</a><br>
-・<a href="#PPxCmd118">*color [back|cursor] [color] 色の一時的変更</a><br>
+・<a href="#PPxCmd119">*color [back|cursor] [color] 色の一時的変更</a><br>
 ・<a href="#commentcommand">*comment [id,][&quot;text&quot;|[all] command] コメントの操作</a><br>
-・<a href="#PPxCmd121">%*comment[(id)] コメント内容</a><br>
+・<a href="#PPxCmd122">%*comment[(id)] コメント内容</a><br>
 ・<a href="#comparemark">*comparemark <i>比較方法, マーク属性, サブディレクトリ</i> ファイル比較マーク</a><br>
 ・<a href="#countsize">*countsize [all|cursor|marked][-clear] マーク総サイズ算出</a><br>
 ・<a href="#cutentry">*cutentry <i>[text|file]</i> 選択エントリの切り取り</a><br>
-・<a href="#PPxCmd123">%*dirhistory(<i>n</i>) 「戻る」の履歴の取得</a><br>
+・<a href="#PPxCmd124">%*dirhistory(<i>n</i>) 「戻る」の履歴の取得</a><br>
 ・<a href="#エントリのチップ表示"> *entrytip</a><br>
 ・<a href="#diroption">*diroption ディレクトリ別の設定のメニュー・変更</a><br>
 ・<a href="#dock">*dock dockの操作</a><br>
 ・<a href="#長いファイル名表示の省略部分指定"> *ellipsis <i>[end|top|mid]</i></a><br>
 ・<a href="#jumppath">*jumppath <i>[path][ -option]</i> 詳細指定付き表示ディレクトリ移動</a><br>
-・<a href="#PPxCmd141">*logwindow <i>[on|off|focus|&quot;表示文字列&quot;]</i> ログウィンドウの制御</a><br>
+・<a href="#PPxCmd142">*logwindow <i>[on|off|focus|&quot;表示文字列&quot;]</i> ログウィンドウの制御</a><br>
 ・<a href="#markentry">*markentry <i>[option] [wildcards]</i> エントリマーク</a><br>
-・<a href="#PPxCmd145">*maskpath <i>[on|off|short]</i> 書庫内のディレクトリ仮想移動</a><br>
+・<a href="#PPxCmd146">*maskpath <i>[on|off|short]</i> 書庫内のディレクトリ仮想移動</a><br>
 ・<a href="#maskentry">*maskentry <i>[option] [wildcards]</i> 一時エントリマスク設定</a><br>
-・<a href="#PPxCmd146">%*maskentry エントリマスクの取得</a><br>
-・<a href="#PPxCmd147">*pairrate <i>[L|R|all][+|-]移動量|比率</i> ２枚の窓の幅／丈の比率を変更</a><br>
+・<a href="#PPxCmd147">%*maskentry エントリマスクの取得</a><br>
+・<a href="#PPxCmd148">*pairrate <i>[L|R|all][+|-]移動量|比率</i> ２枚の窓の幅／丈の比率を変更</a><br>
 ・<a href="#panecommand">*pane <i>commandname [parameter...]</i> ペインの各種操作</a><br>
-・<a href="#PPxCmd149">*ppvoption command PPv使用時の挙動指定</a><br>
+・<a href="#PPxCmd150">*ppvoption command PPv使用時の挙動指定</a><br>
 ・<a href="#range">*range 指定範囲のマーク・ハイライト</a><br>
 ・<a href="#setentryimage">*setentryimage <i>filename [-save]</i> サムネイル表示用画像の設定</a><br>
 ・<a href="#setmaskentry">*setmaskentry <i>[option] [wildcards]</i> 常時エントリマスク設定</a><br>
 ・<a href="#setsortentry">*setsortentry <i>[MC_sort名] | ソート1[,ソート2[,ソート3]],ソート属性,オプション</i> エントリのソート(\[S]相当)</a><br>
 ・<a href="#sortentry">*sortentry <i>[option] [MC_sort名] | ソート1[,ソート2[,ソート3]],ソート属性,オプション</i> エントリのソート([S]相当)</a><br>
-・<a href="#PPxCmd152">%*sortentry(last|id) エントリのソート設定の取得</a><br>
+・<a href="#PPxCmd153">%*sortentry(last|id) エントリのソート設定の取得</a><br>
 ・<a href="#trimmark">*trimmark 実行済みマークの調整</a><br>
-・<a href="#PPxCmd153">*syncpath [on|off|entry] 連動パス・表示パス同期</a><br>
-・<a href="#PPxCmd154">*syncprop [on|off|focus] 連動プロパティ表示</a><br>
+・<a href="#PPxCmd154">*syncpath [on|off|entry] 連動パス・表示パス同期</a><br>
+・<a href="#PPxCmd155">*syncprop [on|off|focus] 連動プロパティ表示</a><br>
 ・<a href="#unmarkentry">*unmarkentry <i>[option][wildcards]</i> エントリマーク解除</a><br>
 ・<a href="#viewstyle">*viewstyle <i>[option] [MC_celS名|directory|separate|edit|format &quot;formats&quot;]</i> エントリ表示の種類を変更</a><br>
 ・<a href="#viewstylefunc">%*viewstyle 現在のエントリ表示形式</a><br>
-・<a href="#PPxCmd155">*where <i>[!][option...]</i> ファイル検索ダイアログ</a><br>
+・<a href="#PPxCmd156">*where <i>[!][option...]</i> ファイル検索ダイアログ</a><br>
 ・<a href="#whereis">*whereis <i>[option...]</i> ファイル検索</a><br>
 <hr><br>
 
-<a name="PPxCmd157"><b>PPc / PPv</b></a><br>
+<a name="PPxCmd158"><b>PPc / PPv</b></a><br>
 ・<a href="#zoom">*zoom <i>[auto|font|image] 値</i> 拡大縮小</a><br>
 <hr><br>
 
-<a name="PPxCmd158"><b>PPv</b></a><br>
-・<a href="#PPxCmd159">*reducemode <i>mode</i> 縮小方法指定</a><br>
-・<a href="#PPxCmd161">*find <i>[&quot;text&quot;] [option]</i> 文字列の検索(PPv)</a><br>
-・<a href="#PPxCmd162">*highlight <i>[&quot;text&quot;] [-dialog]</i> ハイライトの設定</a><br>
-・<a href="#PPxCmd163">*jumpline <i>[L|Y][行番号][,桁番号]</i> 行番号指定カーソル移動</a><br>
-・<a href="#PPxCmd164">%*selecttext 選択テキスト</a><br>
-・<a href="#PPxCmd165">*viewoption <i>各種オプション</i> 表示関係オプション</a><br>
-・<a href="#PPxCmd166"> %*viewoption <i>各種オプションの状態を取得</i></a><br>
-・<a href="#PPxCmd167"> %*zoom([notify]) <i>表示倍率の取得</i></a><br>
+<a name="PPxCmd159"><b>PPv</b></a><br>
+・<a href="#PPxCmd160">*reducemode <i>mode</i> 縮小方法指定</a><br>
+・<a href="#PPxCmd162">*find <i>[&quot;text&quot;] [option]</i> 文字列の検索(PPv)</a><br>
+・<a href="#PPxCmd163">*highlight <i>[&quot;text&quot;] [-dialog]</i> ハイライトの設定</a><br>
+・<a href="#PPxCmd164">*jumpline <i>[L|Y][行番号][,桁番号]</i> 行番号指定カーソル移動</a><br>
+・<a href="#PPxCmd165">%*selecttext 選択テキスト</a><br>
+・<a href="#PPxCmd166">*viewoption <i>各種オプション</i> 表示関係オプション</a><br>
+・<a href="#PPxCmd167"> %*viewoption <i>各種オプションの状態を取得</i></a><br>
+・<a href="#PPxCmd168"> %*zoom([notify]) <i>表示倍率の取得</i></a><br>
 <hr><br>
 
-<a name="PPxCmd168"><b>ツリー窓</b></a><br>
+<a name="PPxCmd169"><b>ツリー窓</b></a><br>
 ・<a href="#treecmd">*tree type ツリー窓の操作(PPc, 一行編集)</a><br>
 <hr><br>
 
-<a name="PPxCmd169"><b>Windowsログイン・電源管理</b></a><br>
+<a name="PPxCmd170"><b>Windowsログイン・電源管理</b></a><br>
 ・*screensaver スクリーンセーバを起動<br>
 ・*monitoroff モニタを省電力モードにする<br>
 ・*lockpc コンピュータをロックする<br>
@@ -5924,12 +5933,26 @@ panehv&nbsp;&nbsp;ペインの縦並び / 横並び<br>
 一行メッセージ「message」を表示します。<b>「&quot;」で括る必要はありません。括った「&quot;」はそのまま表示されます。</b><br>
 <br>
 PPcの場合は、ログ窓があればログ窓に、そうでなければステータス行に表示します。<br>
-また、<i>*linemessage !&quot;message</i> と、「!&quot;」を頭に指定するとログ窓があっても必ずステータス行に表示します。<br>
-<br>
+&nbsp;&nbsp;また、<i>*linemessage !&quot;message</i> と、「!&quot;」を頭に指定するとログ窓があっても必ずステータス行に表示します。<br>
 PPvの場合は、ステータス行に表示します。<br>
 一行編集/PPeの場合は、タイトルバーに表示します。<br>
 PPbの場合は、コンソールに表示します。<br>
 <br>
+PPc, PPv はステータス行の表示指定として、以下の指定が使用できます。PPc の場合、ログ窓があってもステータス行に表示します。<br>
+*linemessage !&quot;text ... textを表示します。X_log指定によるログを行いません。<br>
+*linemessage !L&quot;text ... textを表示します。X_log指定によるログを行います。<br>
+*linemessage !P&quot;text ... 進捗表示用の表示を行います。通常のステータス行表示は一定時間＋操作により消えますが、この指定は表示を維持します。<br>
+*linemessage !K&quot;text ... 常時表示を行います。別の一行メッセージの表示が完了した後は、この指定の一行メッセージの表示に戻ります。「*linemessage !K&quot;」と空文字列を指定した場合は、常時表示を終了します。<br>
+*linemessage !R&quot; ... 直前に表示した一行メッセージを再表示します。既に一行メッセージを表示しているときは、一行メッセージの表示期間が延長されます。<br>
+<br>
+<hr><br>
+<a name="ステータス行に表示された報告文字列を取得"><b> %*linemessage(<i>[-recent]</i>)</b></a><br>
+<br>
+PPc 又は PPv のステータス行に表示されている報告文字列を取得します。表示されていないときは空です。<br>
+オプションとして -recent を指定したときは、表示中の報告文字列か、現在表示されていない最後の報告文字列が取得できます。<br>
+<br>
+尚、一行編集に表示されている報告文字列は、次の記載で取得できます。<br>
+%*regexp(&quot;%W&quot;,&quot;/.*        (.+)/$1&quot;)<br>
 <hr><br>
 <a name="choice"><b>%*choice(option) 選択肢ダイアログの表示・項目の選択</b></a><br>
 <br>
@@ -6019,12 +6042,12 @@ path&nbsp;&nbsp;&nbsp;&nbsp;filenameがフルパスでない相対指定のと�
 %*name(DCU,&quot;filename&quot;)&nbsp;&nbsp;&quot;C:\Program Files\Accessories\pinball-1.exe&quot;<br>
 &nbsp;&nbsp;(但しC:\Program Files\Accessories\pinball.exeが存在しているとき)<br>
 <hr><br>
-<a name="PPxCmd24"><b>%*linkedpath(<i>filename</i>) リンクの対象パスの取得</b></a><br>
+<a name="PPxCmd25"><b>%*linkedpath(<i>filename</i>) リンクの対象パスの取得</b></a><br>
 <br>
 ショートカットファイル(.lnk)、シンボリックリンク、ジャンクションのリンク対象パスを取得します。<br>
 対象外のファイル、または取得できなかったときは空欄になります。<br>
 <hr><br>
-<a name="PPxCmd25"><b>%*addchar(<i>character</i>) 区切り等の文字の追加</b></a><br>
+<a name="PPxCmd26"><b>%*addchar(<i>character</i>) 区切り等の文字の追加</b></a><br>
 <br>
 直前に character がなければ、character を追加します。<br>
 <br>
@@ -6042,7 +6065,7 @@ itemnameの頭に ?b:n; か ?c:n; が含まれているときは、指定した�
 例) %*menu(M_xxx,?b:0;?c:8;item)<br>
 一番上(0)と9番目(8)にボタンとチェックマークを付け、表示内容が「item」の項目にカーソル移動した状態でメニュー表示します。<br>
 <hr><br>
-<a name="PPxCmd26"><b>%*noq(<i>text</i>) 「&quot;」の変換抑制</b></a><br>
+<a name="PPxCmd27"><b>%*noq(<i>text</i>) 「&quot;」の変換抑制</b></a><br>
 <br>
 「&quot;」で括られた範囲内の通常の関数(%*function)の返値に「&quot;」が含まれる場合、「&quot;&quot;」に変換されます。<br>
 %*noq はこの変換をしない結果を得ることができます。<br>
@@ -6061,7 +6084,7 @@ itemnameの頭に ?b:n; か ?c:n; が含まれているときは、指定した�
 テキストファイルに記載されたマクロ文字を展開したり、コマンドが実行されたりします。テキストファイルの末尾の改行は１つ分削除されます。-notrim オプションを付けると削除しません。<br>
 例) %*insertsource(&quot;c:\command\ppx_batch.txt&quot;) ppx_batch.txt の内容をバッチ実行します。<br>
 <hr><br>
-<a name="PPxCmd27"><b>%*InsertValue(<i>filename [-notrim]</i>) テキストファイル（パラメータ）の挿入</b></a><br>
+<a name="PPxCmd28"><b>%*InsertValue(<i>filename [-notrim]</i>) テキストファイル（パラメータ）の挿入</b></a><br>
 <br>
 コマンドラインにテキストファイルを挿入します。<br>
 テキストファイルの内容は「&quot;」の「&quot;&quot;」変換がされるほかは、そのまま利用されます。マクロ文字展開やコマンド実行をしません。テキストファイルの末尾の改行は１つ分削除されます。-notrim オプションを付けると削除しません。<br>
@@ -6073,7 +6096,7 @@ itemnameの頭に ?b:n; か ?c:n; が含まれているときは、指定した�
 ・ \\.\stdin を指定したときは標準入力・リダイレクト入力を対象にします。<br>
 ・ \\.\conin$ を指定したときはコンソール入力を対象にします。<br>
 <hr><br>
-<a name="PPxCmd28"><b>%*ppxlist(<i>[+|-][filter]</i>) 起動中PPxのID列挙・数取得</b></a><br>
+<a name="PPxCmd29"><b>%*ppxlist(<i>[+|-][filter]</i>) 起動中PPxのID列挙・数取得</b></a><br>
 <br>
 現在起動中のPPxのID一覧・数取得を行います。得られたIDや数は「,」で区切られているので、スクリプト等で切りわけて参照できます。尚、ID一覧は一体化窓内PPx、独立窓PPxの順に列挙されます。また、ID順にソートされません。<br>
 <br>
@@ -6097,7 +6120,7 @@ itemnameの頭に ?b:n; か ?c:n; が含まれているときは、指定した�
 %*ppxlist(C#B)&nbsp;&nbsp;一体化窓CBBに属するPPx一覧「2,C_Zbb,C_Zbc,」<br>
 %*ppxlist(C##)&nbsp;&nbsp;起動中一体化窓の一覧「2,CBB,CBC,」<br>
 <hr><br>
-<a name="PPxCmd29"><b>%*regexp(<i>source</i>,<i>pattern</i>) 正規表現加工</b></a><br>
+<a name="PPxCmd30"><b>%*regexp(<i>source</i>,<i>pattern</i>) 正規表現加工</b></a><br>
 <br>
 文字列<i>source</i>を<a href="#fileregexp">正規表現・置換</a><i>pattern</i>によって加工した結果を取得します。<br>
 <br>
@@ -6125,7 +6148,7 @@ itemnameの頭に ?b:n; か ?c:n; が含まれているときは、指定した�
 <br>
 ※ 32bit 版で IRegExp, ICU を使用したとき、%*regexp の結果は 1000 文字以内に制限されます。<br>
 <hr><br>
-<a name="PPxCmd31"><b>%*screendpi(<i>[ID]</i>) 画面の解像度</b></a><br>
+<a name="PPxCmd32"><b>%*screendpi(<i>[ID]</i>) 画面の解像度</b></a><br>
 <br>
 指定したID(<a href="#ppxidformat">PPxのID指定方法</a>)があるディスプレイ・モニタの解像度が得られます。<br>
 通常、画面のスケーリングが 100% のときは 96 (dpi)になります。<br>
@@ -6160,7 +6183,7 @@ PPxの各種カスタマイズ内容の最大長&nbsp;&nbsp;32K<br>
 <br>
 <a href="#mutilineparam">改行等を含む strings の記載方法</a><br>
 <hr><br>
-<a name="PPxCmd33"><b>*selectppx <i>[ID]</i> 指定PPxにフォーカス移動</b></a><br>
+<a name="PPxCmd34"><b>*selectppx <i>[ID]</i> 指定PPxにフォーカス移動</b></a><br>
 <br>
 ID指定がなければ、起動中のPPxの一覧をメニュー表示し、選択したPPxにフォーカスを移します。<br>
 <br>
@@ -6185,7 +6208,7 @@ ID指定(<a href="#ppxidformat">PPxのID指定方法</a>)があればそのIDの
 <br>
 参考:<a href="#values">他の記憶域</a><br>
 <hr><br>
-<a name="PPxCmd34"><b>*sound <i>[filename.wav]</i> WAVファイルを再生する</b></a><br>
+<a name="PPxCmd35"><b>*sound <i>[filename.wav]</i> WAVファイルを再生する</b></a><br>
 <br>
 指定した拡張子 wav のファイルを再生します。ファイル名の指定がなければ、再生の停止を行います。<br>
 <hr><br>
@@ -6210,7 +6233,7 @@ o コマンドラインローカル用（コマンドライン毎に別内容を
 参考:<a href="#values">他の記憶域</a><br>
 <a href="#mutilineparam">改行等を含む strings の記載方法</a><br>
 <hr><br>
-<a name="PPxCmd35"><b>*touch <i>[off|touch|mouse|pen]</i> タッチ操作モードを手動切り替え</b></a><br>
+<a name="PPxCmd36"><b>*touch <i>[off|touch|mouse|pen]</i> タッチ操作モードを手動切り替え</b></a><br>
 <br>
  <a href="#X_pmc">X_pmc</a>の設定と関わらずタッチ操作モードを手動切り替えます。<br>
 空欄 又は touch&nbsp;&nbsp;タッチ操作モードにします。<br>
@@ -6250,14 +6273,14 @@ schtasks.exe /Create /SC WEEKLY /TN &quot;PPx Updater&quot; /TR &quot;<i>(PPxの
 schtasks.exe /Delete /TN &quot;PPx Updater&quot;<br>
 <br>
 <hr><br>
-<a name="PPxCmd36"><b>%*errormsg(no) Win32 API エラーメッセージ</b></a><br>
+<a name="PPxCmd37"><b>%*errormsg(no) Win32 API エラーメッセージ</b></a><br>
 <br>
 デバッグ用の機能です。指定した no のWin32 API エラーメッセージを取得します。<br>
 例) *msgbox &quot;%*errormsg(1)&quot;<br>
 「ファンクションが間違っています。(1)」が表示されます。<br>
 <br>
 <hr><br>
-<a name="PPxCmd37"><b>*psinfo プロセス内部情報</b></a><br>
+<a name="PPxCmd38"><b>*psinfo プロセス内部情報</b></a><br>
 <br>
 デバッグ用の機能です。現在のスレットとモジュールの一覧をPPeで表示します。<br>
 ※ \[F8] でも機能します。<br>
@@ -6265,7 +6288,7 @@ schtasks.exe /Delete /TN &quot;PPx Updater&quot;<br>
 使用している 統合アーカイバDLL や Susie Plug-in 等の一覧や、読み込みパスを確認するためにも使用できます。<br>
 <br>
 <hr><br>
-<a name="PPxCmd38"><b>%*useapps(filename) 指定ファイルを使用しているプロセスの一覧</b></a><br>
+<a name="PPxCmd39"><b>%*useapps(filename) 指定ファイルを使用しているプロセスの一覧</b></a><br>
 <br>
 指定した filename を使用しているプロセスの一覧（多いときは一部）を取得します。<br>
 取得できたときは、下記例のようにプロセスIDとプロセスの名称の一覧が得られます。ファイルが開けない・該当プロセスがない場合は、空になります。<br>
@@ -6293,7 +6316,7 @@ schtasks.exe /Delete /TN &quot;PPx Updater&quot;<br>
 <br>
 参考:<a href="#values">他の記憶域</a><br>
 <hr><br>
-<a name="PPxCmd40"><b>*closeppx <i>[ID]</i> PPxを一括終了</b></a><br>
+<a name="PPxCmd41"><b>*closeppx <i>[ID]</i> PPxを一括終了</b></a><br>
 <br>
 ID(<a href="#wildcard">ワイルドカード</a>対応、<a href="#ppxidformat">PPxのID指定方法</a>参照)を指定したときは該当するPPxを全て終了します。ID指定時は、独立窓と一体化窓を混在して指定できません。<br>
 <br>
@@ -6317,7 +6340,7 @@ IDが、A, B, D, Zcab のPPcを終了させる。<br>
 ※ 以前は、C_A と CA の２形式を考慮した記載が必要でしたが、現在は考慮不要となっています。<br>
 <br>
 <hr><br>
-<a name="PPxCmd41"><b>*execute <i>ID,command</i> 指定PPx上で実行／リストファイル・ディレクトリの列挙実行</b></a><br>
+<a name="PPxCmd42"><b>*execute <i>ID,command</i> 指定PPx上で実行／リストファイル・ディレクトリの列挙実行</b></a><br>
 <br>
 <b>(1)指定PPx上で実行</b><br>
 <br>
@@ -6409,7 +6432,7 @@ PPxのIDは次の指定が可能です。<br>
 <br>
 <a href="#ppxidinfo">PPx の ID</a><br>
 <hr><br>
-<a name="PPxCmd43"><b>%*exitcode プロセス終了コード</b></a><br>
+<a name="PPxCmd44"><b>%*exitcode プロセス終了コード</b></a><br>
 <br>
 %Os (順番に一つずつ実行)を有効にした状態で、最後に実行した外部プロセスの終了コードを示します。%*errorlevel と %*exitcode の機能の違いはありません。<br>
 <br>
@@ -6426,7 +6449,7 @@ labelはマクロ文字や関数が使えません。<br>
 <br>
 *goto 実行時に[PAUSE]キーによる中断が可能です。但し、フォーカスが変更された場合は中断できなくなることがあります。<br>
 <hr><br>
-<a name="PPxCmd45"><b>*ifmatch <i>wildcards[,string]</i> ワイルドカード条件を満たしたら行を実行</b></a><br>
+<a name="PPxCmd46"><b>*ifmatch <i>wildcards[,string]</i> ワイルドカード条件を満たしたら行を実行</b></a><br>
 <br>
 指定の条件を満たしたら同じ行の以降（と次の行）を実行し、満たしていない場合は次の行を実行する条件分岐を行います。<br>
 *if は、指定した数式(<a href="#formula">formula</a>)が真(0以外)であるかを判断し、<br>
@@ -6470,7 +6493,7 @@ B&nbsp;&nbsp;= *if %*getcust(_User:name) == 1 %: *stop 1)
 <br>
 関連: *stop, %&amp;<br>
 <hr><br>
-<a name="PPxCmd46"><b>*job 処理中コマンドの一覧</b></a><br>
+<a name="PPxCmd47"><b>*job 処理中コマンドの一覧</b></a><br>
 <br>
 処理中の *file/*ppcfile コマンドや、PPtray経由で実行中のコマンドの一覧を表示し、フォーカス切り替え(*job)か終了(*job cancel)を指示できます。<br>
 <br>
@@ -6487,7 +6510,7 @@ B&nbsp;&nbsp;= *if %*getcust(_User:name) == 1 %: *stop 1)
  *job start を同じスレッドで複数実行しても、一覧に表示する項目は１つとなります。 また、*job start の数だけ *job end を実行する必要があります。<br>
 <b>*job end</b> *job start により登録した処理内容を削除する。<br>
 <hr><br>
-<a name="PPxCmd48"><b>%*job 処理中コマンドの数</b></a><br>
+<a name="PPxCmd49"><b>%*job 処理中コマンドの数</b></a><br>
 <br>
 処理中の *file/*ppcfile コマンドや、PPtray経由で実行中のコマンドの数が得られます。<br>
 尚、<a href="#X_fopw">X_fopw</a> = 2 としたときに一覧に登録される数が得られます。X_fopw = 0 や 1 のときは 0 になります。<br>
@@ -6626,7 +6649,7 @@ runasuser&nbsp;&nbsp;別のユーザで実行<br>
 <br>
 関連 <a href="#execute">実行処理</a>, <a href="#zapmenu">%z</a>, <a href="#start">*start</a>, <a href="#zapfile">%Z</a><br>
 <hr><br>
-<a name="PPxCmd50"><b>*signal [PPbID],[command] PPbにCtrl+C等を送信</b></a><br>
+<a name="PPxCmd51"><b>*signal [PPbID],[command] PPbにCtrl+C等を送信</b></a><br>
  実行中・実行完了待ちの PPb に対してコマンドを送信します。<br>
 <br>
 <b>PPbID</b><br>
@@ -6639,7 +6662,7 @@ runasuser&nbsp;&nbsp;別のユーザで実行<br>
  kill&nbsp;&nbsp;ctrl+c を送信した後、実行中のプロセスを強制終了させます。<br>
  killone&nbsp;&nbsp;実行中のプロセスを強制終了させます。※ killone は PPb が直接実行したプロセスのみを強制終了させるため、実行中プロセスが起動したプロセスが残ることがあります。<br>
 <hr><br>
-<a name="PPxCmd51"><b>*skip 次の行を実行する</b></a><br>
+<a name="PPxCmd52"><b>*skip 次の行を実行する</b></a><br>
 <br>
 行末までスキップを行い、次の行を実行するようにします。コメント行に用いることを想定しています。<br>
 例) 2行目を実行しない<br>
@@ -6664,7 +6687,7 @@ runasuser&nbsp;&nbsp;別のユーザで実行<br>
 <br>
 関連 <a href="#execute">実行処理</a>, <a href="#run">*run</a>, <a href="#launch">*launch</a>, <a href="#zapfile">%Z</a>, <a href="#zapmenu">%z</a>, <a href="#optionmacro">%O</a><br>
 <hr><br>
-<a name="PPxCmd52"><b>*stop <i>[-n][formula]</i> 以降の実行を中止する</b></a><br>
+<a name="PPxCmd53"><b>*stop <i>[-n][formula]</i> 以降の実行を中止する</b></a><br>
 <br>
 「*stop %: command」と書いたとき、command を実行しないようにします。ユーザコマンド・関数で使用したときは、呼び出し元の実行の継続も行いません。<br>
 主に *ifmatch と組み合わせたり、ユーザコマンド・関数でコマンドラインの実行を中止するためのコマンドです。ユーザコマンド・関数から戻りたいときは、*stopでなく、*return を使用します。<br>
@@ -6677,7 +6700,7 @@ runasuser&nbsp;&nbsp;別のユーザで実行<br>
 <br>
 関連 *if, *ifmatch<br>
 <hr><br>
-<a name="PPxCmd53"><b>*return [value] ユーザコマンド・関数の終了</b></a><br>
+<a name="PPxCmd54"><b>*return [value] ユーザコマンド・関数の終了</b></a><br>
 <br>
 ユーザコマンド・関数(<a href="#_Command">_Command</a>)を途中で終了し、呼び出し元の実行を続けます。ユーザ関数の場合は、value が戻値になります。<br>
 <br>
@@ -6717,11 +6740,11 @@ time の単位はmsで、<i>*wait 1000</i>で１秒間待機します。<br>
 
 <b>各PPxの実行</b><br>
 <hr><br>
-<a name="PPxCmd55"><b>*ppb <i>[-runas][param]</i> PPbを実行</b></a><br>
+<a name="PPxCmd56"><b>*ppb <i>[-runas][param]</i> PPbを実行</b></a><br>
 <br>
 PPLIBxxx.DLLがある場所にあるPPbを実行します。MultiByte版ならPPB.EXE、UNICODE版ならPPBW.EXEになります。このコマンドを使用するとPPbを実行するのに、パスを考慮したり、MultiByte版/UNICODE版に気をつけたりする必要が無くなります。<br>
 <hr><br>
-<a name="PPxCmd56"><b>*ppc <i>[-runas][param]</i>  PPcを実行</b></a><br>
+<a name="PPxCmd57"><b>*ppc <i>[-runas][param]</i>  PPcを実行</b></a><br>
 <br>
 PPcをパラメータ付きで実行します。<br>
 -runas が指定されているときは、管理者/別のユーザで実行します。<br>
@@ -6730,13 +6753,13 @@ PPcをパラメータ付きで実行します。<br>
 
 <b>ファイル・ディレクトリ操作</b><br>
 <hr><br>
-<a name="PPxCmd62"><b>*cd <i>pathname</i> 作業ディレクトリ変更</b></a><br>
+<a name="PPxCmd63"><b>*cd <i>pathname</i> 作業ディレクトリ変更</b></a><br>
 <br>
 カレントディレクトリ（ショートカットのプロパティでいう作業ディレクトリ）を指定します。このカレントディレクトリは、以降のコマンドを実行する時のカレントディレクトリであり、PPbやPPc等のカレントディレクトリを変更するものではありません（こちらは <a href="#jumpdirchar">%j</a> で指定します。）。<br>
  また、実行ファイルを、その実行ファイルの場所をカレントディレクトリで実行する場合は、<a href="#launch">*launch</a> コマンドを使うと便利です。<br>
 <i>例) *cd&quot;c:\windows&quot; %: editor win.ini</i><br>
 <hr><br>
-<a name="PPxCmd63"><b>*chopdir <i>path</i> ディレクトリの階層を減らす</b></a><br>
+<a name="PPxCmd64"><b>*chopdir <i>path</i> ディレクトリの階層を減らす</b></a><br>
 <br>
 X_arcdr=2のときにPPx内部で使用するコマンドです。<br>
 <br>
@@ -6756,17 +6779,17 @@ dir1-+-dir2...  又は  dir1-+-dir2...
 <br>
 <br>
 <hr><br>
-<a name="PPxCmd64"><b>*delete <i>entryname</i> ファイル・ディレクトリを削除</b></a><br>
+<a name="PPxCmd65"><b>*delete <i>entryname</i> ファイル・ディレクトリを削除</b></a><br>
 <br>
 指定したentrynameのファイルまたはディレクトリを削除します。<br>
 削除に失敗しても次のコマンドを実行します。<br>
 <hr><br>
-<a name="PPxCmd65"><b>*file ファイル操作コマンド</b></a><br>
+<a name="PPxCmd66"><b>*file ファイル操作コマンド</b></a><br>
 <br>
 <a href="#filecmd">*fileコマンド</a>、<a href="#fileoptions">コマンドオプション</a>（<a href="#fileoptions1">一般シート</a>、<a href="#fileoptions2">名前シート</a>、<a href="#fileoptions3">その他シート</a>）を参照してください。PPc上で使うなら、より高度な<a href="#ppcfile">*ppcfile</a>も使えます。<br>
 <br>
 <hr><br>
-<a name="PPxCmd70"><b>*httpget <i>&quot;url&quot;,&quot;destname&quot;</i> httpでファイルを取得</b></a><br>
+<a name="PPxCmd71"><b>*httpget <i>&quot;url&quot;,&quot;destname&quot;</i> httpでファイルを取得</b></a><br>
 <br>
 url 上のファイルを destname で保存します。<br>
 <hr><br>
@@ -6778,7 +6801,7 @@ url 上のファイルを destname で保存します。<br>
 <br>
 指定したfilenameでサイズ0のファイルを作成します。作成できなかったときはエラー表示します。<br>
 <hr><br>
-<a name="PPxCmd73"><b>*pack <i>[!][filename][,indiv][,dllname,type[,option1[,option2...]]]</i> 書庫の作成</b></a><br>
+<a name="PPxCmd74"><b>*pack <i>[!][filename][,indiv][,dllname,type[,option1[,option2...]]]</i> 書庫の作成</b></a><br>
 <br>
 　指定した filename で選択したエントリの書庫/圧縮ファイルを作成します。<br>
 filename がない場合は、「%2%\|%X|」（PPcの反対窓ディレクトリ\現在窓の選択ファイル名、編集あり）相当になります。<br>
@@ -6804,7 +6827,7 @@ filename がない場合は、「%2%\|%X|」（PPcの反対窓ディレクトリ
 また、次のように dllname と type を省略できます。<br>
 　*pack filename,,,password,method:no compress,-skip<br>
 <hr><br>
-<a name="PPxCmd74"><b>*rename <i>oldname,newname</i> ファイル・ディレクトリの名前を変更</b></a><br>
+<a name="PPxCmd75"><b>*rename <i>oldname,newname</i> ファイル・ディレクトリの名前を変更</b></a><br>
 <br>
 oldnameのファイルまたはディレクトリをnewnameに変更します。失敗したときはエラー表示します。newnameがディレクトリ指定付きならファイルの移動になります。<br>
 <hr><br>
@@ -6830,7 +6853,7 @@ oldnameのファイルまたはディレクトリをnewnameに変更します。
   ※idは 0 以外のときのみ有効です。また、アプリケーションによっては、同じ子ウィンドウでも開く度に違うidになることもありますので、使用するときは予め確認してください。<br>
 7)source pathとしてディレクトリやファイルを指定したときは、指定したディレクトリ等をD&amp;Dの対象とします。※カーソル・マークエントリを対象としたときと比べて、D&amp;D可能な対象が制限されます（マウス操作の代行によるOLE D&amp;Dができません。）。<br>
 <hr><br>
-<a name="PPxCmd76"><b>*execinarc 書庫内ファイルを使用できるようにする</b></a><br>
+<a name="PPxCmd77"><b>*execinarc 書庫内ファイルを使用できるようにする</b></a><br>
 例)<i>*execinarc %: edit %C</i><br>
 <br>
 前記例のように、このコマンド以降で、選択した書庫内ファイルを実行や開いたりすることができるようになります。具体的には、%temp% ディレクトリにファイルを展開し、%C等のマクロ文字が展開したファイルを示すようになります。<br>
@@ -6838,9 +6861,9 @@ oldnameのファイルまたはディレクトリをnewnameに変更します。
 <br>
 ※このコマンドは、<a href="#cust_key">キー割当て</a>、マウス割当て、ツールバー、M_Ccr、M_Ccr.ext 内でのみ使用可能です。他の場所で使用した場合、その後のPPcの動作がおかしくなります。<br>
 <br>
-※このコマンドは、試作品です。将来無くなったり、別の名前になったりする場合があります。<br>
+※このコマンドは、おまけ機能です。機能強化等は考えていません。<br>
 <hr><br>
-<a name="PPxCmd77"><b>*freedriveuse <i>[drivename]</i> 指定ドライブの使用を一時停止</b></a><br>
+<a name="PPxCmd78"><b>*freedriveuse <i>[drivename]</i> 指定ドライブの使用を一時停止</b></a><br>
 <br>
 ドライブの取り外しやフォーマット等を行うために、各PPxのドライブ使用を一時停止させます。<br>
 例えば、PPcでは、ディレクトリ更新の監視を一時停止します。表示ディレクトリを変更したり、手動で更新したりすれば監視が再度行われます。<br>
@@ -6850,7 +6873,7 @@ oldnameのファイルまたはディレクトリをnewnameに変更します。
 <i>ex) *freedriveuse E</i>&nbsp;&nbsp;ドライブE:の使用を一時停止します。<br>
 <i>ex) *freedriveuse %1</i>&nbsp;&nbsp;現在ディレクトリがあるドライブの使用を一時停止します。<br>
 <hr><br>
-<a name="PPxCmd78"><b>*makelistfile <i>[filename][option]</i> ListFile出力</b></a><br>
+<a name="PPxCmd79"><b>*makelistfile <i>[filename][option]</i> ListFile出力</b></a><br>
 <br>
 現在表示しているディレクトリを<a href="#listsubj">ListFile</a>として書き出します。<br>
 <br>
@@ -6917,7 +6940,7 @@ PPcの[C]相当の処理を行います。<a href="#filecmd">*file コマンド<
 (例) <i>*ppcfile !copy,&quot;C:\Documents and Settings\user\デスクトップ&quot;</i><br>
 ファイルの複写を、入力待ちなしでデスクトップに対して行います。<br>
 <hr><br>
-<a name="PPxCmd79"><b>*unpack <i>path</i> 書庫の展開</b></a><br>
+<a name="PPxCmd80"><b>*unpack <i>path</i> 書庫の展開</b></a><br>
 <br>
 カーソル上／マークした書庫の展開([U])を指定した場所に行います。<br>
 <br>
@@ -6948,7 +6971,7 @@ f&nbsp;&nbsp;フルパスファイル名(PPv, PPeのOpen等)<br>
 u&nbsp;&nbsp;ユーザ定義1(%eu か %eU で使用可能、小文字は単一項目)<br>
 x&nbsp;&nbsp;ユーザ定義2(%ex か %eX で使用可能、小文字は単一項目)<br>
 <hr><br>
-<a name="PPxCmd82"><b>*deletehistory <i>type,[ &quot;text&quot; | index ]</i>  ヒストリの削除</b></a><br>
+<a name="PPxCmd83"><b>*deletehistory <i>type,[ &quot;text&quot; | index ]</i>  ヒストリの削除</b></a><br>
 <br>
 <a href="#addhistory">指定された種類 type</a>のヒストリの１項目を削除します。<br>
 例)削除する項目の文字列を指定して削除<br>
@@ -6984,7 +7007,7 @@ x&nbsp;&nbsp;ユーザ定義2(%ex か %eX で使用可能、小文字は単一�
 <br>
 参考:<a href="#setcust">*setcust</a>,<a href="#linecust">*linecust</a><br>
 <hr><br>
-<a name="PPxCmd85"><b>*deletecust <i>[ &quot;ID&quot; | ID:SubID | ID,&quot;SubID&quot; | ID,index ]</i>  カスタマイズの削除</b></a><br>
+<a name="PPxCmd86"><b>*deletecust <i>[ &quot;ID&quot; | ID:SubID | ID,&quot;SubID&quot; | ID,index ]</i>  カスタマイズの削除</b></a><br>
 <br>
 指定したカスタマイズ項目を削除します。<br>
 ※削除してもカスタマイズの再読み込み操作は行われません。必要なときは、%K&quot;savecust&quot; / %K&quot;loadcust&quot; を使って手動反映をしてください。<br>
@@ -7003,7 +7026,7 @@ M_pjump のような一覧の一項目を削除します。複数の&quot;SubID&
 M_pjump のような一覧の一項目を削除します。index は0から始まる一覧の場所です。<br>
 例) <i>*deletecust M_pjump,1</i> ; ２番目を削除<br>
 <hr><br>
-<a name="PPxCmd86"><b>%*getcust(<i>[ID|ID:SubID]</i>)  カスタマイズ読み込み</b></a><br>
+<a name="PPxCmd87"><b>%*getcust(<i>[ID|ID:SubID]</i>)  カスタマイズ読み込み</b></a><br>
 <br>
 指定のカスタマイズ内容を読み込みます。起動中のPPxが内部に保持する設定は、%*getcustを実行しただけでは取得できません。予めSAVECUSTを実行すると反映されます。<br>
 例)*linemessage %*getcust(X_save)%\%*getcust(Mes0411:NWFN)<br>
@@ -7047,7 +7070,7 @@ id1(%mid1) の行を削除します。<br>
 
 <b>PPb, PPe, 一行編集共通</b><br>
 <hr><br>
-<a name="PPxCmd90"><b>*ppe <i>[filename]</i> PPeで編集(終了待ちしない)</b></a><br>
+<a name="PPxCmd91"><b>*ppe <i>[filename]</i> PPeで編集(終了待ちしない)</b></a><br>
 <a name="ppecommand"></a>filename をPPeで開きます。<br>
 *ppe は、PPeを開いた後、そのまま次の動作に移ります。このため ppb/pptray の -c オプションを使用して実行したときは、PPeが開いてもすぐに閉じて終了してしまいます。<br>
 *edit は、PPeを閉じるまで待機し、次の動作に移りません。ppb/pptray の -c オプションを使用してPPeでファイルを開くときは *edit を使用してください。<br>
@@ -7066,42 +7089,42 @@ id1(%mid1) の行を削除します。<br>
 &nbsp;&nbsp;タブ桁数を指定します。<br>
 <br>
 <hr><br>
-<a name="PPxCmd91"><b>%*edittext 編集テキスト</b></a><br>
+<a name="PPxCmd92"><b>%*edittext 編集テキスト</b></a><br>
 <br>
 現在編集中の文字列全体を取得します。<br>
 <br>
 参考 選択文字列 %*selecttext, カーソル位置 %*cursortext<br>
 <hr><br>
-<a name="PPxCmd92"><b>*insert <i>&quot;text&quot;</i> テキスト挿入</b></a><br>
+<a name="PPxCmd93"><b>*insert <i>&quot;text&quot;</i> テキスト挿入</b></a><br>
 <br>
 選択していない場合はカーソル位置にtextを挿入します。<br>
 選択している場合は選択内容をtextに置き換えます。<br>
 カーソルは、text の右端に移動します。<br>
 <a href="#mutilineparam">改行等を含む text の記載方法</a><br>
 <hr><br>
-<a name="PPxCmd93"><b>*insertsel <i>&quot;text&quot;</i> テキスト挿入と選択</b></a><br>
+<a name="PPxCmd94"><b>*insertsel <i>&quot;text&quot;</i> テキスト挿入と選択</b></a><br>
 <br>
 選択していない場合はカーソル位置にtextを挿入します。<br>
 選択している場合は選択内容をtextに置き換えます。<br>
 挿入された text は選択状態になります。<br>
 <a href="#mutilineparam">改行等を含む text の記載方法</a><br>
 <hr><br>
-<a name="PPxCmd94"><b>*insertfile <i>filename</i> ファイル挿入(PPe)</b></a><br>
+<a name="PPxCmd95"><b>*insertfile <i>filename</i> ファイル挿入(PPe)</b></a><br>
 <br>
 指定位置に、指定したテキストファイルの中身を挿入します。<br>
 *edit/*ppe と同じオプションを指定できます。<br>
 <hr><br>
-<a name="PPxCmd95"><b>*replace <i>&quot;text&quot;</i> 全テキスト入れ替え</b></a><br>
+<a name="PPxCmd96"><b>*replace <i>&quot;text&quot;</i> 全テキスト入れ替え</b></a><br>
 <br>
 編集内容をまるごとtextと入れ替えます。<br>
 <a href="#mutilineparam">改行等を含む text の記載方法</a><br>
 <hr><br>
-<a name="PPxCmd96"><b>*replacefile <i>filename</i> ファイルを開き直す(PPe)</b></a><br>
+<a name="PPxCmd97"><b>*replacefile <i>filename</i> ファイルを開き直す(PPe)</b></a><br>
 <br>
 編集内容をまるごと新しいテキストファイルの内容に入れ替えます。<br>
 *edit/*ppe と同じオプションを指定できます。<br>
 <hr><br>
-<a name="PPxCmd97"><b>%*cursortext カーソル位置テキスト</b></a><br>
+<a name="PPxCmd98"><b>%*cursortext カーソル位置テキスト</b></a><br>
 <br>
 カーソル位置にある単語等のテキストを取得します。<br>
 「abc def ghi」というテキストがあったとき、カーソルが「def」の先頭から末尾のどこかにあれば、「def」を取得できます。また、範囲選択があれば、単語単位に拡張します（選択範囲より多くテキストを取得します）。<br>
@@ -7111,7 +7134,7 @@ id1(%mid1) の行を削除します。<br>
 参考 文字列全体 %*edittext, 選択文字列 %*selecttext<br>
 <br>
 <hr><br>
-<a name="PPxCmd98"><b>%*selecttext 選択テキスト</b></a><br>
+<a name="PPxCmd99"><b>%*selecttext 選択テキスト</b></a><br>
 <br>
 範囲選択中のテキストを取得します。範囲選択していないときは空になります。<br>
 参考 文字列全体 %*edittext, カーソル位置 %*cursortext<br>
@@ -7119,7 +7142,7 @@ id1(%mid1) の行を削除します。<br>
 
 <b>PPe, 一行編集</b><br>
 <hr><br>
-<a name="PPxCmd100"><b>*completelist <i>[-set][-option]</i> 補完一覧リストの表示・設定</b></a><br>
+<a name="PPxCmd101"><b>*completelist <i>[-set][-option]</i> 補完一覧リストの表示・設定</b></a><br>
 <br>
 入力内容に応じて表示される補完一覧リスト( <a href="#X_flst">X_flst</a>≧3 )を手動で表示させたり、表示内容を設定したりするときに使用するコマンドです。<br>
 <br>
@@ -7188,7 +7211,7 @@ id1(%mid1) の行を削除します。<br>
  ・user&nbsp;&nbsp;-fileで指定した追加補完候補ファイルを対象にします。コマンド・パラメータを判別します。<br>
  ・user1&nbsp;&nbsp;-fileで指定した追加補完候補ファイルを対象にします。常にコマンド扱いになります。<br>
 <hr><br>
-<a name="PPxCmd103"><b>*defaultmenu Windows標準のエディットボックスメニューを表示</b></a><br>
+<a name="PPxCmd104"><b>*defaultmenu Windows標準のエディットボックスメニューを表示</b></a><br>
 <br>
 右クリックやアプリケーションキーを使うとでるWindows標準のメニューを表示します。<br>
 <hr><br>
@@ -7298,7 +7321,7 @@ PPeや一行編集の動作情報を取得します。<br>
 %*editprop(displaytop)&nbsp;&nbsp;表示上端の表示行数(1～)<br>
 <br>
 <hr><br>
-<a name="PPxCmd105"><b>*find <i>[&quot;text&quot;][-back][-previous][-replace[:&quot;new text&quot;][-all][-dialog][-regexp]]</i> 文字列の検索・置換(一行編集・PPe)</b></a><br>
+<a name="PPxCmd106"><b>*find <i>[&quot;text&quot;][-back][-previous][-replace[:&quot;new text&quot;][-all][-dialog][-regexp]]</i> 文字列の検索・置換(一行編集・PPe)</b></a><br>
 <br>
 ・検索<br>
 text の位置を検索し、該当 text を選択します。-back / -previous で検索方向を後方に指定できます。text がないときは以前の text を用います。<br>
@@ -7353,11 +7376,11 @@ text の位置を検索し、該当 text を new text に置換します。未�
 参考: %E %! %{<br>
 <br>
 <hr><br>
-<a name="PPxCmd106"><b>*setcaption <i>text</i> キャプションの設定</b></a><br>
+<a name="PPxCmd107"><b>*setcaption <i>text</i> キャプションの設定</b></a><br>
 <br>
 タイトルバーのキャプションを指定されたtextに変更します。<br>
 <hr><br>
-<a name="PPxCmd107"><b>*zenhan <i>[z|h]</i> 文字のa/ａ変換</b></a><br>
+<a name="PPxCmd108"><b>*zenhan <i>[z|h]</i> 文字のa/ａ変換</b></a><br>
 <br>
 カーソル位置／選択範囲の文字のa/ａ変換を行います。<br>
 パラメータ無しのときは、a/ａのトグル動作を行います。<br>
@@ -7381,7 +7404,7 @@ text の位置を検索し、該当 text を new text に置換します。未�
 &nbsp;&nbsp;&nbsp;&nbsp;３文字目以降: 詳細情報（現在空白）<br>
 <br>
 <hr><br>
-<a name="PPxCmd110"><b>*image <i>filename</i> 簡易画像表示</b></a><br>
+<a name="PPxCmd111"><b>*image <i>filename</i> 簡易画像表示</b></a><br>
 <br>
  指定した画像を読み込み、コンソール内に表示します。<br>
 表示にはターミナルの ESC シーケンス対応が必要です。Windows 単体の場合は、Windows 10 RS2/1703 等にする必要があります。<br>
@@ -7390,7 +7413,7 @@ text の位置を検索し、該当 text を new text に置換します。未�
 ※conhost内に表示したとき、選択や窓の大きさ変更等の加工を行うと、16色に減色されます。<br>
 <br>
 <hr><br>
-<a name="PPxCmd111"><b>*option <i>[type]</i> PPbの編集動作設定</b></a><br>
+<a name="PPxCmd112"><b>*option <i>[type]</i> PPbの編集動作設定</b></a><br>
 <br>
 ・編集時のカレントディレクトリ<br>
 <b>*option separete</b>(初期値)<br>
@@ -7430,7 +7453,7 @@ text の位置を検索し、該当 text を new text に置換します。未�
  非同期読み込み中／読み込み後待機中のディレクトリの一覧を表示します。<br>
  (cache)付きのディレクトリは、メモリ上のキャッシュとして保存されています。<br>
 <hr><br>
-<a name="PPxCmd115"><b>*capturewindow <i>caption</i> 任意ウィンドウの取り込み</b></a><br>
+<a name="PPxCmd116"><b>*capturewindow <i>caption</i> 任意ウィンドウの取り込み</b></a><br>
 <br>
 PPcを<a href="#X_combo">一体化</a>で使用しているときに利用できるコマンドです。<br>
 指定したウィンドウを取り込んで、PPcの１ペインにします。<br>
@@ -7455,7 +7478,7 @@ PPcを<a href="#X_combo">一体化</a>で使用しているときに利用でき
 -pane:n は指定した数値n(0:左端、1:左から２番目…)のペインを使用します。<br>
 -pane:l ,-pane:r は現在窓・反対窓の左側/右側を指定します。<br>
 <hr><br>
-<a name="PPxCmd116"><b>*checkoffmark 画面外にマークしたエントリがあれば警告</b></a><br>
+<a name="PPxCmd117"><b>*checkoffmark 画面外にマークしたエントリがあれば警告</b></a><br>
 <br>
 画面外にマークしたエントリがあれば警告のダイアログボックスを表示します。<br>
 マークしていない、画面内にマークがあるなど、条件を満たさない場合は何もしません。<br>
@@ -7463,7 +7486,7 @@ PPcを<a href="#X_combo">一体化</a>で使用しているときに利用でき
 <br>
 画面外にマークがあることを忘れて作業を進めてしまうことを防止するための警告ダイアログボックスです。<br>
 <hr><br>
-<a name="PPxCmd117"><b>*clearchange 更新状態表示の解除</b></a><br>
+<a name="PPxCmd118"><b>*clearchange 更新状態表示の解除</b></a><br>
 <br>
 削除表示以外の更新状態表示を解除します。<br>
 新規や更新状態のエントリは、通常表示に戻ります。<br>
@@ -7473,7 +7496,7 @@ PPcを<a href="#X_combo">一体化</a>で使用しているときに利用でき
 <br>
 <a href="#cutentry">*cutentry</a>を参照してください。<br>
 <hr><br>
-<a name="PPxCmd118"><b>*color [back|cursor] [color] 色の一時的変更</b></a><br>
+<a name="PPxCmd119"><b>*color [back|cursor] [color] 色の一時的変更</b></a><br>
 <br>
 指定された箇所の色を<a href="#color">指定した色</a>へ一時的に変更します。<br>
 変更する色は、窓別に維持されます。<br>
@@ -7522,7 +7545,7 @@ infotip&nbsp;&nbsp;インフォチップの内容を設定します。<br>
 ※現在、カラム拡張、bcrypt はメニュー上のみ使用可能です。<br>
 <br>
 <hr><br>
-<a name="PPxCmd121"><b>%*comment[(id)] コメント内容</b></a><br>
+<a name="PPxCmd122"><b>%*comment[(id)] コメント内容</b></a><br>
 <br>
 カーソル上のエントリのコメント内容です。コメントがなければ空欄になります。<br>
 %*comment とした場合は通常のコメント、%*comment(1)などとID指定した場合は拡張コメントが取得できます。<br>
@@ -7613,7 +7636,7 @@ cursor のときは、カーソル位置のエントリを対象にします。<
 <i>例) *clipentry text</i> テキスト形式でクリップします。<br>
 <i>例) *cutentry file</i> ファイル形式でクリップします。<br>
 <hr><br>
-<a name="PPxCmd123"><b>%*dirhistory(<i>n</i>) 「戻る」の履歴の取得</b></a><br>
+<a name="PPxCmd124"><b>%*dirhistory(<i>n</i>) 「戻る」の履歴の取得</b></a><br>
 <br>
 「戻る」(^[←], ^\[←])、「進む」(^[→], ^\[→])の履歴を取得します。n は数値で、<br>
 0 なら現在のディレクトリの取得、1 なら１つ前のディレクトリ…となります。<br>
@@ -7808,7 +7831,7 @@ ENTER , *execute ,%*edittext %: %K&quot;@^Y&quot; ; 編集文字列を実行。�
 ・確実に指定ディレクトリを読み込む(<a href="#ppxscr">スクリプト</a>内で使う時用)<br>
 *jumppath path -noasync -nofixpath<br>
 <hr><br>
-<a name="PPxCmd141"><b>*logwindow <i>[on|off|focus|&quot;表示文字列&quot;]</i> ログウィンドウの制御</b></a><br>
+<a name="PPxCmd142"><b>*logwindow <i>[on|off|focus|&quot;表示文字列&quot;]</i> ログウィンドウの制御</b></a><br>
 <br>
 ログウィンドウの制御を行います。ログウィンドウを表示している間は、各種処理結果や一行メッセージがログウィンドウ上に表示されます。<br>
 また、ログウィンドウは、通常は独立した窓ですが、一体化時は下側のペインとして表示されます。<br>
@@ -7867,7 +7890,7 @@ option は次の指定ができます。<br>
 <br>
 関連:<a href="#wildcard">ワイルドカードの指定方法</a>, <a href="#unmarkentry">*unmarkentry</a><br>
 <hr><br>
-<a name="PPxCmd145"><b>*maskpath <i>[on|off|short]</i> 書庫内のディレクトリ仮想移動</b></a><br>
+<a name="PPxCmd146"><b>*maskpath <i>[on|off|short]</i> 書庫内のディレクトリ仮想移動</b></a><br>
 <br>
 ディレクトリ指定付きの書庫を、ディレクトリ移動可能にするかどうかを切り換えます。通常は表示方法メニュー[;]<a href="#MC_celS">MC_celS</a>で切り替えるか、<a href="#XC_pmsk">XC_pmsk</a>に設定しますが、コマンドで切り換えたいときに使うコマンドです。<br>
 ※書庫内に移動してから実行してください。書庫外で設定しても(書庫外に移動したり、再読込をしたりしても同様) XC_pmsk の設定に戻ります。<br>
@@ -7899,11 +7922,11 @@ option は次の指定ができます。<br>
  エントリマスク設定 <a href="#setmaskentry">*setmaskentry</a><br>
  表示書式設定 <a href="#viewstyle">*viewstyle</a><br>
 <hr><br>
-<a name="PPxCmd146"><b>%*maskentry エントリマスクの取得</b></a><br>
+<a name="PPxCmd147"><b>%*maskentry エントリマスクの取得</b></a><br>
 <br>
 エントリマスク設定(常時用, \[F]相当)の設定値を取得できます。<br>
 <hr><br>
-<a name="PPxCmd147"><b>*pairrate <i>[L|R|all][+|-]移動量|比率</i> ２枚の窓の幅／丈の比率を変更</b></a><br>
+<a name="PPxCmd148"><b>*pairrate <i>[L|R|all][+|-]移動量|比率</i> ２枚の窓の幅／丈の比率を変更</b></a><br>
 <br>
 ペアとなっている一組の連動窓／一体化窓の幅などの比率を変更します。<br>
 横に並んでいるときは幅、縦に並んでいるときは丈が変化します。<br>
@@ -8100,7 +8123,7 @@ parameterとして、どのペインかを表すIDが指定できます。<br>
 <dt>*pane color ,,_AUTO</dt><dd>現在ペインのタブ背景の色指定を解除する。文字色は変更無</dd>
 <dt></dt></dl><br>
 <hr><br>
-<a name="PPxCmd149"><b>*ppvoption command PPv使用時の挙動指定</b></a><br>
+<a name="PPxCmd150"><b>*ppvoption command PPv使用時の挙動指定</b></a><br>
 PPcからPPvを使用するとき(PPvによる表示 [N]、連動ビュー \[Y]、[Y])に、どのIDのPPvを使用するかを指定することができます。<br>
 <br>
 <b>・通常表示に使う PPv の ID 指定</b><br>
@@ -8247,7 +8270,7 @@ option 指定として次の指定が可能です。<dl compact>
  ディレクトリ別設定 <a href="#diroption">*diroption</a><br>
  <a href="#sortdialog">詳細設定ダイアログ</a><br>
 <hr><br>
-<a name="PPxCmd152"><b>%*sortentry(last|id) エントリのソート設定の取得</b></a><br>
+<a name="PPxCmd153"><b>%*sortentry(last|id) エントリのソート設定の取得</b></a><br>
 <br>
 指定したソート設定を「0,-1,-1,B011111,B00000000100000000000000011」の形で取得します。このソート設定は、*sortentry %*sortentry などとして利用できます。<br>
 <br>
@@ -8270,13 +8293,13 @@ option 指定として次の指定が可能です。<dl compact>
 ※ *trimmark %: echo %C などと、*trimmark の後に %C 等を書くと、その %C 等の中身が空になります。<br>
 ※ %# のあとに *trimmark を書いても機能しません。<br>
 <hr><br>
-<a name="PPxCmd153"><b>*syncpath [on|off|entry] 連動パス・表示パス同期</b></a><br>
+<a name="PPxCmd154"><b>*syncpath [on|off|entry] 連動パス・表示パス同期</b></a><br>
 <br>
 off&nbsp;&nbsp;<a href="#syncpath">連動パス・表示パス</a>を無効にします。<br>
 on&nbsp;&nbsp;カーソルの同期(反対窓のカーソルを同名エントリに移動)と、表示パスの同期(現在窓のディレクトリ移動に合わせて反対窓も移動)を有効にします。<br>
 entry&nbsp;&nbsp;カーソルの同期のみ有効にします。<br>
 <hr><br>
-<a name="PPxCmd154"><b>*syncprop [on|off|focus] 連動プロパティ表示</b></a><br>
+<a name="PPxCmd155"><b>*syncprop [on|off|focus] 連動プロパティ表示</b></a><br>
 <br>
 現在窓の右側にプロパティを連動表示します。連動時はできるだけ同じタブを表示するようにしています。<br>
 *syncprop focus として実行するとプロパティにフォーカスが移動します。<br>
@@ -8322,7 +8345,7 @@ entry&nbsp;&nbsp;カーソルの同期のみ有効にします。<br>
 <br>
  表示書式設定 <a href="#viewstyle">*viewstyle</a><br>
 <hr><br>
-<a name="PPxCmd155"><b>*where <i>[!][option...]</i> ファイル検索ダイアログ</b></a><br>
+<a name="PPxCmd156"><b>*where <i>[!][option...]</i> ファイル検索ダイアログ</b></a><br>
 <br>
 <a href="#whereis">*whereis</a>を参照してください。<br>
 <hr><br>
@@ -8485,7 +8508,7 @@ font の大きさを % で指定します。符号「+」「-」があるとき�
 
 <b>PPv</b><br>
 <hr><br>
-<a name="PPxCmd159"><b>*reducemode <i>mode</i> 縮小方法指定</b></a><br>
+<a name="PPxCmd160"><b>*reducemode <i>mode</i> 縮小方法指定</b></a><br>
 <br>
 画像の拡大・縮小表示方法を設定します。<br>
 XV_imgDの第2引数と同じです。<br>
@@ -8528,7 +8551,7 @@ XV_imgDの第2引数と同じです。<br>
 方法: 平均画素法/面積平均法。先画像の画素に対応する元画像の全画素をその面積比を考慮して平均化します。<br>
 <br>
 <hr><br>
-<a name="PPxCmd161"><b>*find <i>[&quot;text&quot;] [option]</i> 文字列の検索(PPv)</b></a><br>
+<a name="PPxCmd162"><b>*find <i>[&quot;text&quot;] [option]</i> 文字列の検索(PPv)</b></a><br>
 <br>
 text の位置を検索し、該当 text の行に移動します。<br>
 text がないときは以前の text を用います。<br>
@@ -8544,7 +8567,7 @@ option<br>
 -dialog    text を入力するダイアログを表示します。<br>
 <br>
 <hr><br>
-<a name="PPxCmd162"><b>*highlight <i>[&quot;text&quot;] [-dialog]</i> ハイライトの設定</b></a><br>
+<a name="PPxCmd163"><b>*highlight <i>[&quot;text&quot;] [-dialog]</i> ハイライトの設定</b></a><br>
 <br>
 空白区切りで指定した文字列 textをハイライト表示します。<br>
 -dialog を指定するとダイアログを表示します。<br>
@@ -8552,13 +8575,13 @@ option<br>
 入力内容は、特殊環境変数 %si&quot;Highlight&quot; に保存されます。<br>
 常時使用する固定キーワードハイライトは、<a href="#CV_hkey">CV_hkey</a>で指定可能です。<br>
 <hr><br>
-<a name="PPxCmd163"><b>*jumpline <i>[L|Y][行番号][,桁番号]</i> 行番号指定カーソル移動</b></a><br>
+<a name="PPxCmd164"><b>*jumpline <i>[L|Y][行番号][,桁番号]</i> 行番号指定カーソル移動</b></a><br>
 <br>
 指定した行番号(1=先頭)にカーソルを移動させます。<br>
 行番号の頭に「L」を付けた場合は論理行番号、「Y」を付けた場合は表示行番号で移動します。<br>
 テキスト表示の時、L/Yが無いときは、XV_numtの設定に従います。<br>
 <hr><br>
-<a name="PPxCmd164"><b>%*selecttext 選択テキスト</b></a><br>
+<a name="PPxCmd165"><b>%*selecttext 選択テキスト</b></a><br>
 <br>
 範囲選択した部分の表示文字列を取得します。<br>
 ・テキスト表示時に範囲選択していないときは、キャレットカーソル表示時はカーソル行、非表示時は表示分を取得します。<br>
@@ -8566,7 +8589,7 @@ option<br>
 ・%*selecttext(u)とした場合、UTF-8でURLエンコードした内容を得ることができます。Web検索用です。<br>
 参考 文字列全体 %*edittext, カーソル位置 %*cursortext<br>
 <hr><br>
-<a name="PPxCmd165"><b>*viewoption <i>各種オプション</i> 表示関係オプション</b></a><br>
+<a name="PPxCmd166"><b>*viewoption <i>各種オプション</i> 表示関係オプション</b></a><br>
 <br>
 以下の<a href="#ppvoptions">起動時オプション</a>を指定して、表示を変更します。複数のオプションを同時に指定することもできます。<br>
  例) *viewoption -tag:tag -utf8<br>
@@ -8586,7 +8609,7 @@ option<br>
  ※特定の種類のファイルに対してオプションを常時指定したいときは、<a href="#XV_opts">XV_opts</a>で指定できます。<br>
  ※タブ桁数、桁数については専用の設定 <a href="#XV_tab">XV_tab</a>, <a href="#XV_cols">XV_cols</a> が用意されています。<br>
 <hr><br>
-<a name="PPxCmd166"><b> %*viewoption <i>各種オプションの状態を取得</i></b></a><br>
+<a name="PPxCmd167"><b> %*viewoption <i>各種オプションの状態を取得</i></b></a><br>
 <br>
  以下の設定を、<a href="#ppvoptions">起動時オプション</a>の形式で取得します。<br>
  出力例) -TEXT -SYSTEM -mime:0 -tag:0<br>
@@ -8601,7 +8624,7 @@ option<br>
 <br>
 <br>
 <hr><br>
-<a name="PPxCmd167"><b> %*zoom([notify]) <i>表示倍率の取得</i></b></a><br>
+<a name="PPxCmd168"><b> %*zoom([notify]) <i>表示倍率の取得</i></b></a><br>
 <br>
 SetimgD や *zoom で設定した表示倍率を取得します。<br>
 %*zoom(notify) と指定したときは、ステータス行に表示する文字列（「120%」「自動縮小」等）が取得できます。<br>
@@ -11511,8 +11534,8 @@ gLn gRn</dt><dd>左端/右端からの画素数単位のインデント。</dd>
 <dt></dt><dd>fmt:下記参照</dd>
 <dt></dt><dd><b>年</b> y:西暦(00) Y:西暦(2000)</dd>
 <dt></dt><dd>     g:元号(H12) G:元号(平成12)</dd>
-<dt></dt><dd>     jM, jT, jS, jH, jR:元号固定(S75やR-18等の表示、M133, … R-18)</dd>
-<dt></dt><dd>     JM, JT, JS, JH, JR:元号固定(明治133, … 令和-18)</dd>
+<dt></dt><dd>     jR, jH, jS, jT, jM:元号固定(S75やR-18等の表示、R-18, … M133)</dd>
+<dt></dt><dd>     JR, JH, JS, JT, JM:元号固定(令和-18, … 明治133)</dd>
 <dt></dt><dd><b>月</b> n:( 1)  N:(01)  a:Jan, Feb, Mar...</dd>
 <dt></dt><dd><b>日</b> d:( 1)  D:(01)</dd>
 <dt></dt><dd><b>曜日</b> w:Sun, Mon, Tue, Wed, Thu, Fri, Sat</dd>
