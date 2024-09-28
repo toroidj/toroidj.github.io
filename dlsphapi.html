@@ -36,7 +36,8 @@ p { text-align: left; }
 本仕様は API の 64bit 化に加えて、Susie 32bit Plug-in 仕様 rev5 では記載されていなかった動作の言及や、曖昧な定義の厳格化をおこなっています。</p>
 <p>Susie 32bit Plug-in 仕様 rev5 は、Susie 32bit Plug-in の本家となる竹村嘉人 (たけちん)氏のサイト (<a href="http://www.digitalpad.co.jp/~takechin/">http://www.digitalpad.co.jp/~takechin/</a>) の Plug-in package ver0.08 に同梱されています。</p>
  <UL>
-  <LI><A HREF="#fileext">Plug-in 拡張子</A></LI>
+  <LI><A HREF="#fileext">Plug-in の拡張子</A></LI>
+  <LI><A HREF="#types">Plug-in の種類</A></LI>
   <LI><A HREF="#api" >64bit API の概要</A></LI>
   <LI><A HREF="#apilist" >API 一覧</A></LI>
   <LI><A HREF="#errorcode" >エラーコード</A></LI>
@@ -46,7 +47,7 @@ p { text-align: left; }
   <LI><A HREF="#reference" >参考資料</A></LI>
  </UL>
 <A HREF="index.html">Homeへ戻る</A>
-<HR><H3><A NAME="fileext">Plug-in 拡張子</A></H3>
+<HR><H3><A NAME="fileext">Plug-in の拡張子</A></H3>
 Susie Plug-in として以下の拡張子が決められています。.spi と .PLG が本家仕様です。 .sph, .spha は独自仕様です。
 <pre>
 .spi   Susie 32bit Plug-in
@@ -54,6 +55,17 @@ Susie Plug-in として以下の拡張子が決められています。.spi と 
 .spha  Susie 64bit(ARM64) Plug-in
 .PLG   Susie 16bit Plug-in
 </pre>
+
+<HR><H3><A NAME="types">Plug-in の種類</A></H3>
+Susie Plug-in は機能に合わせて２種類あります。<br>
+<ul><li>Import filter. 画像展開プラグイン用API<br>
+画像ファイルをBITMAPに展開するプラグインです。<br>
+ファイル名は "if..." と頭に "if" をつけることが一般的です。<br>
+GetPluginInfo の Plug-in APIバージョンは "00IN" になります。</li>
+<li>Export filter. アーカイブ展開プラグイン用API<br>
+書庫ファイル内のファイルの一覧を取得したり、指定した１つのファイルを展開したりするプラグインです。<br>
+ファイル名は "ax..." と頭に "ax" をつけることが一般的です。<br>
+GetPluginInfo の Plug-in APIバージョンは "00AM" になります。</li></ul>
 
 <HR><H3><A NAME="api">64bit API の概要</A></H3>
 <ul><li>定義が 32bit / 64bit で共用できるように LONG_PTR 等を使用しています。</li>
@@ -113,7 +125,7 @@ Plug-in に関する情報を取得します。Plug-in の種類、表示用の�
 <pre>パラメータ
 [in] <span class="type">int</span> infono
  0  Plug-in APIバージョン
-    "00IN" または "00AM" が返ります。本家仕様としては他の指定が挙げられていますが、実際には使用されていないので、この２つに限定しています。
+    "00IN" ([IF] 画像展開プラグイン)または "00AM" ([AX] アーカイブ展開プラグイン)が返ります。本家仕様としては他の指定が挙げられていますが、実際には使用されていないので、この２つに限定しています。
     ※ AtoB Converter(<a href="https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html">https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html</a>)の出力Plug-inでは "T0XN" が定義されています。
  1  Plug-in の名前、バージョン、Copyright
 
@@ -552,14 +564,17 @@ Plug-in を使うアプリケーションとして完全対応したい場合は
 また、カタログ表示は更に多くの 16bit DIB, 32bit DIB が扱えない制限があります。</li>
 <li>アプリケーションは、IsSupported を必ず使用してください。その後の API でメモリ渡しを使うと、Plug-in がファイル名を受け取る唯一のチャンスとなるなど、他のAPIで不足している情報を集めることがあるためです。</li>
 <li>API は主に次の使い方がされます。UNICODE 版APIを使うときも同じ順です。<br>
+画像展開<br>
 IsSupported - GetPicture<br>
 IsSupported - GetPictureInfo - GetPicture<br>
 <br>
+アーカイブ展開<br>
 IsSupported - GetArchiveInfo - [GetFile]n<br>
 IsSupported - GetArchiveInfo - [GetFileInfo - GetFile]n<br>
 IsSupported - GetArchiveInfo - [IsSupported - GetFileInfo - GetFile]n</li>
 <li>ファイルサイズが 0、または画像ファイルのヘッダサイズに満たない大きさのファイルを、ファイル名かメモリイメージで渡されることがあります。Plug-in 側はこれらのファイルでも異常終了しないように対策する必要があります。</li>
-<li>複数のスレッドを使う場合、一連の操作(IsSupported～GetPicture/GetFile まで)を同じスレッドで行う必要があります。<br>
+<li>マルチスレッドによる API の複数スレッドの同時使用は保証されません。ただし、マルチスレッドで使用するアプリケーションがあるため、可能なら対応することをお勧めします。対応していない場合はそのことを言及することをお勧めします。</li>
+<li>複数のスレッドで API を使う場合、一連の操作(IsSupported～GetPicture/GetFile まで)を同じスレッドで行う必要があります。<br>
 IsSupportedやGetArchiveInfoで得られた情報をスレッド単位でキャッシュしている場合があります。</li>
 <a name="MacBin"><li>MacBin(Mac Binary)対応について<br>
 Classic Mac OS(Mac OS X 以前の Mac OS) 上で作成した画像ファイルの一部には、画像本体(データフォーク)の先頭に追加される 128bytes のマックバイナリヘッダと、画像本体の後ろに追加されるリソースフォークがあり、そのまま読み込んでも画像として扱えないことがあります。<br>

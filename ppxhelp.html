@@ -5471,7 +5471,7 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 ・<a href="#PPxCmd19">*ime <i>0|1</i> IME状態の変更</a><br>
 ・<a href="#layout">*layout レイアウトメニューを表示</a><br>
 ・<a href="#linemessage">*linemessage <i>message</i> 一行メッセージを表示</a><br>
-・<a href="#ステータス行に表示された報告文字列を取得"> %*linemessage(<i>[-recent]</i>)</a><br>
+・<a href="#PPxCmd23">%*linemessage(<i>[-recent]</i>) ステータス行に表示された報告文字列を取得</a><br>
 ・<a href="#choice">%*choice(option) 選択肢ダイアログの表示・項目の選択</a><br>
 ・%*F(<i>format,&quot;filename&quot;[,&quot;path&quot;]</i>) %*nameと同じ<br>
 ・<a href="#functionF">%*name(<i>format,&quot;filename&quot;[,&quot;path&quot;]</i>) ファイル名の加工</a><br>
@@ -5939,14 +5939,15 @@ PPvの場合は、ステータス行に表示します。<br>
 PPbの場合は、コンソールに表示します。<br>
 <br>
 PPc, PPv はステータス行の表示指定として、以下の指定が使用できます。PPc の場合、ログ窓があってもステータス行に表示します。<br>
-*linemessage !&quot;text ... textを表示します。X_log指定によるログを行いません。<br>
-*linemessage !L&quot;text ... textを表示します。X_log指定によるログを行います。<br>
-*linemessage !P&quot;text ... 進捗表示用の表示を行います。通常のステータス行表示は一定時間＋操作により消えますが、この指定は表示を維持します。<br>
+*linemessage ... messageの指定がない場合、一行メッセージの表示を取り消します。常時表示があれば常時表示になります。<br>
+*linemessage !&quot;message ... messageを表示します。X_log指定によるログを行いません。<br>
+*linemessage !L&quot;message ... messageを表示します。X_log指定によるログを行います。<br>
+*linemessage !P&quot;message ... 進捗表示用の表示を行います。通常のステータス行表示は一定時間＋操作により消えますが、この指定は表示を維持します。<br>
 *linemessage !K&quot;text ... 常時表示を行います。別の一行メッセージの表示が完了した後は、この指定の一行メッセージの表示に戻ります。「*linemessage !K&quot;」と空文字列を指定した場合は、常時表示を終了します。<br>
 *linemessage !R&quot; ... 直前に表示した一行メッセージを再表示します。既に一行メッセージを表示しているときは、一行メッセージの表示期間が延長されます。<br>
 <br>
 <hr><br>
-<a name="ステータス行に表示された報告文字列を取得"><b> %*linemessage(<i>[-recent]</i>)</b></a><br>
+<a name="PPxCmd23"><b>%*linemessage(<i>[-recent]</i>) ステータス行に表示された報告文字列を取得</b></a><br>
 <br>
 PPc 又は PPv のステータス行に表示されている報告文字列を取得します。表示されていないときは空です。<br>
 オプションとして -recent を指定したときは、表示中の報告文字列か、現在表示されていない最後の報告文字列が取得できます。<br>

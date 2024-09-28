@@ -30,7 +30,7 @@ img { max-width: 100%; height: auto; }
 <div align="left">※ http://toro.d.dooo.jp からダウンロードできないときは、<a href="https://toroidj.github.io/slppx.html">https://toroidj.github.io</a> からダウンロードしてください。</div><hr></div>
 <div id="contents"><div id="contents2">
  <table border="0" summary="目録">
-  <tr><td>・<a href="#ppx">Paper Plane xUI</a>
+  <tr><td>・<a href="#ppx">Paper Plane xUI</a>&nbsp;(<a href="#ppx1">+1</a>)
   </td><td>- ファイル操作ツール集</td></tr>
   <tr><td>・<a href="#ppxdw">Paper Plane xUI(DirectWrite版)</a>
   </td><td>- DirectWriteを使用したPPx</td></tr>
@@ -51,6 +51,8 @@ img { max-width: 100%; height: auto; }
   <tr><td>・<a href="#ppxCV8">Paper Plane xUI  V8 Script Module</a>
   </td><td>- Clear Script の V8 を利用して PPx 上で Javascript を実行する</td></tr>
   <tr><td>・<a href="#ppxqjs">Paper Plane xUI  QuickJS Script Module</a>
+  </td><td>- QuickJSを利用して PPx 上で Javascript を実行する</td></tr>
+  <tr><td>・<a href="#ppxqjs1">Paper Plane xUI  QuickJS Script Module R1+1</a>
   </td><td>- QuickJSを利用して PPx 上で Javascript を実行する</td></tr>
   <tr><td>・<a href="#ppxdoclock">doclock (Paper Plane xUI Dock Module)</a>
   </td><td>- 現在時刻を実行する PPx Dock Module</td></tr>
@@ -82,6 +84,9 @@ ppx
 ./ppx199.zip
 ./ppw199.zip
 ./ppx64199.zip
+./ppx199p1.zip
+./ppw199p1.zip
+./ppx64199p1.zip
 ppxdw
 ./ppxdw199.zip
 ./ppxdw64199.zip
@@ -103,6 +108,8 @@ ppxCV8
 ./ppxCV8R04.zip
 ppxqjs
 ./ppxqjsR01.zip
+ppxqjs1
+./ppxqjsR01p1.zip
 ppxdoclock
 ./DOCLOCK.LZH
 ppxdockshow
@@ -195,6 +202,17 @@ PPb<br>
 ・CLOSEEVENT&nbsp;を使用できるようにした<br>
 PPtray<br>
 ・FIRSTEVENT,&nbsp;CLOSEEVENT&nbsp;を使用できるようにした<br>
+
+<hr><a href="./slppx.html">↑</a><a name="ppx1"><span>Paper Plane xUI</span></a> Version 1.99+1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx199p1.zip">ppx199p1.zip</a> ( MultiByte版,&nbsp;748 Kbytes,&nbsp;2024-9-28,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppw199p1.zip">ppw199p1.zip</a> ( UNICODE版,763 Kbytes,&nbsp;2024-9-28,&nbsp;Windows NT 4.0 - Windows 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx64199p1.zip">ppx64199p1.zip</a> ( 64bit版,905 Kbytes,&nbsp;2024-9-28,&nbsp;Windows XP/2003 - Windows 11/2022 64bit)<br>
+<br>試験公開版です。 Version 1.99からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>1.99→1.99+1<br>
+PPv<br>
+・-document:command&nbsp;を使用したとき、常に&nbsp;-esc:off&nbsp;-tag:on&nbsp;になっていたのを修正<br>
+PPc,PPv<br>
+・1.99でステータス行の一行メッセージの消去処理がおかしくなったのを修正<br>
 
 <hr><a href="./slppx.html">↑</a><a name="ppxdw"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 1.99
 <br><a href="image/ssppxdw.png"><img src="image/thppxdw.jpg" alt="動作画面" WIDTH="196" height="135"></a><br><br>
@@ -315,6 +333,13 @@ R3+6→R4<br>
 <br>QuickJS を利用して PPx 上で Javascript を実行する PPx Module です。<br><br>●<strong>変更点</strong><br>T12→R1<br>
 ・常駐時にPPxが終了したときの挙動を調整した<br>
 
+<hr><a href="./slppx.html">↑</a><a name="ppxqjs1"><span>Paper Plane xUI  QuickJS Script Module R1+1</span></a>
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxqjsR01p1.zip">ppxqjsR01p1.zip</a> ( 1081 Kbytes,&nbsp;2024-9-28,&nbsp;Windows 10/2015 - 11/2022(64bit))<br>
+<br>QuickJS を利用して PPx 上で Javascript を実行する PPx Module です。<br><br>●<strong>変更点</strong><br>R1→R1+1<br>
+・PPx.Arguments.Item(n)&nbsp;の戻り値を&nbsp;object&nbsp;から&nbsp;string&nbsp;に変更した<br>
+・PPx.Pane&nbsp;と&nbsp;PPx.Pane.Tab&nbsp;の&nbsp;iterator&nbsp;がおかしかったのを修正<br>
+
 <hr><a href="./slppx.html">↑</a><a name="ppxdoclock"><span>doclock (Paper Plane xUI Dock Module)</span></a>
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/DOCLOCK.LZH">DOCLOCK.LZH</a> ( 8 Kbytes,&nbsp;2008-3-8,&nbsp;Windows95/98/Me/NT4.0/2000/XP/2003/Vista(32bit/64bit))<br>
@@ -416,7 +441,6 @@ R6→R7<br>
 ・64bit&nbsp;arm版&nbsp;(PPXJUNK64A.DLL)&nbsp;を追加<br>
 
 <hr><address>Copyright(c)1997-2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
-<img src="http://toro.d.dooo.jp/ac/accimg.cgi?id=slppx" alt="access counter用" width="20" height="11">
 </div></div>
 <div id="index">
 <strong><a href="./index.html">TORO's Library</a></strong>
