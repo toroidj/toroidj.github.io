@@ -1517,6 +1517,7 @@ XFL5	Auto show3
 XFL6	list show time(ms)
 XFL7	listing timeout time(ms)
 XFL8	List min length
+XFLC	Keep caption view when upper position
 XFLE	fix flicker
 XFLS	fill list
 XFME	general
@@ -1792,4 +1793,4 @@ ZTPY	PPtray
 ZTVD	Drag
 ZTVI	Image view
 ZTVT	Text view
-};ajphjkghgbemocikabbockdnhlihceanamfammegmjpipbmkeghhannbinjdboojnfboebnjmjjdajmdjnaenbkkcofldigagalejogmohagcmdakhcfgmnnjeddhjlpaie 
+};eeoipndgmagonlmnohlcgfiplliebahmaeidimkacleifabhbcjkoeonnhbepcahfoojfdcihgiajkmcfjelinfnepdobabepeppkelilcnbhlpbmiokhjmgbalpkemfaie 
