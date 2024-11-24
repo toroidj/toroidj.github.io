@@ -117,6 +117,7 @@
 		XFL0|List lines一覧の行数:X_flst+12=<d
 		XFL6|list show time(ms)一覧の強制表示時間(ms):X_flto=<d
 		XFL7|listing timeout time(ms)一覧作成打ち切り時間(ms):X_flto+4=<d
+		XFLC|Keep caption view when upper position上側に表示するときにキャプションを避ける:X_flst+16=?1:0
 	XESE|rename dialog名前編集
 		XESD|first positionカーソルの位置
 			XESF|top先頭:X_esel=@0/1

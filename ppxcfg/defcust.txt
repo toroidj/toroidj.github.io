@@ -25,7 +25,7 @@ X_askp	=0
 X_ltab	=0,2
 X_fdir	=1
 X_mled	=1
-^|X_flst	=3,1,0,14
+^|X_flst	=3,1,0,14,0
 X_flto	=300,0
 X_calc	=1
 ^|X_esel	=1,1,1,1
@@ -218,21 +218,21 @@ E_scr	={
 *	,%"JMTE|Text edit"%Orib,editor %FDC
 }
 E_unpack2	={
-ARC	,UNPACK %C %!2
-ARJ	,ARJ X %C %!2
-LZH	,LHA X %C %!2%\
-LZS	,LHA X %C %!2%\
-RAR	,UNRAR X %C %!2
-PMA	,PMA X %C %!2
-ZIP	,PKUNZIP -d %C %!2
-TAR	,TAR xvf %C -o %!2
-TAZ	,TAR xvf %C -o %!2
-TGZ	,TAR xvf %C -o %!2
+ARC	,UNPACK %C %!2 %m"DOS archiver"
+ARJ	,ARJ X %C %!2 %m"DOS archiver"
+LZH	,LHA X %C %!2%\ %m"DOS archiver"
+LZS	,LHA X %C %!2%\ %m"DOS archiver"
+RAR	,UNRAR X %C %!2 %m"DOS archiver"
+PMA	,PMA X %C %!2 %m"DOS archiver"
+ZIP	,PKUNZIP -d %C %!2 %m"DOS archiver"
+TAR	,TAR xvf %C -o %!2 %m"DOS archiver"
+TAZ	,TAR xvf %C -o %!2 %m"DOS archiver"
+TGZ	,TAR xvf %C -o %!2 %m"DOS archiver"
 ??_	,EXPAND -r %C %!2
 *Z	,GZIP -d %C %!2
-BDF	,BUPDATE %C
-LDF	,LDF %C
-WUP	,WSP %C
+BDF	,BUPDATE %C %m"DOS diff"
+LDF	,LDF %C %m"DOS diff"
+WUP	,WSP %C %m"DOS diff"
 MSI	,msiexec /a "%C" targetdir="%!2" /qn
 }
 M_pjump	={
@@ -343,7 +343,11 @@ zip(7-zip)	=%u7-ZIP64.DLL,a -tzip -mx=7 %ef"%{%2%\%|%X%|%}" %@ %S"-r"
 zip(7,pass)	=%u7-ZIP64.DLL,a -tzip -mx=7 %ef"%{%2%\%|%X%|%}" %@ %S"-r" -p
 zip(zip32j)	=%uZIP32J.DLL,%ef"%{%2%\%|%X%|%}" %@ %S"-r"
 ||	=
-&TAR	=TAR cvf %{%2%\%|%X%|.tar%} %@
+&TAR	=tar cvf %{%2%\%|%X%|.tar%} %@
+&gzip	=tar cvfz %{%2%\%|%X%|.gz%} %@
+&bzip2	=tar cvfj %{%2%\%|%X%|.bz2%} %@
+&xz	=tar cvfJ %{%2%\%|%X%|.xz%} %@
+&lzma	=tar cvf --lzma %{%2%\%|%X%|.7z%} %@
 }
 M_DirMenu	= {
 %G"MTVF|View"(&V)	=?viewmenu
