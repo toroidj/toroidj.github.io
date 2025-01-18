@@ -2913,7 +2913,8 @@ SETUP.EXE で エクスプローラ の機能割当てをおこなったとき�
 <dt></dt><dd>ファイル内の文字列を英大小の区別なしで検索します。PPe でオプション指定無しに開くことができるファイルに限定されます。</dd>
 <dt></dt><dd>つまり、文字以外のバイナリ（例えば'\0'等）を含まない、Shift_JIS, EUC-JP, UTF-16(UCS-2), UTF-8テキストファイルが対象です。</dd>
 <dt></dt><dd><b>コメント(Comment)</b></dd>
-<dt></dt><dd>00_index.txt 内に記載したコメントを検索します。</dd>
+<dt></dt><dd>検索対象が実行元窓のディレクトリである場合は、実行元窓の読み込み済み・作成済みコメントで検索を行います。</dd>
+<dt></dt><dd>それ以外のディレクトリの場合は、そのディレクトリにある<a href="#コメントファイル">コメント</a>(00_INDEX.TXT)内に記載したコメントを検索します。</dd>
 <dt></dt><dd><b>インフォチップの内容</b></dd>
 <dt></dt><dd>該当ファイルのインフォチップ表示を行うときに表示される内容で検索します。</dd>
 <dt></dt><dd><b>カラム拡張</b></dd>
@@ -4284,7 +4285,7 @@ PPx は、上記文字列編集機能を用いた各種一行編集ダイアロ�
 ・\[DEL] 行末まで削除<br>
 ・\[BS] 行頭まで削除(※)<br>
 ・&amp;[Del] 該当するヒストリを削除(※)<br>
-・<a href="#EditKey48">[INS] [TAB] 前方一致ファイル名補完(※)</a><br>
+・<a href="#EditKey48">[INS] [TAB] 前方一致ファイル名補完(※)/フォーカス移動/Tab文字入力</a><br>
 ・<a href="#EditKey49">^\[P] 移動したことがあるパスをメニューで選択して挿入(※)</a><br>
 ・^\[D] ディレクトリ名挿入用ツリーを開く<br>
 ・^\[F] ファイル名挿入用ダイアログを開く<br>
@@ -4303,7 +4304,7 @@ PPx は、上記文字列編集機能を用いた各種一行編集ダイアロ�
 ・<a href="#EditKey64">&amp;[L] 一行編集へフォーカス移動（一行編集ダイアログ等）</a><br>
 ・<a href="#EditKey65">&amp;[SPACE] システムメニュー</a><br>
 ・<a href="#EditKey66">[Alt] 単独無効</a><br>
-・[Alt]+10進数値(テンキー入力) 文字コード指定による文字入力<br>
+・<a href="#EditKey68">[Alt]+10進数値(テンキー入力) 文字コード指定による文字入力</a><br>
 
 <hr><br>
 <a name="EditKey3"><b>^[]] [F1] ファイル操作メニュー(※)</b></a><br>
@@ -4351,22 +4352,27 @@ Top of Window&nbsp;&nbsp;&nbsp;&nbsp;窓の先頭行へジャンプ<br>
 <a name="EditKey37"><b>[F2] 拡張子選択</b></a><br>
 ファイル名の拡張子部分→名前部分→全ての順に選択を行います。<br>
 <hr><br>
-<a name="EditKey48"><b>[INS] [TAB] 前方一致ファイル名補完(※)</b></a><br>
-続けて使用することで次候補になります。<br>
-尚、[TAB]は、項目移動である場合があります。<br>
+<a name="EditKey48"><b>[INS] [TAB] 前方一致ファイル名補完(※)/フォーカス移動/Tab文字入力</b></a><br>
+カレントディレクトリのファイル名補完になります。続けて使用することで次候補になります。<br>
+※X_flst や *completelist の設定に関わらず、ファイル名補完の一覧のみです。途中で編集すると、X_flst や *completelist の設定による補完に切り替わります。<br>
+ダイアログで使用する場合は、ダイアログの規定動作であるフォーカス移動になります。<br>
+PPeで使用する場合は、Tab文字の入力になります。<br>
 <hr><br>
 <a name="EditKey49"><b>^\[P] 移動したことがあるパスをメニューで選択して挿入(※)</b></a><br>
 （M_pjump を使用する）<br>
 <hr><br>
 <a name="EditKey64"><b>&amp;[L] 一行編集へフォーカス移動（一行編集ダイアログ等）</b></a><br>
  一行編集ダイアログ、名前変更ダイアログ、PPc のエントリマスク・エントリマークダイアログの時、ボタンやチェックボックス等から一行編集へフォーカス移動するときに使用します。<br>
- Mes0411:700A を編集することで別の英字に変更可能です。<br>
+ Mes0411:700A (日本語の場合)を編集することで別の英字に変更可能です。<br>
 <hr><br>
 <a name="EditKey65"><b>&amp;[SPACE] システムメニュー</b></a><br>
  システムのデフォルトメニューを使いたいときは、\[F10], \[APPS]を使います。<br>
 <hr><br>
 <a name="EditKey66"><b>[Alt] 単独無効</b></a><br>
 ※普通はメニューになりますが、メニューバーが無いと判別しづらいのであえて無効にしてあります(<a href="#X_alt">X_alt</a>)。<br>
+<hr><br>
+<a name="EditKey68"><b>[Alt]+10進数値(テンキー入力) 文字コード指定による文字入力</b></a><br>
+[Alt]を押しながら現在のコードページ(Shift_JIS)に対応する文字コードを入力した後、[Alt]を離すとその文字が入力されます。<br>
 
 <hr>
 <a name="EditCalc"></a><a name="一行編集の電卓処理、数式演算"></a><h3>一行編集/PPe - 一行編集の電卓処理、数式演算</h3><br>
@@ -5598,7 +5604,7 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 <a name="PPxCmd109"><b>PPb</b></a><br>
 ・<a href="#編集情報取得"> %*editprop(<i>name</i>)</a><br>
 ・<a href="#PPxCmd111">*image <i>filename</i> 簡易画像表示</a><br>
-・<a href="#PPxCmd112">*option <i>[type]</i> PPbの編集動作設定</a><br>
+・<a href="#PPxCmd112">*option <i>[type]</i> PPb の編集動作設定</a><br>
 <hr><br>
 
 <a name="PPxCmd113"><b>PPc</b></a><br>
@@ -6904,7 +6910,7 @@ filenameが指定されていればその名前で、無ければ既存の名前
 -message&nbsp;&nbsp;システムメッセージも出力対象にします<br>
 <br>
 ・ファイル指定<br>
--append&nbsp;&nbsp;同名のファイルがある場合、追記します。<br>
+-append&nbsp;&nbsp;同名のファイルがある場合、追記します。※文字コードは自動で整合されません。必要に応じて-utf8等を指定してください。<br>
 -noheader&nbsp;&nbsp;ヘッダ(;ListFile)や追加情報(;Base 等)を無くします。<br>
 -utf8, -utf8bom&nbsp;&nbsp;出力文字コードを UTF-8 / BOM 有り UTF-8 にします。指定が無いときは Unicode版/64bit版は BOM 有り UTF-16、MultiByte 版はシステムロケール設定(Shift_JIS)です。<br>
 <br>
@@ -7156,7 +7162,8 @@ id1(%mid1) の行を削除します。<br>
 入力内容に応じて表示される補完一覧リスト( <a href="#X_flst">X_flst</a>≧3 )を手動で表示させたり、表示内容を設定したりするときに使用するコマンドです。<br>
 <br>
 <b>手動表示</b><br>
-*completelist で表示されます。<br>
+*completelist で入力内容の補完一覧リストを表示します。<br>
+*completelist -show:text 指定した text の補完一覧リストを表示します。<br>
 <br>
 <b>設定</b><br>
 <b>-set</b> 設定の変更のみを行います。<br>
@@ -7178,7 +7185,19 @@ id1(%mid1) の行を削除します。<br>
 <b>オプション</b><br>
 手動表示・設定では次のオプションを指定できます。<br>
 <br>
-<b>-list[:off]</b> 編集中の文字列を全て置き換える一覧モードになります。この指定がなければ、1パラメータ分の補完になります。<br>
+<b>-list[:mode]</b> 補完動作の挙動を変更します。<br>
+補完による置換の範囲<br>
+ 指定無し / allchange / on&nbsp;&nbsp;編集中の文字列を全て補完結果に置き換えます。<br>
+ paramchange / off&nbsp;&nbsp;カーソルがある位置のパラメータ文字列のみを補完結果に置き換えます。<br>
+<br>
+一覧表示の表示形態<br>
+ disable / 0&nbsp;&nbsp;一覧表示をしない。[INS] ^[I] [TAB] [↑] [↓] で候補を変える。<br>
+ file / 1&nbsp;&nbsp;[INS], ^[I], [TAB](X_ltab)で一覧表示をする<br>
+ api / 2&nbsp;&nbsp;Windows2000, XP, 2003 の自動補完機能付きの一覧表示を使用する。<br>
+&nbsp;&nbsp;おまけ機能です。相対指定の補完は正しい結果とならない場合があります。<br>
+ single / 3&nbsp;&nbsp;自動補完機能付きの一覧表示(一覧が1枚)<br>
+ double / 4&nbsp;&nbsp;自動補完機能付きの一覧表示(一覧が上下2枚)<br>
+ doubleex / 5&nbsp;&nbsp;自動補完機能付きの一覧表示(一覧が上下2枚、UNCパスの補完をしない、補完位置が拡張子なら、拡張子を除いた補完処理をする)<br>
 <br>
 <b>-file:&quot;ファイル名&quot;</b> 一覧表示に使用する追加の<a href="#compfile">補完候補ファイル</a>を指定します(<a href="#X_flst">X_flst</a>)。既に指定されていた場合は置き換えます。 -file のようにファイル名の指定がない場合は、追加した補完候補を消去します。<br>
 ファイル名の指定中に文字コードを指定できます。-file:&quot;ファイル名::文字コード&quot; としてください。文字コードは、sjis, euc, utf8, unicode, utf16, unicodeb, utf16be, ibm, us, ansi, latin1, system, codepage:n が指定できます。<br>
@@ -7188,8 +7207,10 @@ id1(%mid1) の行を削除します。<br>
 <b>-history:type[,reftype]</b> 一覧表示するヒストリの種類(<a href="#editmodemacro">%e</a>)を指定します。typeを変更しても、一行編集後に保存するヒストリ種類は変化しません。<br>
 <br>
 <b>-match:n</b> 文字列の一致方法を指定します。n の値は X_ltab の第２項目と同じです。<br>
- 3&nbsp;&nbsp;部分一致ファイル名補完。同じディレクトリ上の全ての一致エントリを検索し、検索結果の一致しない部分を選択した状態にする。<br>
- 4&nbsp;&nbsp;ローマ字読み部分一致ファイル名補完<br>
+ 1&nbsp;&nbsp;前方一致<br>
+ 2&nbsp;&nbsp;部分一致<br>
+ 3&nbsp;&nbsp;部分一致。同じディレクトリ上の全ての一致エントリを検索し、検索結果の一致しない部分を選択した状態にする。<br>
+ 4&nbsp;&nbsp;ローマ字読み部分一致(migemo検索)<br>
  5&nbsp;&nbsp;ドット区切りの and検索。「abc.def」とすると「abc」と「def」を両方含むものを抽出します。<br>
  6&nbsp;&nbsp;ドット区切りの and と migemo検索。「abc.def」とすると「abc」と「def」を両方含むものを抽出します。また、「abc」はローマ字読み検索します。<br>
  7&nbsp;&nbsp;正規表現検索。「([a-g])|(abc)」等と正規表現で抽出します。<br>
@@ -7212,7 +7233,7 @@ id1(%mid1) の行を削除します。<br>
  ・entry&nbsp;&nbsp;カレントディレクトリのファイル・ディレクトリを対象にします。<br>
  ・env&nbsp;&nbsp;環境変数(%'～')を対象にします。<br>
  ・hist&nbsp;&nbsp;既定のヒストリを対象にします。<br>
- ・hist:reftype&nbsp;&nbsp;指定したreftype(<a href="#editmodemacro">%e</a>)のヒストリを対象にします。ここで指定したreftypeは*editmodeや*completelist -historyには影響しません。<br>
+ ・hist:reftype&nbsp;&nbsp;指定したreftype(<a href="#editmodemacro">%e</a>)のヒストリを対象にします。ここで指定した reftype は *editmode や *completelist -history には影響しません。<br>
  ・mask&nbsp;&nbsp;マスク補完候補ファイル(PPXUMASK.TXT)を対象にします。<br>
  ・module&nbsp;&nbsp;検索モジュールを対象にします。<br>
  ・path&nbsp;&nbsp;ファイル名・パス補完候補ファイル(PPXUPATH.TXT)を対象にします。<br>
@@ -7225,23 +7246,24 @@ id1(%mid1) の行を削除します。<br>
 右クリックやアプリケーションキーを使うとでるWindows標準のメニューを表示します。<br>
 <hr><br>
 <a name="editmode"><b>*editmode <i>option</i> 一行編集の各種設定の変更</b></a><br>
-・*editmode <i>type[,reftype]</i><br>
+以下のオプションを指定して一行編集の各種設定を行うことができます。各設定は列挙可能です。<br>
 <br>
-ヒストリ種類や参照の動作を変更します。type, reftypeの詳細と、%!x, %E 等の動作を変更する場合は<a href="#editmodemacro">%e</a>を参照してください。<br>
+・-history<i>[S]type[,reftype]</i><br>
+※ *editmode <i>[S]type[,reftype]</i> と「-history:」を省略可能です。<br>
+　ヒストリ種類(type)や参照(reftype)の動作を変更します。type, reftypeの詳細と、%!x, %E 等の動作を変更する場合は<a href="#editmodemacro">%e</a>を参照してください。<br>
 ※ダイアログ種類の指定(R, E, O)は使用できません。<br>
 <br>
-以下の各オプションは列記可能です。<br>
-・*editmode -sjis|-euc|-utf8|-utf8bom|-unicode|-utf16|-unicodebom|-unicodeb|-utf16be|-unicodebbom|-ibm|-us|-ansi|-latin1|-system|-codepage:n<br>
+・-sjis|-euc|-utf8|-utf8bom|-unicode|-utf16|-unicodebom|-unicodeb|-utf16be|-unicodebbom|-ibm|-us|-ansi|-latin1|-system|-codepage:n<br>
 　保存時の<a href="#ppvtextcode">文字コード</a>を指定します。-utf8bom, -unicodebom, -unicodebbom は、保存時に BOM を追加します。<br>
 　※現在開いているテキストの文字コードを切り替える場合、編集前に行ってください。<br>
 <br>
-・*editmode -crlf|-cr|-lf<br>
+・-crlf|-cr|-lf<br>
 　保存時の改行コードを指定します。<br>
 <br>
-・*editmode -tab:n<br>
+・-tab:n<br>
 　タブ桁数を指定します。<br>
 <br>
-・*editmode -modify:query|silent|write|readonly|clear|modify<br>
+・-modify:query|silent|write|readonly|clear|modify<br>
 　編集の有無・編集後の保存の確認等の動作を指定します。<br>
 <br>
 query / save / silent<br>
@@ -7258,23 +7280,24 @@ clear で未更新状態、modify で更新状態になります。<br>
 write / readonly<br>
 文字入力や削除を有効にするかどうかの指定です。readonly で入力等ができなくなります。※補完による入力や文字変換等ができてしまうことがあります。<br>
 <br>
-・*editmode -linebreak:on|off<br>
+・-linebreak:on|off<br>
 窓の幅に収まるように右端で折り返すかどうかの指定です。規定値はonです。<br>
 <b>※メモ帳(notepad.exe)と同じく窓の再作成により機能を実現しているため、使用すると、ウィンドウハンドル(%N)の値が変化し、一部の設定が失われたり、コマンドが正常に動作しなくなることがあります。</b><br>
 <br>
-・*editmode -leavecancel<br>
+・-leavecancel<br>
 一行編集ダイアログ上で使用したとき、その一行編集ダイアログ以外がアクティブになったとき、一行編集を中止し、一行編集ダイアログを閉じます。%*input の -leavecancel と同じ設定です。<br>
 <br>
-・*editmode -tabkey[:on|off]<br>
-[TAB]キーをカスタマイズ可能にするかどうかの指定です。初期値はX_ltabに従います。<br>
+・-tabkey[:on|off]<br>
+[TAB]キーをカスタマイズ可能にするかどうかの指定です。初期値は X_ltab に従います。<br>
 -tabkey:off のときは、TABコード入力（テキスト編集時）、フォーカス移動（ダイアログ時）になります。<br>
 -tabkey か -tabkey:on のときは、[TAB]キーのカスタマイズが可能になり、規定動作は、TABコード入力（テキスト編集時）、補完候補の表示（ダイアログ時）になります。<br>
 <br>
-・*editmode -allkey[:on|off]<br>
+・-allkey[:on|off]<br>
 ダイアログで使用されている[Enter],[ESC],[TAB]キーをカスタマイズ可能にするかどうかの指定です。初期値はoffです。onにするとカスタマイズができるようにする処理が追加されるため、わずかですが負荷が増えます。また、挙動が変化することがあります。<br>
  尚、[Enter],[ESC],[TAB]は、ENTER,ESC,TABの他に制御文字のキーコードが出力されるため、不用意に改行したり、表示したメニューが消えたりすることがあります。その時は「%K&quot;removechar&quot;」をENTER,ESC,TABのカスタマイズに含めると制御文字のキーコードを除去することができます。<br>
 <br>
-※ 参考、-tabkey / -allkey で各キーをカスタマイズしたときに、元の機能に対応するコマンド・操作<br>
+※ 参考<br>
+-tabkey / -allkey で各キーをカスタマイズしたときに、元の機能に対応するコマンド・操作<br>
 <b>[TAB]</b><br>
 ・TAB 文字入力    *insert &quot;%bt&quot;、Ctrl + [I]<br>
 ・ダイアログのフォーカス変更   %K&quot;@TAB&quot;、%K&quot;@\TAB&quot;<br>
@@ -7422,23 +7445,23 @@ text の位置を検索し、該当 text を new text に置換します。未�
 ※conhost内に表示したとき、選択や窓の大きさ変更等の加工を行うと、16色に減色されます。<br>
 <br>
 <hr><br>
-<a name="PPxCmd112"><b>*option <i>[type]</i> PPbの編集動作設定</b></a><br>
+<a name="PPxCmd112"><b>*option <i>[type]</i> PPb の編集動作設定</b></a><br>
 <br>
 ・編集時のカレントディレクトリ<br>
 <b>*option separete</b>(初期値)<br>
- PPbの編集した内容を実行するときのカレントディレクトリと、PPc等からPPbを使って実行するときのカレントディレクトリを分けます。<br>
+ PPb の編集した内容を実行するときのカレントディレクトリと、PPc 等から PPb を使って実行するときのカレントディレクトリを分けます。<br>
  編集内容を実行するときのカレントディレクトリは、PPb 上で *cd を実行する必要があります。<br>
 <br>
 <b>*option common</b><br>
- PPbの編集した内容を実行するときのカレントディレクトリと、PPc等からPPbを使って実行するときのカレントディレクトリを共通にします。<br>
- PPc等からPPb経由で実行したときのカレントディレクトリが編集時にも反映されます。<br>
+ PPb の編集した内容を実行するときのカレントディレクトリと、PPc 等から PPb を使って実行するときのカレントディレクトリを共通にします。<br>
+ PPc 等から PPb 経由で実行したときのカレントディレクトリが編集時にも反映されます。<br>
 <br>
 ・メニューやダイアログの種類<br>
 <b>*option desktop</b><br>
- デスクトップ向けに設定を変更します。GUIメニュー、一行編集ダイアログを有効にします。<br>
+ デスクトップ向けに設定を変更します。GUI メニュー、一行編集ダイアログを有効にします。マウス操作を PPb で処理します。<br>
 <br>
 <b>*option terminal</b><br>
- ターミナル用に設定を変更します。GUIメニュー、一行編集ダイアログの表示の代わりにターミナル内のメニュー表示、行入力を行います。<br>
+ ターミナル用に設定を変更します。GUI メニュー、一行編集ダイアログの表示の代わりにターミナル内のメニュー表示、行入力を行います。マウス操作はターミナルに任せます。<br>
 <br>
 <hr><br>
 
@@ -8442,8 +8465,11 @@ off 又は 0 : sourceが検索元(規定値)<br>
 指定が無ければ、ディレクトリ移動して一覧表示します。<br>
 <br>
 <b>-listfile:path</b><br>
-検索結果を保存する<a href="#listsubj">ListFile</a>のフルパス名を指定します。指定が無ければ%temp%内に保存します。<br>
+検索結果を保存する<a href="#listsubj">ListFile</a>のフルパス名を指定します。指定が無ければ %temp% 内に自動生成したディレクトリ＋名前で保存します。<br>
 例) -listfile:&quot;%'temp'%\result.txt&quot;<br>
+<br>
+<b>-append</b><br>
+同名のファイルがある場合、追記します。※文字コードは自動で整合されません。必要に応じて-utf8等を指定してください。<br>
 <br>
 <b>-name</b><br>
 検索結果を保存する<a href="#listsubj">ListFile</a>に保存するエントリをエントリ名にします(&quot;entryname&quot;)。PPx以外で結果を利用するため用です。<br>
@@ -9644,18 +9670,21 @@ Win10 1903以降で、ダイアログやメニュー等の配色をダークモ�
 <b>TABキーの動作は</b><br>
 一行編集や PPe で [TAB] キーのカスタマイズを有効にするかどうかの指定です。標準動作の項目移動や Tab 入力ができなくなるので、あまりお薦めしません。<br>
 <br>
-この設定を有効にした場合、デフォルトで[TAB]にファイル名(エントリ名)補完が割り当てられます。<br>
-[TAB]に補完以外の機能を割り当てたいときは K_lied / K_editに TAB に関する登録をしてください。<br>
-0&nbsp;&nbsp;[TAB]はWindows標準の項目のフォーカス移動動作。カスタマイズ不可。※[INS]で補完できます<br>
-1&nbsp;&nbsp;[TAB]が補完になり、カスタマイズ可能になる。<br>
+この設定を有効にした場合、デフォルトで [TAB] にファイル名(エントリ名)補完が割り当てられます。<br>
+[TAB] に補完以外の機能を割り当てたいときは K_lied / K_editに TAB に関する登録をしてください。<br>
+<br>
+尚、上記説明は、名前変更、検索条件、ファイル操作等の、一行編集以外のコントロールがあるダイアログです。[INS]キーと、一行編集(とok,cancel,参照ボタン)だけのダイアログの [TAB] は、常にファイル名補完の動作になっています。<br>
+<br>
+0&nbsp;&nbsp;[TAB] は Windows 標準の項目のフォーカス移動動作。カスタマイズ不可。<br>
+1&nbsp;&nbsp;[TAB] がファイル名補完になり、カスタマイズ可能になる。<br>
 <br>
 <b>補完するときの検索動作</b><br>
-ファイル名の補完を行うときの検索動作の指定です。<br>
-※ 0 のときは、旧版との互換性のため、第１項目の値で検索動作が変わります。<br>
-1&nbsp;&nbsp;前方一致ファイル名補完 ※一覧表示のときは常に部分一致になります。<br>
-2&nbsp;&nbsp;部分一致ファイル名補完<br>
-3&nbsp;&nbsp;部分一致ファイル名補完。同じディレクトリ上の全ての一致エントリを検索し、検索結果の一致しない部分を選択した状態にする。<br>
-4&nbsp;&nbsp;ローマ字読み部分一致ファイル名補完<br>
+ファイル名の補完や、自動補完付き一覧表示を行うときの一致条件の指定です。<br>
+0&nbsp;&nbsp;(旧版の互換動作用) X_ltab 第１項目と、X_flst の値で一致条件が変わります。<br>
+1&nbsp;&nbsp;前方一致<br>
+2&nbsp;&nbsp;部分一致<br>
+3&nbsp;&nbsp;部分一致。同じディレクトリ上の全ての一致エントリを検索し、検索結果の一致しない部分を選択した状態にする。<br>
+4&nbsp;&nbsp;ローマ字読み部分一致(migemo検索)<br>
 5&nbsp;&nbsp;ドット区切りの and検索。「abc.def」とすると「abc」と「def」を両方含むものを抽出します。<br>
 6&nbsp;&nbsp;ドット区切りの and と migemo検索。「abc.def」とすると「abc」と「def」を両方含むものを抽出します。また、「abc」はローマ字読み検索します。<br>
 7&nbsp;&nbsp;正規表現検索。「([a-g])|(abc)」等と正規表現で抽出します。<br>
@@ -10024,18 +10053,20 @@ PPcの名前変更[R]、ファイル複写時等の同名ファイル存在時�
 <a name="X_flst"><b>X_flst</b></a> 補完の結果を一覧表示する, 検索を部分一致にする, 一覧の最低表示文字数, 一覧の行数, 上側に表示するときにキャプションを避ける<br>
 <b>補完の結果を一覧表示する</b><br>
 ファイル名(エントリ名)補完で、２以上該当する候補がある場合は一覧表示し、カーソル上下で選択できるようにするかどうかを指定します。<br>
+一行編集ダイアログ内では *completelist -list: で変更できます。<br>
 <br>
-0&nbsp;&nbsp;一覧表示をしない<br>
+0&nbsp;&nbsp;一覧表示をしない。[INS] ^[I] [TAB] [↑] [↓] で候補を変える。<br>
 1&nbsp;&nbsp;[INS], ^[I], [TAB](<a href="#X_ltab">X_ltab</a>)で一覧表示をする<br>
-2&nbsp;&nbsp;Windows2000, XP, 2003の自動補完機能付きの一覧表示を使用する。<br>
+2&nbsp;&nbsp;Windows2000, XP, 2003 の自動補完機能付きの一覧表示を使用する。<br>
 &nbsp;&nbsp;※ 2 は、おまけ機能です。相対指定の補完は正しい結果とならない場合があります。<br>
 3&nbsp;&nbsp;<a href="#autocomplist">自動補完機能付きの一覧表示</a>(一覧が1枚)<br>
 4&nbsp;&nbsp;自動補完機能付きの一覧表示(一覧が上下2枚)<br>
 5&nbsp;&nbsp;自動補完機能付きの一覧表示(一覧が上下2枚、UNCパスの補完をしない、補完位置が拡張子なら、拡張子を除いた補完処理をする)<br>
 <br>
-<b>一覧検索を部分一致にする</b><br>
+<b>一覧検索を部分一致にする(旧版の互換動作用)</b><br>
 <br>
-一覧の候補を前方一致(0)か、部分一致(1)で検索するかを指定します。<br>
+前方一致・部分一致の指定は、(<a href="#X_ltab">X_ltab</a>) の第２項目で指定してください。<br>
+（<a href="#X_ltab">X_ltab</a> の第２項目が 0 のとき、一覧の候補を前方一致(0)か、部分一致(1)で検索するかを指定します。）<br>
 <br>
 <b>一覧の最低表示文字数</b><br>
 <br>
@@ -10058,7 +10089,7 @@ PPcの名前変更[R]、ファイル複写時等の同名ファイル存在時�
 ・% で始まるパス入力時に該当環境変数の一覧が含まれます。<br>
 <a name="補完候補ファイル"></a><a name="compfile"></a>・<b>補完候補ファイル</b><br>
   補完候補ファイルは、各行に１つの補完候補を記載したテキストファイルです。補完候補は現在行頭から約1000文字まで認識し、それ以降は無視します。<br>
-  ・補完候補ファイルは、*completelistで指定しなければ、目的に応じて以下のファイルが使われます。これらファイルは、添付PPXFxxx.TXTを元にして設定を保存するPPxxxxx.DATと同じ場所に作成されます。<br>
+  ・補完候補ファイルは、*completelist で指定しなければ、目的に応じて以下のファイルが使われます。これらファイルは、添付 PPXFxxx.TXT を元にして設定を保存する PPxxxxx.DAT と同じ場所に作成されます。<br>
 &nbsp;&nbsp;PPXUPATH.TXT&nbsp;&nbsp;ファイル名・パスの候補用<br>
 &nbsp;&nbsp;PPXUCMD.TXT&nbsp;&nbsp;コマンドの候補用<br>
 &nbsp;&nbsp;PPXUMASK.TXT&nbsp;&nbsp;マスクの候補用<br>
@@ -10535,7 +10566,7 @@ X_combou の該当IDの設定があればその設定を用い、なければ X_
 
 
 <b>２項目目</b>
-(B10←) B00000000000 (→B0)
+(B13←) B00000000000000 (→B0)
 <b> B0</b> 横並び &amp; ペイン毎タブ(B4=0, B13=1)、1にすると各ペインのタブ表示領域は、ペイン並びの比率と異なる比率で配置されます。
 一部のペインを幅狭にしたとき、タブ表示領域が無駄に大きく確保されるのを抑制するための設定です。
 <b> B1</b> １項目目のB5(常時表示)が0のとき、
@@ -10569,6 +10600,15 @@ X_combou の該当IDの設定があればその設定を用い、なければ X_
 <b> B10</b> 横配列で、あるタブ列のタブが複数行分あって、他のタブ列に空行部分が生じるとき、その空行にペインを表示させるかどうかの設定です。
      0 のときは、空行のままにします。
      1 のときは、空行を埋めるようにペインの高さを増やします。
+<b> B11</b>
+     0 のときは、全てのタブグループを表示します。
+     1 のときは、アクティブタブグループのみ表示します。
+<b> B12</b>
+     0 のときは、タブグループを選択するタブを表示します。
+     1 のときは、タブグループを選択するタブは非表示にします。
+<b> B13</b>
+     0 のときは、タブの編集として、タブのドラッグによるタブの移動や、タブの右端のドラッグによるタブ幅の変更ができます。
+     1 のときは、[Alt]キーを押しながらドラッグをしたときに限り、ドラッグによるタブの編集ができます。
 </pre><br>
 <br>
 <a name="X_combosB7"></a><b>(障害対策)特定の窓で異常があるときに設定する</b><br>
@@ -14587,7 +14627,7 @@ X_tskb を変更したときは、一旦タスクバーのピン止めを解除�
 ・一行編集にスクリプトを登録した場合、スクリプトを初めて実行するときに、スクリプトモジュールの初期化に時間が掛かります。特に、V8 Script Module の場合は時間が掛かります。<br>
 ・文字の補完は時間が掛かる事があります。<br>
  - ファイル名の補完の場合、ファイル一覧の取得に時間が掛かることがあります。特にセキュリティソフトの問題で時間が掛かることがあります。<br>
- - 補完するときの検索動作(X_ltab)をmigemo検索にすると、migemoを初めて使用するとき、migemoの初期化に時間が掛かります。<br>
+ - 補完するときの検索動作(X_ltab)を migemo 検索にすると、migemo を初めて使用するとき、migemo の初期化に時間が掛かります。<br>
  - 検索モジュールの問題で時間が掛かることがあります。例えば、Everything Search Module の場合は、Everything Search と通信できないときに時間が掛かります。<br>
 
 <hr>
@@ -15001,29 +15041,34 @@ IBM-PC互換機用のファイルマネージャ。Peter Norton Computing社(Sym
 <a name="fileattr"></a><a name="ファイル・ディレクトリの属性"></a><h3>おまけ - ファイル・ディレクトリの属性</h3><br>
 ファイル・ディレクトリなどのエントリの属性は、Windowsでは次のものが定義されています。また、これら以外でも拡張属性があります。<br>
 <dl compact>
-<dt><b>読取専用/readonly</b></dt><dd>保存したファイルを別の内容で上書きされないように書き込み禁止にするときに用います。FILE_ATTRIBUTE_READONLY, B0</dd>
-<dt><b>隠し/hidden</b></dt><dd>一時的な操作に用いられるため表示するほどでもないものや、システムに関するため見られたくないもの等、ユーザから隠す必要がある場合に設定されます。この属性により、エクスプローラから表示されない／淡色表示としたりすることができます。FILE_ATTRIBUTE_HIDDEN, B1</dd>
-<dt><b>システム/system</b></dt><dd>システムに関するエントリに対して設定されます。ごみ箱($RECYCLE.BIN, Recycled)やブートローダ(bootmgr, IO.SYS, ntldr)等に付加され、エクスプローラの初期設定では表示されません。FILE_ATTRIBUTE_SYSTEM, B2</dd>
-<dt><b>変更/アーカイブ/archive</b></dt><dd>ファイルを書き換えた時に自動で設定されます。バックアップを行うかどうかの目安に使われますが、現状では XCOPY の他はほとんど使われていないようです。PPc によるコピー時に 「更新のみ処理」を指定したとき、この属性が設定されているときのみ上書きします。FILE_ATTRIBUTE_ARCHIVE, B5</dd>
-<dt><b>インデックス/index</b></dt><dd>全文検索などを行うときに、検索対象にするかどうかの設定です。ソフトによってはこの属性を見て検索対象から除外できます。FILE_ATTRIBUTE_NOT_CONTENT_INDEXED, B13</dd>
-<dt><b>圧縮/Compression</b></dt><dd>ファイル単位の圧縮を行うかどうかの設定です。NTFSで使用できます。FILE_ATTRIBUTE_COMPRESSED, B11</dd>
-<dt><b>暗号化/Encryption</b></dt><dd>ファイル単位の暗号化を行うかどうかの設定です。Window2000以降のNTFSで使用できます。<b>但し、この暗号化は暗号化をしたユーザ以外のユーザによりファイルを見えないようにするためのものであり、ファイルを開くときにパスワードを尋ねたり、ファイルのコピー先や添付時まで暗号化されたりするものではありません。</b>FILE_ATTRIBUTE_ENCRYPTED, B14</dd>
-<dt><b>一時ファイル/temporary</b></dt><dd>一時的に使用(使用後に削除する)するファイルであり、そのための高速化を希望することをOSに示す時に使用します。FILE_ATTRIBUTE_TEMPORARY, B8</dd>
-<dt><b>オフラインファイル/offline</b></dt><dd>ファイルの実体が別の場所にあり、ファイルを開いたときに改めてその場所から読み込まれるファイルです。FILE_ATTRIBUTE_OFFLINE, B12</dd>
-<dt><b>スクラブ不要/No scrub data</b></dt><dd>ReFS で使用できるらしい属性です。保存したデータが破損していないか確認・修復するスクラブ処理を行わないようにする属性です。FILE_ATTRIBUTE_NO_SCRUB_DATA, B17</dd>
-<dt><b>整合性ストリーム/integrity stream</b></dt><dd>ReFS で使用できるらしい属性です。ファイルのうち上書きした部分は、元のドライブ上の別のクラスタに保存されます。FILE_ATTRIBUTE_INTEGRITY_STREAM, B15</dd>
-<dt><b>常に保持/pinned</b></dt><dd>OneDrive等で空き容量を増やす処理をしたとき、削除しません。FILE_ATTRIBUTE_PINNED, B19</dd>
-<dt><b>保持していない/unpinned</b></dt><dd>OneDrive等でまだダウンロードしていません。FILE_ATTRIBUTE_UNPINNED, B20</dd>
+<dt><b>読取専用 / readonly</b></dt><dd>保存したファイルを別の内容で上書きされないように書き込み禁止にするときに用います。FILE_ATTRIBUTE_READONLY, B0</dd>
+<dt><b>隠し / hidden</b></dt><dd>一時的な操作に用いられるため表示するほどでもないものや、システムに関するため見られたくないもの等、ユーザから隠す必要がある場合に設定されます。この属性により、エクスプローラから表示されない／淡色表示としたりすることができます。FILE_ATTRIBUTE_HIDDEN, B1</dd>
+<dt><b>システム / system</b></dt><dd>システムに関するエントリに対して設定されます。ごみ箱($RECYCLE.BIN, Recycled)やブートローダ(bootmgr, IO.SYS, ntldr)等に付加され、エクスプローラの初期設定では表示されません。FILE_ATTRIBUTE_SYSTEM, B2</dd>
+<dt><b>変更 / アーカイブ / archive</b></dt><dd>ファイルを書き換えた時に自動で設定されます。バックアップを行うかどうかの目安に使われますが、現状では XCOPY の他はほとんど使われていないようです。PPc によるコピー時に 「更新のみ処理」を指定したとき、この属性が設定されているときのみ上書きします。FILE_ATTRIBUTE_ARCHIVE, B5</dd>
+<dt><b>通常 / normal</b></dt><dd>隠し属性やシステム属性がないときに設定されます。但し、これら属性がなくても、この通常属性が設定されていないことがあります。</dd>
+<dt><b>インデックス / index</b></dt><dd>全文検索などを行うときに、検索対象にするかどうかの設定です。ソフトによってはこの属性を見て検索対象から除外できます。FILE_ATTRIBUTE_NOT_CONTENT_INDEXED, B13</dd>
+<dt><b>圧縮 / Compression</b></dt><dd>ファイル単位の圧縮を行うかどうかの設定です。NTFSで使用できます。FILE_ATTRIBUTE_COMPRESSED, B11</dd>
+<dt><b>暗号化 / Encryption</b></dt><dd>ファイル単位の暗号化を行うかどうかの設定です。Window2000以降のNTFSで使用できます。<b>但し、この暗号化は暗号化をしたユーザ以外のユーザによりファイルを見えないようにするためのものであり、ファイルを開くときにパスワードを尋ねたり、ファイルのコピー先や添付時まで暗号化されたりするものではありません。</b>FILE_ATTRIBUTE_ENCRYPTED, B14</dd>
+<dt><b>一時ファイル / temporary</b></dt><dd>一時的に使用(使用後に削除する)するファイルであり、そのための高速化を希望することをOSに示す時に使用します。ディスクキャッシュを活用して、ディスクへの保存が抑制されます。FILE_ATTRIBUTE_TEMPORARY, B8</dd>
+<dt><b>オフラインファイル / offline</b></dt><dd>ファイルの実体が別の場所にあり、ファイルを開いたときに改めてその場所から読み込まれるファイルです。FILE_ATTRIBUTE_OFFLINE, B12</dd>
+<dt><b>スクラブ不要 / No scrub data</b></dt><dd>ReFS で使用できるらしい属性です。保存したデータが破損していないか確認・修復するスクラブ処理を行わないようにする属性です。FILE_ATTRIBUTE_NO_SCRUB_DATA, B17</dd>
+<dt><b>整合性ストリーム / integrity stream</b></dt><dd>ReFS で使用できるらしい属性です。ファイルのうち上書きした部分は、元のドライブ上の別のクラスタに保存されます。FILE_ATTRIBUTE_INTEGRITY_STREAM, B15</dd>
+<dt><b>常に保持 / 固定 / pinned</b></dt><dd>OneDrive等で空き容量を増やす処理をしたとき、削除しません。FILE_ATTRIBUTE_PINNED, B19</dd>
+<dt><b>保持していない / 固定解除 / unpinned</b></dt><dd>OneDrive等でまだダウンロードしていません。FILE_ATTRIBUTE_UNPINNED, B20</dd>
 <dt></dt>
 <dt>以下の属性は変更することはできません。</dt>
 <dt></dt>
-<dt><b>リパースポイント/reparse point</b></dt><dd>シンボリックリンク、ジャンクションなどのリパースポイントであることを示します。FILE_ATTRIBUTE_REPARSE_POINT, B10</dd>
-<dt><b>スパースファイル/sparse file</b></dt><dd>ファイルの使っていない部分をドライブ内に保存しないようにしていることを示します。これにより、ドライブの使用サイズがファイルサイズよりも小さくなります。FILE_ATTRIBUTE_SPARSE_FILE, B9</dd>
-<dt><b>ラベル/label</b></dt><dd>ドライブのボリュームラベルです。この属性のエントリは通常目にすることはありません。PPcでFATディスクイメージを直接参照しているとき、ルートディレクトリで見られることがあります。B3</dd>
-<dt><b>デバイス/device</b></dt><dd>ファイルでなくデバイスファイル(stdin等)で使われると思われる属性です。通常は使用されません。FILE_ATTRIBUTE_DEVICE, B6</dd>
-<dt><b>仮想化/virtual</b></dt><dd>Vista以降のバーチャルストア機能によりリダイレクトされていることを示すエントリです。元のファイルは %LOCALAPPDATA%\VirtualStore 以下に入っています。FILE_ATTRIBUTE_VIRTUAL, B16</dd>
-<dt><b>アクセス時に生成/recall on data access</b></dt><dd>そのディレクトリにまだ存在していません。リモートストア上に存在しています。FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS, B22</dd>
-<dt><b>オープン時に生成/recall on open</b></dt><dd>そのディレクトリにまだ存在していません。リモートストレージ上に存在しています。FILE_ATTRIBUTE_RECALL_ON_OPEN, B19</dd>
+<dt><b>リパースポイント / reparse point</b></dt><dd>シンボリックリンク、ジャンクションなどの再解析ポイントであることを示します。FILE_ATTRIBUTE_REPARSE_POINT, B10</dd>
+<dt><b>スパースファイル / sparse file</b></dt><dd>ファイルの使っていない部分をドライブ内に保存しないようにしていることを示します。これにより、ドライブの使用サイズがファイルサイズよりも小さくなります。FILE_ATTRIBUTE_SPARSE_FILE, B9</dd>
+<dt><b>ラベル / label</b></dt><dd>ドライブのボリュームラベルです。この属性のエントリは通常目にすることはありません。PPcでFATディスクイメージを直接参照しているとき、ルートディレクトリで見られることがあります。B3</dd>
+<dt><b>デバイス / device</b></dt><dd>ファイルでなくデバイスファイル(stdin等)で使われると思われる属性です。通常は使用されません。FILE_ATTRIBUTE_DEVICE, B6</dd>
+<dt><b>仮想化 / virtual</b></dt><dd>Vista以降のバーチャルストア機能(書き込み禁止のディレクトリにファイルを保存したように見せかける互換用機能)によりリダイレクトされていることを示すエントリです。元のファイルは %LOCALAPPDATA%\VirtualStore 以下に入っています。FILE_ATTRIBUTE_VIRTUAL, B16</dd>
+<dt><b>オープン時に生成、又は拡張属性 / recall on open, or Extend Attribute</b></dt>
+<dt></dt><dd>※ディレクトリによって属性の意味が異なります</dd>
+<dt></dt><dd>オープン時に生成の場合:</dd><dd>そのディレクトリにまだ存在していません。リモートストレージ上に存在しています。FILE_ATTRIBUTE_RECALL_ON_OPEN, B19</dd>
+<dt></dt><dd>拡張属性の場合: Unix の拡張属性が保存されています。FILE_ATTRIBUTE_EA, B19</dd>
+<dt><b>アクセス時に生成 / recall on data accesss</b></dt><dd> そのディレクトリにまだ存在していません。リモートストア上に存在しています。FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS / FILE_ATTRIBUTE_EA, B22</dd>
+<dt><b>SMR BLOB</b> この属性は説明がないため、詳細不明です。ファイルのオープンに時間が掛かったり、ファイルのランダム読み書きアクセスに適さなかったりする場所に保存されていることを示していると思われます。 FILE_ATTRIBUTE_STRICTLY_SEQUENTIAL, B29 (Windows 10.0.16267以前では B21)</dt>
 <dt></dt></dl><br>
 <hr>
 <a name="ppxt"></a><a name="最後に"></a><h3>連絡先／一次配布先等 - 最後に</h3><br>
@@ -15041,5 +15086,5 @@ IBM-PC互換機用のファイルマネージャ。Peter Norton Computing社(Sym
 <a name="copyright"></a><a name="連絡先／一次配布先"></a><h3>連絡先／一次配布先等 - 連絡先／一次配布先</h3><br>
 E-mail <a href="mailto:toroid.jp@gmail.com"><i>toroid.jp@gmail.com</i></a><br>
 WWW <a href="http://toro.d.dooo.jp/index.html" target="_top">http://toro.d.dooo.jp/index.html</a> <a href="https://toroidj.github.io/" target="_top">https://toroidj.github.io/</a><br>
- <i>Paper Plane xUI Copyright (c)1997-2024 TORO／高橋 良和</i><br>
+ <i>Paper Plane xUI Copyright (c)1997-2025 TORO／高橋 良和</i><br>
 </body></html>
