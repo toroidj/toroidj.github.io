@@ -28,7 +28,7 @@ p { text-align: left; }
 --></style></head>
 <body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
 <div id="page">
-<div id="title"><H2>Susie 32bit / 64bit Plug-in の仕様(2024-9-28版)</H2>
+<div id="title"><H2>Susie 32bit / 64bit Plug-in の仕様(2025-1-25版)</H2>
 <hr></div>
 <div id="contents"><div id="contents2">
 <p>拙作 Susie 32bit / 64bit Plug-in の仕様です。</p>
@@ -117,6 +117,10 @@ GetPluginInfo の Plug-in APIバージョンは "00AM" になります。</li></
 <ul>
 <li><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></li>
 </ul>
+<h4>C ヘッダファイル例</h4>
+<ul>
+<li><a href="./text/susie.h">susie.h</a></li>
+</ul>
 
 <h4><a name="GetPluginInfo">GetPluginInfo, GetPluginInfoW </a></h4>
 Plug-in に関する情報を取得します。Plug-in の種類、表示用の名前、対応拡張子 が得られます。<br>
@@ -129,7 +133,7 @@ Plug-in に関する情報を取得します。Plug-in の種類、表示用の�
     ※ AtoB Converter(<a href="https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html">https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html</a>)の出力Plug-inでは "T0XN" が定義されています。
  1  Plug-in の名前、バージョン、Copyright
 
- 2n+2  対応拡張子 ("*.JPG" "*.RGB;*.Q0" など。ワイルドカードを「;」で区切る)
+ 2n+0(n≧1)  対応拡張子 ("*.JPG" "*.RGB;*.Q0" など。ワイルドカードを「;」で区切る)
  2n+1  ファイル形式名 (ファイルダイアログ等のファイルタイプ名として使われます)
 
 [out] <span class="type">LPSTR</span> buf
@@ -152,9 +156,10 @@ Plug-in に関する情報を取得します。Plug-in の種類、表示用の�
 <span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> IsSupported(<span class="type">LPCSTR</span> filename, <span class="type">const void *</span>dw);<br>
 <span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> IsSupportedW(<span class="type">LPCWSTR</span> filename, <span class="type">const void *</span>dw);<br>
 <pre>パラメータ
-[in] <span class="type">int</span> filename
+[in] <span class="type">LPCSTR / LPCWSTR</span> filename
   ファイル名。フルパス推奨です。
-[in] <span class="type">LPCSTR / LPCWSTR</span>dw
+
+[in] <span class="type">const void *</span>dw
   ファイル先頭部(2Kbyte)を読み込んだバッファへのポインタ
   ファイルサイズが 2Kbyte 以下の場合もバッファは 2Kbyte 確保し、余分は 0 で埋めること。
   (使用禁止) dw の値が 16bit の範囲に収まるときは、ファイルハンドルと見なします。また、ファイルポインタはアプリケーション側で予め指定します。
@@ -183,8 +188,8 @@ Plug-in 定義の aboutダイアログ か 設定ダイアログを実行しま�
 <pre>パラメータ
 [in] <span class="type">HWND</span> hWnd
   親ウィンドウのウィンドウハンドル
-[in] <span class="type">int</span> function
 
+[in] <span class="type">int</span> function
 動作
   0  Plug-inのaboutダイアログ表示(必要であれば)
   1  設定ダイアログ表示
@@ -204,14 +209,17 @@ Plug-in 定義の aboutダイアログ か 設定ダイアログを実行しま�
 [in]  <span class="type">LPCSTR / LPCWSTR</span> buf
   入力がファイルの場合: ファイル名
   メモリーの場合: ファイルイメージへのポインタ
+
 [in]  <span class="type">LONG_PTR</span> len
   入力がファイルの場合: 読込み開始オフセット(<a href="#MacBin">MacBin対応</a>のため)
   メモリーの場合: メモリサイズ
-[in]  <span class="type">int</span> flag
+
+[in]  <span class="type">unsigned int</span> flag
   追加情報 0000 0000 0000 0SSS
     SSS : 入力形式
       000 : ディスクファイル
       001 : メモリ上のイメージ
+
 [out] <a href="#PictureInfo">struct PictureInfo</a> *lpInfo
 
 戻り値
@@ -257,22 +265,28 @@ Plug-in 定義の aboutダイアログ か 設定ダイアログを実行しま�
 [in]  <span class="type">LPCSTR / LPCWSTR</span> buf
   入力がファイルの場合: ファイル名
   メモリーの場合: ファイルイメージへのポインタ
+
 [in]  <span class="type">LONG_PTR</span> len
   入力がファイルの場合: 読込み開始オフセット(<a href="#MacBin">MacBin対応</a>のため)
   メモリーの場合: メモリサイズ
-[in]  <span class="type">int</span> flag
+
+[in]  <span class="type">unsigned int</span> flag
   追加情報 0000 0000 0000 0SSS
     SSS : 入力形式
       000 : ディスクファイル
       001 : メモリ上のイメージ
+
 [out] <span class="type">HLOCAL</span> *pHBInfo
   BITMAPINFO 構造体が納められたメモリハンドルが返される
+
 [out] <span class="type">HLOCAL</span> *pHBm
   ビットマップデータ本体のメモリハンドルが返される
+
 [in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
   途中経過を表示するコールバック関数へのポインタ
   NULL の場合、plug-in は処理が終了するまでプロセスを占有し、中断も出来ません。
   ただし、NULL を許容しないプラグインがあるので、アプリケーションはダミーでも関数を指定することを推奨します。
+
 [in][option] <span class="type">LONG_PTR</span> lData
   コールバック関数に渡す変数。
 
@@ -297,14 +311,17 @@ Plug-in 定義の aboutダイアログ か 設定ダイアログを実行しま�
 [in]  <span class="type">LPCSTR / LPCWSTR</span> buf
   入力がファイルの場合: ファイル名
   メモリーの場合: ファイルイメージへのポインタ
+
 [in]  <span class="type">LONG_PTR</span> len
   入力がファイルの場合: 読込み開始オフセット(<a href="#MacBin">MacBin対応</a>のため)
   メモリーの場合: メモリサイズ
-[in]  <span class="type">int</span> flag
+
+[in]  <span class="type">unsigned int</span> flag
   追加情報 0000 0000 0000 0SSS
     SSS : 入力形式
       000 : ディスクファイル
       001 : メモリ上のイメージ
+
 [out] <span class="type">HLOCAL</span> *lphInf
   <a href="#fileInfo">fileInfW</a></li> (ANSI版), <a href="#fileInfoW">fileInfoW</a></li> (UNICODE版) の配列の LOCAL メモリハンドルを受け取る変数へのポインタ。
    エラーの時は、NULL を設定します。戻り値が 0 以外の時も必ず設定が必要です。
@@ -376,13 +393,16 @@ struct {
 [in] <span class="type">LPCSTR / LPCWSTR</span> src
   入力がファイルの場合: ファイル名
   メモリーの場合: ファイルイメージへのポインタ(読込み開始オフセット含む)
+
 [in] <span class="type">LONG_PTR</span> len
   入力がファイルの場合: 読込み開始オフセット、GetArchiveInfo で得られる positionをそのまま使う。※位置と関係ないインデックスとして使うこともあるので、ファイル位置として想定しない方が良い。
   メモリーの場合: データサイズ
+
 [in] or [out] <span class="type">LPSTR / LPWSTR</span> dest
   出力先がファイルの場合: [in] 出力先ディレクトリ。fileInfo の path は使用されず、dest\filename の形で保存されます。
   メモリーの場合: [out] ファイルの入った LOCAL メモリーハンドルを受け取る変数へのポインタ。
-[in] <span class="type">int</span> flag
+
+[in] <span class="type">unsigned int</span> flag
   追加情報 0000 0DDD 0000 0SSS
     SSS : 入力形式
       000 : ディスクファイル
@@ -390,10 +410,12 @@ struct {
     DDD : 出力形式
       000 : ディスクファイル
       001 : メモリ上のイメージ
+
 [in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
   途中経過を表示するコールバック関数へのポインタ。
   NULL の場合、plug-in は処理が終了するまでプロセスを占有し、中断も出来ません。
   ただし、NULL を許容しないプラグインがあるのでダミーのコールバックを推奨します。
+
 [in][option] <span class="type">LONG_PTR</span> lData
   コールバック関数に渡す変数。
 
@@ -421,12 +443,15 @@ struct {
 [in] <span class="type">LPCSTR / LPCWSTR</span> buf
   入力がファイルの場合: ファイル名
   メモリーの場合: ファイルイメージへのポインタ(読込み開始オフセット含む)
+
 [in] <span class="type">LONG_PTR</span> len
   入力がファイルの場合: 読込み開始オフセット、GetArchiveInfo で得られる positionをそのまま使う。※位置と関係ないインデックスとして使うこともあるので、ファイル位置として想定しない方が良い。
   メモリーの場合: データサイズ
+
 [in] <span class="type">LPCSTR / LPCWSTR</span> filename
   情報を取得するファイルのファイル名。アーカイブ内のディレクトリを含めて指定
-[in] <span class="type">int</span> flag
+
+[in] <span class="type">unsigned int</span> flag
   追加情報 0000 0000 I000 0SSS
     SSS : 入力形式
       000 : ディスクファイル
@@ -434,7 +459,8 @@ struct {
     I : ファイル名の case
      0 : ファイル名の大文字小文字を区別する
      1 : ファイル名の大文字小文字を同一視する。
-[out] <a href="#fileInfo">fileInfo</a></li>/<a href="#fileInfoW">fileInfoW</a></li> lpInfo
+
+[out] <a href="#fileInfo">fileInfo</a></li> / <a href="#fileInfoW">fileInfoW</a></li> lpInfo
   情報を受け取る fileInfo 構造体へのポインタ
 
 戻り値
@@ -463,7 +489,8 @@ struct {
 
 [in] <span class="type">LPCSTR / LPCWSTR</span> buf
   保存するファイル名。拡張子がエンコードするファイルの種類を示す。対応していない拡張子の時は、デフォルトの種類でエンコードするか、2 を返す。
-[in] flag
+
+[in] <span class="type">unsigned int</span> flag
   追加情報 000E RDDD 0000 0000
     DDD : 出力形式
       000 : ディスクファイル
@@ -474,17 +501,22 @@ struct {
     E : 追加情報(未実装)
       0 : 追加情報なし
       1 : 追加情報あり
+
 [in] <span class="type">HLOCAL</span> *pHBInfo
   BITMAPINFO 構造体が納められたメモリハンドル
+
 [in] <span class="type">HLOCAL</span> *pHBm
   ビットマップデータ本体のメモリハンドル
+
 [in][option] <a href="#PictureInfo">struct PictureInfo</a> *lpInfo
   pHBInfo にない情報を含めるときに使用します。lpInfo = NULL としても構いません。x_density, y_density, colorDepth は pHBInfo を参照するため、使用されません。
   ※将来保存形式を拡張する場合は、flag の B12 を 1 にして、この構造体の後ろに空白区切りのコマンドパラメータの文字列を追加する形を想定しています。
+
 [in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
   途中経過を表示するコールバック関数へのポインタ。
   NULL の場合、plug-in は処理が終了するまでプロセスを占有し、中断も出来ません。
   ただし、NULL を許容しないプラグインがあるのでダミーのコールバックを推奨します。
+
 [in][option] <span class="type">LONG_PTR</span> lData
   コールバック関数に渡す変数。
 
@@ -575,7 +607,7 @@ IsSupported - GetArchiveInfo - [IsSupported - GetFileInfo - GetFile]n</li>
 <li>ファイルサイズが 0、または画像ファイルのヘッダサイズに満たない大きさのファイルを、ファイル名かメモリイメージで渡されることがあります。Plug-in 側はこれらのファイルでも異常終了しないように対策する必要があります。</li>
 <li>マルチスレッドによる API の複数スレッドの同時使用は保証されません。ただし、マルチスレッドで使用するアプリケーションがあるため、可能なら対応することをお勧めします。対応していない場合はそのことを言及することをお勧めします。</li>
 <li>複数のスレッドで API を使う場合、一連の操作(IsSupported～GetPicture/GetFile まで)を同じスレッドで行う必要があります。<br>
-IsSupportedやGetArchiveInfoで得られた情報をスレッド単位でキャッシュしている場合があります。</li>
+IsSupported や GetArchiveInfo で得られた情報をスレッド単位でキャッシュしている場合があります。</li>
 <a name="MacBin"><li>MacBin(Mac Binary)対応について<br>
 Classic Mac OS(Mac OS X 以前の Mac OS) 上で作成した画像ファイルの一部には、画像本体(データフォーク)の先頭に追加される 128bytes のマックバイナリヘッダと、画像本体の後ろに追加されるリソースフォークがあり、そのまま読み込んでも画像として扱えないことがあります。<br>
 Susie Plug-in で MacBin 付き画像を扱う場合は、アプリケーション側で Susie Plug-in にファイルポインタを 128 バイト分ずらすことを指示したり、ファイル先頭から 128 バイト分ずらしたメモリを渡したりすることで対応する必要があります。</li>
@@ -600,8 +632,13 @@ Susie Plug-in 関係<br>
 Windows Bitmap 関係<br>
 <ul><li><a href="https://entropymine.com/jason/">Jason Summers’s web site</a> 「BMP Suite」(<a href="https://entropymine.com/jason/bmpsuite/">https://entropymine.com/jason/bmpsuite/</a>)</li>
 </ul>
+<HR><H3><A NAME="changelog">更新履歴</A></H3>
+2025-1-25
+・C ヘッダファイル例を添付
+・IsSupported / IsSupportedW の dw を const に変更
+・IsSupported, GetFileInfo のパラメータ説明欄の型の誤記を修正
 <hr><a href="index.html">Homeへ戻る</a>
-<hr><address>Copyright(c)2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+<hr><address>Copyright(c)2024,2025 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
 </div></div>
 <div id="index">
 <strong><A HREF="./index.html">TORO's Library</A></strong>

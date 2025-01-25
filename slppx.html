@@ -30,9 +30,9 @@ img { max-width: 100%; height: auto; }
 <div align="left">※ http://toro.d.dooo.jp からダウンロードできないときは、<a href="https://toroidj.github.io/slppx.html">https://toroidj.github.io</a> からダウンロードしてください。</div><hr></div>
 <div id="contents"><div id="contents2">
  <table border="0" summary="目録">
-  <tr><td>・<a href="#ppx">Paper Plane xUI</a>&nbsp;(<a href="#ppx1">+1</a>)&nbsp;(<a href="#ppx2">+2</a>)&nbsp;(<a href="#ppx3">+3</a>)
+  <tr><td>・<a href="#ppx">Paper Plane xUI</a>
   </td><td>- ファイル操作ツール集</td></tr>
-  <tr><td>・<a href="#ppxdw">Paper Plane xUI(DirectWrite版)</a>&nbsp;(<a href="#ppxdw1">+1</a>)&nbsp;(<a href="#ppxdw2">+2</a>)&nbsp;(<a href="#ppxdw3">+3</a>)
+  <tr><td>・<a href="#ppxdw">Paper Plane xUI(DirectWrite版)</a>
   </td><td>- DirectWriteを使用したPPx</td></tr>
   <tr><td>・<a href="#ppxarm">Paper Plane xUI(ARM64版)</a>
   </td><td>- 64bit ARM 版 Windows 用 PPX</td></tr>
@@ -85,29 +85,14 @@ img { max-width: 100%; height: auto; }
  </table><br><a href="./index.html">Homeへ戻る</a>
 <!-- DownloadList
 ppx
-./ppx200.zip
-./ppw200.zip
-./ppx64200.zip
-./ppx200p1.zip
-./ppw200p1.zip
-./ppx64200p1.zip
-./ppx200p2.zip
-./ppw200p2.zip
-./ppx64200p2.zip
-./ppx200p3.zip
-./ppw200p3.zip
-./ppx64200p3.zip
+./ppx201.zip
+./ppw201.zip
+./ppx64201.zip
 ppxdw
-./ppxdw200.zip
-./ppxdw64200.zip
-./ppxdw200p1.zip
-./ppxdw64200p1.zip
-./ppxdw200p2.zip
-./ppxdw64200p2.zip
-./ppxdw200p3.zip
-./ppxdw64200p3.zip
+./ppxdw201.zip
+./ppxdw64201.zip
 ppxarm
-./ppxarm64200.zip
+./ppxarm64201.zip
 ppxhelp
 ./ppxhelp.zip
 ppxmes
@@ -155,11 +140,11 @@ ppxpy
 ppxjunk
 ./ppxjunk3.zip
 EndList -->
-<hr><a href="./slppx.html">↑</a><a name="ppx"><span>Paper Plane xUI</span></a> Version 2.00
+<hr><a href="./slppx.html">↑</a><a name="ppx"><span>Paper Plane xUI</span></a> Version 2.01
 <br><a href="ssppx.html"><img src="image/thppx.jpg" alt="動作画面" WIDTH="196" height="120"></a><br><br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx200.zip">ppx200.zip</a> ( MultiByte版,&nbsp;911 Kbytes,&nbsp;2024-11-24,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppw200.zip">ppw200.zip</a> ( UNICODE版,929 Kbytes,&nbsp;2024-11-24,&nbsp;Windows NT 4.0 - Windows 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx64200.zip">ppx64200.zip</a> ( 64bit版,1240 Kbytes,&nbsp;2024-11-24,&nbsp;Windows XP/2003 - Windows 11/2022 64bit)<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx201.zip">ppx201.zip</a> ( MultiByte版,&nbsp;913 Kbytes,&nbsp;2025-1-25,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppw201.zip">ppw201.zip</a> ( UNICODE版,931 Kbytes,&nbsp;2025-1-25,&nbsp;Windows NT 4.0 - Windows 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx64201.zip">ppx64201.zip</a> ( 64bit版,1242 Kbytes,&nbsp;2025-1-25,&nbsp;Windows XP/2003 - Windows 11/2022 64bit)<br>
 <br>ファイル操作用のツール集です。<br>
 大量のファイルを快適に操作するための機能と操作性に重点を置き、<br>
 各ソフト間で処理を分担し、連携したファイル操作を行うことができます。<br>
@@ -188,75 +173,32 @@ UNICODE版, 64bit版, MultiByte版があります。<br>
 　マルチフォーマットビュワー。テキスト／画像／16進ダンプ表示、<br>
 　S-JIS/JIS/EUC/ANSI/UNICODE等のコード等の切替、HTMLタグの簡易解析等が可能です。<br>
 ・PPtray<br>
-　ホットキー処理／ウィンドウ版コマンド実行を行います。<br><br>●<strong>変更点</strong><br>1.99→2.00<br>
-All<br>
-・ライセンスをMITライセンスに変更<br>
-・*file等のファイル削除でディレクトリ階層数が多いときに異常終了するのを修正<br>
-・*goto&nbsp;の&nbsp;label&nbsp;検索を強化した<br>
-・%etype&nbsp;で&nbsp;type&nbsp;に複数文字が指定されているときはエラー検出をできるように<br>
-・一行編集ダイアログの上に一覧表示する時,キャプションを避ける指定を追加(X_flst)<br>
-・PPeのファイル指定ダイアログの挙動を調整<br>
-PPc<br>
-・*dock&nbsp;add&nbsp;/once&nbsp;使用後は再カスタマイズをしてもdock,ツールバーの再初期化なしに<br>
-・ドライブ選択メニュー\[L]で[TAB]か[BS]を押すと空容量表示を切替えられるように<br>
-PPv<br>
-・-document:command&nbsp;を使用したとき、常に&nbsp;-esc:off&nbsp;-tag:on&nbsp;になっていたのを修正<br>
-PPc,PPv<br>
-・1.99でステータス行の一行メッセージの消去処理がおかしくなったのを修正<br>
-PPcust<br>
-・ヒストリ内容の出力(hd)において、１つ目の履歴が出力されていなかったのを修正<br>
-<br>
-1.99+3→2.00<br>
-All<br>
-・PPeのファイル指定ダイアログの挙動を調整<br>
-・+3で&nbsp;%en&quot;123&quot;&nbsp;がエラーになるのを修正<br>
-PPc<br>
-・ドライブ選択メニュー\[L]で[TAB]か[BS]を押すと空容量表示を切替えられるように<br>
-
-<hr><a href="./slppx.html">↑</a><a name="ppx1"><span>Paper Plane xUI</span></a> Version 2.00+1
-<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx200p1.zip">ppx200p1.zip</a> ( MultiByte版,&nbsp;666 Kbytes,&nbsp;2024-12-14,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppw200p1.zip">ppw200p1.zip</a> ( UNICODE版,680 Kbytes,&nbsp;2024-12-14,&nbsp;Windows NT 4.0 - Windows 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx64200p1.zip">ppx64200p1.zip</a> ( 64bit版,822 Kbytes,&nbsp;2024-12-14,&nbsp;Windows XP/2003 - Windows 11/2022 64bit)<br>
-<br>試験公開版です。 Version 2.00からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>2.00→2.00+1<br>
+　ホットキー処理／ウィンドウ版コマンド実行を行います。<br><br>●<strong>変更点</strong><br>2.00→2.01<br>
 All<br>
 ・[TAB]によるファイル名補完の一覧に、補完前の入力文字列を含めないように<br>
 ・*completelist&nbsp;-list:&nbsp;で補完一覧の表示形態(X_flst)を変更できるように<br>
 ・*completelist&nbsp;-show:text&nbsp;で指定した&nbsp;text&nbsp;の補完一覧リストを表示できるように<br>
+・補完の前方/後方一致の設定を調整した(X_flst,&nbsp;X_ltab,&nbsp;*completelist&nbsp;-match)<br>
 PPc<br>
 ・FileContents形式のファイルをドロップしたときに異常終了することがあるのを修正<br>
 ・一体化窓,ペイン上下,タブ位置上で,窓サイズ変更によりペイン高が変化するのを修正<br>
-PPb<br>
-・Win11ではPPbのマウス操作有効の自動検出を止めて無効し、WTで操作するように<br>
-
-<hr><a href="./slppx.html">↑</a><a name="ppx2"><span>Paper Plane xUI</span></a> Version 2.00+2
-<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx200p2.zip">ppx200p2.zip</a> ( MultiByte版,&nbsp;748 Kbytes,&nbsp;2024-12-28,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppw200p2.zip">ppw200p2.zip</a> ( UNICODE版,764 Kbytes,&nbsp;2024-12-28,&nbsp;Windows NT 4.0 - Windows 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx64200p2.zip">ppx64200p2.zip</a> ( 64bit版,931 Kbytes,&nbsp;2024-12-28,&nbsp;Windows XP/2003 - Windows 11/2022 64bit)<br>
-<br>試験公開版です。 Version 2.00からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>2.00+1→2.00+2<br>
-All<br>
-・補完の前方/後方一致の設定を調整した(X_flst,&nbsp;X_ltab,&nbsp;*completelist&nbsp;-match)<br>
-PPc<br>
 ・一体化窓のタブのドラッグ編集に[Alt]キーを必要する設定を追加(X_combos,2nd,B13)<br>
-・ファイル検索(^[W])で現在パスに対しコメント検索したときは、読込済の内容で検索<br>
-
-<hr><a href="./slppx.html">↑</a><a name="ppx3"><span>Paper Plane xUI</span></a> Version 2.00+3
-<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx200p3.zip">ppx200p3.zip</a> ( MultiByte版,&nbsp;749 Kbytes,&nbsp;2025-1-18,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppw200p3.zip">ppw200p3.zip</a> ( UNICODE版,765 Kbytes,&nbsp;2025-1-18,&nbsp;Windows NT 4.0 - Windows 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx64200p3.zip">ppx64200p3.zip</a> ( 64bit版,932 Kbytes,&nbsp;2025-1-18,&nbsp;Windows XP/2003 - Windows 11/2022 64bit)<br>
-<br>試験公開版です。 Version 2.00からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>2.00+2→2.00+3<br>
-PPc<br>
-・X_ltabの設定がローマ字検索有効の時、起動時にmigemo.dllと辞書を読み込むように<br>
 ・*pairrate&nbsp;の比率指定が&nbsp;0～100&nbsp;の範囲で使用できるように調整<br>
+・ファイル検索(^[W])で現在パスに対しコメント検索したときは、読込済の内容で検索<br>
+・X_ltabの設定がローマ字検索有効の時、起動時にmigemo.dllと辞書を読み込むように<br>
+・エントリ表示書式を２行以上にしたときでも、各行でw(可変長指定)を使用可能に<br>
 PPb<br>
+・Win11ではPPbのマウス操作有効の自動検出を止めて,常にWT側でマウス操作するように<br>
 ・ファイル名補完の一覧表示(^[R],[F4])時に、表示内容の検索とヒストリ一覧を追加<br>
+<br>
+2.00+3→2.01<br>
+PPc<br>
+・エントリ表示書式を２行以上にしたときでも、各行でw(可変長指定)を使用可能に<br>
 
-<hr><a href="./slppx.html">↑</a><a name="ppxdw"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 2.00
+<hr><a href="./slppx.html">↑</a><a name="ppxdw"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 2.01
 <br><a href="image/ssppxdw.png"><img src="image/thppxdw.jpg" alt="動作画面" WIDTH="196" height="135"></a><br><br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw200.zip">ppxdw200.zip</a> ( 32bit版,&nbsp;1100 Kbytes,&nbsp;2024-11-24,&nbsp;Windows 7/2008 R2 - Windows 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw64200.zip">ppxdw64200.zip</a> ( 64bit版,1244 Kbytes,&nbsp;2024-11-24,&nbsp;Windows 7/2008 R2 - Windows 11/2022 64bit)<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw201.zip">ppxdw201.zip</a> ( 32bit版,&nbsp;1102 Kbytes,&nbsp;2025-1-25,&nbsp;Windows 7/2008 R2 - Windows 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw64201.zip">ppxdw64201.zip</a> ( 64bit版,1247 Kbytes,&nbsp;2025-1-25,&nbsp;Windows 7/2008 R2 - Windows 11/2022 64bit)<br>
 <br>PPc と PPv のメインウィンドウを DirectWrite/Direct2D で描画するようにした PPx です。<br>
 従来のGDI表示でできなかった Unicode の複雑な合字表示や、Windows 8.1 以降の色つきの絵文字の表示が可能です。<br>
 <br>
@@ -264,27 +206,9 @@ PPb<br>
 <br>
 ※Version 1.75 から 32bit版と 64bit版を分けました。<br>
 
-<hr><a href="./slppx.html">↑</a><a name="ppxdw1"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 2.00+1
+<hr><a href="./slppx.html">↑</a><a name="ppxarm"><span>Paper Plane xUI(ARM64版)</span></a> Version 2.01
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw200p1.zip">ppxdw200p1.zip</a> ( 32bit版,&nbsp;732 Kbytes,&nbsp;2024-12-14,&nbsp;Windows 7/2008 R2 - Windows 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw64200p1.zip">ppxdw64200p1.zip</a> ( 64bit版,839 Kbytes,&nbsp;2024-12-14,&nbsp;Windows 7/2008 R2 - Windows 11/2022 64bit)<br>
-<br>試験公開版です。 Version 2.00からの差し替え分のみとなってます。<br>
-
-<hr><a href="./slppx.html">↑</a><a name="ppxdw2"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 2.00+2
-<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw200p2.zip">ppxdw200p2.zip</a> ( 32bit版,&nbsp;830 Kbytes,&nbsp;2024-12-28,&nbsp;Windows 7/2008 R2 - Windows 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw64200p2.zip">ppxdw64200p2.zip</a> ( 64bit版,948 Kbytes,&nbsp;2024-12-28,&nbsp;Windows 7/2008 R2 - Windows 11/2022 64bit)<br>
-<br>試験公開版です。 Version 2.00からの差し替え分のみとなってます。<br>
-
-<hr><a href="./slppx.html">↑</a><a name="ppxdw3"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 2.00+3
-<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw200p3.zip">ppxdw200p3.zip</a> ( 32bit版,&nbsp;830 Kbytes,&nbsp;2025-1-18,&nbsp;Windows 7/2008 R2 - Windows 11/2022(32bit/64bit))<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw64200p3.zip">ppxdw64200p3.zip</a> ( 64bit版,949 Kbytes,&nbsp;2025-1-18,&nbsp;Windows 7/2008 R2 - Windows 11/2022 64bit)<br>
-<br>試験公開版です。 Version 2.00からの差し替え分のみとなってます。<br>
-
-<hr><a href="./slppx.html">↑</a><a name="ppxarm"><span>Paper Plane xUI(ARM64版)</span></a> Version 2.00
-<br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxarm64200.zip">ppxarm64200.zip</a> ( 1388 Kbytes,&nbsp;2024-11-24,&nbsp;Windows10,11(Arm64))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxarm64201.zip">ppxarm64201.zip</a> ( 1390 Kbytes,&nbsp;2025-1-25,&nbsp;Windows10,11(Arm64))<br>
 <br>64bit ARM 版 Windows 用 PPx です。<br>
 <br>
 履歴は<a href="#ppx" >通常版 PPx</a> を参照してください。<br>
@@ -293,7 +217,7 @@ migemoが必要なときは、<a href="https://toroidj.github.io/ppx/cmigemo-arm
 
 <hr><a href="./slppx.html">↑</a><a name="ppxhelp"><span>Paper Plane xUI  Windows ヘルプ</span></a>
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxhelp.zip">ppxhelp.zip</a> ( 430 Kbytes,&nbsp;2024-11-24,&nbsp;Windows95/98/Me/NT4.0/2000/XP/2003)<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxhelp.zip">ppxhelp.zip</a> ( 432 Kbytes,&nbsp;2025-1-25,&nbsp;Windows95/98/Me/NT4.0/2000/XP/2003)<br>
 <br><a href="./ppxhlp.html" >オンラインヘルプ</a>の Windows Help ( WINHLP32.EXE )版です。<br>
 Windows Help は、Windows Vista 以降では標準で用意されていないため、ヘルプファイルを同梱しないで別途配布しています。<br>
 <br>

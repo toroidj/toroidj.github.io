@@ -101,9 +101,9 @@
 		XLT3|partial部分一致:X_ltab+4=@2
 		XLT4|partial and select部分一致,非共通部を選択:X_ltab+4=@3
 		XLT5|migemo部分一致,migemo:X_ltab+4=@4
-		XLT6|separated by dot開発中(ドット区切りのand検索):X_ltab+4=@5
-		XLT7|separated by dot, and migemo開発中(ドット区切りのandとmigemo検索):X_ltab+4=@6
-		XLT8|regexp開発中(正規表現検索):X_ltab+4=@7
+		XLT6|separated by dotドット区切りのand検索:X_ltab+4=@5
+		XLT7|separated by dot, and migemoドット区切りのandとmigemo検索:X_ltab+4=@6
+		XLT8|regexp正規表現検索:X_ltab+4=@7
 	XFDI|when fill directory, without file entry補完でディレクトリ入力の時は、ディレクトリ以外を候補にしない:X_fdir=?1/1:0
 	XFLS|fill list補完の結果を一覧表示
 		XOFF|Disableしない:X_flst=@0
@@ -112,7 +112,6 @@
 		XFL3|Auto show1自動補完する(1枚表示):X_flst=@3
 		XFL4|Auto show2自動補完する(2枚表示):X_flst=@4
 		XFL5|Auto show3自動補完する(2枚表示+α):X_flst=@5
-		XFL1|Partial Match部分一致で列挙する:X_flst+4=?1/1:0
 		XFL8|List min length一覧の最低表示文字数(一覧表示幅):X_flst+8=<d
 		XFL0|List lines一覧の行数:X_flst+12=<d
 		XFL6|list show time(ms)一覧の強制表示時間(ms):X_flto=<d
@@ -289,6 +288,7 @@
 		XBCI|tab coloredタブを着色する:X_combos=?B18
 		XBD6|close button閉じるボタンを表示する:X_combos+4=?B6!
 			XBD8|auto hide close button閉じるボタンを自動で隠す:X_combos+4=?B8!
+		XBDD|Tab drag require ALT keyタブのドラッグ編集には[Alt]キーが必要:X_combos+4=?B13
 		XBCG|Fixed tab widthタブ幅を固定:X_combos=?B16
 			XTWI|pixcel幅:X_twid=<i
 		XBCH|Multi line tabタブ列の多段表示:X_combos=?B17

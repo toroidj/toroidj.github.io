@@ -1,5 +1,5 @@
 Mes0409	=#{ English ; 0409 is Locale ID (LCID)
-+|0000	198
++|0000	201
 0001	OK
 0002	Cancel
 0003	Abort(&A)
@@ -752,8 +752,8 @@ NOMI	No more information
 NOMN	Show memo
 NOTX	String not found.
 NRGU	Width change: drag status, [, ], {, }
-NWDN	TEMPDIR
-NWFN	TEMPFILE
+NWDN	tempdir
+NWFN	tempfile
 OPSA	Open selected Address(&A)
 OWDT	Directory types(&Y)
 OWIT	Send to(&N)
@@ -1428,6 +1428,7 @@ XBD7	use PPc ID "Zxxx" in Combo ID "A"
 XBD8	auto hide close button
 XBD9	keep panes wide rate with delete one pane
 XBDA	Over pane on tab null space
+XBDD	Tab drag require ALT key
 XBEP	Error sound
 XBGC	tab group
 XBGD	group default name
@@ -1509,7 +1510,6 @@ XFFI	Fix for left text draw
 XFFX	fixed extention is lower case
 XFIX	PPv fix
 XFL0	List lines
-XFL1	Partial Match
 XFL2	Auto show(OS)
 XFL3	Auto show1
 XFL4	Auto show2
@@ -1793,4 +1793,4 @@ ZTPY	PPtray
 ZTVD	Drag
 ZTVI	Image view
 ZTVT	Text view
-};eeoipndgmagonlmnohlcgfiplliebahmaeidimkacleifabhbcjkoeonnhbepcahfoojfdcihgiajkmcfjelinfnepdobabepeppkelilcnbhlpbmiokhjmgbalpkemfaie 
+};pkfddbnajcffnfhmddmcbolpdidfafngdkainhdggjdekbhnkfehfmolflglohlenpifkbjadflefeedfbiafankifdfjdfbdncgacoiepmenjiaokbojegeiodbpdmlaie 
