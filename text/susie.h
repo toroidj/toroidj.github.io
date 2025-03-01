@@ -88,8 +88,8 @@ typedef struct fileInfoW {
 #if 0 // ’è‹`ˆê——
 int __stdcall GetPluginInfo(int infono, LPSTR buf, int buflen);
 int __stdcall GetPluginInfoW(int infono, LPWSTR buf, int buflen);
-int __stdcall IsSupported(LPCSTR filename, void *dw);
-int __stdcall IsSupportedW(LPCWSTR filename, void *dw);
+int __stdcall IsSupported(LPCSTR filename, const void *dw);
+int __stdcall IsSupportedW(LPCWSTR filename, const void *dw);
 int __stdcall ConfigurationDlg(HWND hWnd, int function);
 int __stdcall GetPictureInfo(LPCSTR buf, LONG_PTR len, unsigned int flag, struct PictureInfo *lpInfo);
 int __stdcall GetPictureInfoW(LPCWSTR buf, LONG_PTR len, unsigned int flag, struct PictureInfo *lpInfo);
