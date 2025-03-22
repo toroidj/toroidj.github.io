@@ -112,6 +112,7 @@
 743C	下線(&U)
 743E	拡張子順(&X)
 743F	色順(&L)
+7440	同じ色を一括選択(&G)
 7450	ファイル判別
 7457	種類(&O E_～形式)
 7458	判別名(&I)
@@ -1375,4 +1376,4 @@ XUUN	最新版です
 XUUQ	新しい %s があります。%s から更新しますか？
 -|7883	
 -|ITFC	
-};eeocopheeccbhcigikfndjopbmnckncfiioojoemkjanfhcbepghpcapgkflgollkgbiofphagjgnklebmbnjolkioapcdbopiogaeafgmkjidobifacfiekggnoemkkaie 
+};bjddnchncanhibhhanenipahondkbkkoidjgbbjfkhonkiljipkgdpmoecbembnjcgdfcfnbiofeoipgnmicjimcjfcdamacehifphbencamcdojjbecicacoadjheddaie 

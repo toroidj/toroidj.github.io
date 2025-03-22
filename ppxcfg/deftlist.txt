@@ -190,6 +190,7 @@
 		20MBytes:X_wsiz=@20000000
 		40MBytes:X_wsiz=@40000000
 		XMIS|miscその他:X_wsiz=<d
+	XCLT|Command name list for cmd.exe直接指定可能な cmd.exe コマンドの一覧( ; 区切り):X_cmdls=<s
 	XWPB|use ppb実行時にPPbが必要なとき、空きPPbがなければ
 		XNOO|noPPbなしで実行:X_wppb=@-1
 		XWBC|new ppb新規PPbで実行:X_wppb=@-2

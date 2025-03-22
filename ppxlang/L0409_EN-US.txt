@@ -118,6 +118,7 @@ Mes0409	=#{ English ; 0409 is Locale ID (LCID)
 743C	Underline(&U)
 743E	Sort by extention(&X)
 743F	Sort by color(&L)
+7440	Select Color-group(&G)
 7450	File types
 7457	(O E_...)(&O)
 7458	Type name(&I)
@@ -1456,6 +1457,7 @@ XCCD	dumpped text charcter set
 XCDC	Sum file sizes button
 XCLD	Cursor type
 XCLE	Marked type
+XCLT	Command name list for cmd.exe
 XCMB	Combo window(require restart PPc)
 XCMC	use combo
 XCPA	tab caption
@@ -1793,4 +1795,4 @@ ZTPY	PPtray
 ZTVD	Drag
 ZTVI	Image view
 ZTVT	Text view
-};pkfddbnajcffnfhmddmcbolpdidfafngdkainhdggjdekbhnkfehfmolflglohlenpifkbjadflefeedfbiafankifdfjdfbdncgacoiepmenjiaokbojegeiodbpdmlaie 
+};fnpopjalcafnoepbgdfclekiccikaiejpineodojjlaebgkangeimhdjceipicibmlkpeaokgpadpnlkjjcfbamffcmjgelpnomojlhhaiboblmdjobjelhkhcedgfloaie 
