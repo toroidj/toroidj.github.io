@@ -30,9 +30,9 @@ img { max-width: 100%; height: auto; }
 <div align="left">※ http://toro.d.dooo.jp からダウンロードできないときは、<a href="https://toroidj.github.io/slppx.html">https://toroidj.github.io</a> からダウンロードしてください。</div><hr></div>
 <div id="contents"><div id="contents2">
  <table border="0" summary="目録">
-  <tr><td>・<a href="#ppx">Paper Plane xUI</a>
+  <tr><td>・<a href="#ppx">Paper Plane xUI</a>&nbsp;(<a href="#ppx1">+1</a>)
   </td><td>- ファイル操作ツール集</td></tr>
-  <tr><td>・<a href="#ppxdw">Paper Plane xUI(DirectWrite版)</a>
+  <tr><td>・<a href="#ppxdw">Paper Plane xUI(DirectWrite版)</a>&nbsp;(<a href="#ppxdw1">+1</a>)
   </td><td>- DirectWriteを使用したPPx</td></tr>
   <tr><td>・<a href="#ppxarm">Paper Plane xUI(ARM64版)</a>
   </td><td>- 64bit ARM 版 Windows 用 PPX</td></tr>
@@ -90,9 +90,14 @@ ppx
 ./ppx202.zip
 ./ppw202.zip
 ./ppx64202.zip
+./ppx202p1.zip
+./ppw202p1.zip
+./ppx64202p1.zip
 ppxdw
 ./ppxdw202.zip
 ./ppxdw64202.zip
+./ppxdw202p1.zip
+./ppxdw64202p1.zip
 ppxarm
 ./ppxarm64202.zip
 ppxhelp
@@ -126,7 +131,7 @@ ppxkey
 ppxcfx
 ./ppxcfx4.zip
 ppxws
-./ppxws01.zip
+./ppxws02.zip
 ppxets
 ./ppxets05.zip
 ppxfs
@@ -221,6 +226,19 @@ PPc<br>
 PPv<br>
 ・16進ダンプの挙動を調整した<br>
 
+<hr><a href="./slppx.html">↑</a><a name="ppx1"><span>Paper Plane xUI</span></a> Version 2.02+1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx202p1.zip">ppx202p1.zip</a> ( MultiByte版,&nbsp;647 Kbytes,&nbsp;2025-3-29,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2025(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppw202p1.zip">ppw202p1.zip</a> ( UNICODE版,&nbsp;659 Kbytes,&nbsp;2025-3-29,&nbsp;Windows NT 4.0 - Windows 11/2025(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppx64202p1.zip">ppx64202p1.zip</a> ( 64bit版,&nbsp;782 Kbytes,&nbsp;2025-3-29,&nbsp;Windows XP/2003 - Windows 11/2025 64bit)<br>
+<br>試験公開版です。 Version 2.02からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>2.02→2.02+1<br>
+All<br>
+・2.02(03-22板)の&nbsp;ListFile&nbsp;の読み込み時に異常終了するのを修正<br>
+・2.02(03-22板)の&nbsp;*file&nbsp;で&nbsp;\\uncパスの複写をしようとするとエラーになるのを修正<br>
+・X_log&nbsp;B14&nbsp;指定時は、共用ログ窓がなくても、対応ログを保存できるように変更<br>
+PPc<br>
+・一体化窓に対してフォーカス設定をすると最大化が解除される事があるのを修正<br>
+
 <hr><a href="./slppx.html">↑</a><a name="ppxdw"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 2.02
 <br><a href="image/ssppxdw.png"><img src="image/thppxdw.jpg" alt="動作画面" WIDTH="196" height="135"></a><br><br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw202.zip">ppxdw202.zip</a> ( 32bit版,&nbsp;1112 Kbytes,&nbsp;2025-3-23,&nbsp;Windows 7/2008 R2 - Windows 11/2025(32bit/64bit))<br>
@@ -231,6 +249,12 @@ PPv<br>
 履歴は<a href="#ppx" >通常版 PPx</a> を参照してください。<br>
 <br>
 ※Version 1.75 から 32bit版と 64bit版を分けました。<br>
+
+<hr><a href="./slppx.html">↑</a><a name="ppxdw1"><span>Paper Plane xUI(DirectWrite版)</span></a> Version 2.02+1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw202p1.zip">ppxdw202p1.zip</a> ( 32bit版,&nbsp;696 Kbytes,&nbsp;2025-3-29,&nbsp;Windows 7/2008 R2 - Windows 11/2025(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdw64202p1.zip">ppxdw64202p1.zip</a> ( 64bit版,&nbsp;856 Kbytes,&nbsp;2025-3-29,&nbsp;Windows 7/2008 R2 - Windows 11/2025 64bit)<br>
+<br>試験公開版です。 Version 2.02からの差し替え分のみとなってます。<br>
 
 <hr><a href="./slppx.html">↑</a><a name="ppxarm"><span>Paper Plane xUI(ARM64版)</span></a> Version 2.02
 <br>
@@ -379,10 +403,12 @@ PPc ファイル描画モジュールを自作するときの参考用です。<
 
 <hr><a href="./slppx.html">↑</a><a name="ppxws"><span>Paper Plane xUI  Windows Search Module</span></a>
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxws01.zip">ppxws01.zip</a> ( 89 Kbytes,&nbsp;2010-10-2,&nbsp;Windows2000/XP/2003/Vista/2008/7(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxws02.zip">ppxws02.zip</a> ( 145 Kbytes,&nbsp;2025-3-29,&nbsp;Windows 2000 - 11/2025(x86, x64, ARM64))<br>
 <br>Windows Search を使って一行編集の自動補完表示を行ったり、<br>
 検索を行ったりするための検索モジュールです。<br>
-検索モジュールを自作するときの参考用です。<br>
+検索モジュールを自作するときの参考用です。<br><br>●<strong>変更点</strong><br>R1→R2<br>
+・検索がされなくなったのを修正<br>
+・ARM64版を用意した<br>
 
 <hr><a href="./slppx.html">↑</a><a name="ppxets"><span>Paper Plane xUI  Everything Search Module</span></a>
 <br>
