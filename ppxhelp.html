@@ -561,23 +561,26 @@ Windows のパス正規化処理を行わずにアクセスするための指定
 ドライブリストの内部で使用していますが、よく使う場所を基準とした相対指定を行いたいときにも使えます。<br>
 <hr><br>
 <a name="listsubj"><b> ListFile※</b></a><br>
-<br>
+<a name="ListFile"></a><br>
+ListFileは、エントリを列挙したテキストファイルであり次の形式で指定できます。<br>
 (1) 該当ファイルへのフルパス<br>
-又は<br>
 (2) 該当ファイルへのフルパス::listfile<br>
+(3) 該当ファイルへのフルパス::JSON<br>
 <br>
-(1)先頭に「;ListFile」の一行があるテキストファイルは、その中身を仮想ディレクトリとして取扱うことができます。<br>
-(2)また、パスの末尾に「::listfile」が付いているときは、「;ListFile」が無くても仮想ディレクトリとして取扱うことができます。<br>
-<br>
-ListFileは、各行を一つ分のフルパスのエントリとして取扱います。<a href="#listformat">詳細</a><br>
-一行毎にパスが記載されたレスポンスファイルもListFileとして扱えます。<br>
+(1)先頭に「;ListFile」「{&quot;ListFile&quot;」「[&quot;ListFile&quot;」があるテキストファイルは、ListFileとして自動識別し、その中身を仮想ディレクトリとして取扱うことができます。<br>
+(2)(3)自動識別できない場合は、手動指定としてパスの末尾に「::listfile」「::JSON」が付いているときは、「;ListFile」等が無くても仮想ディレクトリとして取扱うことができます。<br>
 <br>
 ListFileは、PPcのファイル検索(Where is)などで使用しています。また、次の時にも使えます。<br>
 ・あちこちのディレクトリに散らばっているよく使うファイルを１つのディレクトリにまとめたいとき。<br>
 ・外部の検索アプリケーションなどで得た結果一覧をPPcで参照・利用したいとき。<br>
 <br>
+ListFileの形式は、<a href="#listformat">ListFileの書式</a>に詳細がありますが、次の形式があります。<br>
+(1)独自形式<br>
+(2)一行毎にパスが記載されたレスポンスファイル<br>
+(3)JSON形式<br>
+<br>
 ListFileの文字コードは自動判別しますが、「filename::sjis::listfile」等と文字コードが指定できます。<br>
-また、「;ListFile」より後の行に「;charset=cp932」「;charset=utf-8」等と記載することで、文字コードが指定できます。<br>
+<br>
 <hr><br>
 <a name="SHNpath"><b> shell: / Shell's Namespace形式※</b></a><br>
 <a name="PIDL形式"></a><br>
@@ -778,25 +781,30 @@ PPcの[F], \[F], [+], [-], ^[W]と*file<br>
 <b>注</b>暫定仕様だった「i:d」指定は、「o:d」に置き換えてください。<br>
 <br>
 ・<a href="#wildcard1"> 空欄指定</a><br>
-・<a href="#wildcard4"> ファイル名・拡張子指定</a><br>
-・<a href="#wildcard5">「*」,「?」 ワイルドカード</a><br>
-・<a href="#wildcard6"> 正規表現</a><br>
-・<a href="#wildcard7">「;」,「,」 複数条件の or 指定</a><br>
-・<a href="#wildcard8">「!」 否定</a><br>
-・<a href="#wildcard9">「&amp;」 and指定</a><br>
-・<a href="#wildcard10">attribute:  ※エントリ属性</a><br>
-・<a href="#wildcard12">date:  ※更新時刻指定</a><br>
-・<a href="#wildcard13">size:  ※ファイルサイズ指定</a><br>
-・<a href="#wildcard14">roma:  ローマ字部分一致指定</a><br>
-・<a href="#wildcard15">path:  ※ディレクトリ名指定</a><br>
-・<a href="#wildcard16">option:  オプション指定</a><br>
+・<a href="#wildcard3"> ファイル名・拡張子指定</a><br>
+・<a href="#wildcard4">「*」,「?」 ワイルドカード</a><br>
+・<a href="#wildcard5"> 正規表現</a><br>
+・<a href="#wildcard6">「;」,「,」 複数条件の or 指定</a><br>
+・<a href="#wildcard7">「!」 否定</a><br>
+・<a href="#wildcard8">「&amp;」 and指定</a><br>
+・<a href="#wildcard9">attribute:  ※エントリ属性</a><br>
+・<a href="#wildcard11">date:  ※更新時刻指定</a><br>
+・<a href="#wildcard12">size:  ※ファイルサイズ指定</a><br>
+・<a href="#wildcard13">roma:  ローマ字部分一致指定</a><br>
+・<a href="#wildcard14">path:  ※ディレクトリ名指定</a><br>
+・<a href="#wildcard15">option:  オプション指定</a><br>
 
 <hr><br>
 <a name="wildcard1"><b> 空欄指定</b></a><br>
 <br>
 空欄のときは全てのファイルに一致します。<br>
 <hr><br>
-<a name="wildcard4"><b> ファイル名・拡張子指定</b></a><br>
+<a name="wildcard3"><b> ファイル名・拡張子指定</b></a><br>
+・完全一致の場合、「file.ext」は、ファイル名と拡張子が完全に一致すると同一とします。<br>
+<br>
+・部分一致(単語扱い、空白区切り)の場合、「file.ext」は、ファイル名に「file」が含まれ、拡張子に「ext」が含まれていると同一とします。<br>
+<br>
+・完全一致と部分一致の切替は、ダイアログの設定を使う場合は設定ボタンの「単語単位」、ワイルドカードに含めるなら「o:,」(完全一致)、「o:w,」(部分一致)になります。<br>
 <br>
 ・ファイル名が空欄のときは、拡張子が一致すれば同一とします<br>
 &nbsp;&nbsp;<i>例) .ext</i><br>
@@ -809,9 +817,11 @@ PPcの[F], \[F], [+], [-], ^[W]と*file<br>
 &nbsp;&nbsp;<i>例) file.</i><br>
 &nbsp;&nbsp;ファイル名.拡張子が「file.」であるファイル<br>
 <br>
-・先頭ピリオドのファイル名は、そのまま指定すると拡張子扱いになるため、<a href="#namewildcard">オプションx</a>を指定してください。<br>
+・ピリオドを含むファイル名は、そのまま指定すると拡張子扱いになるため、<a href="#namewildcard">オプションx</a>を指定してください。<br>
 &nbsp;&nbsp;<i>例) o:x,.file</i><br>
 &nbsp;&nbsp;ファイル名が「.file」(拡張子なしのみ)であるファイル<br>
+&nbsp;&nbsp;<i>例) o:xw,.file</i><br>
+&nbsp;&nbsp;ファイル名か拡張子に「.file」を含むファイル<br>
 <br>
 ・ファイル名と拡張子を分離しないで判断するときは、<a href="#namewildcard">オプションx</a>を指定してください。<br>
 &nbsp;&nbsp;<i>例) o:x,*name*</i><br>
@@ -822,9 +832,8 @@ PPcの[F], \[F], [+], [-], ^[W]と*file<br>
 &nbsp;&nbsp;<i>例) *maskentry &quot;&quot;&quot;*,*&quot;&quot;,*a*&quot;</i> (コマンドのパラメータで指定するとき)「,」か「a」を含むファイル<br>
 <br>
 ※1bytes(半角)英字の大文字・小文字は無視します。<br>
-<b>※空白区切りや部分一致の動作にしたいときは<a href="#wordwildcard">オプションw</a>を指定してください。</b><br>
 <hr><br>
-<a name="wildcard5"><b>「*」,「?」 ワイルドカード</b></a><br>
+<a name="wildcard4"><b>「*」,「?」 ワイルドカード</b></a><br>
 <br>
 名前の指定にはワイルドカードが使用できます<br>
 *&nbsp;&nbsp;0 文字以上の任意の文字列<br>
@@ -835,42 +844,43 @@ PPcの[F], \[F], [+], [-], ^[W]と*file<br>
 &nbsp;&nbsp;<i>例) FILE???</i><br>
 &nbsp;&nbsp;「FILE」+ 任意の３文字のファイル名<br>
 <hr><br>
-<a name="wildcard6"><b> 正規表現</b></a><br>
+<a name="wildcard5"><b> 正規表現</b></a><br>
 <br>
 <a href="#BREGEXP">正規表現ライブラリ</a>がある場合は正規表現が使用できます。<br>
 「/正規表現/」と指定することで正規表現による比較が行われます。<br>
-※1.ファイル名の英大文字/英小文字の区別はしません。<br>
-※2.ファイル名の英大文字/英小文字の区別をしたいときは、「/I」を指定してください。<br>
+※1. 使用できる正規表現は、使用する正規表現ライブラリによって変わります。<br>
+※2. ファイル名の英大文字/英小文字の区別はしません。<br>
+※3. ファイル名の英大文字/英小文字の区別をしたいときは、「/I」を指定してください。<br>
 <i>例) /loweronly/I</i><br>
-※3.拡張子も含んだ形で比較されます。<br>
+※4. 拡張子も含んだ形で比較されます。<br>
 <i>例) /read.*me/</i><br>
 ファイル名(拡張子含む)に「read～me」を含む。<br>
 「readme.txt」、「READ.ME」等が該当します。<br>
 <hr><br>
-<a name="wildcard7"><b>「;」,「,」 複数条件の or 指定</b></a><br>
+<a name="wildcard6"><b>「;」,「,」 複数条件の or 指定</b></a><br>
 <br>
 複数の条件を記載したい場合は「,」又は「;」で区切ります。<br>
 （各条件を左から順に判定し、満たした条件があれば同一とする）<br>
-※ワイルドカード中に「,」、「;」が必要なときは「\,」、「\;」と指定するか、ワイルドカードを「&quot;」で括るか、正規表現を使ってください。<br>
+※ワイルドカード中に「,」、「;」が必要なときは、「\;」などと指定するか、ワイルドカードを「&quot;」で括るか、正規表現を使ってください。<br>
 <br>
 <i>例) .MAK,MAKEFILE.</i><br>
 拡張子が「MAK」か、ファイル名が「MAKEFILE.」であればよい<br>
 <hr><br>
-<a name="wildcard8"><b>「!」 否定</b></a><br>
+<a name="wildcard7"><b>「!」 否定</b></a><br>
 <br>
 先頭に「!」を付加すると、否定指定になります。<br>
 <i>例) .txt,!/read/</i><br>
 (1) .txt はすべて該当し、(2) read を含まないエントリが該当します。<br>
 <hr><br>
-<a name="wildcard9"><b>「&amp;」 and指定</b></a><br>
+<a name="wildcard8"><b>「&amp;」 and指定</b></a><br>
 <br>
 先頭に「&amp;」を付加すると、論理積指定になります。<br>
 <i>例) &amp;.txt,&amp;*memo*</i><br>
  .txt 且つ *memo* を満たすエントリが該当します。<br>
 <hr><br>
-<a name="wildcard10"><b>attribute:  ※エントリ属性</b></a><br>
+<a name="wildcard9"><b>attribute:  ※エントリ属性</b></a><br>
 <br>
-「attribute:指定属性」を用いると、特定の<a href="#fileattra">属性</a>のエントリで判断することができます。例えば「attribute:r+s-」と指定すると、読み取り専用属性有り、<b>且つ</b>システム属性無しであるエントリに限定することができます。<br>
+「attribute:指定属性」を用いると、特定のファイル<a href="#fileattra">属性</a>のエントリで判断することができます。例えば「attribute:r+s-」と指定すると、読み取り専用属性有り、<b>且つ</b>システム属性無しであるエントリに限定することができます。<br>
 ※完全一致の判断であり、読み取り専用属性有り、<b>または</b>システム属性無しではありません。<br>
 <br>
 「attribute:」は「a:」に省略可能で、指定可能属性は次のとおりです。<br>
@@ -900,7 +910,7 @@ PPcの[F], \[F], [+], [-], ^[W]と*file<br>
 尚、「*.txt,a:r+」等と他の指定方法を併用することができますが、この例ですと or 指定なので、*.txt か a:r+ のいずれかに一致すればよいことになります。<br>
 適宜「&amp;*.txt,&amp;a:r+」等と and 指定を使用してください。<br>
 <hr><br>
-<a name="wildcard12"><b>date:  ※更新時刻指定</b></a><br>
+<a name="wildcard11"><b>date:  ※更新時刻指定</b></a><br>
 <br>
 「date:」は「d:」に省略可能です。<br>
 <br>
@@ -934,7 +944,7 @@ PPcの[F], \[F], [+], [-], ^[W]と*file<br>
 「date:」は今日変更を行ったエントリを対象にします。<br>
 <br>
 <hr><br>
-<a name="wildcard13"><b>size:  ※ファイルサイズ指定</b></a><br>
+<a name="wildcard12"><b>size:  ※ファイルサイズ指定</b></a><br>
 <br>
 「size:大きさ」を用いると、指定以下のファイルサイズのエントリを対象にします。<br>
 例えば「size:1000」と指定すると、ファイルサイズが 0～1000 のエントリが一致します。<br>
@@ -948,21 +958,21 @@ PPcの[F], \[F], [+], [-], ^[W]と*file<br>
 <br>
 「size:」は「s:」に省略可能です。<br>
 <hr><br>
-<a name="wildcard14"><b>roma:  ローマ字部分一致指定</b></a><br>
+<a name="wildcard13"><b>roma:  ローマ字部分一致指定</b></a><br>
 <br>
 「roma:kanji」等と指定すると読みが「かんじ」のファイル名を含むエントリを対象とします。<br>
 <br>
 　尚、この指定は、<a href="#BREGEXP">正規表現ライブラリ</a>と、<a href="#CMigemo">C/Migemo</a>が必要です。<br>
 「roma:」は「r:」に省略可能です。<br>
 <hr><br>
-<a name="wildcard15"><b>path:  ※ディレクトリ名指定</b></a><br>
+<a name="wildcard14"><b>path:  ※ディレクトリ名指定</b></a><br>
 <br>
 1)&nbsp;&nbsp;path:,wildcard 等と、「path:」のみ指定した場合はファイル名に加えてディレクトリ名のワイルドカードによる判別を行うようになります。<br>
 2)&nbsp;&nbsp;path:wildcard 等と、「path:wildcard」を指定した場合は、ディレクトリ名をwildcardで判別します。ファイル名は無視します。後続のワイルドカードがあれば 1)と同じく、どちらも判別します。<br>
 3)&nbsp;&nbsp;「path:/regexp/」と正規表現も指定することができます（ 2)と同じ）。<br>
 「path:」は「p:」に省略可能です。<br>
 <hr><br>
-<a name="wildcard16"><b>option:  オプション指定</b></a><br>
+<a name="wildcard15"><b>option:  オプション指定</b></a><br>
 <br>
 「o:」と省略できます。<br>
 option:のあとに x、d、w、e を指定できます。<br>
@@ -974,8 +984,12 @@ wildcard,option:x とワイルドカード等の後にオプションを指定�
 &nbsp;&nbsp;例えば filename.html は、「*html」で該当しませんが、「o:x,*html」では該当します。<br>
  option:d&nbsp;&nbsp;「path:」と同じく、wildcardでファイル名に加えてディレクトリ名の判別を行うようになります。<br>
  <a name="wordwildcard"></a> option:w&nbsp;&nbsp;部分一致、単語扱い（空白区切り）の動作に変更します。<br>
-&nbsp;&nbsp;例えば、「o:w,word text」とした場合、「word」、「text」が両方とも含まれるファイル名の判別になります。「&amp;*word*,&amp;*text*」相当の動作です。<br>
+&nbsp;&nbsp;「o:w,word text」...   「word」、「text」が両方とも含まれるファイル名の判別になります。「&amp;*word*,&amp;*text*」相当の動作です。<br>
+&nbsp;&nbsp;「o:w,.ext」...  拡張子に「ext」が含まれるファイル名です。<br>
+&nbsp;&nbsp;「o:w,word.ext」...  ファイル名の「word」が含まれ且つ拡張子に「ext」が含まれるファイル名です。<br>
 &nbsp;&nbsp;「o:w,word OR text」とした場合、「word」、「text」のどちらかがあるファイル名の判別になります。「*word*,*text*」相当の動作です。<br>
+&nbsp;&nbsp;「o:w,.w??d」...  ファイル名「w??d」(?は任意の1文字)が含まれるファイル名です。<br>
+&nbsp;&nbsp;「o:wx,.word」...  ファイル名か拡張子に「.word」が含まれるファイル名です。<br>
  option:e&nbsp;&nbsp;ワイルドカードが誤っていてもエラーメッセージを表示しません。<br>
 <br>
 
@@ -1030,9 +1044,9 @@ MultiByte版を使う<br>
 <b>UNICODE文字</b>は、様々な言語の文字を同時に扱うために規格されたものなので、多くの言語の文字を扱うことができます。<br>
 しかし、比較的新しい規格で、MultiByte文字よりメモリが多めに必要になったり、新しい文字や制御用の文字が漸次追加されたり、全ての文字を含んだフォントがなかったりするため、UNICODE文字に完全に対応したソフトウェアは少なめです。<br>
 <hr><br>
-<b>相違点</b><br>
+<b>MultiByte版とUNICODE版(64bit版を含む)の相違点</b><br>
 <br>
-・Win9x系では、UNICODE版を使用できません。これは Win9x系が WinNT系のサブセットであり、API が UNICODE 文字を扱えないことから来るOSの制限です。<br>
+・Win9x系は、MultiByte版のみ動作し、UNICODE版を使用できません。これは Win9x系が WinNT系のサブセットであり、API が UNICODE 文字を扱えないことから来るOSの制限です。<br>
 <br>
 ・各版で扱える文字が逆の版で扱えない場合があります。例えば、UNICODE文字は、MultiByte文字より扱うことができる文字の種類が多いので、UNICODE版で扱えた文字がMultiByte版で扱えない場合があります。逆に、MultiByte版で仕様外の文字を無理矢理使うことができる場合がありますが、その文字はUNICODE版では扱えません。<br>
 <br>
@@ -1052,13 +1066,13 @@ MultiByte版を使う<br>
 <hr><br>
 <b>版間の互換性</b><br>
 <br>
-・UNICODE/Multibyte版間の機能の有無の差違は、Windowsの仕様によるもの以外はありません。<br>
-<br>
 ・Multibyte版は、UNICODE版よりも文字数制限が厳しい機能があります。<br>
  （UNICODE版よりも文字数が短くてもエラーになったり、末尾が省略されたりする機能があります。）<br>
 <br>
-・Windowsの仕様による版間の機能の差違としては、次の通りです。<br>
-  * UNICODE版のPPbは、実際のカーソル位置と表示しているカーソル位置とがずれることがあります。<br>
+・Win9x系にない Windows の機能を使った機能は MultiByte版で対応していないことがあります。<br>
+<br>
+・Windows の仕様による版間の機能の差違としては、次の通りです。<br>
+  * UNICODE版 の PPb は、実際のカーソル位置と表示しているカーソル位置とがずれることがあります。<br>
   * WindowsXP, 2003以降のクラシックスタイル以外のビジュアルスタイルを使用した場合、MultiByte版の一行編集で一部動作しない機能があります。<br>
 <br>
 ・カスタマイズファイルPPxCxxxx.DATと、ヒストリファイルPPxHxxxx.DAT は、版間で共通して使用することはできません。文字の形式が違う為です。<br>
@@ -1342,51 +1356,178 @@ MS-DOS 用ファイラで多く見られた文字主体でシンプルな外観�
 <dt>&quot;Long Name.ext&quot;</dt><dd>途中に空白を含むファイルは、「&quot;」で括ってください。</dd>
 <dt></dt></dl><br>
 <hr><br>
-<a name="listformat"></a><a name="ListFile"><b>ListFile</b></a><br>
+<a name="listformat"></a><a name="ListFileの書式"><b>ListFileの書式</b></a><br>
 <br>
-<b>ListFile のヘッダ</b><br>
-先頭に「;ListFile」の１行があるとPPcがList Fileだと自動判別できます。<br>
-無い場合は、「&quot;c:\temp\listfilename.txt::ListFile&quot;」などと、パスに「::ListFile」を追加して読み込む必要があります。<br>
+<a href="#listsubj">ListFile</a>の形式は、次の形式があります。<br>
+<a href="#listformat1">1.独自形式</a><br>
+<a href="#listformat2">2.ファイル名の一覧</a><br>
+<a href="#listformat3">3.JSON形式</a><br>
 <br>
-<b><a href="#listsubj">ListFile</a>の簡易記載</b><br>
-ListFileは次のように１行に１つのエントリの名前を記載したファイルであり、そのファイルをディレクトリとして表示するとき、１行を１エントリとして表示します。<br>
-例)<br>
-filename.ext<br>
-file name.ext<br>
-&quot;file name.ext&quot;<br>
+<a name="listformat1"></a><b>1.独自形式</b><br>
+独自形式は、以下のように(1)シグネチャ、(2)文字コード、(3)追加情報、(4)エントリを備えます。(1),(2),(3)は無くても良く、(4)のみでも扱えます。また、「;」以降はコメントになります。<br>
 <br>
-<b>ListFile の詳細記載</b><br>
-次に記載する書式を追加することで更に細かい情報を記載することができます。<br>
+;ListFile ...<a href="#listformat11">(a)シグネチャ</a><br>
+;charset=cp932 ...<a href="#listformat12">(b)文字コード指定</a><br>
+;Base:C:\Windows|1 ...<a href="#listformat13">(c)追加情報</a><br>
+&quot;directory&quot;,&quot;DIR&quot;,A:H10,C:54738015.687042560,L:54738015.687042560,W:2345-12-31T12:34:56.789Z,S:0.0 ...<a href="#listformat14">(d)エントリ</a><br>
+&quot;filename.ext&quot;,&quot;SHORT.EXT&quot;,A:H20,C:54738015.687042560,L:54738015.687042560,W:2345-12-31T12:34:56.789Z,S:0.0 ...<a href="#listformat14">(d)エントリ</a><br>
 <br>
-・１行の記載方法<br>
-&quot;長いファイル名&quot;[,&quot;短いファイル名&quot;][,各種情報][,T:コメント]<br>
+<a name="listformat11"></a>(a)シグネチャ<br>
+先頭に「;ListFile」のみの１行があると、自動識別できます。無くても構いませんが、パスに「::listfile」が必要です。<br>
 <br>
-・各種情報<br>
-A:数値&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ファイルの属性<br>
-C:上位32bit数値.下位32bit数値&nbsp;&nbsp;作成時刻(FILETIME)<br>
-L:上位32bit数値.下位32bit数値&nbsp;&nbsp;最終参照時刻(FILETIME)<br>
-W:上位32bit数値.下位32bit数値&nbsp;&nbsp;書込時刻(FILETIME)<br>
-S:上位32bit数値.下位32bit数値&nbsp;&nbsp;ファイルサイズ<br>
-R:第1数値.第2数値&nbsp;&nbsp;拡張情報。例えば、リパースのときは第1項目が種類（シンボリックリンク等）を示します。<br>
-X:数値&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拡張子色<br>
-H:数値&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ハイライト種類(1～7)<br>
-M:数値&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M:1 のときはマーク有り<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※ <a href="#markentry">*markentry</a> -set では、M:1 ,M:0, M:-1 (マーク設定、解除、反転)も指定できます。<br>
-T:&quot;コメント&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;コメント。必ず末尾にしてください。<br>
-On:&quot;内容&quot;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;拡張コメント(n=32512等)、カラム拡張等の内容。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;※現在*makelistfile -allによる出力のみ対応しています。読み込みは未対応です。<br>
+<a name="listformat12"></a>(b)文字コード指定<br>
+;charset=<a href="#charsets">文字コード指定</a><br>
+テキストの文字コードを明確にするための文字コード指定です。無い場合は、パスで指定するか（例: パス::utf-8）、自動判別になります。<br>
 <br>
-<b>ListFile の追加情報</b><br>
-・;ListFile のヘッダに続いて、以下の指定が可能です。<br>
+<a name="charsets"></a>文字コード指定<br>
+次の文字コードが指定できます。また、Windowsに登録されている MIME の文字コードも使用可能です。<br>
+SHIFT_JIS, X-SJIS, EUC, X-EUC, UTF-7, UTF-8, ISO-8859-1<br>
 <br>
- <b>;Base=パス[|ディレクトリの種類]</b> ListFile内の相対指定パスを絶対指定に変換するときに基準となるパスを記載します。<br>
+更に、「cp937」等とした場合はコードページで指定できます。<br>
+<br>
+<br>
+<a name="listformat13"></a>(c)追加情報<br>
+<a name="listformatadd"></a><br>
+シグネチャや文字コード指定に続いて、ListFileに関する情報を記載できます。「;名前=値」の形式です。JSON形式の場合は「&quot;名前&quot;:&quot;値&quot;」と読み替えてください。<br>
  <b>;Search=設定</b> ファイル検索(Where is)で作成されたListFileに付与されています。検索したときの条件です。<br>
  <b>;Error=Windowsエラーコード</b> 一覧取得に失敗した事を通知するときに用います。例えば 86 を指定するとパスワードが誤っている(ERROR_INVALID_PASSWORD)になります。<br>
+<br>
+以下は、PPc の表示パスとして ListFile を指定したときに参照されます。<br>
+ <b>;Base=パス[|ディレクトリの種類]</b> ListFile内の相対指定パスを絶対指定に変換するときに基準となるパスを記載します。<br>
  <b>;Option=directory</b> 一覧を常に階層表示するときに用います。指定がなければ<a href="#XC_pmsk">XC_pmsk</a>の指定に従います。<br>
- <br>
-・ファイルの属性に264を指定したときは、そのエントリをファイルでないシステムメッセージとして扱います。<br>
-&quot;このエントリはファイル操作できません。&quot;,A:264<br>
-※この属性値は、ListFile 読み書き時のみに使用する値であり、スクリプト等からファイル属性を取得したときは異なる値になることがあります。スクリプトでシステムメッセージかどうかは PPx.EntryState や PPx.Entry.State で判定します。<br>
+ <b>;disp=name</b> エントリ表示の種類を一時的に変更します。MC_celS:name で指定した種類になります。<br>
+ <b>;lfvalue=text</b> text が特殊環境変数 lfvalue に保存されます。%si&quot;lfvalue&quot;で参照可能です。<br>
+ ;lfvalueの記載が無い ListFile を読み込んだとき、特殊環境変数 lfvalue は空になります。<br>
+ ※ *makelistfile で書き出すときに、lfvalue があれば併せて書き出します。<br>
+<br>
+<a name="listformat14"></a>(d)エントリ<br>
+エントリは、次のように１行で記載します。<br>
+&quot;長いファイル名&quot;[,&quot;短いファイル名(8.3形式)&quot;][,各種情報][,T:コメント]<br>
+<br>
+・各種情報<br>
+<dl compact>
+<dt>&quot;長いファイル名&quot;</dt><dd>必ず「&quot;」で括る必要があります。括らないと１行全体がファイル名になります。</dd>
+<dt>&quot;短いファイル名&quot;</dt><dd>必ず「&quot;」で括る必要があります。括らないと長いファイル名のみのエントリとなります。</dd>
+<dt>A:<a href="#lfattr">属性</a></dt><dd>ファイルの属性</dd>
+<dt>C:<a href="#lftime">時刻</a></dt><dd>作成時刻</dd>
+<dt>L:<a href="#lftime">時刻</a></dt><dd>最終参照時刻</dd>
+<dt>W:<a href="#lftime">時刻</a></dt><dd>書込時刻</dd>
+<dt>S:<a href="#lfsize">サイズ</a></dt><dd>ファイルサイズ</dd>
+<dt>R:第1数値.第2数値</dt><dd>拡張情報。例えば、リパースのときは第1項目が種類（シンボリックリンク等）を示します。</dd>
+<dt>X:数値</dt><dd>拡張子色(COLORREF 0xBBGGRR)</dd>
+<dt>H:数値</dt><dd>ハイライト種類(1～7)</dd>
+<dt>M:数値</dt><dd>M:1 のときはマーク有り</dd>
+<dt></dt><dd>※ <a href="#markentry">*markentry</a> -set では、M:1 ,M:0, M:-1 (マーク設定、解除、反転)も指定できます。</dd>
+<dt>T:&quot;コメント&quot;</dt><dd>コメント。必ず末尾にしてください。</dd>
+<dt>Tn:&quot;コメント&quot;</dt><dd>拡張コメント(n = 1～10)。T: より前に記載してください。</dd>
+<dt>On:&quot;内容&quot;</dt><dd>カラム拡張、拡張コメント(コメント1: 32512、コメント2: 32511…)等の内容。</dd>
+<dt></dt></dl><br>
+<br>
+<a name="listformat2"></a><b>2.ファイル名の一覧</b><br>
+次のように、一行毎にパスが記載されたファイル名の一覧です。レスポンスファイル等が該当します。この形式を読み込む時にファイルの属性、サイズ、日時の取得をおこないます。このため、他の形式よりも読み込む時間が掛かります。<br>
+<br>
+filename1.ext<br>
+&quot;filename2.ext&quot;<br>
+<br>
+<br>
+<a name="listformat3"></a><b>3.JSON形式</b><br>
+JSON形式のListFileは次の構造に対応しています。ListFile内に他の項目もある程度記載可能です。<br>
+自動識別できない場合やシグネチャが無い場合は、読み込みパスを「パス::JSON」としてください。<br>
+<br>
+(1)ヘッダ付きオブジェクト形式<br>
+シグネチャは先頭、追加情報はシグネチャとエントリの間に位置する必要があります。(a)(b)(c)の順番にできないときは、(3)ヘッダ付き配列形式 を使用してください。<br>
+{&quot;ListFile&quot;:1,  ...<a href="#listformat31">(a)シグネチャ</a><br>
+&quot;Base&quot;:&quot;path&quot;,  ...<a href="#listformat32">(b)追加情報</a><br>
+&quot;entry&quot;:[  ...<a href="#listformat33">(c)エントリ</a><br>
+{エントリ1},<br>
+{エントリ2},<br>
+:<br>
+{エントリn}<br>
+]<br>
+}<br>
+<br>
+(2)ヘッダなし配列形式<br>
+配列であって、[0] がオブジェクトの場合は、全ての要素がエントリになります。<br>
+[<br>
+{エントリ1},  ...<a href="#listformat33">(c)エントリ</a><br>
+{エントリ2},<br>
+:<br>
+{エントリn}<br>
+]<br>
+<br>
+(3)ヘッダ付き配列形式<br>
+配列であって、[0] がオブジェクト以外の場合は、[0] がシグネチャを表す文字列、[1]が追加情報のオブジェクト、[2]以降がエントリになります。<br>
+<br>
+[&quot;Listfile&quot;,  ...<a href="#listformat31">(a)シグネチャ</a><br>
+{&quot;Base&quot;:&quot;C:\Windws|1&quot;,  ...<a href="#listformat32">(b)追加情報</a><br>
+  &quot;lfvalue&quot;:&quot;list value&quot;},<br>
+{エントリ1},  ...<a href="#listformat33">(c)エントリ</a><br>
+{エントリ2},<br>
+:<br>
+{エントリn}<br>
+]<br>
+<br>
+<a name="listformat31"></a>(a)シグネチャ<br>
+先頭に「{&quot;ListFile&quot;」か「[&quot;ListFile&quot;」があると、ListFile と自動識別できます（空白等は不可）。<br>
+シグネチャは無くても構いませんが、ListFile の識別ができないためパスに「::JSON」が必要です。<br>
+<br>
+<a name="listformat32"></a>(b)追加情報<br>
+ListFileに関する情報を記載できます。「&quot;名前&quot;:&quot;値&quot;」の形式です。<br>
+<a href="#listformatadd">情報の種類は次のとおりです</a><br>
+<br>
+<a name="listformat33"></a>(c)エントリ<br>
+エントリは、１つにつき１オブジェクトになります。オブジェクトには次の要素を認識します。他の要素は無視します。<br>
+また、エントリとして空のオブジェクト「{}」が用意されることがあります。空オブジェクトは無視されます。<br>
+<br>
+&quot;N&quot;:&quot;filename&quot;&nbsp;&nbsp;長いファイル名<br>
+&quot;Y&quot;:&quot;filename&quot;&nbsp;&nbsp;短いファイル名(8.3形式)<br>
+&quot;A&quot;:&quot;<a href="#lfattr">属性</a>&nbsp;&nbsp;ファイルの属性<br>
+&quot;C&quot;:&quot;<a href="#lftime">時刻</a>&quot;&nbsp;&nbsp;作成時刻<br>
+&quot;L&quot;:&quot;<a href="#lftime">時刻</a>&quot;&nbsp;&nbsp;最終参照時刻<br>
+&quot;W&quot;:&quot;<a href="#lftime">時刻</a>&quot;&nbsp;&nbsp;書込時刻<br>
+&quot;S&quot;:&quot;<a href="#lfsize">サイズ</a>&quot;&nbsp;&nbsp;ファイルサイズ<br>
+&quot;R&quot;:&quot;第1数値.第2数値&quot;&nbsp;&nbsp;拡張情報<br>
+&quot;X&quot;:数値&nbsp;&nbsp;拡張子色<br>
+&quot;H&quot;:数値&nbsp;&nbsp;ハイライト種類(1～7)<br>
+&quot;M&quot;:数値&nbsp;&nbsp;マーク<br>
+&quot;T&quot;:&quot;コメント&quot;&nbsp;&nbsp;コメント<br>
+&quot;Tn&quot;:&quot;コメント&quot;&nbsp;&nbsp;拡張コメント(n = 1～10)。T: より前に記載してください。<br>
+&quot;On&quot;:&quot;内容&quot;&nbsp;&nbsp;カラム拡張、拡張コメント(コメント1: 32512、コメント2: 32511…)等の内容。<br>
+<br>
+<a name="lfattr"></a>ListTime の属性は、次の値の総和です。または 264 を指定できます。<br>
+   1&nbsp;&nbsp;読み込み専用<br>
+   2&nbsp;&nbsp;隠し<br>
+   4&nbsp;&nbsp;システム<br>
+  16&nbsp;&nbsp;サブディレクトリ<br>
+  32&nbsp;&nbsp;アーカイブ<br>
+<br>
+ 264&nbsp;&nbsp;システムメッセージ。ListFile 読み書き時のみに使用する値であり、スクリプト等からファイル属性を取得したときは異なる値になることがあります。スクリプトでシステムメッセージかどうかは PPx.EntryState や PPx.Entry.State で判定します。<br>
+&nbsp;&nbsp;&quot;このエントリはファイル操作できません。&quot;,A:264<br>
+<br>
+<a name="lftime"></a>ListTime の時刻は次の形式を指定可能です。<br>
+ListFile を出力するときの形式は、独自形式では(1) FILETIME 形式、JSON形式では (2) ISO 8601拡張形式、になります。<br>
+(1) FILETIME 形式 (西暦1601年 01/01 0:00:00(UTC)からの100ns単位の経過時間, UTC時間)<br>
+  独自形式<br>
+    64bit整数<br>
+    上位32bit整数.下位32bit整数<br>
+  JSON形式<br>
+    &quot;64bit整数&quot;  ※52bit整数は bit 不足のため指定不可<br>
+    &quot;上位32bit整数.下位32bit整数&quot;<br>
+(2) ISO 8601拡張形式<br>
+  2012-12-31T23:59:59  ※ローカル時間<br>
+  2012-12-31T23:59:59Z  ※UTC時間<br>
+  2012-12-31T23:59:59+09:00  ※ローカル時間<br>
+(3) 年-月-日 形式<br>
+  2012-12-31 23:59:59  ※ローカル時間<br>
+<br>
+<a name="lfsize"></a>ListTime のサイズは次の形式を指定可能です。<br>
+  独自形式<br>
+    64bit整数<br>
+    上位32bit整数.下位32bit整数<br>
+  JSON形式<br>
+    52bit整数  ※ 9Pbyte まで表現可能<br>
+    &quot;64bit整数&quot;  ※ 18Ebyte まで表現可能<br>
+    &quot;上位32bit整数.下位32bit整数&quot;<br>
 <hr><br>
 <a name="仮想ディレクトリ"><b>仮想ディレクトリ</b></a><br>
 <br>
@@ -1426,7 +1567,7 @@ PPc も Explorer 互換ではありませんが、似たような仮想ディレ
 Internet Explorer 3.0 以降がインストールされ、WININET.DLL が存在する必要があります。<br>
 <br>
 <br>
-<b>aux: 形式&nbsp;&nbsp;パス：&quot;aux:S_auxname\directory…&quot;,&quot;aux://S_auxname/directory…&quot;</b><br>
+<b>aux: 形式&nbsp;&nbsp;パス：&quot;aux:<NotID:S_auxname>\directory…&quot;,&quot;aux://S_auxname/directory…&quot;</b><br>
 <br>
 カスタマイズで登録した外部アプリケーションを使ってディレクトリ一覧、複写、削除等を行うことができる補助操作の指定です。<br>
 <a href="#aux">aux</a><br>
@@ -1828,27 +1969,27 @@ for /f &quot;delims=?&quot; %i in ('ppc -choose:multi -bootid:z') do @echo %i<br
 ・<a href="#ppckey139">[D] エントリをごみ箱へ</a><br>
 ・<a href="#ppckey140">\[D] エントリの削除</a><br>
 ・<a href="#ppckey141">^\[D] リストからのエントリの削除</a><br>
-・<a href="#ppckey142">[E] テキストエディタを用いて編集</a><br>
+・<a href="#ppckey142">^[D] 自動ドラッグ＆ドロップ(Auto D&amp;D)</a><br>
+・<a href="#ppckey144">[E] テキストエディタを用いて編集</a><br>
 ・\[E] PPeを用いて編集<br>
-・<a href="#ppckey144">[K] ディレクトリの作成</a><br>
-・<a href="#ppckey146">\[K] エントリ作成メニュー</a><br>
-・<a href="#ppckey147">[M] エントリの移動</a><br>
-・<a href="#ppckey148">\[M] エクスプローラ互換のエントリの移動</a><br>
-・<a href="#ppckey149">[N] \[V] PPvによる表示</a><br>
-・<a href="#ppckey150">[P] 書庫の作成</a><br>
-・<a href="#ppckey151">\[P] 書庫の形式を指定して作成</a><br>
-・<a href="#ppckey152">[R] [F2] エントリの名前変更</a><br>
-・<a href="#ppckey153">^[R] エントリの連続名前変更</a><br>
-・<a href="#ppckey154">\[R] エントリの一括名前変更</a><br>
-・<a href="#ppckey156">[U] 書庫の展開</a><br>
-・<a href="#ppckey159">\[U] 展開に使うDLLを指定してカーソル上の書庫を展開</a><br>
-・<a href="#ppckey160">[V] ビューアで表示</a><br>
+・<a href="#ppckey146">[K] ディレクトリの作成</a><br>
+・<a href="#ppckey148">\[K] エントリ作成メニュー</a><br>
+・<a href="#ppckey149">[M] エントリの移動</a><br>
+・<a href="#ppckey150">\[M] エクスプローラ互換のエントリの移動</a><br>
+・<a href="#ppckey151">[N] \[V] PPvによる表示</a><br>
+・<a href="#ppckey152">[P] 書庫の作成</a><br>
+・<a href="#ppckey153">\[P] 書庫の形式を指定して作成</a><br>
+・<a href="#ppckey154">[R] [F2] エントリの名前変更</a><br>
+・<a href="#ppckey155">^[R] エントリの連続名前変更</a><br>
+・<a href="#ppckey156">\[R] エントリの一括名前変更</a><br>
+・<a href="#ppckey158">[U] 書庫の展開</a><br>
+・<a href="#ppckey161">\[U] 展開に使うDLLを指定してカーソル上の書庫を展開</a><br>
+・<a href="#ppckey162">[V] ビューアで表示</a><br>
 ・<a href="#writeentry">[W] エントリ順番/ListFileの書き込み</a><br>
-・<a href="#ppckey163">\[W] コメントファイルを作成</a><br>
-・<a href="#ppckey164">[Y] フォーカスを変えずにPPvで表示</a><br>
-・<a href="#ppckey165">\[Y] 連動ビュー</a><br>
+・<a href="#ppckey165">\[W] コメントファイルを作成</a><br>
+・<a href="#ppckey166">[Y] フォーカスを変えずにPPvで表示</a><br>
+・<a href="#ppckey167">\[Y] 連動ビュー</a><br>
 ・<a href="#syncpath">^[Y] 連動パス・表示パス同期</a><br>
-・<a href="#ppckey167">^[D] 自動ドラッグ＆ドロップ(Auto D&amp;D)</a><br>
 ・<a href="#ppckey169">[F12] エントリの複製</a><br>
 ・<a href="#ppckey170">\[F12] ハードリンク/ジャンクション</a><br>
 
@@ -2399,20 +2540,31 @@ KL, FD:[D], \[D]<br>
 <br>
 現在のディレクトリが<a href="#listsubj">ListFile</a>の場合は、選択エントリを消去して、ListFileを更新保存します。この操作によりエントリの実体は削除しません。<br>
 <hr><br>
-<a name="ppckey142"><b>[E] テキストエディタを用いて編集</b></a><br>
+<a name="ppckey142"><b>^[D] 自動ドラッグ＆ドロップ(Auto D&amp;D)</b></a><br>
+PPx:^[D]<br>
+<br>
+D&amp;D を一覧で選択したあとは自動で D&amp;D を行います。実行するとウィンドウの一覧が出ますので、ドロップ先を指定して [Enter] を押してください。<br>
+[Enter]で左ボタンによるD&amp;D、[Shift]+[Enter]で右ボタンによるD&amp;Dになります。<br>
+右クリック、[F10]、[APPS]キーで、ドロップ方法の選択、処理方法の選択メニューが表示されます。<br>
+<br>
+※場合によってはマウス操作をPPcが代行する方法を取るため、D&amp;Dに失敗したり、意図しない状態になったりする場合があります。<br>
+このとき、タイトルバーにドロップしますので、この操作を想定していないソフトには使えません。<br>
+※<a href="#autodragdrop">*autodragdrop</a>コマンドで詳細を指定して直接実行が可能です。<br>
+<hr><br>
+<a name="ppckey144"><b>[E] テキストエディタを用いて編集</b></a><br>
 PPx, KL, FD:[E]<br>
 <br>
 拡張子 txt に登録されたエディタを用いて編集を行います。<br>
 ※内蔵機能ではなく、KC_mainのデフォルトカスタマイズです<br>
 <hr><br>
-<a name="ppckey144"><b>[K] ディレクトリの作成</b></a><br>
+<a name="ppckey146"><b>[K] ディレクトリの作成</b></a><br>
 PPx, KL, FD:[K]<br>
 <br>
 ダイアログで指定した名前でディレクトリを作成します。<br>
 ダイアログに表示される名前は、<a href="#_others">_others</a>:NewDir を元にしています。<br>
 「dir\dir\dir」と多階層を一度に作成できます。<br>
 <hr><br>
-<a name="ppckey146"><b>\[K] エントリ作成メニュー</b></a><br>
+<a name="ppckey148"><b>\[K] エントリ作成メニュー</b></a><br>
 PPx, (KL), (FD):\[K]<br>
 <br>
 ・ディレクトリ／テキストファイル／リストファイルを作成できます。<br>
@@ -2420,37 +2572,37 @@ PPx, (KL), (FD):\[K]<br>
 <br>
 ・エクスプローラの新規作成に登録されたものと同じ種類の拡張子を持ったエントリを作成することができます。ウィザードは対応していません。<br>
 <hr><br>
-<a name="ppckey147"><b>[M] エントリの移動</b></a><br>
+<a name="ppckey149"><b>[M] エントリの移動</b></a><br>
 PPx, KL, FD:[M]<br>
 <br>
 ※<a href="#ppcfile">*ppcfile コマンド</a>を 「Move」設定で実行します。<br>
 <hr><br>
-<a name="ppckey148"><b>\[M] エクスプローラ互換のエントリの移動</b></a><br>
+<a name="ppckey150"><b>\[M] エクスプローラ互換のエントリの移動</b></a><br>
 PPx, KL, FD:\[M]<br>
 <br>
 エクスプローラのコピー機能を使って移動を行います。<br>
 ※エクスプローラの機能をそのまま使用しています。挙動はエクスプローラの設定に影響されます。<br>
 <hr><br>
-<a name="ppckey149"><b>[N] \[V] PPvによる表示</b></a><br>
+<a name="ppckey151"><b>[N] \[V] PPvによる表示</b></a><br>
 PPx, KL, (FD):[N] \[V]<br>
 <br>
 PPv を使ってカーソル位置のファイルの内容を表示します。<br>
 マークがあってもカーソル位置になります。<br>
 <hr><br>
-<a name="ppckey150"><b>[P] 書庫の作成</b></a><br>
+<a name="ppckey152"><b>[P] 書庫の作成</b></a><br>
 PPx, KL, FD:[P]<br>
 <br>
 ※内蔵機能ではなく、KC_mainのデフォルトカスタマイズ(*pack &quot;%2%\|%X|&quot; %Or-)です。<br>
 書庫ファイル(圧縮ファイル)を作成します。<br>
 書庫ファイル名の指定時に、オプションボタンで書庫の種類の変更と、作成オプションを指定できます。<br>
 <hr><br>
-<a name="ppckey151"><b>\[P] 書庫の形式を指定して作成</b></a><br>
+<a name="ppckey153"><b>\[P] 書庫の形式を指定して作成</b></a><br>
 PPx, KL, (FD):\[P]<br>
 <br>
 M_xpackメニューを開いて、選択した形式で書庫を作成します。<br>
 ※内蔵機能ではなく、KC_mainのデフォルトカスタマイズです。M_xpackを呼び出しています。<br>
 <hr><br>
-<a name="ppckey152"><b>[R] [F2] エントリの名前変更</b></a><br>
+<a name="ppckey154"><b>[R] [F2] エントリの名前変更</b></a><br>
 PPx, KL, FD:[R]<br>
 <br>
 カーソル上のエントリの名前変更を行います。<br>
@@ -2458,30 +2610,30 @@ PPx, KL, FD:[R]<br>
 ※ダイアログを右クリックで表示されるメニューを選択すると、連続名前変更に切り替わります。<br>
 参考:X_esel<br>
 <hr><br>
-<a name="ppckey153"><b>^[R] エントリの連続名前変更</b></a><br>
+<a name="ppckey155"><b>^[R] エントリの連続名前変更</b></a><br>
 <br>
 カーソル上のエントリの名前変更を行います。<br>
 マークがあれば、マークエントリの名前変更を行い、[OK]/[Enter]を押す毎に次のエントリへ移動します。<br>
 参考:X_esel<br>
 <hr><br>
-<a name="ppckey154"><b>\[R] エントリの一括名前変更</b></a><br>
+<a name="ppckey156"><b>\[R] エントリの一括名前変更</b></a><br>
 <br>
 マークしたエントリの名前変更を行います。<br>
 また、*file の Rename設定が初期設定の時、「名前」欄を空欄のまま実行した場合は、マークエントリを順番にて入力で変更します。<br>
 ※<a href="#filecmd">*file コマンド</a>を 「Rename」設定で実行します。<br>
 <hr><br>
-<a name="ppckey156"><b>[U] 書庫の展開</b></a><br>
+<a name="ppckey158"><b>[U] 書庫の展開</b></a><br>
 PPx, KL, FD:[U]<br>
 <br>
 参考:<a href="#X_unbg">X_unbg</a>(展開のバックグラウンド), <a href="#X_arcdr">X_arcdr</a>(書庫名のディレクトリ作成)<br>
 <hr><br>
-<a name="ppckey159"><b>\[U] 展開に使うDLLを指定してカーソル上の書庫を展開</b></a><br>
+<a name="ppckey161"><b>\[U] 展開に使うDLLを指定してカーソル上の書庫を展開</b></a><br>
 <br>
 カーソル上の書庫を展開可能なDLLをメニュー表示し、選択したDLLを用いて書庫の全展開を行います。<br>
 <br>
 参考:<a href="#X_unbg">X_unbg</a>(展開のバックグラウンド), <a href="#X_arcdr">X_arcdr</a>(書庫名のディレクトリ作成)<br>
 <hr><br>
-<a name="ppckey160"><b>[V] ビューアで表示</b></a><br>
+<a name="ppckey162"><b>[V] ビューアで表示</b></a><br>
 PPx, KL, FD:[V]<br>
 <br>
 ※内蔵機能ではなく、KC_mainのデフォルトカスタマイズです<br>
@@ -2509,16 +2661,16 @@ PPc のエントリ並びの書き込みは、DOSのファイラのようにデ�
 <br>
 現在のディレクトリが<a href="#listsubj">ListFile</a>の場合は、現在表示中のListFileをファイルにします。<br>
 <hr><br>
-<a name="ppckey163"><b>\[W] コメントファイルを作成</b></a><br>
+<a name="ppckey165"><b>\[W] コメントファイルを作成</b></a><br>
 <br>
 コメントが無い場合はファイル作成を行いません。<br>
 <hr><br>
-<a name="ppckey164"><b>[Y] フォーカスを変えずにPPvで表示</b></a><br>
+<a name="ppckey166"><b>[Y] フォーカスを変えずにPPvで表示</b></a><br>
 PPx, KL, (FD):[Y]<br>
 <br>
 PPvで表示＆PPvにフォーカスを変えずそのままPPcで作業します。<br>
 <hr><br>
-<a name="ppckey165"><b>\[Y] 連動ビュー</b></a><br>
+<a name="ppckey167"><b>\[Y] 連動ビュー</b></a><br>
 PPx, KL, (FD):\[Y]<br>
 <br>
 カーソル位置のファイルを常にPPvで表示させる、プレビュー動作を行うかどうかの指定です。ただし、一定の大きさ以上のファイルは非表示・部分表示を行います。（X_svsz で指定可能）<br>
@@ -2527,17 +2679,6 @@ PPx, KL, (FD):\[Y]<br>
 <br>
 連動パス・表示パス同期は、カーソル位置のエントリと同名のエントリの反対窓のエントリにカーソル移動させます。また、表示ディレクトリを移動したときも、反対窓が追従できる範囲で追従します。<br>
 関連: *syncpath<br>
-<hr><br>
-<a name="ppckey167"><b>^[D] 自動ドラッグ＆ドロップ(Auto D&amp;D)</b></a><br>
-PPx:^[D]<br>
-<br>
-D&amp;D を一覧で選択したあとは自動で D&amp;D を行います。実行するとウィンドウの一覧が出ますので、ドロップ先を指定して [Enter] を押してください。<br>
-[Enter]で左ボタンによるD&amp;D、[Shift]+[Enter]で右ボタンによるD&amp;Dになります。<br>
-<br>
-※場合によってはマウス操作をPPcが代行する方法を取るため、D&amp;Dに失敗したり、意図しない状態になったりする場合があります。<br>
-このとき、タイトルバーにドロップしますので、この操作を想定していないソフトには使えません。<br>
-※<a href="#autodragdrop">*autodragdrop</a>コマンドで詳細を指定して直接実行が可能です。<br>
-<br>
 <hr><br>
 <a name="ppckey169"><b>[F12] エントリの複製</b></a><br>
 <br>
@@ -4795,29 +4936,34 @@ line2&quot;<br>
 %s は、各PPx内、もしくはコマンドライン内のみ有効な環境変数です。<br>
 値の設定は、<a href="#stringcmd">*string</a> x,name=text の形式でできます。<br>
 また、%s&quot;...&quot; の代わりに %s'...' としても機能します。<br>
+type を指定することでスコープを指定することができます。name が同じでも type が異なると別の内容になります。また type と name が同じでも、スコープが異なると別の内容になります。<br>
 <br>
 ※ %' で使用できる環境変数はWindowsが提供している１プロセス内で有効な変数です。特に、一体化PPcの場合、コマンドラインに環境変数を使うと、別IDの窓と同時実行するときに内容が不定になりますので使用を避けてください。<br>
 <br>
 「g」が指定されているときは、環境変数のマクロ文字が展開されます。<br>
 例) 「*string i,drive=%%*name(C,&quot;c:\123&quot;)」を実行した後、%si'drive'なら「%*name(C,&quot;c:\123&quot;)」、%sgi'drive'なら「123」になります。<br>
 <br>
-<b>%si&quot;name&quot;</b> 各PPx内のみ有効な環境変数nameです。<br>
-異なるID(例えば PPc[A]、PPc[B])で%si&quot;abc&quot;の内容が異なります。一体化窓内であっても同様です。<br>
-環境変数の内容は 各PPxが閉じられるまで有効です。<br>
+<b>%si&quot;name&quot; PPx の ID 単位</b><br>
+スコープが PPx の ID である、各 PPx 内のみ有効な環境変数 name です。<br>
+異なる ID (例えば PPc[A]、PPc[B])で、%si&quot;abc&quot; の内容が異なります。一体化窓内であっても同様です。<br>
+環境変数の内容は 各 PPx が閉じられるまで有効です。<br>
 <br>
-<b>%so&quot;name&quot;</b> 一コマンドライン内のみ有効な環境変数name。<br>
+<b>%so&quot;name&quot; コマンドライン単位</b><br>
+スコープがコマンドラインである、コマンドライン内のみ有効な環境変数 name です<br>
 例えば *string o,abc=string を実行した後に、改めて echo %so&quot;abc&quot; を実行すると、%so&quot;abc&quot; の中身は空になります。<br>
 *string o,abc=string %: echo %so&quot;abc&quot; であれば、設定した中身を利用できます。<br>
+また、*execute や %*extract、*usercommand、%*userfunction の場合、これらの実行元と、実行先は別スコープになります。<br>
 <br>
-<b>%sp&quot;name&quot;</b>  プロセス内用<br>
-プロセス内で共通です。一体化窓内で共用したい内容を利用したいときに使用します。<br>
+<b>%sp&quot;name&quot; プロセス単位</b><br>
+プロセス内で共通のスコープです。一体化窓内で共用したい内容を利用したいときに使用します。<br>
 尚、PPc以外は、%si と %sp が同じ内容になります。<br>
 <br>
-<b>%se&quot;name&quot;</b>  一行編集・PPe用<br>
-各一行編集・PPeがそれぞれ記憶している内容です。一行編集毎の状態を記憶したいとき等に使用できます。<br>
+<b>%se&quot;name&quot; 一行編集・PPe 単位</b>  <br>
+各一行編集や PPe がそれぞれ記憶している内容です。一行編集毎の状態を記憶したいとき等に使用できます。<br>
 <br>
-<b>%su&quot;name&quot;</b>  不揮発・全体用（_User）<br>
-ユーザデータ保存用項目 _User に保存される内容です。全PPxで共通です。<br>
+<b>%su&quot;name&quot; PPx 全体</b><br>
+PPx 全体で共有するスコープがグローバル、且つ PPx を全てが終了しても維持される不揮発の内容です。ユーザデータ保存用のカスタマイズ項目 _User に保存される内容であり、_User を直接変更しても %su に反映されます。<br>
+<br>
 <br>
 以下の環境変数は内部で使用しています。<br>
 <b>PPc 内で使用</b><br>
@@ -5558,7 +5704,7 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 <hr><br>
 
 <a name="PPxCmd76"><b>ファイル・ディレクトリ操作(PPc専用)</b></a><br>
-・<a href="#autodragdrop">*autodragdrop <i>[caption[,id]][,r[,source path]]</i> 自動ドラッグ＆ドロップ</a><br>
+・<a href="#autodragdrop">*autodragdrop <i>[caption[,id]][,r|c|m[,source path]]</i> 自動ドラッグ＆ドロップ</a><br>
 ・<a href="#PPxCmd77">*execinarc 書庫内ファイルを使用できるようにする</a><br>
 ・<a href="#PPxCmd78">*freedriveuse <i>[drivename]</i> 指定ドライブの使用を一時停止</a><br>
 ・<a href="#PPxCmd79">*makelistfile <i>[filename][option]</i> ListFile出力</a><br>
@@ -6232,13 +6378,15 @@ ID指定(<a href="#ppxidformat">PPxのID指定方法</a>)があればそのIDの
 <br>
 PPx は OS が用意している環境変数の他に、一定の範囲で使える（ローカルな）環境変数を用意しています。<br>
 *string はその環境変数の操作を行います。<br>
-設定した環境変数nameは、<a href="#StringVariable">%si&quot;name&quot;や%so&quot;name&quot;</a>として利用できます。<br>
+設定した環境変数 name は、<a href="#StringVariable">%si&quot;name&quot;や%so&quot;name&quot;</a>として利用できます。<br>
+type を指定することでスコープを指定することができます。name が同じでも type が異なると別の内容になります。また type と name が同じでも、スコープが異なると別の内容になります。<br>
 <br>
 <b>type</b><br>
-p プロセス内用（一体化窓の共用情報向け）<br>
-i 各PPx内用（PPcの窓毎に別内容を記憶したいとき）<br>
-e 一行編集・PPe用（一行編集毎の状態を記憶したいとき）<br>
-o コマンドラインローカル用（コマンドライン毎に別内容を記憶したいとき。ユーザコマンドや*executeも独立して記憶可能）<br>
+i PPx ID 単位スコープ（ PPc の窓毎に別内容を記憶したいとき）<br>
+o コマンドライン単位スコープ（コマンドライン毎に別内容を記憶したいとき。ユーザコマンド・関数や *execute、%*extract もスコープが異なるので、独立して記憶可能）<br>
+p プロセス単位スコープ（一体化窓の共用情報向け）<br>
+e 一行編集・PPe 単位スコープ（一行編集毎の状態を記憶したいとき）<br>
+u PPx全体単位・不揮発スコープ（全体の設定保存用、_User に保存されます）<br>
 尚、PPc以外は、i と p が同じ内容になります（*string iで設定した内容が%spで取得できる）。<br>
 <br>
 ・*string i,ABC=DEFG とすると、各PPx内用の特殊環境変数「ABC」に値「DEFG」が設定されます。<br>
@@ -6849,24 +6997,26 @@ oldnameのファイルまたはディレクトリをnewnameに変更します。
 
 <b>ファイル・ディレクトリ操作(PPc専用)</b><br>
 <hr><br>
-<a name="autodragdrop"><b>*autodragdrop <i>[caption[,id]][,r[,source path]]</i> 自動ドラッグ＆ドロップ</b></a><br>
+<a name="autodragdrop"><b>*autodragdrop <i>[caption[,id]][,r|c|m[,source path]]</i> 自動ドラッグ＆ドロップ</b></a><br>
 <br>
 自動ドラッグ＆ドロップ(^[D])を指定したcaptionに対して行います。<br>
-次の方法のどれかでD&amp;Dを行います。<br>
-・File Manager(WM_DROPFILES) 形式 D&amp;D<br>
-・OLE D&amp;D(直接操作)<br>
-・OLE D&amp;D(マウス操作の代行)<br>
+次の方法のどれかで D&amp;Dを行います。<br>
+・Post式: File Manager(WM_DROPFILES) 形式 D&amp;D<br>
+・ドラッグ(フック式): OLE D&amp;D(直接操作)<br>
+・ドラッグ(エミュレート式): OLE D&amp;D(マウス操作の代行)<br>
 <br>
 パラメータ次第で次に示す動作になります。<br>
-1) captionがない場合は ^[D]と同じくD&amp;D先一覧が表示され選択できます。<br>
-2) captionをタイトルバーに一部／全部含むウィンドウが対象です。<br>
-3) captionに<a href="#ppxidformat">PPxのID指定方法</a>を用いた場合は、該当PPxが対象になります。<br>
-4) caption に #数値 と指定したときは、指定した数値をウィンドウID(ウィンドウハンドル)として、該当ウィンドウを対象とします。Message Module を使ってキャプションやクラス名の完全一致でウィンドウを指定するときに使用できます。<br>
+1) caption がない場合は ^[D]と同じくD&amp;D 先一覧が表示され選択できます。<br>
+2) caption をタイトルバーに一部／全部含むウィンドウが対象です。<br>
+3) caption に<a href="#ppxidformat">PPxのID指定方法</a>を用いた場合は、該当 PPx が対象になります。<br>
+4) caption に #数値 と指定したときは、指定した数値をウィンドウ ID (ウィンドウハンドル)として、該当ウィンドウを対象とします。Message Module を使ってキャプションやクラス名の完全一致でウィンドウを指定するときに使用できます。<br>
  例) *autodragdrop #%*findwindowclass(&quot;CabinetWClass&quot;)<br>
-5) ,r を付加した場合は、必ず右ボタンによるドラッグ＆ドロップを行います。<br>
-6) *autodragdrop caption,id[,r] という指定も可能です。追加される id は子ウィンドウのidです。このidはD&amp;D先一覧中に表示される「()」内の数値です。<br>
-  ※idは 0 以外のときのみ有効です。また、アプリケーションによっては、同じ子ウィンドウでも開く度に違うidになることもありますので、使用するときは予め確認してください。<br>
-7)source pathとしてディレクトリやファイルを指定したときは、指定したディレクトリ等をD&amp;Dの対象とします。※カーソル・マークエントリを対象としたときと比べて、D&amp;D可能な対象が制限されます（マウス操作の代行によるOLE D&amp;Dができません。）。<br>
+5) ,r を付加した場合は、OLE D&amp;D を行う時に右ボタンによるドラッグ＆ドロップを行います。<br>
+   ,c を付加した場合は、OLE D&amp;D を行う時に複写を行います。<br>
+   ,m を付加した場合は、OLE D&amp;D を行う時に移動を行います。<br>
+6) *autodragdrop caption,id[,r|c|m] という指定も可能です。追加される id は子ウィンドウの id です。この id は D&amp;D 先一覧中に表示される「()」内の数値です。<br>
+  ※ id は 0 以外のときのみ有効です。また、アプリケーションによっては、同じ子ウィンドウでも開く度に違う id になることもありますので、使用するときは予め確認してください。<br>
+7) source path としてディレクトリやファイルを指定したときは、指定したディレクトリ等を D&amp;D の対象とします。※カーソル・マークエントリを対象としたときと比べて、 D&amp;D 可能な対象が制限されます（マウス操作の代行による OLE D&amp;D ができません。）。<br>
 <hr><br>
 <a name="PPxCmd77"><b>*execinarc 書庫内ファイルを使用できるようにする</b></a><br>
 例)<i>*execinarc %: edit %C</i><br>
@@ -6893,11 +7043,13 @@ oldnameのファイルまたはディレクトリをnewnameに変更します。
 現在表示しているディレクトリを<a href="#listsubj">ListFile</a>として書き出します。<br>
 <br>
 filenameが指定されていればその名前で、無ければ既存の名前と被らない名前を生成します。<br>
+追加情報を出力する場合、特殊環境変数 lfvalue があれば併せて書き出します。<br>
 <br>
 次のオプションが指定できます。<br>
 ・出力形式の指定(追加項目指定より前に記載してください)<br>
 -name&nbsp;&nbsp;エントリ名のみ出力します。(&quot;entryname&quot;)<br>
 -basic&nbsp;&nbsp;エントリ名と各種属性を出力します。マーク情報、コメントは含まれません。(&quot;entryname&quot;,&quot;shortname&quot;,A:H20,…)<br>
+-JSON&nbsp;&nbsp;JSON形式で出力します。<br>
 -all&nbsp;&nbsp;エントリ名と各種属性を出力します。マーク情報、色、コメント等も出力します。<br>
 -normal&nbsp;&nbsp;(規定値)エントリ名、各種属性、コメント、csv取り込み用文字列を出力します。マーク情報は含まれません。(&quot;entryname&quot;,&quot;shortname&quot;,A:H20,…,Size,123,Create,2001-1-1…)<br>
 <br>
@@ -7190,7 +7342,7 @@ id1(%mid1) の行を削除します。<br>
  指定無し / allchange / on&nbsp;&nbsp;編集中の文字列を全て補完結果に置き換えます。<br>
  paramchange / off&nbsp;&nbsp;カーソルがある位置のパラメータ文字列のみを補完結果に置き換えます。<br>
 <br>
-一覧表示の表示形態<br>
+一覧表示の表示形態(<a href="#X_flst">X_flst</a>)<br>
  disable / 0&nbsp;&nbsp;一覧表示をしない。[INS] ^[I] [TAB] [↑] [↓] で候補を変える。<br>
  file / 1&nbsp;&nbsp;[INS], ^[I], [TAB](X_ltab)で一覧表示をする<br>
  api / 2&nbsp;&nbsp;Windows2000, XP, 2003 の自動補完機能付きの一覧表示を使用する。<br>
@@ -7240,6 +7392,19 @@ id1(%mid1) の行を削除します。<br>
  ・shell&nbsp;&nbsp;shell:形式のドライブを対象にします。<br>
  ・user&nbsp;&nbsp;-fileで指定した追加補完候補ファイルを対象にします。コマンド・パラメータを判別します。<br>
  ・user1&nbsp;&nbsp;-fileで指定した追加補完候補ファイルを対象にします。常にコマンド扱いになります。<br>
+ ・curdir&nbsp;&nbsp;カレントディレクトリ(%1)を対象にします。(※1)<br>
+ ・curname&nbsp;&nbsp;選択エントリのファイル名(%C)を対象にします。(※1)<br>
+ ・curpath&nbsp;&nbsp;選択エントリのフルパス(%FDC)を対象にします。(※1)<br>
+ ・pairdir&nbsp;&nbsp;反対窓のディレクトリ(%~1)を対象にします。(※1)<br>
+ ・pairname&nbsp;&nbsp;反対窓の選択エントリのファイル名(%~C)を対象にします。(※1)<br>
+ ・pairpath&nbsp;&nbsp;反対窓の選択エントリのフルパス(%~FDC)を対象にします。(※1)<br>
+ ・ppclist&nbsp;&nbsp;実行中の PP cのパスを対象にします。(※1)<br>
+ ・ppxidlist&nbsp;&nbsp;実行中の PPx の ID を対象にします。(※1)<br>
+ ・vitem:name&nbsp;&nbsp;特殊環境変数 %se&quot;name&quot; の値を対象にします。(※1)<br>
+ ・vlist:name&nbsp;&nbsp;特殊環境変数 %se&quot;name&quot; に入っている改行区切り(%bn \r\n)の一覧を対象にします。(※1)<br>
+ ・clist:xxx&nbsp;&nbsp;メニュー(M_xxx)又はユーザテーブル(S_xxx) の値を対象にします。(※1)<br>
+  ※1 試作のため、使用すると補完一覧の作成にかなり時間がかかる場合があります。<br>
+<br>
 <hr><br>
 <a name="PPxCmd104"><b>*defaultmenu Windows標準のエディットボックスメニューを表示</b></a><br>
 <br>
@@ -7589,29 +7754,33 @@ infotip&nbsp;&nbsp;インフォチップの内容を設定します。<br>
 <dt><b><a href="#comparetypes">比較方法</a></b></dt>
 <dt>比較方法を省略したときは、メニュー表示します。</dt>
 <dt>数値を指定したときは次の通りです。</dt>
+<dt> * は、サブディレクトリ対応です</dt>
+<dt> ? は、条件を満たす任意の名前のファイルです（同名のみに限定しない）。</dt>
 <dt></dt>
 <dt> 1</dt><dd>詳細指定ダイアログ</dd>
 <dt></dt>
 <dt><b>比較方法 - 1窓内比較</b></dt>
-<dt> 11</dt><dd>同じ大きさ</dd>
-<dt> 12</dt><dd>同じコメント</dd>
+<dt> ? 11</dt><dd>同じ大きさ</dd>
+<dt> ? 12</dt><dd>同じコメント</dd>
 <dt></dt>
-<dt><b>比較方法 - 2窓間比較</b>(* : サブディレクトリ対応)</dt>
-<dt> 21</dt><dd>現在窓側が新規又は新しい同名ファイル</dd>
-<dt> 22</dt><dd>現在窓側が新しい同名ファイル</dd>
-<dt> 23</dt><dd>どちらにも存在する同名ファイル *</dd>
-<dt> 24</dt><dd>大きさが異なる同名ファイル</dd>
-<dt> 25</dt><dd>現在窓側が大きい同名ファイル</dd>
-<dt> 26</dt><dd>大きさと時刻が同じ同名ファイル *</dd>
-<dt> 27</dt><dd>中身(バイナリ)が完全一致する同名ファイル *</dd>
-<dt> 28</dt><dd>同じ大きさ(ファイル名問わず、反対窓側でハイライト処理がされる)</dd>
-<dt> 29</dt><dd>孤立(その窓のみ存在しているエントリ)</dd>
-<dt> 30</dt><dd>中身のSHA-1が一致する同名ファイル *</dd>
+<dt><b>比較方法 - 2窓間比較</b></dt>
+<dt>   21</dt><dd>現在窓側が新規又は新しい同名ファイル</dd>
+<dt>   22</dt><dd>現在窓側が新しい同名ファイル</dd>
+<dt> * 23</dt><dd>どちらにも存在する同名ファイル</dd>
+<dt>   24</dt><dd>大きさが異なる同名ファイル</dd>
+<dt>   25</dt><dd>現在窓側が大きい同名ファイル</dd>
+<dt> * 26</dt><dd>大きさと時刻が同じ同名ファイル</dd>
+<dt> * 27</dt><dd>中身(バイナリ)が完全一致する同名ファイル</dd>
+<dt> ? 28</dt><dd>同じ大きさ(ファイル名問わず、反対窓側でハイライト処理がされる)</dd>
+<dt>   29</dt><dd>孤立(その窓のみ存在しているエントリ)</dd>
+<dt> * 30</dt><dd>中身のSHA-1が一致する同名ファイル *</dd>
+<dt>   32</dt><dd>コメントが完全一致する同名ファイル</dd>
+<dt> ? 33</dt><dd>コメントが完全一致する任意ファイル</dd>
 <dt></dt>
-<dt> 87</dt><dd>同ファイル名(拡張子除く)</dd>
+<dt>   87</dt><dd>同ファイル名(拡張子除く)</dd>
 <dt></dt>
 <dt><b>比較方法 - 選択ファイルと比較</b></dt>
-<dt> 10</dt><dd>クリップボード内ハッシュと選択ファイルを比較</dd>
+<dt>   10</dt><dd>クリップボード内ハッシュと選択ファイルを比較</dd>
 <dt></dt></dl><dl compact>
 <dt><b>マーク属性</b></dt>
 <dt> B00000 属性無しファイルのみ</dt>
@@ -7768,7 +7937,7 @@ C:\WINDOWS\system32\ssstars.scr 等; <a href="#exebar">実行ファイル(スク
 (1) 専用キー割当て<br>
  *dock add,t,input K_xxx<br>
 ユーザ定義名の<a href="#cust_key">キー割当て</a> K_xxx で入力バー内のキーカスタマイズが可能です。K_xxx は、focus や delete のための ID としても使用されます<br>
-このとき、K_xxx に ENTER のカスタマイズ入れることで、コマンド実行以外の入力バーとして使用できます。<br>
+このとき、K_xxx に ENTER のカスタマイズを入れることで、コマンド実行以外の入力バーとして使用できます。<br>
 <a href="#FIRSTEVENT">FIRSTEVENT</a> も使用できますが、FIRSTEVENT を実行する段階では PPc の初期化が完了していないので、PPc 専用の機能は使用できません。<br>
 <br>
 K_test = {<br>
@@ -7917,7 +8086,7 @@ option は次の指定ができます。<br>
 &nbsp;&nbsp;<b>注意</b>-k command と空白区切りで command を指定したときは、-k 以降を全て実行するコマンド扱いにするため、最後に記載してください。<br>
 <br>
 <b>-set:filepath</b>&nbsp;&nbsp;ListFileのマーク・ハイライト・拡張子色・コメント情報を反映<br>
-&nbsp;&nbsp;<a href="#listformat">ListFile</a>に列挙されているファイル名のマーク(M:1/0/-1)、ハイライト(H:x)、拡張子色(X:x)、コメント(T:x)の情報を反映します。列挙されていない項目の情報は変化しません。ファイル中に列挙するファイル名は、通常パスの場合ファイル名のみ記載します。ListFileならフルパスで記載します。<br>
+&nbsp;&nbsp;<a href="#listsubj">ListFile</a>(<a href="#listformat">ListFileの書式</a>)に列挙されているファイル名のマーク(M:1/0/-1)、ハイライト(H:x)、拡張子色(X:x)、コメント(T:x)の情報を反映します。列挙されていない項目の情報は変化しません。ファイル中に列挙するファイル名は、通常パスの場合ファイル名のみ記載します。ListFileならフルパスで記載します。<br>
  例) *markentry -set:&quot;ファイル名&quot;<br>
 <br>
 <br>
@@ -8742,7 +8911,7 @@ on|off指定は「1」か「0」でも指定でき、何も指定しない場合
 <a href="#fileoptions1">一般シート</a>、<a href="#fileoptions2">名前シート</a>、<a href="#fileoptions3">その他シート</a><br>
 <b>・共通指定</b><br>
 -src:<i>source path</i><br>
-&nbsp;&nbsp;コピー元の名前を指定します。<a href="#wildcard">ワイルドカード</a>*, ?、<a href="#レスポンスファイル">レスポンスファイル</a>、<a href="#listformat">ListFile</a> も指定できます。<br>
+&nbsp;&nbsp;コピー元の名前を指定します。<a href="#wildcard">ワイルドカード</a>*, ?、<a href="#レスポンスファイル">レスポンスファイル</a>、<a href="#listsubj">ListFile</a> も指定できます。<br>
 &nbsp;&nbsp;<i>例) -src:&quot;*.txt&quot;</i>, <i>-src:&quot;@c:\dir\response.txt&quot;</i>, <i>-src:&quot;@listfile.txt&quot;</i><br>
 <br>
 -mask:<i>wildcards</i><br>
@@ -9017,7 +9186,7 @@ t*y.ext のとき、abcdefg.hij → tbcdefgy.ext<br>
 *. のとき、abcdefg.hij → abcdefg<br>
 <a name="filesnum"></a><br>
 <b>連番置換 \ </b><br>
-連番(S_Num, /snum)の内容を挿入します。数値は1エントリ毎に1ずつ増えます。<br>
+連番(<NotID:S_Num>, /snum)の内容を挿入します。数値は1エントリ毎に1ずつ増えます。<br>
 <br>
 例えば、「file\.ext」等と入れると、「\」の部分が「連番」の内容に置き換わったファイル名となり、「連番」の値が１ずつ増えます。<br>
 例の場合だと「file001.ext」「file002.ext」…となります。<br>
@@ -9680,6 +9849,8 @@ Win10 1903以降で、ダイアログやメニュー等の配色をダークモ�
 <br>
 <b>補完するときの検索動作</b><br>
 ファイル名の補完や、自動補完付き一覧表示を行うときの一致条件の指定です。<br>
+一行編集ダイアログ内では *completelist -match: で変更できます。<br>
+<br>
 0&nbsp;&nbsp;(旧版の互換動作用) X_ltab 第１項目と、X_flst の値で一致条件が変わります。<br>
 1&nbsp;&nbsp;前方一致<br>
 2&nbsp;&nbsp;部分一致<br>
@@ -9714,7 +9885,7 @@ PPcの表示ディレクトリの履歴、PPvの表示ファイルの履歴を�
 <b>・カスタマイズのバックアップ先</b><br>
 新しいバージョンの PPx を起動した時、カスタマイズの<a href="#update">アップデート</a>が行われますが、その時に以前のカスタマイズ内容(PPXxxx_O.TXT)の保存場所になります。<br>
 <b>・ログの保存先</b><br>
-X_log によるログファイル(PPX.LOG)の保存場所になります。<br>
+X_log によって有効になるログファイル(PPX.LOG)の保存場所になります。<br>
 <b>・Undoログの保存先</b><br>
 <a href="#filecmd">ファイル操作コマンド</a>(PPcの[C], [D]や*file)のアンドゥを行うためのログファイル(PPXUNDO.LOG)の保存場所に使われます。<br>
 <b>・ダウンロードした PPx の配布ファイルの保存先</b><br>
@@ -9908,11 +10079,11 @@ fopshowcmd = %k&quot;&amp;o&quot; ; 「上書き(&amp;O)」にフォーカス移
 <b>注意</b> : X_jinfc が使用されるときは、既に実行元の PPc 等が終了していたり、カレントディレクトリが変更されていたりすることがあります。関連するマクロ文字等の使用を避ける必要があります。<br>
 <hr><br>
 <a name="X_log"><b>X_log</b></a> ステータス行などのログをファイルに保存する<br>
-共用ログ窓のログをファイルに保存する<br>
+ファイル操作などのログをファイルに保存する<br>
 <br>
-ステータス行やメッセージボックスで表示された内容をログとして X_save にファイル保存するかどうかの指定です。主にデバッグ用ですが、バッチ処理のときはログを残しておくといいかもしれません。<br>
+ステータス行やメッセージボックスで表示された内容をログとして X_save にファイル保存するかどうかの指定です。主にデバッグ用ですが、バッチ処理のときはログを残しておくといいかもしれません。一部設定を除いて保存日時が記載されます。<br>
 <br>
-Bit 14 を 1 (X_log = 16384) にした場合、PPc の共用ログ窓に表示される内容を X_save にファイル保存します。<br>
+Bit 14 を 1 (X_log = 16384) にした場合、PPc の共用ログ窓に表示されるファイル操作などのログを X_save にファイル保存します。このときに限り、保存日時は記載されません。<br>
 <hr><br>
 <a name="X_exts"><b>X_exts</b></a> ファイルの判別順は(%ME_cr等)<br>
 <br>
@@ -10154,6 +10325,15 @@ M:ドライブメニュー(\[L])に影響がある設定<br>
 J:ドライブジャンプ([1]～[9])に影響がある設定<br>
 P:PC一覧(\\, \\pc)に影響がある設定<br>
 <hr><br>
+<a name="X_cmdls"><b>X_cmdls</b></a>&nbsp;&nbsp;直接指定可能な cmd.exe コマンドの一覧<br>
+<br>
+存在しないファイル名を実行しようとしたとき、そのファイル名が X_cmdls に列挙されているコマンド名であれば、PPb を経由して cmd.exe のコマンドとして実行します。列挙されていない名前であれば、エラーになります。<br>
+<br>
+コマンド名は、次のように「;」区切りで記載します。<br>
+X_cmdls = cd;chcp;chdir;cls;color;copy;del;dir;echo;erase;for;if;md;mkdir;mklink;move;path;pause;rd;ren;rmdir;set;start;title;ver;vol<br>
+<br>
+尚、コマンドを PPb で実行するときは「%COMSPEC% /c ファイル名」として実行します。<br>
+<hr><br>
 <a name="X_wppb"><b>X_wppb</b></a>&nbsp;&nbsp;実行時にPPbが必要なとき、空きPPbがないときの挙動<br>
 <br>
 コンソールアプリケーションなどのPPbを使う必要があるアプリケーションを実行するときの挙動を指定できます。値が0以上であれば、指定秒後、対処方法を選択するダイアログを表示します。<br>
@@ -10196,8 +10376,8 @@ X_fatim=1とすることで、このような誤差があっても同一時刻�
 待機を中止したいときは、「Start(Ok)」を押してください。<br>
 <br>
 0&nbsp;&nbsp;常に同時並行実行<br>
-1&nbsp;&nbsp;同時に１つのみ実行(数制限無し)<br>
-2&nbsp;&nbsp;１つのみ、指定した順番に実行(32個を越えた場合は待機無し)<br>
+1&nbsp;&nbsp;同時に１つのみ実行、実行順は不規則 (数制限無し)<br>
+2&nbsp;&nbsp;１つのみ、指定した順番に実行 (32個を越えた場合は待機無し)<br>
 <hr><br>
 <a name="X_jlst"><b>X_jlst</b></a>&nbsp;&nbsp;ファイル操作等の一覧表示<br>
 <br>
@@ -11537,8 +11717,8 @@ gLn gRn</dt><dd>左端/右端からの画素数単位のインデント。</dd>
 <dl compact>
 <dt>F[m][,n]</dt><dd>長いファイル名(file name.ext)。</dd>
 <dt>f[m][,n]</dt><dd>短いファイル名(FILENA~1.EXT)。</dd>
-<dt></dt><dd>m:ファイル名の桁数、省略すると全ての桁を使います。</dd>
-<dt></dt><dd>n:拡張子名の桁数、nを省略すると拡張子名を分離しない</dd>
+<dt></dt><dd>m:ファイル名の桁数、省略すると残り全ての桁を使います。</dd>
+<dt></dt><dd>n:拡張子名の桁数、nを省略すると拡張子名を分離しません。</dd>
 <dt></dt><dd>F0,n のように、ファイル名を0桁にすると拡張子名のみ表示します。</dd>
 <dt></dt><dd>Fm,0 のように、拡張子名を0桁にするとファイル名のみ表示します。</dd>
 <dt></dt>
@@ -11549,20 +11729,15 @@ gLn gRn</dt><dd>左端/右端からの画素数単位のインデント。</dd>
 <dt></dt><dd>n = 0 のときは、拡張子を右詰で表示します。</dd>
 <dt></dt>
 <dt>FM[m][,n]</dt><dd>複数行表示用長いファイル名(file name.ext)。ファイル名を複数行に分けて表示するための書式です。</dd>
-<dt></dt><dd>例)icon2M = N32 w255FM40,5 / w255FM40,5 / z16 S1 T17 S1 A10 s1</dd>
+<dt></dt><dd>m:ファイル名の桁数、省略すると残り全ての桁を使います。</dd>
+<dt></dt><dd>n:拡張子名の桁数、0を指定すると拡張子を表示しません。</dd>
+<dt></dt><dd>例)icon2M = N32 wFM40,5 / wFM40,5 / z16 S1 T17 S1 A10 s1</dd>
 <dt></dt>
 <dt></dt><dd>F[m][,n]と混在して使用できます。このため、FM[m][,n]でファイル名を表示させ、F[m][,n]で拡張子を表示させるなどといったことができます。</dd>
 <dt></dt>
-<dt>W[i]x</dt><dd>x(xはF又はf)のファイル名部を可変長にします。</dd>
-<dt></dt><dd>また、同ディレクトリの中で一番長いファイル名長に合わせます。</dd>
-<dt></dt><dd> i:最大値、省略した場合は制限無しになります。</dd>
-<dt></dt><dd>また、直後に記載するF[m][,n] / f[m][,n]で記載する桁数は最小値になります。</dd>
-<dt></dt><dd>例) W80F9,5</dd>
-<dt></dt><dd> ファイル名部を 9～80桁の範囲で長いファイル名に合わせる。</dd>
-<dt></dt><dd> 拡張子部は 5桁</dd>
 <dt>w[i]x</dt><dd>x(xは C, F, f, H, n, R, S, s, V)を可変長にします。</dd>
 <dt></dt><dd>窓枠内に収まるように長さを調節します。</dd>
-<dt></dt><dd> i:最大値、これを越えないように列の数を調整します。省略した場合は常に一列表示になります。</dd>
+<dt></dt><dd> i:最大値、これを越えないように列の数を調整します。省略した場合は常に一列表示になり、Explorer の「詳細」相当の表示になります。</dd>
 <dt></dt><dd>また、直後に記載するF[m][,n] / f[m][,n]で記載する桁数は最小値になります。</dd>
 <dt></dt><dd>例) w40F16,5</dd>
 <dt></dt><dd> ファイル名部を 16～40桁の範囲で窓の幅に合わせる。</dd>
@@ -11571,6 +11746,14 @@ gLn gRn</dt><dd>左端/右端からの画素数単位のインデント。</dd>
 <dt></dt><dd> ファイル名部を窓の幅に合わせる。16桁より狭くしない。</dd>
 <dt></dt><dd> 拡張子部は 5桁</dd>
 <dt></dt><dd>注意： 調節される長さは、表示幅から他の書式の幅を全て差し引いた残り幅から算出されます。「wF C200」や「wF C」のように他の書式の桁数が大きすぎると、桁数が常時最小値になります。</dd>
+<dt></dt>
+<dt>W[i]x</dt><dd>x(xはF又はf)のファイル名部を可変長にします。</dd>
+<dt></dt><dd>また、同ディレクトリの中で一番長いファイル名長に合わせます。</dd>
+<dt></dt><dd> i:最大値、省略した場合は制限無しになります。</dd>
+<dt></dt><dd>また、直後に記載するF[m][,n] / f[m][,n]で記載する桁数は最小値になります。</dd>
+<dt></dt><dd>例) W80F9,5</dd>
+<dt></dt><dd> ファイル名部を 9～80桁の範囲で長いファイル名に合わせる。</dd>
+<dt></dt><dd> 拡張子部は 5桁</dd>
 <dt></dt></dl><br>
 <hr><br>
 <a name="custPPcVformats5"><b> エントリ表示-サイズ・時刻・属性</b></a><br>
@@ -12124,7 +12307,7 @@ PPx          :TC1 :TH1 :XCFG<br>
 ・選択したときに得られる内容です。例えば M_pjump の場合は移動先のパスを記載します。<br>
 ・「%M_xxx」のみを記載すると、該当「M_xxx」を下層メニューとして展開します。<br>
 ・「?yyy」と、?で始まる名前を記載するとメニューが下層として挿入されます。<br>
-・「??yyy」と、??で始まる名前を記載するとメニューが展開されます。表示内容は使われません。<br>
+・「??yyy」と、??で始まる名前を記載するとその位置にメニューyyyが展開される埋め込みメニューになります。表示内容は使われません。<br>
   名前yyyは次の種類が使えます。<br>
   <b>共通</b><br>
     M_xxx&nbsp;&nbsp;指定したメニューM_xxxが使われます。<br>
@@ -12133,18 +12316,18 @@ PPx          :TC1 :TH1 :XCFG<br>
     selectppx&nbsp;&nbsp;実行中のPPxの一覧が挿入され、選択するとそのPPxにフォーカスを当てる為のコマンド(*focus C_A等)を取得できます。<br>
     eject&nbsp;&nbsp;%1 がCD-ROMやリムーバブル等の場合、取り外しコマンドが追加されます。そうでなければこの項目は展開されません。<br>
     extdrivelist&nbsp;&nbsp;<a href="#extdrivelist">非表示ドライブを含むドライブ</a>一覧メニューが挿入され、選択するとドライブパスを取得できます。※[BS][TAB]による空き容量表示の切替は使用できません。<br>
-    aux～&nbsp;&nbsp;現在のディレクトリ(%1)が aux: パスの時、そのパスに対応したメニューが挿入されます。aux: パスでないときや、対応するメニューがないときは空になります。<br>
+    aux～&nbsp;&nbsp;現在のディレクトリ(%1)が aux: パスの時、そのパスに対応したメニュー <NotID:M_aux>***.～ が挿入されます。aux: パスでないときや、対応するメニューがないときは空になります。<br>
     &nbsp;&nbsp;&nbsp;&nbsp;例) %1 が aux://S_ABCD/～、のとき ?auxEFGH を指定すると、メニュー「M_ABCD.EFGH」が挿入されます。<br>
   <b>PPc限定</b><br>
     layoutmenu&nbsp;&nbsp;ツールバーなどのレイアウト選択メニューが挿入されます。<br>
     docktmenu&nbsp;&nbsp;上側の<a href="#X_dock">dock</a>バー選択メニューが挿入されます。<br>
     dockbmenu&nbsp;&nbsp;下側の<a href="#X_dock">dock</a>バー選択メニューが挿入されます。<br>
-    sortmenu&nbsp;&nbsp;MC_sortが挿入され、選択すると一時ソート([S])が実行されます。<br>
-    viewmenu&nbsp;&nbsp;MC_celSが挿入され、選択すると表示形式の変更が実行されます。<br>
+    sortmenu&nbsp;&nbsp;MC_sort が挿入され、選択すると一時ソート([S])が実行されます。<br>
+    viewmenu&nbsp;&nbsp;MC_celS が挿入され、選択すると表示形式の変更が実行されます。<br>
     newmenu&nbsp;&nbsp;エントリ作成メニュー(\[K])が挿入され、選択するとエントリ作成が実行されます。<br>
     drivemenu&nbsp;&nbsp;ドライブ移動メニュー(\[L])が挿入され、選択するとドライブ移動します。※[BS][TAB]による空き容量表示の切替は使用できません。<br>
-    extdrivemenu&nbsp;&nbsp;<a href="#extdrivelist">非表示ドライブを含むドライブ</a>移動メニューが挿入され、選択するとドライブ移動します。※[BS][TAB]による空き容量表示の切替は使用できません。<br>
     drivelist&nbsp;&nbsp;ドライブの一覧が挿入され、選択するとドライブ名を取得できます。※[BS][TAB]による空き容量表示の切替は使用できません。<br>
+    extdrivemenu&nbsp;&nbsp;<a href="#extdrivelist">非表示ドライブを含むドライブ</a>移動メニューが挿入され、選択するとドライブ移動します。※[BS][TAB]による空き容量表示の切替は使用できません。<br>
     exjumpmenu&nbsp;&nbsp;ファイル判別メニューの「移動形式」メニューが挿入され、選択するとその形式で移動します。<br>
     favorites&nbsp;&nbsp;お気に入り(M_pjump)が挿入され、選択すると移動します。<br>
     diroptionmenu&nbsp;&nbsp;ディレクトリの設定メニューが挿入され、ディレクトリ毎に指定可能な設定(<a href="#XC_dset">XC_dset</a>)を参照・変更することができます。<a href="#diroption">*diroption</a> で直接設定もできます。<br>
@@ -12954,11 +13137,11 @@ PPx Moduleの対応形式を指定します。<br>
 <hr>
 <a name="custAux"></a><a name="補助操作(auxパス)"></a><h3>カスタマイズ詳細 - 補助操作(auxパス)</h3><br>
 <a name="aux"><b>aux</b></a><br>
-aux: パスは、S_auxxxx 等と予め設定した内容に従って各種操作を行います。<br>
-※ メニュー M_auxxxx に登録しても使えます。<br>
+aux: パスは、<NotID:S_auxABC> 等と予め設定した内容に従って各種操作を行います。<br>
+※ メニュー M_auxABC に登録しても使えます。<br>
 <br>
 例えば、以下の内容が登録されているとき、<br>
-S_auxdir&nbsp;&nbsp;= {<br>
+<NotID:S_auxdir>&nbsp;&nbsp;= {<br>
 base&nbsp;&nbsp;= aux:S_auxdir\ %; aux:S_auxdir\c:\windows<br>
 list&nbsp;&nbsp;= %*path<br>
 get&nbsp;&nbsp;= copy &quot;%*path%\%*src&quot; &quot;%*dest&quot;<br>
@@ -12988,7 +13171,7 @@ aux://(設定名)/[(パス1)[/(パス2)...]]<br>
 <br>
 <b>・aux: パス用の設定項目</b><br>
 以下の項目が用意されています。また、<a href="#aux用の内蔵関数">aux用の内蔵関数</a>が使用できます。<br>
-※ %1, %2, %C, %n, %si 等の実行元 PPx に関する情報は、直接取得できません。<br>
+※ %1, %2, %C, %n, %si 等の実行元 PPx に関する情報は、一部の項目を除いて直接取得できません。<br>
 %n (ID), %N (ウィンドウハンドル) だけは取得できるようになっていますので、%*extract(%n&quot;%C&quot;) などとして参照を試みることができます。この場合でも、実行元PPx が既に閉じている（終了状態）ことがあります。<br>
 <br>
 <b>base</b>&nbsp;&nbsp;説明・補完一覧リスト列挙内容<br>
@@ -13041,7 +13224,7 @@ aux://(設定名)/[(パス1)[/(パス2)...]]<br>
 &nbsp;&nbsp;対象がファイルなら「store-m」、ディレクトリなら「store-dm」です。これらが無いときは「store」が使用されます。<br>
 &nbsp;&nbsp;コマンドに渡すパラメータとして、%*path、%*user、%*pass、%*src、%*dest が使用できます。%*dest はディレクトリの時、必ずパス区切り（\ か /）が付加されます。<br>
 <br>
-<b>makedir</b>&nbsp;&nbsp;aux: パス上のディレクトリ作成用設定<br>
+<b>makedir</b>&nbsp;&nbsp;ディレクトリ作成用設定<br>
 &nbsp;&nbsp;ディレクトリ作成([K])時に使用する設定です。ディレクトリ %*path を作成します。<br>
 &nbsp;&nbsp;コマンドに渡すパラメータとして、%*path、%*user、%*pass が使用できます。<br>
 <br>
@@ -13059,13 +13242,21 @@ aux://(設定名)/[(パス1)[/(パス2)...]]<br>
 &nbsp;&nbsp;対象がファイルなら「move」、ディレクトリなら「move-d」です。「move-d」が無いときは「move」が使用されます。<br>
 &nbsp;&nbsp;コマンドに渡すパラメータとして、%*path、%*user、%*pass、%*src、%*dest が使用できます。<br>
 <br>
-<b>del</b>&nbsp;&nbsp;aux:パス上のファイル削除用設定<br>
+<b>del</b>&nbsp;&nbsp;ファイル削除用設定<br>
 &nbsp;&nbsp;ファイル削除(\[D])時に使用する設定です。ファイル %*path を削除します。<br>
 &nbsp;&nbsp;コマンドに渡すパラメータとして、%*path、%*user、%*pass が使用できます。<br>
 <br>
-<b>deldir</b>&nbsp;&nbsp;aux:パス上のディレクトリ削除用設定<br>
+<b>deldir</b>&nbsp;&nbsp;ディレクトリ削除用設定<br>
 &nbsp;&nbsp;ファイル削除(\[D])時に使用する設定です。ディレクトリ %*path を削除します。<br>
 &nbsp;&nbsp;コマンドに渡すパラメータとして、%*path、%*user、%*pass が使用できます。<br>
+<br>
+<b>attrib</b>&nbsp;&nbsp;属性変更用設定<br>
+&nbsp;&nbsp;エントリ属性の変更([A])時に使用する設定です。ファイル %*path 内のエントリを変更するためのコマンドを記載できます。<br>
+&nbsp;&nbsp;コマンドに渡すパラメータとして、%*path、%*user、%*pass のほか、%FDC, %@ 等のエントリを取得するための通常のマクロ文字も使用可能です。<br>
+<br>
+<b>writelf</b>&nbsp;&nbsp;ListFileの書き込み用設定<br>
+&nbsp;&nbsp;ListFileの書き込み([W])時に使用する設定です。表示内容をListFileに保存するためのコマンドを記載できます。<br>
+&nbsp;&nbsp;コマンドに渡すパラメータとして、%*path、%*user、%*pass のほか、%FDC, %@ 等のエントリを取得するための通常のマクロ文字も使用可能です。<br>
 <br>
 <a name="aux用の内蔵関数"></a><b>aux用の内蔵関数</b><br>
 cmd 等と、上記一覧にない名前で登録すると、上記一覧中の設定内で使用可能な、同名の関数(%*cmd)とすることができます。<br>
@@ -13073,16 +13264,16 @@ cmd 等と、上記一覧にない名前で登録すると、上記一覧中の�
 <br>
 更に、次の関数が上記一覧中の設定内で使用可能です。<br>
 <b>%*path</b>    aux:パスに指定したパス。aux名の部分は除去されます。<br>
-   例) aux://S_auxabc/dir1/dir2/ → dir1/dir2<br>
-   例) aux:S_auxabc\dir1\dir2\ → dir1\dir2<br>
-   例) aux://S_auxabc , aux:S_auxabc → 空欄<br>
+   例) aux://S_auxABC/dir1/dir2/ → dir1/dir2<br>
+   例) aux:S_auxABC\dir1\dir2\ → dir1\dir2<br>
+   例) aux://S_auxABC , aux:S_auxABC → 空欄<br>
 <b>%*user</b>    認証用のユーザ名。１つ目のパスをキーとして、_IDpwd に保存可能です。<br>
 <b>%*pass</b>    認証用のパスワード。１つ目のパスをキーとして、_IDpwd に保存可能です。<br>
 ※ %*user と %*pass の入力した内容はキャッシュされます。キャッシュを消去するときは *clearauth を実行してください。<br>
 <br>
 <b>・aux: パス用の専用メニュー</b><br>
 <br>
-・メニューの項目に ?aux～  / ??aux～ とすることで、メニュー M_auxABC.～(aux: パス S_auxABCのとき)を指定できます。<br>
+・メニューの項目に ?aux～  / ??aux～ とすることで、メニュー <NotID:M_auxABC>.～(aux: パス S_auxABC のとき)を指定できます。<br>
 ・右クリックメニュー(^[Enter])は、通常 M_Ccr メニューが含まれますが、aux: パスのときは、メニュー M_auxABC.ccr (aux: パス S_auxABCのとき)を使用します。<br>
 <hr>
 <a name="custDock"></a><a name="表示レイアウト"></a><h3>カスタマイズ詳細 - 表示レイアウト</h3><br>
@@ -14574,7 +14765,7 @@ MultiByte版ではUNICODE版より扱える文字の種類が少ないので、�
 <a name="trouble9"><b> カラム拡張機能が使えない</b></a><br>
 <a name="columnsupport"></a><br>
 Explorerのカラム拡張は、Win2000, Me, XP, 2003 と、WinVista 以降では全く異なります。このため、一方で登録したカラム拡張名が、他方では使用できないことがあります。<br>
-また、Win2000, Me, XP, 2003 用のカラム拡張ソフトを WinVista 以降にいれてもExplorerでは使用できませんが、PPx ではインストール(レジストリ HKEY_CLASSES_ROOT\Folder\shellex\ColumnHandlers に登録)されていればPPxで使用することができます。<br>
+また、Win2000, Me, XP, 2003 用のカラム拡張ソフトを WinVista 以降にいれてもExplorerでは使用できませんが、PPx ではインストール(レジストリ HKEY_CLASSE<NotID:S_ROOT>\Folder\shellex\ColumnHandlers に登録)されていればPPxで使用することができます。<br>
 <br>
 尚、Win2000より前のExplorerはカラム拡張に対応していないので、Windows標準のカラム拡張が入っていません。<br>
 <hr><br>
@@ -14666,7 +14857,7 @@ OneDrive がインストールしていると起きる症状です。<br>
 (1)CD-ROM等で読み込み失敗したため、全てのエントリを挙げることができなかった。再読込をすれば全て読み込める場合があります。<br>
 (2)エントリ名の長さが長すぎて、扱うことができなかった。<br>
 この原因は、次の理由で起きます。<br>
-　a)<a href="#listsubj">ListFile</a>やhttp等で長すぎるエントリがあった。<br>
+　a)<a href="#listsubj">ListFile</a> や http 等で長すぎるエントリがあった。<br>
 　b)MultiByte版では保存しきれないエントリだった。例えば、128文字以上の漢字からなるエントリ名を付けるとMultiByte版のPPcで扱えません。UNICODE版なら扱えます。<br>
 <hr><br>
 <a name="troublePPc4"><b> migemoを使ったローマ字インクリメンタルサーチで反応しない文字がある</b></a><br>
