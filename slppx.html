@@ -78,6 +78,8 @@ img { max-width: 100%; height: auto; }
   </td><td>- ファイル・ディレクトリ選択ダイアログをPPcで選択補助</td></tr>
   <tr><td>・<a href="#ppxaux">Paper Plane xUI aux: path sample</a>
   </td><td>- PPx aux: パスの設定サンプル集</td></tr>
+  <tr><td>・<a href="#ppxdialog">Paper Plane xUI Dialog Module</a>
+  </td><td>- 自作ダイアログを使用する PPx Module</td></tr>
   <tr><td>・<a href="#ppxdx">Paper Plane xUI(DirectX9版)</a>
   </td><td>- DirectX9 使用動作検証版</td></tr>
   <tr><td>・<a href="#ppxpy">Paper Plane xUI  Python Module</a>
@@ -128,7 +130,7 @@ ppxarm
 ppxhelp
 ./ppxhelp.zip
 ppxmes
-./ppxmes03.zip
+./ppxmes04.zip
 ppxwin
 ./ppxwin09.zip
 ppxpos
@@ -167,6 +169,8 @@ ppdex
 ./ppdex11.zip
 ppxaux
 ./ppxaux08.zip
+ppxdialog
+./ppxdialogR01.zip
 ppxdx
 ./ppw130dx.zip
 ppxpy
@@ -396,11 +400,14 @@ Windows Help は、Windows Vista 以降では標準で用意されていない�
 
 <hr><a href="./slppx.html">↑</a><a name="ppxmes"><span>Paper Plane xUI  Message Module</span></a>
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxmes03.zip">ppxmes03.zip</a> ( 54 Kbytes,&nbsp;2010-1-16,&nbsp;Windows95/98/Me/NT4.0/2000/XP/2003/Vista/2008/7(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxmes04.zip">ppxmes04.zip</a> ( 117 Kbytes,&nbsp;2025-5-5,&nbsp;Windows 95 - Me / Windows NT 4.0 - 11/2025(x86, x64, ARM64))<br>
 <br>ウィンドウにメッセージを送信するための PPx Module です。<br>
-PPx コマンド・関数モジュールを自作するときの参考用です。<br>
-32bit版/64bit版が入っています。<br><br>●<strong>変更点</strong><br>R2→R3<br>
-・x64版を用意した<br>
+PPx コマンド・関数モジュールを自作するときの参考用です。<br><br>●<strong>変更点</strong><br>R3→R4<br>
+・ARM64版を用意した<br>
+・動作可能PPxがVersion1.11以降になった<br>
+・%*GetWindowClass,&nbsp;%*GetWindowTitle,&nbsp;%*GetWindowFromId&nbsp;を追加<br>
+・%*FindWindowFile&nbsp;を追加<br>
+・%*FindWindowClass,&nbsp;%*FindWindowTitle&nbsp;の部分一致検索指定を追加<br>
 
 <hr><a href="./slppx.html">↑</a><a name="ppxwin"><span>Paper Plane xUI  Window Module</span></a>
 <br>
@@ -505,7 +512,7 @@ PPx Dock Module を自作するときの参考用です。<br>
 
 <hr><a href="./slppx.html">↑</a><a name="ppxkey"><span>Paper Plane xUI  Key Module</span></a>
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxkey08.zip">ppxkey08.zip</a> ( 112 Kbytes,&nbsp;2021-9-4,&nbsp;Windows 95 - Me / Windows NT 4.0 - 10/2019(x86, x64, Arm64))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxkey08.zip">ppxkey08.zip</a> ( 112 Kbytes,&nbsp;2021-9-4,&nbsp;Windows 95 - Me / Windows NT 4.0 - 10/2019(x86, x64, ARM64))<br>
 <br>ｎストロークキー入力や追加キー割当ての拡張ができます。<br>
 PPx キー入力拡張モジュールを自作するときの参考用です。<br><br>●<strong>変更点</strong><br>R7→R8<br>
 ・実行元PPxでkeymapを登録した後、一行編集/PPeでkeymap登録すると混ざるのを修正<br>
@@ -577,6 +584,12 @@ R6→R7<br>
 ・ls2lf.exe&nbsp;でディレクトリ名(d/D),ディレクトリboolean(JSON&nbsp;形式でd)を指定可能に<br>
 ・ls2lf.exe&nbsp;で書式に該当しない行をListFileから除外できるようにした(--nomsg)<br>
 ・ls2lf.exe&nbsp;でUTF-8&nbsp;の標準出力結果を表示できるようにした(--show8)<br>
+
+<hr><a href="./slppx.html">↑</a><a name="ppxdialog"><span>Paper Plane xUI Dialog Module</span></a>
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/ppx/ppxdialogR01.zip">ppxdialogR01.zip</a> ( 93 Kbytes,&nbsp;2025-5-5,&nbsp;Windows 2000 - 11/2025(x86, x64, ARM64)、MultiByte版使用不可)<br>
+<br>各種ボタンや一行編集を並べた自作ダイアログを使用できます。<br>
+カスタマイズで登録した設定 S_xxx に基づいたダイアログを表示します。<br>
 
 <hr><a href="./slppx.html">↑</a><a name="ppxdx"><span>Paper Plane xUI(DirectX9版)</span></a> Version 1.30
 <br>
