@@ -3,7 +3,11 @@
 	XLAG|Display language/表示言語:X_LANG=L
 	XIAC|Enable screen readerPPc,PPvでスクリーンリーダ対応(不安定になること有):X_iacc=?1:0
 	XELE|Use high execution level on updatePPxの更新には昇格/管理者権限を使用:_Setup:elevate=?s1:0
-	XLOG|Loggingステータス行などのログをファイルに保存する:X_log=?2130799371:0
+	Loggin to X_saveファイル(X_save)に保存するログの種類:+
+		XOFF|noneなし:X_log=@0
+		XLGE|Logging for operationファイル操作:X_log=@16384
+		XLOG|Logging something with debugデバッグ情報を含む各種ログ:X_log=@2130799371
+		XMIS|miscその他:X_log=<d
 	XSAV|Backup directoryカスタマイズバックアップ＆ログの保存場所:X_save=PD
 	XCAC|Cache directory各種キャッシュの保存場所:X_cache=PD
 	XSUS|Susie directory(require restart PPx)Susie plug-inがあるディレクトリ(要PPx再起動):P_susieP=PD
@@ -28,7 +32,7 @@
 	XFCT|tab and header(require restart PPx)タブ・ヘッダ(要PPx再起動):F_ctrl=F
 	XFIX|PPv fixPPv固定ピッチ:F_fix=F
 	XFUX|PPv proportionalPPvプロポーショナル:F_unfix=F
-	XFCO|PPb(Console host, Vista)PPb(コンソールホスト, Vista以降):F_con=F
+	XFCO|PPb(Console host, Vista-Win10)PPb(コンソールホスト, Vista-Win10):F_con=F
 	XFFI|Fix for left text draw文字の右端が表示されない対策を行う:X_ffix=?1:0
 ..ZTDR|Draw画面
 	XDSS|Enable screen scaling画面のスケーリング対応:X_DSS=?-1:0
@@ -147,6 +151,8 @@
 	XCBT|Min file size of auto enable Burst modeバーストモードを自動適用する最小ファイルサイズ(単位はKbytes):X_cbsz+4=<d/0
 	XCBU|Min file size of disable file cacheキャッシュ使用を止める最小ファイルサイズ(単位はKbytes):X_cbsz+8=<d/64000
 	XXFC|File Compare commandFCボタンで実行するコマンド(%FDC source,%2 dest):X_fc=<s
+	XTTS|Start temperature of Thermal Throttlingサーマルスロットリングの開始温度:X_ttt=<d
+	XTTE|End temperature of Thermal Throttlingサーマルスロットリングの終了温度:X_ttt+4=<d
 	XWDE|Delete check directory with file削除時にディレクトリ内にファイルがあったら警告する:X_wdel=?B0
 	XWDF|Delete check with marked entry off screen削除時に画面外マークがあったら警告する:X_wdel=?B4
 	XWDG|Delete check attribute削除時に読み取り専用/隠し/システム属性があれば警告する:X_wdel+4=?7/0:0
@@ -267,7 +273,6 @@
 		XBC3|show common log共用ログ窓を表示する:X_combos=?B3
 		XBCE|force common log共用ログ窓にファイル操作ログを強制表示する:X_combos=?B14!
 		XBCF|delay show common log共用ログ窓で大量ログの高速化(間引き処理)をする:X_combos=?B15!
-		XLGE|Common log to file(X_save) saving共用ログ窓のログをファイルに保存する(X_save):X_log=?B14
 		XMPB|first pane起動時のペイン数:X_mpane+4=<i
 			XBCP|min close窓を閉じるときに起動時ペイン数未満になるなら一体化窓を閉じる:X_combos=?B25
 		XMPA|max pane最大同時表示ペイン数:X_mpane=<i
@@ -344,6 +349,8 @@
 		combo window一体化窓上(キーボード操作向け):X_stip+32=@2
 		this pane現在窓(キーボード操作向け):X_stip+32=@4
 		on PPvPPv上:X_stip+32=@8
+		width表示幅:X_stip+24=<i
+		height表示高さ:X_stip+28=<i
 	XNFT|Format size(Z)ファイルサイズ表示Z(桁区切り無)で
 		unit space単位用に１桁確保する:X_nfmt=?B3/30
 		1024 unit1024で単位計算する:X_nfmt=?B4/30
@@ -513,7 +520,7 @@
 		center button中／ホイールクリック:XC_cdc=?B3/24
 		left+right左右同時クリック:XC_cdc=?B4/24
 ...ZTCN|Cursor detailカーソル移動詳細
-	XMVD|Out of window by Up/down cursor上下カーソルキーで窓外に移動したときは
+	XMVD|Out of window by Up/down cursor上下カーソルキーで窓外に移動したときは:+
 		stopped width repeatキーリピート時は停止:XC_mvUD+12=?B0
 		jump to bound端まで移動していないときは端まで移動:XC_mvUD+12=?B1
 		jump to pair window移動方向が隣接窓側なら窓移動する:XC_mvUD+12=?B2
@@ -534,7 +541,7 @@
 		previous drive前のドライブへ:XC_mvUD+8=@12
 		next drive次のドライブへ:XC_mvUD+8=@13
 		jump to pair反対窓のPPcへ:XC_mvUD+8=@14
-	XMVE|Out of range by Up/down cursor上下カーソルキーで先頭／末端外に移動したときは
+	XMVE|Out of range by Up/down cursor上下カーソルキーで先頭／末端外に移動したときは:+
 		stopped width repeatキーリピート時は停止:XC_mvUD+20=?B0
 		jump to bound端まで移動していないときは端まで移動:XC_mvUD+20=?B1
 		jump to pair window移動方向が隣接窓側なら窓移動する:XC_mvUD+20=?B2
@@ -555,7 +562,7 @@
 		previous drive前のドライブへ:XC_mvUD+16=@12
 		next drive次のドライブへ:XC_mvUD+16=@13
 		jump to pair反対窓のPPcへ:XC_mvUD+16=@14
-	XMVL|Out of window by left/right cursor左右カーソルキーで窓外に移動したときは
+	XMVL|Out of window by left/right cursor左右カーソルキーで窓外に移動したときは:+
 		stopped width repeatキーリピート時は停止:XC_mvLR+12=?B0
 		jump to bound端まで移動していないときは端まで移動:XC_mvLR+12=?B1
 		jump to pair window移動方向が隣接窓側なら窓移動する:XC_mvLR+12=?B2
@@ -575,7 +582,7 @@
 		previous drive前のドライブへ:XC_mvLR+8=@12
 		next drive次のドライブへ:XC_mvLR+8=@13
 		jump to pair反対窓のPPcへ:XC_mvLR+8=@14
-	XMVM|Out of range by left/right cursor左右カーソルキーで先頭／末端外に移動したときは
+	XMVM|Out of range by left/right cursor左右カーソルキーで先頭／末端外に移動したときは:+
 		stopped width repeatキーリピート時は停止:XC_mvLR+20=?B0
 		jump to bound端まで移動していないときは端まで移動:XC_mvLR+20=?B1
 		jump to pair window移動方向が隣接窓側なら窓移動する:XC_mvLR+20=?B2
@@ -751,7 +758,8 @@
 	XBUW|(UNICODE ver.)calculate char. width(UNICODE版)正確なカーソル位置取得を行う:XB_uwid=?1:0
 	XTAM|terminal command仮想端末として使用するソフト
 		XTCH|Default terminal通常の仮想端末を使用:X_term=@s
-		XTWT|use Windows TerminalWindows Terminalを使用:X_term=@swt.exe
+		XTWT|use Windows TerminalWindows Terminal を使用:X_term=@swt.exe
+		XTWT|use Console hostconhost を使用:X_term=@sconhost.exe
 		XTAM|terminal command端末として使用するソフト:X_term=<s
 .ZTPE|PPe
 	XUCS|show line cursorカーソル位置に下線を使う:X_ucsr=?1:0

@@ -45,7 +45,7 @@ PPxの前身として K-Launcher というファイラがあります。こち�
 <br>
 ※ Server 2000 ～ 2022 は Windows Server の 2000, 2003(R2), 2008(R2), 2012(R2), 2016, 2019, 2022 が含まれます。<br>
 <br>
-・開発や主な動作確認は Windows 10 Pro 22H2 64bit版 で行っています。<br>
+・開発や主な動作確認は Windows 11 Pro 24H2 x64版 で行っています。<br>
 ・PPxの実行ファイルがあるディレクトリ/フォルダが書き込み禁止であっても支障が出ないように考慮しています。<br>
 <a name="(Limit)"></a><a name="Limit"></a><a name="(Elevate)"></a><a name="Elevate"></a>・別のユーザとして実行 / RUNAS を考慮しており、使用中のデスクトップのユーザと異なる場合は、タイトルバー(キャプション)にそのPPxが属するユーザ名が表示されます。<br>
   例) PPC[A](username)C:\<br>
@@ -263,7 +263,6 @@ K.Takata 氏作の bregonig.dll <a href="http://k-takata.o.oo7.jp/" target="_top
 <b>(2) icu.dll</b><br>
 Windows 10 1903 以降に標準でインストールされている icu.dll (International Components for Unicode,  <a href="https://site.icu-project.org/" target="_top">https://site.icu-project.org/</a>) を使用できます。<br>
 正規表現の書式については、 <a href="https://unicode-org.github.io/icu/userguide/strings/regexp.html" target="_top">https://unicode-org.github.io/icu/userguide/strings/regexp.html</a> を参照してください。<br>
-<br>
 <br>
 <b>(3) Windows Script 2.0以上</b><br>
 Windows Script 2.0 以上に含まれている IRegExp を使用できます。<br>
@@ -1481,7 +1480,7 @@ ListFileに関する情報を記載できます。「&quot;名前&quot;:&quot;�
 <br>
 &quot;N&quot;:&quot;filename&quot;&nbsp;&nbsp;長いファイル名<br>
 &quot;Y&quot;:&quot;filename&quot;&nbsp;&nbsp;短いファイル名(8.3形式)<br>
-&quot;A&quot;:&quot;<a href="#lfattr">属性</a>&nbsp;&nbsp;ファイルの属性<br>
+&quot;A&quot;:<a href="#lfattr">属性</a>&nbsp;&nbsp;ファイルの属性<br>
 &quot;C&quot;:&quot;<a href="#lftime">時刻</a>&quot;&nbsp;&nbsp;作成時刻<br>
 &quot;L&quot;:&quot;<a href="#lftime">時刻</a>&quot;&nbsp;&nbsp;最終参照時刻<br>
 &quot;W&quot;:&quot;<a href="#lftime">時刻</a>&quot;&nbsp;&nbsp;書込時刻<br>
@@ -1694,11 +1693,6 @@ IDを指定しない場合は、A (CBA)を使用します。<br>
 A～Z の ID を付けた場合は、その ID (CBA～CBZ)を使用します。<br>
 + を指定した場合は、未使用のB以降の最も若い ID (<b>CBB</b>～CBZ)を使用します。<br>
 <br>
-<b>-lock[:off]</b><br>
-指定したIDのカレントディレクトリの変更を禁止するロック状態の指定をします。<br>
-※起動後は、*pane lock で変更できます。<br>
-参考: <a href="#panecommand">*pane コマンド</a><br>
-<br>
 <b>-alone</b><br>
 <b>-alone:<i>ID</i></b><br>
 -combo と同様に<a href="#X_combo">一体化</a>状態にします。<br>
@@ -1706,8 +1700,16 @@ A～Z の ID を付けた場合は、その ID (CBA～CBZ)を使用します。<
 ID を指定しない場合は、未使用の最も若い ID を使用します。<br>
 A～Z の ID を付けた場合は、その ID を使用します。このとき、-r オプションを指定しないと、一体窓の ID が重複しても開きます。<br>
 <br>
+<b>-tab</b><br>
+タブ付きの<a href="#X_combo">一体化</a>状態にします。<br>
+<br>
 <b>-restoretab[:on|:off]</b><br>
 「起動時にタブを復元しない」の設定(X_combos,2つ目,B3)を無視して復元するかどうかの指定です。<br>
+<br>
+<b>-lock[:off]</b><br>
+指定したIDのカレントディレクトリの変更を禁止するロック状態の指定をします。<br>
+※起動後は、*pane lock で変更できます。<br>
+参考: <a href="#panecommand">*pane コマンド</a><br>
 <br>
 <b>-pane</b><br>
 <b>-pane:[~|l|r|数値]</b><br>
@@ -1723,10 +1725,13 @@ A～Z の ID を付けた場合は、その ID を使用します。このとき
 -combo/-single オプションは、デフォルトの窓の扱いと異なる指定にするために使用します。<br>
 <br>
 <b>-mps</b><br>
-X_sps の指定を無視して、窓毎に一つのプロセスを割り当てます。ただし、<a href="#X_combo">一体化</a>動作時に指定しても -sps の動作になります。並列動作の性能が上がり、他の窓が原因による応答無し状態を軽減できます。<br>
+X_sps の指定を無視して、独立窓毎に一つのプロセスを割り当てます。<br>
+<a href="#X_combo">一体化</a>動作時に指定しても -sps の動作になります。<br>
+並列動作の性能が上がり、他の窓が原因による応答無し状態を軽減できます。<br>
 <br>
 <b>-sps</b><br>
-X_sps の指定を無視して、一つのプロセスで複数窓を割り当てます。省メモリです。また、一体化時は常にこの設定になります。<br>
+X_sps の指定を無視して、一つのプロセスで複数の独立窓を割り当てます。<br>
+省メモリです。また、一体化時は常にこの設定になります。<br>
 <br>
 <b>-bootid:ID</b><br>
 指定ID(A～Z,Zaa～)のPPcを起動します。<br>
@@ -3125,14 +3130,21 @@ filename は、一般のファイルの他、HTTP 形式(http://…、https://�
 <b>-r</b><br>
 以前開いた PPv があるならそれを利用してファイルを表示します。使用する PPv は、指定がなければ最後に開いたものです。<br>
 <br>
+<b>-max</b><br>
+起動時に窓を最大化した状態で表示します。-r オプション指定時は無効です。<br>
+<br>
+<b>-min</b><br>
+起動時に窓を最小化した状態で表示します。また、アクティブになりません。-r オプション指定時は無効です。<br>
+<br>
+<b>-noactive</b><br>
+起動時に通常の大きさで窓を表示しますがアクティブになりません。<br>
+タブ使用時は、タブの選択も行いません。<br>
+<br>
 <b>-print</b><br>
 指定したファイルを開いてから印刷(^[P])を実行します。<br>
 <br>
 <b>-prints</b><br>
 窓上にドロップした画像を、１つのドキュメントとして一括印刷します。プリンタの両面印刷や袋綴じ印刷機能を使う時に便利です。<br>
-<br>
-<b>-hex, -text, -document, -image, -rawimage</b><br>
-表示形式を指定します。<br>
 <br>
 <b>-document:&quot;command line&quot; (試作)</b><br>
 指定したコマンドを使って加工したテキストの表示を行います。<br>
@@ -3143,6 +3155,9 @@ filename は、一般のファイルの他、HTTP 形式(http://…、https://�
 例) PPv %C -document:&quot;%%Os filter &lt;%%C &gt; %%si&quot;&quot;TempFile&quot;&quot; &quot;<br>
  コマンド「filter」を使ってファイル「%si&quot;TempFile&quot;」を作成し、表示します。<br>
  ※ PPx やバッチ等から実行している例であり、% が実行元で解釈されるため、% をエスケープしています。<br>
+<br>
+<b>-hex, -text, -document, -image, -rawimage</b><br>
+表示形式を指定します。<br>
 <br>
 <b>-us/-ibm(codepage:437), -latin1/-ansi(codepage:1252), -jis, -sjis, -euc, -utf16/-unicode, -utf16be/-unicodeb, -sjisnec, -sjisb, -kana, -rtf, -utf8, -utf7</b><br>
 テキストの表示<a href="#ppvtextcode">文字コード</a>を指定します。<br>
@@ -3165,7 +3180,7 @@ MIME の認識をなし／ありで指定します。<br>
 SI/SO(7bit範囲内のカナ切り替え, JISX0201)の認識を自動／なし／ありで指定します。<br>
 <br>
 <b>-tag:off/on/tag</b><br>
-html等のTAG「&lt;～&gt;」を何もしない／隠す／着色で指定します。<br>
+html等のTAG「&lt;～&gt;」を何もしない／隠す／着色表示で指定します。<br>
 <br>
   <b>-css:off/on</b><br>
     -tag:on のとき、&lt;style&gt; ～ &lt;/style&gt; 内を表示するかどうかを指定します。<br>
@@ -3214,12 +3229,21 @@ A から指定 ID までの空き ID があれば、その ID で PPv を起動�
 指定された数値 n を親ウィンドウのハンドルとして組み込まれます。<br>
 組み込み PPv は、タイトルバーとスクロールバーが非表示となります。<br>
 <br>
+<b>-focus:n</b><br>
+<b>-parent:n</b><br>
+<b>-setparent:n</b><br>
+指定されたハンドルのウィンドウを親として扱います。-focus は、PPvを最小化したときに、親ウィンドウにフォーカス設定します。<br>
+<br>
 <b>-popup:n</b><br>
-指定された親ウィンドウに被せて表示します。この指定を使ったときは、最小化の操作が無効になります。<br>
+指定されたハンドルの親ウィンドウに被せて表示します。この指定を使ったときは、最小化の操作が無効になります。<br>
 例) PPc に被せて表示する<br>
  *ppv -popup:%N %FDC<br>
 例) 一体化窓PPcに被せて表示する<br>
  *ppv -popup:%NC# %FDC<br>
+<br>
+<b>-showstyle:n</b><br>
+親ウィンドウが設定されているときの表示位置を指定します。値は <a href="#X_vpos">X_vpos</a> を参照してください。<br>
+<br>
 <hr>
 <a name="PPvSpecInfo"></a><a name="仕様"></a><h3>PPv - マルチフォーマットビューア - 仕様</h3><br>
 <b>ファイル読み込み方法・ファイルサイズによる制限</b><br>
@@ -3985,6 +4009,8 @@ PPcustは、このカスタマイズ内容をGUIで変更したり、テキス�
 <hr>
 <a name="PPcustSAU"></a><a name="テキストの取り込み方法の違い"></a><h3>PPcust - カスタマイザ - テキストの取り込み方法の違い</h3><br>
 テキストの取込(CS), 追加取込(CA), 更新取込(CU)の違いを、メニュー設定の例で説明します。<br>
+※実際は「--」が「--.1」等となりますが、分かりやすくするために省略しています。<br>
+<br>
 現在の設定<br>
 M_test = {<br>
 A&nbsp;&nbsp;= text A<br>
@@ -4013,7 +4039,6 @@ D&nbsp;&nbsp;= new text D<br>
 }<br>
 <br>
 追加取り込み(CA)…項目名が被る B, C は取り込むテキストの内容で上書きされます。<br>
-※ メニュー区切り「--」「||」を追加取り込みすると常に追加されます<br>
 M_test = {<br>
 A&nbsp;&nbsp;= text A<br>
 --&nbsp;&nbsp;=<br>
@@ -4028,7 +4053,9 @@ D&nbsp;&nbsp;= new text D<br>
 更新取り込み(CU)…既にM_testが存在するので変更されません。もし、M_testが存在しなければ、取り込んだM_testの内容になります。<br>
 M_test = {<br>
 A&nbsp;&nbsp;= text A<br>
+--&nbsp;&nbsp;=<br>
 B&nbsp;&nbsp;= text B<br>
+--&nbsp;&nbsp;=<br>
 C&nbsp;&nbsp;= text C<br>
 }<br>
 <hr>
@@ -4578,7 +4605,7 @@ PPeは、改行コードがCR, LF, CR+LFの３種類を判別して読み込む�
 <br>
 <hr>
 <a name="execute"></a><a name="概要"></a><h3>コマンド実行処理 - 概要</h3><br>
-<a name="execute"></a>PPc, PPv の [H]コマンドや、<a href="#cust_file">ファイル判別</a>(E_cr等), <a href="#cust_key">キー割当て</a>(KC_main等)のコマンドラインのコマンド実行は、次の方法で実行をすることができます。<br>
+<a name="execute"></a>PPc, PPv の [H]コマンドや、<a href="#cust_file">ファイル判別</a>(E_cr等), <a href="#cust_key">キー割当て</a>(KC_main等)のコマンドラインのコマンド実行は、以下の種類のコマンドを実行をすることができます。<br>
 また、<a href="#macrodetail">マクロ文字</a>を使うことができます。<br>
 <dl compact>
 <dt><b>(1)実行ファイル(外部コマンド・アプリケーション)</b></dt>
@@ -4595,29 +4622,32 @@ PPeは、改行コードがCR, LF, CR+LFの３種類を判別して読み込む�
 <dt></dt>
 <dt><b>(2)ファイル</b></dt>
 <dt></dt><dd>Windows の 設定の規定のアプリや、コントロールパネルのフォルダオプションに拡張子が登録されているファイルを指定した場合は、関連付けされたアプリケーションで開くことができます。</dd>
-<dt></dt><dd><i>例) readme.txt</i></dd>
+<dt></dt><dd><i>例) readme.txt</i> 拡張子 txt に対応するアプリケーションで readme.txt を開く</dd>
 <dt></dt>
 <dt></dt><dd><a href="#zapfile">%Z</a>, <a href="#start">*start</a> を使用すると実行時の設定を変えることができます。</dd>
 <dt></dt><dd><a href="#zapmenu">%z</a>, <a href="#shellmenu">*shellmenu</a> を使用すると、該当ファイルに対するエクスプローラーの右クリックメニュー（コンテキストメニュー）を使用できます。</dd>
 <dt></dt>
-<dt><b>(3)PPxの内蔵コマンド, PPx Module(*commandname,%x)</b></dt>
+<dt><b>(3)URLプロトコル</b></dt>
+<dt></dt><dd>http://、ftp://、ms-settings:display calculator: など、レジストリに登録されている URLプロトコル を実行することができます。</dd>
+<dt></dt>
+<dt><b>(4)コマンドプロンプトの内蔵コマンド</b></dt>
+<dt></dt><dd>cmd.exe / command.com の内蔵コマンドも直接指定して実行することができます。</dd>
+<dt></dt><dd><i>例) dir</i></dd>
+<dt></dt>
+<dt></dt><dd>※該当する名前の実行ファイルがなく、X_cmdls に指定されているコマンドは、%COMSPEC% に指定した cmd.exe を介して実行するようになっています。</dd>
+<dt></dt>
+<dt><b>(5)PPxの内蔵コマンド, PPx Module(*commandname,%x)</b></dt>
 <dt></dt><dd>「*」で始まるコマンドは、内蔵コマンドとして実行します。また、該当するコマンドを持つ PPx Module があればその PPx Module を実行します。</dd>
 <dt></dt><dd><i>例) *file copy,c:\,d:\</i></dd>
 <dt></dt>
 <dt></dt><dd>「%j」「%K」等も使用できます。</dd>
 <dt></dt><dd><i>例) %j%2</i></dd>
 <dt></dt>
-<dt><b>(4)コマンドプロンプトの内蔵コマンド</b></dt>
-<dt></dt><dd>cmd.exe / command.com の内蔵コマンドも直接指定することができます。</dd>
-<dt></dt><dd><i>例) dir</i></dd>
-<dt></dt>
-<dt></dt><dd>※実行ファイルに該当する名前がない場合は、%COMSPEC% に指定した cmd.exe を介して実行するようになっています。</dd>
-<dt></dt>
-<dt><b>(5)</b><a name="ユーザコマンド"><b>ユーザコマンド</b></a></dt>
+<dt><b>(6)</b><a name="ユーザコマンド"><b>ユーザコマンド</b></a></dt>
 <dt></dt><dd><a href="#_Command">_Command</a> に登録されているユーザコマンドを使うことができます。</dd>
 <dt></dt><dd><i>例) *usercommand parameter1,parameter2</i></dd>
 <dt><a name="cmdalias"></a><a name="エイリアス"></a></dt>
-<dt><b>(6)</b><a name="コマンドエイリアス"><b>コマンドエイリアス</b></a></dt>
+<dt><b>(7)</b><a name="コマンドエイリアス"><b>コマンドエイリアス</b></a></dt>
 <dt></dt><dd><a href="#A_exec">A_exec</a> に登録されているエイリアスを使うことができます。</dd>
 <dt></dt><dd><i>例) editor readme.txt</i></dd>
 <dt></dt><dd>・「editor」は、A_exec の editor に登録された内容に置き換えられます。</dd>
@@ -5704,7 +5734,7 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 <hr><br>
 
 <a name="PPxCmd76"><b>ファイル・ディレクトリ操作(PPc専用)</b></a><br>
-・<a href="#autodragdrop">*autodragdrop <i>[caption[,id]][,r|c|m[,source path]]</i> 自動ドラッグ＆ドロップ</a><br>
+・<a href="#autodragdrop">*autodragdrop <i>[title[,id]][options]</i> 自動ドラッグ＆ドロップ</a><br>
 ・<a href="#PPxCmd77">*execinarc 書庫内ファイルを使用できるようにする</a><br>
 ・<a href="#PPxCmd78">*freedriveuse <i>[drivename]</i> 指定ドライブの使用を一時停止</a><br>
 ・<a href="#PPxCmd79">*makelistfile <i>[filename][option]</i> ListFile出力</a><br>
@@ -5762,7 +5792,7 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 ・<a href="#PPxCmd119">*color [back|cursor] [color] 色の一時的変更</a><br>
 ・<a href="#commentcommand">*comment [id,][&quot;text&quot;|[all] command] コメントの操作</a><br>
 ・<a href="#PPxCmd122">%*comment[(id)] コメント内容</a><br>
-・<a href="#comparemark">*comparemark <i>比較方法, マーク属性, サブディレクトリ</i> ファイル比較マーク</a><br>
+・<a href="#comparemark">*comparemark <i>比較方法 [オプション]</i> ファイル比較マーク</a><br>
 ・<a href="#countsize">*countsize [all|cursor|marked][-clear] マーク総サイズ算出</a><br>
 ・<a href="#cutentry">*cutentry <i>[text|file]</i> 選択エントリの切り取り</a><br>
 ・<a href="#PPxCmd124">%*dirhistory(<i>n</i>) 「戻る」の履歴の取得</a><br>
@@ -6997,7 +7027,7 @@ oldnameのファイルまたはディレクトリをnewnameに変更します。
 
 <b>ファイル・ディレクトリ操作(PPc専用)</b><br>
 <hr><br>
-<a name="autodragdrop"><b>*autodragdrop <i>[caption[,id]][,r|c|m[,source path]]</i> 自動ドラッグ＆ドロップ</b></a><br>
+<a name="autodragdrop"><b>*autodragdrop <i>[title[,id]][options]</i> 自動ドラッグ＆ドロップ</b></a><br>
 <br>
 自動ドラッグ＆ドロップ(^[D])を指定したcaptionに対して行います。<br>
 次の方法のどれかで D&amp;Dを行います。<br>
@@ -7005,18 +7035,30 @@ oldnameのファイルまたはディレクトリをnewnameに変更します。
 ・ドラッグ(フック式): OLE D&amp;D(直接操作)<br>
 ・ドラッグ(エミュレート式): OLE D&amp;D(マウス操作の代行)<br>
 <br>
+option は、次の通りです。<br>
+-mode:r|c|m&nbsp;&nbsp;OLE D&amp;D を行う時の動作指定です。<br>
+&nbsp;&nbsp;r&nbsp;&nbsp;右ドラッグ扱いにします。<br>
+&nbsp;&nbsp;c&nbsp;&nbsp;複写動作を指定します<br>
+&nbsp;&nbsp;m&nbsp;&nbsp;移動動作を指定します<br>
+<br>
+-src:source path&nbsp;&nbsp;指定した１つのファイルやディレクトリの D&amp;D を行います。指定が無いときは選択エントリが対象になります。<br>
+<br>
+-masktitle:wildcard&nbsp;&nbsp;一覧のフィルタとして、窓のタイトルによって限定するための<a href="#wildcard">ワイルドカード</a>を指定します。<br>
+-maskfile:wildcard&nbsp;&nbsp;一覧のフィルタとして、窓の実行ファイル名によって限定するための<a href="#wildcard">ワイルドカード</a>を指定します。実行ファイル名は、「C:\Windows\explorer.exe」の場合は「explorer」になります。<br>
+<br>
+option は、次のように「,」区切りで指定することもできます。<br>
+*autodragdrop <i>[caption[,id]][,r|c|m[,source path]]</i><br>
+<br>
+<br>
 パラメータ次第で次に示す動作になります。<br>
-1) caption がない場合は ^[D]と同じくD&amp;D 先一覧が表示され選択できます。<br>
-2) caption をタイトルバーに一部／全部含むウィンドウが対象です。<br>
-3) caption に<a href="#ppxidformat">PPxのID指定方法</a>を用いた場合は、該当 PPx が対象になります。<br>
-4) caption に #数値 と指定したときは、指定した数値をウィンドウ ID (ウィンドウハンドル)として、該当ウィンドウを対象とします。Message Module を使ってキャプションやクラス名の完全一致でウィンドウを指定するときに使用できます。<br>
+1) title がない場合は ^[D]と同じくD&amp;D 先一覧が表示され選択できます。<br>
+2) title をタイトルバーに一部／全部含むウィンドウが対象です。複雑な指定を行いたい場合は、-masktitle を使用してください。<br>
+3) title に<a href="#ppxidformat">PPxのID指定方法</a>を用いた場合は、該当 PPx が対象になります。<br>
+4) title に #数値 と指定したときは、指定した数値をウィンドウ ID (ウィンドウハンドル)として、該当ウィンドウを対象とします。Message Module を使ってキャプションやクラス名の完全一致でウィンドウを指定するときに使用できます。<br>
  例) *autodragdrop #%*findwindowclass(&quot;CabinetWClass&quot;)<br>
-5) ,r を付加した場合は、OLE D&amp;D を行う時に右ボタンによるドラッグ＆ドロップを行います。<br>
-   ,c を付加した場合は、OLE D&amp;D を行う時に複写を行います。<br>
-   ,m を付加した場合は、OLE D&amp;D を行う時に移動を行います。<br>
-6) *autodragdrop caption,id[,r|c|m] という指定も可能です。追加される id は子ウィンドウの id です。この id は D&amp;D 先一覧中に表示される「()」内の数値です。<br>
+5) *autodragdrop caption,id という指定も可能です。追加される id は子ウィンドウの id です。この id は D&amp;D 先一覧中に表示される「()」内の数値です。<br>
   ※ id は 0 以外のときのみ有効です。また、アプリケーションによっては、同じ子ウィンドウでも開く度に違う id になることもありますので、使用するときは予め確認してください。<br>
-7) source path としてディレクトリやファイルを指定したときは、指定したディレクトリ等を D&amp;D の対象とします。※カーソル・マークエントリを対象としたときと比べて、 D&amp;D 可能な対象が制限されます（マウス操作の代行による OLE D&amp;D ができません。）。<br>
+6) source path としてディレクトリやファイルを指定したときは、指定したディレクトリ等を D&amp;D の対象とします。※カーソル・マークエントリを対象としたときと比べて、 D&amp;D 可能な対象が制限されます（マウス操作の代行による OLE D&amp;D ができません。）。<br>
 <hr><br>
 <a name="PPxCmd77"><b>*execinarc 書庫内ファイルを使用できるようにする</b></a><br>
 例)<i>*execinarc %: edit %C</i><br>
@@ -7413,7 +7455,7 @@ id1(%mid1) の行を削除します。<br>
 <a name="editmode"><b>*editmode <i>option</i> 一行編集の各種設定の変更</b></a><br>
 以下のオプションを指定して一行編集の各種設定を行うことができます。各設定は列挙可能です。<br>
 <br>
-・-history<i>[S]type[,reftype]</i><br>
+・-history:<i>[S]type[,reftype]</i><br>
 ※ *editmode <i>[S]type[,reftype]</i> と「-history:」を省略可能です。<br>
 　ヒストリ種類(type)や参照(reftype)の動作を変更します。type, reftypeの詳細と、%!x, %E 等の動作を変更する場合は<a href="#editmodemacro">%e</a>を参照してください。<br>
 ※ダイアログ種類の指定(R, E, O)は使用できません。<br>
@@ -7747,14 +7789,14 @@ infotip&nbsp;&nbsp;インフォチップの内容を設定します。<br>
 カーソル上のエントリのコメント内容です。コメントがなければ空欄になります。<br>
 %*comment とした場合は通常のコメント、%*comment(1)などとID指定した場合は拡張コメントが取得できます。<br>
 <hr><br>
-<a name="comparemark"><b>*comparemark <i>比較方法, マーク属性, サブディレクトリ</i> ファイル比較マーク</b></a><br>
+<a name="comparemark"><b>*comparemark <i>比較方法 [オプション]</i> ファイル比較マーク</b></a><br>
 <br>
 ファイル比較マーク([O]コマンド)を実行します。<br>
 <dl compact>
 <dt><b><a href="#comparetypes">比較方法</a></b></dt>
-<dt>比較方法を省略したときは、メニュー表示します。</dt>
+<dt>比較方法を省略したときは、メニュー表示します。また「-mode:比較方法」の指定も可能です。</dt>
 <dt>数値を指定したときは次の通りです。</dt>
-<dt> * は、サブディレクトリ対応です</dt>
+<dt> * は、サブディレクトリ対応です。サブディレクトリのエントリは、サブディレクトリの全てのファイルが条件に一致したときのみマークします。</dt>
 <dt> ? は、条件を満たす任意の名前のファイルです（同名のみに限定しない）。</dt>
 <dt></dt>
 <dt> 1</dt><dd>詳細指定ダイアログ</dd>
@@ -7765,15 +7807,15 @@ infotip&nbsp;&nbsp;インフォチップの内容を設定します。<br>
 <dt></dt>
 <dt><b>比較方法 - 2窓間比較</b></dt>
 <dt>   21</dt><dd>現在窓側が新規又は新しい同名ファイル</dd>
-<dt>   22</dt><dd>現在窓側が新しい同名ファイル</dd>
+<dt> * 22</dt><dd>現在窓側が新しい同名ファイル</dd>
 <dt> * 23</dt><dd>どちらにも存在する同名ファイル</dd>
-<dt>   24</dt><dd>大きさが異なる同名ファイル</dd>
-<dt>   25</dt><dd>現在窓側が大きい同名ファイル</dd>
+<dt> * 24</dt><dd>大きさが異なる同名ファイル</dd>
+<dt> * 25</dt><dd>現在窓側が大きい同名ファイル (小さい条件にするときは、反対窓で実行してください)</dd>
 <dt> * 26</dt><dd>大きさと時刻が同じ同名ファイル</dd>
 <dt> * 27</dt><dd>中身(バイナリ)が完全一致する同名ファイル</dd>
 <dt> ? 28</dt><dd>同じ大きさ(ファイル名問わず、反対窓側でハイライト処理がされる)</dd>
 <dt>   29</dt><dd>孤立(その窓のみ存在しているエントリ)</dd>
-<dt> * 30</dt><dd>中身のSHA-1が一致する同名ファイル *</dd>
+<dt> * 30</dt><dd>中身のSHA-1が一致する同名ファイル</dd>
 <dt>   32</dt><dd>コメントが完全一致する同名ファイル</dd>
 <dt> ? 33</dt><dd>コメントが完全一致する任意ファイル</dd>
 <dt></dt>
@@ -7781,17 +7823,32 @@ infotip&nbsp;&nbsp;インフォチップの内容を設定します。<br>
 <dt></dt>
 <dt><b>比較方法 - 選択ファイルと比較</b></dt>
 <dt>   10</dt><dd>クリップボード内ハッシュと選択ファイルを比較</dd>
-<dt></dt></dl><dl compact>
-<dt><b>マーク属性</b></dt>
-<dt> B00000 属性無しファイルのみ</dt>
-<dt> B00111 全てのファイル</dt>
-<dt> B10111 全てのファイルとディレクトリ</dt>
-<dt>詳細は<a href="#attrbits">ファイル属性の指定方法</a>を参照してください。</dt>
-<dt></dt></dl><dl compact>
+<dt></dt></dl><br>
+<br>
+<b>オプション</b><br>
+  -attr:マーク属性&nbsp;&nbsp;マークの対象となる属性を指定します。<br>
+  -subdir&nbsp;&nbsp;サブディレクトリ内も同じエントリ構成であり、条件が一致しているときにディレクトリをマークします。<br>
+  -log&nbsp;&nbsp;ログ窓に比較結果を出力します。2窓内比較の時のみ出力します。1窓内比較のときは出力されません。<br>
+  &nbsp;&nbsp;※ -subdir を指定しているとき、-log 指定が無いときは条件が一致しないファイルがあった時点でサブディレクトリの比較を終え、次の比較対象に変わるため高速化します。<br>
+  -log:mu&nbsp;&nbsp;m があれば、条件が一致する(マーク対象)ファイルのログを出力します。<br>
+  &nbsp;&nbsp;u があれば、条件が一致しない(非マーク対象)ファイルのログを出力します。<br>
+<br>
+<br>
+<b>マーク属性</b><br>
+ B00000 属性無しファイルのみ<br>
+ B00111 全てのファイル<br>
+ B10111 全てのファイルとディレクトリ<br>
+詳細は<a href="#attrbits">ファイル属性の指定方法</a>を参照してください。<br>
+<br>
+*comparemark 比較方法, マーク属性, サブディレクトリ の形式も使用できます。<br>
+<br>
+<dl compact>
 <dt><b>サブディレクトリ</b>(比較方法が 23, 26, 27, 30のみ使用可)</dt>
 <dt> 0</dt><dd>サブディレクトリ内は調べない</dd>
 <dt> 1</dt><dd>サブディレクトリ内も同じエントリ構成であり、条件が一致しているときにディレクトリをマーク</dd>
-<dt></dt></dl>例) 同名ファイルあればマーク: *comparemark 23,B00111,0<br>
+<dt></dt></dl><br>
+<br>
+例) 同名ファイルあればマーク: *comparemark 23,B00111,0<br>
 ※同名ファイル・ディレクトリがあればマーク: *comparemark 23,B10111,0<br>
 ※ディレクトリ内も一致するときのみマーク: *comparemark 23,B10111,1<br>
 ※ディレクトリ内も一致、ファイルの内容も一致のときマーク: *comparemark 27,B10111,1<br>
@@ -8637,6 +8694,10 @@ off 又は 0 : sourceが検索元(規定値)<br>
 検索結果を保存する<a href="#listsubj">ListFile</a>のフルパス名を指定します。指定が無ければ %temp% 内に自動生成したディレクトリ＋名前で保存します。<br>
 例) -listfile:&quot;%'temp'%\result.txt&quot;<br>
 <br>
+<b>-json[:path]</b><br>
+JSON形式で出力します。文字コードは常に UTF-8 になります。<br>
+pathを指定するとファイル名を指定できます。<br>
+<br>
 <b>-append</b><br>
 同名のファイルがある場合、追記します。※文字コードは自動で整合されません。必要に応じて-utf8等を指定してください。<br>
 <br>
@@ -8646,6 +8707,7 @@ off 又は 0 : sourceが検索元(規定値)<br>
 <br>
 <b>-utf8, -utf8bom</b><br>
 出力文字コードを UTF-8 / BOM 有り UTF-8 にします。指定が無いときは Unicode版/64bit版は BOM 有り UTF-16、MultiByte 版はシステムロケール設定(Shift_JIS)です。<br>
+また、JSON形式の場合は常に UTF-8 になります。<br>
 <br>
 <b>-dirshow</b><br>
 検索結果の表示が階層表示になります。指定がなければ<a href="#XC_pmsk">XC_pmsk</a>の指定に従います。<br>
@@ -9133,6 +9195,11 @@ on|off指定は「1」か「0」でも指定でき、何も指定しない場合
 -preventsleep:[on|off]<br>
 &nbsp;&nbsp;ファイルオペレーション中は、Windowsがスリープしないようにします。<br>
 <br>
+-thermalthrottle:[on|off]<br>
+&nbsp;&nbsp;処理先・処理元の温度が高温(X_ttt)のときは処理を一時停止する、サーマルスロットリングをおこないます。<br>
+&nbsp;&nbsp;処理先・処理元のどちらかが NVMe を使用しているときに機能します。<br>
+&nbsp;&nbsp;また、 _others:PPcFopMode が 2, 4, 6 の場合は、温度の取得時間の分だけコピー速度が低下します。<br>
+<br>
 -allowdecrypt:[on|off]<br>
 &nbsp;&nbsp;暗号化<a href="#fileattra">属性</a>を設定したファイルを、暗号化非対応ドライブへコピーすることを許可します。<br>
 <br>
@@ -9380,6 +9447,10 @@ WSH VBScriptの場合は、置換(s/src/dest/)のみ使用できます。修飾�
 <dt><b>開始時存在チェック</b></dt><dd>作業開始時の総ファイル数・サイズの算出時に、処理先に同名ファイルがないかの存在チェックを行います(-checkexistfirst)</dd>
 <dt><b>順番に処理を行う</b></dt><dd>他のファイル操作が完了するまで順番待ちを行います。(-qstart)</dd>
 <dt><b>ファイル使用後移動</b></dt><dd>移動元ファイルが使用中の時は、ダイアログを表示して使用終了するまで待機します。</dd>
+<dt><b>リンクをリンクとしてコピー</b></dt><dd>シンボリックリンクやジャンクションをシンボリックリンク等としてコピーするか（チェック有り、-symcopy:sym）、リンク先の実体ファイルをコピーするか（チェック無し、 -symcopy:file）、問い合わせるか（-symcopy:query）の指定です。</dd>
+<dt><b>Sym.リンク元を削除</b></dt><dd>ディレクトリのシンボリックリンクの削除時に、シンボリックリンク・ジャンクションの解除をするか（チェック有り、 -symdel:sym）、リンク先の実体ファイルも削除するか（チェック無し、 -symdel:file）、問い合わせるか（-symdel:query）の指定です。</dd>
+<dt>※シンボリックリンクのファイルは、常にリンクの解除を行います。</dt>
+<dt><b>高温時は一時停止</b></dt><dd>処理先・処理元の温度が高温(X_ttt)のときは処理を一時停止する、サーマルスロットリングをおこないます。（-thermalthrottle, X_ttt）</dd>
 <dt></dt></dl><br>
 <hr>
 <a name="CustInfo"></a><a name="カスタマイズ詳細について"></a><h3>カスタマイズ詳細 - カスタマイズ詳細について</h3><br>
@@ -9789,7 +9860,7 @@ Win10 1903以降で、ダイアログやメニュー等の配色をダークモ�
   もし、異常終了するようになった場合、コマンドプロンプト等で「 ppbw -c *setcust X_uxt=-3 」を実行して設定を無効にしてください。<br>
 ・この設定で変化する箇所は、ダイアログやメニュー等です。背景色(C_back)やPPc エントリ文字、拡張子色等は変化しませんので、カスタマイザの<a href="#colortab">色タブ</a>の配色テーマ等を用いて変える必要があります。<br>
 ・メニューバーや、複数段のメニュー、一部のスクロールバーの色は現在変えることができません。<br>
-　尚、メニューバーは、PPc の場合、レイアウトの上部ドック-MC_menuを使うと代用できます。<br>
+　メニューバーは、PPc の場合、標準のメニューの代わりにレイアウトの上部ドック-メニューバーを使うと、ダークモードのメニューバーにできます。<br>
 ・「なし」以外に設定すると、タブやチェックボックス等を独自描画に切り替え、見た目が変化します。尚、独自描画に切り替える都合上、僅かですが余分な負荷が掛かります。リソース、速度、電力消費を少しでも気にする場合は、なしのままにしてください。<br>
 <br>
 <b>窓の角形状(Windows 11)</b><br>
@@ -10260,7 +10331,7 @@ PPcの名前変更[R]、ファイル複写時等の同名ファイル存在時�
 ・% で始まるパス入力時に該当環境変数の一覧が含まれます。<br>
 <a name="補完候補ファイル"></a><a name="compfile"></a>・<b>補完候補ファイル</b><br>
   補完候補ファイルは、各行に１つの補完候補を記載したテキストファイルです。補完候補は現在行頭から約1000文字まで認識し、それ以降は無視します。<br>
-  ・補完候補ファイルは、*completelist で指定しなければ、目的に応じて以下のファイルが使われます。これらファイルは、添付 PPXFxxx.TXT を元にして設定を保存する PPxxxxx.DAT と同じ場所に作成されます。<br>
+  ・補完候補ファイルは、*completelist で指定しなければ、目的に応じて以下のファイルが使われます。これらファイルは、添付 PPXFxxx.TXT を元にして設定を保存する PPxxxxx.DAT と同じ場所に作成されます（ポータブル用設定の時は、PPx があるディレクトリ、それ以外の時は、 %APPDATA%\TOROID\PPX ）。<br>
 &nbsp;&nbsp;PPXUPATH.TXT&nbsp;&nbsp;ファイル名・パスの候補用<br>
 &nbsp;&nbsp;PPXUCMD.TXT&nbsp;&nbsp;コマンドの候補用<br>
 &nbsp;&nbsp;PPXUMASK.TXT&nbsp;&nbsp;マスクの候補用<br>
@@ -10343,7 +10414,7 @@ X_cmdls = cd;chcp;chdir;cls;color;copy;del;dir;echo;erase;for;if;md;mkdir;mklink
 <a name="X_fatim"><b>X_fatim</b></a>&nbsp;&nbsp;時刻の比較はFATによる誤差(±2秒)を考慮する<br>
 <br>
 ファイルシステムにFATを用いたドライブは、更新時刻などの秒が00, 02, 04…などと偶数秒単位でしか保存できません。このため100n秒単位で保存できるNTFS等に保存したファイルと単純に比較しても、時刻が一致しないことがあります。<br>
-X_fatim=1とすることで、このような誤差があっても同一時刻となるように、±2秒以内なら同時刻と扱うようになります。<br>
+X_fatim = 1とすることで、このような誤差があっても同一時刻となるように、±2秒以内なら同時刻と扱うようになります。<br>
 <br>
 0  時刻を厳密に比較する<br>
 1  ±2秒以内なら同時刻として扱う<br>
@@ -10379,9 +10450,9 @@ X_fatim=1とすることで、このような誤差があっても同一時刻�
 1&nbsp;&nbsp;同時に１つのみ実行、実行順は不規則 (数制限無し)<br>
 2&nbsp;&nbsp;１つのみ、指定した順番に実行 (32個を越えた場合は待機無し)<br>
 <hr><br>
-<a name="X_jlst"><b>X_jlst</b></a>&nbsp;&nbsp;ファイル操作等の一覧表示<br>
+<a name="X_jlst"><b>X_jlst</b></a>&nbsp;&nbsp;ファイル操作等の処理中操作の一覧表示<br>
 <br>
-<a href="#filecmd">ファイル操作コマンド</a>や PPc の削除処理、書庫操作等の処理の一覧表示をするかどうかの設定です。<br>
+<a href="#filecmd">ファイル操作コマンド</a>や PPc の削除処理、書庫操作等の処理中操作の一覧を表示するかどうかの設定です。<br>
 X_jlst = 表示設定, 格納設定<br>
 <br>
 <b>表示設定</b><br>
@@ -10430,6 +10501,11 @@ B = C<br>
 <br>
 <a href="#filecmd">ファイル操作コマンド</a>(PPcの[C], [D]や*file)で、同名ファイルの対象方法を選択するときに使用できるFCボタンの実行内容の設定です。通常ファイルの比較を行うためのコマンドを登録します。初期設定ではWindowsの標準コマンド fc.exe が登録されています。<br>
 X_fcでは %Fxxxや%C 等が処理元のパス、%2 が処理先のパス、%1 が PPxのあるディレクトリになっています。<br>
+<hr><br>
+<a name="X_ttt"><b>X_ttt</b></a>&nbsp;&nbsp;サーマルスロットリングを開始する温度,サーマルスロットリングを終了する温度<br>
+<br>
+ファイル操作のサーマルスロットリング機能に用いる、サーマルスロットリングの閾値温度を指定します。開始温度に達するとサーマルスロットリングによって操作を一時停止し、終了温度まで下がると操作を再開します。<br>
+初期値は 75, 70 (℃)です。<br>
 <hr><br>
 <a name="X_wdel"><b>X_wdel</b></a>&nbsp;&nbsp;削除時にディレクトリ内にファイルがあったら警告する<br>
 &nbsp;&nbsp;削除時に読み取り専用/隠し/システム属性があれば警告する<br>
@@ -12280,13 +12356,24 @@ PPx          :TC1 :TH1 :XCFG<br>
 <br>
 <b>表示内容</b><br>
 ・メニューに表示される内容です。<br>
+<br>
 ・「&amp;」を記載すると、その次の文字がショートカットキーになります。<br>
+<br>
 ・表示内容が１文字(X)だけなら、項目内容を組み合わせて「<u>X</u> 項目内容」の表示形式になります。<br>
+<br>
 ・「\t」を使うと、その部分が WindowsXPまではtab(桁揃え)、WindowsVista以降では両端揃えになります。<br>
 「\t」と表示したい場合は、「\T」とするか「\\t」(「\t」に変換されます) で表示できます。<br>
+<br>
 ・「--」の場合、水平線が引かれます。項目内容は無視されます。<br>
+  「--.xxx」と「--.」の後に任意の内容「xxx」を記載できます。コメント等として使用できます。複数の水平線を記載する場合は「xxx」がメニュー内で重複しないようにしてください。<br>
+  尚、「--」のみで記載した場合は、「--.1」「--.2」等と重複しないように自動で付番します。<br>
+<br>
 ・「||」の場合、垂直線が引かれ、以降の項目は次の段に表示されます。項目内容は無視されます。<br>
-  ※垂直線を使うと、メニューの見た目が変わったり、ダークモード時でも明るい背景であったり、反応が遅くなったりすることがあります。これは、垂直線対応のメニューがWindows2000以前相当の機能しかなく、最近のデザインに対応していない為のようです。<br>
+  ※垂直線を使うと、メニューの見た目が変わったり、ダークモード時でも明るい背景であったり、反応が遅くなったりすることがあります。これは、垂直線対応のメニューが Windows2000 以前相当の機能しかなく、最近のデザインに対応していない為のようです。<br>
+<br>
+  「||.xxx」と「||.」の後に任意の内容「xxx」を記載できます。複数の垂直線を記載する場合は「xxx」がメニュー内で重複しないようにしてください。<br>
+  尚、「||」のみで記載した場合は、「||.1」「||.2」等と重複しないように自動で付番します。<br>
+<br>
 ・頭に「?x;」があると、表示形式を変更することができます。<br>
 &nbsp;&nbsp;例) ?c;item name = item data<br>
 &nbsp;&nbsp;チェックマーク付きで「item name」を表示内容にします。<br>
@@ -12345,11 +12432,19 @@ dock上 = ?docktmenu<br>
 ドライブ表示 = ?drivelist<br>
 ドライブ(非表示含む) = ?extdrivemenu<br>
 お気に入り = ?favorites<br>
--- =<br>
+--.1 =<br>
 ここは使われない = ??M_pjump<br>
 }<br>
+<br>
 ・M_Ccr 等、コマンド実行を行うメニューでは複数行にまたがる記載が可能です。<br>
 次のように、２行目以降は空白かタブを入れて字下げしてください。<br>
+M_Ccr = {<br>
+&amp;1 = command 1 line 1<br>
+&nbsp;&nbsp;command 1 line 2<br>
+&nbsp;&nbsp;command 1 line 3<br>
+&amp;2 = command 2 line 1<br>
+&nbsp;&nbsp;command 2 line 2<br>
+}<br>
 <hr><br>
 <a name="extdrivelist"></a><b>非表示ドライブを含むドライブ(Win9x系不可)</b><br>
  ドライブ名(A:～Z:)を割り当てていないドライブ（27個目以降のドライブ、消去禁止領域、回復パーティション、割当て解除したドライブ等）の一覧です。<br>
@@ -12478,17 +12573,21 @@ null,_AUTO,_AUTO,<br>
 }<br>
 <hr>
 <a name="custBar"></a><a name="ツールバー"></a><h3>カスタマイズ詳細 - ツールバー</h3><br>
-<a name="toolbar"></a>ツールバーは「B_名称」の形で登録することができます。登録した後は、X_winや<a href="#X_dock">X_dock</a>で設定を行うことで表示できます。予め決められている名前はPPc用のB_cdef、PPv用のB_vdefです。<br>
+<a name="toolbar"></a>ツールバーは「B_名称」の形で登録することができます。登録した後は、X_winや<a href="#X_dock">X_dock</a>で設定を行うことで表示できます。予め決められている名前は PPc 用の B_cdef、PPv 用の B_vdef です。<br>
 <br>
 ツールチップに表示する解説、画像の番号、実行する内容を順に指定できます。<br>
-また、解説に「--」を指定すると区切り線が表示されます。「@」で指定した画像ファイルを使ってボタンが表示されます。<br>
+また、解説に「@」を指定すると、画像ファイルを使ってボタンが表示されます。<br>
+「--」を指定すると区切り線が表示されます。<br>
+<br>
+  「--.xxx」と「--.」の後に任意の内容「xxx」を記載できます。複数の区切り線を記載する場合は「xxx」が重複しないようにしてください。<br>
+  尚、「--」のみで記載した場合は、「--.1」「--.2」等と重複しないように自動で付番します。<br>
 <br>
 ; ツールバーの新規作成例<br>
-B_cdef&nbsp;&nbsp;= {<br>
+B_cdef = {<br>
 @&nbsp;&nbsp;,0, 画像ファイルパス<br>
 [ボタンテキスト/]解説&nbsp;&nbsp;, 画像番号 = キーコマンド<br>
 [ボタンテキスト/]解説&nbsp;&nbsp;, 画像番号 , 実行内容<br>
---&nbsp;&nbsp;, 空ける間隔 =&nbsp;&nbsp;; 区切り線<br>
+--.1&nbsp;&nbsp;, 空ける間隔 =&nbsp;&nbsp;; 区切り線<br>
 C:\Windows/C:\Windows&nbsp;&nbsp;, 12 , %j&quot;C:\Windows&quot; ; <a href="#dirbutton">ディレクトリボタン</a><br>
 }<br>
 <br>
@@ -14684,7 +14783,7 @@ UNRAR32.DLL&nbsp;&nbsp;= B10100010000000011,5,Unrar
 <hr><br>
 <a name="trouble1"><b> 起動しない</b></a><br>
 <br>
-1.「Already running other PPLIBxxx.DLL.」「PPLIBxxx.DLL version error」が表示されて起動できない場合は、他のバージョンのPPx が動作しているために起動できないことを意味します。使用する PPx のバージョンを揃えて再度起動してください。<br>
+1.「Already running other PPLIBxxx.DLL.」が表示されて起動できない場合は、他のバージョンのPPx が動作しているために起動できないことを意味します。使用する PPx のバージョンを揃えて再度起動してください。<br>
 <br>
 2. 以下の作業を順次試して見てください。<br>
  1) PPx の構成ファイルをコピーし直す。<br>
@@ -14722,11 +14821,15 @@ plug-in の設定はカスタマイザで行うことができます。<br>
 <a name="trouble3"><b> 表示されている文字が欠ける</b></a><br>
 <br>
 表示に使っているフォントがプロポーショナルの場合、意図した表示範囲から文字がはみ出して表示が欠けることがあります。<br>
-何か背景表示をさせる(<a href="#X_bg">X_bg</a>)と解消できることがあります。<br>
+<br>
+文字の右端が表示されない対策を行う(X_ffix)で主な症状が解消できます。<br>
+また、何か背景表示をさせる(X_bg)と解消できることがあります。<br>
 <hr><br>
 <a name="trouble4"><b> 表示されている文字が化ける</b></a><br>
 <br>
-MultiByte版ではUNICODE版より扱える文字の種類が少ないので、対応していない文字が化けて表示されます。UNICODE版を使用してください。<br>
+1) カスタマイザで「Display language/表示言語」が正しい言語になっているかを確認してください。<br>
+<br>
+2) MultiByte版ではUNICODE版より扱える文字の種類が少ないので、対応していない文字が化けて表示されます。UNICODE版を使用してください。<br>
 また、DirectWrite版でないと表示できない文字もあります。<br>
 <hr><br>
 <a name="trouble5"><b> 操作できないファイルやディレクトリがある</b></a><br>
@@ -14738,6 +14841,8 @@ MultiByte版ではUNICODE版より扱える文字の種類が少ないので、�
  5) ネットワーク上のドライブを参照している場合、書換禁止のアクセス制限がされている場合があります。<br>
  6) ファイルシステムとして NTFS を用いたドライブは、エントリ毎にセキュリティ設定ができ、ユーザ毎に制限をかけることができます。この制限によって、参照、書き換え、削除等ができない場合があります。<br>
  7) Vista/7以降では、過去の互換性のために、「Documents and Settings」などの名前の特別なシンボリックリンクが用意されています。これらは、アクセス権でディレクトリの一覧表示ができないようになっているので、一覧表示のために使用することはできません。<br>
+8) 64bit版 Windows (x64, Arm64) 上で 32bit版 PPx を使用すると、Windows\System32  の内容が Windows\SysWOW64 の内容にリダイレクトされます。<br>
+ ファイル一覧に表示されていませんが、Windows\Sysnative で本来の Windows\System32 の内容にアクセスできます。<br>
 <hr><br>
 <a name="trouble6"><b> ドキュメントにあるキーを押しても反応しない</b></a><br>
 <br>

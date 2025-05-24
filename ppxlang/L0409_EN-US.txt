@@ -1,5 +1,5 @@
 Mes0409	=#{ English ; 0409 is Locale ID (LCID)
-+|0000	201
++|0000	2028
 0001	OK
 0002	Cancel
 0003	Abort(&A)
@@ -86,6 +86,7 @@ Mes0409	=#{ English ; 0409 is Locale ID (LCID)
 7079	Log &4
 707A	Link for symbolic link
 707B	Remove symbolic link sources(&H)
+707C	Thermal Throttling(&O)
 7400	Test(&T)
 7402	Command list
 7410	File
@@ -240,6 +241,9 @@ Mes0409	=#{ English ; 0409 is Locale ID (LCID)
 7875	Block refcounting
 7876	Sparse VDL
 7877	DAX,direct access
+7878	Cleanup result
+7879	POSIX's unlink
+787A	Ghosting
 7881	Directory Mask(&D)
 7882	Real time Mask(&M)
 7884	format(&T)
@@ -332,12 +336,15 @@ CDT1	Thumbnails1(&T)
 CDT2	Thumbnails2(&8)
 CDT3	Thumbnails3(&9)
 CMP1	Same SHA-1(&H)
+CMP6	Same SHA-1, any name(&J)
+CMP7	Same SHA-1, all sub-entries(&L)
 CMPA	Same size && time(&A)
 CMPB	Same Binary(&B)
-CMPC	Comment(&C)
+CMPC	Same Comment(&W)
 CMPD	Detail...(&D)
 CMPE	Exist file(&E)
 CMPF	Filename without extention(&F)
+CMPG	Same Binary, all sub-entries(&G)
 CMPH	Compare Hash to Clipboard(&C)
 CMPI	file size(no name check, &I)
 CMPL	Large file(&L)
@@ -347,7 +354,8 @@ CMPQ	same size, any name(&Q)
 CMPS	file Size(&S)
 CMPT	Time stamp(&T)
 CMPW	alone file(&O)
-CMPX	Exist(with dir, &X)
+CMPX	Exist(with sub-dir, &X)
+CMPY	Comment, any name(&Y)
 CMPZ	same file size(1 window, &Z)
 COMP	completed.
 COMT	comment
@@ -425,6 +433,7 @@ EBWA	Bad wildcard attributes
 EBWS	Bad filesystem
 EC32	comdlg32.dll load error
 ECAL	Calculation error: %s
+ECCF	Settings are not allowed except color/font.
 ECDR	Can\'t unpack
 ECFD	'Full' can't multi use.
 ECFL	Customize area flow
@@ -1503,7 +1512,7 @@ XEXL	extension maximum length
 XEXM	Enable maked files with enter
 XEXS	alarm new executive file
 XFAT	fix time for FAT
-XFCO	PPb(Console host, Vista)
+XFCO	PPb(Console host, Vista-Win10)
 XFCT	tab and header
 XFDI	when fill directory, without file entry
 XFDL	dialog
@@ -1572,14 +1581,14 @@ XLGA	completed
 XLGB	source path
 XLGC	destination path
 XLGD	backup
-XLGE	Common log to file(X_save) saving
+XLGE	Logging for operation log to X_save
 XLGG	skip
 XLGH	Show operation-log types
 XLGI	make folder
 XLIC	Entry click range
 XLLZ	large file read mode
 XLNM	show line number
-XLOG	Logging
+XLOG	Logging for status log to X_save
 XLSP	general line space
 XLT0	focus next item
 XLT1	enable customize & fill name
@@ -1696,6 +1705,9 @@ XTRG	sync-view
 XTRH	show proteced folder
 XTRY	Use Task Tray
 XTSB	bundle Taskbar button(after Win7, require restart PPx)
+XTTE	Thermal Throttling end temperature
+XTTS	Thermal Throttling start temperature
+XTWC	on Legacy Console Host
 XTWI	pixcel
 XTWT	on Windows Terminal
 XUCS	show line cursor
@@ -1795,4 +1807,4 @@ ZTPY	PPtray
 ZTVD	Drag
 ZTVI	Image view
 ZTVT	Text view
-};fnpopjalcafnoepbgdfclekiccikaiejpineodojjlaebgkangeimhdjceipicibmlkpeaokgpadpnlkjjcfbamffcmjgelpnomojlhhaiboblmdjobjelhkhcedgfloaie 
+};egpdkcmcnfijfdeimpkkbbkalpbbjoacggpcemfhichikdloccnconlfnlbpndbabcaciliabnjifbpdcmehndleglaecpodjgmjajabnlhenifgpfincfkkomjiojkfaie 

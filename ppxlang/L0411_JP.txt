@@ -1,5 +1,5 @@
 +1.42|Mes0411	=#{ 日本語
-+|0000	201
++|0000	2028
 0003	中止(&A)
 0004	再試行(&R)
 0005	無視(&I)
@@ -48,7 +48,7 @@
 7049	Burst(自前バッファ,&G)
 704A	平坦化/階層無し(&L)
 704B	階層を再現する(&K)
-704C	処理経過をログに表示(&G)
+704C	処理経過をログとして表示(&G)
 704D	元に戻す為のログを作成(&U)
 704E	'%'を展開(&A)
 704F	CDの読取専用解除(&O)
@@ -80,6 +80,7 @@
 7078	拡張子変更(&Y)
 707A	Sym.(&Y)
 707B	Sym.リンク元を削除(&H)
+707C	高温時は一時停止(&O)
 7400	試験(&T)
 7402	コマンド一覧
 7410	ファイル
@@ -228,6 +229,9 @@
 7874	整合性ストリーム
 7875	ブロック共有
 7876	スパースVDL
+7878	クリーンアップ通知
+7879	POSIX削除
+787A	ゴーストイメージ
 7881	ディレクトリ&D
 7882	リアルタイム&M
 7884	書式(&T)
@@ -317,23 +321,27 @@ CDL3	一覧&3
 CDT1	サムネイル1(&T)
 CDT2	サムネイル2(&8)
 CDT3	サムネイル3(&9)
-CMP1	SHA-1が一致(ディレクトリ含,&H)
+CMP1	SHA-1が一致(サブディレクトリ,&H)
+CMP6	SHA-1が一致する任意ファイル名(&J)
+CMP7	SHA-1が一致、全比較ログ(サブディレクトリ,&L)
 CMPA	大きさと時刻が同じファイル(&A)
-CMPB	中身が一致(ディレクトリ含,&B)
-CMPC	コメント(&C)
+CMPB	中身が一致(サブディレクトリ,&B)
+CMPC	コメントが一致(&W)
 CMPD	詳細(&D)...
 CMPE	どちらにも存在するファイル(&E)
-CMPF	同ファイル名(拡張子除く,&F)
+CMPF	同ファイル名(拡張子無視,&F)
+CMPG	中身が一致、全比較ログ(サブディレクトリ,&G)
 CMPH	クリップボード内ハッシュと比較(&C)
-CMPI	同じ大きさ(同名問わず,&I)
+CMPI	同じ大きさ、任意ファイル名(&I)
 CMPL	大きいファイル(&L)
 CMPM	同じコメント(1窓内,&M)
 CMPN	新規又は新しいファイル(&F)
-CMPQ	同サイズの任意名前ファイル(&Q)
+CMPQ	同サイズ、任意ファイル名(&Q)
 CMPS	大きさが異なるファイル(&S)
 CMPT	新しいファイル(&T)
 CMPW	孤立ファイル(&O)
-CMPX	両存在(ディレクトリ含,&X)
+CMPX	どちらにも存在(サブディレクトリ,&X)
+CMPY	同コメントの任意ファイル名(&Y)
 CMPZ	同じ大きさ(1窓内,&Z)
 COMP	完了しました
 COMT	コメント
@@ -409,6 +417,7 @@ EBSG	%sの署名が異常です
 EBWS	ここには書き込めません
 EC32	comdlg32.dllが読込めません
 ECAL	数式が誤っています: %s
+ECCF	色とフォント以外の設定はできません
 ECDR	展開できません
 ECFD	「～一杯に表示」指定は、１つしか使用できません。
 ECFL	カスタマイズ領域が不足しています
@@ -1376,4 +1385,4 @@ XUUN	最新版です
 XUUQ	新しい %s があります。%s から更新しますか？
 -|7883	
 -|ITFC	
-};bjddnchncanhibhhanenipahondkbkkoidjgbbjfkhonkiljipkgdpmoecbembnjcgdfcfnbiofeoipgnmicjimcjfcdamacehifphbencamcdojjbecicacoadjheddaie 
+};necbipoehhfcalcfineijjgdahgpcbiclficoofgbcnpoebkoinbmfapfgiohejfioobjchnhnmmgjlmlmecalcdoppfpnkiefimmchpefgkiebklgbjcgffkgdkemifaie 

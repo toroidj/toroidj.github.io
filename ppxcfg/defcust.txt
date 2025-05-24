@@ -33,6 +33,7 @@ X_jlst	=0,0
 X_fopw	=0
 X_fatim	=0
 ^|X_cbsz	=8192,0,64000
+^|X_ttt	=75,70
 X_fc	=fc %FCD "%2"
 ^|X_wdel	=B110001,0,1,1
 X_flogh	=0

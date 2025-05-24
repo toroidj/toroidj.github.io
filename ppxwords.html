@@ -126,7 +126,7 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#(Limit)" target="main">(Limit)</a><br>
 <a href="ppxhelp.html#addhistory" target="main">*addhistory <i>type,text</i></a><br>
 <a href="ppxhelp.html#aliascmd" target="main">*alias <i>valuename=[strings]</i></a><br>
-<a href="ppxhelp.html#autodragdrop" target="main">*autodragdrop <i>[caption[,id]][,r[,source path]]</i></a><br>
+<a href="ppxhelp.html#autodragdrop" target="main">*autodragdrop <i>[title[,id]][options]</i></a><br>
 <a href="ppxhelp.html#cachecmd" target="main">*cache <i>[on|off|task]</i></a><br>
 <a href="ppxhelp.html#PPxCmd116" target="main">*capturewindow <i>caption</i></a><br>
 <a href="ppxhelp.html#PPxCmd63" target="main">*cd <i>pathname</i></a><br>
@@ -142,7 +142,7 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#PPxCmd119" target="main">*color [back|cursor] [color]</a><br>
 <a href="ppxhelp.html#PPxCmd5" target="main">*commandhash <i>name</i></a><br>
 <a href="ppxhelp.html#commentcommand" target="main">*comment [id,][&quot;text&quot;|[all] command]</a><br>
-<a href="ppxhelp.html#comparemark" target="main">*comparemark <i>比較方法, マーク属性, サブディレクトリ</i></a><br>
+<a href="ppxhelp.html#comparemark" target="main">*comparemark <i>比較方法 [オプション]</i></a><br>
 <a href="ppxhelp.html#PPxCmd101" target="main">*completelist <i>[-set][-option]</i></a><br>
 <a href="ppxhelp.html#countsize" target="main">*countsize [all|cursor|marked][-clear]</a><br>
 <a href="ppxhelp.html#PPxCmd7" target="main">*cursor <i>移動方法, 移動量, (画面外方法), (画面外他), (範囲外方法), (範囲外他)</i></a><br>
@@ -342,6 +342,7 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#LOGOFF" target="main">LOGOFF</a><br>
 <a href="ppxhelp.html#ListFile" target="main">ListFile</a><br>
 <a href="ppxhelp.html#listsubj" target="main">ListFile※</a><br>
+<a href="ppxhelp.html#ListFileの書式" target="main">ListFileの書式</a><br>
 <a href="ppxhelp.html#MC_celS" target="main">MC_celS</a><br>
 <a href="ppxhelp.html#MC_click" target="main">MC_click</a><br>
 <a href="ppxhelp.html#MC_mdds" target="main">MC_mdds</a><br>
@@ -494,6 +495,7 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#X_cbsz" target="main">X_cbsz</a><br>
 <a href="ppxhelp.html#X_ccode" target="main">X_ccode</a><br>
 <a href="ppxhelp.html#X_chidc" target="main">X_chidc</a><br>
+<a href="ppxhelp.html#X_cmdls" target="main">X_cmdls</a><br>
 <a href="ppxhelp.html#X_cntt" target="main">X_cntt</a><br>
 <a href="ppxhelp.html#X_combo" target="main">X_combo</a><br>
 <a href="ppxhelp.html#X_combos" target="main">X_combos</a><br>
@@ -567,6 +569,7 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#X_tray" target="main">X_tray</a><br>
 <a href="ppxhelp.html#X_tree" target="main">X_tree</a><br>
 <a href="ppxhelp.html#X_tskb" target="main">X_tskb</a><br>
+<a href="ppxhelp.html#X_ttt" target="main">X_ttt</a><br>
 <a href="ppxhelp.html#X_twid" target="main">X_twid</a><br>
 <a href="ppxhelp.html#X_ucsr" target="main">X_ucsr</a><br>
 <a href="ppxhelp.html#X_uftyp" target="main">X_uftyp</a><br>
@@ -606,7 +609,7 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#ppckey97" target="main">[END] ^[A]</a><br>
 <a href="ppxhelp.html#EditKey1" target="main">[ESC]</a><br>
 <a href="ppxhelp.html#PPbKey3" target="main">[ESC] ^[[]</a><br>
-<a href="ppxhelp.html#ppckey142" target="main">[E]</a><br>
+<a href="ppxhelp.html#ppckey144" target="main">[E]</a><br>
 <a href="ppxhelp.html#PPvKey18" target="main">[E] \[Enter]</a><br>
 <a href="ppxhelp.html#ppckey8" target="main">[Enter]</a><br>
 <a href="ppxhelp.html#PPvKey8" target="main">[Enter][N][BS]\[ESC]</a><br>
@@ -633,11 +636,11 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#ppckey117" target="main">[I] \[F2]</a><br>
 <a href="ppxhelp.html#PPvKey33" target="main">[J]</a><br>
 <a href="ppxhelp.html#ppckey67" target="main">[J] \[J]</a><br>
-<a href="ppxhelp.html#ppckey144" target="main">[K]</a><br>
+<a href="ppxhelp.html#ppckey146" target="main">[K]</a><br>
 <a href="ppxhelp.html#PPvKey60" target="main">[K] [L]</a><br>
 <a href="ppxhelp.html#ppckey29" target="main">[L] ^[G]</a><br>
 <a href="ppxhelp.html#PPvKey49" target="main">[M]</a><br>
-<a href="ppxhelp.html#ppckey149" target="main">[N] \[V]</a><br>
+<a href="ppxhelp.html#ppckey151" target="main">[N] \[V]</a><br>
 <a href="ppxhelp.html#ppckey102" target="main">[O]</a><br>
 <a href="ppxhelp.html#mysort" target="main">[PPc]標準の方法にない並び順で表示させたい</a><br>
 <a href="ppxhelp.html#PPvKey25" target="main">[P]</a><br>
@@ -646,7 +649,7 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#PPbKey33" target="main">[PgUP] [PgDW]</a><br>
 <a href="ppxhelp.html#ppckey4" target="main">[Q]</a><br>
 <a href="ppxhelp.html#PPvKey64" target="main">[R]</a><br>
-<a href="ppxhelp.html#ppckey152" target="main">[R] [F2]</a><br>
+<a href="ppxhelp.html#ppckey154" target="main">[R] [F2]</a><br>
 <a href="ppxhelp.html#ppckey94" target="main">[SPACE]</a><br>
 <a href="ppxhelp.html#ppckey42" target="main">[S]</a><br>
 <a href="ppxhelp.html#ppckey79" target="main">[TAB] \[TAB] [F6] \[F6] \[←] \[→]</a><br>
@@ -654,10 +657,10 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#ppckey48" target="main">[T] [F4]</a><br>
 <a href="ppxhelp.html#PPvKey67" target="main">[Tab]</a><br>
 <a href="ppxhelp.html#PPvKey68" target="main">[U]</a><br>
-<a href="ppxhelp.html#ppckey160" target="main">[V]</a><br>
+<a href="ppxhelp.html#ppckey162" target="main">[V]</a><br>
 <a href="ppxhelp.html#PPvKey65" target="main">[W]</a><br>
 <a href="ppxhelp.html#PPvKey27" target="main">[X]</a><br>
-<a href="ppxhelp.html#ppckey164" target="main">[Y]</a><br>
+<a href="ppxhelp.html#ppckey166" target="main">[Y]</a><br>
 <a href="ppxhelp.html#PPvKey24" target="main">[Z]</a><br>
 <a href="ppxhelp.html#PPvKey48" target="main">[[] []] [F3] \[F3]</a><br>
 <a href="ppxhelp.html#ppckey24" target="main">[\]</a><br>
@@ -678,7 +681,7 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#ppckey140" target="main">\[D]</a><br>
 <a href="ppxhelp.html#ppckey99" target="main">\[END]</a><br>
 <a href="ppxhelp.html#EditKey2" target="main">\[ESC]</a><br>
-<a href="ppxhelp.html#ppckey143" target="main">\[E]</a><br>
+<a href="ppxhelp.html#ppckey145" target="main">\[E]</a><br>
 <a href="ppxhelp.html#PPvKey46" target="main">\[E] ^[E]</a><br>
 <a href="ppxhelp.html#ppckey12" target="main">\[Enter]</a><br>
 <a href="ppxhelp.html#PPvKey16" target="main">\[F10]^[Enter]</a><br>
@@ -692,22 +695,22 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#ppckey98" target="main">\[HOME]</a><br>
 <a href="ppxhelp.html#PPbKey47" target="main">\[HOME] \[END]</a><br>
 <a href="ppxhelp.html#ppckey58" target="main">\[INS] \[DEL] ^[NUM+] ^[NUM-]</a><br>
-<a href="ppxhelp.html#ppckey146" target="main">\[K]</a><br>
+<a href="ppxhelp.html#ppckey148" target="main">\[K]</a><br>
 <a href="ppxhelp.html#PPvKey61" target="main">\[K] \[L]</a><br>
 <a href="ppxhelp.html#ppckey30" target="main">\[L]</a><br>
 <a href="ppxhelp.html#PPvKey50" target="main">\[M]</a><br>
 <a href="ppxhelp.html#ppckey121" target="main">\[O]</a><br>
-<a href="ppxhelp.html#ppckey151" target="main">\[P]</a><br>
+<a href="ppxhelp.html#ppckey153" target="main">\[P]</a><br>
 <a href="ppxhelp.html#ppckey65" target="main">\[Page Down] [&gt;] ^[Page Down]</a><br>
 <a href="ppxhelp.html#ppckey64" target="main">\[Page Up] [&lt;] ^[Page Up]</a><br>
-<a href="ppxhelp.html#ppckey154" target="main">\[R]</a><br>
+<a href="ppxhelp.html#ppckey156" target="main">\[R]</a><br>
 <a href="ppxhelp.html#ppckey95" target="main">\[SPACE]</a><br>
 <a href="ppxhelp.html#holdsort" target="main">\[S]</a><br>
 <a href="ppxhelp.html#PPbKey55" target="main">\[TAB] \[F3]</a><br>
 <a href="ppxhelp.html#ppckey50" target="main">\[T]</a><br>
-<a href="ppxhelp.html#ppckey159" target="main">\[U]</a><br>
-<a href="ppxhelp.html#ppckey163" target="main">\[W]</a><br>
-<a href="ppxhelp.html#ppckey165" target="main">\[Y]</a><br>
+<a href="ppxhelp.html#ppckey161" target="main">\[U]</a><br>
+<a href="ppxhelp.html#ppckey165" target="main">\[W]</a><br>
+<a href="ppxhelp.html#ppckey167" target="main">\[Y]</a><br>
 <a href="ppxhelp.html#EditKey12" target="main">\[←] \[→]</a><br>
 <a href="ppxhelp.html#PPbKey10" target="main">\[←] \[→] ^\[←] ^\[→] \[HOME] \[END]</a><br>
 <a href="ppxhelp.html#PPbKey32" target="main">\[↑] \[↓]</a><br>
@@ -805,11 +808,11 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#_User" target="main">_User</a><br>
 <a href="ppxhelp.html#_WinPos" target="main">_WinPos</a><br>
 <a href="ppxhelp.html#_others" target="main">_others</a><br>
-<a href="ppxhelp.html#wildcard10" target="main">attribute: </a><br>
+<a href="ppxhelp.html#wildcard9" target="main">attribute: </a><br>
 <a href="ppxhelp.html#aux" target="main">aux</a><br>
 <a href="ppxhelp.html#auxscheme" target="main">aux://指定※</a><br>
 <a href="ppxhelp.html#burst" target="main">burst</a><br>
-<a href="ppxhelp.html#wildcard12" target="main">date: </a><br>
+<a href="ppxhelp.html#wildcard11" target="main">date: </a><br>
 <a href="ppxhelp.html#directory" target="main">directory</a><br>
 <a href="ppxhelp.html#entry" target="main">entry</a><br>
 <a href="ppxhelp.html#file" target="main">file</a><br>
@@ -818,18 +821,18 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#fullpath" target="main">fullpath</a><br>
 <a href="ppxhelp.html#macro" target="main">macro</a><br>
 <a href="ppxhelp.html#mint" target="main">mint</a><br>
-<a href="ppxhelp.html#wildcard16" target="main">option: </a><br>
+<a href="ppxhelp.html#wildcard15" target="main">option: </a><br>
 <a href="ppxhelp.html#path" target="main">path</a><br>
-<a href="ppxhelp.html#wildcard15" target="main">path: </a><br>
-<a href="ppxhelp.html#wildcard14" target="main">roma: </a><br>
+<a href="ppxhelp.html#wildcard14" target="main">path: </a><br>
+<a href="ppxhelp.html#wildcard13" target="main">roma: </a><br>
 <a href="ppxhelp.html#SHNpath" target="main">shell: / Shell's Namespace形式※</a><br>
-<a href="ppxhelp.html#wildcard13" target="main">size: </a><br>
+<a href="ppxhelp.html#wildcard12" target="main">size: </a><br>
 <a href="ppxhelp.html#EditKey19" target="main">~[←] ~[→]</a><br>
 <a href="ppxhelp.html#EditKey20" target="main">~^[←] ~^[→]</a><br>
-<a href="ppxhelp.html#wildcard8" target="main">「!」</a><br>
-<a href="ppxhelp.html#wildcard9" target="main">「&amp;」</a><br>
-<a href="ppxhelp.html#wildcard5" target="main">「*」,「?」</a><br>
-<a href="ppxhelp.html#wildcard7" target="main">「;」,「,」</a><br>
+<a href="ppxhelp.html#wildcard7" target="main">「!」</a><br>
+<a href="ppxhelp.html#wildcard8" target="main">「&amp;」</a><br>
+<a href="ppxhelp.html#wildcard4" target="main">「*」,「?」</a><br>
+<a href="ppxhelp.html#wildcard6" target="main">「;」,「,」</a><br>
 <a href="ppxhelp.html#entryspec" target="main">※ファイル名やディレクトリ名の仕様</a><br>
 <a href="ppxhelp.html#おまかせインストール" target="main">おまかせインストール</a><br>
 <a href="ppxhelp.html#インクリメンタルサーチ" target="main">インクリメンタルサーチ</a><br>
