@@ -1,0 +1,4935 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="ja">
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-2022-JP">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css"><!--
+body { line-height: 150%; word-break: break-word; }
+--></style>
+<title>Software Message Board log #2-3</title></head>
+<body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
+<center>
+<h2>Software Message Board log #2-3</h2>
+<hr>
+</center>
+
+<a href="./index.html" target="_top">戻る</a>
+
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="900">900.　<b><font color="#000000">Re^15: PPx 0.32+6</font></b>　com-a　　<font size="2">2003/08/18 (月) 02:13</font><br>
+<blockquote>&gt; 0.32+8 で *replace が使えるようになったので、各窓の<br>
+&gt; パス(%DCx)を指定できるメニューを用意して、*replace で<br>
+&gt; 選択できるようにカスタマイズしてください(^^。<br>
+<br>
+対応ありがとうございます。(^^<br>
+<br>
+これから色々設定してみます。<br>
+動作報告は後ほど☆</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="899">899.　<b><font color="#000000">Re^2: 圧縮時に関係ないものが・・・</font></b>　com-a　　<font size="2">2003/08/18 (月) 02:10</font><br>
+<blockquote>&gt; どの種類の書庫を作成しようとしたときに発生しましたか？<br>
+<br>
+LHAで、UNLHA32.DLLを使用しての圧縮ですね。<br>
+定義内容は以下のようになっていますが、自分で定義した<br>
+記憶はありませんです。(^^;<br>
+<br>
+キーが<br>
+<br>
+P    ,%&quot;Pack File&quot;%uUNLHA32.DLL,A -o2 %{&quot;%2%\%|&quot;%} %@ %S&quot;-r -x&quot;<br>
+<br>
+と、P_unxが<br>
+<br>
+UNLHA32.DLL    = Unlha,UnlhaOpenArchive,UnlhaCloseArchive,UnlhaFindFirst,UnlhaFindNext,UnlhaCheckArchive,X -a1 &quot;%C&quot; &quot;%!2%\&quot;,E -a1 &quot;%1&quot; &quot;%!2%\&quot; %@<br>
+<br>
+<br>
+&gt; こちらでも、調べてみますが、書庫DLLのマニュアルをみて<br>
+&gt; P_unx の内容を自分でいじった方が早いかもしれません(^^;<br>
+<br>
+マーク用マクロが見当たらないのでレスポンスファイル<br>
+あたりをどうにかするのかな？という気がするのですが、<br>
+具体的に何をすればレスポンスファイルを弄れるのかが<br>
+分かりません。（テキストに書いてたらすみません。<br>
+m(＿　＿)m）<br>
+<br>
+＃P_unxって解凍時の設定ですか？<br>
+＃よく分かりませんが(^^;、XとかEコマンドが書かれてるので<br>
+＃そんな気が・・・</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="898">898.　<b><font color="#000000">Re: PPx 0.32+8</font></b>　magyu　　<font size="2">2003/08/17 (日) 21:47</font><br>
+<blockquote>こんばんは。<br>
+お盆の最中、せわしい中でのVerUPお疲れ様です。<br>
+<br>
+&gt;そのほか、^[X]の動作不完全などを修正しています。<br>
+<br>
+早々の修正ありがとうございます(^^)。<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="897">897.　<b><font color="#000000">Re^2: TORO&#39;id syslogdなんですが</font></b>　XAX　　<font size="2">2003/08/17 (日) 15:02</font><br>
+<blockquote>&gt; &gt; タスクトレイ版は動くのですが，サービス版だと，<br>
+&gt; &gt; ログを出力してくれません。と言うか，syslogを<br>
+&gt; &gt; 受けると止まってしまいます。(^^;<br>
+&gt; &gt; 原因として，どんなことが考えられるでしょうか?<br>
+&gt; ８割がたディレクトリのアクセス権の問題だと思います。<br>
+&gt; syslog サービスのアクセス権と、ログの出力先のアク<br>
+&gt; セス権とを一度確認してみてください。<br>
+<br>
+　ログの出力先は，FATドライブ(RAM Disk)なので，権限的な問題はないと思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="896">896.　<b><font color="#000000">Re: TORO&#39;id syslogdなんですが</font></b>　TORO　　<font size="2">2003/08/17 (日) 14:56</font><br>
+<blockquote>&gt; タスクトレイ版は動くのですが，サービス版だと，<br>
+&gt; ログを出力してくれません。と言うか，syslogを<br>
+&gt; 受けると止まってしまいます。(^^;<br>
+&gt; 原因として，どんなことが考えられるでしょうか?<br>
+<br>
+８割がたディレクトリのアクセス権の問題だと思います。<br>
+syslog サービスのアクセス権と、ログの出力先のアク<br>
+セス権とを一度確認してみてください。<br>
+<br>
+<br>
+&gt; サービスマネージャの開始パラメータ欄に，SYSLOGD.CFGの<br>
+&gt; フルパスを入力するのですが，これもいつの間にかクリア<br>
+&gt; されている状態です。<br>
+<br>
+これはちょっと身に覚えありません、調べてみます。<br>
+# もちろん、install し直せば消えると思います。<br>
+<br>
+現在 Windows2000 上では使っていませんが、NT4.0 や 2003<br>
+で使用しているので、致命的な問題はないと思います(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="895">895.　<b><font color="#000000">Re: 圧縮時に関係ないものが・・・</font></b>　TORO　　<font size="2">2003/08/17 (日) 14:50</font><br>
+<blockquote>&gt; フォルダとファイルにマークを入れて圧縮する時、マークを<br>
+&gt; 入れたファイルと同名のファイルが、マークを入れていない<br>
+&gt; 他のフォルダにも存在する場合、一緒に圧縮してしまいます。<br>
+&gt; （分かりにくい(^^;）<br>
+<br>
+これは書庫DLL側の問題（または、PPx側の呼び出し指定の問題）<br>
+ですね(^^;<br>
+<br>
+どの種類の書庫を作成しようとしたときに発生しましたか？<br>
+こちらでも、調べてみますが、書庫DLLのマニュアルをみて<br>
+P_unx の内容を自分でいじった方が早いかもしれません(^^;<br>
+<br>
+# オプション指定と挙動がいろいろあって、こちらでも<br>
+# かなりあやふやです(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="894">894.　<b><font color="#000000">Re^14: PPx 0.32+6</font></b>　TORO　　<font size="2">2003/08/17 (日) 14:45</font><br>
+<blockquote>&gt; ＃将来的には、対象窓を指定出来るようになると、やはり<br>
+&gt; ＃嬉しいです。<br>
+<br>
+0.32+8 で *replace が使えるようになったので、各窓の<br>
+パス(%DCx)を指定できるメニューを用意して、*replace で<br>
+選択できるようにカスタマイズしてください(^^。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="893">893.　<b><font color="#000000">CLISM 1.4</font></b>　TORO　　<font size="2">2003/08/17 (日) 14:43</font><br>
+<blockquote>CLISM 1.4 を公開しました。<br>
+<br>
+1.3+1 と内容は変わってなく、マニュアルの修正などを<br>
+行ったのみです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="892">892.　<b><font color="#000000">PPx 0.32+8</font></b>　TORO　　<font size="2">2003/08/17 (日) 14:41</font><br>
+<blockquote>0.32+8 です。<br>
+<br>
+・PPc の [C],[M]が独立して、「*file」コマンドとして<br>
+使用できるようになりました。複数の設定を使い回したい<br>
+ときや、バッチ処理が便利になります。<br>
+<br>
+・内蔵コマンド「*xxxx」の表記を大文字から小文字に<br>
+変更しました(^^; 尚、いままでも大文字／小文字の<br>
+混在が可能でした。<br>
+<br>
+・一行編集で *insert,*replace コマンドが使用でき<br>
+るようになり、編集中の内容の操作ができるようになりました。<br>
+例えば、下の例だと、Ctrl + I で M_pjump のメニューで<br>
+選択した内容と置き換えることができます。<br>
+<br>
+K_edit    = {    ; 文字列編集<br>
+^I    , *replace %M_pjump<br>
+}<br>
+<br>
+そのほか、^[X]の動作不完全などを修正しています。<br>
+<br>
+<br>
+PS.これで 0.33 に追加する予定の機能をすべて<br>
+実装したので、一部カーソル移動カスタマイズの<br>
+補強等を行ってから 0.33 にしたいと思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="891">891.　<b><font color="#000000">TORO&#39;id syslogdなんですが</font></b>　XAX　　<font size="2">2003/08/17 (日) 14:14</font><br>
+<blockquote>タスクトレイ版は動くのですが，サービス版だと，ログを出力してくれません。と言うか，syslogを受けると止まってしまいます。(^^;<br>
+原因として，どんなことが考えられるでしょうか?<br>
+<br>
+サービスマネージャの開始パラメータ欄に，SYSLOGD.CFGのフルパスを入力するのですが，これもいつの間にかクリアされている状態です。<br>
+<br>
+OSはWindows 2000 ProのSP4です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="890">890.　<b><font color="#000000">圧縮時に関係ないものが・・・</font></b>　com-a　　<font size="2">2003/08/14 (木) 04:19</font><br>
+<blockquote>どうも毎度お世話になっております。com-aです。<br>
+<br>
+フォルダとファイルにマークを入れて圧縮する時、マークを<br>
+入れたファイルと同名のファイルが、マークを入れていない<br>
+他のフォルダにも存在する場合、一緒に圧縮してしまいます。<br>
+（分かりにくい(^^;）<br>
+<br>
+例えば<br>
+<br>
+  SubFolder1　（ここにもFile_A.xxxがある）<br>
+* SubFolder2<br>
+* File_A.xxx<br>
+<br>
+上二行（SubFolder1,SubFolder2）がフォルダで、三行目<br>
+（File_A.xxx）はファイルです。<br>
+マークは*印の所に入れていますのでSubFolder1は圧縮対象外<br>
+のはずですが、実際にはSubFolder1下のFile_A.xxxも圧縮<br>
+されてしまいます。<br>
+<br>
+恐らくこのようなマークの付け方の時はマークに関係なく<br>
+全てのフォルダを検索しているのではないでしょうか？<br>
+<br>
+ご確認よろしくお願いします。m(＿　＿)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="889">889.　<b><font color="#000000">Re^13: PPx 0.32+6</font></b>　com-a　　<font size="2">2003/08/14 (木) 04:02</font><br>
+<blockquote>&gt; キーボード（TABやShift+←→）による窓間移動の順番を<br>
+&gt; 元に決めてます。基本的にA→B→C に移動したなら B<br>
+&gt; というように直前の窓になるはずです。<br>
+<br>
+こういう動作をしている時もあったなと思ってたのですが、、<br>
+<br>
+&gt; 尚、連結した状態なら、AB,CD…とペアになってペア間の<br>
+&gt; 反対窓が %2 相当になります。<br>
+<br>
+ここがポイントだったようですね。<br>
+連結状態を解除したら直前の窓が対象窓になるように<br>
+なりました。(^ ^)<br>
+<br>
+ありがとうございました。m(＿　＿)m<br>
+<br>
+<br>
+＃将来的には、対象窓を指定出来るようになると、やはり<br>
+＃嬉しいです。<br>
+＃窓３枚の時は窓間移動で対処出来ますが、窓４枚の時<br>
+＃などでは。。。(^ ^;)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="888">888.　<b><font color="#000000">Re^3: ppxについて</font></b>　TORO　　<font size="2">2003/08/13 (水) 14:30</font><br>
+<blockquote>&gt; 二回目以降の切り貼りは、切り取りの準備ができましたと<br>
+&gt; 表示されるのですが、貼り付けを行うとコピーしていますと<br>
+&gt; いうダイアログが出現して、複写→貼り付けと同じ動作に<br>
+&gt; なってしまいます。<br>
+<br>
+こちらでも再現できました。同じ PPc で連続して二回切り取り<br>
+を行おうとすると、切り取り指定がうまく伝わらなくなるよう<br>
+です。<br>
+修正します。<br>
+# 0.32 以降で発生している模様です(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="887">887.　<b><font color="#000000">Re^2: ppxについて</font></b>　magyu　　<font size="2">2003/08/12 (火) 15:16</font><br>
+<blockquote>レスありがとうございます&gt;&gt;作者様<br>
+状況を少々詳しく書かせていただきます。<br>
+PPCは、最新版、一画面で操作、他のアプリはすべて終了させた状態で行いました。<br>
+PPCを起動して、一回目の切り貼りは必ず通常の動作になります。（ディレクトリの場所、ショートカットキー、メニューからの操作に関わらず）<br>
+二回目以降の切り貼りは、切り取りの準備ができましたと表示されるのですが、貼り付けを行うとコピーしていますというダイアログが出現して、複写→貼り付けと同じ動作になってしまいます。<br>
+以上のような感じなのですが、何かアドバイスいただければ幸いです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="886">886.　<b><font color="#000000">Re: ppxについて</font></b>　TORO　　<font size="2">2003/08/12 (火) 12:55</font><br>
+<blockquote>&gt; 私の環境（win2k.sp4)で、切り取り→貼り付けをしますと<br>
+&gt; 切り取ったはずの元のファイルが、残っていたり、<br>
+&gt; 残っていなかったりというような動作になるのですが、<br>
+&gt; 作者様やユーザーの皆さんの環境では、いかがでしょうか。<br>
+<br>
+私のところではそのような現象はちょっと再現していません。<br>
+今度、同じ症状が出たら、<br>
+・何処から何処に向かって<br>
+・どのような操作で切り貼りを操作した<br>
+かどうかを覚えておいて教えてもらえませんか？<br>
+（例えば PPc で Ctrl+X を押してからエクスプローラで貼り付け<br>
+　した／同じ PPc 上でメニューバーのメニューから切り貼りを<br>
+　行った等）</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="885">885.　<b><font color="#000000">Re^12: PPx 0.32+6</font></b>　TORO　　<font size="2">2003/08/12 (火) 12:51</font><br>
+<blockquote>&gt; &gt; 時、^2キーの反対窓のパスというのが、実際にはどの窓に<br>
+&gt; &gt; 相当するのか分かりません。<br>
+&gt; <br>
+&gt; 現在は起動した順番を覚えていて（途中で終わると順番が<br>
+&gt; 混ざりますが(^^;）、その順番を基準に決定しています。<br>
+書き間違いました(^^;<br>
+キーボード（TABやShift+←→）による窓間移動の順番を<br>
+元に決めてます。基本的にA→B→C に移動したなら B<br>
+というように直前の窓になるはずです。<br>
+尚、連結した状態なら、AB,CD…とペアになってペア間の<br>
+反対窓が %2 相当になります。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="884">884.　<b><font color="#000000">ppxについて</font></b>　magyu　　<font size="2">2003/08/11 (月) 02:45</font><br>
+<blockquote>はじめまして、magyuと申します。<br>
+初めての書き込みで厚かましいとは思いますが、一つお聞きしたいことがあります。<br>
+私の環境（win2k.sp4)で、切り取り→貼り付けをしますと<br>
+切り取ったはずの元のファイルが、残っていたり、残っていなかったりというような動作になるのですが、作者様やユーザーの皆さんの環境では、いかがでしょうか。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="883">883.　<b><font color="#000000">Re^11: PPx 0.32+6</font></b>　TORO　　<font size="2">2003/08/09 (土) 11:05</font><br>
+<blockquote>&gt; 時、^2キーの反対窓のパスというのが、実際にはどの窓に<br>
+&gt; 相当するのか分かりません。<br>
+<br>
+現在は起動した順番を覚えていて（途中で終わると順番が<br>
+混ざりますが(^^;）、その順番を基準に決定しています。<br>
+わかりにくいのは確かなんですが、Z-order もあんまり<br>
+あてにならないので、３窓以上でわかりやすく反対窓を<br>
+決定するのは結構難しいです(^^;。<br>
+<br>
+&gt; これについて、何か良い操作法などは無いでしょうか？<br>
+現在、*INSERT / *REPLACE という文字列挿入、入れ替え<br>
+コマンドを検討しているので、これとメニュー等を組み合わ<br>
+せたら何とかならないかと思ってます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="882">882.　<b><font color="#000000">Re^10: PPx 0.32+6</font></b>　TORO　　<font size="2">2003/08/09 (土) 10:58</font><br>
+<blockquote>&gt; &gt; *COPY アクション名[,コピー元[,コピー先]]<br>
+&gt; こういう定義をしておいて、後で好きな時にパッと呼び出して<br>
+&gt; スパッとコピーするようなイメージですかね？<br>
+そうです(^^。<br>
+<br>
+&gt; （マクロみたいな？・・というよりファイルのバッチ操作に<br>
+&gt; 使えそうなイメージが。）<br>
+ほとんどバッチ処理のためです(笑)。<br>
+<br>
+<br>
+&gt; いくら&amp;Cと押してもファイル属性のチェックボックスしか<br>
+&gt; 触れないので頭から煙が出てきそうでしたが、意味が分かり<br>
+&gt; ました！(^^<br>
+&gt; この以外なら思った動作になりました。冷静に考えれば<br>
+&gt; ファイルコピーダイアログ（File Operation Options）では<br>
+&gt; うまくいかないのは当然ですよね。(^^;<br>
+はい、たとえが悪かったですね(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="881">881.　<b><font color="#000000">PPX 0.32+7</font></b>　TORO　　<font size="2">2003/08/09 (土) 10:55</font><br>
+<blockquote>0.32+7 を公開しました。<br>
+<br>
+D&amp;D処理に今まではエクスプローラ互換のコピー処理を<br>
+使用していましたが、内蔵機能に変更しました。<br>
+<br>
+また、PPv で /BOOTID と /Rを使って特定の PPv を<br>
+使い回して表示することができませんでしたが修正し<br>
+ました。また、PPc でも使い回しができるようにしま<br>
+した。<br>
+<br>
+そのほか、細かい変更を行っています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="880">880.　<b><font color="#000000">Re^10: PPx 0.32+6</font></b>　com-a　　<font size="2">2003/08/08 (金) 04:21</font><br>
+<blockquote>で、追加質問ですが、普段はせいぜいA窓B窓の２つくらいしか<br>
+使わないので、自窓or反対窓のパスを入れる場合は^1or^2キー<br>
+で事足りるのですが、たまに使う３つ目のC窓を表示している<br>
+時、^2キーの反対窓のパスというのが、実際にはどの窓に<br>
+相当するのか分かりません。<br>
+<br>
+実際、それまでの操作によって、反対窓のパスが（現在A窓が<br>
+アクティブなら）B窓になったりC窓になったりします。<br>
+それぞれのウィンドウのZオーダー・アクティブにした順序を<br>
+元に反対窓の定義がされているのなら良いのですが、そうでは<br>
+ないので現在の対処としては、不要窓を閉じてます。<br>
+<br>
+これについて、何か良い操作法などは無いでしょうか？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="879">879.　<b><font color="#000000">Re^9: PPx 0.32+6</font></b>　com-a　　<font size="2">2003/08/08 (金) 04:20</font><br>
+<blockquote>&gt; *COPY アクション名[,コピー元[,コピー先]]<br>
+&gt; といった書式でいまの PPc のファイルコピーの<br>
+&gt; 設定内容を変えて実行をするだけに限らず、<br>
+&gt; 単体の複写／移動コマンドとしても使用できるように<br>
+&gt; 作成中です。<br>
+&gt; # コピー元は、省略したらマークエントリ、指定するときは<br>
+&gt; # ワイルドカード指定と、レスポンスファイルの両方を指定可<br>
+&gt; # 能にする…予定(^^;<br>
+<br>
+だんだん分かってきました。<br>
+こういう定義をしておいて、後で好きな時にパッと呼び出して<br>
+スパッとコピーするようなイメージですかね？<br>
+（マクロみたいな？・・というよりファイルのバッチ操作に<br>
+使えそうなイメージが。）<br>
+<br>
+<br>
+&gt; ファイル操作ダイアログに限らず、名前を指定して実行や<br>
+&gt; ファイルマスク指定などでもカーソル位置のエントリ名等を<br>
+&gt; 入力できるようにしてあるんですが、<br>
+&gt; そのときのキーがマクロ文字と同じ英数字になっていると<br>
+&gt; いう意味です。<br>
+&gt; （エントリ名ならマクロ文字が %C でキーなら &amp;[C] 等）<br>
+<br>
+ファイルコピーダイアログ（File Operation Options）で<br>
+いくら&amp;Cと押してもファイル属性のチェックボックスしか<br>
+触れないので頭から煙が出てきそうでしたが、意味が分かり<br>
+ました！(^^<br>
+この以外なら思った動作になりました。冷静に考えれば<br>
+ファイルコピーダイアログ（File Operation Options）では<br>
+うまくいかないのは当然ですよね。(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="878">878.　<b><font color="#000000">Re^8: PPx 0.32+6</font></b>　TORO　　<font size="2">2003/08/06 (水) 13:11</font><br>
+<blockquote>&gt; じゃあ、ついでに^[3]〜を追加するとか・・・。<br>
+&gt; （使いにくそうですけど。）<br>
+&gt; 「*COPY(仮名)」ってどんなのでしょう？<br>
+<br>
+*COPY アクション名[,コピー元[,コピー先]]<br>
+といった書式でいまの PPc のファイルコピーの<br>
+設定内容を変えて実行をするだけに限らず、<br>
+単体の複写／移動コマンドとしても使用できるように<br>
+作成中です。<br>
+# コピー元は、省略したらマークエントリ、指定するときは<br>
+# ワイルドカード指定と、レスポンスファイルの両方を指定可<br>
+# 能にする…予定(^^;<br>
+<br>
+<br>
+&gt; &gt; 大体 %? と同じ文字で同じ内容が挿入されるようになっています。<br>
+&gt; <br>
+&gt; すみません。よく分かりません。(^^;<br>
+&gt; コピーダイアログで%?と入れる訳じゃないですよね・・・。<br>
+ファイル操作ダイアログに限らず、名前を指定して実行や<br>
+ファイルマスク指定などでもカーソル位置のエントリ名等を<br>
+入力できるようにしてあるんですが、<br>
+そのときのキーがマクロ文字と同じ英数字になっていると<br>
+いう意味です。<br>
+（エントリ名ならマクロ文字が %C でキーなら &amp;[C] 等）<br>
+<br>
+# DOSの FD や KL等で実装していたのと同じなんですが、<br>
+# 意外と知られていないけど、便利な機能です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="877">877.　<b><font color="#000000">Re^7: PPx 0.32+6</font></b>　TORO　　<font size="2">2003/08/06 (水) 12:56</font><br>
+<blockquote>&gt; いや、FILMTNは &#39;,&#39; == &#39;&lt;&#39; (&#39;.&#39; == &#39;&gt;&#39;)では無いですよ。<br>
+&gt; &#39;&lt;&#39; == 先頭 (&#39;&gt;&#39; == 最後) のファイルへカーソル移動ですが、<br>
+&gt; &#39;,&#39; == 表示中画面の先頭 (&#39;.&#39; == 最後) です。<br>
+&gt; <br>
+&gt; 以前、私の我儘で実装して頂いた記憶があるような無いような。<br>
+&gt; こんなこと言いながら、そんな頻繁に使う機能ではないので<br>
+&gt; 無いと困ることは無さそうですが（こらっ<br>
+<br>
+あれれ、そうだったんですか(^^;、昨日FILMTNを起動して確認し<br>
+たんですが、１画面に収まるエントリ数だったので気づきません<br>
+でした(^^;<br>
+画面上の先頭／末端はPPxではまだ未実装ですね。<br>
+課題に入れておきます。<br>
+<br>
+<br>
+&gt; &gt; 実装するために必要な資料をぐぐっていたら、見たことある<br>
+&gt; &gt; 名前の人のやりとりが見つかりました(^^。<br>
+&gt; <br>
+&gt; ざわ…　ざわ…<br>
+&gt; スキッと解決出来ずにダラダラ続けてしまったやり取りがっ・・・<br>
+&gt; お恥ずかしい。(^^;<br>
+<br>
+でも、そのお陰で気をつけないといけないところがよく<br>
+わかったので助かりました(^^。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="876">876.　<b><font color="#000000">Re^7: PPx 0.32+6</font></b>　com-a　　<font size="2">2003/08/06 (水) 00:06</font><br>
+<blockquote>&gt; &gt;ところで、ファイルコピーダイアログで[Ctrl]+[0]〜[2]?で入力<br>
+&gt; &gt;されるパスはなんのパスでしょうか？<br>
+&gt; <br>
+&gt; ^[0]はPPxのパス、^[1]は現在窓のパス、^[2]は反対窓のパスと、<br>
+&gt; PPX.TXT に書いてある通りです(笑)。<br>
+&gt; # あ、^[0] の説明が間違っている(^^;<br>
+<br>
+ざわ…　ざわ…<br>
+しまった。(^^;<br>
+すみません。m(＿　＿)m<br>
+<br>
+じゃあ、ついでに^[3]〜を追加するとか・・・。<br>
+（使いにくそうですけど。）<br>
+「*COPY(仮名)」ってどんなのでしょう？<br>
+<br>
+<br>
+&gt; 大体 %? と同じ文字で同じ内容が挿入されるようになっています。<br>
+<br>
+すみません。よく分かりません。(^^;<br>
+コピーダイアログで%?と入れる訳じゃないですよね・・・。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="875">875.　<b><font color="#000000">Re^6: PPx 0.32+6</font></b>　com-a　　<font size="2">2003/08/06 (水) 00:05</font><br>
+<blockquote>&gt; ●&quot;,&quot; &quot;.&quot;キー<br>
+&gt; <br>
+&gt; 思い出しましたが、FILMTN 配列でしたね(^^;<br>
+&gt; ならば、何も反応しないであってます。<br>
+&gt; FILMTN とは違って、PPxの初期設定では [,]は未定義、<br>
+&gt; [.]はディレクトリの再読込になっています。<br>
+<br>
+あれっ？<br>
+前は使えていたような・・・気のせいか。(^^;;<br>
+<br>
+いや、FILMTNは &#39;,&#39; == &#39;&lt;&#39; (&#39;.&#39; == &#39;&gt;&#39;)では無いですよ。<br>
+&#39;&lt;&#39; == 先頭 (&#39;&gt;&#39; == 最後) のファイルへカーソル移動ですが、<br>
+&#39;,&#39; == 表示中画面の先頭 (&#39;.&#39; == 最後) です。<br>
+<br>
+以前、私の我儘で実装して頂いた記憶があるような無いような。<br>
+こんなこと言いながら、そんな頻繁に使う機能ではないので<br>
+無いと困ることは無さそうですが（こらっ<br>
+<br>
+<br>
+&gt; ●ツリー表示のカーソル位置<br>
+（略<br>
+&gt; ということで、ツリー構成後、改めて TVGN_FIRSTVISIBLE を<br>
+&gt; 使う様に修正して、正しく表示するようになりました。<br>
+<br>
+(^ ^v<br>
+<br>
+<br>
+&gt; 実装するために必要な資料をぐぐっていたら、見たことある<br>
+&gt; 名前の人のやりとりが見つかりました(^^。<br>
+<br>
+ざわ…　ざわ…<br>
+スキッと解決出来ずにダラダラ続けてしまったやり取りがっ・・・<br>
+お恥ずかしい。(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="874">874.　<b><font color="#000000">Re^6: PPx 0.32+6</font></b>　TORO　　<font size="2">2003/08/05 (火) 22:34</font><br>
+<blockquote>&gt;ところで、ファイルコピーダイアログで[Ctrl]+[0]〜[2]?で入力<br>
+&gt;されるパスはなんのパスでしょうか？<br>
+<br>
+^[0]はPPxのパス、^[1]は現在窓のパス、^[2]は反対窓のパスと、<br>
+PPX.TXT に書いてある通りです(笑)。<br>
+# あ、^[0] の説明が間違っている(^^;<br>
+<br>
+大体 %? と同じ文字で同じ内容が挿入されるようになっています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="873">873.　<b><font color="#000000">Re^5: PPx 0.32+6</font></b>　TORO　　<font size="2">2003/08/05 (火) 22:33</font><br>
+<blockquote>&gt;クーラーを入れずにどこまで我慢出来るか挑戦中です。(^^;;<br>
+戦わず、負けています(^^;<br>
+寝るときは使っていませんがいつまでもつやら…<br>
+<br>
+<br>
+●&quot;,&quot; &quot;.&quot;キー<br>
+<br>
+思い出しましたが、FILMTN 配列でしたね(^^;<br>
+ならば、何も反応しないであってます。<br>
+FILMTN とは違って、PPxの初期設定では [,]は未定義、<br>
+[.]はディレクトリの再読込になっています。<br>
+<br>
+次のカスタマイズを追加しておいてください(^^;。<br>
+<br>
+KC_main    = {<br>
+&#39;,&#39;    = @&#39;&lt;&#39;<br>
+&#39;.&#39;    = @&#39;&gt;&#39;<br>
+}<br>
+<br>
+#1.SETUP 時のカスタマイズも直すことにします。<br>
+#2.FILMTN って結構 Shift を無視するキーがあるんですよね(^^;<br>
+<br>
+<br>
+●ツリー表示のカーソル位置<br>
+<br>
+早速教えて頂いた方法で試してみましたが変わりませんでした<br>
+<br>
+…というような内容と説明を返事として書いていたんですが、<br>
+そのとき、カーソル位置を決めているのは、ツリーを構成中の時だと<br>
+いうことを思い出しました(^^;<br>
+<br>
+ツリーは勝手にソートされるので、位置決め後に更にアイテムが<br>
+挿入されたりするから、位置ずれを起こすのも当たり前です(^^;<br>
+<br>
+ということで、ツリー構成後、改めて TVGN_FIRSTVISIBLE を<br>
+使う様に修正して、正しく表示するようになりました。<br>
+<br>
+<br>
+PS.<br>
+　0.32+5 でダイアログのフォント変更を実装しましたが、<br>
+実装するために必要な資料をぐぐっていたら、見たことある<br>
+名前の人のやりとりが見つかりました(^^。<br>
+<br>
+# お陰でつまづくこともなく、さくっと実装できました m(__)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="872">872.　<b><font color="#000000">表記</font></b>　com-a　　<font size="2">2003/08/05 (火) 16:58</font><br>
+<blockquote>&gt; cfgファイルのKC_mainには[,][.]キー（見にくかったので前回より<br>
+&gt; 表記変更^^;）の設定はありませんでした。<br>
+<br>
+ああ、前の方が良かった。(笑)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="871">871.　<b><font color="#000000">Re^5: PPx 0.32+6</font></b>　com-a　　<font size="2">2003/08/05 (火) 16:04</font><br>
+<blockquote>（長かったので続き<br>
+<br>
+&gt; &gt; ・同じくファイルコピーダイアログ（正式名は<br>
+（略<br>
+&gt; X_fopt の内容をみてもらえばわかりますが、いまは「%2%\」に<br>
+&gt; なっています。これを「%DCx%\」にかえれば特定の窓に固定でき<br>
+&gt; ます。複数の指定を使い分けたい場合は、準備中の「*COPY(仮名)」<br>
+&gt; コマンドで対応できると思います。<br>
+<br>
+固定の窓はよりは複数指定を使い分けたいので、「*COPY(仮名)」<br>
+の実装を待ちたいと思います。(^ ^<br>
+<br>
+ところで、ファイルコピーダイアログで[Ctrl]+[0]〜[2]?で入力<br>
+されるパスはなんのパスでしょうか？<br>
+今試した所、[0]=PPXパス,[1]=A窓,[2]=B窓のパスが入力出来ました。<br>
+上記はアクティブ窓がA窓の場合ですが、B窓をアクティブにしたら<br>
+[1]=B窓,[2]=A窓になったので、[1]=自窓,[2]=反対窓という意味<br>
+でしょうか？<br>
+窓を３枚以上空けてると[3]等が使えそうな気はしますが、効きませ<br>
+んよね。。<br>
+<br>
+<br>
+&gt; &gt; 　また、最初から選択状態にするというカスタマイズは可能で<br>
+（略<br>
+&gt; 選択状態の方は現在できませんが、実装するつもりです。<br>
+&gt; 尚、コピー先の変更をするときは、私は Ctrl+A か Shift+Del で<br>
+&gt; やってます。あと、[0]のパス一覧を Ctrl+Shift+P で呼び出せま<br>
+&gt; すので、こっちに普段よく使うコピー先を登録しておくと便利です。<br>
+<br>
+φ(..)メモメモ<br>
+<br>
+<br>
+&gt; &gt; 更に、フォルダ一覧ウィンドウのサイズが記憶されるように<br>
+&gt; &gt; なれば、より良いです。^^<br>
+&gt; <br>
+&gt; これは未定の予定となってます(^^;。他にも位置等を覚えさせ<br>
+&gt; たいウィンドウ（各種ログ表示など）がありますので、まとめて<br>
+&gt; 対処しようと思っています。<br>
+<br>
+了解です。(^ ^</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="870">870.　<b><font color="#000000">Re^4: PPx 0.32+6</font></b>　com-a　　<font size="2">2003/08/05 (火) 16:04</font><br>
+<blockquote>&gt; ようやく夏らしい蒸し暑さになってきましたね。<br>
+&gt; # うれしいやら暑いやら(^^;<br>
+<br>
+クーラーを入れずにどこまで我慢出来るか挑戦中です。(^^;;<br>
+<br>
+<br>
+&gt; &gt; ・&quot;,&quot; &quot;.&quot;キーが効かなくなってしまいましたが、原因としては<br>
+（略<br>
+&gt; 1)キーカスタマイズがおかしくなっていないか確認する。<br>
+&gt; 2)カスタマイザのキー調査でキーが入力されているか確認する。<br>
+&gt; を確認してみてください。<br>
+<br>
+cfgファイルのKC_mainには[,][.]キー（見にくかったので前回より<br>
+表記変更^^;）の設定はありませんでした。<br>
+カスタマイザでのキー入力チェックでも異常は見られません<br>
+でした。<br>
+<br>
+[.]キーを押していると、選択ファイルのアイコン表示部分が<br>
+一瞬砂時計になるのは発見しました。むう。<br>
+[Shift]+[,]or[.]は正常に機能しているのですが。。<br>
+<br>
+<br>
+&gt; &gt; ・左右n列表示の状態で実際にはnで割り切れない数の列が存在<br>
+（略<br>
+&gt; 最終ページが前ページの内容と被ってしまうっていうことですね。<br>
+&gt; 何とかしてみます(^^;<br>
+<br>
+ありがとうございます。m(_ _)m<br>
+<br>
+<br>
+&gt; &gt; ・ファイルコピーダイアログの&quot;Ref(z)&quot;でフォルダ一覧が表示<br>
+（略<br>
+&gt; いい具合に表示ができていません(^^;。<br>
+&gt; この辺は勉強中ですのでちょっと時間が掛かりそうです。<br>
+<br>
+へっぽこプログラマなので、ソースのどこが該当箇所かはっきり<br>
+分かりませんでしたが、<br>
+<br>
+SendMessage(hTwnd,TVM_SELECTITEM,TVGN_CARET,(LPARAM)hItem);<br>
+<br>
+の部分を<br>
+<br>
+TreeView_Select(hTwnd, hItem, TVGN_CARET);<br>
+TreeView_Select(hTwnd, hItem, TVGN_FIRSTVISIBLE);<br>
+<br>
+もしくは<br>
+<br>
+SendMessage(hTwnd,TVM_SELECTITEM,TVGN_CARET,(LPARAM)hItem);<br>
+SendMessage(hTwnd,TVM_SELECTITEM,TVGN_FIRSTVISIBLE,(LPARAM)hItem);<br>
+<br>
+この２文に置き換えてみたらどうなるでしょう？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="869">869.　<b><font color="#000000">Re^3: PPx 0.32+6</font></b>　TORO　　<font size="2">2003/08/04 (月) 13:13</font><br>
+<blockquote>&gt; 暑中見舞い申し上げます。(^ ^;;;;<br>
+<br>
+ようやく夏らしい蒸し暑さになってきましたね。<br>
+# うれしいやら暑いやら(^^;<br>
+<br>
+<br>
+&gt; ・&quot;,&quot; &quot;.&quot;キーが効かなくなってしまいましたが、原因としては<br>
+&gt; 　何が考えられるでしょうか？<br>
+<br>
+最近の変更ではキー関係はいじっていないはずです。<br>
+1)キーカスタマイズがおかしくなっていないか確認する。<br>
+2)カスタマイザのキー調査でキーが入力されているか確認する。<br>
+を確認してみてください。<br>
+<br>
+ <br>
+&gt; ・左右n列表示の状態で実際にはnで割り切れない数の列が存在<br>
+&gt; 　する状態において、←→キーやpage up/downキーで最終ページ<br>
+&gt; 　に切り替えると思ったような表示になりません。<br>
+<br>
+最終ページが前ページの内容と被ってしまうっていうことですね。<br>
+何とかしてみます(^^;<br>
+<br>
+<br>
+&gt; ・ファイルコピーダイアログの&quot;Ref(z)&quot;でフォルダ一覧が表示<br>
+&gt; 　される時、&quot;Dest&quot;で表示されているフォルダをデフォルト<br>
+&gt; 　としてフォルダ一覧内のそのフォルダにカーソルが合わさった<br>
+&gt; 　状態で表示されますが、見た目の上ではカーソル位置の<br>
+&gt; 　フォルダが見難いです。<br>
+<br>
+いい具合に表示ができていません(^^;。<br>
+この辺は勉強中ですのでちょっと時間が掛かりそうです。<br>
+<br>
+<br>
+&gt; ・同じくファイルコピーダイアログ（正式名は<br>
+&gt; 　FileOperationOptions？）を開いた時の&quot;Dest&quot;で表示される<br>
+&gt; 　初期フォルダを、任意の窓のフォルダするような操作or<br>
+&gt; 　カスタマイズは可能でしょうか？<br>
+<br>
+X_fopt の内容をみてもらえばわかりますが、いまは「%2%\」に<br>
+なっています。これを「%DCx%\」にかえれば特定の窓に固定でき<br>
+ます。複数の指定を使い分けたい場合は、準備中の「*COPY(仮名)」<br>
+コマンドで対応できると思います。<br>
+<br>
+<br>
+&gt; 　また、最初から選択状態にするというカスタマイズは可能で<br>
+&gt; 　しょうか？（反対窓以外にコピーする場合、入れ直すのに<br>
+&gt; 　Shift+Homeするのを避けたい（面倒^^;）です。コピー操作<br>
+<br>
+選択状態の方は現在できませんが、実装するつもりです。<br>
+尚、コピー先の変更をするときは、私は Ctrl+A か Shift+Del で<br>
+やってます。あと、[0]のパス一覧を Ctrl+Shift+P で呼び出せま<br>
+すので、こっちに普段よく使うコピー先を登録しておくと便利です。<br>
+<br>
+<br>
+&gt; 更に、フォルダ一覧ウィンドウのサイズが記憶されるように<br>
+&gt; なれば、より良いです。^^<br>
+<br>
+これは未定の予定となってます(^^;。他にも位置等を覚えさせ<br>
+たいウィンドウ（各種ログ表示など）がありますので、まとめて<br>
+対処しようと思っています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="868">868.　<b><font color="#000000">Re^2: PPx 0.32+6</font></b>　com-a　　<font size="2">2003/08/03 (日) 18:10</font><br>
+<blockquote>補足です。<br>
+<br>
+&gt; 　出来れば、フォルダ一覧ウィンドウの上端に来るようにして<br>
+&gt; 　頂ければとても見易いのですが。<br>
+<br>
+更に、フォルダ一覧ウィンドウのサイズが記憶されるように<br>
+なれば、より良いです。^^</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="867">867.　<b><font color="#000000">Re: PPx 0.32+6</font></b>　com-a　　<font size="2">2003/08/03 (日) 18:06</font><br>
+<blockquote>暑中見舞い申し上げます。(^ ^;;;;<br>
+<br>
+質問＆要望です。<br>
+<br>
+・&quot;,&quot; &quot;.&quot;キーが効かなくなってしまいましたが、原因としては<br>
+　何が考えられるでしょうか？<br>
+<br>
+・左右n列表示の状態で実際にはnで割り切れない数の列が存在<br>
+　する状態において、←→キーやpage up/downキーで最終ページ<br>
+　に切り替えると思ったような表示になりません。<br>
+　例えば具体的には、左右２列表示でファイル数がA,B,C,D,Eの<br>
+　５列分ある状態、最初のページはA|B、次ページはC|D、<br>
+　最終ページはE|無とならないかということです。<br>
+　不具合じゃなくて仕様だと思いますが、対策していただけると<br>
+　嬉しいです。^^;<br>
+<br>
+・ファイルコピーダイアログの&quot;Ref(z)&quot;でフォルダ一覧が表示<br>
+　される時、&quot;Dest&quot;で表示されているフォルダをデフォルト<br>
+　としてフォルダ一覧内のそのフォルダにカーソルが合わさった<br>
+　状態で表示されますが、見た目の上ではカーソル位置の<br>
+　フォルダが見難いです。（フォルダ一覧ウィンドウの下端より<br>
+　ちょっと下に表示されます。）<br>
+　出来れば、フォルダ一覧ウィンドウの上端に来るようにして<br>
+　頂ければとても見易いのですが。<br>
+<br>
+・同じくファイルコピーダイアログ（正式名は<br>
+　FileOperationOptions？）を開いた時の&quot;Dest&quot;で表示される<br>
+　初期フォルダを、任意の窓のフォルダするような操作or<br>
+　カスタマイズは可能でしょうか？<br>
+　また、最初から選択状態にするというカスタマイズは可能で<br>
+　しょうか？（反対窓以外にコピーする場合、入れ直すのに<br>
+　Shift+Homeするのを避けたい（面倒^^;）です。コピー操作<br>
+　時にShift+Cすれば思ったような操作は可能ですけど。）<br>
+<br>
+よろしくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="866">866.　<b><font color="#000000">PPx 0.32+6</font></b>　TORO　　<font size="2">2003/08/01 (金) 00:47</font><br>
+<blockquote>・カーソル移動カスタマイズで、設定に未定義の項目を<br>
+　削除し忘れていたので削除しました。<br>
+　カスタマイズを行った人は再設定をお願いします(^^;。<br>
+<br>
+　最初はこの項目を使って、移動と同時にマークができ<br>
+　るようにしようと考えていましたが、煩雑になるので<br>
+　別コマンドを用意することで対処しようと思います。<br>
+<br>
+　そのほか、カーソル移動カスタマイズのバグ取りを行っ<br>
+　ています。<br>
+<br>
+<br>
+・ファイルコピーでダイアログを用意するときに異常終<br>
+　了することがあるのを修正しました。<br>
+　スレッド作成の時にデータを正しく受け渡していないと<br>
+　いう凡ミスでした(^^;<br>
+<br>
+<br>
+・ファイルのバイナリ一致マーク（[O]）でサブディレク<br>
+　トリ内も検索し、ファイル一覧及び中身が完全一致し<br>
+　たときはマークするようにしました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="865">865.　<b><font color="#000000">Re^7: RUNASA1.1のエラー</font></b>　Ken　　<font size="2">2003/07/31 (木) 08:34</font><br>
+<blockquote>TOROさん、大変ご迷惑おかけします。<br>
+Paper Plane xUIを使わせていただきます。<br>
+これもなかなか便利ですね。<br>
+申し訳ないですが、また何かの拍子に理由がわかったらでいいですので<br>
+対処をお願いします。<br>
+今後もがんばってよいソフトウェアを作ってください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="864">864.　<b><font color="#000000">Re^6: RUNASA1.1のエラー</font></b>　TORO　　<font size="2">2003/07/30 (水) 12:42</font><br>
+<blockquote>&gt;ただし、「ハンドルは無効です」というエラーは引き続きでてしまい<br>
+&gt;起動させることができません。<br>
+<br>
+だめでしたか。いろいろ調べていますが、こちらの方では<br>
+今のところ再現できないため、対策できるまで時間が掛か<br>
+りそうです。<br>
+<br>
+<br>
+よかったら、エクスプローラの「別のユーザで実行」を直<br>
+接実行する方法を説明しますのでこれで当座をしのいでみ<br>
+てはどうでしょうか。<br>
+<br>
+・拙作 Paper Plane xUI をダウンロードし、実行できる<br>
+ようにしておきます。<br>
+（最低限 PPCOMMON.DLL と PPTRAY.EXE があれば十分です）<br>
+<br>
+・ランチャーの方には、次のような登録を行います。<br>
+pptray /c %z&quot;実行するファイルのパス&quot;,&quot;runas&quot;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="863">863.　<b><font color="#000000">Re^5: RUNASA1.1のエラー</font></b>　Ken　　<font size="2">2003/07/29 (火) 09:40</font><br>
+<blockquote>アドバイス通り、レジストリのサイズの設定をしたところ、<br>
+クォータ不足のエラーはでなくなりました。<br>
+ただし、「ハンドルは無効です」というエラーは引き続きでてしまい<br>
+起動させることができません。<br>
+<br>
+&gt; もし、RUNASA を、常に入力ダイアログを表示させる目的で<br>
+&gt; 使おうとしているなら、RUNASA を使わずショートカットの<br>
+&gt; 設定で済ませることができます。<br>
+&gt; ショートカットのプロパティに「別のユーザーとして実行」<br>
+&gt; というのがありますので、それをチェックすれば必ず<br>
+&gt; ダイアログが表示されるようになります。<br>
+&gt; <br>
+自分はショートカットを作らずにランチャーですべて<br>
+すませているんで、#オプションを使わせてもらっています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="862">862.　<b><font color="#000000">Re^4: RUNASA1.1のエラー</font></b>　TORO　　<font size="2">2003/07/28 (月) 17:30</font><br>
+<blockquote>肝心なことを書き忘れました<br>
+<br>
+もし、RUNASA を、常に入力ダイアログを表示させる目的で<br>
+使おうとしているなら、RUNASA を使わずショートカットの<br>
+設定で済ませることができます。<br>
+ショートカットのプロパティに「別のユーザーとして実行」<br>
+というのがありますので、それをチェックすれば必ず<br>
+ダイアログが表示されるようになります。<br>
+<br>
+# RUNASAの「#」オプションは同等機能がない NT4.0 で<br>
+# 使用をするために追加したものですから(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="861">861.　<b><font color="#000000">Re^3: RUNASA1.1のエラー</font></b>　TORO　　<font size="2">2003/07/28 (月) 13:08</font><br>
+<blockquote>&gt; 「別のユーザで実行」をしてみたところ、一度<br>
+&gt; 「レジストリのクォータ不足」というエラーがでましたが、<br>
+&gt; それ以降は問題なく起動しました。<br>
+<br>
+RUNASA が報告するエラーは、これ関係かもしれませんね。<br>
+<br>
+このエラーは、再起動などを行った後で行ってもまた表示<br>
+されますか？<br>
+<br>
+もし表示される場合は、別ユーザのレジストリが正しく<br>
+ロードされていない状態で動作しているということですので、<br>
+設定内容の不一致などが起きる可能性があります。<br>
+<br>
+システムのプロパティ→詳細→パフォーマンスオプション→<br>
+変更、のレジストリサイズの部分を調べて余裕がある<br>
+ようにした方がいいと思います。<br>
+<br>
+<br>
+&gt; 起動しようとしていたファイルは<br>
+&gt; E:\AudioEncoder 2.03\AudioEncoder.exeや<br>
+&gt; E:\2xExplorer\2xExplorer.exeです。<br>
+<br>
+起動しようとしているものはそんなに特殊でなさそうですね。<br>
+ただ、異なるユーザでの同時起動に対応しているかどうかは<br>
+ドキュメント等ではわかりませんでしたので、気をつけた方が<br>
+いいかもしれません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="860">860.　<b><font color="#000000">Re: PPx 0.32+5</font></b>　PATA　　<font size="2">2003/07/28 (月) 00:06</font><br>
+<blockquote>&gt; 0.32+5 を公開します。<br>
+<br>
+いただきました〜．<br>
+<br>
+&gt;・(&amp;[英数字])検索開始位置指定(XC_seam)を追加<br>
+<br>
+す，すばやい．(^^<br>
+ありがとうございました．ますます便利です．<br>
+<br>
+インクリメンタルサーチも考えてらっしゃるとの<br>
+ことでしたが，インクリメンタル入力していくと<br>
+表示されるファイルが絞り込まれていくモードが<br>
+あったらおもしろいかも．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="859">859.　<b><font color="#000000">Re^2: RUNASA1.1のエラー</font></b>　Ken　　<font size="2">2003/07/26 (土) 10:38</font><br>
+<blockquote>&gt; 一度、エクスプローラの「別のユーザで実行」で実行してみて<br>
+&gt; 正しく動作するか確認をしてみてください。<br>
+&gt; また、どのようなファイルを実行しようとしたかを教えてください。<br>
+<br>
+「別のユーザで実行」をしてみたところ、一度<br>
+「レジストリのクォータ不足」というエラーがでましたが、それ以降は問題なく起動しました。<br>
+<br>
+起動しようとしていたファイルは<br>
+E:\AudioEncoder 2.03\AudioEncoder.exeや<br>
+E:\2xExplorer\2xExplorer.exeです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="858">858.　<b><font color="#000000">Re: RUNASA1.1にてMMCエラー</font></b>　TORO　　<font size="2">2003/07/25 (金) 12:52</font><br>
+<blockquote>&gt; C:\WINNT\System32\dfrg.mscを登録し、作成されたショート<br>
+&gt; カットより起動させると、以下のウィンドウが表示され起動<br>
+&gt; しません。<br>
+<br>
+以前にも似たようなことがあったのですが、解決しないままと<br>
+なっています。<br>
+そのときは、通常は起動しないけど、何回か試しているうちに<br>
+時々動くことがあるということだったので、微妙なタイミングの<br>
+せいみたいです。<br>
+<br>
+もう一度調べてみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="857">857.　<b><font color="#000000">Re: RUNASA1.1のエラー</font></b>　TORO　　<font size="2">2003/07/25 (金) 12:51</font><br>
+<blockquote>&gt; 自分は、RUNASAをNTサービスではない状態で、さらに、<br>
+&gt; #オプションをつけて使っています。<br>
+&gt; しかし、何度やっても、「ハンドルが無効です。」と<br>
+&gt; でてしまいます。<br>
+<br>
+念のため、次の手順で動作確認しましたが正常動作しました。<br>
+・Windows2000 SP4 制限ユーザ(Users)、RunAs serviceは起動、<br>
+　runasa service は起動しないで、「RUNASA #」で起動。<br>
+・「cmd.exe」をドロップし、Administrators のユーザー名と<br>
+　パスワードを記載して、実行。<br>
+<br>
+<br>
+一度、エクスプローラの「別のユーザで実行」で実行してみて<br>
+正しく動作するか確認をしてみてください。<br>
+また、どのようなファイルを実行しようとしたかを教えてください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="856">856.　<b><font color="#000000">RUNASA1.1にてMMCエラー</font></b>　さだきち　　<font size="2">2003/07/24 (木) 10:48</font><br>
+<blockquote>はじめまして。<br>
+RUNASA1.1にて、Windows2000Proのデフラグを起動させようとしています。（暗号版にて）<br>
+C:\WINNT\System32\dfrg.mscを登録し、作成されたショートカットより起動させると、以下のウィンドウが表示され起動しません。<br>
+---------------------------------------<br>
+Microsoft Visual C++ Runtime Library<br>
+<br>
+Runtime Error!<br>
+Program: C:\WINNT\system32\mmc.exe<br>
+abnormal program termination<br>
+---------------------------------------<br>
+以前実行したときは出来たので、ServicePack3もしくは、WindowsUpdateにて更新した際に動かなくなったのではないかと思われるのですが、何か対応策などはありますでしょうか？<br>
+もし、何か分かれば教えてください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="855">855.　<b><font color="#000000">RUNASA1.1のエラー</font></b>　Ken　　<font size="2">2003/07/24 (木) 08:55</font><br>
+<blockquote>RUNASAがとても便利そうなのでダウンロードさせていただきました。<br>
+しかし、エラーがでるのでここで質問させていただきます。<br>
+自分は、RUNASAをNTサービスではない状態で、さらに、#オプションをつけて使っています。<br>
+しかし、何度やっても、「ハンドルが無効です。」とでてしまいます。<br>
+RunAs Serviceは動作させています。<br>
+<br>
+Windows2000SP3で、User権限でいつもは使っています。<br>
+何か方法があれば、教えてください。<br>
+よろしくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="854">854.　<b><font color="#000000">PPx 0.32+5</font></b>　TORO　　<font size="2">2003/07/24 (木) 00:47</font><br>
+<blockquote>0.32+5 を公開します。<br>
+<br>
+カーソル移動カスタマイズで未実装だった設定を<br>
+実装しました。<br>
+<br>
+また、ダイアログボックスのフォントのカスタマイズが<br>
+できるようになりました。<br>
+今までは、英語環境などでも表示できるようにフォント<br>
+指定をしていなかったため、Win3.1由来の大きな文字に<br>
+なっていましたが、指定ができるようになったため<br>
+他のソフトとの違和感が減るかと思います。<br>
+<br>
+そのほかは細かな改良を行っています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="853">853.　<b><font color="#000000">Re^2: PPx 0.32+4</font></b>　TORO　　<font size="2">2003/07/23 (水) 12:46</font><br>
+<blockquote>&gt; まだXC_mvUDだけしか設定してみていませんが，<br>
+&gt; それでも十分です．とても快適になりました．(^^)<br>
+&gt; 他の設定もいろいろ試してみたいと思います．<br>
+&gt; どうもありがとうございました．<br>
+<br>
+ようやく本格的な移動カスタマイズを用意することが<br>
+できました(^^;<br>
+<br>
+<br>
+&gt; &amp;\[英字]で1文字目が該当するエントリへ移動する<br>
+&gt; 機能ですが，1回移動した後カーソルを動かすと，<br>
+&gt; また先頭のエントリから検索しなおしているようです．<br>
+&gt; これをカーソル位置から下方向に検索するような<br>
+&gt; 設定ができると嬉しいのですが．<br>
+<br>
+前聞いたかどうかはちょっと覚えないですね(^^;<br>
+現在の仕様は、カーソル上のエントリと検索する文字が<br>
+一致するときはカーソル以降、違う文字なら最初から<br>
+検索になっています。<br>
+<br>
+とりあえず、選択可能になるよう変更しておきます。<br>
+#インクリメンタル方式もちょっと検討したいですし</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="852">852.　<b><font color="#000000">Re: PPx 0.32+4</font></b>　PATA　　<font size="2">2003/07/18 (金) 00:20</font><br>
+<blockquote>だいぶご無沙汰してしまいました．<br>
+<br>
+&gt; 0.32+4 です。<br>
+<br>
+いただきました〜．<br>
+<br>
+&gt; PPcのカーソル移動処理を、また大幅変更したため時間が掛かって<br>
+&gt; しまいました(^^;<br>
+<br>
+まだXC_mvUDだけしか設定してみていませんが，<br>
+それでも十分です．とても快適になりました．(^^)<br>
+他の設定もいろいろ試してみたいと思います．<br>
+どうもありがとうございました．<br>
+<br>
+1点要望です(もしかしたら以前にも要望したかも<br>
+しれませんが…)．<br>
+&amp;\[英字]で1文字目が該当するエントリへ移動する<br>
+機能ですが，1回移動した後カーソルを動かすと，<br>
+また先頭のエントリから検索しなおしているようです．<br>
+これをカーソル位置から下方向に検索するような<br>
+設定ができると嬉しいのですが．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="851">851.　<b><font color="#000000">PPx 0.32+4</font></b>　TORO　　<font size="2">2003/07/17 (木) 00:30</font><br>
+<blockquote>0.32+4 です。<br>
+<br>
+PPcのカーソル移動処理を、また大幅変更したため時間が掛かって<br>
+しまいました(^^;<br>
+<br>
+その分、前よりできることが増えていますので、好みにあった<br>
+移動方法を使えると思います。<br>
+<br>
+設定は例えば<br>
+XC_mvUD = 0,1,0, 3,B110, 5,B111<br>
+等と指定します。<br>
+この例だと、上下方向に１単位でカーソル移動を行い、<br>
+　画面からはみ出したときは、行スクロールで補正、<br>
+　先頭／末端を超えたときは、ページを切り替えて反対側に移動<br>
+という動作になります。<br>
+また、２窓動作時は、窓が隣り合う画面端の時は、窓間移動になります。<br>
+<br>
+移動方法の「0」はXC_pageの値に応じた動作をします。<br>
+XC_page は他にも全体としてスクロール向けの処理を行うかどうかの<br>
+切り替えを行うので、行スクロール移動を基本にするときは１にして、<br>
+それ以外の時は０にするといいと思います。<br>
+<br>
+尚、一部の指定はまだ未実装になっています(^^;。<br>
+他に設定できない移動方法で希望があったら、教えてください。<br>
+今回の変更が終わったら当分いじらない予定です。<br>
+<br>
+<br>
+そのほかは細々とした修正を行ってます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="850">850.　<b><font color="#000000">すんません</font></b>　田中　　<font size="2">2003/07/13 (日) 21:07</font><br>
+<blockquote>よく調べもせず、下らない質問をしてしまいました。<br>
+当のスレッドはすぐ削除しました。<br>
+すんません。新しいスレッドを立てるのも何なんで<br>
+ここで言っておきます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="848">848.　<b><font color="#000000">Re^2: PPXの小窓での文字入力について</font></b>　田中　　<font size="2">2003/07/01 (火) 17:15</font><br>
+<blockquote>直りました。<br>
+&gt; # たぶん、田中さんのところは、文字入力関係を制御する<br>
+&gt; # ツールを導入していると思います(^^;。<br>
+すみません。まっ先に疑って外してみたんですが、<br>
+今改めて実験してみると、プログラムを終了して再起動しないと<br>
+キー制御が無効にならない事に気付きました。<br>
+ありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="847">847.　<b><font color="#000000">Re: PPXの小窓での文字入力について</font></b>　TORO　　<font size="2">2003/07/01 (火) 13:02</font><br>
+<blockquote>&gt; PPx 0.32+3をWinXPで使用してます。リネームなどの小窓での<br>
+&gt; 文字入力の際、2バイト文字をBS、DELで消去すると、次の一文字<br>
+&gt; まで消去されてしまいます。PPXの問題ではなかったらすみません。<br>
+&gt; どなたか再現しますでしょうか。<br>
+<br>
+「X_xpbug    = 1」というカスタマイズをすることで直ると思います。<br>
+<br>
+XP で Luna UI を使うと該当する現象が発生するのですが、<br>
+PPx この現象を判別して対処しています。<br>
+しかし、一部のソフトの組み合わせによっては、この判別が<br>
+うまくいかない場合があります(^^;。<br>
+<br>
+# たぶん、田中さんのところは、文字入力関係を制御する<br>
+# ツールを導入していると思います(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="846">846.　<b><font color="#000000">PPXの小窓での文字入力について</font></b>　田中　　<font size="2">2003/06/30 (月) 19:38</font><br>
+<blockquote>PPx 0.32+3をWinXPで使用してます。リネームなどの小窓での<br>
+文字入力の際、2バイト文字をBS、DELで消去すると、次の一文字<br>
+まで消去されてしまいます。PPXの問題ではなかったらすみません。<br>
+どなたか再現しますでしょうか。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="845">845.　<b><font color="#000000">Re: ファイルのドロップ</font></b>　TORO　　<font size="2">2003/06/09 (月) 18:40</font><br>
+<blockquote>&gt; PPC 0.32+3 ですが、<br>
+&gt; 「..」にファイルをドロップできなくなってしまったんでしょうか。<br>
+&gt; 便利だったので残念です。<br>
+<br>
+エントリ位置の入れ替えの時に「.」「..」と入れ替えができる<br>
+ために、その後のソートなどに支障が出てしまったので、<br>
+とりあえず全面禁止としてしまいました(^^;<br>
+コピーや移動の時は使えるように再修正しておきます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="844">844.　<b><font color="#000000">PPx 0.32+3 補足</font></b>　TORO　　<font size="2">2003/06/09 (月) 18:39</font><br>
+<blockquote>書き忘れていましたが、今回から NT系では[C],[M]の<br>
+処理が別スレッドになり、更に １つのPPc上から複数の<br>
+ダイアログを開いて並列動作ができるようになっています。<br>
+<br>
+Win9x 上ではリソース不足による動作不安定を防止するために<br>
+あえて、従来のままの１つのみの疑似並列動作としています。<br>
+<br>
+# コンボボックスやチェックボックスを多用したダイアログの<br>
+# ため、意外にリソースを消費しています(^^;<br>
+<br>
+また、カーソルカスタマイズが完成したら、D&amp;Dの処理に<br>
+使用したり、「PPB /C *copy xxx」等とコマンドとして<br>
+使用可能にする予定です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="843">843.　<b><font color="#000000">ファイルのドロップ</font></b>　PMAKO　　<font size="2">2003/06/09 (月) 00:28</font><br>
+<blockquote>PPC 0.32+3 ですが、<br>
+「..」にファイルをドロップできなくなってしまったんでしょうか。<br>
+便利だったので残念です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="842">842.　<b><font color="#000000">Re^2: PPV の引数（ひとりごと）</font></b>　NIBIE　　<font size="2">2003/06/08 (日) 22:33</font><br>
+<blockquote>&gt; 起動時のカスタマイズやキーマクロが使えるようにした方<br>
+&gt; がいいですね。<br>
+<br>
+あ〜これあると夢広がりますね〜(^^)♪<br>
+回答どうもです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="841">841.　<b><font color="#000000">PPx 0.32+3</font></b>　TORO　　<font size="2">2003/06/08 (日) 19:28</font><br>
+<blockquote>0.32+3 を公開しました。<br>
+<br>
+本当は PPc のカーソル移動カスタマイズを仕上げた状態で<br>
+公開する予定でしたが、調節がなかなかうまくいかないので<br>
+途中のを出します。<br>
+# いまのとまた、設定内容が変わったりしてます(^^;<br>
+<br>
+・%# がとりあえず使用できるようにしてあります。<br>
+ただし、%Or を組み合わせた状態では使用できず、<br>
+１回で実行できる範囲での列挙のみとなります。<br>
+<br>
+・ソートの表示関係でいろいろ修正してます。<br>
+・「file1.txt」、「file10.txt」、「file100.txt」の<br>
+順にソートするための指定を詳細指定で指定できるように<br>
+なりました。ただし、いまはほかの詳細指定が無効となっ<br>
+てます(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="840">840.　<b><font color="#000000">Re: PPV の引数（ひとりごと）</font></b>　TORO　　<font size="2">2003/06/08 (日) 19:21</font><br>
+<blockquote>&gt; 実は画像の表示方法を[=]のように<br>
+&gt; 100%／Fill／AUTO と<br>
+&gt; いろいろ切り替えたいと思っているのですが、<br>
+&gt; 引数に指定はできないですよね？<br>
+<br>
+指定はできませんが、XV_imgD の内容だけを記載した<br>
+カスタマイズファイルを使って、あらかじめ PPCUST で<br>
+カスタマイズしておくことはできます(^^;。<br>
+# かなり見にくそうですけど(^^;<br>
+<br>
+起動時のカスタマイズやキーマクロが使えるようにした方<br>
+がいいですね。<br>
+<br>
+<br>
+&gt; /R って指定番号無関係に PPV を再利用する<br>
+&gt; ということなんでしょうか？<br>
+&gt; たとえば２つPPV が起動していた場合、<br>
+&gt; /R がどちらを利用するかというような規則はありますかねえ？？<br>
+今のところ、/R と /BOOTID は両方指定しても起動中の PPv の<br>
+指定はできないですね(^^;<br>
+/R は現在、最後に起動した PPv が優先利用されます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="839">839.　<b><font color="#000000">PPV の引数（ひとりごと）</font></b>　NIBIE　　<font size="2">2003/06/08 (日) 11:50</font><br>
+<blockquote>PPV を外部から起動し、<br>
+連続して画像を見るようなツールを使っています。<br>
+<br>
+実は画像の表示方法を[=]のように<br>
+100%／Fill／AUTO と<br>
+いろいろ切り替えたいと思っているのですが、<br>
+引数に指定はできないですよね？<br>
+<br>
+代わりに、指定番号X は100%、指定番号Y は AUTO<br>
+というようにあらかじめ設定しておいて、<br>
+/BOOTID:x /R で切り替えて起動すれば<br>
+大丈夫かなと思っていたのですが、なんかうまくいかない。<br>
+<br>
+/R って指定番号無関係に PPV を再利用する<br>
+ということなんでしょうか？<br>
+たとえば２つPPV が起動していた場合、<br>
+/R がどちらを利用するかというような規則はありますかねえ？？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="838">838.　<b><font color="#000000">PPx 0.32+2</font></b>　TORO　　<font size="2">2003/05/18 (日) 23:57</font><br>
+<blockquote>0.32+2 を公開しました。<br>
+<br>
+ファイルが増えたとき、削除状態になっていることがあったため、<br>
+修正を行いました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="837">837.　<b><font color="#000000">CLISM 1.3+1 &amp; K-Launcher 1.25+1</font></b>　TORO　　<font size="2">2003/05/13 (火) 22:02</font><br>
+<blockquote>CLISM と K-Launcher で動作がおかしかったところがあったので<br>
+修正版を出します。両者とも、しばらく様子を見て問題なかったら<br>
+正式版にしようと思います。<br>
+<br>
+●CLISM 1.23 + 1<br>
+<br>
+一部のソフト上でペーストを行ったときに、少し待たされる<br>
+ことがあったのを修正しました。<br>
+<br>
+<br>
+●K-Launcher 1.25 + 1<br>
+<br>
+Windows 95B 以降のDOS上で、MS WorkgroupConnection を<br>
+使用したときに UNC 指定によるディレクトリに移動でき<br>
+なかったのを修正しました<br>
+<br>
+# 久しぶりに 128 bytes の呪いに悩まされた(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="836">836.　<b><font color="#000000">Re^2: XV_imgDオプション</font></b>　asc　　<font size="2">2003/05/07 (水) 17:03</font><br>
+<blockquote>お返事ありがとうございます。<br>
+オプション設定できました。<br>
+&gt; 尚、１番目の項目は [+][-][=] キーで操作した状態を<br>
+&gt; 記憶しますので通常はここで指定しなくても間に合います。<br>
+設定をいじってはPPX.CFGを読み込ませていたので、<br>
+状態が記憶されることに気がつきませんでした。<br>
+<br>
+&gt; 早めに実装するつもりです(^^。<br>
+楽しみにしています。<br>
+まだ使い始めたばかりで持て余している感はありますが、<br>
+細かいところまでカスタマイズできて、とても使いやすいです。<br>
+これからもよろしくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="834">834.　<b><font color="#000000">Re: XV_imgDオプション</font></b>　TORO　　<font size="2">2003/05/07 (水) 12:46</font><br>
+<blockquote>&gt; XV_imgDオプションの設定の仕方が分かりません。<br>
+&gt; XV_imgD    = -2,2<br>
+&gt; とか、いろいろ試行錯誤してみたのですがうまくいきません。<br>
+<br>
+ここは次のように指定します。<br>
+XV_imgD    = {<br>
+VA    = 0,3<br>
+}<br>
+尚、１番目の項目は [+][-][=] キーで操作した状態を<br>
+記憶しますので通常はここで指定しなくても間に合います。<br>
+<br>
+<br>
+&gt; それと、%#をできれば早く実装していただけたら、と思います。<br>
+早めに実装するつもりです(^^。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="833">833.　<b><font color="#000000">XV_imgDオプション</font></b>　asc　　<font size="2">2003/05/06 (火) 12:07</font><br>
+<blockquote>初めまして、PPxを最近使い始めたのですが、<br>
+XV_imgDオプションの設定の仕方が分かりません。<br>
+XV_imgD    = -2,2<br>
+とか、いろいろ試行錯誤してみたのですがうまくいきません。<br>
+どのように設定したらよいのでしょうか？<br>
+<br>
+それと、%#をできれば早く実装していただけたら、と思います。<br>
+rオプションを使った連続実行では、あまり使い勝手がよくないのです。<br>
+わがまま言って申し訳ないですが、どうぞよろしくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="832">832.　<b><font color="#000000">Re^2: PPxの%#について</font></b>　BGRM　　<font size="2">2003/04/29 (火) 11:19</font><br>
+<blockquote>PPCUST.EXEで生成したCFGファイルの中にも%#が含まれていたので<br>
+てっきり使えるものかと思ってました。(^^;<br>
+コマンドラインに複数ファイルのパスを渡すというのは<br>
+文字数の関係で危険ですので、おっしゃるとおり<br>
+%Orを使って1ファイルごとに呼び出した方が安全なのかもしれません。<br>
+お返事、どうもありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="831">831.　<b><font color="#000000">Re: ありがとうございました</font></b>　TORO　　<font size="2">2003/04/28 (月) 22:27</font><br>
+<blockquote>&gt; Microsoftの修正プログラムに使わない方がいいのですか。<br>
+&gt; ものすごく喜んでたのに、残念です。<br>
+<br>
+システムの書き換えを伴いますので、動作検証したなら<br>
+ともかく、闇雲に実行して起動しなくなったとかがあったら<br>
+困りますからね(^^;<br>
+普通にいれてもおかしくなる例がありますし。<br>
+<br>
+<br>
+&gt; でも、AUTOCAD の無償ビューアーも確かAdministrator<br>
+&gt;権限がないと使わせてくれなかったと思うので、<br>
+<br>
+Volo View ですか、あれは PowerUser でも動くので<br>
+HKEY_LOCAL_MACHINE\SOFTWARE\Autodesk 以下のアクセ<br>
+ス権を制限ユーザでも書き込めるようにしたら動くような<br>
+「気」がします。<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="830">830.　<b><font color="#000000">Re^2: LFN ページ</font></b>　TORO　　<font size="2">2003/04/28 (月) 22:23</font><br>
+<blockquote>&gt; DOSLFNを展開すると、沢山のファイルが出てきますけど、<br>
+&gt; 最低限、DOSLFN.COMとCP932UNI.TBLの２つのファイルが<br>
+&gt; あればＯＫみたいですね。<br>
+<br>
+あと、US mode 用に CP932UNI.TBL があるといいのでは<br>
+ないかと思います。<br>
+また、こちらでは検証していないですが DOSLFN は CD-ROMを<br>
+LFN 付きでアクセスできるようですね。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="829">829.　<b><font color="#000000">Re^2: K-Launcher 1.25</font></b>　TORO　　<font size="2">2003/04/28 (月) 22:19</font><br>
+<blockquote>私は、マルチウィンドウでの並列作業に慣れきってしまいまし<br>
+たので、もう DOS メインではやっていけなくなってしましま<br>
+した(^^;。<br>
+一応KLの更新は続けていくつもりですし、連絡をもらったら、<br>
+できる限り問題対処等をしていきますので適当に声をかけて<br>
+ください(笑)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="828">828.　<b><font color="#000000">Re: PPxの%#について</font></b>　TORO　　<font size="2">2003/04/28 (月) 22:17</font><br>
+<blockquote>すみません、たぶん help ファイルのほうをみて試されたかと思<br>
+いますが、あれは K-Launcher の説明をちょっといじっただけの<br>
+ものでして、未実装のものがいくつかあります(^^;<br>
+<br>
+%# も現在未実装なので、まだ説明通りの動作をしません。<br>
+早めに実装します(^^;<br>
+<br>
+代わりの方法として、r オプションを使った連続実行ができるの<br>
+で、これで回避してください。例えば、次の通りになります。<br>
+<br>
+^T   ,%Or,touch.exe %C<br>
+<br>
+（例が touch なのでうまくいかない可能性がありますが(^^;。<br>
+一応 [A] コマンドで、日付、時刻欄を空欄にすると現在時刻に<br>
+なりますので、この例と同等の処理ができます）</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="827">827.　<b><font color="#000000">ありがとうございました</font></b>　でんでんむし　　<font size="2">2003/04/28 (月) 13:08</font><br>
+<blockquote>Microsoftの修正プログラムに使わない方がいいのですか。ものすごく<br>
+喜んでたのに、残念です。<br>
+<br>
+でも、AUTOCAD の無償ビューアーも確かAdministrator権限がないと<br>
+使わせてくれなかったと思うので、そちらで活用してみたいと思いま<br>
+す。ありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="826">826.　<b><font color="#000000">Re: LFN ページ</font></b>　b37　　<font size="2">2003/04/27 (日) 20:02</font><br>
+<blockquote>貴重な情報をありがとうございます。<br>
+たしかに、DOSをメインに扱っている人は減っていますよね。<br>
+今の時代にDOSを使っている方って、DOSのベテランの方が多くて、<br>
+今回のような情報は当たり前のように知っている方が<br>
+ほとんどなのかも知れませんが、<br>
+私のように、DOSが好きな割には、知識が今一つという者にとって、<br>
+このような解説はとても助かります。<br>
+で、さっそく、DOSLFNをDLして使ってみました。<br>
+純DOSで、LFN（しかも日本語のファイル名が）を<br>
+KLで扱えるなんて感動ものでした！<br>
+DOSLFNを展開すると、沢山のファイルが出てきますけど、<br>
+最低限、DOSLFN.COMとCP932UNI.TBLの２つのファイルが<br>
+あればＯＫみたいですね。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="825">825.　<b><font color="#000000">Re: K-Launcher 1.25</font></b>　b37　　<font size="2">2003/04/27 (日) 20:00</font><br>
+<blockquote>いつまでも、DOSソフトのメンテを続けて下さって<br>
+ありがとうございます。<br>
+DOS用ソフトをDOSだけで使う分には、<br>
+あまりメンテも必要ないかもしれませんが、<br>
+自宅でDOSを使っていても、<br>
+会社ではどうしてもWinを使わざるを得ないので、<br>
+純DOSだけでなく、DOS窓での使用を考慮してくださるのは<br>
+本当に助かっています。<br>
+私は、会社のWIN2Kでファイルのコピーをするときは、<br>
+必ずKLのお世話になっています。<br>
+（１日、数回は必ずお世話になっています・・・）<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="824">824.　<b><font color="#000000">PPxの%#について</font></b>　BGRM　　<font size="2">2003/04/27 (日) 16:29</font><br>
+<blockquote>はじめまして。<br>
+PPxを利用させていただいておりますが質問があります。<br>
+<br>
+マークされた複数のファイルをコマンドラインに渡すために<br>
+CFGファイルで%#を指定したのですがうまく代入されません。<br>
+例えば^Tにtouch.exeを割り当てる場合、<br>
+^T   ,touch.exe %#<br>
+のように記述しましたところ、%#は#という文字であると判断されてしまいました。<br>
+<br>
+また、これと関連する内容ですが、マークした複数のファイルをそれぞれ&quot;&quot;付きで囲って<br>
+コマンドラインに列挙することは可能でしょうか？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="823">823.　<b><font color="#000000">ClockPod 2.44+2</font></b>　TORO　　<font size="2">2003/04/26 (土) 19:48</font><br>
+<blockquote>+2 を公開しました。<br>
+<br>
+CPU負荷率の表示ができるように %C,%c を追加しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="822">822.　<b><font color="#000000">Re: RUNASA</font></b>　TORO　　<font size="2">2003/04/25 (金) 00:55</font><br>
+<blockquote>&gt; なぜなら今まで、Microsoft社の修正プログラムが出る<br>
+&gt; たびに、一台一台私がインストールして回っていたから<br>
+&gt; です。これで、パスワードを教えなくても各自にインス<br>
+&gt; トールさせられる、と思いました。<br>
+<br>
+こちらのような用途は避けた方がいいのではないかと思い<br>
+ます。<br>
+「別のユーザで実行」や RUNASA で動作しないというソフ<br>
+トが結構ありますので、実は正しく更新されていなかった<br>
+というのもありえますから(^^;<br>
+<br>
+&gt; Microsoft VM の修正プログラムをインストールしてみ<br>
+&gt; ようとしたら、「コマンドラインオプションに間違いがある」<br>
+&gt; とエラーがでてしまいました。<br>
+<br>
+これは MS の別の修正プログラムで試してみましたが、<br>
+確かに同じようなメッセージがでますね。<br>
+ただ、CMD.EXE から実行しようとしても同じメッセージが<br>
+でるので修正プログラム側の問題と思います。<br>
+<br>
+一応、修正プログラムのショートカットを作成し、<br>
+このショートカットを RUNASA で登録すると<br>
+実行できるようです。    </blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="820">820.　<b><font color="#000000">RUNASA</font></b>　でんでんむし　　<font size="2">2003/04/24 (木) 16:44</font><br>
+<blockquote>初めまして。RUNASAというソフトを知った時はとても嬉しかったです。<br>
+なぜなら今まで、Microsoft社の修正プログラムが出るたびに、一台<br>
+一台私がインストールして回っていたからです。これで、パスワード<br>
+を教えなくても各自にインストールさせられる、と思いました。<br>
+<br>
+ところが、さっそく WindowsXPにNTタイプのインストールをしてから<br>
+Microsoft VM の修正プログラムをインストールしてみようとしたら、<br>
+「コマンドラインオプションに間違いがある」とエラーがでてしまい<br>
+ました。これは、この修正プログラムの作りが更にいじわるにできて<br>
+いるということなんでしょうか、それとも私がRUNASAのインストール<br>
+に何か失敗しているのでしょうか。ご教授お願いいたします。<br>
+<br>
+RUNASAのインストールの時は、解凍してからAdministratorログイン<br>
+し、SINSTALL.BATをダブルクリックし、制限ユーザーでログインしな<br>
+おしてRUNASA.EXEを起動して目的の修正プログラムをドロップし、<br>
+Administratorユーザーのパスワードを入力してデスクトップにショー<br>
+トカットを作成しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="819">819.　<b><font color="#000000">Re^4: ClockPod 2.44+1</font></b>　TORO　　<font size="2">2003/04/24 (木) 13:00</font><br>
+<blockquote>&gt; ご提供いただいた0422版で試した所、文字が消える現象は<br>
+&gt;再発しなくなりました。<br>
+<br>
+対処できたようですね、一安心です(^^。<br>
+<br>
+&gt; 又、 2.44+1 においても、自分用にカスタマイズした <br>
+&gt; CLOCKPOD.CFG を使わずに<br>
+&gt; 起動した場合は発生しない事も確認しました。<br>
+<br>
+別環境での動作確認ありがとうございます。こちらでも<br>
+条件をいろいろ変えて再現しようとしたのですが、<br>
+見つかりませんでした(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="818">818.　<b><font color="#000000">Re^3: ClockPod 2.44+1</font></b>　主任A　　<font size="2">2003/04/23 (水) 10:02</font><br>
+<blockquote>有難うございます。<br>
+<br>
+ご提供いただいた0422版で試した所、文字が消える現象は再発しなくなりました。<br>
+<br>
+一応お知らせしておきますと、<br>
+<br>
+    X_transpar    = 100;<br>
+    X_shadow    = 0;<br>
+<br>
+です。<br>
+<br>
+又、 2.44+1 においても、自分用にカスタマイズした CLOCKPOD.CFG を使わずに<br>
+起動した場合は発生しない事も確認しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="817">817.　<b><font color="#000000">Re^2: ClockPod 2.44+1</font></b>　TORO　[<a href="http://homepage1.nifty.com/toro/cp0422.lzh">URL</a>]　　<font size="2">2003/04/22 (火) 22:52</font><br>
+<blockquote>&gt; 2.44+1ですが、表示が消えてしまう時があります。<br>
+<br>
+いまのところ再現できていませんが、表示関係のチューニングを<br>
+行っていますので、URL の CLOCKPOD.EXE を試してみてください。<br>
+<br>
+もし、これでだめでしたら、X_transpar と X_shadow の値を<br>
+教えてください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="816">816.　<b><font color="#000000">Re: ClockPod 2.44+1</font></b>　主任A　　<font size="2">2003/04/21 (月) 16:51</font><br>
+<blockquote>2.44+1ですが、表示が消えてしまう時があります。解っているところでは、テロップが流れた後です。再描画される様な事をすると復活します。<br>
+<br>
+Win2000で発生しました。設定も何かお知らせした方が良いでしょうか。取り敢えずX_telopsp=200/X_telopq=100です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="815">815.　<b><font color="#000000">Re^2: PPx XC_tdir=0での挙動</font></b>　ruru　　<font size="2">2003/04/20 (日) 09:13</font><br>
+<blockquote>32+1にて正常に動作しました。<br>
+ありがとうございました。<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="814">814.　<b><font color="#000000">LFN ページ</font></b>　TORO　　<font size="2">2003/04/19 (土) 22:56</font><br>
+<blockquote>DOS 上から LFN を扱うドライバを簡単に解説するページを<br>
+追加しました。<br>
+<br>
+この時期にDOSをメインに扱っている人はかなり減って<br>
+しまいましたし、バックアップ用に使うことも減りつつ<br>
+ありますが、いざというときに役に立つかもしれません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="813">813.　<b><font color="#000000">PPx 0.32+1</font></b>　TORO　　<font size="2">2003/04/19 (土) 22:54</font><br>
+<blockquote>PPx 0.32+1 を公開します。<br>
+<br>
+報告があった、PPc [S] と PPv [F]等のバグ取りをしています。<br>
+<br>
+また、PPcのカーソル移動カスタマイズが、実装途中に<br>
+なってます(^^;<br>
+かなり挙動不審なところがありますので、うまくいかないときは<br>
+0.32に戻してください(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="812">812.　<b><font color="#000000">ClockPod 2.44+1</font></b>　TORO　　<font size="2">2003/04/19 (土) 22:51</font><br>
+<blockquote>2.44+1 を公開します。<br>
+<br>
+表示のちらつき対策を行ったほか、<br>
+<br>
+Win9x でも透明化できるようにしました。<br>
+ただし、透明化処理がうまくいかず、ゴミが<br>
+表示されることがあります。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="811">811.　<b><font color="#000000">Re: PPx XC_tdir=0での挙動</font></b>　TORO　　<font size="2">2003/04/15 (火) 12:55</font><br>
+<blockquote>&gt;XC_tdir=0にて、エントリソートをかけると、<br>
+&gt;エントリ表示が崩れるのですが、<br>
+<br>
+確かにおかしくなりますね。バグですので修正します。<br>
+\[S]の保持ソートなら問題ないですので、修正版を<br>
+出すまでこちらを使うか、XC_tdir=1にするかで<br>
+回避してください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="810">810.　<b><font color="#000000">PPx XC_tdir=0での挙動</font></b>　ruru　　<font size="2">2003/04/14 (月) 17:20</font><br>
+<blockquote>XC_tdir=0にて、エントリソートをかけると、エントリ表示が崩れるのですが、こちらの設定ミスのような気もしています。<br>
+何か影響するチェック項目などあれば、教えていただけますか。<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="809">809.　<b><font color="#000000">PPx の UNxxx.DLL 関連カスタマイズ</font></b>　TORO　[<a href="http://homepage1.nifty.com/toro/ppxcfg/archive.txt">URL</a>]　　<font size="2">2003/04/12 (土) 20:51</font><br>
+<blockquote>URL に記載した内容で、今まで対応していなかった、<br>
+UNxxx.DLL を追加して試してみています。<br>
+<br>
+完全に動くかどうかがわかりませんが（特に7-Zip(^^;）、<br>
+とりあえず公開しますので必要な方は使ってみてください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="808">808.　<b><font color="#000000">K-Launcher 1.25</font></b>　TORO　　<font size="2">2003/04/12 (土) 20:44</font><br>
+<blockquote>K-Launcher 1.25 を公開しました。<br>
+<br>
+1.24+3からの変更点はなく、マニュアルの手直しのみになってます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="807">807.　<b><font color="#000000">Re^2: PPVのバイナリ表示モードで検索時の挙動について</font></b>　Aki　　<font size="2">2003/04/10 (木) 11:14</font><br>
+<blockquote>検索に対応していただけるようで、楽しみに待ちたいと思います。<br>
+<br>
+ご返答ありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="806">806.　<b><font color="#000000">Re: PPVのバイナリ表示モードで検索時の挙動について</font></b>　TORO　　<font size="2">2003/04/09 (水) 21:57</font><br>
+<blockquote>&gt; おもにPPVを使用しているのですが、HEX表示時に<br>
+&gt; 文字列検索を行うとPPVが、<br>
+:<br>
+&gt; とダイアログを出して終了してしまいます。<br>
+: <br>
+&gt; あわせてHEX表示時も検索が出来るようになりますと、<br>
+&gt; 大変うれしく思います。<br>
+<br>
+実はまだ、text のときしか検索できないです(^^;<br>
+私もたまに使いたいときがあるので、次にはできるように<br>
+しておきます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="805">805.　<b><font color="#000000">PPVのバイナリ表示モードで検索時の挙動について</font></b>　Aki　　<font size="2">2003/04/09 (水) 11:36</font><br>
+<blockquote>はじめまして。<br>
+PPxを利用させていただいてます。<br>
+<br>
+おもにPPVを使用しているのですが、HEX表示時に<br>
+文字列検索を行うとPPVが、<br>
+<br>
+Thread:&quot;PPV main&quot; Address:405251 で、<br>
+メモリ(7H)での書込違反、異常が発生しました。終了します。<br>
+<br>
+とダイアログを出して終了してしまいます。<br>
+<br>
+もし修正することになりましたら、<br>
+あわせてHEX表示時も検索が出来るようになりますと、<br>
+大変うれしく思います。<br>
+<br>
+OS:Win2000SP3<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="804">804.　<b><font color="#000000">Paper Plane xUI 0.32</font></b>　TORO　　<font size="2">2003/04/05 (土) 19:58</font><br>
+<blockquote>0.32 を公開しました。<br>
+<br>
++6 からの変更点は、PPc の [A]の入力関連のバグ取り、<br>
+PPv の選択処理のバグ取りと、タブなどの記号の表示指定の<br>
+追加などです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="803">803.　<b><font color="#000000">Re^2: RUNASA1.1</font></b>　NM　　<font size="2">2003/04/04 (金) 09:29</font><br>
+<blockquote>&gt; 作成されたショートカットのプロパティを見てもらえば<br>
+&gt; わかりますが、ショートカットを実行するためには<br>
+&gt; RUNASA.EXE が必要です。<br>
+&gt; <br>
+&gt; ここで出ているエラーは、RUNASA.EXE があるフォルダに<br>
+&gt; アクセスできないということだと思います。<br>
+&gt; <br>
+&gt; ですから、RUNASA.EXE だけ制限ユーザがアクセスできる<br>
+&gt; ように、アクセス権を工夫して設定する必要があります。<br>
+&gt; サービス版を使っている場合、RUNASAS.CFGだけアクセス<br>
+&gt; できなければいいので、フォルダ自体は制限ユーザが<br>
+&gt; アクセスできるようにしておけば充分だと思います。<br>
+ご返答ありがとうございます。<br>
+フォルダに制限ユーザがアクセスできるアクセス権を設定し使わせていただきます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="802">802.　<b><font color="#000000">K-Launcher 1.24+3</font></b>　TORO　　<font size="2">2003/04/03 (木) 23:38</font><br>
+<blockquote>+3 を公開しました。<br>
+X_slfn による LFN表示の方法を改善しました。<br>
+最初は色々案がありましたが、とりあえず、<br>
+この表示方法でいこうと思います。<br>
+<br>
+これで問題無かったら、1.25 にします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="801">801.　<b><font color="#000000">Re: RUNASA1.1</font></b>　TORO　　<font size="2">2003/04/03 (木) 21:21</font><br>
+<blockquote>&gt; 質問ですが、NTサービス版でインストールし動かしたい<br>
+&gt;アプリケーションのショートカットをRUNASAで作成した<br>
+&gt;のですが、制限ユーザ権限のユーザでショートカットをＷ<br>
+&gt;クリックするとエラーが表示されます。<br>
+<br>
+作成されたショートカットのプロパティを見てもらえば<br>
+わかりますが、ショートカットを実行するためには<br>
+RUNASA.EXE が必要です。<br>
+<br>
+ここで出ているエラーは、RUNASA.EXE があるフォルダに<br>
+アクセスできないということだと思います。<br>
+<br>
+ですから、RUNASA.EXE だけ制限ユーザがアクセスできる<br>
+ように、アクセス権を工夫して設定する必要があります。<br>
+サービス版を使っている場合、RUNASAS.CFGだけアクセス<br>
+できなければいいので、フォルダ自体は制限ユーザが<br>
+アクセスできるようにしておけば充分だと思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="800">800.　<b><font color="#000000">Re: RUNASA1.1</font></b>　NM　　<font size="2">2003/04/03 (木) 15:03</font><br>
+<blockquote>すみません自己レスです。<br>
+動作環境は、下記です。<br>
+OS:Windows2000Pro</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="799">799.　<b><font color="#000000">RUNASA1.1</font></b>　NM　　<font size="2">2003/04/03 (木) 15:00</font><br>
+<blockquote>便利そうなのでRUNASA1.1を使用したいと思っています。<br>
+質問ですが、NTサービス版でインストールし動かしたいアプリケーションのショートカットをRUNASAで作成したのですが、制限ユーザ権限のユーザでショートカットをＷクリックするとエラーが表示されます。<br>
+　エラー：　C:\Program File\RUNASA にアクセスできません。<br>
+　　　　　　アクセスが拒否されました。<br>
+エラーに表示されているフォルダにアクセス権限を割り当てる必要があるのでしょうか。<br>
+ちなみに、アクセス権を割り当ててからショートカットをＷクリックすると正常に動作しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="798">798.　<b><font color="#000000">Re: DUSTYTOP </font></b>　TORO　　<font size="2">2003/04/02 (水) 12:49</font><br>
+<blockquote>&gt; ワラタ(笑)<br>
+<br>
+何が起きたかがわかるのに少々時間が掛かるのが欠点です（笑）<br>
+<br>
+<br>
+&gt; その下にあったねこちゃん（今まであるのしらなかった）も<br>
+&gt; いただきました♪(^^)<br>
+<br>
+試作品のままなので、こっそり置いてあります(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="797">797.　<b><font color="#000000">DUSTYTOP </font></b>　NIBIE　　<font size="2">2003/04/01 (火) 16:12</font><br>
+<blockquote>ワラタ(笑)<br>
+その下にあったねこちゃん（今まであるのしらなかった）も<br>
+いただきました♪(^^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="796">796.　<b><font color="#000000">ClockPod 2.44</font></b>　TORO　　<font size="2">2003/03/30 (日) 13:46</font><br>
+<blockquote>ClockPod 2.44 を公開しました。<br>
+<br>
+2.43+5 からの変更点は、Wave 再生関係のチューニングを<br>
+行なった他、微調整を行なったことです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="795">795.　<b><font color="#000000">Re^6: ClockPodのアップデート時に</font></b>　com-a　　<font size="2">2003/03/27 (木) 12:34</font><br>
+<blockquote>&gt; &gt; 同じような事が出来るかな？と思った次第なんです。<br>
+&gt; <br>
+&gt; この場合は、更新内容をそのまま送信内容に反映させるのみで<br>
+&gt; 済み、実際の送信動作には直接影響しないから問題ないと思い<br>
+&gt; ます。それに、監視も送信を開始するまでで済みますし(^^;<br>
+<br>
+そうか。そうですね。<br>
+「ずっと監視」というのもムリ（というか普段は無駄）な処理<br>
+ですね。^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="794">794.　<b><font color="#000000">CLISM1.3</font></b>　TORO　　<font size="2">2003/03/24 (月) 22:37</font><br>
+<blockquote>バグが残っていたため、CLISM1.3を公開しました(^^;<br>
+<br>
+Win9xでUNICODE対応のアプリケーションでコピーを行なうと、<br>
+UNICODE非対応のアプリケーションにペーストができなかった<br>
+のを修正しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="793">793.　<b><font color="#000000">CLISM 1.2</font></b>　TORO　　<font size="2">2003/03/22 (土) 21:11</font><br>
+<blockquote>CLISM 1.2 を公開しました。<br>
+<br>
+TAALT 1.3 にオプションが追加されたので、追加された<br>
+オプションを使って、TAALT を代行起動できるように<br>
+変更しました。<br>
+尚、この変更に伴なって TAALT 1.2 以前は使えなくなって<br>
+います。<br>
+<br>
+<br>
+また、この変更に伴なって、使用リソースが増えない範囲の<br>
+機能強化を行なっています。<br>
+強化した機能は、<br>
+ UNICODE テキストの蓄積<br>
+ １履歴の消去<br>
+ 定型文の読み込み<br>
+です。<br>
+<br>
+これ以上の機能強化はファイルサイズや動作時のメモリが<br>
+増えるため、割愛とします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="792">792.　<b><font color="#000000">TAALT 1.3</font></b>　TORO　　<font size="2">2003/03/22 (土) 21:04</font><br>
+<blockquote>TAALT 1.3 を公開しました。<br>
+<br>
+1.2+1 との機能面の変更点はありませんが、<br>
+ソースの見直しを行なっています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="791">791.　<b><font color="#000000">Re^5: ClockPodのアップデート時に</font></b>　TORO　　<font size="2">2003/03/22 (土) 21:03</font><br>
+<blockquote>&gt; 最近、メーラーをEdMaxに変えました。このソフトは外部エディタ<br>
+&gt; を使って文章を書くことができます。<br>
+ :<br>
+ :<br>
+&gt; このような動作を見ると、（案外、問題無く）ClockPodでも<br>
+&gt; 同じような事が出来るかな？と思った次第なんです。<br>
+<br>
+この場合は、更新内容をそのまま送信内容に反映させるのみで<br>
+済み、実際の送信動作には直接影響しないから問題ないと思い<br>
+ます。それに、監視も送信を開始するまでで済みますし(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="790">790.　<b><font color="#000000">Re^4: ClockPodのアップデート時に</font></b>　com-a　　<font size="2">2003/03/21 (金) 01:13</font><br>
+<blockquote>&gt; できたら避けたいですね(^^;。<br>
+&gt; もし、監視をするとなると、編集中に一旦保存することを考えて、<br>
+&gt; ファイルが更新する度に再カスタマイズすることになります。<br>
+&gt; <br>
+&gt; # この監視は ClockPod が終了するまで行うことになります。<br>
+&gt; # このような処理も好きじゃないです(^^;<br>
+（以下略<br>
+<br>
+確かに仰る通りの問題点は、私も思いました。<br>
+<br>
+話はちょっとそれますが・・・<br>
+最近、メーラーをEdMaxに変えました。このソフトは外部エディタ<br>
+を使って文章を書くことができます。<br>
+MDIな外部エディタで文章を書き、一時保存or保存してファイルを<br>
+閉じる〜のどちらの操作を行っても、EdMax側の文章が追随<br>
+（更新）します。（もちろん、外部エディタは終わらせなくても<br>
+追随します。）<br>
+<br>
+このような動作を見ると、（案外、問題無く）ClockPodでも<br>
+同じような事が出来るかな？と思った次第なんです。<br>
+（長いフリ^^;<br>
+<br>
+でも、「問題が起こることないんかな？」という思いは<br>
+チラホラ脳裏を過ります。<br>
+EdMax自体、使いはじめて日が浅いですし。<br>
+<br>
+長々書きましたが、ClockPodでもファイル監視方式にして欲しい<br>
+とはそれほど思いませんので、そういうソフトもあるな〜程度で<br>
+読み流して下さい。^^;<br>
+<br>
+<br>
+&gt; また、ダイアルアップ接続でメールチェックをしている場<br>
+&gt; 合は、不必要なダイアルアップをしてしまうことになります。<br>
+&gt; # 私の場合、ダイアルアップではないですが、ClockPod の<br>
+&gt; # ソースをいじっているときは、再起動する毎にメール<br>
+&gt; # チェックするのが嫌で、チェックをしないように<br>
+&gt; # わざわざ一時的に設定を変えています(^^;<br>
+<br>
+WinMEを使ってる時は「なんか解決法無いかな〜」と思いながら<br>
+設定を一時変えていましたが、WinXPにしてからは、無用な<br>
+ダイヤルアップの表示がされる事が無くなってしまいました。<br>
+うれしい事ですが、なんでかな。^^;<br>
+＃MSの数少ないうれしい仕様変更に、ニヤリ(笑)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="789">789.　<b><font color="#000000">Re^10: PPX カーソル位置</font></b>　com-a　　<font size="2">2003/03/21 (金) 00:51</font><br>
+<blockquote>&gt; 「J*(最後の文字列)Enter」でも多いですか？<br>
+<br>
+このやり方ですと、確かにピンポイントに任意のファイルに<br>
+ジャンプ出来る確率は高いのですが、以下の問題が。<br>
+・元々のファイル数が多いため、ファイル名の後半がどんな<br>
+　名前だったか思い出して打ち込むのに思考一時停止。(笑)<br>
+　（ちなみに、似たような名前のファイルが10個くらいづつ<br>
+　あります。）<br>
+・拡張子別ソートをしているので、拡張子も指定する必要が<br>
+　ある。<br>
+・キータイプ数が多くなる。<br>
+<br>
+<br>
+&gt; 普段と違う操作になるので、面倒なのは確かですが(^^;<br>
+<br>
+実際、画面を見ながら選ぶ方が楽ですが、ファイルを選択する<br>
+までの時間は[J]コマンドの方が早いかも・・ですね。^^;<br>
+<br>
+<br>
+&gt; Explorer みたいなサーチもできるといいなとは思ってます。<br>
+<br>
+現行の[Shift]+[任意キー]の機能を、Explorerみたく、任意キー<br>
+のみで移動〜ということですよね？<br>
+たまに思います。<br>
+<br>
+しかし、現在私がよく操作するファイル群が、全て同じアルファ<br>
+ベットで始まっているという罠で。<br>
+しまった。^^;<br>
+<br>
+<br>
+結論的には[F]と[J]コマンドの組み合わせが一番かも。ですね。<br>
+[F]は履歴が残りますし。<br>
+＃そもそも”ｎページ目の○側○段目あたり”という覚え方が<br>
+＃原始的すぎですね。^^;<br>
+＃ファイルの増減で位置が変わりますし。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="788">788.　<b><font color="#000000">Re^3: ClockPodのアップデート時に</font></b>　TORO　　<font size="2">2003/03/20 (木) 23:10</font><br>
+<blockquote>&gt;しまう」のは構わないから、監視して欲しい・・・のですが、<br>
+&gt;ダメですか？^^;<br>
+<br>
+できたら避けたいですね(^^;。<br>
+もし、監視をするとなると、編集中に一旦保存することを考えて、<br>
+ファイルが更新する度に再カスタマイズすることになります。<br>
+<br>
+# この監視は ClockPod が終了するまで行うことになります。<br>
+# このような処理も好きじゃないです(^^;<br>
+<br>
+このような仕様だと、例えばちょっと入力の区切りがつくと<br>
+セーブを行う人がいるのですが（落ち易いWin95環境のなごり<br>
+だそうで(^^;）、そういう人が使うと、その度に再カスタマ<br>
+イズが起きて、いろいろな状態が元に戻ってしまいます。<br>
+<br>
+このとき、たまたま条件が一致して最初にダイアログボックスを<br>
+表示してしまう設定だと編集中にしょっちゅうでてしまい、<br>
+編集の邪魔になります。<br>
+<br>
+また、ダイアルアップ接続でメールチェックをしている場<br>
+合は、不必要なダイアルアップをしてしまうことになります。<br>
+# 私の場合、ダイアルアップではないですが、ClockPod の<br>
+# ソースをいじっているときは、再起動する毎にメール<br>
+# チェックするのが嫌で、チェックをしないように<br>
+# わざわざ一時的に設定を変えています(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="787">787.　<b><font color="#000000">Re^9: PPX カーソル位置</font></b>　TORO　　<font size="2">2003/03/20 (木) 23:10</font><br>
+<blockquote>&gt;＃同じ名前で始まり（前8文字は同じ）最後だけ違うファイル名<br>
+&gt;＃が多々あり、なおかつ拡張子でソートしているので、どう<br>
+<br>
+「J*(最後の文字列)Enter」でも多いですか？<br>
+普段と違う操作になるので、面倒なのは確かですが(^^;<br>
+Explorer みたいなサーチもできるといいなとは思ってます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="786">786.　<b><font color="#000000">Re^2: ClockPodのアップデート時に</font></b>　com-a　　<font size="2">2003/03/19 (水) 13:57</font><br>
+<blockquote>&gt; しかし、シングルプロセス−マルチドキュメントのテ<br>
+&gt; キストエディタの場合は、いつ編集を終了したかどう<br>
+&gt; かを判断する一般的な方法がありません。そのため、<br>
+&gt; Reloadを使って手動でカスタマイズする必要が出て<br>
+&gt; くるのです。<br>
+&gt; # 設定ファイルを監視して、更新されたときにカス<br>
+&gt; # タマイズするという方法もあるにはあるのですが、<br>
+&gt; # 編集中に一時的なセーブしたときにカスタマイズ<br>
+&gt; # が起きてしまう問題があるので、使えないです。<br>
+<br>
+これですが、「設定ファイルを監視して〜」により、<br>
+「編集中に一時的なセーブしたときにカスタマイズが起きて<br>
+しまう」のは構わないから、監視して欲しい・・・のですが、<br>
+ダメですか？^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="785">785.　<b><font color="#000000">Re: ClockPodのアップデート時に</font></b>　com-a　　<font size="2">2003/03/19 (水) 13:53</font><br>
+<blockquote>&gt; 毎回更新していて気になるのですが、上書き解凍する前に<br>
+&gt; ClockPodを終わらしてあっても、DLLが使用中とのエラーに<br>
+&gt; なるんですね。取り敢えずWindowsを再起動してやり直してます。<br>
+&gt; ClockPodはスタートアップに入れてあるので、再起動しても<br>
+&gt; 結局起動しますが、その直後に終わらせれば大丈夫な様です。<br>
+&gt; ここがもっと簡単になると良いのですが。<br>
+<br>
+Win2000,XPなら（NT系なら？）<br>
+<br>
+ログオフ→ログオン→すぐにshiftキー押下（スタートアップ<br>
+無視）→VerUp→ログオフ→ログオン<br>
+<br>
+で比較的楽にVerUp出来ると思いますよ。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="784">784.　<b><font color="#000000">Re^8: PPX カーソル位置</font></b>　com-a　　<font size="2">2003/03/19 (水) 13:47</font><br>
+<blockquote>&gt; それなら、予定しているカスタマイズ設定に入っていますので、<br>
+&gt; 待ってて下さい(^^;<br>
+<br>
+宜しくお願いします。m(＿　＿)m<br>
+<br>
+<br>
+&gt; そういうときは[J]を使っていますね。先頭の文字が同じのエン<br>
+&gt; トリが多くても、ワイルドカード＆指定後のカーソル移動を駆<br>
+&gt; 使すれば目的の場所に手早く移動できると思います。<br>
+<br>
+エントリジャンプの存在を忘れていました。^^;<br>
+＃いいわけ<br>
+＃同じ名前で始まり（前8文字は同じ）最後だけ違うファイル名<br>
+＃が多々あり、なおかつ拡張子でソートしているので、どう<br>
+＃してもエントリジャンプを活用しようにもキータッチが多く<br>
+＃なってしまい、使わない機能になってしまい・・・<br>
+＃すみません。m(＿　＿)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="783">783.　<b><font color="#000000">Re^7: PPX カーソル位置</font></b>　TORO　　<font size="2">2003/03/19 (水) 12:46</font><br>
+<blockquote>&gt; +6にVerUpし、スクロールバーが出るようになったのを<br>
+&gt; 確認しました。^^<br>
+<br>
+取敢えず一安心です（笑）。<br>
+<br>
+ <br>
+&gt; これですが、早い話、カーソルによるスクロール動作が、<br>
+&gt; PageUp/Downキーによるスクロールと同じ動作になって欲しいな<br>
+&gt; という意味です。<br>
+<br>
+今みたいな１列単位ではなくて、１画面単位の設定が欲しいと<br>
+いうことですね。<br>
+それなら、予定しているカスタマイズ設定に入っていますので、<br>
+待ってて下さい(^^;<br>
+<br>
+<br>
+&gt; 本当は、任意のファイルをスパッと探し出せると良いのですが、<br>
+&gt; Chift+Alt+[?]で探すにはファイルが多すぎたり、アプリ起動<br>
+&gt; ショートカットキーに登録済みだったりするとアウトなので。<br>
+&gt; あと、インクリメンタルサーチによるカーソル移動機能が<br>
+&gt; あると良いかもと思いましたが、私は長くて同じような<br>
+&gt; ファイル名を沢山作ってしまう人なので、あまり有効では無い<br>
+&gt; という^^;ことで・・。<br>
+<br>
+そういうときは[J]を使っていますね。先頭の文字が同じのエン<br>
+トリが多くても、ワイルドカード＆指定後のカーソル移動を駆<br>
+使すれば目的の場所に手早く移動できると思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="782">782.　<b><font color="#000000">Re: ClockPodのアップデート時に</font></b>　TORO　　<font size="2">2003/03/19 (水) 12:44</font><br>
+<blockquote>&gt; このReloadを行なう目安というか考え方は有りますか？<br>
+<br>
+これは設定ファイルを編集するソフトをメモ帳以外に<br>
+できるようにしたため追加したものです。<br>
+メモ帳のようにシングルプロセス−シングルドキュメ<br>
+ントの場合は、プロセスの終了をもって編集の終了と<br>
+見なすことができます。この場合は、編集の終了時に<br>
+カスタマイズが行われるので、Reloadを使う必要があ<br>
+りません。<br>
+しかし、シングルプロセス−マルチドキュメントのテ<br>
+キストエディタの場合は、いつ編集を終了したかどう<br>
+かを判断する一般的な方法がありません。そのため、<br>
+Reloadを使って手動でカスタマイズする必要が出て<br>
+くるのです。<br>
+# 設定ファイルを監視して、更新されたときにカス<br>
+# タマイズするという方法もあるにはあるのですが、<br>
+# 編集中に一時的なセーブしたときにカスタマイズ<br>
+# が起きてしまう問題があるので、使えないです。<br>
+<br>
+<br>
+&gt; 毎回更新していて気になるのですが、上書き解<br>
+&gt; 凍する前にClockPodを終わらしてあっても、<br>
+&gt; DLLが使用中とのエラーになるんですね。取り<br>
+&gt; 敢えずWindowsを再起動してやり直してます。<br>
+<br>
+これは、その方法しか対処できないと思います。<br>
+尚、NT系なら使用中のファイルも名前の変更が<br>
+できますから、名前を変えておけば最新のファ<br>
+イルは展開できます。名前を変えた旧ファイル<br>
+は、再起動した後に削除することになります。<br>
+# 要はシステムフックの解除を指令しても、す<br>
+# ぐに解除できないプロセスがあるのでこうい<br>
+# う現象が起きるのですが。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="781">781.　<b><font color="#000000">Re^7: PPX カーソル位置</font></b>　com-a　　<font size="2">2003/03/19 (水) 02:27</font><br>
+<blockquote>とまあ、長々書きましたが、エントリマスク機能を活用すれば<br>
+事足りますよね。^^;<br>
+<br>
+でもまあ、カーソルによるスクロール方法を設定出来ると<br>
+うれしいです。m(_ _)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="780">780.　<b><font color="#000000">Re^6: PPX カーソル位置</font></b>　com-a　　<font size="2">2003/03/19 (水) 02:22</font><br>
+<blockquote>&gt; 流石にその辺は色々バグが残ってます(^^;<br>
+<br>
++6にVerUpし、スクロールバーが出るようになったのを<br>
+確認しました。^^<br>
+<br>
+<br>
+&gt; &gt; 別に実害も不便さも感じている訳では無い^^;のですが、<br>
+&gt; &gt; FILMTN使用時に比べ、カンでスパッと任意のファイルが<br>
+&gt; &gt; 選択出来なくなってしまったなぁと。<br>
+<br>
+これですが、早い話、カーソルによるスクロール動作が、<br>
+PageUp/Downキーによるスクロールと同じ動作になって欲しいな<br>
+という意味です。<br>
+<br>
+私の場合、２列表示で拡張子別にソートしています。<br>
+で、とあるファイルの場所を「ｎページ目の右列の中段あたり」<br>
+という覚え方をしたいのです。^^;<br>
+<br>
+本当は、任意のファイルをスパッと探し出せると良いのですが、<br>
+Chift+Alt+[?]で探すにはファイルが多すぎたり、アプリ起動<br>
+ショートカットキーに登録済みだったりするとアウトなので。<br>
+あと、インクリメンタルサーチによるカーソル移動機能が<br>
+あると良いかもと思いましたが、私は長くて同じような<br>
+ファイル名を沢山作ってしまう人なので、あまり有効では無い<br>
+という^^;ことで・・。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="779">779.　<b><font color="#000000">Re: PPx0.31+6</font></b>　NIBIE　　<font size="2">2003/03/19 (水) 00:32</font><br>
+<blockquote>&gt; PPx0.31+6<br>
+いただきました。<br>
+スクロールというか表示範囲、対応どうもです♪(^^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="778">778.　<b><font color="#000000">ClockPodのアップデート時に</font></b>　主任A　　<font size="2">2003/03/19 (水) 00:19</font><br>
+<blockquote>契約社員改め主任Aです。ClockPod2.43+5は私的には歓迎の項目が多いですね。このReloadを行なう目安というか考え方は有りますか？確か、設定をいじっただけで反映される項目もあるんですよね？<br>
+<br>
+毎回更新していて気になるのですが、上書き解凍する前にClockPodを終わらしてあっても、DLLが使用中とのエラーになるんですね。取り敢えずWindowsを再起動してやり直してます。ClockPodはスタートアップに入れてあるので、再起動しても結局起動しますが、その直後に終わらせれば大丈夫な様です。ここがもっと簡単になると良いのですが。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="777">777.　<b><font color="#000000">Re^5: PPX カーソル位置</font></b>　TORO　　<font size="2">2003/03/18 (火) 22:41</font><br>
+<blockquote>&gt; &gt; +5 より前でおかしくなっていなかったら、今度の修正で直ると<br>
+&gt; &gt; 思います。<br>
+&gt; <br>
+&gt; 現象を確認したのは+2でした。（さぼってる^^;<br>
+<br>
+流石にその辺は色々バグが残ってます(^^;<br>
+<br>
+<br>
+&gt; 別に実害も不便さも感じている訳では無い^^;のですが、<br>
+&gt; FILMTN使用時に比べ、カンでスパッと任意のファイルが<br>
+&gt; 選択出来なくなってしまったなぁと。<br>
+<br>
+とりあえず、最新の +6 を試してください(^^;<br>
+それでいい具合で無かったら、動きを教えてください。<br>
+きちんとしたカスタマイズができるようにするときに<br>
+配慮できますから。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="776">776.　<b><font color="#000000">PPx0.31+6 &amp; ClockPod2.43+5</font></b>　TORO　　<font size="2">2003/03/18 (火) 22:38</font><br>
+<blockquote>PPx0.31+6 と ClockPod2.43+5 を公開しました。<br>
+それぞれ、正式版前の最終試験公開の予定…です(^^;<br>
+<br>
+PPx のほうは +5 ででたバグの修正、<br>
+ClockPod のほうは設定ファイルの編集ソフトを<br>
+自動判別するようにした他、一部機能追加を行なっ<br>
+ています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="775">775.　<b><font color="#000000">Re^4: PPX カーソル位置</font></b>　com-a　　<font size="2">2003/03/18 (火) 15:55</font><br>
+<blockquote>&gt; +5 より前でおかしくなっていなかったら、今度の修正で直ると<br>
+&gt; 思います。<br>
+<br>
+現象を確認したのは+2でした。（さぼってる^^;<br>
+<br>
+<br>
+&gt; XC_move_test の第１パラメータを XC_page に移動して調整を<br>
+&gt; 行っています。<br>
+<br>
+そうでしたか。<br>
+<br>
+普段は２列表示にしているのですが、これまでの操作により、<br>
+任意のファイル位置がウィンドウの左列や右列になってしまう<br>
+ので、任意のファイル位置を覚えられない・・というか把握<br>
+できない？のです。<br>
+<br>
+別に実害も不便さも感じている訳では無い^^;のですが、<br>
+FILMTN使用時に比べ、カンでスパッと任意のファイルが<br>
+選択出来なくなってしまったなぁと。<br>
+＃例えば、３回ページを切替たら、目的のファイル群がある<br>
+＃みたいな使い方。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="774">774.　<b><font color="#000000">Re^3: PPX カーソル位置</font></b>　TORO　　<font size="2">2003/03/18 (火) 12:59</font><br>
+<blockquote>&gt; この機能で２列表示を行いました。<br>
+&gt; あるフォルダを覗くと、３列分（2.5列）のファイルが存在する<br>
+&gt; のですが、スクロールバーが表示されません。<br>
+&gt; スクロールバーは右端表示にしているのですが、下端表示の場合<br>
+&gt; は問題無いようです。<br>
+<br>
++5 より前でおかしくなっていなかったら、今度の修正で直ると<br>
+思います。<br>
+<br>
+ <br>
+&gt; ＃ところで話は変わりますが、XC_pageって&quot;カーソル移動による<br>
+&gt; ＃スクロール方法&quot;の事でしたっけ？<br>
+<br>
+いえ、もっと広く、ページ単位の移動時や、スクロールバーによる<br>
+移動の処理もスクロール向けに切替わります。<br>
+XC_move_test の第１パラメータを XC_page に移動して調整を<br>
+行っています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="773">773.　<b><font color="#000000">Re^2: PPX カーソル位置</font></b>　TORO　　<font size="2">2003/03/18 (火) 12:50</font><br>
+<blockquote>&gt; これは、本当にみえないのではなくて、たまたま先頭がマーク<br>
+&gt; の所なので、１列余分にあるはずなのに、見えないようにみえ<br>
+&gt; るという状態ですね(^^;<br>
+&gt; 動作としてはこれであっているんですが、分かりにくいので<br>
+&gt; 何か考えてみます。<br>
+<br>
+これって大間違い(^^;<br>
+こうならないように修正しているのが0.31+nでした(^^;;;<br>
+<br>
++4より+5のほうがおかしくなっているので修正します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="772">772.　<b><font color="#000000">Re^2: PPX カーソル位置</font></b>　com-a　　<font size="2">2003/03/17 (月) 12:13</font><br>
+<blockquote>&gt; これは、本当にみえないのではなくて、たまたま先頭がマーク<br>
+&gt; の所なので、１列余分にあるはずなのに、見えないようにみえ<br>
+&gt; るという状態ですね(^^;<br>
+<br>
+ちょっと話が被ると思うので、横槍します。<br>
+<br>
+&gt; これは、窓枠のダブルクリックや、Alt+Shift+カーソルで窓枠の<br>
+&gt; 大きさ調整をすればいいと思います。<br>
+<br>
+この機能で２列表示を行いました。<br>
+あるフォルダを覗くと、３列分（2.5列）のファイルが存在する<br>
+のですが、スクロールバーが表示されません。<br>
+スクロールバーは右端表示にしているのですが、下端表示の場合<br>
+は問題無いようです。<br>
+<br>
+ということで、一応報告でした。^^;<br>
+<br>
+<br>
+＃ところで話は変わりますが、XC_pageって&quot;カーソル移動による<br>
+＃スクロール方法&quot;の事でしたっけ？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="771">771.　<b><font color="#000000">Re: PPX カーソル位置</font></b>　TORO　　<font size="2">2003/03/16 (日) 23:15</font><br>
+<blockquote>&gt; ファイルがたくさんあるフォルダ（例えば \windows）で、<br>
+&gt; カーソルを右に移動させて右端にいくと、<br>
+&gt; カーソルが見えなくなってしまいます。<br>
+&gt; カーソルは行っているようなのですが、画面がスクロールしません。<br>
+&gt; <br>
+&gt; たとえばPPC の横幅を、ファイル「３列ぴったり」表示する<br>
+&gt; 幅にすると、こういう現象が起こりますね。<br>
+&gt; 横幅を、ファイル「２.５列」とか適当な幅だとカーソルは見えてます。<br>
+<br>
+これは、窓枠のダブルクリックや、Alt+Shift+カーソルで窓枠の<br>
+大きさ調整をすればいいと思います。<br>
+<br>
+これは、本当にみえないのではなくて、たまたま先頭がマーク<br>
+の所なので、１列余分にあるはずなのに、見えないようにみえ<br>
+るという状態ですね(^^;<br>
+動作としてはこれであっているんですが、分かりにくいので<br>
+何か考えてみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="770">770.　<b><font color="#000000">Re^3: PPX 書込違反（余談）</font></b>　TORO　　<font size="2">2003/03/16 (日) 23:09</font><br>
+<blockquote>&gt; 余談ですが、PPC0316.LZH 動かなかったです(^m^)<br>
+<br>
+古い PPCOMMON.DLL を呼び出しているように思えます(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="769">769.　<b><font color="#000000">PPX カーソル位置</font></b>　NIBIE　　<font size="2">2003/03/16 (日) 17:05</font><br>
+<blockquote>またまたすみません、PPX 0.31+5 についてです。<br>
+バグというか、まあちょっとした現象をご報告まで(^ ^)<br>
+<br>
+ファイルがたくさんあるフォルダ（例えば \windows）で、<br>
+カーソルを右に移動させて右端にいくと、<br>
+カーソルが見えなくなってしまいます。<br>
+カーソルは行っているようなのですが、画面がスクロールしません。<br>
+<br>
+たとえばPPC の横幅を、ファイル「３列ぴったり」表示する<br>
+幅にすると、こういう現象が起こりますね。<br>
+横幅を、ファイル「２.５列」とか適当な幅だとカーソルは見えてます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="768">768.　<b><font color="#000000">Re^2: PPX 書込違反（余談）</font></b>　NIBIE　　<font size="2">2003/03/16 (日) 11:58</font><br>
+<blockquote>余談ですが、PPC0316.LZH 動かなかったです(^m^)<br>
+---------------------------<br>
+PPC.EXE - エントリ ポイントが見つかりません<br>
+---------------------------<br>
+プロシージャ エントリ ポイント _RemoveDirectoryL がダイナミック リンク ライブラリ PPCOMMON.DLL から見つかりませんでした。 <br>
+---------------------------</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="767">767.　<b><font color="#000000">Re^2: PPX 書込違反</font></b>　NIBIE　　<font size="2">2003/03/16 (日) 11:34</font><br>
+<blockquote>&gt; C_ext の内容を教えてください<br>
+C_ext はいつも中身空っぽにしちゃってました(^◇^) 笑<br>
+今（PPX 0.31+5）C_ext 適当に指定したら、<br>
+あ、直った直った、うれしいです♪ <br>
+<br>
+あらためて Customize File 見ると<br>
+結構項目増えましたねえ (^ ^)<br>
+あと、拡張子の PPbの起動判定、早速対応ありがとうございます♪<br>
+PPC0316.LZH もさっそく入れてみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="766">766.　<b><font color="#000000">Re: PPX 書込違反</font></b>　TORO　　<font size="2">2003/03/16 (日) 10:54</font><br>
+<blockquote>&gt; PPX 0.31+5、いま DL して入れてみたのですが、<br>
+&gt; 作成したり保存したりなど、ファイルに変更を加えると<br>
+<br>
+&gt; って出て PPC が終了するようになってしまったんです。<br>
+&gt; でもこんなことあるのかな？他にもどなたかいますか？<br>
+<br>
+&gt; PPX は 0.30+5 くらいのまま<br>
+&gt; 実はインストールしてなかったのがさっき判明したので、<br>
+&gt; どのバージョンからこうなるのかはわかりません。<br>
+<br>
+0.31+nで増えたバグだと思います(^^;<br>
+http://homepage1.nifty.com/toro/PPC0316.LZH<br>
+と置き換えてみてください。これで直ると思います。<br>
+もし、だめでしたら、C_ext の内容を教えてください</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="765">765.　<b><font color="#000000">Re: PPX 書込違反</font></b>　NIBIE　　<font size="2">2003/03/16 (日) 10:19</font><br>
+<blockquote>&gt;Re: PPX 書込違反<br>
+自己レスです。<br>
+「Application Data」など特定のフォルダに移動しても<br>
+それだけで書込違反が出て終了してしまいました。<br>
+<br>
+ただ、PPCUST で初期化すると直る。<br>
+カスタマイズでなんかいろいろいじったからかもしれないので、<br>
+もうちょっと様子を見てみます (^ ^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="764">764.　<b><font color="#000000">PPX 書込違反</font></b>　NIBIE　　<font size="2">2003/03/15 (土) 23:36</font><br>
+<blockquote>PPX 0.31+5、いま DL して入れてみたのですが、<br>
+作成したり保存したりなど、ファイルに変更を加えると<br>
+---------------------------<br>
+Thread:&quot;PPC main&quot; Address:40b506 で、<br>
+メモリ(30110H)での書込違反 異常が発生しました。終了します。<br>
+---------------------------<br>
+って出て PPC が終了するようになってしまったんです。<br>
+でもこんなことあるのかな？他にもどなたかいますか？<br>
+<br>
+PPX は 0.30+5 くらいのまま<br>
+実はインストールしてなかったのがさっき判明したので、<br>
+どのバージョンからこうなるのかはわかりません。<br>
+Windows は XP（SP 当ててなし）です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="763">763.　<b><font color="#000000">RUNASA 1.1</font></b>　TORO　　<font size="2">2003/03/15 (土) 22:48</font><br>
+<blockquote>RUNASA 1.1 を公開しました。<br>
+<br>
+1.0+6 に登録コマンドがショートカットの場合、<br>
+そのアイコンを取得できるようにしています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="762">762.　<b><font color="#000000">Re^3: ClockPod 2.43+4</font></b>　com-a　　<font size="2">2003/03/14 (金) 15:12</font><br>
+<blockquote>&gt; X_shadow    を 1 にしているなら 0 にすれば殆ど<br>
+&gt; ちらつかなくなります。<br>
+<br>
+確かにそうですね。<br>
+実は、以前は影なしを設定していたのですが、たまに<br>
+タイトルバーからはみ出た時に文字が見えなくなってしまう<br>
+ので、影ありに戻しました。<br>
+＃まあ、影ありの方がカッコイイです。^^;<br>
+<br>
+<br>
+&gt; 更なるちらつき改善は、2.44 をだしてから対策<br>
+&gt; することになりそうです。<br>
+<br>
+ありがとうございます。^^<br>
+<br>
+<br>
+&gt; &gt; ＃と、ちょっと思い付き。^^;<br>
+&gt; テロップ開始時／終了時をうまくごまかせたら<br>
+&gt; 面白そうですね(^^<br>
+<br>
+そうですね。<br>
+こんな高級感を感じる(?)演出というのは、個人的に<br>
+大好きです。^^</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="761">761.　<b><font color="#000000">Re^2: ClockPod 2.43+4</font></b>　TORO　　<font size="2">2003/03/14 (金) 12:47</font><br>
+<blockquote>&gt; ただ、X_telopqに100を指定して確認したのですが、<br>
+&gt; ちょっとチラツキ感があります。<br>
+&gt; さらにリソースを消費してもいいので、チラツキ感を<br>
+&gt; 無くすことが出来たら・・・と思いました。<br>
+<br>
+X_shadow    を 1 にしているなら 0 にすれば殆ど<br>
+ちらつかなくなります。<br>
+更なるちらつき改善は、2.44 をだしてから対策<br>
+することになりそうです。<br>
+<br>
+<br>
+&gt; ＃全然関係ないですが、右から文字が現れる時はフェードイン、<br>
+&gt; ＃左へ文字が消える時はフェードアウトするとカッコイイ！<br>
+&gt; ＃と、ちょっと思い付き。^^;<br>
+テロップ開始時／終了時をうまくごまかせたら<br>
+面白そうですね(^^</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="760">760.　<b><font color="#000000">Re: ClockPod 2.43+4</font></b>　com-a　　<font size="2">2003/03/13 (木) 23:04</font><br>
+<blockquote>&gt; テロップ表示精度の指定(X_telopq)を追加しています。<br>
+&gt; 従来は 0 の指定に相当しますが、1-100に指定することで<br>
+&gt; テロップ表示時の滑らかさを変えることができます。<br>
+<br>
+確認しました。<br>
+スクロールが気持ちいいです。^^<br>
+<br>
+ただ、X_telopqに100を指定して確認したのですが、<br>
+ちょっとチラツキ感があります。<br>
+さらにリソースを消費してもいいので、チラツキ感を<br>
+無くすことが出来たら・・・と思いました。<br>
+<br>
+我儘な要望ということで、一笑に付して下さい。^^;<br>
+<br>
+<br>
+＃全然関係ないですが、右から文字が現れる時はフェードイン、<br>
+＃左へ文字が消える時はフェードアウトするとカッコイイ！<br>
+＃と、ちょっと思い付き。^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="759">759.　<b><font color="#000000">PPx 0.31+5</font></b>　TORO　　<font size="2">2003/03/12 (水) 23:01</font><br>
+<blockquote>+5 を公開します<br>
+<br>
+久しぶりに Win95 初期版を使ったところ、DLLが足りないために<br>
+PPx が動作しなかったため、対策しました(^^;<br>
+<br>
+また、スクリプトなどに対するPPbの起動判別の改善、<br>
+ごみ箱内のファイルが空白になってしまうことの修正、<br>
+D&amp;D で PPc にドロップしたときに、ファイル以外の形式なら<br>
+ダンプ内容を保存できるようにした、<br>
+などの変更を行なっています。<br>
+<br>
+0.31 自体からかなり経ってしまいましたのでそろそろ<br>
+0.32 にしようと思います。<br>
+<br>
+# 0.32にカーソル移動のカスタマイズができるかどうか<br>
+# 怪しいです(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="758">758.　<b><font color="#000000">ClockPod 2.43+4</font></b>　TORO　　<font size="2">2003/03/12 (水) 22:55</font><br>
+<blockquote>+4 を公開しました。<br>
+<br>
+テロップ表示精度の指定(X_telopq)を追加しています。<br>
+従来は 0 の指定に相当しますが、1-100に指定することで<br>
+テロップ表示時の滑らかさを変えることができます。<br>
+ただし、リソースを余分に消費するのと、負荷が増える<br>
+ことになります。<br>
+<br>
+もう少し調整をしてから 2.44 とするつもりです</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="757">757.　<b><font color="#000000">Re^2: 実行ファイルと PPB</font></b>　NIBIE　　<font size="2">2003/03/08 (土) 18:48</font><br>
+<blockquote>&gt; GUI 型のスプリプトも増えてきたので、もっと細かい<br>
+&gt; 判断ができるように改良してみます。<br>
+ありがとうございます、<br>
+気長に待ちます(^^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="756">756.　<b><font color="#000000">Re: 実行ファイルと PPB</font></b>　TORO　　<font size="2">2003/03/07 (金) 13:06</font><br>
+<blockquote>&gt; それで、パスの通ったところに myapp.hat をおいています。<br>
+&gt; これを PPX の [h] で実行すると、<br>
+&gt; 「myapp.hat」と入力して実行した場合、きちんと実行される。<br>
+&gt; 「myapp」とだけ入力して実行した場合も、きちんと実行される。<br>
+&gt; しかし下の場合、PPB も一緒に開いてしまいます。<br>
+&gt; <br>
+&gt; これは、.vbs の場合も同じことが起こります。<br>
+&gt; PATHEXT の問題だと思うのですが、<br>
+&gt; PPB も一緒に開くのはしょうがないんですかねえ？<br>
+<br>
+仕様の部分とバグらしきものが混じった状態のようですね(^^;<br>
+<br>
+PPx のファイル実行部分は、PPbを場合によって起動<br>
+させるために、かなりの部分を自前で処理しています。<br>
+そのとき、直接実行できなさそうなとき(文書やスクリプト)は<br>
+PPb を介するようにしているのですが、この辺が<br>
+うまくいってないようですね。<br>
+<br>
+GUI 型のスプリプトも増えてきたので、もっと細かい<br>
+判断ができるように改良してみます。<br>
+スクリプトを実行する実行ファイルの形式に合わせたら<br>
+多分うまくいくようになると思いますので。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="755">755.　<b><font color="#000000">実行ファイルと PPB</font></b>　NIBIE　　<font size="2">2003/03/05 (水) 12:52</font><br>
+<blockquote>こんにちは。またちょっと雑談ですみません。<br>
+<br>
+今、.hat という拡張子を環境変数の PATHEXT に追加して、<br>
+実行ファイルにしています<br>
+（拡張子 .hat は、assoc コマンドで関連付けもしてある）。<br>
+<br>
+それで、パスの通ったところに myapp.hat をおいています。<br>
+これを PPX の [h] で実行すると、<br>
+「myapp.hat」と入力して実行した場合、きちんと実行される。<br>
+「myapp」とだけ入力して実行した場合も、きちんと実行される。<br>
+しかし下の場合、PPB も一緒に開いてしまいます。<br>
+<br>
+これは、.vbs の場合も同じことが起こります。<br>
+PATHEXT の問題だと思うのですが、<br>
+PPB も一緒に開くのはしょうがないんですかねえ？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="754">754.　<b><font color="#000000">TAALT 1.2+1を戴きました</font></b>　感謝人　　<font size="2">2003/03/02 (日) 10:38</font><br>
+<blockquote>素早い対応に感謝いたします。末永く愛用いたします。<br>
+TAALTのおかげで、誤ってAltキーを押した時に「画面が<br>
+フリーズした」と勘違いする事が無くなります。<br>
+私の場合、ウィンドウ移動は使いませんので、「-2」<br>
+を付けて使用いたします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="753">753.　<b><font color="#000000">TAALT 1.2+1</font></b>　TORO　　<font size="2">2003/03/01 (土) 20:28</font><br>
+<blockquote>+1 を公開しました。<br>
+<br>
+最初の一打目のAltチェックができていなかったのを修正しました。<br>
+<br>
+また、起動時のオプションで、Alt+カーソルを使わないように<br>
+指定できるようになりました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="752">752.　<b><font color="#000000">K-Launcher 1.24+2</font></b>　TORO　　<font size="2">2003/03/01 (土) 20:27</font><br>
+<blockquote>+2 を公開しました。<br>
+<br>
+キーマクロの「@」指定がおかしかったのを修正ました。<br>
+<br>
+また、キー入力待ちに何もしないようにする指定を追加しました。<br>
+この指定を使うと、マウスや時刻表示が使えなくなりますが、<br>
+Win2000 でCPUをかなり占有しなくなります。<br>
+（数秒間は１００％になりますが、そのうち低くなります）<br>
+ただし、98版は使えなくなるキーが多すぎるため、今回は<br>
+対応していません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="751">751.　<b><font color="#000000">TAALT修正版をお待ちします</font></b>　感謝人　　<font size="2">2003/02/27 (木) 10:45</font><br>
+<blockquote>ご回答を頂き、ありがとうございます。<br>
+Word2000では正常に動作しておりますので、<br>
+スタートアップに登録して、使い続けております。<br>
+タスクトレイに余計なアイコンが表示されないので、<br>
+使いやすいソフトですネ。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="750">750.　<b><font color="#000000">Re: TAALTへの感謝と不具合</font></b>　TORO　　<font size="2">2003/02/26 (水) 13:13</font><br>
+<blockquote>&gt; TAALT ver1.2をご提供下さり、感謝いたしております。<br>
+&gt; 所で、シャープのワープロソフトPower書院体験版で<br>
+&gt; 試しましたら、下記のような具合になりました。<br>
+<br>
+どのアプリケーションでも、起動直後の最初のキーが<br>
+Altであれば該当症状になるバグを 1.2 のときに<br>
+混入させてしまっていたことがわかりました。<br>
+<br>
+修正版をだしますのが、それまではアプリケーションの<br>
+起動直後にAltのみを押さないように気をつけて<br>
+対処して下さい(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="749">749.　<b><font color="#000000">追伸</font></b>　感謝人　　<font size="2">2003/02/25 (火) 15:39</font><br>
+<blockquote>Wordは単独Altが無効になりますが、<br>
+メモ帳とワードパッドも<br>
+Power書院と同じ動作になります。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="748">748.　<b><font color="#000000">TAALTへの感謝と不具合</font></b>　感謝人　　<font size="2">2003/02/25 (火) 15:08</font><br>
+<blockquote>TAALT ver1.2をご提供下さり、感謝いたしております。<br>
+所で、シャープのワープロソフトPower書院体験版で<br>
+試しましたら、下記のような具合になりました。<br>
+<br>
+TAALT無効時<br>
+１．Altキー押下でファイル・ボタンが押された状態になる。<br>
+２．もう一度Altキー押下でファイル・ボタンが元に戻る。<br>
+　　または、マウスの左クリックでファイル・ボタンが元に戻る。<br>
+<br>
+TAALT有効時<br>
+１．Altキー押下でファイル・ボタンが押された状態になる。<br>
+２．もう一度Altキーを押しても、ファイル・ボタンが元に戻らない。<br>
+　　マウスの左クリックでファイル・ボタンが元に戻る。<br>
+３．以後は、Altキー単独の押下を受け付けなくなる。<br>
+<br>
+アプリケーションごとには、動作が保証できないと思いますので、<br>
+まずはご報告申し上げます。<br>
+<br>
+OS: Win98</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="747">747.　<b><font color="#000000">Re: PPx 0.31</font></b>　PATA　[<a href="http://www5d.biglobe.ne.jp/~pata/">URL</a>]　　<font size="2">2003/02/24 (月) 00:22</font><br>
+<blockquote>&quot;PPx 0.31&quot; TORO wrote:<br>
+&gt; +4 です。<br>
+<br>
+いただきました．m(__)m<br>
+<br>
+&gt; ・PPc のスクロールバーの表示がおかしかったのを修正しました。<br>
+&gt; ・PPc の D&amp;D で一部相手にドロップできないことがあったのを<br>
+<br>
+両方とも直ってるのを確認しました．<br>
+どうもありがとうございました．(^^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="746">746.　<b><font color="#000000">RUNASA 1.0+6</font></b>　TORO　　<font size="2">2003/02/21 (金) 01:34</font><br>
+<blockquote>+6 です<br>
+これでほぼ出来上がりなので、この次は正式版になるかと思います。<br>
+<br>
+変更点は、exeファイルならアイコンを反映できるようにした他、<br>
+日本語／英語表示の自動切替と、登録せずに実行する指定方法を<br>
+追加しています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="745">745.　<b><font color="#000000">Re^5: PPx 0.31+3</font></b>　TORO　　<font size="2">2003/02/18 (火) 22:24</font><br>
+<blockquote>&gt; &gt; とりあえず個人的には^[d]で事なきを得てますので(^^;<br>
+&gt; &gt; 将来は改善されるといいな〜という感じです．<br>
+&gt; <br>
+&gt;  こちらもけっこう不便なので（Photoshopは^[d]も使えないので）<br>
+&gt; 早く改善したいですね(^^;。<br>
+<br>
+やっと原因を見つけました(^^;<br>
+PPcが対応していない形式でも対応しているように<br>
+見えてしまっていたため、相手が独自形式などを<br>
+要求していたようです(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="744">744.　<b><font color="#000000">PPx 0.31</font></b>　TORO　　<font size="2">2003/02/18 (火) 22:22</font><br>
+<blockquote>+4 です。<br>
+<br>
+・PPc のスクロールバーの表示がおかしかったのを修正しました。<br>
+<br>
+・PPc でエントリをマウスクリックしたときに、Explorer風に<br>
+マークが付くようにする指定を追加しました(XC_msel)<br>
+これはGUIカスタマイズでも指定可能です。<br>
+<br>
+・PPc の D&amp;D で一部相手にドロップできないことがあったのを<br>
+修正しました。<br>
+<br>
+・PPv の[S](スクロール方法の変更)を廃止しました。<br>
+色々試した結果、最近のグラフィックモードでは<br>
+X_scrl の設定が2であれば、大抵高速で、ちらつきも<br>
+なく、いちいち試す必要がなくなったためです。<br>
+ただし、Win95が出た当時のグラフィックボードの<br>
+場合は0の方が早くなる傾向が多いようです。<br>
+<br>
+また、X_scrlも個別に設定する必要が無いので<br>
+別の名前で置き換える予定です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="743">743.　<b><font color="#000000">Re^6: PPx 0.31+3</font></b>　PATA　[<a href="http://www5d.biglobe.ne.jp/~pata/">URL</a>]　　<font size="2">2003/02/17 (月) 23:11</font><br>
+<blockquote>&quot;Re^5: PPx 0.31+3&quot; TORO wrote:<br>
+&gt; ツリー表示しているときは該当症状になりますね(^^;<br>
+&gt; 修正します。<br>
+<br>
+あ，それとXC_celFに「w:窓枠に収まるように<br>
+合わせる」を使用していても同様の症状になる<br>
+みたいです．<br>
+お手数をおかけしますがよろしくお願いします．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="742">742.　<b><font color="#000000">Re^5: PPx 0.31+3</font></b>　TORO　　<font size="2">2003/02/17 (月) 18:25</font><br>
+<blockquote>&gt; &gt; ファイル数が1画面分以上2画面分未満のときに，スクロール<br>
+&gt; &gt; バーが表示されてくれないみたいです．表示されているときも<br>
+&gt; &gt; スクロールボックスの計算が合ってない気がします(末尾の<br>
+&gt; &gt; ファイルまで行ってないのにボックスは下端に来てしまう)．<br>
+&gt; <br>
+&gt;  「１列」と見なす大きさを変更したため、以前の大きさの<br>
+&gt; ままだと１列余分に計算されてしまっているかと思います。<br>
+&gt; <br>
+&gt; 　一度窓枠ダブルクリック／Alt+カーソルで、窓枠を調節<br>
+&gt; してみて下さい。<br>
+<br>
+ツリー表示しているときは該当症状になりますね(^^;<br>
+修正します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="741">741.　<b><font color="#000000">Re^4: PPx 0.31+3</font></b>　TORO　　<font size="2">2003/02/17 (月) 12:53</font><br>
+<blockquote>&gt; とりあえず個人的には^[d]で事なきを得てますので(^^;<br>
+&gt; 将来は改善されるといいな〜という感じです．<br>
+<br>
+ こちらもけっこう不便なので（Photoshopは^[d]も使えないので）<br>
+早く改善したいですね(^^;。<br>
+<br>
+<br>
+&gt; ファイル数が1画面分以上2画面分未満のときに，スクロール<br>
+&gt; バーが表示されてくれないみたいです．表示されているときも<br>
+&gt; スクロールボックスの計算が合ってない気がします(末尾の<br>
+&gt; ファイルまで行ってないのにボックスは下端に来てしまう)．<br>
+<br>
+ 「１列」と見なす大きさを変更したため、以前の大きさの<br>
+ままだと１列余分に計算されてしまっているかと思います。<br>
+<br>
+　一度窓枠ダブルクリック／Alt+カーソルで、窓枠を調節<br>
+してみて下さい。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="740">740.　<b><font color="#000000">Re^3: PPx 0.31+3</font></b>　PATA　[<a href="http://www5d.biglobe.ne.jp/~pata/">URL</a>]　　<font size="2">2003/02/15 (土) 01:13</font><br>
+<blockquote>&quot;Re^2: PPx 0.31+3&quot; TORO wrote:<br>
+&gt; 初めからだと思います。<br>
+ありゃ．そうでしたか．(^^;<br>
+<br>
+&gt; D&amp;D に使用する形式は、ShellIDList形式、CF_HDROP形式、<br>
+&gt; CF_TEXT形式を全て使えるようにしているので、勘違いを<br>
+&gt; 起こしている可能性はありますが、<br>
+&gt; どれか１つの形式に限定してもやはり送れないので、<br>
+&gt; これが原因とはいえないようです。<br>
+<br>
+ん〜なるほど．<br>
+CF_TEXTが優先されてしまってるのかと思いましたが，<br>
+一種類に限定してもダメとなると違いますね…．<br>
+<br>
+とりあえず個人的には^[d]で事なきを得てますので(^^;<br>
+将来は改善されるといいな〜という感じです．<br>
+<br>
+あ，すみません．他に一つ不具合っぽいことに気づきました．<br>
+ファイル数が1画面分以上2画面分未満のときに，スクロール<br>
+バーが表示されてくれないみたいです．表示されているときも<br>
+スクロールボックスの計算が合ってない気がします(末尾の<br>
+ファイルまで行ってないのにボックスは下端に来てしまう)．<br>
+<br>
+でわでわ．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="739">739.　<b><font color="#000000">Re^2: PPV</font></b>　NIBIE　　<font size="2">2003/02/13 (木) 22:35</font><br>
+<blockquote>&gt; 黒と白を両方とも自動/_AUTOにしておけば<br>
+&gt; Windowsの設定と同じ配色になります。<br>
+<br>
+すごい、できた、<br>
+泣きそうにうれしい！！<br>
+<br>
+_AUTO にすればよかったんですね、<br>
+意味わかってませんでいじってましたｗ<br>
+うれしいです！(^^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="738">738.　<b><font color="#000000">Re^2: PPB</font></b>　NIBIE　　<font size="2">2003/02/13 (木) 22:33</font><br>
+<blockquote>&gt; PPX.TXT<br>
+レジストリ使わない方法見ました。<br>
+便利便利です (^^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="737">737.　<b><font color="#000000">Re^2: ClockPod 2.43</font></b>　com-a　　<font size="2">2003/02/13 (木) 13:19</font><br>
+<blockquote>&gt; とりあえず、別環境のファイルをそのまま持ってきても<br>
+&gt; セキュリティのために暗号化した部分は使えないように<br>
+&gt; なってます。パスワード等を記載し直す必要があります。<br>
+<br>
+なるほど、そうだったんですね。<br>
+おっしゃる通り、パスワードを書き換えて解決しました。^^<br>
+<br>
+どうもありがとうございました。m(＿　＿)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="736">736.　<b><font color="#000000">Re^2: ClockPod 2.43</font></b>　TORO　　<font size="2">2003/02/13 (木) 12:48</font><br>
+<blockquote>&gt; ＞・テロップが速く出来る様になって便利です。ただ、速くすると流れ方が滑らかでなくなって少し見づらいです。<br>
+&gt; <br>
+&gt; について、私も一票。今更。^^;<br>
+<br>
+了解しました（笑）</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="735">735.　<b><font color="#000000">Re: ClockPod 2.43</font></b>　TORO　　<font size="2">2003/02/13 (木) 12:48</font><br>
+<blockquote>&gt; WinXPの環境をそのまま持ってきただけだったのですが、念のため<br>
+&gt; ClockPodを入れ直しし、デフォルトのCFGファイルに対して<br>
+&gt; メールの設定のみをやり直してみましたが、それでもダメでした。<br>
+<br>
+とりあえず、別環境のファイルをそのまま持ってきても<br>
+セキュリティのために暗号化した部分は使えないように<br>
+なってます。パスワード等を記載し直す必要があります。<br>
+<br>
+あと、一部の記号はそのまま記載できないですが、<br>
+確認されましたか？<br>
+<br>
+「;」を用いる時は「;;」と記載して下さい。<br>
+「,」を用いる時は「&quot;password,&quot;」等の<br>
+ように、全体を「&quot;」で括って下さい。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="734">734.　<b><font color="#000000">Re: ClockPod 2.43</font></b>　com-a　　<font size="2">2003/02/13 (木) 02:26</font><br>
+<blockquote>先の件とは関係ないのですが、以前話に#625上がっていた<br>
+<br>
+＞・テロップが速く出来る様になって便利です。ただ、速くすると流れ方が滑らかでなくなって少し見づらいです。<br>
+<br>
+について、私も一票。今更。^^;<br>
+<br>
+票の追加だけ、お願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="733">733.　<b><font color="#000000">ClockPod 2.43</font></b>　com-a　　<font size="2">2003/02/13 (木) 02:19</font><br>
+<blockquote>どうもお久しぶりです。<br>
+<br>
+ClockPod 2.43をWin2kで使ってみたのですが、popパスワード<br>
+エラーが出てしまうようです。<br>
+WinXPの環境をそのまま持ってきただけだったのですが、念のため<br>
+ClockPodを入れ直しし、デフォルトのCFGファイルに対して<br>
+メールの設定のみをやり直してみましたが、それでもダメでした。<br>
+<br>
+Win2kで使っていた以前のバージョン（番号を覚えていないのです<br>
+すみません。）では動いていて、最新版にアップデートしただけで<br>
+エラーが出るようになったようなので、CFG自体には問題無さそう<br>
+です・・・。<br>
+<br>
+ご確認お願いします。m(_ _)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="732">732.　<b><font color="#000000">Re: PPV</font></b>　TORO　　<font size="2">2003/02/12 (水) 13:25</font><br>
+<blockquote>&gt; ついでで申し訳ないんですが、<br>
+&gt; PPV で普通の文章みたとき、<br>
+&gt; 背景を白で文字を黒色にできますか？？<br>
+<br>
+GUIカスタマイズのPPV文字色/CV_char を<br>
+いじることで可能です。<br>
+黒と白を両方とも自動/_AUTOにしておけば<br>
+Windowsの設定と同じ配色になります。<br>
+<br>
+<br>
+&gt; 自分の PPC はずっと背景白で文字黒にしていて、<br>
+&gt; PPV もそうなったらいいなとずっと思っていて、<br>
+&gt; 今日早起きしていろいろ試したんだけどよくわかんなかった(;;<br>
+<br>
+設定が面倒なら、ホームにあるカスタマイズ設定例のを<br>
+使って下さい。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="731">731.　<b><font color="#000000">Re: PPB</font></b>　TORO　　<font size="2">2003/02/12 (水) 13:17</font><br>
+<blockquote>&gt; こんにちは。<br>
+&gt; ちょっと変な質問なんですが、<br>
+&gt; PPB 単体って、何があれば動きますかねえ？？<br>
+&gt; <br>
+&gt; PPB.EXE と PPCOMMON.DLL があれば<br>
+&gt; 動くような気はしていますが、<br>
+&gt; レジストリ設定とかも必要でしょうか？<br>
+<br>
+上の２つだけあれば動作します。新規起動であっても<br>
+特に問題ありません。<br>
+# SETUP.EXE はあくまでもセットアップ関係の支援です。<br>
+<br>
+ <br>
+&gt; 要するに、レジストリとかいじれないＰＣで<br>
+&gt; ちょっとPPB だけ単体で使たいんですよね・・・<br>
+<br>
+レジストリの書きこみも避けたいのでしたら、PPX.TXTに<br>
+書いてある方法を用いることができます。<br>
+推奨はしませんが(^^;<br>
+また、SETUP.EXEのカスタムインストールで<br>
+この辺の設定もできるようになっています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="730">730.　<b><font color="#000000">Re^2: PPx 0.31+3</font></b>　TORO　　<font size="2">2003/02/12 (水) 13:12</font><br>
+<blockquote>&gt; おおっ! スクロールに設定してるのにときどき<br>
+&gt; ページ切り替えになってしまっていたのが<br>
+&gt; 改善されています．これは非常に嬉しいです．(^^)<br>
+<br>
+長い間そのままだったのが、やっと修正ができました(^^<br>
+<br>
+<br>
+&gt; (もしかしたらずっとかもしれません)，PPCから<br>
+&gt; WinAMP2(http://www.winamp.com/)にドラッグ&amp;<br>
+&gt; ドロップしてもうまくドロップされないようなの<br>
+&gt; ですが，なにゆえでしょうか．PPCからは普通に<br>
+&gt; CF_HDROPで渡してるんですよね?<br>
+<br>
+初めからだと思います。こちらでは PhotoShop が<br>
+同じ症状を起こしているので色々試しているのですが<br>
+なかなか原因が見つからないでいます。Explorer 等に<br>
+はうまくいっているので、尚更不明です(^^;<br>
+<br>
+D&amp;D に使用する形式は、ShellIDList形式、CF_HDROP形式、<br>
+CF_TEXT形式を全て使えるようにしているので、勘違いを<br>
+起こしている可能性はありますが、<br>
+どれか１つの形式に限定してもやはり送れないので、<br>
+これが原因とはいえないようです。<br>
+<br>
+文字コードは OEM/UNICODE の両方で試してみましたが<br>
+これもだめでしたし(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="729">729.　<b><font color="#000000">Re^5: K-Launcher感謝と要望</font></b>　TORO　　<font size="2">2003/02/12 (水) 13:03</font><br>
+<blockquote>&gt; &gt; &gt; カーソルの色についてですがjpではカーソルが明るく、<br>
+&gt; &gt; C_vcur で確認してみましたが指定通りにかわりました。<br>
+&gt; お手間を取らせて申し訳ないです。当方の前回の発言が言葉不足で<br>
+&gt;迂遠となりました。AT互換機での文字指定反転色をjp,us共に明るい<br>
+&gt;色で統一して欲しいです。<br>
+<br>
+こちらも、舌足らずでした(^^;<br>
+指定通りというのは、ビット指定で指定したときはjp/usのど<br>
+ちらも、明るい色指定なら明るい色に、暗い色指定なら暗い色に<br>
+となったということです。<br>
+ですので、普通に指定してもらえばその色になると思うのですが。<br>
+<br>
+<br>
+&gt; 私のカスタマイズしたい事がたまたま地雷を踏んでいただけで<br>
+&gt;決して地雷を探すのが目的ではありません。なにかバグだしした<br>
+&gt;ようで申し訳なかったです。K-Launcherがますます良くなると<br>
+&gt;いいなぁと思っています。TOROさんどうもありがとうございました。<br>
+<br>
+いえいえ、気にしなくてもいいですよ。自分が気に入る状態で<br>
+使用してもらえたほうがこちらも嬉しいですから。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="728">728.　<b><font color="#000000">PPV</font></b>　NIBIE　　<font size="2">2003/02/11 (火) 14:33</font><br>
+<blockquote>ついでで申し訳ないんですが、<br>
+PPV で普通の文章みたとき、<br>
+背景を白で文字を黒色にできますか？？<br>
+<br>
+自分の PPC はずっと背景白で文字黒にしていて、<br>
+PPV もそうなったらいいなとずっと思っていて、<br>
+今日早起きしていろいろ試したんだけどよくわかんなかった(;;<br>
+<br>
+どなたかご存知の方お願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="727">727.　<b><font color="#000000">PPB</font></b>　NIBIE　　<font size="2">2003/02/11 (火) 14:23</font><br>
+<blockquote>こんにちは。<br>
+ちょっと変な質問なんですが、<br>
+PPB 単体って、何があれば動きますかねえ？？<br>
+<br>
+PPB.EXE と PPCOMMON.DLL があれば<br>
+動くような気はしていますが、<br>
+レジストリ設定とかも必要でしょうか？<br>
+<br>
+要するに、レジストリとかいじれないＰＣで<br>
+ちょっとPPB だけ単体で使たいんですよね・・・<br>
+（つまんない質問なので気が向いたときに回答お願いします(笑)）</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="726">726.　<b><font color="#000000">Re: PPx 0.31+3</font></b>　PATA　[<a href="http://www5d.biglobe.ne.jp/~pata/">URL</a>]　　<font size="2">2003/02/10 (月) 12:13</font><br>
+<blockquote>遅ればせながら+3いただきました．m(__)m<br>
+<br>
+&gt; カーソル移動関連のチューニングと、<br>
+<br>
+おおっ! スクロールに設定してるのにときどき<br>
+ページ切り替えになってしまっていたのが<br>
+改善されています．これは非常に嬉しいです．(^^)<br>
+ありがとうございました〜．<br>
+<br>
+ところで．<br>
+どのバージョンからか忘れてしまいましたが<br>
+(もしかしたらずっとかもしれません)，PPCから<br>
+WinAMP2(http://www.winamp.com/)にドラッグ&amp;<br>
+ドロップしてもうまくドロップされないようなの<br>
+ですが，なにゆえでしょうか．PPCからは普通に<br>
+CF_HDROPで渡してるんですよね?</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="725">725.　<b><font color="#000000">Re^4: K-Launcher感謝と要望</font></b>　julia　　<font size="2">2003/02/10 (月) 07:41</font><br>
+<blockquote>まずは前々回のレスからです^^;<br>
+&gt;ありがとうございます。X_slfn はまだ細かい処理ができていないのでもう少し雰囲気が変わるかもしれないです。<br>
+了解です。期待してます。<br>
+<br>
+前回のレスです。<br>
+&gt; とりあえず「@」を外した状態で登録すればうまくいきます。<br>
+A_main に「D = \D」<br>
+A_sel に「&#39; &#39; = N」<br>
+を挿入したみると・・・できました！ありがとうございます。<br>
+<br>
+&gt; &gt; カーソルの色についてですがjpではカーソルが明るく、<br>
+&gt; C_vcur で確認してみましたが指定通りにかわりました。<br>
+お手間を取らせて申し訳ないです。当方の前回の発言が言葉不足で迂遠となりました。AT互換機での文字指定反転色をjp,us共に明るい色で統一して欲しいです。<br>
+<br>
+以下弁明<br>
+私のカスタマイズしたい事がたまたま地雷を踏んでいただけで決して地雷を探すのが目的ではありません。なにかバグだししたようで申し訳なかったです。K-Launcherがますます良くなるといいなぁと思っています。TOROさんどうもありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="724">724.　<b><font color="#000000">Re^3: K-Launcher感謝と要望</font></b>　TORO　　<font size="2">2003/02/09 (日) 21:41</font><br>
+<blockquote>&gt; &gt; 具体的には、A_main に「D = @\D」を入れることで可能です。<br>
+&gt; やってみました。\Dキーが期待した挙動を示してくれました。できればDキーで同じ事をしたいです。じゃあ逆にすれば？と考えて\D=@D;とやってみましたがだめでした。う〜ん。<br>
+<br>
+&gt; &gt; A_sel に「&#39; &#39; = @N」を入れてください。<br>
+&gt; うまくいきませんでした(T_T)。@Nは新たに挿入したここ一箇所しかないのですが関係ありますでしょうか？<br>
+<br>
+２つとも確かにうまくいきませんね(^^;、バグみたいなので<br>
+ちょっと調べてみます。<br>
+とりあえず「@」を外した状態で登録すればうまくいきます。<br>
+<br>
+<br>
+<br>
+&gt; カーソルの色についてですがjpではカーソルが明るく、<br>
+<br>
+C_vcur で確認してみましたが指定通りにかわりました。<br>
+ただし、W2k の ウィンドウ表示での確認です。<br>
+<br>
+ただ、フルスクリーンや pure DOS 上だと、変わって<br>
+しまいますので条件が違っていたら教えてください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="723">723.　<b><font color="#000000">Re^2: K-Launcher感謝と要望</font></b>　julia　　<font size="2">2003/02/09 (日) 05:55</font><br>
+<blockquote>お返事ありがとうございます。<br>
+長文乱筆ですがおつきあいよろしくお願いします。<br>
+お返事です。<br>
+&gt; これは、AT機のDOS上では下線を実現する方法が通常の方法では<br>
+&gt; 無いのでできません。<br>
+うう、残念。でも軽量、高速、安定のKLらしさがいいので了解です。<br>
+<br>
+教えてくれてありがとうございます。キー関係に手を入れるのは初めてです。<br>
+&gt; 具体的には、A_main に「D = @\D」を入れることで可能です。<br>
+やってみました。\Dキーが期待した挙動を示してくれました。できればDキーで同じ事をしたいです。じゃあ逆にすれば？と考えて\D=@D;とやってみましたがだめでした。う〜ん。<br>
+<br>
+&gt; A_sel に「&#39; &#39; = @N」を入れてください。<br>
+うまくいきませんでした(T_T)。@Nは新たに挿入したここ一箇所しかないのですが関係ありますでしょうか？<br>
+<br>
+&gt; できます。しかも、KL の売りの一つです（笑）<br>
+&gt;上記のカスタマイズ例のように、キーを割り当て直すことで、<br>
+だー、勘違いしてました。失礼しました。最初の方に書いてありました(汗)。真ん中より下の方ばっかり読んでました。<br>
+<br>
+&gt; この切替以外でも、ときどき残るのを確認しています。<br>
+よかった、うちだけじゃなかったんですね。これについてですがwin98のDOS(窓ではない)だとどうかなとやってみましたが発生しませんでした。<br>
+<br>
+カーソルの色についてですがjpではカーソルが明るく、usではカーソルが暗い色になります。設定は文字指定の反転系です(デフォルト)。で設定をいじってみましたがjpだとB1???????もB0???????もB1???????と同じでしたがusでは明るさが変わります。TOROさんの環境ではどうでしょうか？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="722">722.　<b><font color="#000000">Re^3: K-Launcher感謝と要望</font></b>　uehara　　<font size="2">2003/02/08 (土) 09:00</font><br>
+<blockquote>&gt; &gt;ＫＬ １．２４Ｐ１ は正式版にはならないんでしょうか ？<br>
+&gt; <br>
+&gt; 暫定として適当に加えた機能が入っているので、きちんと見直さない<br>
+&gt; 限り正式版にしない予定です。<br>
+&gt; あと、ちょっといじりたいところもありますし(^^<br>
+<br>
+ご無沙汰しております uehara です。<br>
+<br>
+今でもＫＬはず〜っと安定していますので、<br>
+気長に待ってま〜す。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="721">721.　<b><font color="#000000">Re^2: K-Launcher感謝と要望</font></b>　TORO　　<font size="2">2003/02/07 (金) 13:27</font><br>
+<blockquote>&gt;ＫＬ １．２４Ｐ１ は正式版にはならないんでしょうか ？<br>
+<br>
+暫定として適当に加えた機能が入っているので、きちんと見直さない<br>
+限り正式版にしない予定です。<br>
+あと、ちょっといじりたいところもありますし(^^</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="720">720.　<b><font color="#000000">Re: K-Launcher感謝と要望</font></b>　TORO　　<font size="2">2003/02/07 (金) 13:26</font><br>
+<blockquote>&gt; はじめまして。いつも重宝して使わせてもらっています。<br>
+&gt;ありがとうございます。最近KLのVersionを1.09から1.24+1に<br>
+&gt;あげたので色々カスタマイズして遊んでいます。<br>
+&gt;AT互換機のwin2kで使っていますがX_slfnいい感じです。LFNが<br>
+&gt;視認出来て便利です。<br>
+<br>
+ありがとうございます。X_slfn はまだ細かい処理ができて<br>
+いないのでもう少し雰囲気が変わるかもしれないです。<br>
+<br>
+<br>
+あとは、順々に回答を書いていきます。<br>
+※カスタマイズ例は実際に動作確認していないので、<br>
+うまくいかなかったら言って下さい(^^;<br>
+<br>
+<br>
+&gt; 1.ファイラー窓とビュアーでVzみたいな黄色下線カーソル<br>
+<br>
+これは、AT機のDOS上では下線を実現する方法が通常の方法では<br>
+無いのでできません。<br>
+<br>
+# できるといってもグラフィックとして扱うしか方法が無いので<br>
+# 表示関係を丸ごと作成しないといけなくなり、非現実的です。<br>
+<br>
+<br>
+<br>
+&gt; 2.カーソル上のDキーの操作感の統一<br>
+<br>
+これは Shift+D が該当機能です。「D」に置き換えたいなら、<br>
+キーマクロを使うことになります。<br>
+<br>
+具体的には、A_main に「D = @\D」を入れることで可能です。<br>
+<br>
+<br>
+<br>
+&gt;ファイル名は白であって欲しいけど色分けによる情報も欲しい<br>
+<br>
+こちらは設計ポリシー上、対応しません(^^;<br>
+<br>
+<br>
+<br>
+&gt;YES/NO選択時にスペースキーでNO選択<br>
+<br>
+キーマクロを使えば可能となります。<br>
+A_sel に「&#39; &#39; = @N」を入れてください。<br>
+<br>
+<br>
+<br>
+&gt;基本機能キーのカスタマイズ(付属docから難しそうですが)<br>
+<br>
+できます。しかも、KL の売りの一つです（笑）<br>
+上記のカスタマイズ例のように、キーを割り当て直すことで、<br>
+２、３の機能を除いた全て場面において、キーカスタマイズが<br>
+可能です。<br>
+<br>
+<br>
+<br>
+&gt;あとwin2kのcmd上でjp,usといった切り替えを行った後にklを<br>
+&gt;立ち上げるとカーソルが残<br>
+<br>
+この切替以外でも、ときどき残るのを確認しています。<br>
+起動し直さなくても、[H]等の一行編集を使うコマンドを実行して<br>
+一旦カーソルを表示させ直せば、そのままキャンセルすることで<br>
+消えます。<br>
+私は気にしていないので、そのまま放置していますが、<br>
+ちょっと対策を考えてみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="719">719.　<b><font color="#000000">Re: K-Launcher感謝と要望</font></b>　uehara　　<font size="2">2003/02/06 (木) 13:34</font><br>
+<blockquote>初めまして uehara と申します。<br>
+私も、かれこれ３年ＫＬを使わせて貰っています。<br>
+<br>
+&gt; あとwin2kのcmd上でjp,usといった切り替えを行った後にklを立ち上げるとカーソルが残ります。kl上からklを立ち上げてexitすると消えます。特に実害はないのですがこれって私だけでしょうか？<br>
+<br>
+私のところでも、<br>
+「DOS窓で１回でも ＪＰ を実行するとカーソル跡が出ます。」<br>
+気にならないといえば気にならないですけど。<br>
+<br>
+ＰＳ．<br>
+ＫＬ １．２４Ｐ１ は正式版にはならないんでしょうか ？<br>
+<br>
+以上</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="718">718.　<b><font color="#000000">K-Launcher感謝と要望</font></b>　julia　　<font size="2">2003/02/06 (木) 02:02</font><br>
+<blockquote>はじめまして。いつも重宝して使わせてもらっています。ありがとうございます。最近KLのVersionを1.09から1.24+1にあげたので色々カスタマイズして遊んでいます。AT互換機のwin2kで使っていますがX_slfnいい感じです。LFNが視認出来て便利です。<br>
+使っていてこんな機能あったらいいな〜と感じた事を書きます。<br>
+1.ファイラー窓とビュアーでVzみたいな黄色下線カーソル<br>
+現在のカーソルはカーソル位置がはっきりわかってとてもいいのですがカーソル上の内容、特にファイルネームが見えにくいときがあります。オプションで選べたらいいなと思います。<br>
+2.カーソル上のDキーの操作感の統一<br>
+何も選択されていない時にカーソル上にファイルがあるときはDキーで削除できますがディレクトリではなにもおこりません。ディレクトリもDキーで削除したいです。<br>
+<br>
+以下の要望は聞き流してください。恐らくK-Launcherの目指すものではない気がします。もしK-Launcherの趣旨に沿うようであれば検討してみてください。<br>
+ファイルの色分けで全体ではなくサイズや拡張子のみといった一部分に色づけする&gt;ファイル名は白であって欲しいけど色分けによる情報も欲しい<br>
+YES/NO選択時にスペースキーでNO選択<br>
+基本機能キーのカスタマイズ(付属docから難しそうですが)<br>
+<br>
+あとwin2kのcmd上でjp,usといった切り替えを行った後にklを立ち上げるとカーソルが残ります。kl上からklを立ち上げてexitすると消えます。特に実害はないのですがこれって私だけでしょうか？X_back、X_disp=0です。<br>
+<br>
+K-Launcherは当方の必須ツールです。こんな便利なソフトをつくってくれてTOROさん本当にありがとうございます。<br>
+長文乱筆失礼いたしました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="717">717.　<b><font color="#000000">PPx 0.31+3</font></b>　TORO　　<font size="2">2003/02/03 (月) 22:59</font><br>
+<blockquote>+3 です。<br>
+カーソル移動関連のチューニングと、<br>
+ディレクトリ更新時（^[F5]）のチューニングをおこないました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="716">716.　<b><font color="#000000">PPx 0.31 + 2</font></b>　TORO　　<font size="2">2003/01/25 (土) 19:08</font><br>
+<blockquote>0.31 + 2 を公開しました。<br>
+<br>
+・一般のアプリケーションで扱うことができないパス長<br>
+（260文字orBytes以上）であっても、WinNT上でなら<br>
+簡単なファイル管理ができるようになりました。<br>
+<br>
+間違って深いディレクトリを作ってしまったときや、<br>
+ネットワーク経由のために長くなってしまったとき等<br>
+でも、制限つきでファイル管理が可能です。<br>
+<br>
+<br>
+・PPc の表示処理のチューニングと、カーソル移動処理の<br>
+チューニングを行なっています。一応カーソル移動関連の<br>
+カスタマイズの布石となります(^^。<br>
+<br>
+結構根本的な部分を変更したため、動作が変になっている<br>
+かもしれません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="715">715.　<b><font color="#000000">Re^2: RunAsaの設定</font></b>　まろに　　<font size="2">2003/01/16 (木) 09:14</font><br>
+<blockquote>TOROさん、レスありがとうございます。<br>
+<br>
+&gt;  こちらについてはできるようにしてみようと思います。<br>
+<br>
+アイコンの設定手間が省けるようになると大助かりです。感謝！<br>
+<br>
+&gt; 「ショートカットのショートカット」の形にしたい<br>
+&gt; ためです。<br>
+<br>
+了解しました。<br>
+<br>
+&gt; Windows2000あたりから増えた欄なんですが、RUNASAの<br>
+&gt; 開発環境が古くてこの欄を操作できないようです(^^;。<br>
+<br>
+こちらも了解です。<br>
+開発環境に起因しているということですので、遠〜い未来の<br>
+バージョンで宜しくお願いします(^^)<br>
+<br>
+では。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="714">714.　<b><font color="#000000">Re^3: CLISM要望</font></b>　TORO　　<font size="2">2003/01/15 (水) 20:24</font><br>
+<blockquote>&gt;そうですか。<br>
+&gt;それは非常に残念です。<br>
+<br>
+&gt; 機会があればご検討願います。<br>
+&gt; 回答ありがとうございました。<br>
+<br>
+この手のソフトは、一度機能拡張を始めると、<br>
+どうせだからとあれもこれもと機能追加して、<br>
+あっという間に肥大化してしまうことがとても<br>
+多いのです。<br>
+<br>
+このため、CLISM の特徴が薄れてしまわないよう、<br>
+機能強化はできるだけ避けたいと思っています。<br>
+<br>
+すみませんが、宜しくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="713">713.　<b><font color="#000000">Re^2: CLISM要望</font></b>　pono　　<font size="2">2003/01/15 (水) 02:08</font><br>
+<blockquote>そうですか。<br>
+それは非常に残念です。<br>
+<br>
+これらの拡張を行っても充分にシンプルで使い良いとは思いますが、<br>
+予定がないなら仕方ありません。<br>
+<br>
+機会があればご検討願います。<br>
+回答ありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="712">712.　<b><font color="#000000">Re: CLISM要望</font></b>　TORO　　<font size="2">2003/01/14 (火) 20:48</font><br>
+<blockquote>&gt; CLISM、大変重宝しております。<br>
+&gt; 普及活動の結果、今や同僚全員使っております。(^_^;)<br>
+&gt; <br>
+&gt; ２点要望があります。<br>
+<br>
+使ってもらえて嬉しいところですが、CLISM は最低限の履歴<br>
+機能に制限しているのが特徴ですので、今のところ変更する<br>
+ことは、バグ修正以外では考えていません。<br>
+<br>
+もし、機能拡張を行う場合は、上記の２点を追加するように<br>
+しようと思います。<br>
+<br>
+CLISMと同ジャンルで、より多機能なソフトはかなりの数が<br>
+ありますので、色々検討してみたらどうでしょうか？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="711">711.　<b><font color="#000000">Re: RunAsaの設定</font></b>　TORO　　<font size="2">2003/01/14 (火) 20:47</font><br>
+<blockquote>はじめまして、まろにさん。<br>
+<br>
+<br>
+&gt; ●作成されるショートカットのアイコン<br>
+&gt; 　・ショートカットのアイコン設定状態が、<br>
+<br>
+ こちらについてはできるようにしてみようと思います。<br>
+<br>
+<br>
+&gt; 　・ショートカットの「リンク先」記述がRunAsaの<br>
+&gt;「登録コマンド」に<br>
+<br>
+ これは現行のままとします。もとのショートカットの<br>
+全ての内容をRUNASAが作成するショートカットに反映<br>
+させることはできないため、追跡しにくくなりますが<br>
+「ショートカットのショートカット」の形にしたい<br>
+ためです。<br>
+<br>
+# ショートカットは色々拡張できるので、拡張分が<br>
+#反映できないとショートカット先が正常に動作し<br>
+#なくなる可能性が考えられます。<br>
+<br>
+<br>
+&gt; 　・ショートカットの「コメント」記述がRunAsaで<br>
+<br>
+ これはできるかどうかはわかりません。コメント欄は<br>
+Windows2000あたりから増えた欄なんですが、RUNASAの<br>
+開発環境が古くてこの欄を操作できないようです(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="710">710.　<b><font color="#000000">CLISM要望</font></b>　pono　　<font size="2">2003/01/13 (月) 12:12</font><br>
+<blockquote>CLISM、大変重宝しております。<br>
+普及活動の結果、今や同僚全員使っております。(^_^;)<br>
+<br>
+２点要望があります。<br>
+・履歴クリア機能（HotKey）<br>
+・履歴を全てペーストする機能（HotKey）<br>
+<br>
+あると非常に非常に便利なのですが、<br>
+ご検討の程、どうぞ宜しくお願い致します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="709">709.　<b><font color="#000000">RunAsaの設定</font></b>　まろに　　<font size="2">2003/01/11 (土) 09:36</font><br>
+<blockquote>TOROさん、始めまして。RunAsa1.0+5（暗号化によるログインパスワードの保護版）を利用させて頂いているものです。<br>
+便利なツールをご提供頂き大助かりで、とても感謝です。m(_ _)m<br>
+<br>
+この度は使っていまして、設定が少し面倒と感じる部分がありましたので、下記させて頂きます。開発の参考になれば幸いです。<br>
+<br>
+●作成されるショートカットのアイコン<br>
+RunAsaで作成されるショートカットのアイコンはRunAsaのものですよね。これを毎回、該当ソフトのものに変更してます。アイコンの設定が反映されると嬉しいですね。<br>
+<br>
+●ショートカットをRunAsaにD&amp;Dした場合<br>
+　・ショートカットの「リンク先」記述がRunAsaの「登録コマンド」に　　入るように<br>
+　・ショートカットの「コメント」記述がRunAsaで作成されたショート　　カットに引き継がれるように<br>
+　・ショートカットのアイコン設定状態が、RunAsaで作成されたショー　　トカットに引き継がれるように<br>
+<br>
+以上、宜しくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="708">708.　<b><font color="#000000">Re^4: syslogd要望</font></b>　LA-NA2-R　　<font size="2">2003/01/09 (木) 20:58</font><br>
+<blockquote>送信先に「.」を使ったら正常に受信しました。<br>
+お陰様で目的を達する事ができてすごく助かりました。<br>
+ありがとうございます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="707">707.　<b><font color="#000000">Re^3: syslogd要望</font></b>　TORO　　<font size="2">2003/01/09 (木) 13:02</font><br>
+<blockquote>&gt; 1台のマシン内でsyslogdとClockPodを両方起ち上げ、<br>
+&gt; BBルータからのsyslogをファイルに保存しつつ、ウォーニングランプ的に<br>
+&gt; ClockPodで状況を把握する事が目的です。<br>
+<br>
+１PC での使用でしたか。確かに 1PC でも MSNetwork が<br>
+動いていないと、通信がうまくいかないですね。<br>
+<br>
+それなら、送信先として「.」を使ってみて下さい。<br>
+こちらはネットワークが無くても動作すると思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="706">706.　<b><font color="#000000">Re^2: syslogd要望</font></b>　LA-NA2-R　　<font size="2">2003/01/08 (水) 20:26</font><br>
+<blockquote>お手数をお掛けしてすみません。<br>
+<br>
+1台のマシン内でsyslogdとClockPodを両方起ち上げ、<br>
+BBルータからのsyslogをファイルに保存しつつ、ウォーニングランプ的に<br>
+ClockPodで状況を把握する事が目的です。<br>
+<br>
+概況は…<br>
+・OS：Windows 2000 Professional SP3<br>
+・「Microsoft ネットワーク用クライアント」 チェックなし<br>
+・「NetBIOS over TCP/IP を無効にする」<br>
+・「TCP/IP NetBIOS Helper サービス」停止<br>
+・DHCP無効/IP決め打ち<br>
+・無通信時のリスニングポートはTCP/UDPのそれぞれ135/445のみ<br>
+・LAN間のファイル交換等はIP直打ちのショートカットを使用<br>
+<br>
+結果的には上記から<br>
+・「Microsoft ネットワーク用クライアント」 チェックあり<br>
+・NBTを有効<br>
+に変更しないと通信は不可能でした。<br>
+まぁONにすれば済む話ではあるんですが、簡単・便利さ故の<br>
+不安定要素を排除し、極力シンプルにしたかっもので。<br>
+<br>
+とりあえずどちらかを諦める事にはなりますが、<br>
+「こういう考え・環境の奴もいる」程度にでも思って頂ければ（笑）</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="705">705.　<b><font color="#000000">Re: syslogd要望</font></b>　TORO　　<font size="2">2003/01/07 (火) 10:42</font><br>
+<blockquote>返事が遅れました。<br>
+<br>
+&gt; syslogdからClockPodへsyslogを送りたいのですが、<br>
+&gt; 自分の環境ではNetBIOSを無効にしているせいか、<br>
+&gt; ClockPodが受け取っていません。<br>
+<br>
+使用OSと使用したい状況が書かれていないので、細かいところが<br>
+わかりませんが、２台のPC間でうまくいかないことを前提に<br>
+話をします。（１台で完結する場合は、単に設定ミスと思います）<br>
+<br>
+<br>
+<br>
+9x系/NT系のどちらもNetBIOS over TCP/IP を停止することが<br>
+できても、MSNetworkが使用できれば、ClockPod と syslogd 間の<br>
+通信に使うメールスロットは使えると思います。<br>
+<br>
+1)両PC間でClockPodを起動して「Send ClockPod」でやり取り<br>
+  できるか<br>
+2)両PC間でファイル共有や管理機能が使用できるか<br>
+3)ファイアウォールやウィルスチェッカなどで通信が阻害されて<br>
+  いないか<br>
+を確認して下さい。<br>
+<br>
+もし、ネットワークプロトコルがTCP/IPのみで、<br>
+NetBIOS over TCP/IP も切っている場合は、<br>
+MSNetwork が使えないため、ClockPod の通信ができません。<br>
+<br>
+この環境で使用したい場合は、例えば 1)〜3)の方法が<br>
+考えられます。<br>
+1)NetBEUIプロトコルを追加してMSNetworkを使えるようにする。<br>
+2)syslogを受信するPCをClockPodが起動しているPCに変更する。<br>
+3)・両方のPCにsyslogdとClockPodを起動させ、<br>
+・両PCのsyslogd は、それぞれ同じPCのClockPodに送信し<br>
+・本来のsyslogdを起動したいPC のClockPodは、<br>
+  Z_CpodSlot に syslog.exe を登録して、受信したい PC に<br>
+  syslog 送信を行う。<br>
+ とすると syslog→PC1（syslogd→ClockPod→syslog.exe）→<br>
+  PC2(syslogd→ClockPod）という流れで一応目的が達成できます。<br>
+<br>
+<br>
+&gt; syslogdがIP直打ちに対応するようになるとありがたいです。<br>
+<br>
+ 上記の方法を使えば一応対処できるので、できたら対応しない<br>
+方向で済ませたいと思います。<br>
+（余分にポートを開くことにもなりますから。）<br>
+<br>
+もう少し使用したい状況がわかれば、対応するかどうかの判断が<br>
+し易くなりますので、よかったら教えてもらえませんか？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="704">704.　<b><font color="#000000">syslogd要望</font></b>　LA-NA2-R　　<font size="2">2003/01/04 (土) 16:16</font><br>
+<blockquote>こんにちは。ClockPodとTORO&#39;id syslogdを使わせて頂いてます。<br>
+<br>
+syslogdからClockPodへsyslogを送りたいのですが、<br>
+自分の環境ではNetBIOSを無効にしているせいか、<br>
+ClockPodが受け取っていません。<br>
+<br>
+syslogdがIP直打ちに対応するようになるとありがたいです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="703">703.　<b><font color="#000000">ClockPod &amp; PPx &amp; RUNASA の更新</font></b>　TORO　　<font size="2">2002/12/15 (日) 21:40</font><br>
+<blockquote>ClockPod &amp; PPx &amp; RUNASA を更新しました。<br>
+<br>
+それぞれ、修正が主な変更点となっています。<br>
+<br>
+また、PPc の [A] を圧縮属性＆暗号化属性の指定ができるように<br>
+変更を行なっています。現在はエラーがでてもメッセージは<br>
+でません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="702">702.　<b><font color="#000000">ClockPod 2.43+2</font></b>　TORO　　<font size="2">2002/12/08 (日) 20:32</font><br>
+<blockquote>+2 を公開しました。<br>
+<br>
+Z_Messenger の指定が無効になっていたのを修正したほか、<br>
+可変ピッチフォントによる表示に対応しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="701">701.　<b><font color="#000000">Re: ClockPod</font></b>　TORO　　<font size="2">2002/12/08 (日) 20:31</font><br>
+<blockquote>&gt; たとえば、フォントをMS UI Gothic 10Ptにすると<br>
+&gt;表示の右端が切れてしまうのですが、制限事項？とか<br>
+&gt;なのでしょうか。<br>
+<br>
+いえ、単純に今まで文字ごとに幅が違うフォントに<br>
+対応していなかっただけです(^^;<br>
+今回の +2 で対応しましたので、うまく表示できる<br>
+ようになったと思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="700">700.　<b><font color="#000000">ClockPod</font></b>　junya_s0　　<font size="2">2002/12/06 (金) 09:23</font><br>
+<blockquote>CloclPod2.43をWindowsXPSP1で使っています。<br>
+<br>
+たとえば、フォントをMS UI Gothic 10Ptにすると表示の右端が切れてしまうのですが、制限事項？とかなのでしょうか。<br>
+<br>
+XPになってフォント幅の求め方が変わったとか聞いた気がするのですが、関係ないでしょうか？<br>
+<br>
+お時間があるときで構いませんので一度調査願えますようよろしくお願い致します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="699">699.　<b><font color="#000000">Re^2: RUNASA 1.0+4</font></b>　TORO　　<font size="2">2002/12/04 (水) 13:10</font><br>
+<blockquote>&gt; 何故かEXE,BATとも正常に起動しました!?(^^)<br>
+&gt; <br>
+&gt; 会社でも試した所、EXEは起動しましたが、BATはエラー<br>
+&gt; が出てしまいました(~_~)<br>
+&gt; 当たっている、ＳＰの違いのせいかもしれません。<br>
+&gt; （サービス版はテストしていません）<br>
+<br>
+最近の変更はサービス版でないと効果無いのですけどね(^^;<br>
+どうやら、SPのあたり具合がポイントのようですね(^^;;<br>
+<br>
+まだ、NT 上での動作に怪しい部分があるので、<br>
+色々手を加えていこうと思ってます。もしかしたら Win2000<br>
+上の動作に変化がでるかもしれませんし。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="698">698.　<b><font color="#000000">Re: RUNASA 1.0+4</font></b>　Yoshi　　<font size="2">2002/12/02 (月) 19:58</font><br>
+<blockquote>&gt; ただ、色々コーティングのチューニングをしたので、<br>
+&gt; おかしくなっている所があるかもしれません。<br>
+<br>
+最終確認(?)の為、OSをインストールし直して、テスト<br>
+してみました。<br>
+何故かEXE,BATとも正常に起動しました!?(^^)<br>
+<br>
+会社でも試した所、EXEは起動しましたが、BATはエラー<br>
+が出てしまいました(~_~)<br>
+当たっている、ＳＰの違いのせいかもしれません。<br>
+（サービス版はテストしていません）<br>
+ただ、EXEが動いてくれれば、問題ないので、これで<br>
+使わせていただきます。<br>
+色々と対応していただき、感謝しております。<br>
+ありがとうございましたm(__)m<br>
+<br>
+OSAKIさんの筆まめ13もこれで動いてくれると良いのですが・・・</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="697">697.　<b><font color="#000000">RUNASA 1.0+4</font></b>　TORO　　<font size="2">2002/11/29 (金) 22:32</font><br>
+<blockquote>+3 から動作確認用メッセージを除いた +4 を公開します。<br>
+ただ、色々コーティングのチューニングをしたので、<br>
+おかしくなっている所があるかもしれません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="696">696.　<b><font color="#000000">Re^2: RUNASA 10+3</font></b>　TORO　　<font size="2">2002/11/29 (金) 12:51</font><br>
+<blockquote>&gt; ２.GRICdial.exeを登録して実行<br>
+&gt; 　「Runtime Error!」以外、１と同様のメッセージが出て、<br>
+&gt; 　起動成功！(^^)<br>
+&gt; 　但し、GRICdial.exeのショートカットを登録すると、<br>
+&gt; 　「Runtime Error!」が出て起動出来ませんでした。<br>
+<br>
+動く場合もありですか、もう少しいじる必要がありますね(^^;。<br>
+とりあえず、確認用メッセージを除いたのをだして、<br>
+動く設定で普通に使えるようにします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="695">695.　<b><font color="#000000">Re: RUNASA 10+3</font></b>　Yoshi　　<font size="2">2002/11/29 (金) 00:15</font><br>
+<blockquote>色々とご迷惑をお掛けして、すみませんm(__)m<br>
+<br>
+１.バッチファイルを登録して実行<br>
+　・サービス未使用時<br>
+　「en ok」<br>
+　「LU err」<br>
+　「この操作を正しく終了しました。」<br>
+　「LEB ok」<br>
+　「GetTokenInformation failed:ハンドルが無効です。」<br>
+　「WL Mode」<br>
+　「GetTokenInformation failed:ハンドルが無効です。」<br>
+　「Runtime Error!」<br>
+<br>
+　・サービス使用時<br>
+　「en ok」<br>
+　「LUP ok」<br>
+　「LEB ok」<br>
+　「WL Mode」<br>
+　「Runtime Error!」<br>
+　で、動きませんでした。<br>
+<br>
+２.GRICdial.exeを登録して実行<br>
+　「Runtime Error!」以外、１と同様のメッセージが出て、<br>
+　起動成功！(^^)<br>
+　但し、GRICdial.exeのショートカットを登録すると、<br>
+　「Runtime Error!」が出て起動出来ませんでした。<br>
+ </blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="694">694.　<b><font color="#000000">RUNASA 10+3</font></b>　TORO　　<font size="2">2002/11/27 (水) 22:17</font><br>
+<blockquote>1.0+3 を公開しました。<br>
++2 と同じく動作確認用ですので余分なメッセージが<br>
+表示されます。<br>
+<br>
+また、Windows NT 4.0 上でも動作するようになり<br>
+ました。ただし、NTサービス版を用いる必要があり<br>
+ます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="692">692.　<b><font color="#000000">Re: RUNASA 1.0+2</font></b>　Yoshi　　<font size="2">2002/11/25 (月) 21:56</font><br>
+<blockquote>&gt; また、動作確認のため、登録ソフトを実行するまでメッセージが<br>
+&gt; 何回かでるようになっています。動作しなかったときは、<br>
+&gt; 表示されたメッセージを教えてください。<br>
+<br>
+早速試してみました。(バッチファイルを実行)<br>
+・サービス版を使用しない場合<br>
+ 「en ok」<br>
+ 「クライアントは要求された特権を保有していません。」<br>
+ 「LU err」<br>
+ 「Runtime Error」の順にメッセージが出ます。<br>
+・サービス版を使用した時<br>
+ 「en ok」<br>
+ 「LUP ok」<br>
+ 「Runtime Error」のメッセージが出ます。<br>
+<br>
+よろしくお願いしますm(__)m<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="691">691.　<b><font color="#000000">RUNASA 1.0+2</font></b>　TORO　　<font size="2">2002/11/24 (日) 22:36</font><br>
+<blockquote>今出ている不都合が解消できるかどうかを確かめるために<br>
+1.0+2 を公開しました。<br>
+<br>
+現状でも問題出ていない人にとって、+2はかえって使いに<br>
+くくなるため、使用しないでください。<br>
+<br>
+一応、問題になりそうな部分について改変してみましたので<br>
+試しに使ってみてください。ただし、サービス版で登録しな<br>
+いとうまくいかないと思います。<br>
+<br>
+また、動作確認のため、登録ソフトを実行するまでメッセージが<br>
+何回かでるようになっています。動作しなかったときは、<br>
+表示されたメッセージを教えてください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="690">690.　<b><font color="#000000">Re^2: RUNASA 1.0+1</font></b>　TORO　　<font size="2">2002/11/18 (月) 12:56</font><br>
+<blockquote>&gt; 一応、試して見ましたがダメでした(T_T)<br>
+&gt; Gricdial.exeを実行してみる、「電話帳が・・・」のエラー、<br>
+&gt; BATファイルを実行するとRUNASAで、「Exec Error」が出ます。<br>
+&gt; 試しに、CALC.exeを実行するBATを作って見ましたが、同じく<br>
+&gt; エラーが出ます(T_T)<br>
+<br>
+やはりだめでしたか(^^;<br>
+まずバッチで Exec Error がでないように修正できるよう、<br>
+検討してみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="689">689.　<b><font color="#000000">Re: RUNASA 1.0+1</font></b>　Yoshi　　<font size="2">2002/11/16 (土) 00:04</font><br>
+<blockquote>&gt; 1.0+1 を公開しました。<br>
+&gt; 今出ている不都合に対しては効果無いと思いますが、次の<br>
+&gt; 変更をおこないました。<br>
+<br>
+一応、試して見ましたがダメでした(T_T)<br>
+Gricdial.exeを実行してみる、「電話帳が・・・」のエラー、<br>
+BATファイルを実行するとRUNASAで、「Exec Error」が出ます。<br>
+試しに、CALC.exeを実行するBATを作って見ましたが、同じく<br>
+エラーが出ます(T_T)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="688">688.　<b><font color="#000000">DOS上 KL で LFN 操作 #2</font></b>　TORO　　<font size="2">2002/11/15 (金) 00:08</font><br>
+<blockquote>以前書いた DOSLFN を使って、漢字 LFN を含むファイルコピーが<br>
+できるようにする DOSLFN のパッチを試しに作ってみました。<br>
+<br>
+http://homepage1.nifty.com/toro/DOSLFNP.LZH<br>
+<br>
+から入手できます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="687">687.　<b><font color="#000000">ClockPod 2.43+1</font></b>　TORO　　<font size="2">2002/11/12 (火) 21:26</font><br>
+<blockquote>2.43+1 を公開しました。<br>
+2.31 より後の版で WindowsNT4.0 上の動作が<br>
+できなくない場合があるのを修正しました。<br>
+<br>
+また、NT3.51 での動作を確認しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="686">686.　<b><font color="#000000">RUNASA 1.0+1</font></b>　TORO　　<font size="2">2002/11/10 (日) 20:17</font><br>
+<blockquote>1.0+1 を公開しました。<br>
+今出ている不都合に対しては効果無いと思いますが、次の<br>
+変更をおこないました。<br>
+<br>
+・実行時のカレントディレクトリを登録ファイルのディレクトリに設定<br>
+・ドメイン名に予めコンピュータ名を記載するようにした</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="685">685.　<b><font color="#000000">Re^8: Runasaを使用してGRICdialを使いたい</font></b>　Yoshi　　<font size="2">2002/11/08 (金) 21:27</font><br>
+<blockquote>&gt; 一度、RUNASA のドメイン名のところにドメイン名<br>
+&gt; （又はコンピュータ名）を入れた状態で登録して<br>
+&gt; 試してみたらどうでしょうか。<br>
+<br>
+入れたりしてみましたが、状況は変わりません(T_T)<br>
+<br>
+ただ一つ分かったのは、何回かに一度（不定期に）、<br>
+ちゃんと動く事があると言う事です！？<br>
+どのタイミングで動くのかまでは把握できませんが。<br>
+<br>
+それと、あまり関係ないとは思いますが、RUNASAで<br>
+GRICdialが正常に起動した時、GRICdialを終了すると<br>
+イベントビューアに下記が通知されます。<br>
+(RUNASコマンドで実行した時は、出ません。)<br>
+<br>
+「レジストリ設定を別のプログラムまたはサービスが<br>
+編集していたため、1 回でこのユーザープロファイル<br>
+に保存することができませんでした。<br>
+13 回保存を試みた後、レジストリ設定は保存されました。」</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="684">684.　<b><font color="#000000">Re^2: RUNASAで筆まめ13を</font></b>　OSAKI　　<font size="2">2002/11/05 (火) 13:46</font><br>
+<blockquote>&gt; これでうまくいくがどうかはわかりませんが、RUNASA の<br>
+&gt; ドメイン名の所にドメイン名／コンピュータ名をいれた<br>
+&gt; 状態で試してみたらどうでしょうか。<br>
+<br>
+「Exec error」が返ってきました。<br>
+ドメイン名についてはどちらも試したのですが、<br>
+Win2000なので、ドメイン名は「コンピュータ名」で、<br>
+ローカルユーザーのAdministratorで運用したいと考えています。<br>
+<br>
+&gt; あと、PowerUsers が駄目で、Admin. でしか動かないものは、<br>
+&gt; Admin. の HKEY_CURRENT_USER\Software に書いた<br>
+&gt; レジストリ情報が該当ユーザの HKEY... に書き込んでいない為<br>
+&gt; ということがけっこう多いので、レジストリの操作に慣れている<br>
+&gt; なら、複写を行ってみるといいかもしれないです。<br>
+<br>
+筆まめのサービスパックやバージョンアップのことを考えると、<br>
+できることならレジストリは変更したくないですね。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="683">683.　<b><font color="#000000">Re: RUNASAで筆まめ13を</font></b>　TORO　　<font size="2">2002/11/05 (火) 12:57</font><br>
+<blockquote>&gt; 筆まめ13はadministratorでの動作保証しかなく、<br>
+ :<br>
+ :<br>
+ :<br>
+&gt; 私の環境は、Win2000Pro(SP3)でPowerUserです。<br>
+<br>
+「670.　Runasaを使用してGRICdialを使いたい」のスレッドと<br>
+同じ症状のようですね。<br>
+<br>
+これでうまくいくがどうかはわかりませんが、RUNASA の<br>
+ドメイン名の所にドメイン名／コンピュータ名をいれた<br>
+状態で試してみたらどうでしょうか。<br>
+<br>
+<br>
+あと、PowerUsers が駄目で、Admin. でしか動かないものは、<br>
+Admin. の HKEY_CURRENT_USER\Software に書いた<br>
+レジストリ情報が該当ユーザの HKEY... に書き込んでいない為<br>
+ということがけっこう多いので、レジストリの操作に慣れている<br>
+なら、複写を行ってみるといいかもしれないです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="682">682.　<b><font color="#000000">Re^7: Runasaを使用してGRICdialを使いたい</font></b>　TORO　　<font size="2">2002/11/05 (火) 12:46</font><br>
+<blockquote>&gt; どうやらSPをあてるとエラーが出てしますようです。<br>
+&gt; マイクロソフトのサポートに、似たような症状が載ってました。<br>
+<br>
+<br>
+&gt; しかし、SP2で対策されているとの事です・・・<br>
+<br>
+私のほうは 2000 SP3 なのですが、今のところ症状は<br>
+出ていないようです。<br>
+一度、RUNASA のドメイン名のところにドメイン名<br>
+（又はコンピュータ名）を入れた状態で登録して<br>
+試してみたらどうでしょうか。<br>
+入れた状態で</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="681">681.　<b><font color="#000000">RUNASAで筆まめ13を</font></b>　OSAKI　　<font size="2">2002/11/05 (火) 10:20</font><br>
+<blockquote>筆まめ13はadministratorでの動作保証しかなく、<br>
+PowerUserでは動作不具合があるので、<br>
+RUNASAで起動させようとしたところ、<br>
+以下のエラーが発生しました。<br>
+Microsoft Visual C++ Runtime Library<br>
+Runtime Error!<br>
+Program: C:\.....\Mamew13.exe<br>
+abnormal program termination<br>
+<br>
+私の環境は、Win2000Pro(SP3)でPowerUserです。<br>
+<br>
+まずRUNASAを使用する前に、<br>
+プログラムを単体で起動させたところ<br>
+「指定したパス・・・に見つかりませんでした。」<br>
+とエラーが発生しました。<br>
+そこで、バッチファイル(.cmd)を作成し、<br>
+「別のユーザーとして実行」させたCMD.exe上で<br>
+動作させたところ筆まめが正常に起動しました。<br>
+このバッチファイルをRUNASAで起動させると、<br>
+上記エラーが発生しました。<br>
+<br>
+それで、いろいろやってみたのですが、<br>
+なぜかCMD.exeを「別のユーザとして実行」させて<br>
+画面上に表示させている状態で、<br>
+上記バッチファイルをRUNASAで起動させると、<br>
+正常に筆まめが起動しました。<br>
+CMD.exeの窓を閉じで、<br>
+上記バッチファイルをRUNASAで起動させると、<br>
+また上記エラーが発生しました。<br>
+<br>
+それで、RUNASAでのコマンド記述を、<br>
+C:\WINNT\System32\CMD.exe /C バッチファイル<br>
+に変更してみたのですが、<br>
+これだと何も返ってきませんでした。<br>
+<br>
+RUNASAで筆まめを使えないものかと<br>
+いろいろやってみたのですが・・・、<br>
+何か方法はないものでしょうか？<br>
+よろしくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="679">679.　<b><font color="#000000">PPx 0.31</font></b>　TORO　　<font size="2">2002/11/04 (月) 21:34</font><br>
+<blockquote>PPx 0.31 を公開しました。<br>
+<br>
+再帰コピー防止のチェックがおかしかったため、コピーできない<br>
+場合があるのを修正しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="678">678.　<b><font color="#000000">Re^6: Runasaを使用してGRICdialを使いたい</font></b>　Yoshi　　<font size="2">2002/10/30 (水) 08:51</font><br>
+<blockquote>&gt; GRICdialが単体で正常に動くかどうかを確認したほうがよさそうですね。<br>
+<br>
+GRICdialは、正常に起動します。<br>
+<br>
+色々テストしていて、現段階で分かっている事です。<br>
+1.自宅のＰＣでGRICdialを削除後、再インストールしたら、<br>
+　会社と同じエラーが出ました。<br>
+2.自宅で別のＰＣにWIN2000をクリーンインストールしてみました。<br>
+　・インストール直後は、RUNASA+GRICdialは正常に起動。<br>
+　・SP3をインストール。Runtime Errorが出るようになりました。<br>
+<br>
+どうやらSPをあてるとエラーが出てしますようです。<br>
+マイクロソフトのサポートに、似たような症状が載ってました。<br>
+http://support.microsoft.com/default.aspx?scid=kb;ja;JP272472<br>
+しかし、SP2で対策されているとの事です・・・<br>
+以上、途中経過でした。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="677">677.　<b><font color="#000000">ClockPod on NT の不都合</font></b>　TORO　　<font size="2">2002/10/29 (火) 21:55</font><br>
+<blockquote>2.31 より後の版のClockPodが NT4.0 等で動作しない場合がある<br>
+ことがわかりました。画面がちらついて、ClockPodは表示されない、<br>
+という症状です。<br>
+<br>
+原因を調べていますが、ちょっと判明に時間が掛かりそうです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="676">676.　<b><font color="#000000">Re^5: Runasaを使用してGRICdialを使いたい</font></b>　TORO　　<font size="2">2002/10/25 (金) 12:51</font><br>
+<blockquote>&gt; 「C++ Runtime Error・・・abnormal Program・・・」の様な<br>
+&gt; エラーが出たと思います。<br>
+<br>
+このメッセージはGRICdial側だと思います。GRICdialが単体で<br>
+正常に動くかどうかを確認したほうがよさそうですね。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="675">675.　<b><font color="#000000">Re^4: Runasaを使用してGRICdialを使いたい</font></b>　Yoshi　　<font size="2">2002/10/24 (木) 21:53</font><br>
+<blockquote>度々、すみません。<br>
+自宅で上手く行ったので、意気揚々と会社に行って試したら、<br>
+動きませんでした(T_T)<br>
+メモしてくるのを忘れましたが、<br>
+「C++ Runtime Error・・・abnormal Program・・・」の様な<br>
+エラーが出たと思います。<br>
+自宅の設定を確認したいと思いますが、何か心当たりが<br>
+ないでしょうか？<br>
+どちらのプログラムが出してるエラーなのか分かりませんが・・・<br>
+自宅:Win2000(SP3)  会社:Win2000(SP2だったと思います)です。<br>
+よろしくお願いします。<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="673">673.　<b><font color="#000000">Re^3: Runasaを使用してGRICdialを使いたい</font></b>　TORO　　<font size="2">2002/10/24 (木) 12:48</font><br>
+<blockquote>&gt; かかわらず「C:\WINNT\SYSTEM32\GRICdial.exe」と出たのです。<br>
+&gt; もしやと思い、BATにCDコマンドを追加したら、動きました！<br>
+&gt; もちろん、このBATを「RUNASA」で実行しても大丈夫です。<br>
+<br>
+なるほど、起動時のカレントディレクトリが考慮されていない<br>
+ソフトだったのですね。「別の〜」の方に動作をあわせたほうが<br>
+いいかもしれないですね(^^;<br>
+<br>
+とりあえず、試されたバッチファイルの他に、ショートカットも<br>
+使えますので、コンソールが不要でしたらショートカットに<br>
+するといいかもしれないです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="672">672.　<b><font color="#000000">Re^2: Runasaを使用してGRICdialを使いたい</font></b>　Yoshi　　<font size="2">2002/10/23 (水) 20:28</font><br>
+<blockquote>&gt; この GRICdial が、「別のユーザとして実行」や「RUNAS」を<br>
+&gt; 使えば使用できるかどうかを確認してみて下さい。<br>
+<br>
+確認してみたところ、<br>
+「別のユーザとして実行」は、使用でき、<br>
+「RUNAS」では、同じエラーが出てしまいました。<br>
+おかしいと思い、GRICdialを実行するだけのBATファイルを<br>
+作成して、RUNASコマンドを試してみました。<br>
+そうすると、プログラムのあるフォルダで実行しているのにも<br>
+かかわらず「C:\WINNT\SYSTEM32\GRICdial.exe」と出たのです。<br>
+もしやと思い、BATにCDコマンドを追加したら、動きました！<br>
+もちろん、このBATを「RUNASA」で実行しても大丈夫です。<br>
+という事で、解決しました。<br>
+RUNASA活用させていただきます。<br>
+ありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="671">671.　<b><font color="#000000">Re: Runasaを使用してGRICdialを使いたい</font></b>　TORO　　<font size="2">2002/10/23 (水) 12:58</font><br>
+<blockquote>&gt;「電話帳が存在していないか、壊れ<br>
+&gt; ています。」と出て、使えません。<br>
+&gt; 使えるようになる方法がないでしょうか？<br>
+<br>
+この GRICdial が、「別のユーザとして実行」や「RUNAS」を<br>
+使えば使用できるかどうかを確認してみて下さい。<br>
+<br>
+RUNASA は、パスワードの入力を省略できるツールであって、<br>
+あくまでも RUNAS 等の動作とほぼ同じ動作しかしません。<br>
+このため、RUNAS 等を使って動作できないものは RUNASA を使って<br>
+も動作できません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="670">670.　<b><font color="#000000">Runasaを使用してGRICdialを使いたい</font></b>　Yoshi　　<font size="2">2002/10/22 (火) 23:18</font><br>
+<blockquote>Runasaを利用して、GRICdial（海外ローミング用ダイアルアップ）を<br>
+使いたいと思っているのですが、「電話帳が存在していないか、壊れ<br>
+ています。」と出て、使えません。<br>
+使えるようになる方法がないでしょうか？<br>
+よろしく、お願いいたします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="669">669.　<b><font color="#000000">PPx 0.30+5</font></b>　TORO　　<font size="2">2002/10/20 (日) 00:20</font><br>
+<blockquote>+5 です。これで問題無ければ 0.31 にします。<br>
+<br>
+一行編集の拡張機能が XP で使えなかったのを一通り使える<br>
+ように対策が終わりました。複数行編集では、まだ使えない<br>
+のもありますが、一旦これで一区切りとします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="668">668.　<b><font color="#000000">PPx 0.30+4</font></b>　TORO　　<font size="2">2002/10/16 (水) 23:32</font><br>
+<blockquote>+4 です。<br>
+<br>
+XP 上でも一行編集でファイル名補完ができるように対策しました。<br>
+また、空白入りファイル名でも正しく補完できるようになりました。<br>
+<br>
+その他、PPc のファイルコピーなどで、全体状況関係の表示を<br>
+変えています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="667">667.　<b><font color="#000000">Re^2: ClockPod ウィンドウ情報取得について</font></b>　契約社員　　<font size="2">2002/10/13 (日) 23:10</font><br>
+<blockquote>どうも。<br>
+<br>
+&gt; 職につけたんですね(^^。<br>
+<br>
+さっそく職場のマシンにもClockPod入れてますよ！<br>
+<br>
+&gt; これはもともと表示されていないウィンドウを操作するための<br>
+&gt; メニューなんですよね。<br>
+<br>
+なるほど。であれば私的には「非表示ウィンドウを隠す指定」は無くても良い気がします。<br>
+<br>
+&gt; 取得したい場所に右ドラックをすると、該当コントロールが<br>
+&gt; 枠で囲まれないでしょうか？<br>
+<br>
+ほんとだー。ここまで出来れば私のレベルならCopit！は要らないかな。<br>
+<br>
+&gt; &gt; アクティブウィンドウに特化して情報を取得する機能なら<br>
+&gt; たしかにそれはいいかもしれないですね。つける方向で考えます。<br>
+<br>
+これは凄く欲しいです。他の作者の方のフリーソフトも含め、要望を出す際などに活躍すると思います。期待しています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="666">666.　<b><font color="#000000">Re: ClockPod ウィンドウ情報取得について</font></b>　TORO　　<font size="2">2002/10/13 (日) 17:23</font><br>
+<blockquote>&gt;「自宅待機中」改め「契約社員」です。<br>
+職につけたんですね(^^。<br>
+<br>
+&gt; １．ClockPodのコンテクストメニューから“Window List”を<br>
+<br>
+これはもともと表示されていないウィンドウを操作するための<br>
+メニューなんですよね。画面外に移動してしまったウィンドウや<br>
+初めから hide 指定のウィンドウをいじるために(^^;<br>
+ <br>
+でも、案外表示されているウィンドウに対して操作される人が<br>
+多いみたいですので、非表示ウィンドウを隠す指定を追加<br>
+検討してみます。<br>
+<br>
+<br>
+&gt; ２．ClockPodを他のウィンドウに右ドラッグし、現れる<br>
+<br>
+これは誤操作防止のためにです(^^;。頻繁に使う機能では<br>
+ないので、あえて使いにくいようにしてあります。<br>
+<br>
+あと、ウィンドウのタイトルを取るのが目的ではなく、<br>
+CopyIt と同じように各種コントロールのタイトル取得をしたり、<br>
+大きさ調整して好みにあわせたりをする等が本来の目的です(^^;;;<br>
+# 普通のウィンドウでも取得できるといった考え方です（笑）<br>
+<br>
+取得したい場所に右ドラックをすると、該当コントロールが<br>
+枠で囲まれないでしょうか？<br>
+<br>
+<br>
+&gt; アクティブウィンドウに特化して情報を取得する機能なら<br>
+<br>
+たしかにそれはいいかもしれないですね。つける方向で考えます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="665">665.　<b><font color="#000000">ClockPod ウィンドウ情報取得について</font></b>　契約社員　　<font size="2">2002/10/13 (日) 01:37</font><br>
+<blockquote>「自宅待機中」改め「契約社員」です。ClockPod2.43使ってます。<br>
+<br>
+ClockPodの、ウィンドウタイトルを取得する機能ですが、もっと手軽に使いたいと思ってます。現状、<br>
+<br>
+１．ClockPodのコンテクストメニューから“Window List”を開き、右クリックでウィンドウタイトルをクリップボードにコピー<br>
+→予想外に大量のリストになり、欲しいものがなかなか見つからない。<br>
+<br>
+２．ClockPodを他のウィンドウに右ドラッグし、現れるリストからクリップボードにコピー<br>
+→慣れない操作でやりにくい。<br>
+<br>
+素人考えですが、ClockPodはウィンドウに張り付いてるから、そのウィンドウのタイトルは簡単に取れるかなと思うのです。アクティブウィンドウに特化して情報を取得する機能なら操作（コンテクストメニューを希望）は簡単だし、一番必要になるのもそれだと思うのです。<br>
+<br>
+出来ればウィンドウタイトルだけでなくエラーダイアログのメッセージなども取れると便利です。こういう用途なら“Copit!”と言うツールがあって、ボタンやメニューのキャプションまで取ってくれますが、常駐させる様なソフトではないので、よく必要になる範囲の情報を取得する分には面倒です。その範囲はClockPodでカバー出来ると凄く便利だと思うのですが...</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="664">664.　<b><font color="#000000">ClockPod 2.43</font></b>　TORO　　<font size="2">2002/10/06 (日) 18:46</font><br>
+<blockquote>2.43 を公開しました。<br>
+<br>
+2.42+1 に再カスタマイズの抑止処理を再追加しました(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="663">663.　<b><font color="#000000">Re: PPx 0.30+3</font></b>　com-a　　<font size="2">2002/09/27 (金) 01:24</font><br>
+<blockquote>&gt; WinXP(SP無し)上で PPCUST の色の選択肢が<br>
+&gt; おかしかったのを修正しました。<br>
+<br>
+確認OKです。^^</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="662">662.　<b><font color="#000000">Re^7: PPV 異常終了(中間報告)</font></b>　TORO　　<font size="2">2002/09/27 (金) 00:32</font><br>
+<blockquote>&gt; 0.30+2にしましたら，私の環境(2箇所)でも<br>
+&gt; 異常終了しなくなりました．(^^)嬉し〜<br>
+<br>
+直りましたか(^^;。<br>
+凡ミスでも長い間修正できず済みませんでした(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="661">661.　<b><font color="#000000">PPx 0.30+3</font></b>　TORO　　<font size="2">2002/09/27 (金) 00:30</font><br>
+<blockquote>+3 です<br>
+WinXP(SP無し)上で PPCUST の色の選択肢が<br>
+おかしかったのを修正しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="660">660.　<b><font color="#000000">Re^6: PPV 異常終了(中間報告)</font></b>　PATA　[<a href="http://www5d.biglobe.ne.jp/~pata/">URL</a>]　　<font size="2">2002/09/26 (木) 18:27</font><br>
+<blockquote>0.30+2にしましたら，私の環境(2箇所)でも<br>
+異常終了しなくなりました．(^^)嬉し〜<br>
+<br>
+どうもありがとうございました〜．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="659">659.　<b><font color="#000000">WindowsXP SP1</font></b>　TORO　　<font size="2">2002/09/26 (木) 12:46</font><br>
+<blockquote>XP SP1 の動作試験環境をやっと構築しました(^^;<br>
+<br>
+<br>
+とりあえず、PPx の動作確認を数分ほど(^^;、おこ<br>
+ないましたが、<br>
+<br>
+・編集機能の拡張関係がおかしくなるバグは未修正<br>
+　（エディットコントロールでANSI/UNCODEが混在）<br>
+<br>
+・カスタマイザの色関係の指定などが一つずれるのは修正<br>
+　（リストボックスのオーナードローでのインデックスずれ）<br>
+<br>
+を確認しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="658">658.　<b><font color="#000000">Re^2: PPx 0.30+2</font></b>　TORO　　<font size="2">2002/09/26 (木) 12:39</font><br>
+<blockquote>&gt; LZH,ZIP とも中身 PPV で見れるように直ってる！！<br>
+&gt; ほんとにうれしいです♪(^^)<br>
+<br>
+他の現象で見つけたバグ修正だったんですが直りましたか、<br>
+良かったです(^^;<br>
+<br>
+# 変数の初期化忘れというお粗末なバグでした(^^;<br>
+# コンパイラのチェックにも引っ掛からず、気づく<br>
+# のが遅れました</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="657">657.　<b><font color="#000000">Re^5: PPV 異常終了(中間報告)</font></b>　com-a　　<font size="2">2002/09/25 (水) 15:40</font><br>
+<blockquote>&gt; とりあえず、IconListerLE を自分の環境で試してみましたが<br>
+&gt; 特に変化は見られませんでした(^^;<br>
+<br>
+私も変化無く、異常無し・・・・一応、報告。^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="656">656.　<b><font color="#000000">Re: PPx 0.30+2</font></b>　NIBIE　　<font size="2">2002/09/24 (火) 23:22</font><br>
+<blockquote>&gt; +2 です。<br>
+ををすごい！<br>
+LZH,ZIP とも中身 PPV で見れるように直ってる！！<br>
+ほんとにうれしいです♪(^^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="655">655.　<b><font color="#000000">Re^4: PPV 異常終了(中間報告)</font></b>　TORO　　<font size="2">2002/09/24 (火) 21:30</font><br>
+<blockquote>とりあえず、IconListerLE を自分の環境で試してみましたが<br>
+特に変化は見られませんでした(^^;<br>
+<br>
+動作試験用の環境でまた試してみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="654">654.　<b><font color="#000000">PPx 0.30+2</font></b>　TORO　　<font size="2">2002/09/24 (火) 21:27</font><br>
+<blockquote>+2 です。<br>
+<br>
+SETUP でショートカットに PPPRINT が登録されてしまうのを<br>
+修正した他、<br>
+PPV が起動できない場合があるのを修正しています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="653">653.　<b><font color="#000000">Re^4: PPV 異常終了(中間報告)</font></b>　PATA　[<a href="http://www5d.biglobe.ne.jp/~pata/">URL</a>]　　<font size="2">2002/09/23 (月) 11:42</font><br>
+<blockquote>&gt; Sotaさん(http://www2.biglobe.ne.jp/~sota/)の<br>
+&gt; Fhcalw95くらいだと思います．<br>
+<br>
+と書きましたが，考えてみたらシステムフックは<br>
+使われていませんね．ホットキーでした．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="652">652.　<b><font color="#000000">Re^3: PPV 異常終了(中間報告)</font></b>　PATA　[<a href="http://www5d.biglobe.ne.jp/~pata/">URL</a>]　　<font size="2">2002/09/23 (月) 01:25</font><br>
+<blockquote>お手数おかけしてます．m(__)m<br>
+<br>
+&gt; ・PPx のパス<br>
+d:\Program Files\PPX\です．<br>
+<br>
+&gt; ・使用している UNxxx.DLL の全ての種類とそのパス<br>
+UNARJ32J.DLL,UNRAR32.DLL,CAB32.DLL,ZIP32J.DLL<br>
+TAR32.DLL,UNGCA32.DLL,UNZIP32.DLL,UNLHA32.DLL<br>
+以上，すべてc:\winnt\system32\に入ってます．<br>
+<br>
+&gt; ・使用している susie plug-in の全ての種類とそのパス<br>
+susieの有無に関係なく発生するようです．<br>
+<br>
+&gt; ・PPX030.LZH 内の README.TXT でエラーが起きるかどうか<br>
+起きます．<br>
+<br>
+&gt; ・システムフックを使うような常駐ソフト<br>
+と，これを書こうとして，うちの環境での発生要因が<br>
+わかりました．S&amp;N SoftさんのIconListerLEという<br>
+常駐ソフトを解除すると発生しなくなります．<br>
+デスクトップのアイコンをきれいに並べるソフトで，<br>
+システムフックを使っていると思います．<br>
+ちなみに，↓こちらにあります．<br>
+http://isweb25.infoseek.co.jp/computer/sn_soft/<br>
+試した範囲では，PPC→IconListerLEの順番で起動すれば<br>
+大丈夫ですが，IconListerLE→PPCの順番で起動した<br>
+場合には発生します．うちではIconListerLEはStartUpで<br>
+起動しているので，必然的に後からPPCを起動するため<br>
+必ず発生してたようです．<br>
+<br>
+念のため，他のシステムフックを使うような常駐ソフトは<br>
+Sotaさん(http://www2.biglobe.ne.jp/~sota/)の<br>
+Fhcalw95くらいだと思います．<br>
+<br>
+お役に立ちますでしょうか．<br>
+でわでわ．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="651">651.　<b><font color="#000000">Re^2: PPV 異常終了(中間報告)</font></b>　TORO　　<font size="2">2002/09/18 (水) 22:56</font><br>
+<blockquote>&gt; 再現しませんか．．．<br>
+&gt; カスタマイズ状態によるのかな〜と思って<br>
+&gt; ppcust cinit してみたのですが，やはり<br>
+&gt; 発生します．ん〜何か条件なのでしょうね．<br>
+<br>
+手持ちの XP pro でも再現してません(^^;<br>
+すみませんが、次の内容を教えてもらえませんか？<br>
+<br>
+・PPx のパス<br>
+・使用している UNxxx.DLL の全ての種類とそのパス<br>
+・使用している susie plug-in の全ての種類とそのパス<br>
+・PPX030.LZH 内の README.TXT でエラーが起きるかどうか<br>
+<br>
+<br>
+あと、よければ次のことを教えてもらえると<br>
+参考になるかもしれないです(^^;<br>
+<br>
+・システムフックを使うような常駐ソフト</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="650">650.　<b><font color="#000000">PPx 0.30+1</font></b>　TORO　　<font size="2">2002/09/18 (水) 22:49</font><br>
+<blockquote>PPx 0.30+1 です<br>
+<br>
+報告された件の修正はまだできてないですが、<br>
+時間が経っているし、他の修正があるので<br>
+公開します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="649">649.　<b><font color="#000000">Re: PPV 異常終了(中間報告)</font></b>　PATA　[<a href="http://www5d.biglobe.ne.jp/~pata/">URL</a>]　　<font size="2">2002/09/18 (水) 20:55</font><br>
+<blockquote>お手数おかけしているようですみませんです．<br>
+<br>
+再現しませんか．．．<br>
+カスタマイズ状態によるのかな〜と思って<br>
+ppcust cinit してみたのですが，やはり<br>
+発生します．ん〜何か条件なのでしょうね．<br>
+<br>
+NIBIEさんがおっしゃるように何かソフトとの<br>
+相性だとも考えられますので，OSクリーン<br>
+インストール直後でも起こるか今度試して<br>
+みようと思います．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="648">648.　<b><font color="#000000">Re: PPV 異常終了(中間報告)</font></b>　NIBIE　　<font size="2">2002/09/14 (土) 22:33</font><br>
+<blockquote>ああ〜なんかいろいろ試されてるようで<br>
+すいませんね〜<br>
+<br>
+会社のマシンのXPでは問題なく見れてる<br>
+（これまた違うXPだから細かいVerとかわかりませんが）。<br>
+でも家のでは見れないんですよね。<br>
+<br>
+またなんか、他のソフトとかの相性とかですかね〜。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="647">647.　<b><font color="#000000">PPV 異常終了(中間報告)</font></b>　TORO　　<font size="2">2002/09/12 (木) 12:42</font><br>
+<blockquote>時間が経っているため、中間報告です。<br>
+<br>
+次の手順で再現できるか調べてみました。<br>
+<br>
+1) VMware 3.1(PC emulator)上に Windows2000 SP1 を<br>
+  インストール<br>
+2) VMware Tools(専用ビデオドライバなど)をインストール<br>
+3) PPX030.LZH の中身と UNLHA32.DLL(1.86.1.4) を同じ<br>
+  ディレクトリにコピー(場所は Documents and Settings\PPX)<br>
+4) SETUP.EXE →カスタムインストール→コピーせずにイン<br>
+  ストールで初期設定を行う<br>
+5) SETUP.EXE 経由で PPC.EXE を実行し、PPX030.LZH 内に移動<br>
+6) README.TXT を [N] で表示<br>
+7) Enter で最小化<br>
+8) 再び [N] で表示<br>
+<br>
+上記の操作では、エラーで落ちることはありませんでした。<br>
+<br>
+<br>
+また、次の操作もしてみましたが、これも落ちませんでした(^^;<br>
+1〜3) 上と同じ<br>
+4&#39;) (なし)<br>
+5&#39;) エクスプローラで PPC.EXE を実行し、PPX030.LZH 内に移動<br>
+6〜8) 上と同じ<br>
+<br>
+<br>
+こんどは XP のほうで確かめてみます(^^;<br>
+# ソースもおかしそうなところを探していますが、まだ見つ<br>
+ かっていません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="646">646.　<b><font color="#000000">ClockPod バグ報告</font></b>　TORO　　<font size="2">2002/09/02 (月) 00:24</font><br>
+<blockquote>2.42 で追加した下記の機能ですが、手違いで機能して<br>
+いないことがわかりました(^^;<br>
+<br>
+・Customizeで定義ファイルを更新していない場合は<br>
+  再カスタマイズをやめた<br>
+<br>
+次の版で修正します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="644">644.　<b><font color="#000000">Re^6: Paper Plane xUI 0.30</font></b>　TORO　　<font size="2">2002/09/02 (月) 00:17</font><br>
+<blockquote>&gt; Win2000SP2環境とSP3環境の2台を使ってますが，両方で<br>
+&gt; 発生しているのですが…．<br>
+&gt; UNLHA32.DLLは1.86.0.2，UNZIP32.DLLは5.4.0.1です．<br>
+<br>
+UNZIP もおかしいですか…、もしかしたら根本的な所で<br>
+間違えてるかもしれないですね。もうしばらく待って下さい。<br>
+<br>
+<br>
+&gt; 1.55ってだいぶ古いですね(^^;<br>
+<br>
+１年ほど前なのですが、とりあえず安定しているようなので<br>
+そのままです(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="643">643.　<b><font color="#000000">Re^4: 拡張子の色</font></b>　TORO　　<font size="2">2002/09/02 (月) 00:06</font><br>
+<blockquote>&gt; &gt; ＃もしかして、WinXPだと・・？<br>
+&gt; <br>
+&gt; XP かもしれませんね、前確かめた時は良かったはずでしたが(^^;<br>
+&gt; 一度 XP でも確認してみます。<br>
+<br>
+確認しました。設定済みの色の表示から既にいっこ下に<br>
+なってますね(^^;<br>
+設定したときもおかしいですね。<br>
+<br>
+もう少し細かく調べてみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="642">642.　<b><font color="#000000">Re: PPV と LHA,ZIP</font></b>　NIBIE　　<font size="2">2002/09/01 (日) 13:42</font><br>
+<blockquote>ちょっと補足します。<br>
+・エラー時のメッセージ<br>
+　　PPx Internal Error<br>
+　　Thread:&quot;PPV main&quot; Address:391843 で、<br>
+　　メモリ(555C3A4AH)での書込違反 異常が発生しました。終了します。<br>
+・OS 入れ替えの前後とも XP は Pro 版ですが、<br>
+　別のなので細かいバージョンとかは違うかもしれないです。<br>
+・今簡単に試したところ、まったくカスタマイズしない状態でも、<br>
+　PPX ver 029 + 4 ではエラーにならない。+5 以降はだめみたい。<br>
+　（毎回レジストリおよび Application Data\TOROID\ は削除してます）<br>
+<br>
+なんなんでしょうねえ(?_?)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="641">641.　<b><font color="#000000">Re^4: Paper Plane xUI 0.30</font></b>　com-a　　<font size="2">2002/09/01 (日) 02:10</font><br>
+<blockquote>&gt; ところで．<br>
+&gt; LZHファイルなどの仮想ディレクトリ閲覧中，[n]の<br>
+&gt; プレビューをしようとすると，PPVがメモリ書込み<br>
+&gt; 違反エラーで落ちてしまうという症状が出ています．<br>
+<br>
+NIBIEさんも書き込まれていたので、私も確認してみました。<br>
+が、再現しません。(^ ^;)<br>
+<br>
+WinXP<br>
+UNLHA32.DLL    Ver.  1.86<br>
+UNZIP32.DLL    Ver.  5.40<br>
+<br>
+<br>
+&gt; PPVがまだ起動していない状態やWindowが表示されて<br>
+&gt; いる状態ならば大丈夫ですが，PPVがすでに起動中，<br>
+&gt; かつ最小化されている状態だと，私の環境では100%<br>
+&gt; 発生しています．<br>
+<br>
+これですが、最小化していたPPVが復帰されて指定したファイルが<br>
+プレビューされます。<br>
+最初のPPVの起動をPPCからではなくコマンドラインから行って<br>
+いた場合は、[B]のPPV窓が開きます。<br>
+<br>
+ということで、何の参考にもならないような気がしますが、<br>
+一応報告でした。(^ ^;)<br>
+<br>
+＃そういえば、私はプレビューさせるキーを[V]に割り当てて<br>
+＃いたんだ・・・と思って初期化もしてみましたが、変わらず<br>
+＃でした・・。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="640">640.　<b><font color="#000000">PPV と LHA,ZIP</font></b>　NIBIE　　<font size="2">2002/09/01 (日) 00:15</font><br>
+<blockquote>えーと、PPV の[n]で LHA とZIP の中身を見ると<br>
+エラーが出て見れなくなってしまいました（ｗ<br>
+・Version：Paper Plane xUI 0.30<br>
+・今まではまったく問題なかった（WindowsXP）<br>
+・今日OS を入れ替えて（WindowsXP）、<br>
+　PPCUST CD で保存しておいた設定を CS で戻して使った<br>
+・635 のPATA さんとまったく同じ現象<br>
+・SUSIE Plugin で見ている<br>
+不思議だ、今までと何も変えてないの意味がわからん・・・</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="639">639.　<b><font color="#000000">Re^5: Paper Plane xUI 0.30</font></b>　PATA　[<a href="http://www5d.biglobe.ne.jp/~pata/">URL</a>]　　<font size="2">2002/08/29 (木) 12:34</font><br>
+<blockquote>&gt; それも UI の一部として認識してます(^^;<br>
+&gt; 速く完成させたいです。<br>
+<br>
+楽しみに待ってます．(^^)<br>
+<br>
+&gt; こちらでは、特に発生していないですね。<br>
+&gt; 使用している DLL のバージョンはいくつですか？<br>
+&gt; 今使っている UNLHA32.DLL は 1.55.6.36 です(^^;<br>
+<br>
+発生してないですか．とすると私の環境の問題かなぁ．<br>
+Win2000SP2環境とSP3環境の2台を使ってますが，両方で<br>
+発生しているのですが…．<br>
+UNLHA32.DLLは1.86.0.2，UNZIP32.DLLは5.4.0.1です．<br>
+1.55ってだいぶ古いですね(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="638">638.　<b><font color="#000000">Re^3: 拡張子の色</font></b>　TORO　　<font size="2">2002/08/27 (火) 12:41</font><br>
+<blockquote>&gt; カスタマイザで初期化を行なった後、色の設定をしてみましたが、<br>
+&gt; 例えば背景色を黄緑にすると、赤になってしまいます。<br>
+&gt; <br>
+&gt; ＃もしかして、WinXPだと・・？<br>
+<br>
+XP かもしれませんね、前確かめた時は良かったはずでしたが(^^;<br>
+一度 XP でも確認してみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="637">637.　<b><font color="#000000">Re^4: Paper Plane xUI 0.30</font></b>　TORO　　<font size="2">2002/08/27 (火) 12:39</font><br>
+<blockquote>&gt; 確かに機能的にはもう十分すぎるほど十分ですよね．<br>
+&gt; UIにもほとんど不満はないのですが，&quot;試験中&quot;に<br>
+&gt; なっているXC_move_testは完成したら嬉しいなぁ．(^^)<br>
+<br>
+それも UI の一部として認識してます(^^;<br>
+速く完成させたいです。<br>
+<br>
+<br>
+&gt; LZHファイルなどの仮想ディレクトリ閲覧中，[n]の<br>
+&gt; プレビューをしようとすると，PPVがメモリ書込み<br>
+&gt; 違反エラーで落ちてしまうという症状が出ています．<br>
+<br>
+こちらでは、特に発生していないですね。<br>
+使用している DLL のバージョンはいくつですか？<br>
+今使っている UNLHA32.DLL は 1.55.6.36 です(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="636">636.　<b><font color="#000000">Re^2: 拡張子の色</font></b>　com-a　　<font size="2">2002/08/27 (火) 03:20</font><br>
+<blockquote>&gt; &gt; カスタマイザで拡張子の色を設定したら、設定したものと<br>
+&gt; &gt; 別の色になってしまいました。（設定したものより上の色になる）<br>
+&gt; <br>
+&gt;  確認してみましたが、特に問題ありませんでした。<br>
+&gt; もう一度調べてみますが、念のため設定を改めてしてみてください。<br>
+<br>
+カスタマイザで初期化を行なった後、色の設定をしてみましたが、<br>
+例えば背景色を黄緑にすると、赤になってしまいます。<br>
+<br>
+＃もしかして、WinXPだと・・？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="635">635.　<b><font color="#000000">Re^3: Paper Plane xUI 0.30</font></b>　PATA　[<a href="http://www5d.biglobe.ne.jp/~pata/">URL</a>]　　<font size="2">2002/08/26 (月) 12:49</font><br>
+<blockquote>遅ればせながらPPX 0.30をいただきました．m(__)m<br>
+<br>
+&gt; 残りの 50% は UI の強化とか安定性の向上とかといった、<br>
+&gt; 機能自体以外の作り込みがメインになります（笑）<br>
+<br>
+確かに機能的にはもう十分すぎるほど十分ですよね．<br>
+UIにもほとんど不満はないのですが，&quot;試験中&quot;に<br>
+なっているXC_move_testは完成したら嬉しいなぁ．(^^)<br>
+<br>
+ところで．<br>
+LZHファイルなどの仮想ディレクトリ閲覧中，[n]の<br>
+プレビューをしようとすると，PPVがメモリ書込み<br>
+違反エラーで落ちてしまうという症状が出ています．<br>
+PPVがまだ起動していない状態やWindowが表示されて<br>
+いる状態ならば大丈夫ですが，PPVがすでに起動中，<br>
+かつ最小化されている状態だと，私の環境では100%<br>
+発生しています．<br>
+<br>
+でわでわ．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="634">634.　<b><font color="#000000">Re: 拡張子の色</font></b>　TORO　　<font size="2">2002/08/26 (月) 12:43</font><br>
+<blockquote>&gt; カスタマイザで拡張子の色を設定したら、設定したものと<br>
+&gt; 別の色になってしまいました。（設定したものより上の色になる）<br>
+<br>
+ 確認してみましたが、特に問題ありませんでした。<br>
+もう一度調べてみますが、念のため設定を改めてしてみてください。<br>
+<br>
+<br>
+&gt; ＃CFGファイルを壊してしまったんでしょうか？(^ ^;)<br>
+<br>
+ 問題あるとしたら、カスタマイザの方です</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="633">633.　<b><font color="#000000">拡張子の色</font></b>　com-a　　<font size="2">2002/08/23 (金) 16:57</font><br>
+<blockquote>カスタマイザで拡張子の色を設定したら、設定したものと<br>
+別の色になってしまいました。（設定したものより上の色になる）<br>
+<br>
+＃拡張子の色以外も同様でした。<br>
+<br>
+<br>
+解決方法はありますでしょうか？<br>
+<br>
+＃CFGファイルを壊してしまったんでしょうか？(^ ^;)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="632">632.　<b><font color="#000000">Re: PPX 0.30 と PPCUST</font></b>　TORO　　<font size="2">2002/08/18 (日) 00:18</font><br>
+<blockquote>&gt; 「PPCUST CD」で出力すると、<br>
+&gt; 　　;---------------<br>
+&gt; 　　+0.30|Mes041 :22004<br>
+&gt; なんかこんなような長い行が出力されて、<br>
+<br>
+カスタマイザのバグですね(^^;<br>
+アップデート処理用の特定の書式でおかしくなってます。<br>
+0.30へのアップデート時に付加されてしまいます(^^;。<br>
+<br>
+<br>
+&gt; これはほっといて大丈夫ですよねえ(^^?<br>
+&gt; （編集したときなんかいじっちゃったかな）<br>
+<br>
+放置しておいても大丈夫ですが、次の内容を末尾に加えて<br>
+カスタマイズをすれば、該当項目が削除されます。<br>
+<br>
+-|+0.30|Mes041 =<br>
+<br>
+修正したものを出しますね。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="631">631.　<b><font color="#000000">PPX 0.30 と PPCUST</font></b>　NIBIE　　<font size="2">2002/08/17 (土) 22:47</font><br>
+<blockquote>いやあ、PPXもついに0.30ですかあ、<br>
+PPX にはお世話になりっぱなしだな (^^<br>
+<br>
+ところで質問というよりも雑談でして、<br>
+PPCUSTでよく編集するのですが、<br>
+「PPCUST CD」で出力すると、<br>
+　　;---------------<br>
+　　+0.30|Mes041 :22004<br>
+なんかこんなような長い行が出力されて、<br>
+他の箇所を多少編集して「PPCUST CS」で保存したら、その箇所が<br>
+　　Error( 931):区切り文字が見当たりません<br>
+とメッセージ出るようになったのですが、<br>
+これはほっといて大丈夫ですよねえ(^^?<br>
+（編集したときなんかいじっちゃったかな）</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="630">630.　<b><font color="#000000">Re^2: Paper Plane xUI 0.30</font></b>　TORO　　<font size="2">2002/08/13 (火) 17:12</font><br>
+<blockquote>&gt; ぐわっ。50%でここまでの出来・・・・100%ってどうなるん<br>
+&gt; だろう。(^o^)<br>
+<br>
+残りの 50% は UI の強化とか安定性の向上とかといった、<br>
+機能自体以外の作り込みがメインになります（笑）</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="629">629.　<b><font color="#000000">Re: Paper Plane xUI 0.30</font></b>　com-a　　<font size="2">2002/08/12 (月) 13:35</font><br>
+<blockquote>&gt; 一応、これで完成度が約50% となります。<br>
+&gt; だいたいの機能を組み込みましたが、作り込みがまだ足りない<br>
+&gt; 状態です(^^;。これからもぼちぼちとやっていきます。<br>
+<br>
+ぐわっ。50%でここまでの出来・・・・100%ってどうなるん<br>
+だろう。(^o^)<br>
+<br>
+楽しみです。頑張って下さいね。(^ ^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="628">628.　<b><font color="#000000">Paper Plane xUI 0.30</font></b>　TORO　　<font size="2">2002/08/11 (日) 18:41</font><br>
+<blockquote>PPx 0.30 を公開しました。<br>
+<br>
+0.29+11 からは、PPC/PPV で空白を含むパスを指定したときの<br>
+動作がおかしかった部分を修正しています。<br>
+<br>
+<br>
+一応、これで完成度が約50% となります。<br>
+だいたいの機能を組み込みましたが、作り込みがまだ足りない<br>
+状態です(^^;。これからもぼちぼちとやっていきます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="627">627.　<b><font color="#000000">Re^3: ClockPod 2.42+1</font></b>　自宅待機中　　<font size="2">2002/08/08 (木) 00:28</font><br>
+<blockquote>&gt;  マニュアルに書いてますが、<br>
+<br>
+本当だ！大変失礼いたしました。<br>
+<br>
+今までClockPodしか気に掛けていなかったのですが、PPx等他のソフトも面白そうですね。取り敢えずダウンロードしてみようっと。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="626">626.　<b><font color="#000000">Re^2: ClockPod 2.42+1</font></b>　TORO　　<font size="2">2002/08/06 (火) 12:51</font><br>
+<blockquote>&gt; 早速頂戴しました！ホットキーＯＫです！<br>
+<br>
+ うまくいきましたか、ではこれでいきます。<br>
+<br>
+ <br>
+&gt; ・テロップが速く出来る様になって便利です。ただ、<br>
+&gt;速くすると流れ方が滑らかでなくなって少し見づらいです。<br>
+<br>
+ 確かにそうなんですよね、現状は内部構造／CPU負荷の都合上、<br>
+いまの表示間隔を変えにくいので、固定の表示間隔となって<br>
+います。もう少しいじることになりそうです。<br>
+<br>
+<br>
+&gt; ・テロップ速度調整の X_telopsp は手動で追加するのですね。<br>
+<br>
+ もともと、頻繁な更新を行うつもりが無かったので手動になって<br>
+います。<br>
+（PPxはいじくり回すの前提のため、自動更新を載せていますが(^^;）<br>
+<br>
+<br>
+&gt;自動だと楽なのですが...それが困難なら、設定編集用エディタを<br>
+&gt;指定出来るだけでもかなり効率アップすると思います。<br>
+<br>
+ 「.TXT」の拡張子判別を間借りしようかと考えてます。<br>
+<br>
+ <br>
+&gt; ClockPodのインストールディレクトリの方に保存する事<br>
+<br>
+ マニュアルに書いてますが、起動時のパラメータに設定ファイルの<br>
+場所を指定できます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="625">625.　<b><font color="#000000">Re: ClockPod 2.42+1</font></b>　自宅待機中　　<font size="2">2002/08/03 (土) 23:12</font><br>
+<blockquote>早速頂戴しました！ホットキーＯＫです！<br>
+<br>
+・テロップが速く出来る様になって便利です。ただ、速くすると流れ方が滑らかでなくなって少し見づらいです。<br>
+<br>
+・テロップ速度調整の X_telopsp は手動で追加するのですね。自動だと楽なのですが...それが困難なら、設定編集用エディタを指定出来るだけでもかなり効率アップすると思います。<br>
+<br>
+・“%USERPROFILE%\Application Data”が在る場合に、設定情報を敢えてClockPodのインストールディレクトリの方に保存する事は不可能ですか？丸ごとバックアップしたり他のマシンへコピーしたりしたいと思うもので...</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="624">624.　<b><font color="#000000">ClockPod 2.42+1</font></b>　TORO　　<font size="2">2002/08/02 (金) 00:58</font><br>
+<blockquote>+1 です。<br>
+<br>
+右クリック相当のメニュー表示の不都合が改善されたと<br>
+思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="623">623.　<b><font color="#000000">Re^3: ClockPodのテロップ速度</font></b>　TORO　　<font size="2">2002/07/25 (木) 13:14</font><br>
+<blockquote>&gt;「テロップが流れ始めるまでの時間」も調整出来ると良いかも<br>
+&gt;知れません。つまり、<br>
+<br>
+一応、標準表示の長さ分だけ表示遅れがあるのですが、もう少し<br>
+変えられるといいってことですね。現状でも環境変数にテロップ<br>
+の内容を代入し、Z_EveryS で一定時間後に環境変数の中身を<br>
+テロップ表示させることで、やれないことはないです(^^;<br>
+<br>
+ちょっと考えてみます。<br>
+<br>
+# 返事が遅れました(^^;<br>
+# ClockPod は一部いじっているので一度公開したいのですが<br>
+# 時間が取れずにいます(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="622">622.　<b><font color="#000000">Re^2: ClockPodのテロップ速度</font></b>　自宅待機中　　<font size="2">2002/07/15 (月) 00:29</font><br>
+<blockquote>こんにちは。ご回答有り難うございます。<br>
+<br>
+余り無理なさらずに頑張って下さいね。と言いつつもう一つ書いてしまうのですが、「テロップが流れ始めるまでの時間」も調整出来ると良いかも知れません。つまり、<br>
+<br>
+・イベントが発生したらClockPodがテロップ用に設定した色に変る。<br>
+・それから設定時間が過ぎたらテロップが流れる。<br>
+<br>
+色が変わった時に気付いて注視しているのでテロップは早くても大丈夫と言う魂胆です。<br>
+<br>
+但しこれはとっさの思い付きなので実は余り意味が無いかも知れません。もしお気に召したら...と言ったニュアンスです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="621">621.　<b><font color="#000000">PPx 0.29 + 11</font></b>　TORO　　<font size="2">2002/07/14 (日) 20:43</font><br>
+<blockquote>PPx 0.29 + 11 を公開しました。<br>
+<br>
+一行編集窓へファイルのドロップができるようになりました。<br>
+また、新型ツリーを一行編集でも使えるようになりました。<br>
+<br>
+これで問題無ければ、0.30 にします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="620">620.　<b><font color="#000000">CPODAP 1.1</font></b>　TORO　　<font size="2">2002/07/14 (日) 20:39</font><br>
+<blockquote>CPODAP 1.1 を公開しました。<br>
+<br>
+ASUS PC Probe 2.15 でも ClockPod へ<br>
+温度情報を転送できるようになりました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="619">619.　<b><font color="#000000">Re: ClockPodのテロップ速度</font></b>　TORO　　<font size="2">2002/07/14 (日) 20:38</font><br>
+<blockquote>&gt; Clock Podですが、テロップの流れる速さを変える事は出来ますか？<br>
+<br>
+これは以前要望にあったのですが、まだやっていません(^^;<br>
+次には入れます。<br>
+<br>
+<br>
+&gt;見逃した時のために最後のテロップをメニューから<br>
+&gt;確認出来ると良いなと思います。<br>
+<br>
+そうですね、今現在は個別にログに保存するかどうか指定して<br>
+ログに保存できるようにしてありますが、もう少しいじったほうが<br>
+いいかもしれませんね。ちょっと考えてみます。<br>
+<br>
+<br>
+&gt; 以前お知らせした「Meでホットキーが効かない」ですが、<br>
+<br>
+わかりました、改めて対策します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="618">618.　<b><font color="#000000">ClockPodのテロップ速度</font></b>　自宅待機中　　<font size="2">2002/07/14 (日) 00:50</font><br>
+<blockquote>こんにちは。失業中改め自宅待機中です。<br>
+<br>
+Clock Podですが、テロップの流れる速さを変える事は出来ますか？速めにしたいのです。同じテロップが繰り返し流れる時など（これはWindowsのせい？）結構待つ事になるので。又、見逃した時のために最後のテロップをメニューから確認出来ると良いなと思います。<br>
+<br>
+P.S.<br>
+以前お知らせした「Meでホットキーが効かない」ですが、別件でWindowsを入れ直した今も依然発生します。但し一時的に[Windowsキー]+[M]で全ウィンドウを最小化すれば効くので全く使えない訳ではありませんが。その後気付いた点を記しておきます。<br>
+<br>
+１．Windowsのスタートメニューやアプリのメニューバー等が開いている時はホットキーでClock Podのメニューを出せる。但しフォーカスはスタートメニュー等の側にあるのでキー操作は結局出来ない。<br>
+２．テロップが流れている最中はホットキーが効くしメニューのキー操作も出来る（“About”で確認可能）。但しこれをやるとテロップが止まってしまい、クリックするまで復活しない。<br>
+３．他のソフトのホットキーは効いているので、ホットキーの実現方法も色々ある！？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="617">617.　<b><font color="#000000">Re^2: TAALT</font></b>　tom　　<font size="2">2002/07/06 (土) 14:26</font><br>
+<blockquote>&gt; に置いておきます。こちらの TAALT.DLL と差し替えてみては<br>
+&gt; どうでしょう。<br>
+<br>
+不躾なお願いを聞き届けて頂いてありがとう御座いました。<br>
+使わせて頂きます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="616">616.　<b><font color="#000000">Re^2: TAALT</font></b>　com-a　　<font size="2">2002/07/04 (木) 00:29</font><br>
+<blockquote>どうもです。com-aです。<br>
+<br>
+&gt; &gt; ALT矢印の機能のオンオフか同時押下キーの付加を希望致します。<br>
+&gt; &gt; 他のアプリで同じキーが設定されていると、その機能が使えないので困っています。<br>
+&gt; <br>
+&gt; 今のところ、改変を予定していないため、ALT の抑制のみに限定した<br>
+&gt; TAALT.DLL を http://homepage1.nifty.com/toro/TALLTSP.LZH<br>
+&gt; に置いておきます。こちらの TAALT.DLL と差し替えてみては<br>
+&gt; どうでしょう。<br>
+<br>
+これ、イタダキです。(^ ^;)<br>
+実はtomさんと同じ胸のつっかえがありました。(^ ^;)<br>
+それでは。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="614">614.　<b><font color="#000000">Re^2: TAALT</font></b>　TORO　　<font size="2">2002/07/03 (水) 21:38</font><br>
+<blockquote>リンク間違えました(^^;<br>
+<br>
+http://homepage1.nifty.com/toro/TAALTSP.LZH<br>
+<br>
+です</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="613">613.　<b><font color="#000000">Re: TAALT</font></b>　TORO　　<font size="2">2002/07/03 (水) 21:37</font><br>
+<blockquote>&gt; ALT矢印の機能のオンオフか同時押下キーの付加を希望致します。<br>
+&gt; 他のアプリで同じキーが設定されていると、その機能が使えないので困っています。<br>
+<br>
+今のところ、改変を予定していないため、ALT の抑制のみに限定した<br>
+TAALT.DLL を http://homepage1.nifty.com/toro/TALLTSP.LZH<br>
+に置いておきます。こちらの TAALT.DLL と差し替えてみては<br>
+どうでしょう。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="612">612.　<b><font color="#000000">TAALT</font></b>　tom　　<font size="2">2002/07/02 (火) 14:11</font><br>
+<blockquote>TAALTを使わせて頂いております。<br>
+単独ALTが抑制されて助かっております。<br>
+つきましては要望がございますのでお聞きくだされば幸いです。<br>
+<br>
+ALT矢印の機能のオンオフか同時押下キーの付加を希望致します。<br>
+他のアプリで同じキーが設定されていると、その機能が使えないので困っています。<br>
+具体的にはネスケでページの移動がしたい時に、ウインドウが動いてしまいます。<br>
+<br>
+よろしくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="611">611.　<b><font color="#000000">PPx 0.29+10</font></b>　TORO　　<font size="2">2002/06/22 (土) 22:17</font><br>
+<blockquote>0.29 + 10 です。<br>
+<br>
+PPc の ^[I] で NTFS 等のファイルセキュリティ表示が<br>
+できるようになりました。XP home でもアクセス権などを<br>
+参照できます。<br>
+<br>
+また、\[T] の tree が整ってきました。もう少し手を<br>
+加えたら、各種ディレクトリ名入力の時にも使えるように<br>
+しようと思います。<br>
+<br>
+あと、一行編集のファイル補完も微妙に強化しています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="610">610.　<b><font color="#000000">Re^4: PPC + unlha32.dll</font></b>　りさいず　　<font size="2">2002/06/21 (金) 14:55</font><br>
+<blockquote>TORO さんありがとう。うまくいきました。<br>
+理由はお察しの通り、<br>
+遅い、いちいち時計のダイヤログが出る、などです。<br>
+<br>
+PPC で LHA を扱うときは PPV で見るときのみなので、<br>
+圧縮解凍には使っておらずエラーチェックは気にしていません。<br>
+という状況なので、今回の対応策大変助かりました。<br>
+（PPV はほんとに便利で多謝）<br>
+<br>
+ちなみに圧縮解凍はいまだにオリジナルの LHA<br>
+(ロングネーム対応版)が一番使いやすく重宝しています（ｗ</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="609">609.　<b><font color="#000000">Re^3: PPC + unlha32.dll</font></b>　TORO　　<font size="2">2002/06/21 (金) 12:57</font><br>
+<blockquote>&gt; この場合、LHA ファイルの中を見に行くと、<br>
+&gt; PPC は UNLHA32.DLL を使用するようですか、<br>
+&gt; 以前のように susie プラグインを利用させるように<br>
+<br>
+一応、次の設定例のように&quot;XXXCheckArchive&quot;を空欄にすれば、<br>
+各種 LZH 展開に UNLHA32.DLL を使用できないようにできます。<br>
+<br>
+P_unx    = {<br>
+UNLHA32.DLL    = Unlha,UnlhaOpenArchive,UnlhaCloseArchive,UnlhaFindFirst,UnlhaFindNext,,X -a1 &quot;%C&quot; &quot;%!2%\&quot;,E -a1 &quot;%1&quot; &quot;%!2%\&quot; %@<br>
+}<br>
+<br>
+ただし、このような設定をせず、UNLHA32.DLL を使用することを<br>
+お薦めします。SPI の方を使いたいのは多分スピードの点である<br>
+と思いますが、UNLHA32 の方はエラー処理に優れていたり、<br>
+自己解凍書庫でも仮想ディレクトリとして扱えるなど、<br>
+機能的に優れています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="608">608.　<b><font color="#000000">Re^2: PPC + unlha32.dll</font></b>　りさいず　　<font size="2">2002/06/20 (木) 14:30</font><br>
+<blockquote>便乗質問で失礼。<br>
+(1) 現在、PPC で LHA ファイルの中まで移動できるが、<br>
+    自分は susie プラグインを利用している。<br>
+(2) あるアプリをインストールしたさい、<br>
+    勝手に UNLHA32.DLL も入れられてしまった。<br>
+この場合、LHA ファイルの中を見に行くと、<br>
+PPC は UNLHA32.DLL を使用するようですか、<br>
+以前のように susie プラグインを利用させるように<br>
+PPC に設定することは可能ですか？？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="607">607.　<b><font color="#000000">Re^5: PPC + unlha32.dll</font></b>　XAX　　<font size="2">2002/06/15 (土) 16:26</font><br>
+<blockquote>&gt; PPx の再起動か、DLL の再読み込みをさせていない<br>
+&gt; 罠であるかと(^^;<br>
+<br>
+　その罠にはまっていたようです。<br>
+　お騒がせしました。(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="606">606.　<b><font color="#000000">Re^4: PPC + unlha32.dll</font></b>　TORO　　<font size="2">2002/06/14 (金) 12:36</font><br>
+<blockquote>&gt; 　で，試してみたのですが，圧縮は無事行えましたが，<br>
+&gt;解凍はできませんでした。(^^;<br>
+<br>
+PPx の再起動か、DLL の再読み込みをさせていない<br>
+罠であるかと(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="605">605.　<b><font color="#000000">Re^3: PPC + unlha32.dll</font></b>　XAX　　<font size="2">2002/06/13 (木) 19:59</font><br>
+<blockquote>　で，試してみたのですが，圧縮は無事行えましたが，解凍はできませんでした。(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="604">604.　<b><font color="#000000">Re^2: PPC + unlha32.dll</font></b>　XAX　　<font size="2">2002/06/13 (木) 19:32</font><br>
+<blockquote>ありがとうございます。<br>
+早速やってみます。:-)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="603">603.　<b><font color="#000000">Re: PPC + unlha32.dll</font></b>　TORO　　<font size="2">2002/06/13 (木) 12:23</font><br>
+<blockquote>&gt; 　PPCでlzhアーカイブを圧縮/解凍する際，デフォルトでHidden<br>
+&gt;ファイルも対象としたいのですが，CFGをどのように記述すれば<br>
+&gt;よいのでしょうか?<br>
+<br>
+-a1 オプションをつければいいようですね。<br>
+こんな感じでしょうか。<br>
+<br>
+KC_main    = {<br>
+P    ,%&quot;Pack File&quot;%uUNLHA32.DLL,A -o2a1 %{&quot;%2%\%|&quot;%} %@ %S&quot;-r -x&quot;<br>
+}<br>
+P_unx    = {<br>
+UNLHA32.DLL    = Unlha,UnlhaOpenArchive,UnlhaCloseArchive,UnlhaFindFirst,UnlhaFindNext,UnlhaCheckArchive,X -a1 &quot;%C&quot; &quot;%!2%\&quot;,E -a1 &quot;%1&quot; &quot;%!2%\&quot; %@<br>
+}</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="602">602.　<b><font color="#000000">PPC + unlha32.dll</font></b>　XAX　　<font size="2">2002/06/11 (火) 20:44</font><br>
+<blockquote>　PPCでlzhアーカイブを圧縮/解凍する際，デフォルトでHiddenファイルも対象としたいのですが，CFGをどのように記述すればよいのでしょうか?</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="601">601.　<b><font color="#000000">ClockPod 2.42</font></b>　TORO　　<font size="2">2002/06/09 (日) 20:03</font><br>
+<blockquote>2.42 を公開しました。<br>
+<br>
+βからの変更点は、X_shadow の処理の修正のみになっています。</blockquote>
+</td></tr></table><br>
+
+<HR>
+<a href="./index.html" target="_top">戻る</a><BR>
+<HR><ADDRESS>TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</ADDRESS>
+</BODY></html>

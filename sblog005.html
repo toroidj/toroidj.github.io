@@ -1,0 +1,5399 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="ja">
+<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-2022-JP">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css"><!--
+body { line-height: 150%; word-break: break-word; }
+--></style>
+<title>Software Message Board log #2-4</title></head>
+<body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
+<center>
+<h2>Software Message Board log #2-4</h2>
+<hr>
+</center>
+
+<a href="./index.html" target="_top">戻る</a>
+
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1200">1200.　<b><font color="#000000">続・PPx の XC_celF について</font></b>　ZR　　<font size="2">2004/09/29 (水) 10:52</font><br>
+<blockquote>前(9/14)の書き込み以来, XC_celF をいじって<br>
+遊んで(^^;;いたのですが, その際に気づいた点.<br>
+<br>
+(1) i&quot;string&quot; / I&quot;string&quot; のを使った時の各<br>
+　エントリの幅が 2 桁多い. 例えば i&quot;hoge&quot;F16,5<br>
+　は F16,5 と同じく隙間無しになるはずなのに,<br>
+　実際には 2 桁の隙間が空く.<br>
+# 多分: PPD_CUST.C 632 行目(CSline() 内)の<br>
+#　　　ws += 2; は余計かと.<br>
+<br>
+(2) 例えば次のように指定した場合,<br>
+　XC_celF = {<br>
+　A = NW24F16,5S1T8s1 ← どこかで W/w を使う<br>
+　B = W24F16,5s1 ← *直後に先頭で* W/w を使う<br>
+　}<br>
+　&#39;B&#39; の行で &quot;Too many format character &#39;W&#39;/&#39;w&#39;&quot;<br>
+　のエラーが出ます.<br>
+# 多分: CSline() 内の bin (349 行目) が初期化され<br>
+#　　　ていないので, 前回処理時のゴミが原因かと.<br>
+<br>
+(3) am/pm を出力する書式(t/T)があるのに, 12時制<br>
+　の時(1〜12)を出力する書式がないのはなぜ?<br>
+<br>
+環境: PPx 0.36 (MultiByte) / Win2k</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1199">1199.　<b><font color="#000000">「Re^4: PPC要望ほか2」について</font></b>　T.H.　　<font size="2">2004/09/27 (月) 16:31</font><br>
+<blockquote>PPXをもう2年以上利用させていただいております。<br>
+<br>
+cさんの書き込みで次のようなものがありましたが、<br>
+<br>
+&gt; ネットワーク先のsambaドライブで作業しているとときどき、<br>
+&gt; そのドライブのカレントディレクトリにPPX.LOGが生成されて<br>
+&gt; &quot;〜〜 (Etc Mes) 低速モードです&quot;といった内容が吐かれる<br>
+&gt; のですが、これの抑制オプションってどれでしょう？<br>
+&gt; X_logは0です。<br>
+<br>
+私も以前(Ver .035以降かな?)何故かログを抑止できなくて、<br>
+結局「PPD_SUB.C」の118〜119行目(Ver. 0.36の場合)を<br>
+<br>
+//    if ( X_log &amp; flag ){<br>
+    {<br>
+<br>
+から<br>
+<br>
+    if ( X_log &amp; flag ){<br>
+//    {<br>
+<br>
+に変更したら抑止できた記憶があります。<br>
+<br>
+またついでなのですが、Ver 0.35(くらい?)以降、PPCから<br>
+BATファイル(java -classpath〜でJavaを実行するようなもの)<br>
+を実行後、「V」などによるビュワー<br>
+(私はテキストエディタを起動するよう設定しております)<br>
+の起動が、すぐには行われません。<br>
+<br>
+BATファイルの実行時に起動されたPPBを終了すると、<br>
+そのタイミングでテキストエディタが起動されます。<br>
+<br>
+こちらは「PPD_EXEC.C」の<br>
+int PPXDLL ComExec(HWND hOwner,TCHAR *line,TCHAR *path)<br>
+の中身を、<br>
+<br>
+{<br>
+    int        i;<br>
+    char    *p;<br>
+<br>
+    p = line;<br>
+    i = GetExecType(&amp;p,NULL,path);<br>
+<br>
+    if ( (i == GTYPE_GUI) || (i == GTYPE_SHELLEXEC) ){<br>
+        return ComExecSelf(hOwner,line,path,0);<br>
+    }<br>
+<br>
+    return FALSE;<br>
+}<br>
+<br>
+と変更することで、何だか回避できているようです<br>
+(PPBが残っている状態でも、テキストエディタが起動できます)。<br>
+環境はすべてWindows2000 SP4、ビュワー(テキストエディタ)<br>
+には「サクラエディタ」を使用しております。<br>
+<br>
+以上、ちょっと胡散臭い情報でなのですが、<br>
+PPXにはお世話になっておりますので、<br>
+ひょっとしたら少しはお役に立つかもと思い、<br>
+投稿させていただきました。<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1198">1198.　<b><font color="#000000">Re^4: PPC要望ほか</font></b>　c　　<font size="2">2004/09/27 (月) 05:22</font><br>
+<blockquote>&gt; &gt;メディアをフォーマットなどして、\に何も入っていない状態で<br>
+&gt; OSが返すエラーをそのまま表示しているのでちょっと<br>
+&gt; 1191の「\と言えば、rootに何もファイル」も同じ理由です。<br>
+<br>
+うわ、ダブって書いてましたm(__)m<br>
+すいません未整理で・・・<br>
+<br>
+<br>
+&gt; &gt;連結しているPPCにフォーカスを移動する機能があると<br>
+&gt; Script Module を組み込んで、次のスクリプトを使えばできま<br>
+&gt; す。<br>
+<br>
+おおっ・・・<br>
+どもです。<br>
+・・・Script Module勉強してきます。<br>
+<br>
+<br>
+&gt; &gt;＃IEからリンクをD&amp;Dすると、explorerの場合、インター<br>
+&gt; &gt;ネットショートカット(.url)が作成されますが、PPCでは<br>
+&gt; ファイルのD&amp;Dではないのでこのままでは無理です(^^;。<br>
+<br>
+あ、そうだったんですね。<br>
+・・・実は、Sleipnirからだとちゃんと生成されたり、さらに<br>
+samba上の特定ディレクトリの場合最新のPPCでは<br>
+「指定されたファイルが見つかりません。」が出たり出なかったり<br>
+という怪しい環境だったので、なんか勘違いしてました。<br>
+ほんとだ、古いPPCでもIEからだと出来ませんね(@_@)<br>
+出直してきます。<br>
+<br>
+<br>
+<br>
+#<br>
+UNICODE版でファイルを\[E]で編集して上書き保存すると、<br>
+UNICODE(ベタ?)で保存されるのですが、このときファイル名が<br>
+例えば&quot;コピー 〜 sample.vbs&quot;のような場合、CPUを食って<br>
+ハングしたり、呼び出しもとのPPCを伴って落ちたりする<br>
+事があります。ちょっと腑に落ちないところもあるので、<br>
+再現性がはっきりしたらもう一度ご報告します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1197">1197.　<b><font color="#000000">Re^4: PPC要望ほか2</font></b>　c　　<font size="2">2004/09/27 (月) 04:53</font><br>
+<blockquote>&gt; &gt;ステータス行に出る選択合計サイズなのですが、ステータス行の<br>
+&gt; 後、一回算出してしまえば合計マークサイズで確認できるので<br>
+&gt; それで済むかもしれません。<br>
+<br>
+あ、言われてみるとそれはそうかも・・・<br>
+気づきませんでした(^^;<br>
+<br>
+<br>
+&gt; &gt;しれないのですが、File Operation窓に&quot;他が終わるまでpause&quot;<br>
+&gt; 同時に実行しない、程度なら簡単に追加できるので試しに<br>
+&gt; つけてみます。<br>
+<br>
+おおっ、有り難うございます！<br>
+run、pause、runが居たらpause、の3状態を任意の状態で設定変更可能であれば、ほぼ解決に近いかもしれません。ややこしいUIのQueueサーバーに入るより直接的な自由度が高いと思いますし。<br>
+さらに実行順がFIFOならディスク残量の限られた状況でファイル移動がbat風に処理できて嬉しいですが。<br>
+<br>
+<br>
+&gt; &gt;あと、XPになってからだと思うのですが、[C]Enterでファイルコピー<br>
+&gt; &gt;を行おうとする時に、[Enter][C]が実行されてしまうことがあります。<br>
+&gt; 何かいい方法がないか考え中です。<br>
+<br>
+スレッド開始時点からFile Operation窓がアクティブになるまでの間、受け取ったキーを捨てるとか・・・になるんでしょうか？？<br>
+一般アプリのFileOpenダイアログみたいな親窓と排他なものはこういう問題起きないみたいですね。かなり難しそうですね・・・<br>
+<br>
+<br>
+<br>
+#<br>
+ネットワーク先のsambaドライブで作業しているとときどき、<br>
+そのドライブのカレントディレクトリにPPX.LOGが生成されて<br>
+&quot;〜〜 (Etc  Mes) 低速モードです&quot;といった内容が吐かれる<br>
+のですが、これの抑制オプションってどれでしょう？<br>
+X_logは0です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1196">1196.　<b><font color="#000000">Re^3: PPC要望ほか2</font></b>　TORO　　<font size="2">2004/09/26 (日) 21:22</font><br>
+<blockquote>&gt;複数行になったり、内蔵エディタを用いたrenameが出来ると<br>
+&gt;嬉しいです。<br>
+<br>
+確かにできると便利ですね。考えてみます。<br>
+<br>
+<br>
+&gt;ステータス行に出る選択合計サイズなのですが、ステータス行の<br>
+&gt;ディスク残容量などの表示を上書きしてしまうので、XC_statと<br>
+&gt;XC_inf2の設定を入れ替えてみたのですが、XC_statはカーソル移動<br>
+&gt;に伴って更新されないようで、うまくいきませんでした。<br>
+&gt;選択合計サイズの表示などは制御可能でしょうか。<br>
+<br>
+上書きではなく、右にずれる動作をするので窓幅を広げたら<br>
+見えるようにはなっています(^^;<br>
+後、一回算出してしまえば合計マークサイズで確認できるので<br>
+それで済むかもしれません。<br>
+<br>
+<br>
+&gt;Burstモードに限らず、ネットワークドライブなどで極端に<br>
+&gt;低速化することがあり、静的でも良いのでバッファサイズ等の<br>
+&gt;チューニングが可能になると嬉しいです。<br>
+<br>
+予定に入ってます。ほかにも*fileの処理は全体的にいろいろ<br>
+変更したいところがありますし。<br>
+<br>
+<br>
+&gt;PPB等にキューイングエンジンがあれば何か工夫できるかも<br>
+&gt;しれないのですが、File Operation窓に&quot;他が終わるまでpause&quot;<br>
+&gt;のチェックが有るようなイメージなので、他のファイルコピー<br>
+&gt;ソフトを呼び出した方がよいでしょうか。FFCが一応キュー待ち<br>
+&gt;出来るのですが、かなりなんと言うか微妙でした。<br>
+<br>
+同時に実行しない、程度なら簡単に追加できるので試しに<br>
+つけてみます。<br>
+<br>
+<br>
+&gt;あと、XPになってからだと思うのですが、[C]Enterでファイルコピー<br>
+&gt;を行おうとする時に、[Enter][C]が実行されてしまうことがあります。<br>
+<br>
+これは新規にスレッドを作成するタイミングで、キー入力の順番が<br>
+狂ってしまうためです。はじめから気がついていて、例えば<br>
+何かの拍子でダイアログ表示が遅れると、PPc本体の方に<br>
+Enterがいってしまうのがわかります。<br>
+何かいい方法がないか考え中です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1195">1195.　<b><font color="#000000">Re^3: PPC要望ほか</font></b>　TORO　　<font size="2">2004/09/26 (日) 21:20</font><br>
+<blockquote>ひとまず答えられるところを答えます。<br>
+<br>
+&gt;「.」がらみかもしれませんが、<br>
+&gt;メディアをフォーマットなどして、\に何も入っていない状態で<br>
+&gt;見に行くと「指定されたファイルが見つかりません」と表示さ<br>
+&gt;れます。何かファイルやディレクトリを置けば表示は消えます。<br>
+<br>
+ディレクトリ読み込み中に発生したエラーは、エントリで表現<br>
+する仕様です。（何もないのもエラーとして扱ってます）<br>
+OSが返すエラーをそのまま表示しているのでちょっと<br>
+おかしな表現になっています。<br>
+1191の「\と言えば、rootに何もファイル」も同じ理由です。<br>
+<br>
+<br>
+&gt;通常は[TAB]の機能で十分なのですが、場合によっては、<br>
+&gt;連結しているPPCにフォーカスを移動する機能があると<br>
+&gt;嬉しいです。<br>
+<br>
+常に反対窓ということですか、いまは内蔵機能だとできないで<br>
+すね。<br>
+Script Module を組み込んで、次のスクリプトを使えばできま<br>
+す。<br>
+<br>
+&#39;!*script<br>
+&#39; 必ず反対窓の PPc に移動する。該当 PPc が無ければ起動<br>
+idname = PPx.WindowIDName<br>
+id = chr(((asc(mid(idname,3,1)) - 1) xor 1) + 1)<br>
+PPx.Execute &quot;*focus PPC[&quot;+id+&quot;],ppc /bootid:&quot;+id<br>
+<br>
+<br>
+&gt;＃IEからリンクをD&amp;Dすると、explorerの場合、インター<br>
+&gt;ネットショートカット(.url)が作成されますが、PPCでは<br>
+&gt;どのようにすればよいでしょうか。<br>
+<br>
+ファイルのD&amp;Dではないのでこのままでは無理です(^^;。<br>
+たまに私もやりたくなるのでそのうちできるようにしたいと<br>
+思ってます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1194">1194.　<b><font color="#000000">Re^4: PPC要望ほか</font></b>　c　　<font size="2">2004/09/23 (木) 22:42</font><br>
+<blockquote>&gt; ちょっと内容の確認に時間が掛かっています。<br>
+<br>
+あ、当方まったく急いでおりませんので！<br>
+1年以上？報告せずに使っていたのとか有るくらいで(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1193">1193.　<b><font color="#000000">Re^3: PPC要望ほか</font></b>　TORO　　<font size="2">2004/09/23 (木) 21:35</font><br>
+<blockquote>ちょっと内容の確認に時間が掛かっています。<br>
+済みませんが返事が週末になるかもしれません(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1192">1192.　<b><font color="#000000">RUNASA 1.9+4</font></b>　TORO　　<font size="2">2004/09/23 (木) 21:31</font><br>
+<blockquote>RUNASA 1.9+4 を公開しました。<br>
+<br>
+WinXP の場合、Run As service の起動が終わる前に<br>
+RUNASA が実行される場合があるので、起動が終わるまで<br>
+待つようにしました。<br>
+<br>
+尚、XP SP2 の対策はまだ済んでいなく、サービス版を<br>
+使った実行はまだできません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1191">1191.　<b><font color="#000000">Re^2: PPC要望ほか2</font></b>　c　　<font size="2">2004/09/23 (木) 06:50</font><br>
+<blockquote><br>
+&gt; &gt;あと、要望なのですが、Renameダイアログが小さいためファ<br>
+&gt; 拙作ソフトは 640x480 ではみ出ないように大きさ調節していて、<br>
+<br>
+なるほど。<br>
+複数行になったり、内蔵エディタを用いたrenameが出来ると嬉しいです。<br>
+<br>
+<br>
+&gt; &gt;更新された場合にリフレッシュされて元に戻ってしまいます。<br>
+&gt; もう少し条件をゆるめます。<br>
+<br>
+有り難うございます。<br>
+<br>
+<br>
+ステータス行に出る選択合計サイズなのですが、ステータス行の<br>
+ディスク残容量などの表示を上書きしてしまうので、XC_statと<br>
+XC_inf2の設定を入れ替えてみたのですが、XC_statはカーソル移動<br>
+に伴って更新されないようで、うまくいきませんでした。<br>
+選択合計サイズの表示などは制御可能でしょうか。<br>
+<br>
+<br>
+&gt; BurstモードがOSのファイルキャッシュを使わない<br>
+&gt; 設定です。<br>
+&gt; # 今はバッファが 32Kbytesです(^^;<br>
+<br>
+これは失礼致しました＞Burst<br>
+Burstモードに限らず、ネットワークドライブなどで極端に<br>
+低速化することがあり、静的でも良いのでバッファサイズ等の<br>
+チューニングが可能になると嬉しいです。<br>
+<br>
+<br>
+&gt; キューイングについてはできたらいいなと思っている程度で、<br>
+&gt; 現在検討する段階までいってません。<br>
+<br>
+PPB等にキューイングエンジンがあれば何か工夫できるかも<br>
+しれないのですが、File Operation窓に&quot;他が終わるまでpause&quot;<br>
+のチェックが有るようなイメージなので、他のファイルコピー<br>
+ソフトを呼び出した方がよいでしょうか。FFCが一応キュー待ち<br>
+出来るのですが、かなりなんと言うか微妙でした。<br>
+<br>
+<br>
+&gt; 「\」の方は、「%j\」を実行すれば同等の動作をします。<br>
+<br>
+有り難うございます。<br>
+盲点でした &gt; %j\<br>
+<br>
+<br>
+\と言えば、rootに何もファイルやディレクトリが無いドライブを<br>
+見に行くと、「指定されたファイルが見つかりません」と表示され<br>
+ます。何かファイルでも置くと治ります。<br>
+<br>
+<br>
+あと、XPになってからだと思うのですが、[C]Enterでファイルコピー<br>
+を行おうとする時に、[Enter][C]が実行されてしまうことがあります。<br>
+たぶん、[C]の後、File Operationの窓が前面に出る前にPPCにEnterが<br>
+送られてしまうのだと思うのですが、OSの負荷状況に寄ってこの<br>
+タイミングがかなり変化するため、使いづらい状況です。<br>
+\[C]等ではEnterの必要がないのでこっちを使ったり・・・<br>
+<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1190">1190.　<b><font color="#000000">Re^2: PPC要望ほか</font></b>　c　　<font size="2">2004/09/22 (水) 22:55</font><br>
+<blockquote><br>
+「.」がらみかもしれませんが、<br>
+メディアをフォーマットなどして、\に何も入っていない状態で<br>
+見に行くと「指定されたファイルが見つかりません」と表示さ<br>
+れます。何かファイルやディレクトリを置けば表示は消えます。<br>
+<br>
+&gt; 単純に、左右カーソルで次のPPcに移動したいなら、そのカスタ<br>
+&gt; マイズでいいと思います。<br>
+&gt; 具体的にはどのような動作をさせたいのでしょうか？<br>
+<br>
+通常は[TAB]の機能で十分なのですが、場合によっては、<br>
+連結しているPPCにフォーカスを移動する機能があると<br>
+嬉しいです。<br>
+<br>
+<br>
+&gt; &gt;それから、C:だけかもしれませんが、\を複数回押してド<br>
+&gt; &gt;ライブ一覧を出した場合に、タイトルバーにPPCのインス<br>
+&gt; &gt;トール先ディレクトリが表示されます。実害は有りません。<br>
+&gt; タイトルバーは、移動する予定のパスが表示されると<br>
+&gt; 思います。そうでないなら再指摘下さい(^^;<br>
+<br>
+C:以外ではそのようです。C:では、例えば<br>
+C:\windows\system32にて、\[\]又は[L]:[Enter]すると、<br>
+タイトルバーにはC:\Program Files\PPWと出ます。その<br>
+状態で[Enter]すると、C:\windows\system32に飛びます。<br>
+<br>
+ <br>
+&gt; &gt;あと、PPCを終了するとタスクバーにPPCのアイコンが残ります。<br>
+&gt; これはちょっと再現しないです。もう少し調べてみます。<br>
+<br>
+私の環境では、X_winのB1を0にすると起きないみたいです。<br>
+<br>
+<br>
+<br>
+＃IEからリンクをD&amp;Dすると、explorerの場合、インター<br>
+ネットショートカット(.url)が作成されますが、PPCでは<br>
+どのようにすればよいでしょうか。<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1189">1189.　<b><font color="#000000">Re: PPC要望ほか2</font></b>　TORO　　<font size="2">2004/09/22 (水) 21:48</font><br>
+<blockquote>&gt;あと、要望なのですが、Renameダイアログが小さいためファ<br>
+&gt;イル名が収まりきらないことが多く、<br>
+<br>
+拙作ソフトは 640x480 ではみ出ないように大きさ調節していて、<br>
+一行入力窓の幅はそのぎりぎりまでにしてあります。<br>
+このため、これ以上はすぐに拡張できない状況です。<br>
+<br>
+<br>
+&gt;対象にもなる機能は非常に便利なのですが、ディレクトリが<br>
+&gt;更新された場合にリフレッシュされて元に戻ってしまいます。<br>
+<br>
+現在はディレクトリの内容が変化したときのことを考えて<br>
+意図的にサイズ表示をなくしています。<br>
+もう少し条件をゆるめます。<br>
+<br>
+<br>
+&gt;ファイルのコピーなどで、OSのキャッシュを使わない設定<br>
+&gt;や、バッファサイズを指定することは出来るでしょうか。<br>
+<br>
+BurstモードがOSのファイルキャッシュを使わない<br>
+設定です。<br>
+Burstモードが遅いのは、大容量バッファ、<br>
+非同期読み書き等の高速化テクニックを導入して<br>
+いないためです。<br>
+# 今はバッファが 32Kbytesです(^^;<br>
+<br>
+他のところを先に手を付けているので、今は後回し気味です。<br>
+<br>
+<br>
+&gt;又、ファイルコピーについては、<br>
+<br>
+キューイングについてはできたらいいなと思っている程度で、<br>
+現在検討する段階までいってません。<br>
+また、\[C]の方は Explorer の機能を呼び出している<br>
+ので、内蔵機能のように色々手を加えることができません。<br>
+# シェル拡張で改造できると思いますが、それは PPxの<br>
+# 範疇ではなく、Explorer拡張ソフトの範疇だと思います。<br>
+<br>
+<br>
+&gt;PPBが使用中の場合、別のPPBを起動するかどうかという<br>
+&gt;ダイアログがしばらくしてから出ますが、<br>
+<br>
+このへんは、実行するときに既にどうしたいかが決まっていると<br>
+思いますので、オプション %Ob / %OB を指定すればいいと<br>
+思います。<br>
+ダイアログの秒数は、今のところ変えるつもりはありません。<br>
+それに 0秒にすると、コンソールアプリケーションを連続実行<br>
+するときに（例えばマークしたファイルを perl %C で<br>
+連続実行など）、ダイアログが頻繁に表示されるので、<br>
+かえって不便だと思います。<br>
+<br>
+<br>
+&gt;又、ディレクトリ「..」を表示しない設定や、\を複数回押<br>
+&gt;してもドライブ一覧に行かないといった細かい設定があると<br>
+&gt;便利だと思います。<br>
+<br>
+「..」のほうは検討します。<br>
+「\」の方は、「%j\」を実行すれば同等の動作をします。<br>
+# UNC のとき挙動がおかしいのでこれは修正します(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1188">1188.　<b><font color="#000000">Re: PPC要望ほか</font></b>　TORO　　<font size="2">2004/09/22 (水) 21:41</font><br>
+<blockquote>&gt;PPCのエントリ表示で、e0 e1 e3を用いた場合に、実際より<br>
+&gt;1つ多いか少なく表示されるようなのですが、<br>
+<br>
+&gt;又、ディレクトリを複数選択してディレクトリサイズを表<br>
+&gt;示させた場合に、&lt;DIR&gt;が数字に変わらないディレクトリエ<br>
+&gt;ントリがあります。<br>
+<br>
+&gt;(かなり)古いVerでは複数枚起動していても連結対象のPPC側に<br>
+&gt;copyされたと思うのですが、次のPPC窓あたりが対象となって<br>
+&gt;しまいます。%2の挙動のでしょうか？<br>
+<br>
+いずれもおかしいですね。修正します。<br>
+<br>
+<br>
+&gt;PPCを左右2枚連結で使っているのですが、左右カーソルキー<br>
+&gt;で連結した隣のPPCへ移動するための設定がよく分かりません。<br>
+&gt;XC_mvLRだと思うのですが・・・ 現在は左右カーソルキーに<br>
+&gt;[TAB]を割り振って使っています。<br>
+<br>
+単純に、左右カーソルで次のPPcに移動したいなら、そのカスタ<br>
+マイズでいいと思います。<br>
+そうでなくて、１つの窓がエントリを複数列表示していて<br>
+窓の端まではカーソル移動したいというなら XC_mvLR を<br>
+使った方がいいと思います。場合によってはスクリプトも<br>
+必要になるかもしれません。<br>
+具体的にはどのような動作をさせたいのでしょうか？<br>
+<br>
+<br>
+&gt;又、2セット(PPC4枚)起動すると、[TAB]でのPPC窓の移動順が<br>
+&gt;[G]によって入れ替わってしまいます。現在はXC_gmod=1で<br>
+&gt;切り抜けています。<br>
+<br>
+現在は 起動順で移動しています。並んでる窓順とかで<br>
+移動したいということなら、いまは厄介ですね(^^;<br>
+<br>
+<br>
+&gt;PPC窓枠をダブルクリックするとエントリ表示域のサイズに<br>
+&gt;自動リサイズされますが、窓サイズが1桁分狭くなってしま<br>
+&gt;います。スクロールバーの有無かと思うのですが、それだけ<br>
+&gt;でもないようで、よく分かりません。特に実害は有りません。<br>
+<br>
+スクロールバーがないと、その分縮むので減ることもあります。<br>
+私も気になっている部分ですので早めに対処します。<br>
+<br>
+<br>
+&gt;それから、C:だけかもしれませんが、\を複数回押してド<br>
+&gt;ライブ一覧を出した場合に、タイトルバーにPPCのインス<br>
+&gt;トール先ディレクトリが表示されます。実害は有りません。<br>
+<br>
+タイトルバーは、移動する予定のパスが表示されると<br>
+思います。そうでないなら再指摘下さい(^^;<br>
+<br>
+<br>
+&gt;あと、PPCを終了するとタスクバーにPPCのアイコンが残ります。<br>
+&gt;プロセスはPPTRAYなので、アイコントレイからexitを選べば<br>
+&gt;正常に終了します。<br>
+<br>
+これはちょっと再現しないです。もう少し調べてみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1187">1187.　<b><font color="#000000">PPC要望ほか2</font></b>　c　　<font size="2">2004/09/21 (火) 15:32</font><br>
+<blockquote>あと、要望なのですが、Renameダイアログが小さいためファ<br>
+イル名が収まりきらないことが多く、不便に感じるので、何<br>
+とか出来ないでしょうか。<br>
+<br>
+又、マークしたディレクトリのサイズを表示した上でソート<br>
+対象にもなる機能は非常に便利なのですが、ディレクトリが<br>
+更新された場合にリフレッシュされて元に戻ってしまいます。<br>
+場合によってはソートをかける時間もないこともあり、これ<br>
+を例えば、ディレクトリサイズ表示後は画面更新しないよう<br>
+な、任意時間表示を保持する機能が有ればと思います。<br>
+<br>
+ファイルのコピーなどで、OSのキャッシュを使わない設定<br>
+や、バッファサイズを指定することは出来るでしょうか。<br>
+Burstにチェックを入れても、Explorerのファイルコピー<br>
+の半分程度の速度しか出ないことがあります。実際の原因<br>
+は分からないのですが、個人的にはバッファ周りだと思い<br>
+ます。環境に寄るのですが、先読みバッファスレッドまで<br>
+作るとベンチマーク並みの速度が出たことももあります。<br>
+OSキャッシュについては、大きなデータのバックアップ等<br>
+キャッシュする必要のない物を処理する時に便利だと思い<br>
+ます。<br>
+<br>
+又、ファイルコピーについては、\CのExplorer版のcopyで<br>
+は複数発行すると(各PPC毎ですが)最後に発行したcopyから<br>
+順にファイルが処理されますが、PPC版のcopyの場合は同時<br>
+並列で処理されます。どちらも便利な特性で、使い分ける<br>
+ことでやりくりしているのですが、場合によってはどうし<br>
+てもPPC版でやりたいとか、スタックされずにFIFO(Queue)<br>
+で処理させたいとか、途中でpauseしたり処理順を入れ替<br>
+えられないかといった欲求が出ることがあります。又、<br>
+Explorer版を複数発行する場合には、コピー中を示すPOP窓<br>
+の出現位置の都合で、毎回マウスに手を伸ばしてPPC上から<br>
+移動する必要があります。<br>
+<br>
+PPBが使用中の場合、別のPPBを起動するかどうかという<br>
+ダイアログがしばらくしてから出ますが、これを自動で<br>
+PPB起動や、ダイアログ表示までの時間を0秒に指定できる<br>
+と嬉しいです。<br>
+<br>
+又、ディレクトリ「..」を表示しない設定や、\を複数回押<br>
+してもドライブ一覧に行かないといった細かい設定があると<br>
+便利だと思います。<br>
+<br>
+<br>
+PPC.CFGに一通り目を通したつもりですが、設定にある内容<br>
+を書いてしまっているかもしれません。その場合は申し訳あ<br>
+りません。長らくかなり古いVerを使っていました。<br>
+<br>
+環境はPPW036、WinXP SP1、マルチデスクトップです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1186">1186.　<b><font color="#000000">PPC要望ほか</font></b>　c　　<font size="2">2004/09/21 (火) 15:32</font><br>
+<blockquote>PPCのエントリ表示で、e0 e1 e3を用いた場合に、実際より<br>
+1つ多いか少なく表示されるようなのですが、これ以外に設<br>
+定項目が見つからず、対処方法が分かりません。マーク数<br>
+は正常に表示されます。<br>
+<br>
+又、ディレクトリを複数選択してディレクトリサイズを表<br>
+示させた場合に、&lt;DIR&gt;が数字に変わらないディレクトリエ<br>
+ントリがあります。特定のエントリではなく、ディスク上<br>
+の順序か何かに依存するようなのですがよく分かりません。<br>
+ディレクトリ名がソート時に一番最後になるようなエントリ<br>
+で起こりやすいと感じています。<br>
+<br>
+PPCを左右2枚連結で使っているのですが、左右カーソルキー<br>
+で連結した隣のPPCへ移動するための設定がよく分かりません。<br>
+XC_mvLRだと思うのですが・・・ 現在は左右カーソルキーに<br>
+[TAB]を割り振って使っています。<br>
+又、2セット(PPC4枚)起動すると、[TAB]でのPPC窓の移動順が<br>
+[G]によって入れ替わってしまいます。現在はXC_gmod=1で<br>
+切り抜けています。あと、連結したPPC窓を対象にしてcopy等<br>
+を行うための設定がよく分かりません。(かなり)古いVerでは<br>
+複数枚起動していても連結対象のPPC側にcopyされたと思うの<br>
+ですが、次のPPC窓あたりが対象となってしまいます。%2の挙<br>
+動のでしょうか？<br>
+<br>
+PPC窓枠をダブルクリックするとエントリ表示域のサイズに<br>
+自動リサイズされますが、窓サイズが1桁分狭くなってしま<br>
+います。スクロールバーの有無かと思うのですが、それだけ<br>
+でもないようで、よく分かりません。特に実害は有りません。<br>
+<br>
+それから、C:だけかもしれませんが、\を複数回押してド<br>
+ライブ一覧を出した場合に、タイトルバーにPPCのインス<br>
+トール先ディレクトリが表示されます。実害は有りません。<br>
+<br>
+あと、PPCを終了するとタスクバーにPPCのアイコンが残ります。<br>
+プロセスはPPTRAYなので、アイコントレイからexitを選べば<br>
+正常に終了します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1185">1185.　<b><font color="#000000">CLISM 1.5</font></b>　TORO　　<font size="2">2004/09/20 (月) 15:04</font><br>
+<blockquote>CLISM 1.5 を公開しました。<br>
+<br>
+1.5beta との変更点はなく、1.4にクリップボードチェインの<br>
+再設定指定ができるようになっています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1184">1184.　<b><font color="#000000">PPx 0.36</font></b>　TORO　　<font size="2">2004/09/20 (月) 15:02</font><br>
+<blockquote>PPx 0.36 とそのソースを公開しました。<br>
+<br>
+0.35+8からの変更点は次の通りです。<br>
+All<br>
+・(*file)読み込みエラー時は中止/再試行/無視を選択できるようにした<br>
+・実行するファイルのパスにSNS/PIDL形式を使用できるようにした<br>
+・P_susiePにSNS/PIDL形式を使用できるようにした<br>
+PPb<br>
+・マウスによる編集行の範囲選択を一部対応<br>
+PPc<br>
+・まとめて前に戻る/まとめて次に進むを追加(^\[←],^\[→])<br>
+・エントリ表示書式でコメント表示処理のおかしいところを修正<br>
+PPv<br>
+・描画によるちらつき対策指定を有効にした(X_fles)<br>
+・改行、タブ記号の表示の高速化 + 更に高速表示の指定を追加した(XV_bctl)<br>
+PPcust<br>
+・UNICODE版の全般タブでいくつか設定できない項目があったのを修正<br>
+<br>
+<br>
+・PPv のタブ記号と改行記号の表示方法を変更し、高速化<br>
+  しました。また、表示に失敗するケースもありますが<br>
+  更に高速表示する指定もできるようにしました。<br>
+  なぜか、「更に高速表示」の方が見栄えがよかったり<br>
+  します(^^;<br>
+<br>
+・コピー(*file)で、CRCエラー等の読み込み時エラーが出た<br>
+  場合、中止/再試行/無視を選択できるようにしました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1183">1183.　<b><font color="#000000">Re^3: PPx 0.35 の XC_celF</font></b>　TORO　　<font size="2">2004/09/16 (木) 12:58</font><br>
+<blockquote>&gt;  - C に桁数が明示されていて, かつコメントがある時とない時の<br>
+&gt;  - 桁数が同じ<br>
+&gt; の条件を満たす場合には正しく表示できました.<br>
+&gt; これでコメントがちゃんと使えるようになります (^^;;<br>
+<br>
+C の桁数を自動調節するようには現在なっていないので、<br>
+桁数は自分で指定して合わせてください(^^;<br>
+<br>
+表示書式は色々な組み合わせができるので、チェック漏れが<br>
+まだあるかもしれないです。それに最近の UNICODE版公開の<br>
+為に色々変更しているので、新たなバグを入れてしまって<br>
+いることもあります(^^;<br>
+<br>
+&gt; P.S. ところで桁数指定のない &#39;C&#39; はどこに合わせるのですが?<br>
+桁数指定がないと、残りの桁を全て使います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1182">1182.　<b><font color="#000000">Re^2: PPx 0.35 の XC_celF</font></b>　ZR　　<font size="2">2004/09/15 (水) 08:29</font><br>
+<blockquote>&gt; 上記２点の問題を修正したものを次の場所にアップしておきます。<br>
+色々と試してみましたが,<br>
+ - C に桁数が明示されていて, かつコメントがある時とない時の<br>
+ - 桁数が同じ<br>
+の条件を満たす場合には正しく表示できました.<br>
+これでコメントがちゃんと使えるようになります (^^;;<br>
+ありがとうございました m(_ _)m<br>
+<br>
+# 1 年以上前から気になっていたんだけど,<br>
+# ソフトのバグなのか自分の設定が間違いなのかが<br>
+# ソースを眺めるまで判断がつかなかったということで.<br>
+<br>
+&gt; あと、マニュアルの記載漏れですが、書式「t」内には<br>
+&gt; 記号や空白を入れたらそれを表示する様になっています。<br>
+&gt; ZR さんは詰めて表示したいようですので関係ないかも<br>
+&gt; しれませんが(^^;<br>
+1 桁でも桁数を節約したいもので (^^;;;;;<br>
+<br>
+P.S. ところで桁数指定のない &#39;C&#39; はどこに合わせるのですが?<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1181">1181.　<b><font color="#000000">Re: PPx 0.35 の XC_celF</font></b>　TORO　　<font size="2">2004/09/14 (火) 22:45</font><br>
+<blockquote>&gt; XC_celF (エントリ書式)において, &#39;c&#39;(コメントスキップ)<br>
+&gt; つきの &#39;t&#39; を指定すると, コメント存在時に, 該当項目<br>
+&gt; 以降の表示が一部または全部欠けてしまいます.<br>
+<br>
+指摘されたとおり、コメントスキップの処理が<br>
+完全でありませんでした。<br>
+<br>
+<br>
+&gt; あと &#39;C&#39; を途中に入れるのは大抵意図どおりにならないの<br>
+&gt; ですが, これは仕様外ですか?<br>
+<br>
+その使い方は気づかなかったです(^^;。<br>
+一応何処でも使えるようにするつもりです。<br>
+<br>
+<br>
+上記２点の問題を修正したものを次の場所にアップしておきます。<br>
+http://homepage1.nifty.com/toro/PPX0914.LZH<br>
+<br>
+あまり動作確認をしていませんが、これでだいたい希望通りの<br>
+動作すると思います。<br>
+また、0.36用に調整しているものなので、一部の挙動が<br>
+違っているかもしれません。<br>
+# +n 用にまとめるのが面倒なので手抜きです(^^;<br>
+<br>
+あと、マニュアルの記載漏れですが、書式「t」内には<br>
+記号や空白を入れたらそれを表示する様になっています。<br>
+ZR さんは詰めて表示したいようですので関係ないかも<br>
+しれませんが(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1180">1180.　<b><font color="#000000">PPx 0.35 の XC_celF</font></b>　ZR　　<font size="2">2004/09/14 (火) 10:23</font><br>
+<blockquote>PPx 0.35 のカスタマイズについてですが.<br>
+XC_celF (エントリ書式)において, &#39;c&#39;(コメントスキップ)<br>
+つきの &#39;t&#39; を指定すると, コメント存在時に, 該当項目<br>
+以降の表示が一部または全部欠けてしまいます.<br>
+  例: MF16,5cZ7ctW&quot;yND&quot;C13<br>
+<br>
+関数 DispEntry() 中のコメントスキップの処理 (switch 内<br>
+の case DE_MSKIP: 部) で DE_itemname を特別扱いしている<br>
+のに, 同じく ASCIIZ を伴う DE_string や DE_TIME2 をして<br>
+いない辺りが怪しいと思われます.<br>
+<br>
+あと &#39;C&#39; を途中に入れるのは大抵意図どおりにならないの<br>
+ですが, これは仕様外ですか?<br>
+  例: MF16,5cZ7C7T8<br>
+<br>
+環境: PPx 0.35+7 (MultiByte) / Win2k</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1179">1179.　<b><font color="#000000">Windows XP SP2</font></b>　TORO　　<font size="2">2004/09/12 (日) 21:55</font><br>
+<blockquote>Windows XP SP2 上での拙作ソフトの動作確認をぼちぼち<br>
+おこなっています。<br>
+<br>
+今のところ、RUNASA で問題が出ることがわかっています。<br>
+<br>
+RUNASA サービスに関する処理を実行しようとすると<br>
+RUNASA ショートカットとRUNASA サービスとの間の通信に<br>
+失敗してエラーが出ます。<br>
+対策方法は今のところ見つかっていないので、<br>
+サービスを使わない方法で対処するしかなさそうです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1178">1178.　<b><font color="#000000">CLISM 1.5 beta</font></b>　TORO　　<font size="2">2004/09/12 (日) 21:50</font><br>
+<blockquote>CLISM 1.5 beta を公開しました。<br>
+<br>
+クリップボードチェインの再設定更新間隔の指定を<br>
+追加しています。<br>
+特に問題がなければこのまま 1.5 にするつもりです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1177">1177.　<b><font color="#000000">Re^3: PPx 0.35について</font></b>　TORO　　<font size="2">2004/09/10 (金) 13:05</font><br>
+<blockquote>&gt; 　１．常時ツリーについて<br>
+&gt; 　　　　確かに重くなってしまうのでしょうね。<br>
+&gt; 　　　　今のように軽快に動作しないであれば<br>
+&gt; 　　　　手動更新致します。<br>
+いい方法が見つかるまで、それでお願いします。<br>
+<br>
+&gt; 　２．SNS/PIDL形式について<br>
+&gt; 　　　　すみません私が無知だったからかもしれません。<br>
+&gt; 　　　　　M_pjumpで<br>
+&gt; 　　　　　#23:等の#数字:の形式で設定をしていました。<br>
+数字形式も仕様としては問題ないはずです(^^;。<br>
+こちらでも #23: の確認をしましたが、W2kSP4では問題なく、<br>
+XPSP1は落ちることはありませんでしたが、一部の短い<br>
+ファイル名の取得がおかしいようです（OS側の問題のようです）。<br>
+対策できるか調べてみます。<br>
+<br>
+&gt;お手間を取らせて申し訳ありませんでした。<br>
+いえいえ、逆に助かりました(^^。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1176">1176.　<b><font color="#000000">Re^2: PPx 0.35について</font></b>　AO　　<font size="2">2004/09/09 (木) 22:03</font><br>
+<blockquote>回答ありがとうございます。<br>
+<br>
+　１．常時ツリーについて<br>
+　　　　確かに重くなってしまうのでしょうね。<br>
+　　　　今のように軽快に動作しないであれば<br>
+　　　　手動更新致します。<br>
+<br>
+　２．SNS/PIDL形式について<br>
+　　　　すみません私が無知だったからかもしれません。<br>
+　　　　　M_pjumpで<br>
+　　　　　#23:等の#数字:の形式で設定をしていました。<br>
+<br>
+　　　　いろいろ試したら<br>
+　　　　　#コントロール パネル:等の設定で落ちずに<br>
+　　　　　ジャンプできました。<br>
+<br>
+　お手間を取らせて申し訳ありませんでした。<br>
+<br>
+<br>
+<br>
+　　　　</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1175">1175.　<b><font color="#000000">Re: PPx 0.35について</font></b>　TORO　　<font size="2">2004/09/09 (木) 13:15</font><br>
+<blockquote>&gt;　１．私は常時ツリー窓を表示して使用しているのですが<br>
+&gt;　　　ツリー窓の最新情報への自動更新の設定はどのよう<br>
+&gt;　　　に行えばよろしいのでしょうか。<br>
+<br>
+現在、ツリー窓については自動更新の機能は用意していません。<br>
+また、機能はすぐに追加する予定はなく、エクスプローラのよ<br>
+うに完全に更新状況を把握するようにすると結構負担が掛かる<br>
+ので、どのようにしようか検討している段階です。<br>
+すみませんが、F5キーの手動更新を使ってください。<br>
+<br>
+<br>
+&gt;　２．SNS/PIDL形式でジャンプを行うとPPXが落ちてしまいます。<br>
+&gt;　　　どのように設定を行えばよろしいのでしょうか。<br>
+<br>
+ジャンプ先は何処ですか？チェック漏れで確認していない場所<br>
+かもしれませんので教えてください。<br>
+また、もし試験公開版の 0.35+8 を使っていない場合はこちらを<br>
+試してみてください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1174">1174.　<b><font color="#000000">Re^6: CLISM 1.4+2</font></b>　TORO　　<font size="2">2004/09/09 (木) 13:09</font><br>
+<blockquote>&gt; お返事が遅くなり申し訳ありません．<br>
+いえいえかまいませんよ。こちらも返事が遅いですし(^^;<br>
+<br>
+<br>
+&gt;すいません．間が空いてしまいましたので2分後にちゃんと<br>
+&gt;戻ったかやそのとき何があったかというのはわかりません．<br>
+<br>
+ちょっと気になった程度ですので、特にいいですよ。<br>
+いつの間にかおかしいという現象だとなかなか把握<br>
+できないので忘れがちですし(^^;。<br>
+<br>
+# 自分でも問題が起きても、そのまま次の作業に入っ<br>
+# て忘れてしまうことが良くありますし(^^;<br>
+<br>
+再設定の機能は、切れてもこっそり直す処理なので、<br>
+間に合わないこともあると思います。<br>
+頻繁に切れることがあるなら、次の版(1.5)のカスタ<br>
+マイズで再設定時間を短くしてみてください。<br>
+<br>
+1.5の追加修正はもう終わっていて、いま動作試験して<br>
+いるところですので、β版として早めに公開した方がい<br>
+いかもしれませんね。<br>
+<br>
+<br>
+&gt;次のバージョンを楽しみにしております．ログ出力か<br>
+&gt;否かも選択できればなおおもしろいと思います．<br>
+<br>
+ログ出力版は予定ないです(^^;。ログで原因が分かるよ<br>
+うな問題は結構限られますので。<br>
+# 一応ソースに埋め込んでおいてまた問題があったときに<br>
+# は使えるようにしておきます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1173">1173.　<b><font color="#000000">PPx 0.35について</font></b>　AO　　<font size="2">2004/09/07 (火) 20:06</font><br>
+<blockquote>　初めまして<br>
+　このような便利なソフトを無料で使わしていただき<br>
+感謝いたします。<br>
+<br>
+　設定について２つほどお聞きしたいのですが<br>
+<br>
+　１．私は常時ツリー窓を表示して使用しているのですが<br>
+　　　ツリー窓の最新情報への自動更新の設定はどのよう<br>
+　　　に行えばよろしいのでしょうか。<br>
+<br>
+　２．SNS/PIDL形式でジャンプを行うとPPXが落ちてしまいます。<br>
+　　　どのように設定を行えばよろしいのでしょうか。<br>
+<br>
+　使用環境は　winxp SP1およびWin2k SP4です。<br>
+<br>
+　お忙しとは思いますがよろしくお願いします。<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1171">1171.　<b><font color="#000000">Re^5: CLISM 1.4+2</font></b>　jas　　<font size="2">2004/09/06 (月) 21:44</font><br>
+<blockquote>お返事が遅くなり申し訳ありません．<br>
+<br>
+&gt; CLISM がクリップボードチェインからはずれてしまったの<br>
+&gt; でしょうか？<br>
+&gt; CLISM 1.4+1,+2 は２分ごとにチェインの再設定をするので<br>
+&gt; チェインが切れてから最大２分経過しないと元に戻りません。<br>
+&gt; チェインが切れたとわかったときに、何か原因と思われる<br>
+&gt; ことは無かったでしょうか。<br>
+&gt;<br>
+すいません．間が空いてしまいましたので2分後にちゃんと<br>
+戻ったかやそのとき何があったかというのはわかりません．<br>
+<br>
+&gt; # チェインの再設定時間はカスタマイズできるようにしようと<br>
+&gt; # 思います。<br>
+&gt; # また、CLISMで適当に選択すればチェインの確認をして<br>
+&gt; # 必要に応じて再設定するようになっています。<br>
+<br>
+次のバージョンを楽しみにしております．ログ出力か否かも選択できればなおおもしろいと思います．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1170">1170.　<b><font color="#000000">PPx 0.35+8</font></b>　TORO　　<font size="2">2004/09/04 (土) 20:39</font><br>
+<blockquote>0.35+8 を公開しました。0.36の直前版となる予定です。<br>
+<br>
+・PPcに前に戻る/次に進む(^[←],^[→])を追加しました。<br>
+該当機能のマウス操作は、0.36公開時のアップデートで<br>
+追加します。すぐマウスでも使用したい場合は、次の設定を<br>
+参考に追加してください。<br>
+MC_click    = {<br>
+X_LINE    = @^LEFT<br>
+X_HMNU    = @^LEFT<br>
+X_SPC    = @^LEFT<br>
+X_INFO    = @^LEFT<br>
+X_ICON    = @^LEFT<br>
+X_ENT    = @^LEFT<br>
+Y_LINE    = @^RIGHT<br>
+Y_HMNU    = @^RIGHT<br>
+Y_SPC    = @^RIGHT<br>
+Y_INFO    = @^RIGHT<br>
+Y_ICON    = @^RIGHT<br>
+Y_ENT    = @^RIGHT<br>
+RG_L    = @^LEFT<br>
+RG_R    = @^RIGHT<br>
+}<br>
+<br>
+・PPvの背景表示ができるようにしました。<br>
+・PPcの非アクティブ時のカーソル表示をカスタマイズに反映<br>
+  した形態にするようにしました。<br>
+・マウスクリックカスタマイズが色々動作していないのを<br>
+  修正しました。<br>
+<br>
+・現在、暫定として一部コマンドで書庫内ファイルを<br>
+直接開くことができますが、少し強化して、書庫内の<br>
+ディレクトリ指定付きファイルも開くことができるよ<br>
+うにしました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1169">1169.　<b><font color="#000000">Re^2: K-Launcherについて</font></b>　CCAT　　<font size="2">2004/08/30 (月) 13:03</font><br>
+<blockquote>&gt; KL.DOC の 930行付近<br>
+申し訳ありません。すっかり読み落としていたようです。<br>
+助かりました。これで作業に戻ることができます。<br>
+愚問にお答えいただき、本当にありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1168">1168.　<b><font color="#000000">Re: PPx 0.35+7</font></b>　TORO　　<font size="2">2004/08/30 (月) 12:53</font><br>
+<blockquote>7-zip32.dllの設定がおかしいのに気づきました。<br>
+PPv で書庫内ファイルの表示はできますが、PPc で展開が<br>
+できませんでした(^^;<br>
+次のように「&quot;」でくくる位置を変更してください。<br>
+また、0.36を公開するときに該当部分が修正されるように<br>
+しておきます。<br>
+<br>
+P_unx    = {<br>
+7-ZIP32.DLL    = SevenZip,SevenZipOpenArchive,SevenZipCloseArchive,SevenZipFindFirst,SevenZipFindNext,SevenZipCheckArchive,x &quot;%C&quot; &quot;-o%!2&quot; *.*,e &quot;%1&quot; &quot;-o%!2&quot; %@<br>
+}</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1167">1167.　<b><font color="#000000">Re: K-Launcherについて</font></b>　TORO　　<font size="2">2004/08/30 (月) 12:52</font><br>
+<blockquote>&gt; コマンドプロンプトのdirで見たとき、<br>
+&gt; あるフォルダの中身が1298個あることが分かっているのに、<br>
+&gt; K-Launcher1.28から見ると、341個しか表示されないんです。<br>
+&gt; 1298個の方をプリントアウトしてあるので突き合わせていくと、<br>
+&gt; 確かにところどころファイルが抜け落ちているようです。<br>
+<br>
+KL.DOC の 930行付近に記載しているように、一度に表示でき<br>
+るのは 1024エントリまでです。実際は、この中に LFN や<br>
+削除エントリも含まれるので、かなり数が減ると思います。<br>
+<br>
+しかし、Shift+INS/Shift+Delで表示する場所をずらすことが<br>
+できますので、何度かに分ければディレクトリの全てのエント<br>
+リに対して操作することができます。<br>
+<br>
+尚、コピー等の時、サブディレクトリ内にエントリが1024以上<br>
+あっても全てコピーできます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1166">1166.　<b><font color="#000000">K-Launcherについて</font></b>　CCAT　　<font size="2">2004/08/29 (日) 16:38</font><br>
+<blockquote>はじめまして。<br>
+こちらのK-Launcherを使わせていただいています。<br>
+画面も見やすいですし、<br>
+LFNに対応してくださっているので、<br>
+とても重宝しています。<br>
+<br>
+本題なのですが、<br>
+コマンドプロンプトのdirで見たとき、<br>
+あるフォルダの中身が1298個あることが分かっているのに、<br>
+K-Launcher1.28から見ると、341個しか表示されないんです。<br>
+1298個の方をプリントアウトしてあるので突き合わせていくと、<br>
+確かにところどころファイルが抜け落ちているようです。<br>
+<br>
+環境はWin98が母体なのですが、<br>
+いま起動しなくなっているので<br>
+スタートアップオプションから<br>
+コマンドプロンプトオンリーで起動しています。<br>
+表示されなくなっているファイルは、<br>
+拡張子DATとIDBのファイルです。<br>
+<br>
+ひょっとしてファイルの数が多すぎるのでしょうか。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1165">1165.　<b><font color="#000000">Re^4: CLISM 1.4+2</font></b>　TORO　　<font size="2">2004/08/22 (日) 21:23</font><br>
+<blockquote>&gt; いつもお世話になっております．1.4+2にしたのですが，<br>
+&gt;先ほどクリップボードのチェインが切れてしまいました．<br>
+<br>
+CLISM がクリップボードチェインからはずれてしまったの<br>
+でしょうか？<br>
+CLISM 1.4+1,+2 は２分ごとにチェインの再設定をするので<br>
+チェインが切れてから最大２分経過しないと元に戻りません。<br>
+チェインが切れたとわかったときに、何か原因と思われる<br>
+ことは無かったでしょうか。<br>
+<br>
+# チェインの再設定時間はカスタマイズできるようにしようと<br>
+# 思います。<br>
+# また、CLISMで適当に選択すればチェインの確認をして<br>
+# 必要に応じて再設定するようになっています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1164">1164.　<b><font color="#000000">Re^3: CLISM 1.4+2</font></b>　jas　　<font size="2">2004/08/22 (日) 02:00</font><br>
+<blockquote>いつもお世話になっております．1.4+2にしたのですが，先ほどクリップボードのチェインが切れてしまいました．ログ出力機能がないのでどういうことを報告していいのかわかりませんが，一応書き込んでおきます．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1163">1163.　<b><font color="#000000">Re^2: CLISM 1.4+2</font></b>　com-a　　<font size="2">2004/08/20 (金) 03:01</font><br>
+<blockquote>全然無問題です。(笑)<br>
+<br>
+# そんなことより、今の仕事を手伝ってくだ（略</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1162">1162.　<b><font color="#000000">Re: CLISM 1.4+2</font></b>　TORO　　<font size="2">2004/08/19 (木) 21:46</font><br>
+<blockquote>&gt; com-a からいつの間にかCLISMが終了してしまったときの<br>
+「さん」が抜けてしまいました、済みません(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1161">1161.　<b><font color="#000000">CLISM 1.4+2</font></b>　TORO　　<font size="2">2004/08/18 (水) 21:57</font><br>
+<blockquote>com-a からいつの間にかCLISMが終了してしまったときの<br>
+ログを頂きましたので、それを元に対策を行った<br>
+CLISM 1.4+2 を公開します。<br>
+<br>
+これで異常終了することはなくなると思います。<br>
+<br>
+<br>
+com-a さん、ログ送付ありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1160">1160.　<b><font color="#000000">Re^2: Rename 時の選択範囲</font></b>　nibie　　<font size="2">2004/08/15 (日) 23:55</font><br>
+<blockquote>&gt; 0.35+7で修正しましたのでこれを使ってください。<br>
+ディレクトリも選択されました !(^^)!<br>
+<br>
+&gt; PPX.HLP<br>
+HLP あるの失念してました（ｗ<br>
+なるほどなるほど、PPv の TYPE で出てたやつのことか〜<br>
+最近拡張子多くてついていけないな〜（ｗ<br>
+<br>
+理解しました、どうもです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1159">1159.　<b><font color="#000000">Re: Rename 時の選択範囲</font></b>　TORO　　<font size="2">2004/08/15 (日) 22:08</font><br>
+<blockquote>&gt; ファイルの Rename 時に、編集窓で、<br>
+&gt; となりますよね、これって設定でディレクトリのときも<br>
+&gt; 選択ありにできますか？<br>
+<br>
+W2k だと選択されますが、XPだと選択されなかったようです。<br>
+0.35+7で修正しましたのでこれを使ってください。<br>
+<br>
+<br>
+&gt; E_cr の拡張子で、「:JPEG」「JPG」みたいに、<br>
+&gt; 「:」がついてたりついてなかったりしますよね、<br>
+&gt; これってもしかしたら意味あります？<br>
+<br>
+PPX.HLP の カスタマイズ詳細 - ファイル判別 を<br>
+参照してください(^^。<br>
+要は、拡張子と実態が異なるファイルでも実態に合わせて<br>
+判別す方が「:xxx」です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1158">1158.　<b><font color="#000000">PPx 0.35+7</font></b>　TORO　　<font size="2">2004/08/15 (日) 21:59</font><br>
+<blockquote>0.35+7を公開しました。<br>
+<br>
+書庫中のファイル名チェックを有効にすると、<br>
+「#:\マイコンピュータ」で、ドライブが引っかかって<br>
+しまうので、チェックの対象外にしました。<br>
+<br>
+また、PPx Module で Script Module 以外も読み込める<br>
+ようにしましたが、細かいところを調整中なので更新履歴に<br>
+入れていません。<br>
+<br>
+そのほかは微修正です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1157">1157.　<b><font color="#000000">Rename 時の選択範囲</font></b>　nibie　　<font size="2">2004/08/13 (金) 16:52</font><br>
+<blockquote>たびたびすいません。<br>
+ファイルの Rename 時に、編集窓で、<br>
+　ファイル：ファイル名のプライマリー部分が選択されている<br>
+　ディレクトリ：選択部分なし<br>
+となりますよね、これって設定でディレクトリのときも<br>
+選択ありにできますか？（名前をコピーしたいとき等に便利なので）<br>
+今回は案は浮かびませんでした。<br>
+<br>
+・雑談（恥ずかしい質問）<br>
+E_cr の拡張子で、「:JPEG」「JPG」みたいに、<br>
+「:」がついてたりついてなかったりしますよね、<br>
+これってもしかしたら意味あります？<br>
+（普段特に考えないでどんどん追加してるんですけどね）</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1156">1156.　<b><font color="#000000">Re^2: ppv でタグオフ</font></b>　nibie　　<font size="2">2004/08/13 (金) 00:04</font><br>
+<blockquote>（あ）できました !(^^)!<br>
+（う）できました !(^^)!<br>
+（（い）は不要になったので試してません）<br>
+<br>
+いやあほんとうれしいの一言に尽きる、どうもです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1155">1155.　<b><font color="#000000">Re: ppv でタグオフ</font></b>　TORO　　<font size="2">2004/08/12 (木) 23:28</font><br>
+<blockquote>&gt; こんにちは〜暑いですね〜。<br>
+去年が涼しかった分だけ余計こたえますね(^^;<br>
+<br>
+<br>
+&gt; 趣旨<br>
+&gt; 「PPV で lzh 内にあるソースをよく見ることがあるが、<br>
+&gt; タグを解釈して欲しくない。<br>
+&gt; 次々読むので、[@][&lt;tag&gt;] のキーはちょっと面倒。」<br>
+<br>
+以前言っていたタグ処理の件ですね。実は、ファイル毎に<br>
+初期オプションが指定できるXV_optsというのを追加して<br>
+まして、これを使うことでタグを解釈しないように<br>
+することができます。<br>
+# XV_optsの追加時にはっきり言えば良かったですね(^^;<br>
+# しかもヘルプに書き忘れているし(^^;;<br>
+<br>
+今回（あ）の場合はこんな感じです。左辺は、E_cr等と<br>
+同じように指定し、右辺はオプションを指定します。<br>
+XV_opts    = {<br>
+:html = -tag:off<br>
+}<br>
+<br>
+&gt; （い）lzh 内のファイルのフルパス名（仮想？）の取得<br>
+これは %FVDC を指定すればいいのですが、いちいち展開され<br>
+てしまうのに気づきました(^^;<br>
+あとppv -tag:off &quot;%C&quot;でも、テンポラリに自動で展開する<br>
+様になっているので表示されると思います。<br>
+<br>
+&gt; （う）ppv で [@][&lt;tag&gt;] を他のキーに割り当てる。<br>
+直接は指定できないので、%k を使います。<br>
+%k&quot;&#39;@&#39; &#39;&lt;&#39;&quot; で、交互に切り替わります。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1154">1154.　<b><font color="#000000">ppv でタグオフ</font></b>　nibie　　<font size="2">2004/08/12 (木) 18:41</font><br>
+<blockquote>こんにちは〜暑いですね〜。<br>
+<br>
+趣旨<br>
+「PPV で lzh 内にあるソースをよく見ることがあるが、<br>
+タグを解釈して欲しくない。<br>
+次々読むので、[@][&lt;tag&gt;] のキーはちょっと面倒。」<br>
+<br>
+それで、次の（あ）（い）（う）のどれかって<br>
+設定でできますかね？<br>
+（PPX 0.35+6 マルチバイト版使用）<br>
+<br>
+（あ）ppv でデフォルトで tagoff に設定するオプション<br>
+引数では -tag:off があるけれど、[N] で見れれば便利。<br>
+<br>
+（い）lzh 内のファイルのフルパス名（仮想？）の取得<br>
+c:\xxx\yyy.lzh\source1.aspx のように取得できれば、<br>
+ppv -tag:off &quot;%C&quot; とキーに割り当てれば読めるはず。<br>
+でも &quot;%C&quot; ではないし。なんだろう。<br>
+<br>
+（う）ppv で [@][&lt;tag&gt;] を他のキーに割り当てる。<br>
+ppcust.exe でやろうと思ったが<br>
+[@][&lt;tag&gt;] を他に設定できるかよくわからなかった。<br>
+<br>
+よろしくです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1153">1153.　<b><font color="#000000">Re^3: CLISM 1.4+1 ログ出力版</font></b>　TORO　　<font size="2">2004/08/08 (日) 21:40</font><br>
+<blockquote>&gt; +1にしてから問題は起こっておりませんが，<br>
+&gt;ログ出力版にしてためしてみます．<br>
+<br>
+ログはけっこう大きくなるので、１月くらい使ってみて<br>
+問題が無ければ元に戻してもらってもかまわないと思います。<br>
+ログ出力する以外は何も変更ないですから。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1152">1152.　<b><font color="#000000">PPx 0.35+6</font></b>　TORO　　<font size="2">2004/08/08 (日) 21:36</font><br>
+<blockquote>0.35+6 を公開しました。<br>
+<br>
+・書庫ファイル中のファイル名を調べ、意図しない場所に<br>
+展開される恐れがある場合は警告するかどうかの指定を<br>
+追加しました。デフォルトではチェックします。<br>
+<br>
+このチェックは、次の２カ所で行われます。<br>
+(1)PPc のディレクトリ読み込み処理。該当エントリは<br>
+「更新」の配色で背景色がマークされます。<br>
+(2)[U]コマンドによる全ファイル展開。該当エントリが<br>
+あると、確認のダイアログがでます。<br>
+<br>
+尚、書庫内のエントリを指定して展開する場合は、<br>
+既に(1)でチェック済みのため、更に確認をとりません。<br>
+<br>
+ファイル名のチェックは、(a)絶対パス指定、(b)ドライブ名、<br>
+(c)ストリーム、(d)親ディレクトリ指定、(e)環境変数、<br>
+について行います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1151">1151.　<b><font color="#000000">Re^2: CLISM 1.4+1 ログ出力版</font></b>　jas　　<font size="2">2004/08/05 (木) 15:51</font><br>
+<blockquote>+1にしてから問題は起こっておりませんが，ログ出力版にしてためしてみます．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1150">1150.　<b><font color="#000000">PPx 0.35+5</font></b>　TORO　　<font size="2">2004/07/31 (土) 22:27</font><br>
+<blockquote>PPx 0.35+5 です。<br>
+<br>
+PPtrayでWindowsキーを「~」で指定できるようにしました。<br>
+例えば、K_trayに「~C = PPC.EXE」と指定すると[ミ田]+[C]で<br>
+PPC.EXEが実行できます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1149">1149.　<b><font color="#000000">Re: CLISM 1.4+1 ログ出力版</font></b>　TORO　　<font size="2">2004/07/26 (月) 22:13</font><br>
+<blockquote>&gt; この中のファイルを実行すると同じ場所の CLISM.CFG に<br>
+CLISM.LOG の間違いです(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1148">1148.　<b><font color="#000000">CLISM 1.4+1 ログ出力版</font></b>　TORO　　<font size="2">2004/07/26 (月) 22:11</font><br>
+<blockquote>1142以降で話題にしている CLISM が終了してしまう件について、<br>
+何処で終了してしまうかを確認する為のログ出力をするようにした<br>
+ものを http://homepage1.nifty.com/toro/CLISMTE2.LZH に<br>
+用意しました。動作確認を行ってもかまわなければ試して<br>
+もらえると助かります。<br>
+<br>
+この中のファイルを実行すると同じ場所の CLISM.CFG に<br>
+次のようなログを出力します。<br>
+もし、勝手に終了していたら、ログの末尾の10行程度の<br>
+報告をお願いします。<br>
+<br>
+2004- 7-26 21:52:35    CLISM - start<br>
+2004- 7-26 21:52:35    Store - start<br>
+2004- 7-26 21:52:35    Store - end<br>
+2004- 7-26 21:52:44    Store - start<br>
+2004- 7-26 21:52:44    Store - end<br>
+2004- 7-26 21:52:45    Store - start<br>
+2004- 7-26 21:52:45    Store - end<br>
+2004- 7-26 21:52:48    Paste - start<br>
+2004- 7-26 21:52:48    Store - start<br>
+2004- 7-26 21:52:48    Store - end<br>
+2004- 7-26 21:52:48    Paste - end<br>
+2004- 7-26 21:53:52    Store - start<br>
+2004- 7-26 21:53:52    Store - end<br>
+2004- 7-26 21:54:35    Interval - start<br>
+2004- 7-26 21:54:35    Interval - restore chain<br>
+2004- 7-26 21:54:35    Interval - set chain<br>
+2004- 7-26 21:54:35    Store - start<br>
+2004- 7-26 21:54:35    Store - end<br>
+2004- 7-26 21:54:35    Interval - end<br>
+2004- 7-26 21:55:03    CLISM - close<br>
+2004- 7-26 21:55:03    CLISM - end</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1147">1147.　<b><font color="#000000">Re^4: CLISM 1.4+1</font></b>　TORO　　<font size="2">2004/07/26 (月) 22:00</font><br>
+<blockquote>&gt; ところで、CLISM自身も知らないうちに殺されてしまうん<br>
+&gt; でしょうか？<br>
+&gt; ダイイングメッセージ残せないでしょうか？<br>
+&gt; 犯人をおびき寄せるエサになりますよ。(^ ^<br>
+<br>
+正常終了もあり得ますが、一連の修正で終了に関連する<br>
+記述はしてないので突然死のような気がします。<br>
+<br>
+ログを舶用にしたのを用意しますので、<br>
+良ければ試してみてください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1146">1146.　<b><font color="#000000">Re^3: CLISM 1.4+1</font></b>　com-a　　<font size="2">2004/07/23 (金) 01:26</font><br>
+<blockquote>&gt; 使っているクリップボードを監視しそうなソフトを<br>
+&gt; 挙げてもらうと対処しやすくなるかもしれません。<br>
+<br>
+もしかするとExcelかも知れません。<br>
+こいつは月１〜２回しか使いませんし・・・。<br>
+# と言っても、いま動かしてみても問題は再現しません・・。<br>
+# 他には思い付きません。<br>
+# 最近仕様書を書く時間もなくてWordも使いません(笑)<br>
+<br>
+ところで、CLISM自身も知らないうちに殺されてしまうん<br>
+でしょうか？<br>
+ダイイングメッセージ残せないでしょうか？<br>
+犯人をおびき寄せるエサになりますよ。(^ ^</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1145">1145.　<b><font color="#000000">Re^2: CLISM 1.4+1</font></b>　TORO　　<font size="2">2004/07/22 (木) 21:43</font><br>
+<blockquote>&gt; 前回と同じく、知らない間に終わってしまう事がある<br>
+&gt; ようです。(^ ^;<br>
+<br>
+前回と比べて、トラブルになりそうなところを調節した<br>
+んですが効果無いようですね(^^;<br>
+<br>
+使っているクリップボードを監視しそうなソフトを<br>
+挙げてもらうと対処しやすくなるかもしれません。<br>
+<br>
+# 私の場合は、CLISM,DDwin,Word が該当するんですが<br>
+# これらで落ちるのは Word 位。しかもWord も<br>
+# 文字メインで図表とかは簡単なものしか扱わないので 月１回<br>
+# 落ちるかどうかで、あまり実地試験ができていないです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1142">1142.　<b><font color="#000000">Re: CLISM 1.4+1</font></b>　com-a　　<font size="2">2004/07/21 (水) 02:20</font><br>
+<blockquote>&gt; CLISM 1.4+1 を公開しました。<br>
+<br>
+前回と同じく、知らない間に終わってしまう事がある<br>
+ようです。(^ ^;<br>
+<br>
+# ウチの環境のせいかなぁ・・・。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1141">1141.　<b><font color="#000000">Re^2: CLISM 1.4+1</font></b>　TORO　　<font size="2">2004/07/16 (金) 12:51</font><br>
+<blockquote>&gt; 本日＋1をダウンロードさせていただきました．<br>
+&gt; この手のソフトは種々ありますが，シンプルで使いやすく<br>
+&gt;使わせていただいております．本ソフトに望むのはクリップ<br>
+&gt;ボードのチェインが切れないことだけだったのでこれで<br>
+&gt;改善されれば文句なしです．<br>
+&gt; ありがとうございます．<br>
+<br>
+今回の機能は、うまく機能するかをはっきり確認することが<br>
+難しいので実はだめだったというのもあるかもしれません。<br>
+そのときは、報告して頂いたり、前のに戻したり、別のソフトに<br>
+変えるなりしてください(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1140">1140.　<b><font color="#000000">Re: CLISM 1.4+1</font></b>　jas　　<font size="2">2004/07/14 (水) 15:28</font><br>
+<blockquote>本日＋1をダウンロードさせていただきました．<br>
+この手のソフトは種々ありますが，シンプルで使いやすく使わせていただいております．本ソフトに望むのはクリップボードのチェインが切れないことだけだったのでこれで改善されれば文句なしです．<br>
+ありがとうございます．</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1139">1139.　<b><font color="#000000">CLISM 1.4+1</font></b>　TORO　　<font size="2">2004/07/11 (日) 20:10</font><br>
+<blockquote>CLISM 1.4+1 を公開しました。<br>
+<br>
+クリップボードのチェインが切れる対策として、定期的に<br>
+再設定をするようにしました。<br>
+一応、この機能でチェインが直るかどうかの動作確認は<br>
+していますが、実際に発生する状況とは違うかもしれません<br>
+ので、うまく動作しないかもしれません。<br>
+<br>
+また、ホットキーのシフトキーにウィンドウズキー（田ミ）が<br>
+指定できるようにしました。<br>
+# いままでできるのを知りませんでした(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1138">1138.　<b><font color="#000000">Re^6: CLISMについて</font></b>　TORO　　<font size="2">2004/07/09 (金) 12:46</font><br>
+<blockquote>&gt; 忘れた頃が一ヶ月後となりました。^^;<br>
+&gt; えーと、クリップ履歴に反映されなくなるという現象は出なく<br>
+&gt; なりましたが、知らない間にCLISMが終わってしまうという<br>
+&gt; 現象がこの一ヶ月間に二度ありました。^^;<br>
+&gt; <br>
+&gt; 発生頻度はクリップ履歴に反映されなくなるのと同じ位という<br>
+&gt; 感じはします。<br>
+<br>
+結果としては、今までと同じですね(^^;<br>
+一部手直しをした部分もありますので、もう少し調整したのを<br>
+今度出すことにします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1137">1137.　<b><font color="#000000">Re^5: CLISMについて</font></b>　com-a　　<font size="2">2004/07/07 (水) 15:41</font><br>
+<blockquote>&gt; &gt; &gt; CLISMを再起動すれば直りますが・・・一応の報告でした。<br>
+&gt; &gt; <br>
+&gt; &gt; 何分かごとにクリップボードチェインの再取得をする試作版が<br>
+&gt; &gt; ありますが使ってみますか？細かい確認をしていないので<br>
+&gt; &gt; 公開しようか迷っていたものです(^^;。<br>
+&gt; &gt; http://homepage1.nifty.com/toro/CLISMTE.LZH<br>
+&gt; <br>
+&gt; ありがとうございます。頂きます。^^<br>
+&gt; 再現性が無いのですぐに確認出来ませんが、忘れた頃に報告に<br>
+&gt; 参ります。(^ ^;)<br>
+<br>
+忘れた頃が一ヶ月後となりました。^^;<br>
+えーと、クリップ履歴に反映されなくなるという現象は出なく<br>
+なりましたが、知らない間にCLISMが終わってしまうという<br>
+現象がこの一ヶ月間に二度ありました。^^;<br>
+<br>
+発生頻度はクリップ履歴に反映されなくなるのと同じ位という<br>
+感じはします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1136">1136.　<b><font color="#000000">Re: カスタマイズ領域のIDがおかしい</font></b>　TORO　　<font size="2">2004/07/06 (火) 13:00</font><br>
+<blockquote>&gt; エラー『カスタマイズ領域のIDがおかしい』と<br>
+&gt; 表示されますが、何でしょうか？<br>
+<br>
+そのメッセージは、SETUP に含まれているものですが、<br>
+SETUP を実行した時のみにでると考えていいですか？<br>
+<br>
+UNICODE版とMultiByte版の両方のPPxが使われている<br>
+ときに、UNICODE版のSETUPがそのメッセージを表示する<br>
+ようです。修正します。<br>
+また、誤検出ですので実害はありません。<br>
+<br>
+この話でなかったら何をしていた時にそのメッセージが<br>
+でたか説明をお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1135">1135.　<b><font color="#000000">カスタマイズ領域のIDがおかしい</font></b>　お願いします　　<font size="2">2004/07/05 (月) 20:48</font><br>
+<blockquote>エラー『カスタマイズ領域のIDがおかしい』と<br>
+表示されますが、何でしょうか？<br>
+<br>
+XP Pro SP1</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1134">1134.　<b><font color="#000000">RUNASA 1.9+3</font></b>　TORO　　<font size="2">2004/07/04 (日) 22:04</font><br>
+<blockquote>RUNASA 1.9+3 を公開しました。<br>
+<br>
+ウィンドウの表示方法を指定することができるようになったほか、<br>
+ダイアログの体裁を整えています。<br>
+<br>
+# また、いくつか強化する予定のところがありますが、なかなか<br>
+# 進行してません(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1133">1133.　<b><font color="#000000">PPx 0.35+4,PPMON 0.1</font></b>　TORO　　<font size="2">2004/07/04 (日) 22:02</font><br>
+<blockquote>PPx 0.35+4 を公開しました。<br>
+<br>
+XC_alst の２番目の指定が正しく機能しないのを修正しました。<br>
+また、PPc のワイルドカード指定マークコマンド([+],[-])を<br>
+コマンドライン版(*markentry,*unmarkentry)を用意しました。<br>
+<br>
+<br>
+また、こっそり公開していたリアルタイムメモリモニタ PPMONを<br>
+久しぶりに修正しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1131">1131.　<b><font color="#000000">Re: PPxのXC_alst</font></b>　TORO　　<font size="2">2004/07/03 (土) 22:35</font><br>
+<blockquote>&gt; 移動処理[M]をした後に、移動元ディレクトリからファイルが、<br>
+&gt; F5で手動更新しないと消えません。自動的に更新させる方法は<br>
+&gt; ないのでしょうか？<br>
+<br>
+現象確認しました。X_alst の設定を変えればできるようにした<br>
+つもりでしたが、一部の設定が説明通りに動作していません<br>
+でした。修正しますね。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1130">1130.　<b><font color="#000000">PPxのXC_alst</font></b>　yuki　　<font size="2">2004/07/03 (土) 02:21</font><br>
+<blockquote>移動処理[M]をした後に、移動元ディレクトリからファイルが、<br>
+F5で手動更新しないと消えません。自動的に更新させる方法はないのでしょうか？<br>
+<br>
+CFGファイルの中に、<br>
+XC_alst= 4,0,4; 各コマンド終了後の一覧処理[A],[C/M],[D/\D]の順とあります。<br>
+<br>
+ここの「0」を「1」「2」「3」「4」に変更しても上手くいきません。他に設定するべきところがあるのでしょうか？<br>
+OSはXP、ver0.35+3です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1129">1129.　<b><font color="#000000">補足</font></b>　TORO　　<font size="2">2004/06/26 (土) 23:12</font><br>
+<blockquote>今回のUNICODE版のアーカイブに入っている PPX.HLP に<br>
+MultiByte版とUNICODE版の違いに関する記述が入っています。<br>
+目次からは、全般 - MultiByte版とUNICODE版の違い で<br>
+参照できます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1128">1128.　<b><font color="#000000">PPx 0.35+3</font></b>　TORO　　<font size="2">2004/06/26 (土) 23:08</font><br>
+<blockquote>0.35+3 を公開しました。今回からUNICODE版とMultiByte版を<br>
+まとめて扱います。<br>
+<br>
+・UNICODE版の[A]で、暗号化の処理がうまくいってなかったのを<br>
+修正しました。<br>
+<br>
+<br>
+・マウントポイント、ジャンクションポイント等を実現する<br>
+リパースポイント(再解析ポイント)関連の強化を行いました。<br>
+これらのポイントを使って、ディレクトリに、別のドライブや<br>
+ディレクトリと繋げている場合に、多少安心できます(^^。<br>
+<br>
+* \[D]で削除する時にリパースポイントを見つけた場合、<br>
+リパースポイントのみ削除するか、リパースポイント先の<br>
+エントリを削除するかを選択できるようにしました。<br>
+<br>
+* \[F12]でファイルの時はハードリンクを作成し、<br>
+ディレクトリのときはジャンクションポイントを作成する<br>
+ようにしました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1127">1127.　<b><font color="#000000">Re: PPx0.35 デスクトップフォルダアイコン</font></b>　TORO　　<font size="2">2004/06/25 (金) 13:05</font><br>
+<blockquote>&gt; [;]からicon1を選択しアイコン表示させてるのですが、<br>
+&gt; デスクトップディレクトリ上のフォルダアイコンがすべて「？」と<br>
+&gt; 表示されます。<br>
+<br>
+そのデスクトップは、[0]コマンドのメニューに予め登録されている<br>
+デスクトップ（#0:）だと思います。<br>
+#n: で始まるパスは OS上には存在せず、エクスプローラが独自に<br>
+実現している特殊なパスです。このため、PPxでは、これらのパスでは<br>
+アイコンの完全な表示ができないなど、機能制限があります。<br>
+<br>
+デスクトップ上のごみ箱やマイコンピュータなどを使用する必要が<br>
+ないなら、デスクトップの実体（C:\Documents and Settings\<br>
+ユーザ名\デスクトップ 等）をメニューに登録したり、<br>
+PPc の最上位ディレクトリであるDriveList(パス名は「:」)経由で<br>
+移動したりするといいのではないかと思います。<br>
+<br>
+機能制限の方は順次なくしていく予定です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1126">1126.　<b><font color="#000000">PPx0.35 デスクトップフォルダアイコン</font></b>　yuki　　<font size="2">2004/06/24 (木) 06:06</font><br>
+<blockquote>[;]からicon1を選択しアイコン表示させてるのですが、<br>
+デスクトップディレクトリ上のフォルダアイコンがすべて「？」と<br>
+表示されます。さらに、そこからパス移動すると、その先のフォルダもすべて<br>
+「？」になります。他のディレクトリや、そこからのパス移動では問題なく<br>
+表示できます。何か解決方法があるのでしょうか？（ver0.35 OS:XP）</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1125">1125.　<b><font color="#000000">Re: PPx 0.35+2</font></b>　TORO　　<font size="2">2004/06/20 (日) 23:58</font><br>
+<blockquote>ファイルなどの実行時に一部の文字を誤認識して<br>
+PPb経由で実行するとの話がありましたので、<br>
+その部分だけ修正したのを追加で公開しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1124">1124.　<b><font color="#000000">PPx 0.35+2</font></b>　TORO　　<font size="2">2004/06/19 (土) 22:49</font><br>
+<blockquote>0.35+2 を公開しました。<br>
+<br>
+・[W]コマンド(Where is)で１０万以上の結果が得られた時、<br>
+その結果の読み込みに異常に時間が掛かっていたのでちょっと<br>
+した対策をしました。<br>
+エントリ数が１万未満では効果がほとんどありませんが、<br>
+５万とか１０万とかになると読み込み時間がかなり減ります(^^。<br>
+<br>
+・UNICODE版のカーソル位置が更にずれにくくなるように改善<br>
+しました。ただし、後述する文字幅テーブルを生成しないと、<br>
+一部の文字でずれます。<br>
+XB_uwid = 1 とすると、文字幅テーブルを生成し、どの文字でも<br>
+正しい位置を示すようになります。ただ、カスタマイズ領域内に<br>
+8KBytes の D_uwid を生成するので、UNICODE 文字列を含む<br>
+コマンドを PPb で編集する機会が少なければ XB_uwid = 0<br>
+のままで問題ないと思います。<br>
+<br>
+・UNICODEテキストでフォントにはあるが表示されない文字が<br>
+ありましたが、すべて表示できるようになりました。また、<br>
+Win9xでも、フォントが対応していればいろいろなUNICODE文字を<br>
+表示できると思います(未確認)。<br>
+<br>
+・UNICODE版は、今回の変更で従来からのMultiByte版と同等の<br>
+機能になりました。やり忘れていた部分がなければ、<br>
+Demonstration としては今回を最後として、次回からMultiByte<br>
+版と同じ扱いにしたいと思います。また、配布は今までと同じ<br>
+ように別アーカイブとします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1123">1123.　<b><font color="#000000">Re: RUNASAのファイルの共有使用の要望</font></b>　TORO　　<font size="2">2004/06/17 (木) 22:02</font><br>
+<blockquote>&gt; 具体的にいうと、端末のadminのパスワードは統一しているので・・・<br>
+&gt; <br>
+&gt; ユーザー名    ：administrator<br>
+&gt; パスワード    ：******<br>
+&gt; ドメイン        ：%COMPUTERNAME%<br>
+&gt; <br>
+&gt; ということがRUNASAでできたら・・・と思い投稿させていただき<br>
+&gt; ました。<br>
+<br>
+ドメイン名の欄を空白にしてみてください。実際に確認はして<br>
+いませんが、それでうまくいくと思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1122">1122.　<b><font color="#000000">RUNASAのファイルの共有使用の要望</font></b>　まえの　　<font size="2">2004/06/17 (木) 11:58</font><br>
+<blockquote>1103のmuuさんと、ほぼ同じ状況で利用しようと考えております。<br>
+<br>
+背景<br>
+複合機を導入することになり、<br>
+プリンタドライバを数百台にインストールしなければならない。<br>
+ユーザーはPoweruser権限で、プリンタドライバをインストールできない。<br>
+そこでRUNASA 1.9+2を利用し、配布用のファイルを作成しようとしたが<br>
+ドメインのadmin権限で配布用のファイルを作成するのは危険なのでやめてほしい。<br>
+<br>
+といった状況です。<br>
+<br>
+<br>
+具体的にいうと、端末のadminのパスワードは統一しているので・・・<br>
+<br>
+ユーザー名    ：administrator<br>
+パスワード    ：******<br>
+ドメイン        ：%COMPUTERNAME%<br>
+<br>
+ということがRUNASAでできたら・・・と思い投稿させていただきました。<br>
+次回のバージョンアップでご検討いただけると幸いです。<br>
+<br>
+よろしくお願いいたします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1121">1121.　<b><font color="#000000">Re: PPCのインクリメンタルサーチのデフォルト値</font></b>　SahoP　　<font size="2">2004/06/15 (火) 22:43</font><br>
+<blockquote>&gt; PPCでインクリメンタルサーチを行う際，「前方一致をOFF」<br>
+&gt;をデフォルトとしたいのですが，どのようにCFGを書けばよ<br>
+&gt;いのでしょうか。<br>
+<br>
+&quot;XC_isea    = 0,0    ; インクリメンタルサーチの動作 方法,検索位置&quot;<br>
+&quot;;        方法        0:通常入力 2:ローマ字入力(migemo)&quot;<br>
+&quot;;        検索位置    0:前方一致 1:部分一致&quot;<br>
+となっていますから、<br>
+<br>
+XC_isea    = 0,1<br>
+<br>
+ですね。<br>
+<br>
+です。migemoを使うなら<br>
+<br>
+XC_isea    = 2,1<br>
+<br>
+です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1120">1120.　<b><font color="#000000">PPCのインクリメンタルサーチのデフォルト値</font></b>　XAX　　<font size="2">2004/06/15 (火) 02:07</font><br>
+<blockquote>開発ご苦労様です<br>
+PPCでインクリメンタルサーチを行う際，「前方一致をOFF」をデフォルトとしたいのですが，どのようにCFGを書けばよいのでしょうか。<br>
+<br>
+以上，よろしくお願いいたします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1119">1119.　<b><font color="#000000">K-Launcher 1.28</font></b>　TORO　　<font size="2">2004/06/12 (土) 22:25</font><br>
+<blockquote>1.28 を公開しました。<br>
+<br>
+1.27 からの変更点は、1.27+1 で修正した LFN ファイルの<br>
+上書き処理の誤書き込みの部分だけです。<br>
+ただし、ちょっと手を加えているので 1.27+1と同一サイズでは<br>
+ありません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1118">1118.　<b><font color="#000000">Re^5: CLISMについて</font></b>　TORO　　<font size="2">2004/06/10 (木) 12:49</font><br>
+<blockquote>&gt; 思い付きですが、貼り付け一覧メニュー表示前に現在の<br>
+&gt; エディットコントロールの選択状態を保存しておいて、<br>
+&gt; 貼り付け実行時にEM_SETSELで復元してやるとかはどうですか？<br>
+&gt; 処理のタイミングがシビアな場合とかありますし、泥臭い<br>
+&gt; やり方なので私が作者なら気が進みませんが。(^ ^;)<br>
+<br>
+結構おもしろそうですね、今度試してみたいと思います。<br>
+# 泥臭いのは、PPx の方で結構慣れていたり(笑)<br>
+# 削除バッファとかコンボボックスもどきとか作ってますし。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1117">1117.　<b><font color="#000000">Re^4: CLISMについて</font></b>　com-a　　<font size="2">2004/06/07 (月) 01:13</font><br>
+<blockquote>&gt; キーボードフォーカスを変えないで処理するには、同じスレッド<br>
+&gt; ＆ウィンドウで処理する必要がある<br>
+&gt; →DLLを使ったグローバルフック、ということになるのです。<br>
+（以下略）<br>
+<br>
+なるほど、そういうことなんですね。<br>
+思い付きですが、貼り付け一覧メニュー表示前に現在の<br>
+エディットコントロールの選択状態を保存しておいて、<br>
+貼り付け実行時にEM_SETSELで復元してやるとかはどうですか？<br>
+処理のタイミングがシビアな場合とかありますし、泥臭い<br>
+やり方なので私が作者なら気が進みませんが。(^ ^;)<br>
+# 結局、エクスプローラでの名前変更にも対応出来ないし(笑)<br>
+<br>
+<br>
+&gt; &gt; CLISMを再起動すれば直りますが・・・一応の報告でした。<br>
+&gt; <br>
+&gt; 何分かごとにクリップボードチェインの再取得をする試作版が<br>
+&gt; ありますが使ってみますか？細かい確認をしていないので<br>
+&gt; 公開しようか迷っていたものです(^^;。<br>
+&gt; http://homepage1.nifty.com/toro/CLISMTE.LZH<br>
+<br>
+ありがとうございます。頂きます。^^<br>
+再現性が無いのですぐに確認出来ませんが、忘れた頃に報告に<br>
+参ります。(^ ^;)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1116">1116.　<b><font color="#000000">Re^3: CLISMについて</font></b>　TORO　　<font size="2">2004/06/06 (日) 22:28</font><br>
+<blockquote>&gt; これって、フォーカス制御をするにはDLLが必要になるという<br>
+&gt; ことでしょうか？<br>
+<br>
+キーボードフォーカスを変えないで処理するには、同じスレッド<br>
+＆ウィンドウで処理する必要がある<br>
+→DLLを使ったグローバルフック、ということになるのです。<br>
+<br>
+マウスだけで操作してもいいのなら、ウィンドウの生成時に<br>
+アクティブにしないフラグをセットすればいいのですが。<br>
+<br>
+DLL を使わずに…というのも、一応思いついたのですが、<br>
+アクティブされないウィンドウを使った、メニューもどきを<br>
+ホットキーで操作するというもので、非現実的なものです。<br>
+<br>
+&gt; あと、全く話は変わりますが、WinXPで休止状態〜復帰を繰り<br>
+&gt; 返しているうちに、コピーしてもCLISMの貼り付け一覧に反映<br>
+&gt; されなくなることがあります。<br>
+&gt; CLISMを再起動すれば直りますが・・・一応の報告でした。<br>
+<br>
+何分かごとにクリップボードチェインの再取得をする試作版が<br>
+ありますが使ってみますか？細かい確認をしていないので<br>
+公開しようか迷っていたものです(^^;。<br>
+http://homepage1.nifty.com/toro/CLISMTE.LZH</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1115">1115.　<b><font color="#000000">Re^2: CLISMについて</font></b>　com-a　　<font size="2">2004/06/06 (日) 18:57</font><br>
+<blockquote>&gt; これに対処するには、DLLを追加しないといけなくなり、<br>
+&gt; CLISMのコンセプトからはずれてしまう為です。<br>
+&gt; <br>
+&gt; 「フォーカスが変わらない」などと謳っているクリップボード<br>
+<br>
+これって、フォーカス制御をするにはDLLが必要になるという<br>
+ことでしょうか？<br>
+<br>
+エディットコントロールで範囲選択されている時に、CLISMで<br>
+貼り付け一覧メニューから貼り付けるとうまくいかない事が<br>
+あるので、なんとかならないかなぁと思ってたのですが。(^ ^;)<br>
+# 厳密にはエディットコントロールじゃなくてエディット<br>
+# 可能なコンボボックスだけかな？<br>
+<br>
+<br>
+あと、全く話は変わりますが、WinXPで休止状態〜復帰を繰り<br>
+返しているうちに、コピーしてもCLISMの貼り付け一覧に反映<br>
+されなくなることがあります。<br>
+CLISMを再起動すれば直りますが・・・一応の報告でした。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1114">1114.　<b><font color="#000000">Re: CLISMについて</font></b>　TORO　　<font size="2">2004/06/06 (日) 11:42</font><br>
+<blockquote>&gt; Windows2000Professionalでエクスプローラー上で、<br>
+&gt;名前の変更、を行ってCLISMを起動すると入力途中の名<br>
+&gt;前が確定しペーストができなくなります。<br>
+<br>
+申し訳ないですが、これについての対処は行わないつもりです。<br>
+これに対処するには、DLLを追加しないといけなくなり、<br>
+CLISMのコンセプトからはずれてしまう為です。<br>
+<br>
+「フォーカスが変わらない」などと謳っているクリップボード<br>
+拡張ソフトがいくつかありますので、それらを使ってみては<br>
+どうでしょうか？<br>
+<br>
+# もし DLL を追加しなくても対処できる方法が見つかれば<br>
+# 対処すると思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1113">1113.　<b><font color="#000000">CLISMについて</font></b>　まさみ　　<font size="2">2004/06/04 (金) 21:11</font><br>
+<blockquote>Windows2000Professionalでエクスプローラー上で、名前の変更、を行ってCLISMを起動すると入力途中の名前が確定しペーストができなくなります。<br>
+<br>
+次期バージョンでの対応をご検討お願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1112">1112.　<b><font color="#000000">Re: RUNASA1.9+2でプロキシ設定が消える</font></b>　TORO　　<font size="2">2004/06/03 (木) 21:58</font><br>
+<blockquote>&gt; RUNASA1.9+2で管理者モードでIEを起動するファイルを作成し、<br>
+&gt;他のコンピュータで使用すると、IEのプロキシの設定情報が消え<br>
+&gt;てしまいます。<br>
+<br>
+その他のコンピュータの管理者のインターネットオプションは<br>
+適切に設定されていますか？<br>
+<br>
+IE の設定は、RUNASA によって実行するユーザの設定が使われ<br>
+ますので、その確認をしてみてください。 </blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1111">1111.　<b><font color="#000000">RUNASA1.9+2でプロキシ設定が消える</font></b>　あきら　　<font size="2">2004/06/03 (木) 14:24</font><br>
+<blockquote>はじめまして。<br>
+<br>
+RUNASA1.9+2で管理者モードでIEを起動するファイルを作成し、他のコンピュータで使用すると、IEのプロキシの設定情報が消えてしまいます。<br>
+<br>
+上記現象は、RUNASAで起動したIEのみで、通常どおりIEを起動するとプロキシ設定は元のとおりになっています。<br>
+何か原因があるのでしょうか？<br>
+<br>
+OS:Windows2000<br>
+IE：ver6<br>
+RUNASA：Ver1.9+2<br>
+<br>
+RUNASA1.9+2でプロファイルを使用、改ざんチェック、配布用にチェックをつけて作成しています。<br>
+<br>
+以上、宜しくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1110">1110.　<b><font color="#000000">PPx 0.35+1</font></b>　TORO　　<font size="2">2004/05/31 (月) 22:45</font><br>
+<blockquote>0.35+1 です<br>
+<br>
+PPc のスクロールバーを表示させない設定(X_win B2)が<br>
+0.32 以降から使えなくなっていたのを修正しました。<br>
+<br>
+また、*copytext %#FDC 等とした場合に、空白付き<br>
+エントリが含まれていてもすべてコピーされるように<br>
+調節しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1109">1109.　<b><font color="#000000">Re: Paper Plane xUI 0.35</font></b>　シルフィア　　<font size="2">2004/05/25 (火) 10:07</font><br>
+<blockquote>頂いて行きます〜。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1108">1108.　<b><font color="#000000">RUNASA 1.9+2</font></b>　TORO　　<font size="2">2004/05/17 (月) 21:43</font><br>
+<blockquote>1.9+1 で、実行できないショートカットを作成する場合が<br>
+ありました(^^;<br>
+<br>
+公開した 1.9+2 で直っていると思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1107">1107.　<b><font color="#000000">RUNASA 1.2 &amp; 1.9+1</font></b>　TORO　　<font size="2">2004/05/16 (日) 18:47</font><br>
+<blockquote>RUNASA 1.2 と 1.9+1 を同時に公開しました。<br>
+２種類公開したのは、今までの内部構造を大幅に変更する為です。<br>
+<br>
+<br>
+Version1.2 は 1.1 を修正した安定版で、1.1+1 に加えて<br>
+エラー時に応答が無くなる場合があったのを修正しています。<br>
+<br>
+<br>
+Version1.9+1は 大幅変更＋開発中版です。<br>
+ショートカットファイルを生成するのをやめて、実行形式の<br>
+ファイルを生成するようにしました。また、実行対象の<br>
+パラメータを同時に登録できるようにし、配布時設定などの<br>
+設定をいくつか指定できるようになっています。<br>
+尚、RUNASA.CFG に記録される内容が変わったので、今まで<br>
+登録した内容は使用できません。また、1,2と比べて<br>
+グレードダウンした部分もいくつかあります。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1106">1106.　<b><font color="#000000">Paper Plane xUI 0.35</font></b>　TORO　　<font size="2">2004/05/16 (日) 18:39</font><br>
+<blockquote>0.35 とそのソースを公開しました。<br>
+<br>
+0.34+10 からの変更点は、<br>
+エントリマスク文字列(\[F])をタイトルバーに表示する設定<br>
+(XC_dpmk)を追加したのと、D&amp;D時のメニューでキーボード<br>
+操作ができなかったのを修正した点です。<br>
+<br>
+UNICODE版は、PPb で漢字などを含む場合のカーソル位置を<br>
+ある程度正しく修正したほか、いくつか修正しています。<br>
+また、PPv で UNICODE テキストの表示で、現在のコード<br>
+ページ(例えばS-JIS)相当の文字しか表示されていないのを<br>
+確認しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1105">1105.　<b><font color="#000000">Re^2: RUNASA作成ファイルの共有使用について</font></b>　muu　　<font size="2">2004/05/14 (金) 09:28</font><br>
+<blockquote>&gt; 現状のRUNASAは、1PC上の使用を目的としており、<br>
+&gt; ソフトの一括インストール等の配布向けの使用が<br>
+&gt; できるようにはなっていません。<br>
+セキュリティという点で、そうほうが良いと私も思っています。<br>
+便利なものは、危険なものとなり得ますので・・・。<br>
+市販のソフトで配布機能を持ったものもありますが、ライセンスが<br>
+絡んで高価になってしまうので、導入できないままです。<br>
+<br>
+&gt; <br>
+&gt; 現在、配布向けの設定ができるものを作成中で、<br>
+&gt; 近日試作品を公開できると思いますので、<br>
+&gt; それを使えばいいと思います。<br>
+<br>
+期待大です。是非使用させて頂きます。<br>
+<br>
+よろしくお願いいたします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1104">1104.　<b><font color="#000000">Re: RUNASA作成ファイルの共有使用について</font></b>　TORO　　<font size="2">2004/05/13 (木) 22:18</font><br>
+<blockquote>&gt; RUNASAで作成されたリンクファイルを他のユーザーで<br>
+&gt;利用する方法について質問させてください。<br>
+<br>
+現状のRUNASAは、1PC上の使用を目的としており、<br>
+ソフトの一括インストール等の配布向けの使用が<br>
+できるようにはなっていません。<br>
+<br>
+現在、配布向けの設定ができるものを作成中で、<br>
+近日試作品を公開できると思いますので、<br>
+それを使えばいいと思います。<br>
+<br>
+しかし、ただでさえ解けやすい暗号化（というか<br>
+難読化ですが）が更に簡易になってしまうため、<br>
+こちらとしては不本意なところです(^^;。<br>
+<br>
+<br>
+# はじめに考えていた証明書方式は、あまり目的通りに<br>
+# 運用されなさそうで結局採用できなかったですし…</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1103">1103.　<b><font color="#000000">RUNASA作成ファイルの共有使用について</font></b>　muu　　<font size="2">2004/05/13 (木) 18:03</font><br>
+<blockquote>はじめまして。<br>
+<br>
+RUNASAで作成されたリンクファイルを他のユーザーで利用する方法について質問させてください。<br>
+<br>
+会社にて共有ファイル形式としてDocuWorksを利用することになり、<br>
+全員に簡易ビューワーをインストール必要が出てきました。<br>
+しかし、NT,2000,XPはadministrator権限で個別にインストールが必要で、<br>
+ユーザーだけでインストールする方法はないかと探し求めた結果、こちらにたどり着きました。<br>
+<br>
+<br>
+早速、試してみましたが作成者以外ではエラーになってしまい、インストールできません。<br>
+実施した内容は次の通りです。<br>
+・・・・<br>
+特定の共有フォルダに、インストールプログラムとRUNASA関連プログラムを配置。<br>
+C:\にインストールプログラムを起動するバッチを作成。<br>
+RUNASAで、このバッチファイルを実行するように設定。<br>
+（ドメインadminのパスワードとドメインを設定）<br>
+<br>
+各ユーザーのC:\にバッチファイルをコピー。<br>
+各ユーザーのディスクトップに作成されたファイルをコピーして実行。<br>
+・・・・<br>
+<br>
+しかし、作成者のパソコンでは正常動作しますが、各ユーザーでは「データは無効です」となり、インストールできませんでした。<br>
+<br>
+<br>
+各ユーザーでインストールさせるのに大変便利なため、利用させて頂きたいと思っています。<br>
+セキュリティの観点から難しいかもしれませんが、解決方法がありましたら、<br>
+よろしくお願いいたします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1101">1101.　<b><font color="#000000">Re^2: CLISMの定義ファイルの設定方法</font></b>　Ｋｏｂａｙａｓｈｉ　　<font size="2">2004/05/09 (日) 22:50</font><br>
+<blockquote>やってみたら上手くいきました。ありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1100">1100.　<b><font color="#000000">Re^2: Clock Pod 2.x Version 2.45のテロップの幅調整の方法？</font></b>　ひで　　<font size="2">2004/05/07 (金) 23:22</font><br>
+<blockquote>早々にご回答頂戴できありがとうございます。「何かいい方法を用意してみようと・・・・・」、それまでお待ちしてます。まだ使わさせて頂き始めて３日ですが、それまで使っていたStartClockとEprompter をスタートアップからはずしました。CLOCKPOD.CFG での設定に理解できてない部分もあり日毎に完成させて行けたらいいなと楽しみにしております。久々に出会えたお気に入りのFreeSoftとなりそうです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1099">1099.　<b><font color="#000000">Re: Clock Pod 2.x Version 2.45のテロップの幅調整の方法？</font></b>　TORO　　<font size="2">2004/05/07 (金) 22:22</font><br>
+<blockquote>&gt; Clock Pod 2.x Version 2.45でのテロップ時の表示幅を<br>
+&gt; 広げたいのですがどのようにＣＬＯＫＰＯＤ．ＣＦＧに<br>
+&gt; 書き込めばいいのですか？教えてください。<br>
+<br>
+テロップ表示中に限って表示幅を変えるというのは、<br>
+今のところは困難です。<br>
+<br>
+ただ、一応、できなくはないですが、かなり面倒な設定を<br>
+しないといけないので、何かいい方法を用意してみようと<br>
+思います。<br>
+# テロップを表示するイベントにすべて「message = N,〜」と<br>
+# 表示幅を広げた表示方法を指定し、且つテロップの表示数を<br>
+# カウントしておき、<br>
+# Z_DelTelop でカウントした表示分だけ待ってから、<br>
+# 元の表示幅で表示方法を指定し直せば、できますが<br>
+# 面倒ですよね？(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1098">1098.　<b><font color="#000000">Re: CLISMの定義ファイルの設定方法</font></b>　TORO　　<font size="2">2004/05/07 (金) 22:12</font><br>
+<blockquote>&gt; &quot;C:\Program Files\CLISM14\CLISM.EXE teigifile.txt&quot;<br>
+&gt; のようにして、teigifile.txtに<br>
+&gt; やってみると上手くいきません。すごい勘違いをしていたらスミマセン。<br>
+<br>
+次のように、定義ファイルの場所をフルパスで指定してください。<br>
+&quot;C:\Program Files\CLISM14\CLISM.EXE&quot; &quot;C:\Program Files\CLISM14\teigifile.txt&quot;<br>
+※どちらも「&quot;」でくくるのをお忘れなく。<br>
+<br>
+尚、&quot;X:\Documents and Settings\ユーザ名\Application Data\TOROID\CLISM.CFG&quot;に<br>
+今までの設定が入っていると思いますので、不要なら<br>
+削除してください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1097">1097.　<b><font color="#000000">Clock Pod 2.x Version 2.45のテロップの幅調整の方法？</font></b>　ひで　　<font size="2">2004/05/07 (金) 10:25</font><br>
+<blockquote>Clock Pod 2.x Version 2.45でのテロップ時の表示幅を広げたいのですがどのようにＣＬＯＫＰＯＤ．ＣＦＧに書き込めばいいのですか？教えてください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1096">1096.　<b><font color="#000000">CLISMの定義ファイルの設定方法</font></b>　Ｋｏｂａｙａｓｈｉ　　<font size="2">2004/05/06 (木) 22:52</font><br>
+<blockquote>CLISMを便利に使わせてもらっています。<br>
+<br>
+定義ファイルの使い方がよく分からないのですが…。<br>
+例えばショートカットのリンク先が<br>
+&quot;C:\Program Files\CLISM14\CLISM.EXE&quot;<br>
+になっているのを<br>
+&quot;C:\Program Files\CLISM14\CLISM.EXE teigifile.txt&quot;<br>
+のようにして、teigifile.txtに<br>
+<br>
+_Max=20<br>
+ = こんにちは。○○市の××です。<br>
+ = 今日も元気に頑張りましょう。<br>
+<br>
+のように書いて、CLISM.EXEと同じフォルダに置いておけばよいのでしょうか？<br>
+やってみると上手くいきません。すごい勘違いをしていたらスミマセン。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1095">1095.　<b><font color="#000000">PPx 0.34+10</font></b>　TORO　　<font size="2">2004/05/04 (火) 20:03</font><br>
+<blockquote>0.34+10 です。これで問題がなければ 0.35 にしようと思います。<br>
+あと、Script Module 等の正式版は 0.36 まで先延ばしです(^^;<br>
+<br>
+・%K,%N,%D で、ID指定(CA,VA等)と反対窓PPc<br>
+指定(~)の両方が使えるように拡張しました。<br>
+<br>
+・[Enter]で、初めて開く種類のファイルの動作を<br>
+選択したときに、その選択肢を使って次回開くよ<br>
+うにE_crに自動登録されます。しかし、その選択<br>
+肢が&quot;PPvで表示\t&amp;N&quot;等とtabを含む場合は、登録<br>
+してもその内容で選択できなくなる場合があります。<br>
+このため、tabを含む場合は、ショートカット<br>
+(この例だとN)を使うように修正しました。<br>
+<br>
+・&amp;\[英数字]/[無変換]の検索動作をXC_seatで指定す<br>
+ることで、次の３種類から選択できるようにしました。<br>
+<br>
+1)従来通りのエントリ名の頭文字検索。<br>
+2)インクリメンタルサーチ。はじめの１文字を入力<br>
+  した後は&amp;\[英数字]/[無変換]を離して入力しても<br>
+  そのまま検索できます。<br>
+3)兼用。頭文字検索とインクリメンタルサーチを<br>
+  使い分けることができます。同じ文字を続けて<br>
+  入力した場合は頭文字検索のままです<br>
+  （例: aaaa...）。別の文字を入力するとその時<br>
+  点でインクリメンタルサーチに切り替わります<br>
+  （例: command...、ppx...は正しく検索されない）</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1094">1094.　<b><font color="#000000">PPx 0.34+9</font></b>　TORO　　<font size="2">2004/04/25 (日) 22:38</font><br>
+<blockquote>0.34+9 です。<br>
+<br>
+・作りかけインクリメンタルサーチである \[J] の<br>
+性能向上と、[J] の機能強化を行いました。<br>
+どちらも、Alt+F か Alt+O で設定変更できます。<br>
+「roma」mode は、C/Migemo + BREGEXP で動作<br>
+します。<br>
+<br>
+・FATイメージ／ダイレクトアクセスのバグが結構<br>
+あったのでその修正をしました。<br>
+<br>
+・PPcからPPvを呼び出した後、PPcを最小化し、更に<br>
+PPvを最小化したときの挙動を変えてみました。<br>
+<br>
+・UNICODE版は、正規表現が使えるようになったほか、<br>
+いくつかのバグ取りをしています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1093">1093.　<b><font color="#000000">Re^6: PPvが終了時動作不正？</font></b>　TORO　　<font size="2">2004/04/24 (土) 21:33</font><br>
+<blockquote>&gt; &gt; susie-Pluginのフォルダ名を変えて試したところ、<br>
+&gt; &gt; 正常動作しているみたいです。。。<br>
+ :<br>
+&gt; すでに不要なSPIなので外してしまうことで対処できそうです。<br>
+<br>
+原因が特定できて良かったです。Plug-inをたくさん入れると<br>
+その分だけリソースを使用しますし、起動速度やファイル読み込み<br>
+速度も低下しますので、ほどほどにした方がいいと思います。<br>
+<br>
+このへんが簡単に切り替えできると便利ですけどね(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1092">1092.　<b><font color="#000000">Re^8: PPx ねた</font></b>　TORO　　<font size="2">2004/04/24 (土) 21:10</font><br>
+<blockquote>&gt; &gt; 「#A:」などと、ドライブ名に「#」をつけてダイレクトアクセス<br>
+&gt; <br>
+&gt; ダイレクトアクセスの意味を読み違えてました。(^ ^;)<br>
+&gt; 失敬しました。m(_ _)m<br>
+<br>
+普通に見ただけではわからないってことですね(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1091">1091.　<b><font color="#000000">Re^5: PPvが終了時動作不正？</font></b>　PAUL　　<font size="2">2004/04/23 (金) 20:13</font><br>
+<blockquote>&gt; susie-Pluginのフォルダ名を変えて試したところ、<br>
+&gt; 正常動作しているみたいです。。。<br>
+&gt; たしかに、susiePluginはできるかぎり多く入れていますので<br>
+&gt; 問題があるファイルがあるのかもしれません。<br>
+&gt; こっちでも、どのファイルが問題なのか、spiファイルを<br>
+&gt; 出し入れして確かめてみます。ありがとうございました。<br>
+<br>
+SPIファイルを入れ替えていろいろテストしてみたところ<br>
+「iffsgrp.spi」というファイルが原因であることがわかりました。<br>
+出所は以下。<br>
+http://hp.vector.co.jp/authors/VA015040/html/spi.html<br>
+<br>
+すでに不要なSPIなので外してしまうことで対処できそうです。<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1090">1090.　<b><font color="#000000">Re^4: PPvが終了時動作不正？</font></b>　PAUL　　<font size="2">2004/04/23 (金) 19:52</font><br>
+<blockquote>&gt; または、Plug-in が入っているディレクトリの名前を変える等をして<br>
+&gt; 読み込まないようにしてみてください。<br>
+&gt; <br>
+&gt; これで良ければ、問題となるPlug-inを特定する方法を考えます(^^;<br>
+<br>
+susie-Pluginのフォルダ名を変えて試したところ、<br>
+正常動作しているみたいです。。。<br>
+たしかに、susiePluginはできるかぎり多く入れていますので<br>
+問題があるファイルがあるのかもしれません。<br>
+こっちでも、どのファイルが問題なのか、spiファイルを<br>
+出し入れして確かめてみます。ありがとうございました。<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1089">1089.　<b><font color="#000000">Re^7: PPx ねた</font></b>　com-a　　<font size="2">2004/04/23 (金) 18:46</font><br>
+<blockquote>&gt; 「#A:」などと、ドライブ名に「#」をつけてダイレクトアクセス<br>
+<br>
+ダイレクトアクセスの意味を読み違えてました。(^ ^;)<br>
+失敬しました。m(_ _)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1088">1088.　<b><font color="#000000">Re^3: PPvが終了時動作不正？</font></b>　TORO　　<font size="2">2004/04/23 (金) 18:41</font><br>
+<blockquote>&gt;Windowsセーフモード環境でも発生しました。<br>
+&gt;<br>
+&gt;また、公開されている「UNICODE Demonstration Version 0.34+8」<br>
+&gt;のPPVW.exeでも試してみましたが、現象は同じでした。<br>
+<br>
+動作確認ありがとうございます。UNICODE版でもだめなら始めに<br>
+想定していたものとは違うようです。<br>
+<br>
+そういえば、画像を表示したときには問題なかったですよね。<br>
+もしかしたら、SusieのPlug-inが入っていませんか？<br>
+Plug-inのどれかで問題が起きているかもしれません。<br>
+<br>
+PPxのカスタマイズを特にしない場合でも、レジストリの<br>
+HKEY_CURRENT_USER\Software\Takechin\Susie\Plug-in\Path<br>
+に記載されたディレクトリから Plug-in を取得しますので、<br>
+別のユーザでは問題ない理由になると思います。<br>
+<br>
+パラメータ無しで PPv を起動してから、メニューの Tool - VFS を<br>
+選択して、「VFS unload」を表示させた後、いくつかファイルを<br>
+PPc 経由や D&amp;D を使って表示させてみてください。<br>
+<br>
+または、Plug-in が入っているディレクトリの名前を変える等をして<br>
+読み込まないようにしてみてください。<br>
+<br>
+これで良ければ、問題となるPlug-inを特定する方法を考えます(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1086">1086.　<b><font color="#000000">Re^2: PPvが終了時動作不正？</font></b>　PAUL　　<font size="2">2004/04/23 (金) 16:09</font><br>
+<blockquote>&gt; 特定のユーザのみで表示されるということですね。<br>
+&gt; 調べてみます。<br>
+&gt; また、UNICODE版なら表示されないかもしれません。<br>
+<br>
+ありがとうございます。<br>
+さらに動作確認をしていたところ、<br>
+Windowsセーフモード環境でも発生しました。<br>
+<br>
+また、公開されている「UNICODE Demonstration Version 0.34+8」<br>
+のPPVW.exeでも試してみましたが、現象は同じでした。<br>
+<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1085">1085.　<b><font color="#000000">Re^6: PPx ねた</font></b>　TORO　　<font size="2">2004/04/23 (金) 12:37</font><br>
+<blockquote>&gt;ファイルを（全て）削除しても「指定されたファイルが見つか<br>
+&gt;りません。」と表示されるのですが、モノによるのか、もしか<br>
+&gt;してWinXPの罠とか・・・。<br>
+<br>
+「#A:」などと、ドライブ名に「#」をつけてダイレクトアクセス<br>
+指定しないとだめです。ダイレクトアクセスに失敗した場合は<br>
+「アクセスが拒否されました。」になりますので、たぶん<br>
+「A:」で指定したと思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1084">1084.　<b><font color="#000000">Re: PPvが終了時動作不正？</font></b>　TORO　　<font size="2">2004/04/23 (金) 12:37</font><br>
+<blockquote>&gt;ＰＰｘを使ってみようとしているのですが、<br>
+&gt;なぜかＰＰｖにテキストファイルを読み込ませてから<br>
+&gt;終了させるときに<br>
+&gt;<br>
+&gt;「0:free error」<br>
+&gt;<br>
+&gt;という小さなダイアログが出てしまいます。<br>
+<br>
+特定のユーザのみで表示されるということですね。<br>
+調べてみます。<br>
+また、UNICODE版なら表示されないかもしれません。<br>
+<br>
+このダイアログは、特定のソフト<br>
+（キーボードやマウスの拡張ソフト等）が起動していると<br>
+表示される可能性がありますが、それらのソフト自体が原因<br>
+ではなく、PPx側の問題だと思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1083">1083.　<b><font color="#000000">Re^5: PPx ねた</font></b>　com-a　　<font size="2">2004/04/23 (金) 02:58</font><br>
+<blockquote>&gt; &gt;何処見れば分かりますか？(^ ^;)<br>
+&gt; <br>
+&gt; エントリを削除した痕跡が残っていると、そのエントリが<br>
+&gt; 「?名前」の形式で表示されます。<br>
+<br>
+ファイルを（全て）削除しても「指定されたファイルが見つか<br>
+りません。」と表示されるのですが、モノによるのか、もしか<br>
+してWinXPの罠とか・・・。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1082">1082.　<b><font color="#000000">PPvが終了時動作不正？</font></b>　PAUL　　<font size="2">2004/04/23 (金) 00:54</font><br>
+<blockquote>はじめまして。ＰＡＵＬと申します。<br>
+ＰＰｘを使ってみようとしているのですが、<br>
+なぜかＰＰｖにテキストファイルを読み込ませてから<br>
+終了させるときに<br>
+<br>
+「0:free error」<br>
+<br>
+という小さなダイアログが出てしまいます。<br>
+このエラーが出たあとにもう一度テキストファイルを読みこむと<br>
+表示がおかしくなったり、メモリアクセス違反がでて<br>
+強制終了したりします。<br>
+また、PPX.LOGに<br>
+<br>
+2004- 4-23  0:40:23 (DebugLog) freeerror[0](413cfc):f90004<br>
+<br>
+という行が追加されます。<br>
+<br>
+自分の環境はＸＰなんですが、<br>
+この現象は、困ったことに自分が普段使っているユーザ<br>
+（admin権限のユーザ）でしか発生しません。<br>
+そのユーザとは別にadministratorのＩＤがあるのですが<br>
+こちらでは発生しません。<br>
+また、admin権限のユーザを新規作成して試したところ、<br>
+やはり発生しません。<br>
+<br>
+また、インストール状態やカスタマイズが原因かと思い、<br>
+すべてアンインストールしてからＰＰｘアーカイブの<br>
+解凍直後に「ppv.exe [テキストファイル]」をしても<br>
+結果は同じでした。<br>
+ＰＰＸのバージョンは、0.34と0.34+8で試しましたが<br>
+現象は両方とも変わりませんでした。<br>
+textかhexで表示させてから終了もしくはreloadすると<br>
+発生します。imageの場合は発生しません。<br>
+また、win98のマシンでも試しましたが発生しません。<br>
+<br>
+原因・対策等思い当たりがありましたら教えてください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1081">1081.　<b><font color="#000000">Re^4: PPx ねた</font></b>　TORO　　<font size="2">2004/04/22 (木) 22:47</font><br>
+<blockquote>&gt; あっという間にお久しぶりです。(^ ^;)<br>
+<br>
+本当ですね(^^;。<br>
+<br>
+<br>
+&gt;最近買ったフラッシュメモリで確認しようかと思ったのですが、<br>
+&gt;何処見れば分かりますか？(^ ^;)<br>
+<br>
+エントリを削除した痕跡が残っていると、そのエントリが<br>
+「?名前」の形式で表示されます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1080">1080.　<b><font color="#000000">Re^3: PPx ねた</font></b>　com-a　　<font size="2">2004/04/21 (水) 12:13</font><br>
+<blockquote>あっという間にお久しぶりです。(^ ^;)<br>
+<br>
+&gt; フラッシュメモリのドライブでも一応できます。<br>
+&gt; （Poweruser 以上の権限が必要ですが）<br>
+<br>
+最近買ったフラッシュメモリで確認しようかと思ったのですが、<br>
+何処見れば分かりますか？(^ ^;)<br>
+<br>
+<br>
+&gt; &gt; &gt; 7)MC_celF = {<br>
+&gt; &gt; <br>
+&gt; &gt; ムクムク・・・？<br>
+&gt; ほんとはサムネイル表示用の設定（未完成）なんですが、<br>
+&gt; この際、ネタとして使いました。<br>
+<br>
+なるほど。(^ ^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1079">1079.　<b><font color="#000000">PPx 0.34+8</font></b>　TORO　　<font size="2">2004/04/18 (日) 21:45</font><br>
+<blockquote>+8 を公開しました。<br>
+<br>
+PPv の検索後の処理を強化した他は、修正のみです。<br>
+また、履歴に書き忘れましたが、XC_nsbf=1 &amp; XC_fwin = 2<br>
+のときのホイールの挙動がおかしかったのも修正しています。<br>
+<br>
+UNICODE 版は、PPc の表示部分の対策をしています。<br>
+<br>
+# PPb のカーソル位置は、一発で正しい位置を求める方法が<br>
+# 見あたらず、カーソルまでの文字列を表示させてからカーソル<br>
+# 位置を取得しないといけなさそうで憂鬱です(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1078">1078.　<b><font color="#000000">PPx 0.34+7</font></b>　TORO　　<font size="2">2004/04/12 (月) 22:18</font><br>
+<blockquote>0.34+7 です。<br>
+<br>
++5 から PPCUST でテキストを取り込んでも、E_cr 等が<br>
+正しく処理されないのを修正しました。<br>
+<br>
+UNICODE 版では同様の問題はありません。<br>
+<br>
+# UNICODE 版で動作確認し、そのまま Multibyte 版の<br>
+# 動作確認をするのを忘れてしまいました(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1077">1077.　<b><font color="#000000">Re: PPx 0.34+6</font></b>　TORO　　<font size="2">2004/04/10 (土) 20:45</font><br>
+<blockquote>補足です<br>
+<br>
+*clearchange や XC_alst = 1 等を使用した場合に、<br>
+エントリを一回削除した後、同名のエントリを作成して<br>
+も表示されなかったのを修正しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1076">1076.　<b><font color="#000000">PPx 0.34+6</font></b>　TORO　　<font size="2">2004/04/10 (土) 20:44</font><br>
+<blockquote>0.34+6 を公開します。また、+6 用の Script Module も<br>
+同時に公開します。<br>
+<br>
+<br>
+要望があった、エクスプローラと同様に、スクロール後<br>
+カーソルが画面外にも移動できる設定を追加しました。<br>
+<br>
+そのほかは、UNICODE版／設定ファイルの保存方法の変更に<br>
+よって出たバグのバグ取りを行っています。<br>
+<br>
+UNICODE 版は、普段に使う部分の動作検証を終わりました。<br>
+正規表現と見た目の部分を除いて、普通に使う部分なら<br>
+問題が無くなったと思います。<br>
+まだ、細かい部分の検証が終わってませんが(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1075">1075.　<b><font color="#000000">PPx 0.34+5 &amp; UNICODE Demonstration</font></b>　TORO　　<font size="2">2004/04/04 (日) 21:43</font><br>
+<blockquote>PPx 0.34+5 を公開しました。<br>
+<br>
+●今回から、レジストリを基本的に使用しないようにしました。<br>
+今までは、PPX?????.DAT の保存先をレジストリ<br>
+（HKEY_CURRENT_USER\Software\TOROid\PPX）に保存するのが<br>
+デフォルト動作でしたが、これを行わないようにしました。<br>
+<br>
+以下は、関連する注意点です。<br>
+・今まで通り「〜\Application Data\TOROID\PPx」がデフォル<br>
+　トの保存先です。<br>
+・レジストリに保存先が指定されていれば、その保存先のファイ<br>
+　ルを使用します。<br>
+・現状のままでいい場合は、特に移行作業は必要ありません。<br>
+<br>
+・レジストリを使用していた人で、新仕様に移行してレジストリ<br>
+　を削除したい場合は、一度、カスタマイズ内容をカスタマイザ<br>
+　でテキストに書き出してから、レジストリの項目と<br>
+　旧 PPX?????.DATファイルを削除し、その後、書き出した<br>
+　テキストをカスタマイザで取り込むといいです。<br>
+<br>
+　今までレジストリを使用するのをデフォルト動作にしていたの<br>
+　は、PPX?????.DAT をランダム名にし、その名前をレジストリ<br>
+　に保存することで、PPX?????.DAT を簡単に特定して中身を見<br>
+　られないようにする、セキュリティ面が目的でした。<br>
+ 　 しかし、そこまでしても実際は効果がないことがほとんどな<br>
+　ので、今回の仕様に変更しました。新仕様でも、PPX?????.DAT<br>
+　の名前が固定になるわけでもないので、ある程度は特定できな<br>
+　いと思います。<br>
+<br>
+●そのほかは、リアルタイムマスクの設定を追加した他、一行編<br>
+　集のキー割当てを一部変更しています。<br>
+　尚、UNICODE版のためにソースを全面修正したので、動作が<br>
+　おかしくなった部分があるかもしれません。<br>
+<br>
+●今回から UNICODE版の公開を始めます。今のところ、コンパイ<br>
+　ラのWarningを全部つぶし、普段使用している機能を動作する<br>
+　ようにした程度で、すべての機能を動作検証したわけではあり<br>
+　ません。動作検証が終わるまでは「Demonstration」とします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1074">1074.　<b><font color="#000000">Re^2: PPx ねた</font></b>　TORO　　<font size="2">2004/04/03 (土) 21:07</font><br>
+<blockquote>&gt; &gt; ４月１日みたいですので、<br>
+&gt; &gt; TIPSとそれ風を混ぜてつらつらと…<br>
+&gt; <br>
+&gt; 全部ジョークというオチではないのですね。(^ ^;)<br>
+ひねくれてますので :-P<br>
+<br>
+<br>
+&gt; &gt; 1)一行編集で[↑]を使うとヒストリサーチ。<br>
+&gt; <br>
+&gt; 実は上と下でどう違うのか分かってなかったり・・・<br>
+&gt; コンボボックスボックスのボタンじゃなくてスピンボタン<br>
+&gt; のデザインが違うのがくっついてますが、開く位置が<br>
+&gt; 変わるだけなのかなぁ？<br>
+その通りです。Windows標準は↓ですが、コンソールのヒストリと<br>
+同じように↑で開きたいので。そのうち、上下で使い分け出ると<br>
+いいなとは思ってます。<br>
+<br>
+<br>
+&gt; もう長いことFDに触れてないしドライブが無い・・・<br>
+&gt; 確認してみたいけど出来ない。(^ ^;)<br>
+<br>
+フラッシュメモリのドライブでも一応できます。<br>
+（Poweruser 以上の権限が必要ですが）<br>
+<br>
+<br>
+&gt; &gt; 5)PPvは E-mail の文字化け部分を読むことができる。<br>
+単に、 E-mail 向けのデコーダが入っているという意味です(^^;<br>
+後は、行毎にデコード方法が変えられるとか。<br>
+<br>
+<br>
+&gt; &gt; 7)MC_celF = {<br>
+&gt; <br>
+&gt; ムクムク・・・？<br>
+ほんとはサムネイル表示用の設定（未完成）なんですが、<br>
+この際、ネタとして使いました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1073">1073.　<b><font color="#000000">Paper Plane xUI  Script Module</font></b>　TORO　　<font size="2">2004/04/03 (土) 20:59</font><br>
+<blockquote>WSH のように ActiveX Scripting Host を利用してスクリプトを<br>
+実行する PPx Script Module を公開しました。<br>
+<br>
+PPx の拡張は DLL を登録してできるようにする予定ですが、<br>
+まず、汎用なものとしてスクリプトを選んでみました(^^。<br>
+ActiveX の扱いはまだ不慣れで、出来はとりあえず…といった<br>
+ところです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1071">1071.　<b><font color="#000000">Re: PPx ねた</font></b>　com-a　　<font size="2">2004/04/01 (木) 19:34</font><br>
+<blockquote>ほぼ独り言です。^^<br>
+<br>
+<br>
+&gt; ４月１日みたいですので、<br>
+&gt; TIPSとそれ風を混ぜてつらつらと…<br>
+<br>
+全部ジョークというオチではないのですね。(^ ^;)<br>
+<br>
+<br>
+&gt; 1)一行編集で[↑]を使うとヒストリサーチ。<br>
+<br>
+実は上と下でどう違うのか分かってなかったり・・・<br>
+コンボボックスボックスのボタンじゃなくてスピンボタン<br>
+のデザインが違うのがくっついてますが、開く位置が<br>
+変わるだけなのかなぁ？<br>
+<br>
+<br>
+&gt; 4)PPcの[L]で #a:\ を指定すると空のフロッピー<br>
+&gt; ディスクがフォーマットしたてか、削除を<br>
+&gt; 繰り返した使い回しかがわかる。<br>
+<br>
+もう長いことFDに触れてないしドライブが無い・・・<br>
+確認してみたいけど出来ない。(^ ^;)<br>
+<br>
+<br>
+&gt; 5)PPvは E-mail の文字化け部分を読むことができる。<br>
+<br>
+???<br>
+<br>
+<br>
+&gt; 6)PPvの左ドラッグは勢いをつけるとよい。<br>
+<br>
+びゅーん。<br>
+<br>
+&gt; 7)MC_celF = {<br>
+<br>
+ムクムク・・・？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1070">1070.　<b><font color="#000000">PPx ねた</font></b>　TORO　　<font size="2">2004/04/01 (木) 00:34</font><br>
+<blockquote>４月１日みたいですので、<br>
+TIPSとそれ風を混ぜてつらつらと…<br>
+<br>
+<br>
+1)一行編集で[↑]を使うとヒストリサーチ。<br>
+<br>
+2)[X]コマンドの一行編集でコマンド(*xxxx)や<br>
+マクロ文字が使える。<br>
+<br>
+3)X_ltab = 1 でタブモード。<br>
+<br>
+4)PPcの[L]で #a:\ を指定すると空のフロッピー<br>
+ディスクがフォーマットしたてか、削除を<br>
+繰り返した使い回しかがわかる。<br>
+<br>
+5)PPvは E-mail の文字化け部分を読むことができる。<br>
+<br>
+6)PPvの左ドラッグは勢いをつけるとよい。<br>
+<br>
+7)MC_celF = {<br>
+A = n<br>
+}<br>
+とするとでかくなる。<br>
+<br>
+8)窓枠のコンテキストメニューがある。<br>
+<br>
+9)メニューバーはダブルクリックできる。<br>
+<br>
+10)ファイルのコピーで Burst をチェックすると<br>
+静音コピーができる。<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+PS1<br>
+ひねれくれた記載ですので、期待した動作とは<br>
+違うかもしれないのを了承ください。<br>
+PS2<br>
+現在全ソースに渡る修正を行っています。<br>
+だからといって見た目が変わるとかはなく、<br>
+地味なのですが。<br>
+PS3<br>
+一部誤記…</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1068">1068.　<b><font color="#000000">Re^2: PPX の枠</font></b>　takeda　　<font size="2">2004/03/27 (土) 13:17</font><br>
+<blockquote>&gt; エントリ表示幅が変わったら窓幅を調節する(XC_awid)を<br>
+&gt; 変更すれば、以前と同じように幅変更されないようになります。<br>
+<br>
+できました。<br>
+文字列の意味ばかり一生懸命追ってしまい、<br>
+XC_awid の追加に気づいていませんでした。<br>
+ご回答ありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1067">1067.　<b><font color="#000000">Re^3: PPx 0.34+4</font></b>　com-a　　<font size="2">2004/03/26 (金) 14:44</font><br>
+<blockquote>&gt; どちらにしても拡張子入力のためのショートカットが<br>
+&gt; ないので、&amp;[X]等を %X 相当にして、&amp;[T],^[T]を<br>
+&gt; %T 相当にするように仕様変更しようかと思います。<br>
+<br>
+なるほど。それでいいですね。(^^<br>
+<br>
+&gt; # 他にもおかしいところがありそう(^^;<br>
+<br>
+その時はその時で。(^^</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1066">1066.　<b><font color="#000000">Re: PPX の枠</font></b>　TORO　　<font size="2">2004/03/26 (金) 13:00</font><br>
+<blockquote>&gt; [;] で表示形式を変えたとき、<br>
+&gt; PPX の幅を変更しないようにするにはどうしたらいいでしょうか？<br>
+<br>
+PPc - 表示 の<br>
+エントリ表示幅が変わったら窓幅を調節する(XC_awid)を<br>
+変更すれば、以前と同じように幅変更されないようになります。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1065">1065.　<b><font color="#000000">PPX の枠</font></b>　takeda　　<font size="2">2004/03/26 (金) 00:47</font><br>
+<blockquote>[;] で表示形式を変えたとき、<br>
+PPX の幅を変更しないようにするにはどうしたらいいでしょうか？<br>
+<br>
+最近久しぶりにバージョンアップしたもので、<br>
+たとえば、AST = MA10S1T17S1F<br>
+のまま以前から変えてないのに、<br>
+今のバージョンでは<br>
+横枠がすごく長くなってしまい困っています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1064">1064.　<b><font color="#000000">Re^2: PPx 0.34+4</font></b>　TORO　　<font size="2">2004/03/25 (木) 12:36</font><br>
+<blockquote>&gt;となったのは仕様変更という事でしょうか？<br>
+<br>
+ミスです(^^;。拡張子を ^[T] で入力できなかったので<br>
+マニュアルの確認をせずに変更してしまいました。<br>
+<br>
+どちらにしても拡張子入力のためのショートカットが<br>
+ないので、&amp;[X]等を %X 相当にして、&amp;[T],^[T]を<br>
+%T 相当にするように仕様変更しようかと思います。<br>
+<br>
+# 他にもおかしいところがありそう(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1063">1063.　<b><font color="#000000">Re: PPx 0.34+4</font></b>　com-a　　<font size="2">2004/03/24 (水) 16:22</font><br>
+<blockquote>以前の一行編集では<br>
+<br>
+&gt; &amp;[X],^[T]    対象ファイル名(拡張子除く)(※、もしあれば)<br>
+<br>
+となっていましたが、今回の修正で<br>
+<br>
+&gt; ・一行編集で ^[T]/&amp;[X] の動作が拡張子挿入でなかったのを修正<br>
+<br>
+となったのは仕様変更という事でしょうか？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1062">1062.　<b><font color="#000000">Re: PPx 0.34+4</font></b>　com-a　　<font size="2">2004/03/24 (水) 12:28</font><br>
+<blockquote>アクティブ化の件、改善を確認しました。(^ ^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1061">1061.　<b><font color="#000000">PPx 0.34+4</font></b>　TORO　　<font size="2">2004/03/21 (日) 21:13</font><br>
+<blockquote>0.34+4 です。<br>
+<br>
+今回は、ディレクトリサイズの算出結果をコメントに登録できる<br>
+設定を追加した他、いくつか修正をおこっています。<br>
+<br>
+また、ウィンドウのアクティブか処理の一部修正もおこなっています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1060">1060.　<b><font color="#000000">Re: PPcのアクティブ化について</font></b>　TORO　　<font size="2">2004/03/19 (金) 22:49</font><br>
+<blockquote>&gt;ここで、PPcのアクティブ化の時（）なのですが、タイミング<br>
+&gt;によってはアクティブ化が為されません。<br>
+&gt;PPx0.34+3にしてからこの現象に気が付いたのですが、以前の<br>
+&gt;バージョン（詳しくは失念しました）では問題は無かった<br>
+&gt;と思います。<br>
+&gt;アクティブ化に関するロジックに変更等ありましたでしょうか？<br>
+<br>
+確かに、処理を変えました。しかも、間違った方法だったようです(^^;<br>
+修正します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1059">1059.　<b><font color="#000000">PPcのアクティブ化について</font></b>　com-a　　<font size="2">2004/03/15 (月) 15:19</font><br>
+<blockquote>どうもこんにちは。<br>
+<br>
+私が使っているテキストエディタのファイラにPPcを使って<br>
+いるのですが、以下のマクロを介してPPcをロード/アクティブ<br>
+化を行なっています。<br>
+<br>
+※マクロ文法や引数に間違いはないものとしてください。<br>
+　呼び出しイメージだけ掴んで頂ければ結構です。^^;<br>
+<br>
+; PPcが未起動、起動済みに関係なくPPcが表示されるようにしている<br>
+; PPc起動<br>
+sprintf(@str2, &quot;C:\\Program Files\\PPX\\PPC.EXE /bootid:M \x22%s\x22&quot;, @str1)<br>
+calldll2(&quot;kernel32.dll&quot;, &quot;WinExec&quot;, @str2, 1)<br>
+; PPc[M]をアクティブに<br>
+sprintf(@str2, &quot;C:\\Program Files\\PPX\\PPTRAY.EXE /c *focus [M]&quot;)<br>
+calldll2(&quot;kernel32.dll&quot;, &quot;WinExec&quot;, @str2, 1)<br>
+<br>
+<br>
+ここで、PPcのアクティブ化の時（）なのですが、タイミング<br>
+によってはアクティブ化が為されません。<br>
+PPx0.34+3にしてからこの現象に気が付いたのですが、以前の<br>
+バージョン（詳しくは失念しました）では問題は無かった<br>
+と思います。<br>
+アクティブ化に関するロジックに変更等ありましたでしょうか？<br>
+<br>
+PPc呼び出しマクロ実行は、サブメニュー（Windowsで右クリッ<br>
+クした時に出るメニュー・・・正式名はなんでしたっけ？^^;）<br>
+から行なっていますので、用事を終えたサブメニューが消えた<br>
+時のフォーカス制御が悪さしている気もします。<br>
+（サブメニューを介さないでマクロ実行した時は、正常にPPc<br>
+がアクティブ化される&quot;確率&quot;が上がりますので。^^;）<br>
+<br>
+何か対処法があればご教授お願いします。m(_ _)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1058">1058.　<b><font color="#000000">Re^2: ソート処理の解説</font></b>　TORO　　<font size="2">2004/03/12 (金) 12:52</font><br>
+<blockquote>&gt; &gt; (2)保持ソート \[S] メニューの「パス限定」で指定<br>
+&gt; <br>
+&gt; これですが、将来的には&quot;サブフォルダにも適用&quot;する機能が<br>
+&gt; 欲しかったりします。<br>
+もともと、指定パス以下を対象にする予定だったのですが、<br>
+\[S]での設定方法などを並行して作業した結果、１ディレクトリ<br>
+内に妥協してしまいました(^^;<br>
+現在もいろいろ検討中です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1057">1057.　<b><font color="#000000">Re: ソート処理の解説</font></b>　com-a　　<font size="2">2004/03/10 (水) 05:49</font><br>
+<blockquote>&gt; PPc で、あるディレクトリに適用されるソート方法は、<br>
+<br>
+毎度ご苦労様です。<br>
+とても便利ですっ。(^ ^)<br>
+<br>
+&gt; (2)保持ソート \[S] メニューの「パス限定」で指定<br>
+<br>
+これですが、将来的には&quot;サブフォルダにも適用&quot;する機能が<br>
+欲しかったりします。<br>
+あくまでも将来。。。(^ ^;)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1056">1056.　<b><font color="#000000">ソート処理の解説</font></b>　TORO　　<font size="2">2004/03/06 (土) 22:40</font><br>
+<blockquote>PPc で、あるディレクトリに適用されるソート方法は、<br>
+0.34+3 では次の優先順位で決定されます。<br>
+<br>
+また、一時的に変更したい場合は、[S]を使用します。<br>
+この[S]によるソート方法は記憶されないので、<br>
+ディレクトリの再読込をしたり、別のディレクトリを<br>
+表示したりすると、元のソート方法でソートされます。<br>
+<br>
+<br>
+(1)保持ソート \[S] メニューの第１階層で指定した<br>
+ソート方法<br>
+<br>
+  第１階層で指定したソート方法は、最優先で使用<br>
+されるソート方法で、PPcの窓毎に記憶されます。<br>
+ディレクトリをあちこち移動しながらでも一時的に<br>
+ソート方法を普段の設定と変えたいときに用います。<br>
+<br>
+<br>
+(2)保持ソート \[S] メニューの「パス限定」で指定<br>
+したソート方法<br>
+<br>
+  パス限定のソート方法は、第１階層のソート方法が<br>
+「Original/整列なし」の時に用いられ、設定した<br>
+パス（ディレクトリ）内のみ有効です。<br>
+<br>
+<br>
+(3)保持ソート \[S] メニューの「ドライブ限定」で<br>
+指定したソート方法<br>
+<br>
+  パス限定のソート方法は、第１階層のソート方法が<br>
+「Original/整列なし」であって、パス限定ソート方法が<br>
+指定していない時に用いられ、設定したドライブのみ有効です。<br>
+<br>
+<br>
+(4)保持ソート \[S] メニューの「デフォルト」で指定した<br>
+ソート方法<br>
+<br>
+  (1)〜(3)のソート方法が指定されていないときに使用され<br>
+るソート方法です。常用するソート方法をここで指定すると<br>
+いいです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1055">1055.　<b><font color="#000000">PPx 0.34+3</font></b>　TORO　　<font size="2">2004/03/06 (土) 22:36</font><br>
+<blockquote>0.34+3 です。<br>
+<br>
+今回の変更は実験的な部分が多く、変更部分の完成度が<br>
+低めです。<br>
+<br>
+・別系統のインクリメンタルサーチを作成中です。\[J]で<br>
+作成中のインクリメンタルサーチを使用できます。<br>
+現在、次の機能をつけようかと検討しています<br>
+（カスタマイズ含む）。<br>
+　一定時間でサーチ解除<br>
+　カーソル上下で前後の候補に移動<br>
+　同じ文字を連続して入力したときは頭文字サーチ<br>
+　Enterを押したときに、サーチ解除＆実行<br>
+　入力されたピリオドの扱い（拡張子と見なすか否か）<br>
+<br>
+・XC_dset で予定していたパス毎の個別指定を一部実装<br>
+しました。パスを記載すると、そのパスのみに限定された<br>
+設定を用いることができます。<br>
+PPc上の個別指定の設定変更は、まず、\[S]の保持ソートを<br>
+対応してみましたが、UI が分かりにくいので再検討しよ<br>
+うと思います。また、優先順位も４段あってややこしい<br>
+ため(^^;、簡素化しようか悩んでます。<br>
+<br>
+・キー割当てを変更したときに、メニューに記載したキー割当て<br>
+表示を一括修正することができる機能を追加しました。MC_menu、<br>
+MV_menuとその下位階層のメニューが修正対象です。尚、<br>
+「key = newkey」又は「key , %K&quot;newkey&quot;」と記載したキー<br>
+割当てが対象で、「key , %&#39;title&#39; %K&quot;newkey&quot;」や<br>
+「key , %k&quot;newkey&quot;」等はキー割当てと見なしません。<br>
+<br>
+・*clearchange で削除状態のエントリを非表示するように<br>
+しました。この機能を使った部分も同様です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1054">1054.　<b><font color="#000000">Re^3: はじめめして　要望など</font></b>　TORO　　<font size="2">2004/03/01 (月) 23:04</font><br>
+<blockquote>&gt; &gt; キーバインダということは、何かキーの割当てを<br>
+&gt; &gt; 変更するということかな？<br>
+&gt; 外部のアプリとキーの関連付けというか 深い意味はないです。<br>
+なるほど。わかりました(^^。<br>
+<br>
+<br>
+&gt; フォーカス変更してキー入力とか,キーでのD&amp;Dを自前で<br>
+&gt; 処理できるなどもはやファイラの域を超えてる気がしてw<br>
+&gt; 面白いソフトです。<br>
+ファイラはPPcのみで、PPx 全体としてはファイル操作用の<br>
+ツール集です(笑)。<br>
+<br>
+<br>
+&gt; サイズ順に並べて中身を整理して戻って次のフォルダをまた整理…<br>
+&gt; という作業をする事が多いので　作業中に参照できるよう<br>
+&gt; コメントに入れられるとありがたいです。<br>
+では、できるようにしたいと思います。<br>
+<br>
+<br>
+&gt; ついでに質問なんですが　エントリ内で削除されたファイルを<br>
+&gt; 表示しないようにするにはどうすればいいでしょうか？<br>
+削除コマンドの後でしたら、XC_alst の３番目の項目を<br>
+変更してください。<br>
+自動更新の方は、現状ではできません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1053">1053.　<b><font color="#000000">Re^3: PPvでの編集とPPcのD&amp;Dについて</font></b>　TORO　　<font size="2">2004/03/01 (月) 22:53</font><br>
+<blockquote>&gt; %Lnってまんま書いて頭捻っていました。<br>
+&gt; ボケボケです。(^ ^;)<br>
+<br>
+いえいえ、こちらの記載ミスです(^^;<br>
+<br>
+<br>
+&gt; ps.<br>
+&gt; 余談ですが、PPVにおいては%FDCという指定は不可なんで<br>
+&gt; しょうか？（というか実際、認識されてなさそうです）<br>
+ PPvのほうは未実装です。マクロ文字の処理は、DLL 側と<br>
+PPx 本体側で連携して処理するのですが、%F の場合は<br>
+何処までどっちかで処理するか決めかねていて PPc のみ<br>
+実装となっています。<br>
+# 未実装なのを忘れて、0.34 のデフォルトカスタマイズに<br>
+# 入れてしまっているし(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1052">1052.　<b><font color="#000000">Re^2: はじめめして　要望など</font></b>　kuro　　<font size="2">2004/03/01 (月) 11:08</font><br>
+<blockquote>&gt; キーバインダということは、何かキーの割当てを<br>
+&gt; 変更するということかな？<br>
+外部のアプリとキーの関連付けというか 深い意味はないです。<br>
+フォーカス変更してキー入力とか,キーでのD&amp;Dを自前で<br>
+処理できるなどもはやファイラの域を超えてる気がしてw<br>
+面白いソフトです。<br>
+<br>
+&gt; ひとまず解決はしていますが、算出サイズのコメント登録は<br>
+&gt; あった方がいいのでしょうか？<br>
+サイズ順に並べて中身を整理して戻って次のフォルダをまた整理…<br>
+という作業をする事が多いので　作業中に参照できるよう<br>
+コメントに入れられるとありがたいです。<br>
+<br>
+ついでに質問なんですが　エントリ内で削除されたファイルを<br>
+表示しないようにするにはどうすればいいでしょうか？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1051">1051.　<b><font color="#000000">Re^3: PPvでの編集とPPcのD&amp;Dについて</font></b>　com-a　　<font size="2">2004/03/01 (月) 03:43</font><br>
+<blockquote>&gt; 普段は、右ドラッグか、左クリック解除の直前にCtrl等を<br>
+<br>
+あらららら・・・右ドラッグは知りませんでした。<br>
+うーん。奥が深い・・・。<br>
+<br>
+# でも、選択文字の右D&amp;Dは無理なんですね・・・はたまた<br>
+# 奥が深いWindows・・・(^ ^;)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1050">1050.　<b><font color="#000000">Re^2: PPvでの編集とPPcのD&amp;Dについて</font></b>　com-a　　<font size="2">2004/03/01 (月) 03:40</font><br>
+<blockquote>&gt; %L に行数が入るのでエディタの行指定オプションの後に<br>
+&gt; これを記載すればいいと思います。<br>
+<br>
+%Lnってまんま書いて頭捻っていました。<br>
+ボケボケです。(^ ^;)<br>
+<br>
+<br>
+&gt; 問題は、%Lは表示行数なのですれることがあることです(^^;<br>
+<br>
+この辺は仕方ないですね。<br>
+個人的には無問題ですよ。<br>
+<br>
+<br>
+&gt; 例えばこんな感じでしょうか。<br>
+&gt; E,&quot;Text edit&quot;%Oib,%&#39;editor&#39; %{%C%} -j%L %: %K&quot;&amp;F4&quot;<br>
+<br>
+ばっちりです。(^ ^)<br>
+<br>
+どうもありがとうございました。m(_ _)m<br>
+<br>
+ps.<br>
+余談ですが、PPVにおいては%FDCという指定は不可なんで<br>
+しょうか？（というか実際、認識されてなさそうです）<br>
+%1\%CというのがPPV単体で見ると何のカーソルを指している<br>
+のか（呼び出し元PPCのカーソルですが）分かりにくいかなと<br>
+思って最初は%FDCとしていたのですが・・・。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1049">1049.　<b><font color="#000000">Re: はじめめして　要望など</font></b>　TORO　　<font size="2">2004/02/29 (日) 21:08</font><br>
+<blockquote>&gt; 使い始めて間もないですが、キーバインダとして便利に使わせてもらっています。<br>
+<br>
+キーバインダということは、何かキーの割当てを<br>
+変更するということかな？<br>
+# ちょっと想像つかなくて済みません(^^;<br>
+<br>
+ <br>
+&gt; 早速要望なんですが　フォルダ以下のファイルのサイズを<br>
+&gt; 算出する機能を付けてもらえないでしょうか<br>
+&gt; コメント作成の機能として追加してもらえればありがたいです。<br>
+&gt; ソート条件などにも使えますし。<br>
+ひとまず解決はしていますが、算出サイズのコメント登録は<br>
+あった方がいいのでしょうか？<br>
+サイズがよく変わるようなディレクトリに対して<br>
+使ったりするのは難しいですし(^^;<br>
+<br>
+ <br>
+&gt; あとコメント編集後に必ず保存するような設定は可能ですか？<br>
+これは、次の版で設定できます。<br>
+# 私の場合は逆に一時的にコメント使うので、必ず<br>
+# 保存しない方ができるように設定増やしました。<br>
+# MD5等を使った同一ファイル抽出などがコメントの用途なので。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1048">1048.　<b><font color="#000000">Re^2: PPvでの編集とPPcのD&amp;Dについて</font></b>　TORO　　<font size="2">2004/02/29 (日) 20:58</font><br>
+<blockquote>&gt; &gt; ２つめ<br>
+&gt; &gt; コピーD&amp;Dするにはどうすれば良いでしょう？<br>
+&gt; <br>
+&gt; 普通にD&amp;D途中でctrl押せば解決しました。(^ ^;)<br>
+<br>
+エクスプローラと挙動が違ってましたね(^^;<br>
+普段は、右ドラッグか、左クリック解除の直前にCtrl等を<br>
+押すので気づきませんでした(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1047">1047.　<b><font color="#000000">Re: PPvでの編集とPPcのD&amp;Dについて</font></b>　TORO　　<font size="2">2004/02/29 (日) 20:56</font><br>
+<blockquote>&gt; PPVでプログラムソース開き、Eキーで表示している行と<br>
+&gt; パスをエディタに渡して編集に移行したいのですが、行を<br>
+&gt; 渡すにはどうすれば良いでしょう？<br>
+<br>
+%L に行数が入るのでエディタの行指定オプションの後に<br>
+これを記載すればいいと思います。<br>
+問題は、%Lは行事行数なのですれることがあることです(^^;<br>
+<br>
+&gt; また、編集に移行した際はPPVを閉じたいのですが、これも<br>
+&gt; 分かりません。<br>
+例えばこんな感じでしょうか。<br>
+E,&quot;Text edit&quot;%Oib,%&#39;editor&#39; %{%C%} -j%L %: %K&quot;&amp;F4&quot;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1046">1046.　<b><font color="#000000">Re^2: はじめめして　要望など</font></b>　kuro　　<font size="2">2004/02/29 (日) 04:10</font><br>
+<blockquote>&gt; フォルダの上でShift+Enterでサイズ計算されますよ。<br>
+う　失礼しましたw</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1045">1045.　<b><font color="#000000">Re: はじめめして　要望など</font></b>　com-a　　<font size="2">2004/02/29 (日) 03:05</font><br>
+<blockquote>これだけ<br>
+<br>
+&gt; 早速要望なんですが　フォルダ以下のファイルのサイズを算出する機能を付けてもらえないでしょうか<br>
+<br>
+フォルダの上でShift+Enterでサイズ計算されますよ。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1044">1044.　<b><font color="#000000">はじめめして　要望など</font></b>　kuro　　<font size="2">2004/02/29 (日) 02:52</font><br>
+<blockquote>はじめまして<br>
+使い始めて間もないですが、キーバインダとして便利に使わせてもらっています。<br>
+<br>
+早速要望なんですが　フォルダ以下のファイルのサイズを算出する機能を付けてもらえないでしょうか<br>
+コメント作成の機能として追加してもらえればありがたいです。ソート条件などにも使えますし。<br>
+<br>
+あとコメント編集後に必ず保存するような設定は可能ですか？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1043">1043.　<b><font color="#000000">Re: PPvでの編集とPPcのD&amp;Dについて</font></b>　com-a　　<font size="2">2004/02/29 (日) 00:42</font><br>
+<blockquote>自己レスです。<br>
+<br>
+&gt; ２つめ<br>
+&gt; コピーD&amp;Dするにはどうすれば良いでしょう？<br>
+<br>
+普通にD&amp;D途中でctrl押せば解決しました。(^ ^;)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1042">1042.　<b><font color="#000000">PPvでの編集とPPcのD&amp;Dについて</font></b>　com-a　　<font size="2">2004/02/28 (土) 21:13</font><br>
+<blockquote>お久しぶりです。<br>
+<br>
+PPxで質問です。<br>
+<br>
+１つめ<br>
+PPVでプログラムソース開き、Eキーで表示している行と<br>
+パスをエディタに渡して編集に移行したいのですが、行を<br>
+渡すにはどうすれば良いでしょう？<br>
+また、編集に移行した際はPPVを閉じたいのですが、これも<br>
+分かりません。<br>
+<br>
+２つめ<br>
+エントリをクリックして他のアプリにD&amp;Dする時、コピー<br>
+したいのでctrlキーを押しながらD&amp;Dしようと思ったのですが、<br>
+これだとXC_msel=1した時の動作になるのですよね？<br>
+コピーD&amp;Dするにはどうすれば良いでしょう？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1041">1041.　<b><font color="#000000">Re: PPx 0.34+2</font></b>　TORO　　<font size="2">2004/02/22 (日) 10:57</font><br>
+<blockquote>&gt; ・PPc のツリー窓の色設定ができるようにしました。<br>
+&gt; 背景画像の方は方法を調査中です。<br>
+<br>
+補足(^^;。色の変更は IE4.0 以降がインストールされて<br>
+いないとできません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1040">1040.　<b><font color="#000000">PPx 0.34+2</font></b>　TORO　　<font size="2">2004/02/22 (日) 10:49</font><br>
+<blockquote>PPx 0.34+2 を公開しました。<br>
+<br>
+・Win9x でファイルのドロップができないことがあったのを<br>
+ 修正しました。<br>
+<br>
+・0.33+5で追加したA_execによるエイリアス処理<br>
+（editorでA_execに定義したエディタを実行）をもう少しだ<br>
+け強化し、内蔵コマンド(*xxxx)も使えるようにしました。<br>
+<br>
+・PPc のツリー窓の色設定ができるようにしました。<br>
+背景画像の方は方法を調査中です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1039">1039.　<b><font color="#000000">Re^2: PRESSM 1.1</font></b>　TORO　　<font size="2">2004/02/18 (水) 22:39</font><br>
+<blockquote>&gt; TOROさん、こんにちは。その節は大変お世話になりました。<br>
+&gt; <br>
+&gt; 窓の杜、04/02/16のReview NEWSに「PRESSM」掲載、おめでとう<br>
+&gt;ございます。先ほど拝見しまして、思わずカキコしました。<br>
+<br>
+ありがとうございます(^^。<br>
+かなりピンポイントな小物ツールなのに紹介されてしまって<br>
+びっくりしてます(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1038">1038.　<b><font color="#000000">K-Launcher 1.27+1</font></b>　TORO　　<font size="2">2004/02/18 (水) 22:33</font><br>
+<blockquote>特定のLFNファイルを同名ファイルに上書きするときに<br>
+誤って似た名前のファイルを削除してしまうことの指摘を<br>
+受けました。<br>
+ex)<br>
+file_name.extention を上書きするときに、<br>
+file_nam.ext を削除してしまう。<br>
+<br>
+対策をした物を 1.27+1 として公開しましたので、<br>
+こちらを使用ください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1037">1037.　<b><font color="#000000">Re: PRESSM 1.1</font></b>　たっと　　<font size="2">2004/02/17 (火) 15:06</font><br>
+<blockquote>TOROさん、こんにちは。その節は大変お世話になりました。<br>
+<br>
+窓の杜、04/02/16のReview NEWSに「PRESSM」掲載、おめでとうございます。先ほど拝見しまして、思わずカキコしました。<br>
+<br>
+今後、益々のご活躍を影ななが応援しています。<br>
+では。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1036">1036.　<b><font color="#000000">Re^3: ClockPod</font></b>　TORO　　<font size="2">2004/02/16 (月) 22:48</font><br>
+<blockquote>&gt; 今もいろいろなフォントで試してみたのですが、<br>
+&gt;上記のような症状が出るのは、私が試した範囲では<br>
+&gt;「HG丸ゴシックM-Pro」のときのみのようです。<br>
+<br>
+他のフォントでは大丈夫でしたか。こちらでも MSOffice97付属の<br>
+HG丸ゴシックM-Proで試してみましたが、斜体時に多少右側が<br>
+狭くなる程度で、はみ出すところまでは至りませんでした。<br>
+<br>
+<br>
+もし、HG丸ゴシックM-Proで表示したいということでしたら、<br>
+S_default 等に記載された表示形式の最後に全角空白「　」を<br>
+入れれば、ごまかせると思います。<br>
+<br>
+また、もしかしたらの話ですが、フォントが壊れていて、その<br>
+フォントだけをインストールし直したら正しく表示するかも<br>
+しれませんね(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1035">1035.　<b><font color="#000000">Re^2: ClockPod</font></b>　Pipi　　<font size="2">2004/02/15 (日) 13:14</font><br>
+<blockquote>お忙しい中のご返答、大変ありがとうございます。<br>
+ご指摘のようにフォントを変えてみたら見えるようになりました。ありがとうございます。<br>
+<br>
+ご参考までに、見えなかったときの状態をお伝えいたしますと、<br>
+・FONT：HG丸ゴシックM-Pro　20Point<br>
+・見えない状態は常時でした。<br>
+<br>
+今もいろいろなフォントで試してみたのですが、上記のような症状が出るのは、私が試した範囲では「HG丸ゴシックM-Pro」のときのみのようです。このフォントでは、いくらPointを（8とか、6とかまで）下げても、切れてしまうようです。ちょっと不思議ですね。他にもそういう特殊なFontがあるのかもしれません。<br>
+<br>
+このたびはご丁寧にアドバイスいただき、ありがとうございました。これからもよいソフトをお願いいたします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1034">1034.　<b><font color="#000000">Re: ClockPod</font></b>　TORO　　<font size="2">2004/02/11 (水) 13:02</font><br>
+<blockquote>&gt; 会社でも自宅でも大活躍中ですが、自宅（XP）の表示がおかしい<br>
+&gt; のです。<br>
+&gt; 表示が途中で切れてしまって、時間などの最後の部分が見えませ<br>
+&gt; ん。どうしたら直りますか？教えていただければ幸いです。<br>
+<br>
+見えない状態は常時ですか？<br>
+また、使用しているフォントを変えてみるとはみ出なくなるかも<br>
+しれません。フォント名と、修飾方法（下線、太字、斜体、影等）<br>
+を教えてもらえば、こちらでも検証します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1033">1033.　<b><font color="#000000">ClockPod</font></b>　Pipi　　<font size="2">2004/02/10 (火) 19:18</font><br>
+<blockquote>ClockPod2.45を利用させていただいています。<br>
+会社でも自宅でも大活躍中ですが、自宅（XP）の表示がおかしいのです。<br>
+表示が途中で切れてしまって、時間などの最後の部分が見えません。どうしたら直りますか？教えていただければ幸いです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1032">1032.　<b><font color="#000000">Re^2: X_tray について</font></b>　信次　[<a href="http://www.losj.net/~moewe/">URL</a>]　　<font size="2">2004/02/09 (月) 09:15</font><br>
+<blockquote>&gt; こちらでも再現しました。PPtray を追加で公開しますので<br>
+&gt; これで１つだけにできると思います。<br>
+&gt; http://homepage1.nifty.com/toro/PPT034P1.LZH<br>
+<br>
+修正を確認しました。ありがとうございます。<br>
+<br>
+<br>
+&gt; 尚、*selectppx コマンドを実行すれば PPtray が無くても<br>
+&gt; 表示されていない PPx を呼び出せますので、PPtrayを<br>
+&gt; 起動していないときはこれで代用できます。<br>
+<br>
+なるほど、わかりました。<br>
+ありがとうございます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1031">1031.　<b><font color="#000000">Re: PPx 0.34+1</font></b>　TORO　　<font size="2">2004/02/08 (日) 23:10</font><br>
+<blockquote>X_tray = 1 の状態で PPtray が起動していない場合、<br>
+最小化時に複数 PPtray が起動してしまう問題について<br>
+対処した PPtray を追加公開しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1030">1030.　<b><font color="#000000">Re: X_tray について</font></b>　TORO　　<font size="2">2004/02/08 (日) 23:07</font><br>
+<blockquote>&gt; Version 0.34+1 の X_tray を有効にして PPC を最小化したところ、<br>
+&gt; タスクトレイに PPTRAY が二つ起動してしまいました。<br>
+&gt; PPV でも同様の現象が起きます。<br>
+&gt; これは何か設定をする部分が他にあるのでしょうか。<br>
+&gt; それともバグでしょうか。<br>
+<br>
+こちらでも再現しました。PPtray を追加で公開しますので<br>
+これで１つだけにできると思います。<br>
+http://homepage1.nifty.com/toro/PPT034P1.LZH<br>
+<br>
+<br>
+&gt; また、X_tray を有効にして PPC や PPV を最小化した状態で PPTRAY を終了させてしまうと、<br>
+&gt; PPC や PPV のウィンドウを元に戻すことができなくなってしまいました。<br>
+&gt; 先に PPTRAY を終了させた場合は、タスクバーなどに復活させてくれるとありがたいです。<br>
+<br>
+これについては次で対処したいと思います。<br>
+尚、*selectppx コマンドを実行すれば PPtray が無くても<br>
+表示されていない PPx を呼び出せますので、PPtrayを<br>
+起動していないときはこれで代用できます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1029">1029.　<b><font color="#000000">Re^2: &quot;/&quot;を使った表示パスの変更について</font></b>　もつ　　<font size="2">2004/02/07 (土) 22:40</font><br>
+<blockquote>確認いたしました.<br>
+どうもありがとうございます.</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1028">1028.　<b><font color="#000000">X_tray について</font></b>　信次　[<a href="http://www.losj.net/~moewe/">URL</a>]　　<font size="2">2004/02/07 (土) 22:40</font><br>
+<blockquote>初めまして、こんばんは、信次といいます。<br>
+<br>
+Version 0.34+1 の X_tray を有効にして PPC を最小化したところ、<br>
+タスクトレイに PPTRAY が二つ起動してしまいました。<br>
+PPV でも同様の現象が起きます。<br>
+これは何か設定をする部分が他にあるのでしょうか。<br>
+それともバグでしょうか。<br>
+OSは XP home SP1 です。<br>
+<br>
+また、X_tray を有効にして PPC や PPV を最小化した状態で PPTRAY を終了させてしまうと、<br>
+PPC や PPV のウィンドウを元に戻すことができなくなってしまいました。<br>
+先に PPTRAY を終了させた場合は、タスクバーなどに復活させてくれるとありがたいです。<br>
+<br>
+よろしくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1027">1027.　<b><font color="#000000">PPx 0.34+1</font></b>　TORO　　<font size="2">2004/02/07 (土) 22:30</font><br>
+<blockquote>0.34+1 です。<br>
+※この書き込みより前に 0.34+1 をダウンロードした場合は、<br>
+1020 PPBの挙動についてで対策した内容が含まれていない<br>
+場合がありますので、中身のテキストファイルで対処されて<br>
+いるかどうかの確認をお願いします。<br>
+<br>
+・マウスジェスチャーを自前で作って試してみた<br>
+ところ、100行程度で実装できることがわかった<br>
+ので、PPc に組み込んでみました。XC_Gestを1<br>
+又は2にし、MC_click に RG_xxxx の形式でジェス<br>
+チャーを指定することで使用することができます。<br>
+また XC_Gest = 2 のときは、右クリック地点が<br>
+カーソル上の時はD&amp;D、そうでなければジェス<br>
+チャーになります。<br>
+<br>
+・PPc,PPv最初化時にタスクトレイに入る<br>
+（実際はPPtrayが起動して隠れる）指定を追加<br>
+しました。元に戻すための専用ホットキーは特に<br>
+用意していないので、<br>
+K_tray ={<br>
+&amp;\P    , *focus<br>
+&amp;\V    , *focus &quot;PPV[&quot;<br>
+}<br>
+等とカスタマイズしてホットキーを登録してくだ<br>
+さい。<br>
+<br>
+・「アプリケーションから開く」で選んだ選択肢を<br>
+Enter/右クリック 時のメニューで列挙するように<br>
+してみました。現在は、何故かシェルコンテキスト<br>
+メニューより選択肢が多くなっています(^^;。<br>
+<br>
+・そのほか、PPb の多重起動時の問題などの修正と<br>
+アイコン表示のチューニングなどを行っています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1026">1026.　<b><font color="#000000">PRESSM 1.1</font></b>　TORO　　<font size="2">2004/02/07 (土) 22:22</font><br>
+<blockquote>PRESSM 1.1 を公開しました。<br>
+<br>
+1017 で公開した物の正式版です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1025">1025.　<b><font color="#000000">Re: &quot;/&quot;を使った表示パスの変更について</font></b>　TORO　　<font size="2">2004/02/07 (土) 22:18</font><br>
+<blockquote>&gt; /d<br>
+&gt; まで入力してTABで補完すると<br>
+&gt; doc\<br>
+&gt; と表示され, ここでenterすると<br>
+&gt; 「指定されたパスは無効です」といわれてしまいます.<br>
+<br>
+確かになりますね。0.34+1で修正しましたので<br>
+直ったと思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1024">1024.　<b><font color="#000000">&quot;/&quot;を使った表示パスの変更について</font></b>　もつ　　<font size="2">2004/02/07 (土) 21:05</font><br>
+<blockquote>はじめまして.<br>
+PPx 0.34で気が付いたことがあったのでご報告させていただきます.<br>
+<br>
+d:\docというディレクトリに移動しようとしたときにLを押して<br>
+/doc<br>
+とした場合, うまく移動できるのですが,<br>
+/d<br>
+まで入力してTABで補完すると<br>
+doc\<br>
+と表示され, ここでenterすると<br>
+「指定されたパスは無効です」といわれてしまいます.<br>
+\d<br>
+まで入力してTABで補完した場合は<br>
+\doc\<br>
+と表示されてd:\docに移動することができます.<br>
+<br>
+以上, お手すきでしたらご確認ください.</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1023">1023.　<b><font color="#000000">Re^2: K-Launcher 1.27</font></b>　TORO　　<font size="2">2004/02/04 (水) 22:11</font><br>
+<blockquote>&gt;カレントディレクトリの方でも使えるようになると<br>
+&gt;Windowsで使っているディスク内のコピーが<br>
+&gt;楽になりますね！<br>
+&gt;「かなりしっかり検証しないとできない」とのことなので、<br>
+&gt;気軽にお願いしますとは言いづらいですが、<br>
+&gt;楽しみにしています。<br>
+<br>
+ざっと思いつくだけでも、<br>
+・ヒストリに保存できない場合が発生する<br>
+・コマンドラインが 128bytes-α なので、実行できない<br>
+・スタックの容量がもつかどうか<br>
+といった問題があるので、これらを対策した上で拡張する<br>
+必要があります。<br>
+<br>
+このため、対応する場合は少しずつ部分対応が増える…<br>
+といった感じになりそうですね(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1022">1022.　<b><font color="#000000">Re: K-Launcher 1.27</font></b>　b37　　<font size="2">2004/02/02 (月) 18:05</font><br>
+<blockquote>K-Launcher 1.27 ありがとうございます。<br>
+さっそくダウンロードして使わせていただいています。<br>
+<br>
+＞ディレクトリの下層ディレクトリに限り、64字を超えて<br>
+＞LFNの限界まで使えるようにしました。<br>
+これ、とてもうれしいです。<br>
+Windowsのソフトを使っていると、ものすごーく深いところに<br>
+勝手にファイルを作ってしまい、K-Launcherでコピーできない<br>
+ことがありちょっと困っていました。<br>
+<br>
+カレントディレクトリの方でも使えるようになると<br>
+Windowsで使っているディスク内のコピーが<br>
+楽になりますね！<br>
+「かなりしっかり検証しないとできない」とのことなので、<br>
+気軽にお願いしますとは言いづらいですが、<br>
+楽しみにしています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1021">1021.　<b><font color="#000000">Re: PPBの挙動について</font></b>　TORO　　<font size="2">2004/01/29 (木) 22:06</font><br>
+<blockquote>&gt; 2つのPPBを起動し動かすと、<br>
+&gt; &quot;V&quot;などPPBを経由して起動する？ものは起動ができなくなります。<br>
+<br>
+確かにそうなります。バグですので修正しますね。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1020">1020.　<b><font color="#000000">PPBの挙動について</font></b>　Mist　　<font size="2">2004/01/29 (木) 08:40</font><br>
+<blockquote>PPBの挙動について質問です。<br>
+プログラムなどで常時窓を占有するようなプログラムを<br>
+2つのPPBを起動し動かすと、<br>
+&quot;V&quot;などPPBを経由して起動する？ものは起動ができなくなります。<br>
+また、3つ目のPPBを起動すると、<br>
+PPCではTABでの切り替えが正常に動作しない、A→B→Cとは動きますが、<br>
+C→Aとは動かないという動作になってしまいます。<br>
+これは自分の環境だけでしょうか？<br>
+<br>
+#以前は../のバグを対処していただきありがとうございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1019">1019.　<b><font color="#000000">Re^3: PRESSM要望</font></b>　TORO　　<font size="2">2004/01/27 (火) 22:31</font><br>
+<blockquote>&gt; はやいですね。さっそく対応して下さり感謝します。m(_ _)m<br>
+&gt; Win2000SP4にて使ってみました。無問題のようです。<br>
+&gt; <br>
+&gt; これでシャットダウン操作が便利になります。<br>
+&gt; TOROさん、本当に有難う御座いました。<br>
+<br>
+このプログラム自体はたいしたこと無く、修正はすぐですので<br>
+かまいませんよ。<br>
+逆に動作確認やドキュメント作成等の方が手間掛かるので<br>
+きちんとした公開には時間掛かります(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1018">1018.　<b><font color="#000000">Re^2: PRESSM要望</font></b>　たっと　　<font size="2">2004/01/27 (火) 17:21</font><br>
+<blockquote>こんにちは。この度はお世話になります。<br>
+<br>
+&gt; http://homepage1.nifty.com/toro/pres0126.lzh<br>
+<br>
+はやいですね。さっそく対応して下さり感謝します。m(_ _)m<br>
+Win2000SP4にて使ってみました。無問題のようです。<br>
+<br>
+これでシャットダウン操作が便利になります。<br>
+TOROさん、本当に有難う御座いました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1017">1017.　<b><font color="#000000">Re: PRESSM要望</font></b>　TORO　　<font size="2">2004/01/26 (月) 22:56</font><br>
+<blockquote>&gt; PRESSM1.0をダウンロードさせて頂いたのですが、ドキュメントを見ると下記パラメータしか対応していないんですね。残念。<br>
+&gt; <br>
+&gt; 「スタンバイ」と「休止状態」がサポートされるとよいのですが。<br>
+&gt; ご検討下さると有り難いです。m(_ _)m<br>
+<br>
+そういえば、ついていませんね。<br>
+http://homepage1.nifty.com/toro/pres0126.lzh<br>
+↑のを使えば B(スタンバイ) と H(休止状態) が指定<br>
+できるようになります。<br>
+ただ、きちんとした確認は取っていないので、これで<br>
+試してダメでしたら、週末まで待っててください(^^;。<br>
+<br>
+# 尚、上記指定は Win2000/XP/2003 のみ有効だと思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1016">1016.　<b><font color="#000000">PRESSM要望</font></b>　たっと　　<font size="2">2004/01/26 (月) 15:45</font><br>
+<blockquote>はじめまして。とおりすがりのものです。<br>
+<br>
+シャットダウン時のことで、こちらに来ました。<br>
+<br>
+PRESSM1.0をダウンロードさせて頂いたのですが、ドキュメントを見ると下記パラメータしか対応していないんですね。残念。<br>
+<br>
+    S：シャットダウン、R：再起動、L：ログオフ<br>
+<br>
+「スタンバイ」と「休止状態」がサポートされるとよいのですが。<br>
+ご検討下さると有り難いです。m(_ _)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1015">1015.　<b><font color="#000000">K-Launcher 1.27</font></b>　TORO　　<font size="2">2004/01/24 (土) 20:29</font><br>
+<blockquote>K-Launcher 1.27 を公開しました。<br>
+<br>
+LFN を使ってコピー・移動をするとすぐにディレクトリ長が<br>
+制限の64字を超えてしまうため、LFN使用 &amp; マークした<br>
+ディレクトリの下層ディレクトリに限り、64字を超えて<br>
+LFNの限界まで使えるようにしました。<br>
+<br>
+尚、カレントディレクトリ等の長さ制限は今まで通り64字<br>
+です。また、これらのLFN時の制限解除はスタックサイズの<br>
+制限など、かなりしっかり検証しないとできないため今回は<br>
+見送りました。<br>
+<br>
+# ホームの更新履歴で KL の分類が(win)になっていたのを<br>
+# こっそり直しました(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1014">1014.　<b><font color="#000000">PPx 0.34(2)</font></b>　TORO　　<font size="2">2004/01/17 (土) 20:13</font><br>
+<blockquote>PPc<br>
+・ディレクトリの表示のみですが、FTPが使えるようになってい<br>
+  ます。「ftp://〜」の形式でパス指定すると使えます。<br>
+<br>
+・エントリ選択フロントエンドオプション(/choose)を追加<br>
+  ファイル選択ダイアログでファイルを選択する手間を減らす<br>
+  試みです。<br>
+  ファイル選択ダイアログの代わりにPPcが起動してファイルを<br>
+  選択する、というところまではいきませんが、選択したファイ<br>
+  ルをエディットボックスに貼り付けたり、D&amp;Dを行ったりする<br>
+  ことができます。<br>
+<br>
+  詳細は PPC.TXT を参照してください。<br>
+<br>
+<br>
+その他<br>
+・WinXP以降(Win2003でも発生してます)で、PPxの窓上を他の窓が<br>
+  移動するとごみが残る件ですが、現状では原因が特定できていま<br>
+  せん(PPx以外でも、同様の現象が起きる例がいくつか見つかって<br>
+  います)。このため、アクティブになったときに再描画する現状の<br>
+  対策でしばらくいこうとおもいます。<br>
+<br>
+・システムが高負荷のときに同じ番号のPPxが重複して起動してしま<br>
+  う場合がありましたが、今回関連する処理を一部変更しました。<br>
+  このため、重複起動は無くなると思いますが、異常終了した場合<br>
+  に、該当PPxが欠番になることが発生するようになります。この<br>
+  ような場合は、一度全てのPPxを終わらせると直ります。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1013">1013.　<b><font color="#000000">PPx 0.34(1)</font></b>　TORO　　<font size="2">2004/01/17 (土) 20:10</font><br>
+<blockquote>PPx 0.34 とそのソースを公開しました。<br>
+<br>
+以下は、0.33+10 からの変更点です<br>
+<br>
+All<br>
+・書庫操作中でも他の作業がしやすくなるように、実行優先度を<br>
+  変えることができるようになりました。<br>
+<br>
+・複数のカレントディレクトリを扱うことができる指定を追加し<br>
+  ました。記載はあったけれども実際に動作しなかった UNC<br>
+  指定のディレクトリや、普段よく使うディレクトリを拠点と<br>
+  したカレントディレクトリを擬似的に実現しています。<br>
+<br>
+・WinNT系限定ですが、OSのファイルシステムドライバを介さず<br>
+  に直接ディスクイメージを参照する指定を追加しました。これ<br>
+  と関連してディスクイメージファイルの仮想ディレクトリも<br>
+  追加しています。<br>
+  ただし、現在はディレクトリの表示のみです(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1012">1012.　<b><font color="#000000">PPx 0.34 beta 2</font></b>　TORO　　<font size="2">2004/01/11 (日) 21:35</font><br>
+<blockquote>0.34 beta でリソースリークを起こしてました。<br>
+PPc で描画する度に GDI リソースがどんどん消費されるので<br>
+できるだけ早く beta 2 に更新するか 0.33+10以前に<br>
+戻してくださいm(__)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1011">1011.　<b><font color="#000000">PPx 0.34 beta</font></b>　TORO　　<font size="2">2004/01/10 (土) 20:30</font><br>
+<blockquote>PPx 0.34 beta です<br>
+0.34 として公開する予定でしたが、最後になって PPv の<br>
+遅延処理等の問題が見つかり、修正したため念のために<br>
+beta として公開します。<br>
+<br>
+アイコン表示時のチューニング、クリック位置の判定の調節、<br>
+壁紙表示時の表示ミス修正、GUIカスタマイザの強化等、<br>
+こまごまとどっさり修正しました(^^;<br>
+<br>
+尚、仮想ディレクトリ関係でいくつか新しく対応したのがあり<br>
+ますが、エントリ表示のみの対応ですし、確認している部分<br>
+もありますので 0.34正式版の時に説明します(^^</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1010">1010.　<b><font color="#000000">PPx 0.33+10</font></b>　TORO　　<font size="2">2003/12/30 (火) 22:29</font><br>
+<blockquote>+10 です(^^;<br>
+PPc の次の２点を修正しました。<br>
+<br>
+・0.33+9でエントリ数が0のディレクトリの更新動作が<br>
+おかしくなった<br>
+・エントリ表示の書式に W を用いたときに表示しきれ<br>
+ない部分があった</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1009">1009.　<b><font color="#000000">PPx 0.33+9</font></b>　TORO　　<font size="2">2003/12/27 (土) 21:51</font><br>
+<blockquote>+9 です。これで問題がなかったら 0.34 にしようと思います。<br>
+<br>
+細かい部分のチューニング＆ソースの整理がメインですが、一部<br>
+機能追加をしています。<br>
+<br>
+・%# で詳細指定ができるようになりました。例えば %#FDC で<br>
+　フルパス名の列挙になります。<br>
+<br>
+・PPcの一覧表示の表示書式にアイコン表示「N」を追加しました。<br>
+ 例えば次のような指定で一覧にアイコンが表示されます。<br>
+<br>
+MC_celS    = {<br>
+icon    = Nw40F10,5z11S1T8s1<br>
+}<br>
+<br>
+ 本当は、0.34以降でつける予定だったのですが、下ごしらえと<br>
+ していろいろ準備していたら、動いてしまったのでそのまま<br>
+ 使えるようにしておきました(^^;。<br>
+ 細かい検証はしていないので、動作異常や異常終了などが<br>
+ 起きたら元に戻してください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1008">1008.　<b><font color="#000000">PPx 0.33+8</font></b>　TORO　　<font size="2">2003/12/23 (火) 22:27</font><br>
+<blockquote>+8 です。<br>
+<br>
+PPc の窓の連結がおかしいとの話ですので調節しました。<br>
+そのほか、おかしいところがいくつかあったので修正しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1007">1007.　<b><font color="#000000">Re^2: PPCの表示</font></b>　TORO　　<font size="2">2003/12/21 (日) 20:52</font><br>
+<blockquote>いろいろ試していますが、なかなかいい方法がないため、<br>
+とりあえず暫定の対策を入れておきます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1006">1006.　<b><font color="#000000">PPx 0.33+7</font></b>　TORO　　<font size="2">2003/12/21 (日) 20:51</font><br>
+<blockquote>+7 を公開しました。<br>
+<br>
+壁紙関係でパレットがおかしい部分があったのを修正したついでに、<br>
+明るさ調節と、ちらつき対策指定を追加しました。<br>
+ちらつき対策は現在負荷が高いため、もうすこしいじる予定です。<br>
+<br>
+また、WinXP 等で窓上にゴミが残る件について、暫定として<br>
+アクティブになったときに再描画するようにしてあります。<br>
+<br>
+そのほか、ちらつき対策の確認用コードがはいった PPc を<br>
+PPCSE.EXE として同梱してあります (^^。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1005">1005.　<b><font color="#000000">PPx 0.33+6</font></b>　TORO　　<font size="2">2003/12/14 (日) 18:08</font><br>
+<blockquote>+6 です。<br>
+<br>
+機能強化は今回までで一休憩にして、0.37 までチューニング<br>
+する予定です。<br>
+<br>
+・BREGEXP.DLL(http://www.hi-ho.ne.jp/babaq/bregexp.html<br>
+)<br>
+を使ったファイルマスクの正規表現ができるようになりました。<br>
+「/〜/」と両端に「/」を付加すると正規表現指定になります。<br>
+<br>
+・X_unbg を 1にするとUNxxx.DLLによる圧縮・解凍をPPtrayで<br>
+実行するようになり、PPcが占有されなくなります。<br>
+<br>
+・X_bg に窓の半透明化指定を追加しています。<br>
+<br>
+・更新状態表示の解除コマンドを追加しています(*clearchange)<br>
+今回は削除状態表示だけは消去できません。<br>
+<br>
+・[O]に１窓内比較を追加しました。ファイルの大きさが同じものや<br>
+コメントが一致するものをマークすることができます。<br>
+<br>
+・\[O]にMD値とファイル所有者をコメントにする項目を追加しました。<br>
+<br>
+・ファイルをドラッグでマークできるようになりました。<br>
+<br>
+・PPcust の全般タグを２つに分け、一方は項目一覧方式の設定で<br>
+選べるようになりました。前より項目の追加が簡単になったので、<br>
+テキスト方式に比べて、追加が遅れることが多少解消できると<br>
+思います(^^;<br>
+また、チェックボックス等の見栄えが悪いですが、Win95 でも<br>
+使えるようにするために簡単なものとしました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1004">1004.　<b><font color="#000000">Re: PPCの表示</font></b>　TORO　　<font size="2">2003/12/11 (木) 22:45</font><br>
+<blockquote>&gt; WIndowsの設定で，&quot;ドラッグ中にウィンドウ内容を表示する&quot;<br>
+&gt;としてPPCの上を別のウィンドウがズリズリと移動すると，<br>
+&gt;PPCにゴミが残ることがあるんですが，対策できないでしょうか...<br>
+<br>
+少し試してみましたが、ゴミは出ませんでした。<br>
+ゴミが出る場所はだいたい似たような場所ですか？<br>
+また、フォントの種類やサイズに限定した現象かもしれないので<br>
+これらを教えてもらえないでしょうか。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1003">1003.　<b><font color="#000000">PPCの表示</font></b>　XAX　　<font size="2">2003/12/10 (水) 06:37</font><br>
+<blockquote>WIndowsの設定で，&quot;ドラッグ中にウィンドウ内容を表示する&quot;としてPPCの上を別のウィンドウがズリズリと移動すると，PPCにゴミが残ることがあるんですが，対策できないでしょうか...<br>
+今まではドラッグ中の表示を切っていたんで問題なかったんですが，表示を入れる必要性が出てきたので...<br>
+<br>
+ちなみに，OSはXP Proです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1002">1002.　<b><font color="#000000">Re^4: [PPC] ディレクトリの表示について</font></b>　TORO　　<font size="2">2003/12/08 (月) 22:50</font><br>
+<blockquote>&gt; 最近のは認識できてなかったです。<br>
+&gt; つまらないことを聞いてしまい、申し訳ありませんでしたm(_ _)m<br>
+&gt; <br>
+&gt; 利用者として、<br>
+&gt; きちんとリリースノート読むようにしないとダメですね(^_^;<br>
+<br>
++n 系は正式公開版でないので、あまり気にしてません。<br>
+これが正式公開版に載っている内容だとかなり気にしますが(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1001">1001.　<b><font color="#000000">TAALT 1.3 キー割当て変更版</font></b>　TORO　　<font size="2">2003/12/08 (月) 22:48</font><br>
+<blockquote>某要望から TAALT 1.3 キー割当て変更版を公開しました。<br>
+<br>
+ウィンドウの移動が Alt+Ctrl+方向キーで行えます。<br>
+<br>
+尚、リンクは TAALT の説明の一番最後にありますので<br>
+見過ごしの無いように(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="1000">1000.　<b><font color="#000000">Re^3: [PPC] ディレクトリの表示について</font></b>　kaede　　<font size="2">2003/12/07 (日) 22:30</font><br>
+<blockquote>&gt; &gt; 0.33+2 で XC_sdir が追加されています。これを１を指定<br>
+&gt; あ、分離しないは 0 でした(^^;<br>
+<br>
+なんと、いつのまに(^_^;<br>
+<br>
+.cfgの内容は、かなり前(0.30くらい？)に<br>
+一度はじっくり読んだのですが、、<br>
+最近のは認識できてなかったです。<br>
+つまらないことを聞いてしまい、申し訳ありませんでしたm(_ _)m<br>
+<br>
+利用者として、<br>
+きちんとリリースノート読むようにしないとダメですね(^_^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="999">999.　<b><font color="#000000">Re^3: PPx 0.33+5(1)</font></b>　com-a　　<font size="2">2003/12/07 (日) 22:23</font><br>
+<blockquote>お返事ありがとうございます。<br>
+<br>
+&gt; あ、記号類はそのまま入力できませんでしたね(^^;<br>
+&gt; カスタマイザの「キー調査」で調べた V_Hxx の値を使って<br>
+&gt; ください。<br>
+&gt; この場合は、「V_HDC」で入力できます。<br>
+<br>
+あ、そうでした。<br>
+「\」の場合は「\\」か「%\」かなと思っていましたが、良く<br>
+考えたら「キーボードエミュレーション」だから、%\では<br>
+意味が違いますね。(^ ^;)<br>
+失礼しました。<br>
+<br>
+<br>
+&gt; 記号をそのまま使えるようにできるか調べてみます。<br>
+<br>
+ユーザーとしては嬉しい限りです。<br>
+でもまあ、V_Hxxを使うという仕様でもいいかも。<br>
+＃良く使いそうな記号だけカスタマイザでコメントアウトして<br>
+＃おくとか。(^ ^;)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="998">998.　<b><font color="#000000">Re^2: PPx 0.33+5(1)</font></b>　TORO　　<font size="2">2003/12/07 (日) 18:25</font><br>
+<blockquote>&gt; あとついでに、Chift+Uで反対窓に上記動作するように<br>
+&gt; \U    ,%k&quot;@U END %\ &amp;x ENTER&quot;<br>
+&gt; としてみましたが、%\による\マーク付加がうまくいきません。<br>
+&gt; 何か間違ってますでしょうか？(^ ^;)<br>
+<br>
+あ、記号類はそのまま入力できませんでしたね(^^;<br>
+カスタマイザの「キー調査」で調べた V_Hxx の値を使って<br>
+ください。<br>
+この場合は、「V_HDC」で入力できます。<br>
+<br>
+記号をそのまま使えるようにできるか調べてみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="997">997.　<b><font color="#000000">RUNASA 1.1+1</font></b>　TORO　　<font size="2">2003/12/07 (日) 18:17</font><br>
+<blockquote>RUNASA 1.1 + 1 です。<br>
+<br>
+起動がうまくいかないことの対策として、ちょっと動作を<br>
+変えてみました。ただし、実際に動かないものがこちらでは<br>
+ないため、検証はしていません。<br>
+<br>
+# 複数PC で RUNASA ショートカットの使い回しをしたい<br>
+# 要望が結構来ていますが、これは証明書方式で対処しようかと<br>
+# 考えてます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="996">996.　<b><font color="#000000">Re: PPx 0.33+5(2)</font></b>　com-a　　<font size="2">2003/12/07 (日) 03:01</font><br>
+<blockquote>&gt; ・各コマンド終了後のカーソル位置指定を追加(XC_acsr)<br>
+<br>
+確認OKです。(^ ^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="995">995.　<b><font color="#000000">Re: PPx 0.33+5(1)</font></b>　com-a　　<font size="2">2003/12/07 (日) 03:00</font><br>
+<blockquote>&gt; ・キーストロークエミュレーションを追加(%k)<br>
+<br>
+確認しました。<br>
+<br>
+Ctrl+Uにて、その書庫ファイル名のフォルダに解凍するよう、<br>
+^U    ,%k&quot;@U \DEL &amp;x ENTER&quot;<br>
+として動作確認しました。<br>
+<br>
+あとついでに、Chift+Uで反対窓に上記動作するように<br>
+\U    ,%k&quot;@U END %\ &amp;x ENTER&quot;<br>
+としてみましたが、%\による\マーク付加がうまくいきません。<br>
+何か間違ってますでしょうか？(^ ^;)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="994">994.　<b><font color="#000000">Re^2: [PPC] ディレクトリの表示について</font></b>　TORO　　<font size="2">2003/12/07 (日) 00:10</font><br>
+<blockquote>&gt; 0.33+2 で XC_sdir が追加されています。これを１を指定<br>
+あ、分離しないは 0 でした(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="993">993.　<b><font color="#000000">Re: [PPC] ディレクトリの表示について</font></b>　TORO　　<font size="2">2003/12/07 (日) 00:06</font><br>
+<blockquote>&gt; ディレクトリの場合は<br>
+&gt; 拡張子判別を無効にすることは出来ないのでしょうか？<br>
+<br>
+0.33+2 で XC_sdir が追加されています。これを１を指定<br>
+することで、ディレクトリの拡張子扱いを無効にし、分離せず<br>
+表示することができます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="992">992.　<b><font color="#000000">PPx 0.33+5(2)</font></b>　TORO　　<font size="2">2003/12/07 (日) 00:02</font><br>
+<blockquote>PPc 関連<br>
+<br>
+・各コマンド終了後のカーソル位置指定を追加(XC_acsr)<br>
++4 で [S]コマンド終了のカーソル位置を前のエントリ名と<br>
+同じにしましたが、やっぱり違和感があるので、XC_acsr で<br>
+選択できるようにしました。<br>
+<br>
+<br>
+PPv<br>
+・テキストの行数をバックグラウンドでカウントするようにした<br>
+行数カウントの遅延処理を追加しました。またチューニングを<br>
+していないので、マシンのスペックによって遅延処理が重すぎたり<br>
+することがあります。<br>
+<br>
+<br>
+PPc,PPv 共通(書庫内のテキストに書き忘れてました)<br>
+・起動時にコマンド実行(/k)を追加<br>
+ppc /r /k %Jc:\test\readme.txt *maskentry *.txt<br>
+等のような使い方ができるオプションを追加しました。<br>
+また、PPc,PPvにこの使い方に使いそうなコマンドを<br>
+いくつか追加しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="991">991.　<b><font color="#000000">PPx 0.33+5(1)</font></b>　TORO　　<font size="2">2003/12/06 (土) 23:50</font><br>
+<blockquote>+5 です。今回は根幹部分の修正が多いため、動作が<br>
+おかしくなっている可能性があります。<br>
+<br>
+・キーストロークエミュレーションを追加(%k)<br>
+　Windows のキーバッファにキーストロークを送り込む %K の<br>
+強化版です。%K でできなかった各種コマンドのメニュー選択<br>
+や、他のソフトの操作が可能です。ただし、自分自身に対して<br>
+時間待ち(NULL)をすることはできないので、そのときは<br>
+PPTray 等を介して行うことになります。<br>
+<br>
+例) PPc の %k&quot;s e enter&quot; で拡張子ソート<br>
+<br>
+・%C,%X,%F を使った場合、%Or を自動付加し選択<br>
+ファイル全てを処理するようにした<br>
+　今までマークしたファイルをすべて実行するには<br>
+%Or をつける必要がありましたが、上記マクロ文字を<br>
+使ったときは %Or を自動付加するようにしました。<br>
+逆に最初にマークしたもののみにするときは %Or- を<br>
+最後に付加します。<br>
+<br>
+・実行するコマンドにA_execに記載のものを使えるようにした<br>
+A_exec を使った簡単なエイリアスです。A_exec内の<br>
+マクロ文字の解釈は今のところ行っていません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="990">990.　<b><font color="#000000">[PPC] ディレクトリの表示について</font></b>　kaede　　<font size="2">2003/12/06 (土) 15:45</font><br>
+<blockquote>PPX、いつも使わせて頂いています。<br>
+<br>
+質問なのですが、<br>
+PPCの拡張子表示に関する部分で、<br>
+現在のデフォルトでは<br>
+「.」以下が4文字以内の場合は拡張子として認識、<br>
+という仕様だと思うのですが、<br>
+設定ファイルによって、<br>
+ディレクトリの場合は<br>
+拡張子判別を無効にすることは出来ないのでしょうか？<br>
+<br>
+ディレクトリの名前に「.」が含まれている場合に、<br>
+デフォルトではかなり見づらくなってしまいます。<br>
+<br>
+宜しくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="989">989.　<b><font color="#000000">Re^2: PPx 0.33+4</font></b>　TORO　　<font size="2">2003/12/02 (火) 22:06</font><br>
+<blockquote>&gt; 一点だけ・・<br>
+&gt; [F]ですが、実行後、デフォルトソート条件が無視されてしまい、<br>
+&gt; 順序がバラバラになってしまいました。(^ ^;)<br>
+&gt; Shift+[F]は問題ありません。<br>
+<br>
+確かにソート用のコードが間違って削除してしまってました(^^;<br>
+修正しますね(^^;;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="988">988.　<b><font color="#000000">Re^7: 【PPC】反対窓との入れ替え</font></b>　TORO　　<font size="2">2003/12/02 (火) 22:04</font><br>
+<blockquote><br>
+&gt; 個人的には窓を３枚開く事が多いので、現行仕様に一票。(^ ^;)<br>
+<br>
+了解しました、現状の方法で修正したのにします(^^。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="987">987.　<b><font color="#000000">Re: PPx 0.33+4</font></b>　com-a　　<font size="2">2003/12/02 (火) 03:12</font><br>
+<blockquote>・[F]でスクロールバーの表示が反映されない場合があったのを修正<br>
+・起動時で /bootid を併用しない /r は、最後にアクティブになったPPcを使用<br>
+・([S],\[S])ソート後のカーソル位置を調整した<br>
+<br>
+以上について、確認しました。<br>
+<br>
+一点だけ・・<br>
+[F]ですが、実行後、デフォルトソート条件が無視されてしまい、<br>
+順序がバラバラになってしまいました。(^ ^;)<br>
+Shift+[F]は問題ありません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="986">986.　<b><font color="#000000">Re^6: 【PPC】反対窓との入れ替え</font></b>　com-a　　<font size="2">2003/12/01 (月) 04:17</font><br>
+<blockquote>&gt; &gt; でも奇数個の窓を開いている時が結局困りません？<br>
+&gt; そのときは前後で調整ですね<br>
+<br>
+個人的には窓を３枚開く事が多いので、現行仕様に一票。(^ ^;)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="985">985.　<b><font color="#000000">Re^5: 【PPC】反対窓との入れ替え</font></b>　TORO　　<font size="2">2003/11/30 (日) 23:53</font><br>
+<blockquote>&gt; そうです、これを踏まえて再確認していたのですが、どうして<br>
+&gt; も[G]キーの時だけ挙動が異なるのです。<br>
+<br>
+確認しました。交換するときに基準としているPPcが違ってますね(^^;<br>
+合わせます(^^;<br>
+<br>
+&gt; &gt; # 必ずペア間にした方がわかりやすいのかもしれないですね。<br>
+&gt; <br>
+&gt; でも奇数個の窓を開いている時が結局困りません？<br>
+そのときは前後で調整ですね</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="984">984.　<b><font color="#000000">PPx 0.33+4</font></b>　TORO　　<font size="2">2003/11/30 (日) 23:47</font><br>
+<blockquote>+4 です。<br>
+<br>
+最後にアクティブになったPPcを把握できるようにし、<br>
+それに伴い、起動時のオプションで /r を使ったとき、<br>
+最後にアクティブになったPPcを用いるようになりました。<br>
+<br>
+また、*focus コマンドを追加しています。<br>
+　パラメータを指定していないときは、最後にアクティブに<br>
+なった PPc にフォーカスが当たり、PPc が起動していな<br>
+いときは PPc が起動します。<br>
+　パラメータ指定しているときは、タイトルバーの文字列を<br>
+検索して見つかったウィンドウにフォーカスが当たる／<br>
+無ければ指定のファイルを実行となります。<br>
+<br>
+そのほか、[S],[F]等の修正をしています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="983">983.　<b><font color="#000000">Re^4: 【PPC】反対窓との入れ替え</font></b>　com-a　　<font size="2">2003/11/30 (日) 02:57</font><br>
+<blockquote>&gt; 885の<br>
+<br>
+そうです、これを踏まえて再確認していたのですが、どうして<br>
+も[G]キーの時だけ挙動が異なるのです。<br>
+<br>
+例えば、A→B→C→Aと切り替えた後、[G]を押すと<br>
+　A窓にC窓の内容が反映される<br>
+　B窓にA窓の内容が反映される<br>
+　C窓はそのまま<br>
+となります。<br>
+<br>
+各窓の連結は解除状態で、[G]の挙動はパスの入れ替えが<br>
+設定されています。<br>
+＃はっきりと掴みきっていませんが、窓のZ順序は関係ない<br>
+＃気がします。<br>
+<br>
+一応CFGの内容を。<br>
+XC_swin    = {    ; 窓の連結、設定,状態保存値の順<br>
+A    = B000000000,1<br>
+B    = B000000000,2<br>
+C    = B000000000,3<br>
+D    = B000000000,4<br>
+E    = B000000000,5<br>
+F    = B000000000,6<br>
+G    = B000000000,7<br>
+H    = B000000000,8<br>
+}<br>
+＃状態保存値の順というのが、元々は上記のように1〜8と<br>
+＃奇麗に並んでいなかったので書き換えています。<br>
+<br>
+<br>
+&gt; # 必ずペア間にした方がわかりやすいのかもしれないですね。<br>
+<br>
+でも奇数個の窓を開いている時が結局困りません？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="982">982.　<b><font color="#000000">Re^6: 【PPx】エントリマスクについて</font></b>　com-a　　<font size="2">2003/11/30 (日) 02:47</font><br>
+<blockquote>&gt; ファイル管理の面倒さを軽減するためのツールだから、<br>
+&gt; そこが重要ではないかと(^^;<br>
+<br>
+もしかしてそんなこと思うのは自分だけではないかと、ちょっと<br>
+ビクビクしてました。(^ ^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="981">981.　<b><font color="#000000">Re^6: 【PPtray】ホットキーについて</font></b>　com-a　　<font size="2">2003/11/30 (日) 02:44</font><br>
+<blockquote>&gt; ですね。とりあえずアクティブなPPcを把握できるように<br>
+&gt; コーティング中です。<br>
+<br>
+ありがとうございます。m(_ _)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="980">980.　<b><font color="#000000">Re^3: 【PPC】反対窓との入れ替え</font></b>　TORO　　<font size="2">2003/11/29 (土) 23:02</font><br>
+<blockquote>&gt; &gt; 反対窓を決定する関数は１つだけなので、反対窓が関連する<br>
+&gt; &gt; 機能は全部同じ動作をします。<br>
+&gt; <br>
+&gt; 確認ですが、現在の仕様は以下で合っていますでしょうか？<br>
+<br>
+885の<br>
+&gt;キーボード（TABやShift+←→）による窓間移動の順番を<br>
+&gt;元に決めてます。基本的にA→B→C に移動したなら B<br>
+&gt;というように直前の窓になるはずです。<br>
+&gt;尚、連結した状態なら、AB,CD…とペアになってペア間の<br>
+&gt;反対窓が %2 相当になります。<br>
+<br>
+ですね。<br>
+# 必ずペア間にした方がわかりやすいのかもしれないですね。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="979">979.　<b><font color="#000000">Re^5: 【PPx】エントリマスクについて</font></b>　TORO　　<font size="2">2003/11/29 (土) 22:58</font><br>
+<blockquote>&gt; ＃なんか「面倒」という言葉を連発していると単なるモノグサ<br>
+&gt; ＃に見えてきますが(^ ^;<br>
+<br>
+ファイル管理の面倒さを軽減するためのツールだから、<br>
+そこが重要ではないかと(^^;<br>
+# ディレクトリの再読込時すると並び替えがもとに戻るので、<br>
+# Delete や Rename 等ですね</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="978">978.　<b><font color="#000000">Re^5: 【PPtray】ホットキーについて</font></b>　TORO　　<font size="2">2003/11/29 (土) 22:54</font><br>
+<blockquote>&gt; よくよく考えてみると、ダイレクトにx窓をアクティブにしたい<br>
+&gt; というよりは、一番最近まで使っていた窓をアクティブにしたい<br>
+&gt; という要望の方が強いですね。<br>
+<br>
+ですね。とりあえずアクティブなPPcを把握できるように<br>
+コーティング中です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="977">977.　<b><font color="#000000">Re^2: 【PPC】反対窓との入れ替え</font></b>　com-a　　<font size="2">2003/11/29 (土) 05:11</font><br>
+<blockquote>&gt; 反対窓を決定する関数は１つだけなので、反対窓が関連する<br>
+&gt; 機能は全部同じ動作をします。<br>
+<br>
+確認ですが、現在の仕様は以下で合っていますでしょうか？<br>
+<br>
+・窓の連結が指定されている場合はA-B,C-D...がそれぞれ<br>
+　反対窓同士の対応となる。<br>
+・窓の連結が指定されていない場合はZ順序に依存する。<br>
+<br>
+ファイルコピー等で表示されるフォルダ（%2の指定）で上記の<br>
+動作を確認しましたが、どうも[G]キーの動作は異なるようです。<br>
+ちょっと意味が異なるのでしょうか？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="976">976.　<b><font color="#000000">Re^4: 【PPx】エントリマスクについて</font></b>　com-a　　<font size="2">2003/11/29 (土) 04:37</font><br>
+<blockquote>&gt; 現状の Ctrl+F5 相当の動作に更新情報の初期化が加われば、<br>
+&gt; いいかもしれませんね。 <br>
+<br>
+こちらの方は意識していれば問題となることは少ないのですが、<br>
+<br>
+&gt; &gt; これもそうですね、マークが維持されるのはいいのですが、<br>
+&gt; &gt; カーソルも移動してくれないかなと・・・。<br>
+&gt; <br>
+&gt; これは、エントリマスクでカーソル位置を維持するように<br>
+&gt; 変更したとき(バグありですが(^^;)に試してみたんですが、<br>
+&gt; かえって違和感があったので、そのままにしてました。<br>
+<br>
+ソートしてから何らかのファイル操作を行った場合、その後<br>
+何らかの理由でデフォルトのソート表示に戻る事があります<br>
+よね？（具体的な条件が思い出せませんが(^ ^;）<br>
+その時、引き続きそのファイルを操作したい時、それがどこに<br>
+行ったのか探す必要が出てくるのが面倒かなと。<br>
+<br>
+他の例では、あるファイルを見つけてあるソート条件で並び替え<br>
+を思い付いた時、ソート後に最初に目をつけていたファイルを<br>
+探すのも面倒かなと。<br>
+<br>
+＃なんか「面倒」という言葉を連発していると単なるモノグサ<br>
+＃に見えてきますが(^ ^;<br>
+<br>
+<br>
+&gt; エクスプローラのソートを試したら、元のエントリを<br>
+&gt; 維持する動作になっているのでこちらが一般的<br>
+&gt; なんでしょうね(^^;<br>
+<br>
+以前、別のファイラを使っていた時、ソート時にエントリ追随<br>
+されて逆にとまどったことはありますので、追随した方が良い<br>
+のかどうかは人によるのかも知れません。(^ ^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="975">975.　<b><font color="#000000">Re^4: 【PPtray】ホットキーについて</font></b>　com-a　　<font size="2">2003/11/29 (土) 04:23</font><br>
+<blockquote>&gt; # 私はどれかの PPc にフォーカスが移動できたら、後は適当に<br>
+&gt; # TAB 等で移動すれば済んでしまうので。<br>
+<br>
+今のところそうしています。^^<br>
+<br>
+<br>
+&gt; # 同様に、タスクトレイに入れるっていうのもかえって不便に<br>
+&gt; # 感じます(^^;<br>
+<br>
+私もPPCをタスクトレイに入れるのは不便に思いますので、<br>
+PPtrayで何とかならないかなと思ったのが発端ですね。<br>
+<br>
+<br>
+&gt; ホットキー付き .lnk ファイル(プロパティでショートカット<br>
+&gt; キーを指定した lnk ファイル)を登録しておいて、その lnk から<br>
+&gt; *selectppx を実行したり、PPx を起動したりすればいいかも<br>
+&gt; しれませんね。もう一工夫必要ですが。<br>
+<br>
+よくよく考えてみると、ダイレクトにx窓をアクティブにしたい<br>
+というよりは、一番最近まで使っていた窓をアクティブにしたい<br>
+という要望の方が強いですね。<br>
+例：x窓であるファイルを開く→対応アプリが開く→しばらく作業<br>
+　　→その内に別のアプリも使いだす→元のPPCに戻りたい<br>
+　（現状ではPPC.lnkにショートカットを割り当てているので<br>
+　　A窓については即時起動・アクティブは出来ますが、B窓以降<br>
+　　はTABキーで毎度検索が必要・・・）<br>
+<br>
+仮に、アクティブにしたい任意窓選べるようになったとしても、<br>
+いつもいつもPPCアクティブ時にどの窓をアクティブにするのか<br>
+選択するのも面倒な場面も多いと思いますし。(^ ^;)<br>
+<br>
+<br>
+&gt; &gt; こちらではPPCが起動しているとshell窓が開かないみたいです。<br>
+&gt; &gt; ＃TOROさんが仰るフォーカス関係でしょうか？<br>
+&gt; こちらでは、入力窓自体は左肩に開くのですが、フォーカス移動<br>
+&gt; しないという状態です。<br>
+<br>
+どうやら当方ではダブルクリックのタイミングがシビアなよう<br>
+です。大抵の場合はダブルクリックしてもPPC窓リストが<br>
+表示されてしまうのですが、たまにshell窓が左上に表示され<br>
+ます。<br>
+<br>
+・・・原因判明。<br>
+タスクバーの位置を左か上にしているとなかなか開かなくなり<br>
+ます。右側の場合は比較的開き易く、下側の場合はほぼ問題<br>
+ありません。(^ ^;<br>
+ちなみに、フォーカスは問題無く設定されています。<br>
+WinXPだからかも？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="974">974.　<b><font color="#000000">Re^3: お知らせ</font></b>　TORO　　<font size="2">2003/11/28 (金) 23:24</font><br>
+<blockquote>&gt; 私も覗いてきました。昼頃。<br>
+&gt; ＃その時にPPtrayの存在に気がついたのは内緒です。(^ ^;)<br>
+<br>
+私自身も当初の使い方をしてなくて、GUI 版「PPB /C」の使い方<br>
+しかしていないかも(^^;<br>
+<br>
+ <br>
+&gt; ところであちらの皆さん、逆にこちらに書き込みに来たら<br>
+&gt; マズイのでしょうか？(^ ^;)<br>
+&gt; ＃いや、マズくはないでしょうけど。<br>
+<br>
+雰囲気とか慣れとかありますから、どちらでもいいじゃないかと<br>
+思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="973">973.　<b><font color="#000000">Re^3: 【PPtray】ホットキーについて</font></b>　TORO　　<font size="2">2003/11/28 (金) 23:19</font><br>
+<blockquote>&gt; 私としては他のアプリケーション実行時、ダイレクトに任意の<br>
+&gt; PPC窓をアクティブにしたいなと思ったのです。<br>
+<br>
+そういった使い方は全然思いつかなかったです(^^;<br>
+# 私はどれかの PPc にフォーカスが移動できたら、後は適当に<br>
+# TAB 等で移動すれば済んでしまうので。<br>
+# 同様に、タスクトレイに入れるっていうのもかえって不便に<br>
+# 感じます(^^;<br>
+<br>
+&gt; ＃PPC専用ランチャみたいな使い方。<br>
+&gt; ＃ただ、今気が付きましたが、PPCが起動していない状態では<br>
+&gt; ＃PPtray以外の方法で起動するしかないので・・・自分の<br>
+<br>
+ホットキー付き .lnk ファイル(プロパティでショートカット<br>
+キーを指定した lnk ファイル)を登録しておいて、その lnk から<br>
+*selectppx を実行したり、PPx を起動したりすればいいかも<br>
+しれませんね。もう一工夫必要ですが。<br>
+<br>
+&gt; こちらではPPCが起動しているとshell窓が開かないみたいです。<br>
+&gt; ＃TOROさんが仰るフォーカス関係でしょうか？<br>
+こちらでは、入力窓自体は左肩に開くのですが、フォーカス移動<br>
+しないという状態です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="972">972.　<b><font color="#000000">Re^3: 【PPx】エントリマスクについて</font></b>　TORO　　<font size="2">2003/11/28 (金) 23:09</font><br>
+<blockquote>&gt; カーソル位置について、私の意図が書ききれていませんでした。<br>
+&gt; (^ ^;)<br>
+<br>
+意図は読み取っていたんですが、それに対する返事を<br>
+書き忘れてました(^^;<br>
+<br>
+<br>
+&gt; ということで、F5キーを押して表示をまっさらにしつつ<br>
+&gt; カーソル位置やマークを維持（マークしていたファイルが<br>
+&gt; 消去されている場合はもちろん維持の対象外）出来ないか<br>
+&gt; なと思いまして。(^ ^;)<br>
+<br>
+現状の Ctrl+F5 相当の動作に更新情報の初期化が加われば、<br>
+いいかもしれませんね。 <br>
+<br>
+ <br>
+&gt; これもそうですね、マークが維持されるのはいいのですが、<br>
+&gt; カーソルも移動してくれないかなと・・・。<br>
+<br>
+これは、エントリマスクでカーソル位置を維持するように<br>
+変更したとき(バグありですが(^^;)に試してみたんですが、<br>
+かえって違和感があったので、そのままにしてました。<br>
+<br>
+エクスプローラのソートを試したら、元のエントリを<br>
+維持する動作になっているのでこちらが一般的<br>
+なんでしょうね(^^;<br>
+<br>
+もう一度変更して試してみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="971">971.　<b><font color="#000000">Re^2: お知らせ</font></b>　com-a　　<font size="2">2003/11/28 (金) 00:20</font><br>
+<blockquote>私も覗いてきました。昼頃。<br>
+＃その時にPPtrayの存在に気がついたのは内緒です。(^ ^;)<br>
+<br>
+ところであちらの皆さん、逆にこちらに書き込みに来たら<br>
+マズイのでしょうか？(^ ^;)<br>
+＃いや、マズくはないでしょうけど。<br>
+<br>
+個人的に、チェックする場所が増えてしまう。(^ ^;)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="970">970.　<b><font color="#000000">Re^2: 【PPtray】ホットキーについて</font></b>　com-a　　<font size="2">2003/11/28 (金) 00:07</font><br>
+<blockquote>&gt; &gt; PPtray動作時、タスクトレイのPPtrayをクリックするとPPC一覧<br>
+&gt; &gt; が表示されますが、これをホットキーで同機能を実行するよう<br>
+&gt; &gt; に出来ますでしょうか？<br>
+&gt; <br>
+&gt; *selectppx が該当コマンドですので、これを登録すると使えます。<br>
+<br>
+あいや、これはPPC上でしか通用しませんよね？<br>
+私としては他のアプリケーション実行時、ダイレクトに任意の<br>
+PPC窓をアクティブにしたいなと思ったのです。<br>
+＃PPC専用ランチャみたいな使い方。<br>
+＃ただ、今気が付きましたが、PPCが起動していない状態では<br>
+＃PPtray以外の方法で起動するしかないので・・・自分の<br>
+＃目的を実現するのはちょっと難しくなってきました。(^ ^;)<br>
+<br>
+<br>
+&gt; &gt; あと、ダブルクリックでShell機能が使えるとの事ですが、<br>
+&gt; &gt; 私の環境では何も起こりません。<br>
+&gt; <br>
+&gt; 昔はできていたんですが、カスタマイズ可能にしたときに<br>
+&gt; 初期カスタマイズに登録するのを忘れてしまったようです(^^;<br>
+&gt; こんな感じですね。<br>
+&gt; MT_icon    = {<br>
+&gt; LD_ICON    ,%E<br>
+&gt; }<br>
+&gt; # 何か、フォーカスとかがおかしいみたいです(^^;<br>
+&gt; # ちょっといじってみます<br>
+<br>
+こちらではPPCが起動しているとshell窓が開かないみたいです。<br>
+＃TOROさんが仰るフォーカス関係でしょうか？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="969">969.　<b><font color="#000000">Re^2: 【PPV】文字列検索について</font></b>　com-a　　<font size="2">2003/11/27 (木) 23:59</font><br>
+<blockquote>&gt; これは、意図した動作です。<br>
+&gt; 私はバイナリファイルの文字列検索をすることが多いので、<br>
+&gt; 多バイト文字を考慮しない検索の方が便利なのです。<br>
+<br>
+やはり！(^ ^;;;<br>
+＃そう思ったんですが、書いとけば良かった。^^;<br>
+<br>
+<br>
+&gt; 機能強化するときにこの辺の処理を選択できるように<br>
+&gt; しようかと思ってます。<br>
+<br>
+単発で1byte文字を文字列として検索することは少ないと思い<br>
+ますので、ヘルプに書いておくだけで十分かも。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="968">968.　<b><font color="#000000">Re^3: 【PPC】反対窓との入れ替え</font></b>　com-a　　<font size="2">2003/11/27 (木) 23:53</font><br>
+<blockquote>&gt; [G]キーを押しっぱなしにしたりすると、入れ替え処理中に<br>
+&gt; 次の入れ替え要求が来てしまって、同じになってしまいます。<br>
+&gt; 対処する予定です。<br>
+<br>
+なるほど、現象の仕組みが解りました。<br>
+この設定の場合、元々処理が低速ですから仕方ないですね。<br>
+＃というか、元々低速なのを承知で実装して頂いたので、<br>
+＃対処お願いしますなんて言えません。(^ ^;;;<br>
+＃窓３枚時の対処法を考えるのが先決かも。ちと考えてみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="967">967.　<b><font color="#000000">Re^2: 【PPx】エントリマスクについて</font></b>　com-a　　<font size="2">2003/11/27 (木) 23:49</font><br>
+<blockquote>カーソル位置について、私の意図が書ききれていませんでした。<br>
+(^ ^;)<br>
+<br>
+カーソル位置の保持というのは、例えばA.TXTの上にカーソルが<br>
+存在する状態で何らかの理由で画面の更新イベントが発生した<br>
+場合、A.TXTが画面の別の位置に移動してしまう時にカーソルも<br>
+同じように移動する・・・A.TXTをカーソルで選択したままの<br>
+状態にしたいということです。<br>
+<br>
+<br>
+&gt; F5 でなくて、Ctrl+F5ならマークが保持されます。<br>
+<br>
+ということで、F5キーを押して表示をまっさらにしつつ<br>
+カーソル位置やマークを維持（マークしていたファイルが<br>
+消去されている場合はもちろん維持の対象外）出来ないか<br>
+なと思いまして。(^ ^;)<br>
+<br>
+<br>
+&gt; ソートの方も、Shift+S でなくて S の方を使うと再読込<br>
+&gt; しないのでマークなどが維持されます。<br>
+<br>
+これもそうですね、マークが維持されるのはいいのですが、<br>
+カーソルも移動してくれないかなと・・・。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="966">966.　<b><font color="#000000">Re: 【PPtray】ホットキーについて</font></b>　TORO　　<font size="2">2003/11/27 (木) 22:50</font><br>
+<blockquote>&gt; PPtray動作時、タスクトレイのPPtrayをクリックするとPPC一覧<br>
+&gt; が表示されますが、これをホットキーで同機能を実行するよう<br>
+&gt; に出来ますでしょうか？<br>
+<br>
+*selectppx が該当コマンドですので、これを登録すると使えます。<br>
+<br>
+ <br>
+&gt; あと、ダブルクリックでShell機能が使えるとの事ですが、<br>
+&gt; 私の環境では何も起こりません。<br>
+<br>
+昔はできていたんですが、カスタマイズ可能にしたときに<br>
+初期カスタマイズに登録するのを忘れてしまったようです(^^;<br>
+こんな感じですね。<br>
+MT_icon    = {<br>
+LD_ICON    ,%E<br>
+}<br>
+# 何か、フォーカスとかがおかしいみたいです(^^;<br>
+# ちょっといじってみます</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="965">965.　<b><font color="#000000">Re: 【PPV】文字列検索について</font></b>　TORO　　<font size="2">2003/11/27 (木) 22:41</font><br>
+<blockquote>&gt; 文字列検索で、例えばF1でPPCのヘルプを開き、&quot;A&quot;の文字を<br>
+&gt; 検索してみると、アルファベットを全く含まない７行目が<br>
+&gt; ヒットしてしまいます。（多分、&quot;、&quot;の２バイト目にヒット<br>
+&gt; している。）<br>
+<br>
+これは、意図した動作です。<br>
+私はバイナリファイルの文字列検索をすることが多いので、<br>
+多バイト文字を考慮しない検索の方が便利なのです。<br>
+<br>
+機能強化するときにこの辺の処理を選択できるように<br>
+しようかと思ってます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="964">964.　<b><font color="#000000">Re^2: 【PPC】反対窓との入れ替え</font></b>　TORO　　<font size="2">2003/11/27 (木) 22:36</font><br>
+<blockquote>&gt; 補足ですが、XC_gmodが0の場合は対象となる窓がどれになるのか<br>
+&gt; よく分からない状態だけなのですが、1の場合は両窓共に同じ<br>
+&gt; フォルダになってしまう場合があります。<br>
+<br>
+[G]キーを押しっぱなしにしたりすると、入れ替え処理中に<br>
+次の入れ替え要求が来てしまって、同じになってしまいます。<br>
+対処する予定です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="963">963.　<b><font color="#000000">Re: 【PPC】反対窓との入れ替え</font></b>　TORO　　<font size="2">2003/11/27 (木) 22:34</font><br>
+<blockquote>&gt; [G]キーによる窓内容入れ替えなのですが、PPCを３枚開いて<br>
+&gt; いる状態で実行すると思ったような動作になりません。<br>
+<br>
+反対窓を決定する関数は１つだけなので、反対窓が関連する<br>
+機能は全部同じ動作をします。<br>
+<br>
+３枚以上開いているときの反対窓の決定方法は、いいアイデアが<br>
+浮かばないので、何かいい案を教えてもらったらそっちに<br>
+乗り換えるかも(^^;。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="962">962.　<b><font color="#000000">Re: 【PPx】エントリマスクについて</font></b>　TORO　　<font size="2">2003/11/27 (木) 22:28</font><br>
+<blockquote>&gt; ・エントリマスク設定後、カーソルキーを動かすまでスクロール<br>
+&gt; 　バーが更新されない。（表示されていなかったのが急に表示<br>
+&gt; 　されたりする。）<br>
+&gt; ・エントリマスク設定を連続して繰り返すとカーソル位置が<br>
+&gt; 　よく分からない位置に移動される。<br>
+<br>
+どちらも確認しました、修正します。<br>
+# ２つめのは、マスク実行前のエントリに移動しようとして<br>
+# 失敗してます(^^;<br>
+<br>
+<br>
+&gt; ソートした時や画面の更新(F5)が為された時も、元々カーソル<br>
+&gt; が選択していたファイルの選択を保持して欲しいかなと思い<br>
+&gt; ます。<br>
+&gt; （F5キーによる更新の時はマークのクリアもしたく無い時が<br>
+&gt; あります。）<br>
+<br>
+F5 でなくて、Ctrl+F5ならマークが保持されます。<br>
+ソートの方も、Shift+S でなくて S の方を使うと再読込<br>
+しないのでマークなどが維持されます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="961">961.　<b><font color="#000000">【PPtray】ホットキーについて</font></b>　com-a　　<font size="2">2003/11/27 (木) 17:31</font><br>
+<blockquote>PPtray動作時、タスクトレイのPPtrayをクリックするとPPC一覧<br>
+が表示されますが、これをホットキーで同機能を実行するよう<br>
+に出来ますでしょうか？<br>
+<br>
+あと、ダブルクリックでShell機能が使えるとの事ですが、<br>
+私の環境では何も起こりません。<br>
+何か設定か条件が足りないのでしょうか？<br>
+<br>
+よろしくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="960">960.　<b><font color="#000000">Re: 【PPC】反対窓との入れ替え</font></b>　com-a　　<font size="2">2003/11/27 (木) 17:25</font><br>
+<blockquote>&gt; [G]キーによる窓内容入れ替えなのですが、PPCを３枚開いて<br>
+&gt; いる状態で実行すると思ったような動作になりません。<br>
+<br>
+補足ですが、XC_gmodが0の場合は対象となる窓がどれになるのか<br>
+よく分からない状態だけなのですが、1の場合は両窓共に同じ<br>
+フォルダになってしまう場合があります。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="959">959.　<b><font color="#000000">【PPV】文字列検索について</font></b>　com-a　　<font size="2">2003/11/27 (木) 16:22</font><br>
+<blockquote>連続ですみません。<br>
+<br>
+文字列検索で、例えばF1でPPCのヘルプを開き、&quot;A&quot;の文字を<br>
+検索してみると、アルファベットを全く含まない７行目が<br>
+ヒットしてしまいます。（多分、&quot;、&quot;の２バイト目にヒット<br>
+している。）<br>
+<br>
+ご確認願います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="958">958.　<b><font color="#000000">【PPC】エントリマスクについて</font></b>　com-a　　<font size="2">2003/11/27 (木) 16:13</font><br>
+<blockquote>タイトル間違ってました。(^ ^;)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="957">957.　<b><font color="#000000">【PPC】反対窓との入れ替え</font></b>　com-a　　<font size="2">2003/11/27 (木) 16:13</font><br>
+<blockquote>[G]キーによる窓内容入れ替えなのですが、PPCを３枚開いて<br>
+いる状態で実行すると思ったような動作になりません。<br>
+<br>
+以前<br>
+http://hpmboard1.nifty.com/cgi-bin/thread.cgi?user_id=GHE00667&amp;disp_no=866&amp;log_no=866&amp;msg_per_page=50&amp;def=10<br>
+<br>
+ファイルコピーの際の反対窓についてお話ししていましたが、<br>
+これに似たような感じです。（イメージ伝わりますでしょうか？<br>
+(^ ^;)）<br>
+<br>
+ご確認お願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="956">956.　<b><font color="#000000">【PPx】エントリマスクについて</font></b>　com-a　　<font size="2">2003/11/27 (木) 15:57</font><br>
+<blockquote>毎度お世話になっています。<br>
+<br>
+エントリマスクで気が付いたのですが、ワイルド指定内容に<br>
+よっては（表示されるファイル数によっては）スクロールバー<br>
+の移動範囲が変更されたり消えたりしますが、この時に以下の<br>
+現象が確認出来ます。<br>
+<br>
+・エントリマスク設定後、カーソルキーを動かすまでスクロール<br>
+　バーが更新されない。（表示されていなかったのが急に表示<br>
+　されたりする。）<br>
+・エントリマスク設定を連続して繰り返すとカーソル位置が<br>
+　よく分からない位置に移動される。<br>
+<br>
+<br>
+２つ目の件ですが、個人的には元々カーソルが選択していた<br>
+ファイルを選択しておいて欲しいです。（もちろん、マスク<br>
+指定方法によっては表示されなくなってしまうファイルの場合<br>
+は、フォルダ先頭等に移動するしかありませんが。）<br>
+<br>
+これに関連するかも知れないのでついでに書きますと(^ ^;)、<br>
+ソートした時や画面の更新(F5)が為された時も、元々カーソル<br>
+が選択していたファイルの選択を保持して欲しいかなと思い<br>
+ます。<br>
+（F5キーによる更新の時はマークのクリアもしたく無い時が<br>
+あります。）</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="955">955.　<b><font color="#000000">はじめまして</font></b>　son　　<font size="2">2003/11/26 (水) 23:13</font><br>
+<blockquote>エイリアスキーですか！ありがとうございます！</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="954">954.　<b><font color="#000000">Re: お知らせ</font></b>　TORO　　<font size="2">2003/11/26 (水) 23:11</font><br>
+<blockquote>&gt; 作者さま、開発お疲れ様です<br>
+&gt; <br>
+&gt; ソフ板に専用スレが立ちました<br>
+&gt; よろしくおねがいします<br>
+<br>
+連絡ありがとうございます。<br>
+そちらに書き込むかはわかりませんが、覗くようにします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="953">953.　<b><font color="#000000">Re: はじめまして</font></b>　com-a　　<font size="2">2003/11/26 (水) 14:39</font><br>
+<blockquote>&gt; PPVでENTERキーに確認せずに終了を割り当てたいのですが<br>
+&gt; PPCUST→キー割り当ての「割り当てる内容」のところには<br>
+&gt; どのように書けばいいのでしょうか<br>
+<br>
+私は<br>
+<br>
+種類→KV_main<br>
+使用キー→ENTER<br>
+割り当てる内容→Q（エイリアスキーを選択）<br>
+<br>
+で実現出来ていますよ。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="952">952.　<b><font color="#000000">はじめまして</font></b>　son　　<font size="2">2003/11/26 (水) 14:27</font><br>
+<blockquote>PPVでENTERキーに確認せずに終了を割り当てたいのですが<br>
+PPCUST→キー割り当ての「割り当てる内容」のところには<br>
+どのように書けばいいのでしょうか</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="951">951.　<b><font color="#000000">お知らせ</font></b>　ミスターPPx　　<font size="2">2003/11/26 (水) 09:01</font><br>
+<blockquote>作者さま、開発お疲れ様です<br>
+<br>
+ソフ板に専用スレが立ちました<br>
+よろしくおねがいします<br>
+http://pc2.2ch.net/test/read.cgi/software/1069774436/l50</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="950">950.　<b><font color="#000000">PPx 0.33+3</font></b>　TORO　　<font size="2">2003/11/22 (土) 21:56</font><br>
+<blockquote>0.33+3 を公開しました。<br>
+<br>
++2で拡張子の表示がされなくなる場合があったのを修正しました。<br>
+<br>
+また、WinXP のバグ検出方法を変えました。<br>
+検出がうまくいかない場合もありますので一度、漢字を含む<br>
+ファイル名で [R]ename 窓を開いてみて、正しく拡張子が<br>
+除かれた状態で範囲選択がされているのを確認してみてください。<br>
+<br>
+そのほか、ちょっとした強化を行っています。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="949">949.　<b><font color="#000000">PPx 0.33+2</font></b>　TORO　　<font size="2">2003/11/15 (土) 23:08</font><br>
+<blockquote>+2 です。<br>
+<br>
+修正が主ですが＋αな部分があります。<br>
+<br>
+・今までファイルの読み込みは10Mを限界にしてましたが、<br>
+ 今回からは10M超の時は制限するかどうかを選択できる<br>
+ 様になりました。ただし、あまりに巨大なファイルを<br>
+ 読み込んだときの動作はまだ検証していません。<br>
+<br>
+・ディレクトリの「.」以降を拡張子と見なして分離するか<br>
+ どうかの設定を追加しました(XC_sdir)。<br>
+<br>
+・試しに、エクスプローラの新規作成もどきを用意してみま<br>
+ した(\[K])。<br>
+ 正しい方法を使っていないためにうまくいかないことが<br>
+ あったり、テンプレートを使わなかったりしますが<br>
+ エクスプローラとほぼ同じ種類のファイルを選択して<br>
+ 作成できます。<br>
+<br>
+ 尚、この機能は、正式に登録するか外付けにするか<br>
+ 検討中です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="948">948.　<b><font color="#000000">Re^3: TAALT v1.3の不具合について</font></b>　TORO　　<font size="2">2003/11/15 (土) 22:54</font><br>
+<blockquote>&gt; 念の為に、TAALTを起動させないで同じ操作を行った場合は、Alt押下で<br>
+&gt; 「ファイル」ボタン選択になりますが、改行動作にはなりません。<br>
+<br>
+詳細ありがとうございます。現象の確認ができました。<br>
+Win9x 系ならどれでも起きる現象のようです。<br>
+(Win2000では再現できませんでした。)<br>
+<br>
+いま、修正を考えていますが、いい対策方法が見つからないため、<br>
+ちょっと時間が掛かりそうです(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="947">947.　<b><font color="#000000">Re^2: TAALT v1.3の不具合について</font></b>　ZZ　　<font size="2">2003/11/15 (土) 10:49</font><br>
+<blockquote>お返事を戴き、ありがとうございます。<br>
+使用OS:Win98<br>
+使用ソフト：Word2000、メモ帳の２種類で同じ現象が生じます。<br>
+　　　　　　ワードパッドやPower書院では、この現象は生じません。<br>
+使用IME:ATOK12、IME2000、書院IMEの３種類で同じ現象が生じます。<br>
+<br>
+キー入力例：<br>
+Word2000起動　→　Aキー押下（ローマ字入力なので「あ」を表示）<br>
+→　Enter押下で「あ」確定　→　直後にAltを押下すると改行動作<br>
+になる。<br>
+ <br>
+&gt;「直後にAltを押下」というのは、Enter キーが元に戻ってから<br>
+&gt; Altキーを押せばいいのでしょうか？また、Enter キーを離して<br>
+&gt; から、何秒かたってAltキーを押しても、同様の症状になります<br>
+&gt; か？<br>
+<br>
+「直後」とは、「Enterキーで文字を確定した後、Altキーを押した時」<br>
+の意味です。<br>
+Enterキー押下で文字確定　→　Enterキーから指を離す　→　Altキー<br>
+を単独で押下　の順です。<br>
+Enterキーから指を離してからAltキーを押すまでの時間とは無関係に発生します。<br>
+Enterキーで改行を行った後では、この現象（Altキー押下による改行）<br>
+は生じません。<br>
+Enterキー押下による文字確定後のAltキー押下時のみに発生します。<br>
+<br>
+念の為に、TAALTを起動させないで同じ操作を行った場合は、Alt押下で<br>
+「ファイル」ボタン選択になりますが、改行動作にはなりません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="946">946.　<b><font color="#000000">Re: TAALT v1.3の不具合について</font></b>　TORO　　<font size="2">2003/11/14 (金) 13:12</font><br>
+<blockquote>&gt; TAALTを愛用させて戴いております。<br>
+&gt; 下記の不具合が見つかりましたので、ご報告いたします。<br>
+&gt; 使用OS:Win98<br>
+&gt; <br>
+&gt; Word2000起動　→　文字入力　→　Enter押下で文字確定　→<br>
+&gt; 直後にAltを押下すると改行動作になる。<br>
+&gt; <br>
+&gt; Enter押下による改行の直後であれば、Alt押下でも改行になりません。<br>
+<br>
+Windows と Word が別の構成で試していますが、<br>
+再現できていません。<br>
+<br>
+「直後にAltを押下」というのは、Enter キーが元に戻ってから<br>
+Altキーを押せばいいのでしょうか？また、Enter キーを離して<br>
+から、何秒かたってAltキーを押しても、同様の症状になります<br>
+か？<br>
+<br>
+後、使用している IME の種類(ex MS-IME97等)と、キーボード<br>
+関係のユーティリティがあればその名前も教えてもらえないで<br>
+しょうか。<br>
+<br>
+# Win98+Word2000 という環境はこちらでは用意できないので<br>
+# この組み合わせのみで発生する場合は修正が難しくなるかも<br>
+# しれません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="945">945.　<b><font color="#000000">TAALT v1.3の不具合について</font></b>　ZZ　　<font size="2">2003/11/13 (木) 13:47</font><br>
+<blockquote>TAALTを愛用させて戴いております。<br>
+下記の不具合が見つかりましたので、ご報告いたします。<br>
+使用OS:Win98<br>
+<br>
+Word2000起動　→　文字入力　→　Enter押下で文字確定　→<br>
+直後にAltを押下すると改行動作になる。<br>
+<br>
+Enter押下による改行の直後であれば、Alt押下でも改行になりません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="944">944.　<b><font color="#000000">Re:PPCのマークファイルの扱い方</font></b>　TORO　　<font size="2">2003/11/09 (日) 20:50</font><br>
+<blockquote>&gt; PPCでfoo1, foo2, foo3と複数のファイルのマークを指定して，<br>
+:<br>
+&gt; とバッチ風に実行したいのですが，どういった文法にすればいいのでしょうか。<br>
+&gt; &gt;echo %C <br>
+&gt; とやったら駄目のようですし...<br>
+<br>
+%Or,echo %C<br>
+と、「r」オプションをつけてください。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="943">943.　<b><font color="#000000">XAX</font></b>　PPCのマークファイルの扱い方　　<font size="2">2003/11/08 (土) 21:09</font><br>
+<blockquote>PPCでfoo1, foo2, foo3と複数のファイルのマークを指定して，<br>
+&gt;echo foo1<br>
+&gt;echo foo2<br>
+&gt;echo foo3<br>
+とバッチ風に実行したいのですが，どういった文法にすればいいのでしょうか。<br>
+&gt;echo %C <br>
+とやったら駄目のようですし...</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="942">942.　<b><font color="#000000">Re: ppx0.33+1の表示について+ディレクトリの移動</font></b>　TORO　　<font size="2">2003/11/04 (火) 22:38</font><br>
+<blockquote>&gt; MWF40Z7S1T17S1A10s1<br>
+&gt; MW20FZ7S1T17S1A10s1<br>
+&gt; などでは思うような動作にならないのです。<br>
+<br>
+ MWxFyZ7S1T17S1A10s1<br>
+とした場合、x が幅の最大値、y が幅の最小値に<br>
+なります。<br>
+尚、このチェックをしているときに、拡張子部分を<br>
+計算に入れていないバグが見つかりました(^^;<br>
+このため、上記のようなファイル名と拡張子を<br>
+一体にした場合、わずかに幅が足りなくなる場合が<br>
+あります(^^;<br>
+<br>
+<br>
+&gt; ../ を入力した後TAB補完を行うと <br>
+&gt; ..\ の部分が消えて補完されてしてしまいます。<br>
+<br>
+バグですね。「/」でなく「\」ならうまく動きます(^^;<br>
+「/」でも使えるようにしておきます。<br>
+<br>
+ <br>
+&gt; #ファイルの新規作成は難しいのですね。<br>
+&gt; #勝手に簡単そうだなぁ、と思っていました。<br>
+<br>
+不完全なら割合簡単なので、ちょっと検討中です</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="941">941.　<b><font color="#000000">ppx0.33+1の表示について+ディレクトリの移動</font></b>　Mist　　<font size="2">2003/11/03 (月) 11:36</font><br>
+<blockquote>以前は質問に答えていただいてありがとうございます。<br>
+大分快適になりました^^<br>
+<br>
+前質問した表示方法の変更なのですが、<br>
+そのディレクトリにある最大のファイルの名前がぴったり表示されるような表記<br>
+をしたい場合どうすればよいのでしょうか？<br>
+表記でWを使えばよさそうということはわかるのですが、<br>
+MWF40Z7S1T17S1A10s1<br>
+MW20FZ7S1T17S1A10s1<br>
+などでは思うような動作にならないのです。<br>
+<br>
+また、バグかと思うのですが、<br>
+Lを押したときのディレクトリ移動で<br>
+../ を入力した後TAB補完を行うと <br>
+..\ の部分が消えて補完されてしてしまいます。<br>
+<br>
+#ファイルの新規作成は難しいのですね。<br>
+#勝手に簡単そうだなぁ、と思っていました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="940">940.　<b><font color="#000000">Re^2: PPx 0.33 MC_celS と 窓リサイズについて</font></b>　Han　[<a href="http://www3.ocn.ne.jp/~han/">URL</a>]　　<font size="2">2003/11/02 (日) 19:13</font><br>
+<blockquote>PPx 0.33P1いただいていきます〜<br>
+<br>
+&gt; &gt; \&amp;[←]で縮小が出来ないのです。（略）<br>
+&gt;  バグですね(^^;。縮小ができるように修正します。<br>
+<br>
+早速の対応ありがとうございます。<br>
+私はあふ・DF・PPxを交互に使ってますが、それぞれに利点があってどれか一つに絞れず色々と使い分けてる軟弱者ですが、今後ともよろしくお願いいたします。（＾＾</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="939">939.　<b><font color="#000000">Re: RUNASAの&quot;重複したI/O処理を・&quot;</font></b>　TORO　　<font size="2">2003/11/02 (日) 18:51</font><br>
+<blockquote>&gt; 先日に数台のPCにて次のメッセージが現れていることが<br>
+&gt; 分かりました。<br>
+&gt; 原因や対処方法を教えて頂ければと思います。<br>
+&gt; <br>
+&gt; RUNASA　&quot;重複したI/O処理を実行しています。&quot;<br>
+<br>
+こちらで、その症状になったことはないのですが、<br>
+その症状が出る PC は、RUNASA によって作成された<br>
+複数のショートカットが同時に実行されることが<br>
+ありますか？<br>
+もしかしたら、同時に複数のショートカットを実行<br>
+しようとして出ているエラーかもしれません。<br>
+<br>
+ちょっと時間をずらすようにして実行すれば<br>
+エラーが出ないかもしれません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="938">938.　<b><font color="#000000">Re^3: 使っていての質問</font></b>　TORO　　<font size="2">2003/11/02 (日) 18:45</font><br>
+<blockquote>&gt; &gt; 3.ロングネーム＆ファイルサイズの両方表示ってできない？ <br>
+&gt; は ; を押して変更できるもののなかにあるASTでしか表示<br>
+&gt;できないファイルがあったもので・・・<br>
+<br>
+[;]に登録してある表示方法は代表例みたいなもので、細かい<br>
+例までは載せていないです。いい選択肢がなかったら自分で<br>
+用意してください(^^。<br>
+<br>
+<br>
+&gt; 右クリック→新規作成<br>
+&gt; を選ぶと、選んだ形式でデータがないものができると思うのですが、<br>
+&gt; これを使う方法はないでしょうか？という意味です。<br>
+<br>
+エクスプローラ互換の新規作成は、ちょっと難しいですね。<br>
+不完全ならある程度できると思うのですが。<br>
+<br>
+この機能は、エクスプローラの機能を丸ごと拝借したファイ<br>
+ラーなら使えるのですが、PPc の用なタイプは丸ごと拝借する<br>
+訳ではないので、自前で用意する必要があります。<br>
+<br>
+しかし、エクスプローラの新規作成は、Templates ディレク<br>
+トリの他、レジストリの内容を参照したり、拡張できたりするので<br>
+それをそっくりまねるというのは困難であるというのが実情です(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="937">937.　<b><font color="#000000">PPx 0.33+1</font></b>　TORO　　<font size="2">2003/11/02 (日) 18:21</font><br>
+<blockquote>0.33+1 を公開しました。<br>
+<br>
+前回の公開から時間が経っていますが、特に機能強化はなく、<br>
+バグ修正のみです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="936">936.　<b><font color="#000000">trisus 0.3</font></b>　TORO　　<font size="2">2003/11/02 (日) 18:19</font><br>
+<blockquote>複数PCでの一括パッチ当て支援ツール trisus の開発中版を<br>
+公開しました。<br>
+<br>
+ファイルサーバに置かれた定義ファイルを元に、未実行の部分<br>
+だけをバッチ処理することができます。<br>
+<br>
+個人用とでは必要になることはまず無いですが、<br>
+何台もの PC があって、かつ、パッチ当てを MSの自動更新等を<br>
+使わずに、自動処理したいときに、手頃な物がないため作成しま<br>
+した。<br>
+<br>
+今回の物は、ローカルファイルサーバがある環境用です。<br>
+バージョン1.0までには、もう少し使い勝手を上げていく予定です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="935">935.　<b><font color="#000000">RUNASAの&quot;重複したI/O処理を・&quot;</font></b>　CHIDA　　<font size="2">2003/11/02 (日) 16:49</font><br>
+<blockquote>便利なRUNASAを使わせてもらっています。（一同！　礼！）<br>
+先日に数台のPCにて次のメッセージが現れていることが<br>
+分かりました。<br>
+原因や対処方法を教えて頂ければと思います。<br>
+<br>
+RUNASA　&quot;重複したI/O処理を実行しています。&quot;<br>
+<br>
+よろしくお願いします。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="934">934.　<b><font color="#000000">Re^2: 使っていての質問</font></b>　Mist　　<font size="2">2003/10/31 (金) 09:41</font><br>
+<blockquote>さっそくのRESありがとうございます＾＾<br>
+やはり、全部できるのですね。<br>
+<br>
+&gt; 3.ロングネーム＆ファイルサイズの両方表示ってできない？ <br>
+は ; を押して変更できるもののなかにあるASTでしか表示できないファイルがあったもので・・・<br>
+<br>
+後、ファイルの新規作成ですが、<br>
+通常のエクスプローラやデスクトップの空いてる部分などで<br>
+右クリック→新規作成<br>
+を選ぶと、選んだ形式でデータがないものができると思うのですが、<br>
+これを使う方法はないでしょうか？という意味です。<br>
+<br>
+今まで色々なファイラを使ってきましたが、<br>
+ここまでしっくりきたのははじめてなんです。<br>
+もっといろいろ使い込んでみたいと思います。<br>
+これからもがんばってください＾＾</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="933">933.　<b><font color="#000000">Re: 使っていての質問</font></b>　TORO　　<font size="2">2003/10/30 (木) 22:04</font><br>
+<blockquote>&gt; 1.copyなどを使った際にLocationのTab補完はできない？ <br>
+<br>
+カスタマイザ-全般-[TAB]へのキー割り当てを有効(X_ltab)を<br>
+チェックすると、TAB キーがフォーカス移動以外に<br>
+使えるようになります。<br>
+また、チェックするだけで、どのダイアログで TAB で<br>
+名前補完ができます。<br>
+<br>
+<br>
+&gt; 2.新規ファイルの作成はどうやりますか？ <br>
+<br>
+特に専用の機能は用意していません。ですから自分で<br>
+登録する必要があります。例えば、<br>
+<br>
+%Ob,%&quot;新規ファイル作成&quot;copy nul %P<br>
+<br>
+を登録すれば、０バイトファイルを作成できます。<br>
+<br>
+<br>
+&gt; 3.ロングネーム＆ファイルサイズの両方表示ってできない？ <br>
+<br>
+どの部分のことを言っていますか？上側の情報部分や、カーソル<br>
+移動できるエントリ一覧部分のいずれも初期設定では<br>
+長いファイル名＋ファイルサイズの表示がされるように<br>
+なっていると思います。<br>
+また、エントリ一覧部分は、[;]キーであらかじめ登録されている<br>
+内容で切り替えられますし、テキストによるカスタマイズで<br>
+細かな表示設定ができます。(XC_stat等)<br>
+<br>
+<br>
+&gt; 4.起動した際名前順にソートされるようにするには？ <br>
+<br>
+PPc のソートは一時的な [S] と、ディレクトリ移動や終了をしても<br>
+保持される Shift+[S] の２種類があります。<br>
+ですから、Shift+[S]で名前順で覚えさせば、次の起動時も<br>
+名前順になっているはずです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="932">932.　<b><font color="#000000">使っていての質問</font></b>　Mist　　<font size="2">2003/10/30 (木) 18:47</font><br>
+<blockquote>掲示板に気が付かず2chで質問してしまった; ;<br>
+もしよければ質問に答えてください<br>
+<br>
+ppxを使っていての質問です。<br>
+1.copyなどを使った際にLocationのTab補完はできない？ <br>
+2.新規ファイルの作成はどうやりますか？ <br>
+3.ロングネーム＆ファイルサイズの両方表示ってできない？ <br>
+4.起動した際名前順にソートされるようにするには？ <br>
+<br>
+これらが、どうやってもうまくいきません。<br>
+方法を面倒でしょうがご教授願いたいです。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="931">931.　<b><font color="#000000">Re: PPx 0.33 MC_celS と 窓リサイズについて</font></b>　TORO　　<font size="2">2003/10/28 (火) 21:42</font><br>
+<blockquote>&gt;『あふ』から乗り換えて『Paper Plane xUI』Version 0.33を<br>
+&gt;使い始めました。良いファイラーですね〜。<br>
+<br>
+ ありがとうございます。<br>
+ まだ、あふ等に比べると完成度が低いですが、ちびちびいじって<br>
+ます(^^;。<br>
+<br>
+<br>
+&gt; \&amp;[←]で縮小が出来ないのです。どうも書式文字列wが使われて<br>
+&gt; いる時だけこのような挙動をするようなのですが。<br>
+<br>
+ バグですね(^^;。縮小ができるように修正します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="930">930.　<b><font color="#000000">PPx 0.33 MC_celS と 窓リサイズについて</font></b>　Han　[<a href="http://www3.ocn.ne.jp/~han/">URL</a>]　　<font size="2">2003/10/27 (月) 23:43</font><br>
+<blockquote>『あふ』から乗り換えて『Paper Plane xUI』Version 0.33を<br>
+使い始めました。良いファイラーですね〜。<br>
+<br>
+で、カスタマイズしていて一つ気になったことが。<br>
+以下のように定義したエントリ表示を使用している時には、<br>
+\&amp;[→]で窓サイズ拡大はできるのですが、<br>
+\&amp;[←]で縮小が出来ないのです。どうも書式文字列wが使われている時だけこのような挙動をするようなのですが。<br>
+これは仕様なのでしょうか？<br>
+<br>
+MC_celS = { ; エントリ表示 書式([;]メニュー)<br>
+幅8〜40     = Mw40F8,5Z6S1T14S1<br>
+}<br>
+</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="929">929.　<b><font color="#000000">Re: ClockPod 2.45</font></b>　主任A　　<font size="2">2003/10/02 (木) 21:56</font><br>
+<blockquote>何日か使ってみましたが、確かにずれない様です。<br>
+有り難うございました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="928">928.　<b><font color="#000000">ClockPod 2.45</font></b>　TORO　　<font size="2">2003/09/28 (日) 16:42</font><br>
+<blockquote>ClockPod 2.45 を公開しました。<br>
+<br>
+テロップ表示が終わるときに、表示内容がずれたままで<br>
+終わってしまうことがあったのを修正しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="927">927.　<b><font color="#000000">Re: ClockPodの文字表示位置が変動する</font></b>　TORO　　<font size="2">2003/09/26 (金) 12:50</font><br>
+<blockquote>&gt; ClockPodに普段表示する文字ですが、時々表示領域の左端<br>
+&gt; ぎりぎりに寄って（1ドット空く模様）表示されます。元々<br>
+&gt; は少し余白が有るのですが。<br>
+<br>
+これはこちらでも気づいてまして、修正した物を動作確認して<br>
+いるところです。<br>
+近いうちに、公開できると思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="926">926.　<b><font color="#000000">ClockPodの文字表示位置が変動する</font></b>　主任A　　<font size="2">2003/09/25 (木) 01:48</font><br>
+<blockquote>ClockPodに普段表示する文字ですが、時々表示領域の左端ぎりぎりに寄って（1ドット空く模様）表示されます。元々は少し余白が有るのですが。<br>
+<br>
+発生条件は掴めていません。ClockPodを再起動すると直る様です。ClockPodは2.44 + 2、Windowsは2000です。表示内容は、&quot;%y/%n/%d(%W)%H:%m %I&quot;の形式の日時と、IME状態です。フォントはMSゴシック標準12ポイントです。<br>
+<br>
+内容は読めるので構わないのですが（でも一度見えないぐらいずれた事が有った様な...夢だったか！？）、一応ご報告しておきます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="925">925.　<b><font color="#000000">Re: PPx 0.33</font></b>　com-a　　<font size="2">2003/09/08 (月) 01:59</font><br>
+<blockquote>&gt; PPx 0.33 とそのソースを公開しました。<br>
+<br>
+毎度ご苦労様です。貰ってゆきます。(^ ^)<br>
+<br>
+＃ファイルダイアログが日本語表示されてちょっとびっくり。(^^</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="924">924.　<b><font color="#000000">PPx 0.33</font></b>　TORO　　<font size="2">2003/09/06 (土) 19:45</font><br>
+<blockquote>PPx 0.33 とそのソースを公開しました。<br>
+<br>
+0.32+10→0.33 の変更点は次の通りです。<br>
+・*file でコピー元にパスとワイルドカードの両方を<br>
+　指定したときの動作を修正<br>
+・一行編集のヒストリの挙動を調節<br>
+・(*file)バーストモードを追加<br>
+<br>
+今回コピー機能に追加したバーストモードは、チューニング次第で<br>
+通常のコピー方法よりも高速になる可能性がありますが、<br>
+チューニングを行っていないためかえって遅いです(^^;<br>
+ただ、コピー時にメインメモリをファイルキャッシュで<br>
+食いつぶされる現象は回避できます。<br>
+<br>
+尚、今回はカスタマイズとして記憶できないので、毎回コピー開始<br>
+前に指定する必要があります。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="923">923.　<b><font color="#000000">Re^2: PPx 0.32+10</font></b>　TORO　　<font size="2">2003/09/02 (火) 12:52</font><br>
+<blockquote>&gt; 恐ろしく早い対応に大変恐縮しております。<br>
+&gt; お返事が後れてしまって申し訳ありません…。<br>
+<br>
+更に遅れての返事です(^^;<br>
+今回恐ろしく速かったのは、速く修正版を出して<br>
+問題がないか確認してもらい、安定した 0.33 を<br>
+出したかったという部分もありましたので、<br>
+とくに気にしなくてもいいですよ(^^;<br>
+<br>
+ <br>
+&gt; 当方のコンフィグファイルが少々古くなっていたので、<br>
+&gt; PPCUSTでコンフィグを初期化した後、出力したコンフィグファイルに<br>
+&gt; カスタマイズしたデータを移行しました。<br>
+&gt; 大分項目増えてるんですね…。<br>
+&gt; ゆっくり触りたい今日この頃です。<br>
+<br>
+K-Launcher のときとは違ってカスタマイズ内容も<br>
+勝手に更新する仕掛けがあるので、そこまで念入りに<br>
+移行しなくてもよかったような気がします。<br>
+# ただ、内容をきちんと把握したいとかでしたら<br>
+# 手間かけた方がいいかもしれないですね。<br>
+<br>
+後、最新の初期カスタマイズ内容がほしい場合、<br>
+実行ファイルのリソースを書庫として扱える Susie Plug-in<br>
+AXRES.SPI をつかって、PPCOMMON.DLL から<br>
+取り出すことができます(^^。<br>
+# 説明とか入っていないので見難いですけど</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="922">922.　<b><font color="#000000">Re: PPx 0.32+10</font></b>　シルフィア　　<font size="2">2003/08/28 (木) 01:32</font><br>
+<blockquote>&gt; 0.32+10です。<br>
+<br>
+恐ろしく早い対応に大変恐縮しております。<br>
+お返事が後れてしまって申し訳ありません…。<br>
+<br>
+で、動作の方ですが、ばっちり意図したとおりに動いております。<br>
+本当にどうもありがとうございます。<br>
+<br>
+当方のコンフィグファイルが少々古くなっていたので、<br>
+PPCUSTでコンフィグを初期化した後、出力したコンフィグファイルに<br>
+カスタマイズしたデータを移行しました。<br>
+大分項目増えてるんですね…。<br>
+ゆっくり触りたい今日この頃です。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="921">921.　<b><font color="#000000">PPx 0.32+10</font></b>　TORO　　<font size="2">2003/08/25 (月) 21:53</font><br>
+<blockquote>0.32+10です。<br>
+<br>
+スクロールバー関連のカーソル移動カスタマイズのバグ取りを<br>
+あわてて行いました(^^;<br>
+<br>
+# エンバグしてないといいけど(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="920">920.　<b><font color="#000000">Re: PPx 0.32+9</font></b>　com-a　　<font size="2">2003/08/25 (月) 14:05</font><br>
+<blockquote>&gt; ・XC_page = 0 の時の最終ページの扱い方を指定する XC_fwin を<br>
+<br>
+動作OKです。(^^g</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="919">919.　<b><font color="#000000">Re^2: PPx 0.32+9</font></b>　TORO　　<font size="2">2003/08/25 (月) 12:43</font><br>
+<blockquote>&gt; で、例のマウスホイールでのスクロールの不具合について、<br>
+&gt; やはりまだちょっとおかしな点があります。<br>
+<br>
+しばらく +9 使っていたら最後のページの扱いが変なのに<br>
+気づきました(^^;<br>
+修正します。<br>
+<br>
+# お手数かけて済みません(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="918">918.　<b><font color="#000000">Re^5: PPx 0.32+8</font></b>　com-a　　<font size="2">2003/08/25 (月) 12:38</font><br>
+<blockquote>&gt; &gt;（スペースやタブを挿んでいなかった）<br>
+&gt; <br>
+&gt; なるほど、そんな理由だったんですね。<br>
+&gt; # カスタマイザを修正しようか、仕様にするか…(^^;<br>
+<br>
+他の部位でのカンマにはスペースが無くとも問題無いようです<br>
+のでそれに合わせるのが自然かとは思いますが、理解してしま<br>
+えばそれまでなので・・・なんとも言えません。(^^;<br>
+<br>
+<br>
+&gt; ってことを書いていましたが、よく考えたら既に<br>
+&gt; カスタマイズ可能でした(笑)<br>
+&gt; <br>
+&gt; &#39;,&#39;    ,*cursor 9,-1,0,B010,0,B010<br>
+&gt; &#39;.&#39;    ,*cursor 9,1,0,B010,0,B010<br>
+<br>
+出来ました。(^^<br>
+＃頭の柔軟性があれば思い付いてたなぁ。(^^;;<br>
+<br>
+<br>
+&gt; # 残るは末端ページの扱いでカーソル移動<br>
+&gt; # カスタマイズ関連は終わりかな？<br>
+<br>
+楽しみにしております。(^ ^)</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="917">917.　<b><font color="#000000">Re^7: 圧縮時に関係ないものが・・・</font></b>　com-a　　<font size="2">2003/08/25 (月) 12:20</font><br>
+<blockquote>&gt; 更に修正。<br>
+&gt; やはり -r がないと、２階層以降は見に行きませんね(^^;<br>
+<br>
+うっ。そうでした。(^^;;<br>
+<br>
+<br>
+&gt; -r2x ならうまくいくようです。<br>
+<br>
+うまくいきました。(^ ^)g<br>
+お手間取らせました。m(＿　＿)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="916">916.　<b><font color="#000000">Re: PPx 0.32+9</font></b>　シルフィア　　<font size="2">2003/08/25 (月) 05:54</font><br>
+<blockquote>0.32+9頂きました。<br>
+で、例のマウスホイールでのスクロールの不具合について、<br>
+やはりまだちょっとおかしな点があります。<br>
+こちらのconfigのせいかもしれませんので、<br>
+少し設定を変えてみながら検証してみます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="915">915.　<b><font color="#000000">Re^2: PPc：マウス操作での不具合？</font></b>　シルフィア　　<font size="2">2003/08/24 (日) 03:51</font><br>
+<blockquote>&gt;+8 で確認していませんが、+9 で確認したときは意図した<br>
+&gt;動きになっていると思います。もしおかしかったら、<br>
+&gt;また教えてください(^^;<br>
+<br>
+書き込むのをもうちょっと待てば良かったですね(^^;<br>
+それではさっそく+9頂いていきます〜。<br>
+<br>
+<br>
+&gt; 後、ホイールでのデフォルトの動作は、以前から[←][→]キーに<br>
+&gt; 近いですが異なる動作になってます。<br>
+&gt; # XC_page = 1 なら ３行スクロール<br>
+<br>
+あ、そうでしたか。すみません…。<br>
+たまの書き込みがこれだと情けないですね〜、うう。<br>
+<br>
+最近コンフィグをまったく触ってないので、<br>
+一度じっくり時間をとって色々変えてみたいのですが、<br>
+なにぶん時間もとれず…。<br>
+0.33が出たら、一旦設定を一通り見直してみようかと思います。<br>
+<br>
+お騒がせ致しました。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="913">913.　<b><font color="#000000">K-Launcher 1.26</font></b>　TORO　　<font size="2">2003/08/23 (土) 15:32</font><br>
+<blockquote>K-Launcher 1.26 を公開しました。<br>
+<br>
+1.25+1 との変更点は特にありません。<br>
+<br>
+# 本当は、ネットワークドライブに関する処理を<br>
+# いくつか方法を変えて試したのですが、<br>
+# ねらった効果が出なかったので、そのままに<br>
+# なってます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="912">912.　<b><font color="#000000">Re: PPc：マウス操作での不具合？</font></b>　TORO　　<font size="2">2003/08/23 (土) 15:26</font><br>
+<blockquote>&gt; えと、マウスのホイールを回転させて<br>
+&gt; PPcのウィンドウの表示内容を変更したとき、<br>
+&gt; ウィンドウに表示できるファイル名の数と<br>
+&gt; 実ファイル数が一致しない場合に表示がおかしくなってしまいます。<br>
+&gt; わかりにくい説明だとは思いますが…。<br>
+&gt; 以前はPageUp/Downキーと同じ動作だったと思います。<br>
+<br>
++8 で確認していませんが、+9 で確認したときは意図した<br>
+動きになっていると思います。もしおかしかったら、<br>
+また教えてください(^^;<br>
+# +8 以前では XC_mvSC と XC_mvPG の内容がかぶって<br>
+# しまったバグもありましたので(^^;<br>
+<br>
+後、ホイールでのデフォルトの動作は、以前から[←][→]キーに<br>
+近いですが異なる動作になってます。<br>
+# XC_page = 1 なら ３行スクロール</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="911">911.　<b><font color="#000000">Re^6: 圧縮時に関係ないものが・・・</font></b>　TORO　　<font size="2">2003/08/23 (土) 15:20</font><br>
+<blockquote>更に修正。<br>
+やはり -r がないと、２階層以降は見に行きませんね(^^;<br>
+-r2x ならうまくいくようです。<br>
+<br>
+0.33 では、次のような設定を予定しています<br>
+<br>
+M_xpack    = {<br>
+lh&amp;0    = %uUNLHA32.DLL,A -z %{&quot;%2%\%|&quot;%} %@ %S&quot;-r2x&quot;<br>
+lh&amp;1    = %uUNLHA32.DLL,A -o1a1 %{&quot;%2%\%|&quot;%} %@ %S&quot;-r2x&quot;<br>
+lh&amp;5    = %uUNLHA32.DLL,A -o2a1 %{&quot;%2%\%|&quot;%} %@ %S&quot;-r2x&quot;<br>
+lh&amp;6    = %uUNLHA32.DLL,A -a1 %{&quot;%2%\%|&quot;%} %@ %S&quot;-r2x&quot;<br>
+lhaSFX(DOS-&amp;S)    = %uUNLHA32.DLL,S &quot;%!C&quot; -x0<br>
+lhaSFX(DOS-&amp;L)    = %uUNLHA32.DLL,S &quot;%!C&quot; -x1<br>
+lhaSFX(&amp;WIN16)    = %uUNLHA32.DLL,S &quot;%!C&quot; -jw<br>
+lhaSFX(WIN&amp;32)    = %uUNLHA32.DLL,S &quot;%!C&quot; -gw<br>
+&amp;CAB    = %uCAB32.DLL,-a -r %{&quot;%2%\%|&quot;%} %@<br>
+&amp;7zip    = %u7-ZIP32.DLL,a %{&quot;%2%\%|&quot;%} %@ %S&quot;-r&quot;<br>
+zip(7-zip)    = %u7-ZIP32.DLL,a -tzip %{&quot;%2%\%|&quot;%} %@ %S&quot;-r&quot;<br>
+zip(zip32j)    = %uZIP32J.DLL,%{&quot;%2%\%|&quot;%} %@ %S&quot;-r&quot;<br>
+||    =<br>
+&amp;CAB    = %uCAB32.DLL,-a -r %{&quot;%2%\%|&quot;%} %@<br>
+GCA    = %Or,gcac a %${&quot;%2%\%|&quot;%} %C<br>
+&amp;ARJ    = ARJ A -m1 %S&quot;-r&quot; %{%2%\%|%} %C<br>
+&amp;Gzip    = GZIP -vr9 %C<br>
+&amp;HA    = HA a12%S&quot;r&quot; %{%2%\%|%} %#<br>
+&amp;TAR    = TAR cvf %{%2%\%|.tar%} %@<br>
+&amp;zip(PKZIP)    = PKZIP %{%2%\%|%} %@<br>
+zo&amp;o    = ZOO a %{%2%\%|%} %#<br>
+}<br>
+KC_main    = {<br>
+P    ,%&quot;Pack File&quot; %M_xpack,!&quot;lh&amp;5&quot;<br>
+\P    ,%&quot;Pack File Ex&quot; %M_xpack<br>
+}</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="910">910.　<b><font color="#000000">PPx 0.32+9</font></b>　TORO　　<font size="2">2003/08/23 (土) 15:18</font><br>
+<blockquote>0.32+9 です<br>
+<br>
+・runas 等を用いて別のユーザで実行しているときは、タイトルバーに<br>
+ユーザ名を表示するようにしました。<br>
+各ユーザでそれぞれ PPc を実行しているときに、どれがどれだか<br>
+わからなくなっていたのが、わかりやすくなります(^^。<br>
+<br>
+・XC_page = 0 の時の最終ページの扱い方を指定する XC_fwin を<br>
+追加しました。<br>
+<br>
+# これで問題がなかったら 0.33 です</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="909">909.　<b><font color="#000000">PPc：マウス操作での不具合？</font></b>　シルフィア　　<font size="2">2003/08/23 (土) 03:13</font><br>
+<blockquote>お久しぶりです、シルフィアです。<br>
+<br>
+現在、PPx 0.32+8を使わせて頂いているのですが、<br>
+0.32+2 から 0.32+8 に移行した際に、<br>
+ちょっと気になる点がありましたので書き込みさせて頂きます。<br>
+<br>
+えと、マウスのホイールを回転させて<br>
+PPcのウィンドウの表示内容を変更したとき、<br>
+ウィンドウに表示できるファイル名の数と<br>
+実ファイル数が一致しない場合に表示がおかしくなってしまいます。<br>
+わかりにくい説明だとは思いますが…。<br>
+以前はPageUp/Downキーと同じ動作だったと思います。<br>
+<br>
+コンフィグがデフォルトでも発生しました。<br>
+OSはWindows98です。<br>
+どうかお時間ありましたらご検討よろしくお願い致します。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="908">908.　<b><font color="#000000">Re^5: 圧縮時に関係ないものが・・・</font></b>　TORO　　<font size="2">2003/08/21 (木) 00:53</font><br>
+<blockquote>&gt; DEFPPX.CFGとDEFCUST.CFG（M_xpack内定義）に元々-r指定され<br>
+&gt; ているのですが、-rがデフォルトなんでしょうか？<br>
+<br>
+オプションを調べたのが DOS 時代の頃で、そのまま<br>
+PPx でも使い回ししているので、どんな理由で -r を<br>
+つけたかというのはもう覚えていないですね(^^;<br>
+ただ、-r2x1a2 の省略形である -d スイッチがある<br>
+ぐらいですので、-rx が最初に目について採用した<br>
+ではないかと思います。<br>
+<br>
+これからは、-x のみにするように修正しますが(^^;;;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="907">907.　<b><font color="#000000">Re^4: PPx 0.32+8</font></b>　TORO　　<font size="2">2003/08/21 (木) 00:52</font><br>
+<blockquote>&gt;原因は、^Pのすぐ後にカンマが来ていたためでした。<br>
+&gt;（スペースやタブを挿んでいなかった）<br>
+<br>
+なるほど、そんな理由だったんですね。<br>
+# カスタマイザを修正しようか、仕様にするか…(^^;<br>
+<br>
+<br>
+そういえば、<br>
+&gt;877.　Re^7: PPx 0.32+6　TORO　　2003/08/06 (水) 12:56<br>
+ :<br>
+&gt;&gt; &#39;,&#39; == 表示中画面の先頭 (&#39;.&#39; == 最後) です。<br>
+&gt;&gt;<br>
+&gt;&gt; 以前、私の我儘で実装して頂いた記憶があるような無いような。<br>
+&gt;&gt; こんなこと言いながら、そんな頻繁に使う機能ではないので<br>
+&gt;&gt; 無いと困ることは無さそうですが（こらっ<br>
+ :<br>
+&gt;画面上の先頭／末端はPPxではまだ未実装ですね。<br>
+&gt;課題に入れておきます。<br>
+<br>
+ってことを書いていましたが、よく考えたら既に<br>
+カスタマイズ可能でした(笑)<br>
+<br>
+&#39;,&#39;    ,*cursor 9,-1,0,B010,0,B010<br>
+&#39;.&#39;    ,*cursor 9,1,0,B010,0,B010<br>
+<br>
+で、FILMTN の [,][.] を実現できます。<br>
+ただ、バグで、先頭／最終ページの一つ前のページで<br>
+ページが変わってしまうことがあります(^^;<br>
+<br>
+# 残るは末端ページの扱いでカーソル移動<br>
+# カスタマイズ関連は終わりかな？</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="906">906.　<b><font color="#000000">Re^4: 圧縮時に関係ないものが・・・</font></b>　com-a　　<font size="2">2003/08/20 (水) 10:31</font><br>
+<blockquote>どうやらlhaオプションに-r（再帰的検索）が指定されている<br>
+のが原因のようです。<br>
+DEFPPX.CFGとDEFCUST.CFG（M_xpack内定義）に元々-r指定され<br>
+ているのですが、-rがデフォルトなんでしょうか？<br>
+<br>
+＃lhaややこしい。(^^;</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="905">905.　<b><font color="#000000">Re^3: PPx 0.32+8</font></b>　com-a　　<font size="2">2003/08/20 (水) 10:10</font><br>
+<blockquote>&gt; K_edit    = {<br>
+&gt; ^P    , *replace %M_pjump<br>
+&gt; }<br>
+<br>
+ありがとうございます。<br>
+できました。(^^<br>
+<br>
+原因は、^Pのすぐ後にカンマが来ていたためでした。<br>
+（スペースやタブを挿んでいなかった）<br>
+<br>
+お騒がせしました。m(＿　＿)m</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="904">904.　<b><font color="#000000">Re^2: PPx 0.32+8</font></b>　TORO　　<font size="2">2003/08/19 (火) 23:02</font><br>
+<blockquote>&gt; これですが、K_edit（一行編集）とは、[C]や[\C]キー<br>
+&gt; で表示される窓のエディットボックスに適用されるん<br>
+<br>
+[C]のコピー先入力等も適用されています。<br>
+PPx のほとんど全てのエディットボックスが対象<br>
+ですから。<br>
+<br>
+試しに、<br>
+K_edit    = {<br>
+^P    , *replace Test<br>
+}<br>
+で、「Test」と置き換えや<br>
+K_edit    = {<br>
+^P    , *replace %M_pjump<br>
+}<br>
+で、M_pjumpメニューの選択内容と置き換え等を<br>
+試してみましたが、Ctrl+P で期待通りの動作をしてます。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="903">903.　<b><font color="#000000">Re^3: 圧縮時に関係ないものが・・・</font></b>　TORO　　<font size="2">2003/08/19 (火) 23:01</font><br>
+<blockquote>&gt; ＃P_unxって解凍時の設定ですか？<br>
+&gt; ＃よく分かりませんが(^^;、XとかEコマンドが書かれてるので<br>
+&gt; ＃そんな気が・・・<br>
+あ、圧縮だから、KC_main の方でしたね(^^;<br>
+<br>
+UNLHA32.DLL のドキュメントを漁ってみたところ、<br>
+<br>
+P    ,%&quot;Pack File&quot;%uUNLHA32.DLL,A -o2a %{&quot;%2%\%|&quot;%} %@ %S&quot;-xp&quot;<br>
+<br>
+と指定するのが良さそうです。<br>
+ただ、こちらでも検証中ですのでかえって<br>
+おかしくなるかもしれません。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="902">902.　<b><font color="#000000">Re^3: TORO&#39;id syslogdなんですが</font></b>　TORO　　<font size="2">2003/08/19 (火) 22:59</font><br>
+<blockquote>改めて確認してみました。<br>
+<br>
+&gt; サービスマネージャの開始パラメータ欄に，<br>
+&gt; SYSLOGD.CFGのフルパスを入力するのですが，<br>
+&gt; これもいつの間にかクリアされている状態です。<br>
+<br>
+これですが、そもそも文字を書き込んでも「適用」が<br>
+グレーのままですね(^^;<br>
+しかも、パラメータとして syslods.exe に<br>
+渡っていないようです。<br>
+<br>
+# ざっと調べてみましたが、何経由で使われるのかが<br>
+# 不明でした(^^;<br>
+# 前動作確認したときは、これを使ってパラメータを<br>
+# 指定した記憶があるのですが、勘違いだったんで<br>
+# しょうか(^^;<br>
+<br>
+試しに、<br>
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\syslogd\ImagePath<br>
+を直接編集して、定義ファイルを指定した場合は<br>
+正常に定義ファイルを読み込みました。<br>
+<br>
+このため、上記レジストリを直接いじるか、<br>
+syslogds.exe と同じディレクトリ上に<br>
+定義ファイルを配置すれば動作するのではないかと<br>
+思います。<br>
+<br>
+<br>
+&gt; syslogを受けると止まってしまいます。(^^;<br>
+<br>
+これは結局再現できませんでした。たぶん、書き込みに<br>
+失敗したため終了したと思います。</blockquote>
+</td></tr></table><br>
+<table width="65%" border="0" cellspacing="0" cellpadding="0">
+<tr><td><hr width="100%" size="1"><br>
+<A NAME="901">901.　<b><font color="#000000">Re: PPx 0.32+8</font></b>　com-a　　<font size="2">2003/08/19 (火) 00:24</font><br>
+<blockquote>&gt; ・一行編集で *insert,*replace コマンドが使用でき<br>
+（略<br>
+&gt; K_edit    = {    ; 文字列編集<br>
+&gt; ^I    , *replace %M_pjump<br>
+&gt; }<br>
+<br>
+これですが、K_edit（一行編集）とは、[C]や[\C]キー<br>
+で表示される窓のエディットボックスに適用されるん<br>
+ですよね？(^ ^;)<br>
+思ったように動かないんですが、なんかとんでもなく<br>
+勘違いしているような気がしてきました・・・<br>
+<br>
+とりあえず、このような定義にしています。<br>
+<br>
+K_edit    = {    ; 文字列編集<br>
+\&#39; &#39;    = @&#39; &#39;<br>
+^P        = *replace %M_ppcpath<br>
+}<br>
+<br>
+これではなくて、<br>
+^P, *replace %M_ppcpath<br>
+や、\&#39; &#39;を無効にしたり（よくわかってない）、既存の<br>
+メニューを指定したり試行錯誤はしていますが・・・。<br>
+<br>
+<br>
+色々とお手を煩わせしてしまって申し訳ありませんが、<br>
+ご教授の程よろしくお願い致します。m(＿　＿)m</blockquote>
+</td></tr></table><br>
+
+<HR>
+<a href="./index.html" target="_top">戻る</a><BR>
+<HR><ADDRESS>TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</ADDRESS>
+</BODY></html>
