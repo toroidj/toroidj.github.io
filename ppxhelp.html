@@ -9113,10 +9113,10 @@ on|off指定は「1」か「0」でも指定でき、何も指定しない場合
 -name:<i>names</i><br>
 &nbsp;&nbsp;コピー先の名前を指定します。<i>ex) -name:&quot;/old/new/&quot;</i><br>
 &nbsp;&nbsp;<a href="#namewild">名前変更用ワイルドカード</a>、<a href="#filesnum">連番指定</a>や<a href="#fileregexp">正規表現・置換</a>も使用可能です。<br>
-&nbsp;&nbsp;例) -name:abc&nbsp;&nbsp;名前をabc001にする。※拡張子は元の拡張子を維持。<br>
-&nbsp;&nbsp;    -name:abc.ext&nbsp;&nbsp;名前・拡張子をabc.extにする。<br>
-&nbsp;&nbsp;    -name:abc\.ext&nbsp;&nbsp;名前・拡張子をabc001.ext等の連番にする<br>
-&nbsp;&nbsp;対象ファイル名のマクロ展開(%)を行うときは、-extractname を指定するか、「-name:&quot;:[%%C]&quot;」等と頭に「:」を付加します。<br>
+&nbsp;&nbsp;例) -name:abc&nbsp;&nbsp;名前を abc にする。※拡張子は元の拡張子を維持。<br>
+&nbsp;&nbsp;    -name:abc.ext&nbsp;&nbsp;名前・拡張子を abc.ext にする。<br>
+&nbsp;&nbsp;    -name:abc\.ext&nbsp;&nbsp;名前・拡張子を abc001.ext 等の連番にする<br>
+&nbsp;&nbsp;対象ファイル名のマクロ展開(%)を行うときは、-extractname を指定するか、「-name:&quot;:[%%X].%%T&quot;」等と頭に「:」を付加します。<br>
 <br>
 -extractname:[on|off]<br>
 &nbsp;&nbsp;/name 内に記載した<a href="#macrodetail">マクロ文字</a>の展開を行うかどうかの指定です。<br>
