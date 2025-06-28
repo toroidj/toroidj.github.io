@@ -4803,7 +4803,7 @@ text line1%b
 ・<a href="#macro42">%X name</a><br>
 ・<a href="#macro43">%T ext</a><br>
 ・<a href="#macro44">%@<i>[*][8|8B|U|UB][type]</i> レスポンスファイル</a><br>
-・<a href="#macro45">%a<i>[*][8|8B][type]</i> レスポンスファイル</a><br>
+・<a href="#macro45">%a<i>[*][8|8B|U|UB][type]</i> レスポンスファイル</a><br>
 <hr><br>
 
 <a name="macro46"><b>カーソル位置エントリ名取得</b></a><br>
@@ -5341,7 +5341,7 @@ ID指定がなければ実行元のPPxになります。<br>
 ・レスポンスファイル名は、%so&quot;response&quot;として再利用できます。<br>
 ※*, 8, typeの指定は必ずこの順に行う必要があります。<br>
 <hr><br>
-<a name="macro45"><b>%a<i>[*][8|8B][type]</i> レスポンスファイル</b></a><br>
+<a name="macro45"><b>%a<i>[*][8|8B|U|UB][type]</i> レスポンスファイル</b></a><br>
 <br>
 <a href="#レスポンスファイル">レスポンスファイル</a>を作成して、この部分には「filename」に展開します。<br>
 %@ との違いは、filename の頭に @ を付けるかどうかのみです。指定の詳細は %@ を参照してください。<br>
@@ -7380,9 +7380,13 @@ id1(%mid1) の行を削除します。<br>
 手動表示・設定では次のオプションを指定できます。<br>
 <br>
 <b>-list[:mode]</b> 補完動作の挙動を変更します。<br>
-補完による置換の範囲<br>
- 指定無し / allchange / on&nbsp;&nbsp;編集中の文字列を全て補完結果に置き換えます。<br>
- paramchange / off&nbsp;&nbsp;カーソルがある位置のパラメータ文字列のみを補完結果に置き換えます。<br>
+補完動作の有無(-list:single, double, doubleex 時)<br>
+ 指定無し / on&nbsp;&nbsp;補完を行わず、一覧からの選択のみ行います。<br>
+ off&nbsp;&nbsp;補完を行い、結果を一覧にします。<br>
+<br>
+補完結果による置換の範囲<br>
+ paramchange&nbsp;&nbsp;カーソルがある位置のパラメータ文字列を補完対象にして、補完結果と置き換えます。<br>
+ allchange&nbsp;&nbsp;編集中の全文字列を補完対象にし、一覧選択時に置き換えます。<br>
 <br>
 一覧表示の表示形態(<a href="#X_flst">X_flst</a>)<br>
  disable / 0&nbsp;&nbsp;一覧表示をしない。[INS] ^[I] [TAB] [↑] [↓] で候補を変える。<br>

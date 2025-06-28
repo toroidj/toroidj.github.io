@@ -30,7 +30,7 @@ img { max-width: 100%; height: auto; }
 <div align="left">※ http://toro.d.dooo.jp からダウンロードできないときは、<a href="https://toroidj.github.io/slwin4.html">https://toroidj.github.io</a> からダウンロードしてください。</div><hr></div>
 <div id="contents"><div id="contents2">
  <table border="0" summary="目録">
-  <tr><td>・<a href="#cpod">ClockPod 2.x</a>
+  <tr><td>・<a href="#cpod">ClockPod 2.x</a>&nbsp;(<a href="#cpod1">+1</a>)
   </td><td>- テロップ型情報表示</td></tr>
   <tr><td>・<a href="#cpodv1">ClockPod 1.3</a>
   </td><td>- 現在の窓に張りつく時計</td></tr>
@@ -86,6 +86,7 @@ img { max-width: 100%; height: auto; }
 <!-- DownloadList
 cpod
 ./clockpod273.zip
+./clockpod273p1.zip
 cpodv1
 ./CLKPOD13.LZH
 cpodap
@@ -162,6 +163,17 @@ EndList -->
 ・数式として文字列比較ができるようにした<br>
 ・ライセンスをMITライセンスに変更<br>
 ・PC間の各種通知機能がWindowsの非推奨機能の対象になった<br>
+
+<hr><a href="./slwin4.html">↑</a><a name="cpod1"><span>ClockPod 2.x</span></a> Version 2.73+1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/win/clockpod273p1.zip">clockpod273p1.zip</a> ( 205 Kbytes,&nbsp;2025-6-28,&nbsp;Windows 95 - Me, Windows 3.1+Win32s, Windows NT 3.51 - 11/2022(32bit/64bit))<br>
+<br>試験公開版です。 Version 2.73からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>2.73→2.73+1<br>
+・表示内容(S_default)に「,」があると以降が無視されるのを修正<br>
+・HWINFS&nbsp;が無い場合でも、ストレージ情報を一部取得できるようにした(メニュー,%UH)<br>
+・HWINFS&nbsp;を使って&nbsp;NVMe&nbsp;ストレージ情報を一部取得できるようにした(メニュー,%UH)<br>
+・GPU温度の取得処理を強化<br>
+・ドライブやGPUが高温になったときの動作(Z_OverHeat)を追加<br>
+・2.70以降でWindows95上で起動しない場合があるのを修正<br>
 
 <hr><a href="./slwin4.html">↑</a><a name="cpodv1"><span>ClockPod 1.3</span></a> Version 1.3
 <br>
