@@ -7945,7 +7945,7 @@ X_stip の設定にかかわらず、即時に表示します。<br>
   watch&nbsp;&nbsp;ディレクトリの更新監視の無効(B1)<br>
   async&nbsp;&nbsp;非同期読み込み(B2)<br>
   everysave&nbsp;&nbsp;非同期読み込み後、常にキャッシュを更新(B3)<br>
-  savetodisk&nbsp;&nbsp;非同期読み込み内容をメモリのみに保存(B4)<br>
+  savetodisk&nbsp;&nbsp;非同期読み込み内容をディスクに保存(off時はメモリのみに保存(B4))<br>
   slow&nbsp;&nbsp;<a href="#低速モード">低速モード</a>の設定。この指定は、XC_dset に記憶されません。<br>
 <br>
  以下の指定は <a href="#XC_dset">XC_dset</a> で説明した表示設定を示す数値<i>n</i>を指定します。<br>
@@ -9069,6 +9069,16 @@ on|off指定は「1」か「0」でも指定でき、何も指定しない場合
 &nbsp;&nbsp;注意2 : -compcmd commands と空白区切りで記載した場合、後ろは全て <i>commands</i> と見なしますので、-compcmd は一番最後に記載してください。また、マクロ文字を使うときは *file/*ppcfile の実行前に解釈されないよう、%%K などと % をエスケープすることを忘れないようにしてください。<br>
 &nbsp;&nbsp;        -compcmd:commands の場合は、後ろに他のオプションを記載可能です。<br>
 &nbsp;&nbsp;注意3 : *ppcfile の場合、-compcmd の実行時には既に実行元の窓が存在しないことがあり、%1, %C, %F等を使用すると動作がおかしくなることがあります。<br>
+<br>
+-raw:<i>drive path</i><br>
+&nbsp;&nbsp;指定ドライブをファイルイメージ化するときに指定します。<br>
+&nbsp;&nbsp;※ 試作機能です。イメージサイズがドライブのイメージサイスと一致しない場合があります。<br>
+<br>
+&nbsp;&nbsp;例) *file !copy -raw:d: -dest:&quot;c:\data&quot; -name:&quot;fsimage.img&quot;<br>
+&nbsp;&nbsp;ドライブ D: をボリュームイメージ c:\data\fsimage.img として保存します。<br>
+<br>
+&nbsp;&nbsp;例) *file !copy -raw:\\.\PhysicalDrive1 -dest:&quot;c:\data&quot; -name:&quot;image.img&quot;<br>
+&nbsp;&nbsp;2番目物理ドライブをディスクイメージ c:\data\image.img として保存します。<br>
 <a name="fileoptions1"></a><br>
 <b>・一般シート</b><br>
 -same:<i>n</i><br>
@@ -10398,7 +10408,7 @@ PPc の連動ビュー \[Y] を有効にしたとき、カーソル移動時に�
 L:ドライブリスト(パス :)に影響がある設定<br>
 M:ドライブメニュー(\[L])に影響がある設定<br>
 J:ドライブジャンプ([1]～[9])に影響がある設定<br>
-P:PC一覧(\\, \\pc)に影響がある設定<br>
+P:PC一覧, 共有一覧(\\, \\pc, \\pc\share)に影響がある設定<br>
 <hr><br>
 <a name="X_cmdls"><b>X_cmdls</b></a>&nbsp;&nbsp;直接指定可能な cmd.exe コマンドの一覧<br>
 <br>
@@ -13804,9 +13814,9 @@ PPXMODULEPARAM は、書き込み指示された項目以外は変更できま�
 <br>
 関数モジュールの結果は pxs.command-&gt;resultstring に書き込みます。文字列長は終端を含めて CMDLINESIZE (1024文字)を越えることはできません。<br>
 <br>
-CMDLINESIZE を越える文字を渡すときは、PPXCMDID_LONG_RESULT を使用します(Ver. 1.69以降)。<br>
+CMDLINESIZE を越える結果を渡すときは、PPXCMDID_LONG_RESULT を使用します(Ver. 1.69以降)。<br>
 例)<br>
-if ( 1 == ppxa-&gt;Function(ppxa, PPXCMDID_LONG_RESULT, 文字列) ) {<br>
+if ( PPXA_NO_ERROR == ppxa-&gt;Function(ppxa, PPXCMDID_LONG_RESULT, 文字列) ) {<br>
 &nbsp;&nbsp;/* 成功 */<br>
 }<br>
 <br>
@@ -13820,7 +13830,10 @@ PPXMRESULT_DONE は呼び出し元によるキー解釈を行いません。<br>
 <br>
 <b>PPXMEVENT_SEARCH</b>(サンプル:Everything Search Module, Windows Search Module)<br>
 検索モジュールの呼び出しです。一行編集の補完候補や、PPc の検索(^[W])で使用されます。<br>
-pxs.search に入力されたキーワードが入っているので、検索を行い、結果を１件ごとにPPXCMDID_REPORTSEARCHでPPx側へ伝えます。なお、結果の件数は、pxs.search.maxresults を上限にしてください。インクリメンタルサーチ等の時は短時間(0.1秒程度)で済ませる必要があるため、100件程度に制限する必要があります。<br>
+pxs.search に入力されたキーワードが入っているので、検索を行い、結果を１件ごとに PPXCMDID_REPORTSEARCH で PPx 側へ伝えます。なお、結果の件数は、pxs.search.maxresults を上限にしてください。インクリメンタルサーチ等の時は短時間(0.1秒程度)で済ませる必要があるため、100件程度に制限する必要があります。<br>
+PPXCMDID_REPORTSEARCH の詳細版がいくつか用意されています。各詳細版で PPXA_INVALID_FUNCTION が帰ってきた場合は、該当機能が存在していません。<br>
+PPXCMDID_REPORTSEARCH_FILE, PPXCMDID_REPORTSEARCH_DIRECTORY は、ファイル名、ディレクトリ名を伝えます<br>
+PPXCMDID_REPORTSEARCH_FDATA は、WIN32_FIND_DATAW で結果を伝えます。<br>
 <br>
 <b>PPXMEVENT_FILEDRAW</b>(サンプル:CFX Module)<br>
 ファイル描画モジュールの描画呼び出しです。<br>
