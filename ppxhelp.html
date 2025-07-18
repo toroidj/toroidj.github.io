@@ -115,7 +115,7 @@ SETUP.EXE を使用することで、ファイル及びレジストリの削除�
 また、レジストリの、HKEY_CURRENT_USER\Software\TOROid\PPX があれば削除して下さい。<br>
 <br>
 設定内容は、通常「～\AppData\Roaming\TOROID\PPx」に保存されますので、これらの削除も必要です。<br>
-このディレクトリは、エクスプローラのアドレスバーに「%APPDATA%\TOROID\PPx」を記載すれば該当ディレクトリに移動できます。(Win2000, XP等)<br>
+このディレクトリは、エクスプローラのアドレスバーに「%APPDATA%\TOROID\PPx」を記載すれば該当ディレクトリに移動できます。(Windows 2000, XP 以降)<br>
 <hr>
 <a name="update"></a><a name="アップデート"></a><h3>全般 - アップデート</h3><br>
 <a name="update"></a>SETUP.EXE の「最新版の確認・入手とアップデート」か、PPc/PPv のメニューの「ヘルプ」-「最新版の確認」を使うと、最新版が配布されているかを確認し、アップデートを行うことができます。コマンド(<a href="#checkupdate">*checkupdate</a>)経由も可能です。<br>
@@ -266,8 +266,8 @@ Windows 10 1903 以降に標準でインストールされている icu.dll (Int
 <br>
 <b>(3) Windows Script 2.0以上</b><br>
 Windows Script 2.0 以上に含まれている IRegExp を使用できます。<br>
-Windows Script は Windows98SE / Windows2000 以降 ～ Windows 11 であれば標準で 2.0以上がインストールされています。Windows95, 98, NT4.0は、別途インストールする必要があります。<br>
-尚、IRegExp は、VBscript の一部であるために 2023/10 から非推奨になっており、Windows 11以降では無効化されている場合があります。そのときは有効化の作業が必要です<br>
+Windows Script は Windows 98SE / Windows2000 以降 ～ Windows 11 であれば標準で 2.0以上がインストールされています。Windows95, 98, NT4.0は、別途インストールする必要があります。<br>
+尚、IRegExp は、VBscript の一部であるために 2023/10 から非推奨になっており、Windows 11 以降では無効化されている場合があります。そのときは有効化の作業が必要です<br>
 また、変換指定 ( tr/ ) を使用できません。<br>
 <br>
 <b>(4) BREGEXP.DLL</b><br>
@@ -333,7 +333,7 @@ libssl-n.dll を libssl.dll か ssleay32.dll に名前変更・ハードリン�
 <dt>2000, XP, 2003</dt><dd>C:\Documents and Settings\<i>username</i>\Application Data</dd>
 <dt>WinNT</dt><dd>C:\WINNT\Profiles\<i>username</i>\Application Data</dd>
 <dt>Win95, 98, Me</dt><dd>C:\Windows\Application Data</dd>
-<dt></dt></dl>尚、PPc の [L] コマンドか、エクスプローラのアドレスバーに「%APPDATA%\TOROID\PPX」を記載すれば該当ディレクトリに移動できます。(Win2000, XP等)<br>
+<dt></dt></dl>尚、PPc の [L] コマンドか、エクスプローラのアドレスバーに「%APPDATA%\TOROID\PPX」を記載すれば該当ディレクトリに移動できます。(Windows 2000, XP等)<br>
 <hr><br>
 <a name="custarea2"><b> (2)カスタマイズ等の保存ファイル(PPWxxxxx.DAT等)</b></a><br>
 <dl compact>
@@ -533,10 +533,12 @@ Windows のパス正規化処理を行わずにアクセスするための指定
 ネットワークに接続されている PC と、エクスプローラの「マイ ネットワーク」からたどることができるエントリを指定することができます。<br>
 ※この形式による一覧表示はOSが用意していないので、一般的なアプリケーションはこの指定を使ってもPCの一覧等を表示できない場合があります。<br>
 <dl compact>
-<dt>「\\」</dt><dd>同じドメイン／ワークグループ内のPC一覧と、エクスプローラの「マイ ネットワーク」内の一覧です(WinVista以降で、ネットワーク探索が有効の時)。また、ここから「\\+」へ移動するためのエントリ「+」も含まれます。尚、PC一覧を取得するには時間が掛かるため、以前の取得一覧がキャッシュされている場合はそれを使うようになっています。最新の一覧を取得するときは、何度か再読込を行ってください。</dd>
-<dt></dt><dd>WinVista以降で、ネットワーク探索が無効の時は、ヒストリからPC一覧を取得します(<a href="#X_dlf">X_dlf</a>)。</dd>
+<dt>「\\」</dt><dd>同じドメイン／ワークグループ内のPC一覧と、エクスプローラの「マイ ネットワーク」内の一覧です(Windows Vista以降で、ネットワーク探索が有効の時)。また、ここから「\\+」へ移動するためのエントリ「+」も含まれます。尚、PC一覧を取得するには時間が掛かるため、以前の取得一覧がキャッシュされている場合はそれを使うようになっています。最新の一覧を取得するときは、何度か再読込を行ってください。</dd>
+<dt></dt><dd>Windows Vista以降で、ネットワーク探索が無効の時は、ヒストリからPC一覧を取得します(<a href="#X_dlf">X_dlf</a>)。</dd>
 <dt>「\\+」</dt><dd>検索可能な全てのPCの一覧です。「\\」で表示される一覧より検索対象が広いので、表示されるまでに時間が掛かります。</dd>
-<dt></dt><dd>WinVista以降では、ネットワーク探索が有効である必要があります。</dd>
+<dt></dt><dd>検索対象は、WindowsNetwork(SMB)の PC名一覧と、ARP で収集したローカルネットワークの IPアドレスの一覧です。</dd>
+<dt></dt><dd>WindowsNetwork(SMB)による検索は、Windows Vista以降では、ネットワーク探索が有効である必要があります。</dd>
+<dt></dt><dd>IPアドレスの一覧による検索は、Windows Vista以降で対応しています。</dd>
 <dt>「\\name」</dt><dd>指定した名前の PC が公開している共有ディレクトリの一覧です。</dd>
 <dt></dt><dd>管理共有の「C$」を追加表示することができます(<a href="#X_dlf">X_dlf</a>)。この追加は無条件に「C$」を追加するものであり、A$やD$などがあっても追加しません。</dd>
 <dt></dt></dl><br>
@@ -602,7 +604,7 @@ shell:ControlPanelFolder →コントロールパネル<br>
 ※「shell:」形式は、Windows2000 以降の File Explorer で使用できるようになった形式です。指定できる name は、基本的に File Explorer で指定できる形式と同一ですが、DesktopFolder 等の一部の名前は対応 Windows 以外の Windows でも指定できるようにしてあります。<br>
 <br>
 <dl compact>
-<dt>#n:</dt><dd>shell:形式のname, 場所(WinVista, 7, 8, 10 の標準設定の場合)</dd>
+<dt>#n:</dt><dd>shell:形式のname, 場所(Windows Vista, 7, 8, 10 の標準設定の場合)</dd>
 <dt></dt><dd>※(user)はユーザ名です</dd>
 <dt>--------------------------------</dt>
 <dt>#0:/#:</dt><dd>Desktop(Vista以降), DesktopFolder(XP以前) デスクトップ( C:\Users\(user)\Desktop )</dd>
@@ -619,7 +621,7 @@ shell:ControlPanelFolder →コントロールパネル<br>
 <dt>#11:</dt><dd>Start Menu, スタートメニュー( %AppData%\Microsoft\Windows\Start Menu )</dd>
 <dt>#13:</dt><dd>My Music, マイミュージック( C:\Users\(user)\Music )</dd>
 <dt>#14:</dt><dd>My Video, マイビデオ( C:\Users\(user)\Videos )</dd>
-<dt>#16:</dt><dd>デスクトップ(フォルダ除く)( C:\Users\(user)\Desktop ) ※WinXPではこれが shell:Desktop 相当</dd>
+<dt>#16:</dt><dd>デスクトップ(フォルダ除く)( C:\Users\(user)\Desktop ) ※Windows XPではこれが shell:Desktop 相当</dd>
 <dt>#17:</dt><dd>MyComputerFolder/DriveFolder(XP), マイコンピュータ</dd>
 <dt>#18:</dt><dd>NetworkFolder, ネットワーク コンピュータ(\\)</dd>
 <dt>#19:</dt><dd>NetHood, ネットワークコンピュータディレクトリ( %AppData%\Microsoft\Windows\Network Shortcuts )</dd>
@@ -1024,7 +1026,7 @@ ID指定の詳細は、<a href="#ppxidformat">PPxのID指定方法</a> を参照
   ・64bit版 Windows で使用する<br>
 <br>
 UNICODE版(32bit版)を使う<br>
-  ・WindowsXP以降で使用する<br>
+  ・Windows XP 以降で使用する<br>
   ・64bit版 Windows で、32bit版の拡張(エクスプローラー拡張)が必須のときに使用する<br>
   ・日本語と英語以外の言語のファイル名を使用する<br>
 <br>
@@ -1072,7 +1074,7 @@ MultiByte版を使う<br>
 <br>
 ・Windows の仕様による版間の機能の差違としては、次の通りです。<br>
   * UNICODE版 の PPb は、実際のカーソル位置と表示しているカーソル位置とがずれることがあります。<br>
-  * WindowsXP, 2003以降のクラシックスタイル以外のビジュアルスタイルを使用した場合、MultiByte版の一行編集で一部動作しない機能があります。<br>
+  * Windows XP, 2003 以降のクラシックスタイル以外のビジュアルスタイルを使用した場合、MultiByte 版の一行編集で一部動作しない機能があります。<br>
 <br>
 ・カスタマイズファイルPPxCxxxx.DATと、ヒストリファイルPPxHxxxx.DAT は、版間で共通して使用することはできません。文字の形式が違う為です。<br>
 <br>
@@ -1140,7 +1142,7 @@ PPxは、画面スケーリング（HiDPI、コントロールパネルのデス
   ※この調整では見栄えが悪くなることがあるため、長期間使用するときは、フォントサイズを改めて設定することをお勧めします。<br>
 ・アイコンの大きさを画面スケーリング設定に合わせて調整します。<br>
 ・ダイアログボックスが画面に収まりきらないときは、ダイアログボックスのフォントサイズを小さくして収まるよう調節します。<br>
-・動的画面スケーリング（画面スケーリング設定が異なるモニタ間にわたるウィンドウ移動や、設定アプリによるスケーリング設定変更）は、PPc, PPv, PPeが対応しています。PPbは、使用するコンソール(コンソールホスト(conhost.exe), Windows Terminal)の対応に依存します。<br>
+・動的画面スケーリング（画面スケーリング設定が異なるモニタ間にわたるウィンドウ移動や、設定アプリによるスケーリング設定変更）は、PPc, PPv, PPe が対応しています。PPb は、使用するコンソール(コンソールホスト(conhost.exe), Windows Terminal)の対応に依存します。<br>
 <hr>
 <a name="ExControl"></a><a name="拡張操作"></a><h3>全般 - 拡張操作</h3><br>
 PPx は、Windows が予め用意している機能を一部変更しています。<br>
@@ -1557,7 +1559,7 @@ PPc も Explorer 互換ではありませんが、似たような仮想ディレ
 <b>FTP 形式&nbsp;&nbsp;パス：&quot;ftp://hostname/directory…&quot;</b><br>
 <br>
 指定したURIのFTPサーバを利用します。<br>
-※FTPアクセスは、Internet ExplorerのFTP機能を使用するため、FTP専用のソフトウェアに比べてかなり低い性能です。機能が不足する場合、aux: 形式を使ったFTPアクセスを使用して下さい。<br>
+※FTPアクセスは、Internet Explorer の FTP 機能を使用するため、FTP 専用のソフトウェアに比べてかなり低い性能です。機能が不足する場合、aux: 形式を使ったFTPアクセスを使用して下さい。<br>
 <br>
 ディレクトリ表示、[C]/[M]/[K]/[R]/\[D]のみ対応しています。<br>
 また、[C]/[M]はFTPサーバ間のコピーに対応していません。<br>
@@ -1605,8 +1607,8 @@ PPc では AM 形式のみ利用します。<br>
 <b>zipfldr.dll (対応ファイル：.zip 等)</b><br>
 <b>zipfldr.dll (※機能制限あり、Windows11 23H2以降、対応ファイル：.7z, .tar, .gz, .rar 等)</b><br>
 <br>
-WindowsXP 以降の Windows に標準で用意されている zipfldr.dll を用いて、zipファイルをディレクトリとして扱うことができます。また、Windows11 23H2 で追加対応した .7z, .tat, .gz, .rar も限定的に使用できます。<br>
-尚、WindowsXPのzipfldr.dllはファイルの時刻を表示できませんが、展開時には時刻が設定されます。<br>
+Windows XP 以降の Windows に標準で用意されている zipfldr.dll を用いて、zipファイルをディレクトリとして扱うことができます。また、Windows11 23H2 で追加対応した .7z, .tat, .gz, .rar も限定的に使用できます。<br>
+尚、Windows XP の zipfldr.dll はファイルの時刻を表示できませんが、展開時には時刻が設定されます。<br>
 <br>
 <br>
 <b>lzhfldr2.dll (対応ファイル：.lzh 等)</b><br>
@@ -1630,8 +1632,8 @@ Windows7～8.1 に標準で用意されているlzhfldr2.dllを用いて、lzh�
 画像（サムネイル画像）<br>
 <br>
 ・Explorer拡張<br>
-Windows XPまでのカラム拡張<br>
-Windows Vista以降のカラム拡張<br>
+Windows XP までのカラム拡張<br>
+Windows Vista 以降のカラム拡張<br>
 <br>
 ・エントリの状態・選択<br>
 マーク<br>
@@ -1766,7 +1768,7 @@ A から指定 ID までの空き ID があれば、その ID で PPc を起動�
 ※ Zaa 以降の ID は指定できません。<br>
 <br>
 <b>-idl</b><br>
-フォルダに関連づけ(シェルコンテキストメニューにPPcを登録)するとき、フォルダを指定するために使用するオプションです。WindowsXP, 2003 以降で使用することができます。PPcustで登録できますので、通常このオプションを明示する必要はありません。<br>
+フォルダに関連づけ(シェルコンテキストメニューにPPcを登録)するとき、フォルダを指定するために使用するオプションです。Windows XP, 2003 以降で使用することができます。PPcustで登録できますので、通常このオプションを明示する必要はありません。<br>
 <br>
 <b>-k</b><br>
 起動後、実行するコマンドを指定します。このオプション以降は全て実行するコマンドと解釈しますので、最後に指定する必要があります。<br>
@@ -1812,7 +1814,7 @@ Enter を押したときに、カーソル位置／マークしたエントリ�
 <br>
 例) ppc -bootid:z -choose:con | clip<br>
 選択したエントリの一覧をクリップボードに入れる。<br>
-※clipコマンドはWinVista以降では標準でWindowsに入っています。<br>
+※clipコマンドはWindows Vista以降では標準でWindowsに入っています。<br>
 <br>
 <b>-choose:multi[8|16]</b><br>
 選択したエントリを標準出力に出力します。出力内容は１行にフルパスが１つ記載された形式です。<br>
@@ -1869,7 +1871,7 @@ for /f &quot;delims=?&quot; %i in ('ppc -choose:multi -bootid:z') do @echo %i<br
 ・[|] Drive List「:」へ移動<br>
 ・<a href="#ppckey29">[L] ^[G] ディレクトリ移動</a><br>
 ・<a href="#ppckey30">\[L] ドライブ移動メニュー</a><br>
-・<a href="#ppckey31">^[Pause] 応答無し状態の解消(WinVista以降)</a><br>
+・<a href="#ppckey31">^[Pause] 応答無し状態の解消(Windows Vista以降)</a><br>
 <hr><br>
 
 <a name="ppckey32"><b>ディレクトリ表示方法</b></a><br>
@@ -2106,7 +2108,7 @@ M_pjump メニュー内のディレクトリを選んで移動することがで
 <br>
 参考:<a href="#X_dlf">X_dlf</a><br>
 <hr><br>
-<a name="ppckey31"><b>^[Pause] 応答無し状態の解消(WinVista以降)</b></a><br>
+<a name="ppckey31"><b>^[Pause] 応答無し状態の解消(Windows Vista以降)</b></a><br>
 <br>
 共有ディレクトリの一覧を取得しようとしたが、取得先が存在しないために応答無しになった等の、応答無し状態の解消を試みます。Windows Vista 以降で利用可能です。<br>
 <hr><br>
@@ -2424,8 +2426,8 @@ PPc が１枚のみの場合は、もう１枚開いてから移動します。<
 <dt><b>ReparseDataLen</b></dt><dd>再解析ポイントの内容の大きさです。</dd>
 <dt><b>ReparsePath</b></dt><dd>再解析ポイントがジャンクションポイントの場合、その接続先のパスが表示されます。</dd>
 <dt><b>SummaryInformation, DocumentSummaryInformation, SebiesnrMkudrfcoIaamtykdDa</b></dt>
-<dt></dt><dd>(Win2000)ストリームに記憶されたコメントの内容です。Explorerのファイルプロパティにあるコメントで操作できます。</dd>
-<dt><b>Columns</b></dt><dd>WinVista以降のエクスプローラのカラム(列)に表示可能な項目名と、その内容です。</dd>
+<dt></dt><dd>(Windows 2000)ストリームに記憶されたコメントの内容です。Explorerのファイルプロパティにあるコメントで操作できます。</dd>
+<dt><b>Columns</b></dt><dd>Windows Vista以降のエクスプローラのカラム(列)に表示可能な項目名と、その内容です。</dd>
 <dt>&nbsp;&nbsp;</dl><br>
 <hr><br>
 <a name="ppckey120"><b>^\[I] ファイルの詳細情報の連動</b></a><br>
@@ -3145,9 +3147,9 @@ filename は、一般のファイルの他、HTTP 形式(http://…、https://�
 <br>
 <b>-prints</b><br>
 窓上にドロップした画像を、１つのドキュメントとして一括印刷します。プリンタの両面印刷や袋綴じ印刷機能を使う時に便利です。<br>
-<br>
-<b>-document:&quot;command line&quot; (試作)</b><br>
-指定したコマンドを使って加工したテキストの表示を行います。<br>
+<a name="documentfilter"></a><br>
+<b>-document:&quot;command line&quot;</b><br>
+指定したコマンドを使って整形したテキストファイルの表示を行います。<br>
 加工前後のテキストファイルの名前は、次のマクロ文字を使います。<br>
 %C, %FDC等&nbsp;&nbsp;加工前ファイル名。表示するファイル名と同じです。<br>
 %si&quot;TempFile&quot;&nbsp;&nbsp;加工済みファイル名。このファイルをテキスト表示します。<br>
@@ -3721,15 +3723,15 @@ Image形式の解像度の指定は &amp;File-&gt;print set &amp;Up で行うこ
 PPbを実行するコンソール（ターミナル・仮想端末）の種類によって使用できる機能の違いがあります。<br>
 <br>
 <b>Windows コンソールホスト(conhost.exe, Window10 までの標準コンソール)</b><br>
-・UNICODEのBMPの範囲までの対応のため、絵文字等のBMP外の文字を表示できません。<br>
+・UNICODE の BMP の範囲までの対応のため、絵文字等の BMP 外の文字を表示できません。<br>
 ・エスケープシーケンスで基本の16色以外の色を用いた場合、ログ参照や窓サイズ変更により16色の色に変換されます。<br>
 ・デスクトップ上で操作するときは、GUI メニューを使用します。リモート接続中はテキストメニューを使用します。<br>
 ・新たに表示したウィンドウが PPb の窓の背面に表示され、見た目では応答無しに見えることがあります。<br>
 <br>
-Windows10 RS1/1607 以前<br>
+Windows 10 RS1/1607 以前<br>
 ・エスケープシーケンスに対応していません。(*image 等が使用不可)<br>
 <br>
-WindowsXP/2003 以前<br>
+Windows XP/2003 以前<br>
 ・フォント指定(F_con), パレット指定(CB_pals)はできません。<br>
 ・エスケープシーケンスに対応していません。(*image 等が使用不可)<br>
 <br>
@@ -3742,7 +3744,7 @@ Win9x 系<br>
 <br>
 <b>Windows Terminal(wt.exe, OpenConsole.exe, Window11 以降の標準コンソール)</b><br>
 ・表示行とカーソルの行位置がずれることがあります(WT 1.11 で確認)。<br>
-・ログ参照は画面表示中の分のみです。画面外の分は WT のログ機能を使用してください。(Ctrl+Shift+[↑][↓][Page up][Page down]によるスクロールや、Ctrl+Shift+M によるマークモードを使った選択)<br>
+・ログ参照は画面表示中の分のみです。画面外の分は WT のログ機能を使用してください。(Ctrl+Shift+[↑][↓], [Page up], [Page down] によるスクロールや、Ctrl+Shift+M によるマークモードを使った選択)<br>
 ・ログ参照では絵文字等の BMP 外の UNICODE 文字をコピーできません。WT の機能を使用してください。<br>
 ・PPb によるマウス操作は、テキストメニューの選択時のみ有効です。文字列編集時は WT の機能によるマウス操作が可能です（PPb によるマウス操作中はホイールによる画面スクロールが使えなくなるため、WT の機能を優先させています。）。<br>
 ・デスクトップ上で操作するときは、GUI メニューを使用します。リモート接続中はテキストメニューを使用します。<br>
@@ -3751,7 +3753,7 @@ Win9x 系<br>
 ・コンソールウィンドウの検出に失敗し、GUI メニューの表示や窓操作等ができないことがあります。*option terminal を実行して GUI 機能を無効にしてください。また、検出に失敗したときは %N の結果が得られません。<br>
 <br>
 <b>Windows コンソールホストを内部使用した端末(ConEmu, ConsoleZ 等)</b><br>
-・コンソールウィンドウの検出に失敗し、GUIメニューの表示や窓操作等ができないことがあります。*option terminal を実行して GUI 機能を無効にしてください。また、検出に失敗したときは %N の結果が得られません。<br>
+・コンソールウィンドウの検出に失敗し、GUI メニューの表示や窓操作等ができないことがあります。*option terminal を実行して GUI 機能を無効にしてください。また、検出に失敗したときは %N の結果が得られません。<br>
 <br>
 <b>リモート接続時の注意</b><br>
 ・誤って GUI アプリケーションを実行してしまったときは、キーボードフォーカスが GUI アプリケーションに移るため、それ以上の操作ができなくなります。Ctrl + C を何度が送信することで終了確認が表示されますので「Y」を送信して強制終了してください。<br>
@@ -3897,7 +3899,7 @@ PPbの終了や設定の一時変更を行うメニューを表示します。<b
 <hr>
 <a name="PPbMouse"></a><a name="マウス操作"></a><h3>PPb - コンソールコマンドライン - マウス操作</h3><br>
  PPb は独自のマウス操作が可能です。ただし、コンソール・ターミナルのマウスによる編集機能が有効になっている場合は、これを解除しないと PPb のマウス操作機能が使用できません。<br>
-コンソールホストの簡易編集モードの設定は、コンソールウィンドウのタイトルバーを右クリック/Alt+Spaceでシステムメニューを表示させた後、プロパティを選択し、オプションタブ内の、簡易編集モードのチェックをはずすことによって解除できます。<br>
+コンソールホストの簡易編集モードの設定は、コンソールウィンドウのタイトルバーを右クリック / Alt+Spaceでシステムメニューを表示させた後、プロパティを選択し、オプションタブ内の、簡易編集モードのチェックをはずすことによって解除できます。<br>
 なお、設定時に現在の窓のみに設定するか、設定を保存して同名の窓に使うか聞いてきます。<b>(この設定はWindowsがレジストリに保存します)</b><br>
 <br>
 ドラッグ、左クリック&nbsp;&nbsp;範囲選択<br>
@@ -4098,7 +4100,7 @@ PPx のバージョンアップ時の自動アップデート処理のように�
 「PPcでフォルダを開く」はコンテキストメニューにPPcが登録され、且つ既定の設定になり、ダブルクリックでPPcが開くようになります。<br>
 <br>
 <b>これらの操作は、レジストリの書き込みが生じます。</b><br>
-また、「デスクトップ」、「マイコンピュータ」、「ごみ箱」等の特殊フォルダは、WindowsXP, 2003以降のみPPcで開くことができ、<b>Windows95, 98, Me, NT, 2000は関連づけがされますが開くことができません。</b><br>
+また、「デスクトップ」、「マイコンピュータ」、「ごみ箱」等の特殊フォルダは、Windows XP, 2003 以降のみPPcで開くことができ、<b>Windows95, 98, Me, NT, 2000は関連づけがされますが開くことができません。</b><br>
 <br>
 (参考1)既定の動作の解除は、HKEY_CURRENT_USER\Software\Classes\Folder\shell を空にします。アンインストールの時解除されなかったときは、手動で変更してください。<br>
 <br>
@@ -4252,7 +4254,7 @@ MC_menu、MV_menuとその下位階層のメニューが修正対象です。<br
 <b>配色テーマ</b><br>
 複数の項目を規定の配色で一括で変更できます。<br>
  編集前&nbsp;&nbsp;別の配色を選んだときに、元に戻せます<br>
- Windows準拠&nbsp;&nbsp;Windowsの配色（GDI、※WindowsXP以前の配色）をできるだけ使用した配色です。<br>
+ Windows準拠&nbsp;&nbsp;Windowsの配色（GDI、※ Windows XP 以前の配色）をできるだけ使用した配色です。<br>
  ※ 現在の配色を保存するときは、「*ppcust cd color.cfg -mask:&quot;C*&quot;」とすると「color.cfg」ファイルに保存できます。<br>
  ※ ダイアログ、メニュー、タイトルバー等、Windows が描画する箇所は変化しません。これらを変えるときは、ダイアログやメニュー等のダークモード(<a href="#X_uxt">X_uxt</a>)を変更してください。<br>
 <hr>
@@ -4720,7 +4722,7 @@ text line1%b
 <b>コマンドラインの大きさ</b><br>
 <br>
 コマンドラインの大きさは標準で約1000文字分用意しています。<br>
-実行ファイルを実行するときは、マクロ文字等を展開した後の文字数が約8000文字までとなります。Windows XP以降のcmd.exeのコマンドラインの最大文字数が約8000文字までであるため制限しています。<br>
+実行ファイルを実行するときは、マクロ文字等を展開した後の文字数が約8000文字までとなります。Windows XP 以降の cmd.exe のコマンドラインの最大文字数が約8000文字までであるため制限しています。<br>
 ※ cmd.exe を使わないため文字数を増やせるとき・他の制限があるため更に制限したいときは <a href="#maxlength">*maxlength コマンド</a> を使って一時的に文字数を変更できます。<br>
 ※ %I, %Q, *msgbox, *messagebox, *set, *string, *linemessage, *cliptext, *insert, *insertsel, *replace, *customize, *setcust, *linecust は標準で長さ制限が緩和されています。<br>
 <hr><br>
@@ -6074,11 +6076,11 @@ PPxのヘルプを表示します。<br>
 keywordが指定していない場合はトピック表示をし、指定してあるときは指定キーワードの項目を表示します。<br>
 <br>
 <b>windows help</b><br>
-表示するヘルプは、Windows95, 98, Me, NT, 2000, XP, 2003 なら PPX.HLP を使用します。<br>
+表示するヘルプは、Windows 95, 98, Me, NT, 2000, XP, 2003 なら PPX.HLP を使用します。<br>
 ヘルプファイル(PPX.HLP)は PPx 本体の配布書庫に同梱していません。<a href="#winhlpdl">別途ダウンロード</a>してください。<br>
 <br>
 <b>html help</b><br>
-PPX.HLP が存在しないか、WindowsVista 以降ならオンラインヘルプ<a href="http://toro.d.dooo.jp/ppxhlp.html" target="_top">http://toro.d.dooo.jp/ppxhlp.html</a>を使用します。<br>
+PPX.HLP が存在しないか、Windows Vista 以降ならオンラインヘルプ<a href="http://toro.d.dooo.jp/ppxhlp.html" target="_top">http://toro.d.dooo.jp/ppxhlp.html</a>を使用します。<br>
 オンラインヘルプを<a href="#downloadhelp">ダウンロード</a>して使用することもできます。<br>
 <br>
 <hr><br>
@@ -6362,7 +6364,7 @@ itemnameの頭に ?b:n; か ?c:n; が含まれているときは、指定した�
 command.com&nbsp;&nbsp;127<br>
 PPxの１文の既定最大長&nbsp;&nbsp;約1000 (内部コマンド実行時の規定値)<br>
 Windowsの環境変数編集ダイアログ&nbsp;&nbsp;約2000<br>
-cmd.exeの最大長(XP以降)&nbsp;&nbsp;約8000 (実行ファイル実行時の規定値)<br>
+cmd.exeの最大長(Windows XP 以降)&nbsp;&nbsp;約8000 (実行ファイル実行時の規定値)<br>
 Windowsの最大コマンドライン長&nbsp;&nbsp;32K<br>
 環境変数の仕様最大長&nbsp;&nbsp;32K<br>
 PPxの各種カスタマイズ内容の最大長&nbsp;&nbsp;32K<br>
@@ -6437,7 +6439,7 @@ pen&nbsp;&nbsp;ペン用のタッチ操作モードにします。X_pmc の第4�
 <a name="checkupdate"><b>*checkupdate <i>[p][y][n][f][i]</i> PPxの更新チェックとアップデート</b></a><br>
 <br>
 PPx配布サイトに最新版があるかどうかをチェックし、最新版が見つかった場合は、確認後ダウンロードしてアップデートを行います。<br>
-・アップデートには PPx の SETUP.EXE の他、zipfldr.dll(WinXP以降ならWindowsに入っています)、7-zip32.dll、unzip32.dll のどれかが必要です。<br>
+・アップデートには PPx の SETUP.EXE の他、zipfldr.dll(Windows XP 以降なら Windows に入っています)、7-zip32.dll、unzip32.dll のどれかが必要です。<br>
 ・ダウンロードした PPx の配布ファイルは、<a href="#checksignature">署名を確認</a>した後に<a href="#X_save">X_save</a> で指定された場所に保管されます。<br>
 <br>
 次のオプションが指定できます。<br>
@@ -7391,7 +7393,7 @@ id1(%mid1) の行を削除します。<br>
 一覧表示の表示形態(<a href="#X_flst">X_flst</a>)<br>
  disable / 0&nbsp;&nbsp;一覧表示をしない。[INS] ^[I] [TAB] [↑] [↓] で候補を変える。<br>
  file / 1&nbsp;&nbsp;[INS], ^[I], [TAB](X_ltab)で一覧表示をする<br>
- api / 2&nbsp;&nbsp;Windows2000, XP, 2003 の自動補完機能付きの一覧表示を使用する。<br>
+ api / 2&nbsp;&nbsp;Windows2 000, XP, 2003 の自動補完機能付きの一覧表示を使用する。<br>
 &nbsp;&nbsp;おまけ機能です。相対指定の補完は正しい結果とならない場合があります。<br>
  single / 3&nbsp;&nbsp;自動補完機能付きの一覧表示(一覧が1枚)<br>
  double / 4&nbsp;&nbsp;自動補完機能付きの一覧表示(一覧が上下2枚)<br>
@@ -9203,7 +9205,7 @@ on|off指定は「1」か「0」でも指定でき、何も指定しない場合
 <br>
 -lowpri:[on|off]<br>
 &nbsp;&nbsp;ファイルオペレーションの処理優先度を下げるかどうかの指定です。<br>
-&nbsp;&nbsp;Vista より前なら、スレッドの優先度を下げ、<br>
+&nbsp;&nbsp;Windows Vista より前なら、スレッドの優先度を下げ、<br>
 &nbsp;&nbsp;Vista 以降なら、I/O処理の優先度を下げます。<br>
 <br>
 -preventsleep:[on|off]<br>
@@ -9387,10 +9389,10 @@ WSH VBScriptの場合は、置換(s/src/dest/)のみ使用できます。修飾�
 <dt></dt><dd>Copy 複写</dd>
 <dt></dt><dd>Mirror ディレクトリミラー</dd>
 <dt></dt><dd>Shortcut ショートカットファイル(.lnk)の作成</dd>
-<dt></dt><dd>Hard link/Junction ファイルならハードリンク、ディレクトリならジャンクションを作成します。(Win2000, XP以降)</dd>
+<dt></dt><dd>Hard link/Junction ファイルならハードリンク、ディレクトリならジャンクションを作成します。(Windows 2000, XP以降)</dd>
 <dt></dt><dd>Delete 削除</dd>
 <dt></dt><dd>Undo 「元に戻す為のログを作成」を有効にして行った作業を元に戻す。</dd>
-<dt></dt><dd>Symbolic link シンボリックリンクの作成(WinVista以降, 要シンボリックリンク作成権限)</dd>
+<dt></dt><dd>Symbolic link シンボリックリンクの作成(Windows Vista以降, 要シンボリックリンク作成権限)</dd>
 <dt></dt></dl><br>
 <hr>
 <a name="DiagFopName"></a><a name="ファイルオペレーションダイアログ-名前"></a><h3>コマンド実行処理 - ファイルオペレーションダイアログ-名前</h3><br>
@@ -10313,7 +10315,7 @@ PPcの名前変更[R]、ファイル複写時等の同名ファイル存在時�
 <br>
 0&nbsp;&nbsp;一覧表示をしない。[INS] ^[I] [TAB] [↑] [↓] で候補を変える。<br>
 1&nbsp;&nbsp;[INS], ^[I], [TAB](<a href="#X_ltab">X_ltab</a>)で一覧表示をする<br>
-2&nbsp;&nbsp;Windows2000, XP, 2003 の自動補完機能付きの一覧表示を使用する。<br>
+2&nbsp;&nbsp;Windows 2000, XP, 2003 の自動補完機能付きの一覧表示を使用する。<br>
 &nbsp;&nbsp;※ 2 は、おまけ機能です。相対指定の補完は正しい結果とならない場合があります。<br>
 3&nbsp;&nbsp;<a href="#autocomplist">自動補完機能付きの一覧表示</a>(一覧が1枚)<br>
 4&nbsp;&nbsp;自動補完機能付きの一覧表示(一覧が上下2枚)<br>
@@ -10635,7 +10637,7 @@ PPvで、[W]コマンドで切り換えて、プロポーショナルのテキ�
 <a name="F_con"><b>F_con</b></a> フォント-PPb<br>
 <br>
  PPb が使用するコンソールのフォントです。F_mesと同じ構成で記録されています。<br>
-WindowsVista 以降で使用できます。<br>
+Windows Vista 以降の Windows コンソールホスト(conhost.exe) で使用できます。<br>
 フォント名が空欄の場合は、システムで設定したフォントのままになります。<br>
 現在、PPb を終了しても変更したフォントがそのままになります。<br>
 <hr>
@@ -10752,7 +10754,7 @@ GUIカスタマイズでは、<b>～で窓外に移動したときは</b>の項�
   |||+-- 1=リピート無し→「方法」を実行  リピート中→停止
   ||+--- 1=末端/先頭に到達していない時は移動する
   |+---- 1=二枚窓時は窓間移動を優先(移動方向が隣接窓側なら窓移動)
-  +----- 1=移動時にマークする(Explorer風選択, 画面外他のみ有効)</pre><br>
+  +----- 1=移動時にマークする(Explorer 風選択, 画面外他のみ有効)</pre><br>
 <br>
 例えば「XC_mvUD = 0,1, 3,B110, 5,B111」等と指定します。<br>
 この例だと、<br>
@@ -10957,7 +10959,7 @@ XC_page = 0 のときのエントリ表示カスタマイズです。<br>
 XC_page = 1 時など、上下スクロール方式のカーソル移動を行っているとき、上下の端で移動を抑制する行数を指定します。<br>
 数行分指定しておくと、スクロール時に画面上下端にカーソルが移動しても、数行先が見えるので、必要なエントリを探しやすくなります。<br>
 <hr><br>
-<a name="XC_msel"><b>XC_msel</b></a> エントリクリック動作はExplorer風にする<br>
+<a name="XC_msel"><b>XC_msel</b></a> エントリクリック動作は Explorer 風にする<br>
 <br>
 エントリをマウスでクリックしたときの選択方法を指定します。<br>
 0&nbsp;&nbsp;マークは改めて選択しない限り解除されません。<br>
@@ -11510,7 +11512,7 @@ MC_celS等 に画像表示をする書式(n)を指定し、各エントリのサ
 <a name="X_dicn"><b>X_dicn</b></a>  ディレクトリ用のアイコン<br>
 <br>
 ディレクトリのアイコンとして使用するアイコンファイル(.ico)のパスを設定します。<br>
-WinXPではディレクトリに使用できるアイコンの変更が一般的な設定方法でできないため、専用の設定を用意しています。<br>
+Windows XP ではディレクトリに使用できるアイコンの変更が一般的な設定方法でできないため、専用の設定を用意しています。<br>
 <br>
 空欄ならエクスプローラーのフォルダアイコンを取得します。<br>
 <a href="#fonticon">絵文字指定</a>も可能です。<br>
@@ -11597,6 +11599,7 @@ XC_celDなどで、カーソル／マークに下線を指定したとき、そ�
 <br>
 <b>パス</b><br>
 <b>(1)</b>「*」、「A:\」、「C:\WINDOWS\SYSTEM32」等と設定を有効にするパスを指定します。パスの末尾に「\」がある場合は、指定したパス自身と、それ以降のパスも有効になります。例えば、「C:\WINDOWS\SYSTEM32\」なら「C:\WINDOWS\SYSTEM32\drivers」等も有効になります。<br>
+尚、「\\」(PC一覧)は「\」と指定する必要があります。<br>
 <br>
 <b>(2)</b>包括的な指定方法<br>
 *&nbsp;&nbsp;他に該当するパスがないときに使われる<br>
@@ -11614,6 +11617,9 @@ listfile&nbsp;&nbsp;<a href="#listsubj">ListFile</a>内<br>
 <br>
 　「:」(DriveList)の場合<br>
 　(高) : ← * (低)<br>
+<br>
+　「\\」(PC一覧)の場合<br>
+　(高) \ ← \\ ← * (低)<br>
 <br>
 <b>※ 以下(3)～(5)はおまけ機能です。</b><br>
 _others:exdset が 1 の時に機能します。カスタマイザのその他タブ、その他設定で exdset に 1 を設定したり、*customize _others:exdset=1 を実行したりしてください。<br>
@@ -12037,7 +12043,7 @@ txt = -text -sjis<br>
 0&nbsp;&nbsp;表示しない<br>
 1&nbsp;&nbsp;表示する<br>
 2&nbsp;&nbsp;高速表示する、ただし <a href="#F_mes">F_mes</a> に指定したフォントによっては正常に表示されない場合があります。また、改行記号は CRLF / LF / CR で異なる表示になります。<br>
-3&nbsp;&nbsp;WinXP以前なら低速表示(1)、WinVista以降なら高速表示(2)<br>
+3&nbsp;&nbsp;Windows XP 以前なら低速表示(1)、Windows Vista 以降なら高速表示(2)<br>
 <hr><br>
 <a name="XV_ctls"><b>XV_ctls</b></a>&nbsp;&nbsp;制御文字の高速表示に使うUNICODE文字<br>
 <br>
@@ -12375,7 +12381,7 @@ PPx          :TC1 :TH1 :XCFG<br>
 <br>
 ・表示内容が１文字(X)だけなら、項目内容を組み合わせて「<u>X</u> 項目内容」の表示形式になります。<br>
 <br>
-・「\t」を使うと、その部分が WindowsXPまではtab(桁揃え)、WindowsVista以降では両端揃えになります。<br>
+・「\t」を使うと、その部分が Windows XP まではtab(桁揃え)、Windows Vista 以降では両端揃えになります。<br>
 「\t」と表示したい場合は、「\T」とするか「\\t」(「\t」に変換されます) で表示できます。<br>
 <br>
 ・「--」の場合、水平線が引かれます。項目内容は無視されます。<br>
@@ -12537,15 +12543,15 @@ M_Ccr = {<br>
 <b>ソートオプション</b> 名前・拡張子・コメントで使用します<br>
  B0 = 1 : 英字大小を区別しません(ignore case, a→Aに統一)<br>
  B1 = 0 : 送りのない文字を区別しません(ignore nonspacing chars)<br>
- B2 = 0 : 記号を区別しません(ignore symbols, @や*等を無視)<br>
- B4 = 1 : 言語を考慮した英字大小区別なし(WindowsVista以降)<br>
- B5 = 1 : 言語を考慮した送りのない文字を区別なし(WindowsVista以降)<br>
+ B2 = 0 : 記号を区別しません(ignore symbols, @や* 等を無視)<br>
+ B4 = 1 : 言語を考慮した英字大小区別なし(Windows Vista 以降)<br>
+ B5 = 1 : 言語を考慮した送りのない文字を区別なし(Windows Vista 以降)<br>
  B12 = 0 : 単語ソート。ハイフン「-」アポストロフィ「'」等を無視します<br>
  B16 = 0 : ひらがなとカタカナを区別しません(あ→アに統一)<br>
  B17 = 0 : 全角半角を区別しません(Ａ→Aに統一)<br>
  B24 = 1 : 数値順ソート(PPx独自)<br>
  B25 = 1 : パス(最後の\以前)を無視し、ファイル名部分のみで比較します(PPx独自)<br>
- B27 = 1 : use linguistic rules for casing(WindowsVista以降)<br>
+ B27 = 1 : use linguistic rules for casing(Windows Vista 以降)<br>
 <br>
 右から25番目のビット(B24)を1に指定すると数値の大きさ順(「000」「1」「012」の順)に名前のソートができます。（指定しない場合は文字コード順、「000」「012」「1」の順になります）<br>
 右から26番目のビット(B25)を1に指定するとListFileや書庫内において、エントリに含まれるディレクトリ(dir\file中のdir)部分を無視してfileのみで名前のソートができます。<br>
@@ -12914,7 +12920,7 @@ _auto を使用すると、Windowsの「ウィンドウの文字」の色を使�
 （XC_fexcのオンライン拡張指定時は、ファイル名欄の文字色にも適用）<br>
 圧縮&nbsp;&nbsp;&nbsp;&nbsp;圧縮、スパースファイル<br>
 リンク&nbsp;&nbsp;&nbsp;&nbsp;ジャンクション、シンボリックリンク等のリパースポイント<br>
-仮想化&nbsp;&nbsp;&nbsp;&nbsp;仮想化(WinVista以降)、オフライン<br>
+仮想化&nbsp;&nbsp;&nbsp;&nbsp;仮想化(Windows Vista 以降)、オフライン<br>
 暗号化&nbsp;&nbsp;&nbsp;&nbsp;暗号化<br>
 特殊&nbsp;&nbsp;&nbsp;&nbsp;一時ファイル、デバイス<br>
 <br>
@@ -13060,7 +13066,7 @@ _TL: 上線&nbsp;&nbsp;_UL: 下線&nbsp;&nbsp;_LL: 左線&nbsp;&nbsp;_RL: 右線
 <br>
 <a name="CB_pals"><b>CB_pals</b></a> PPb色パレット<br>
  コンソールで使える16色のパレットです。主に微調節を行うときに変更します。<br>
-WindowsVista 以降、且つ Windows コンソールホスト(conhost.exe)のときに使用できます。<br>
+Windows Vista 以降、且つ Windows コンソールホスト(conhost.exe)のときに使用できます。<br>
 現在、PPb を終了しても変更したパレットがそのままになります。<br>
 自動のときは、システム設定された色をそのまま使います。<br>
 <hr>
@@ -13090,7 +13096,7 @@ Windows95/98/Me/NT4.0 では使用できません。<br>
 <br>
 -1～100の間で数値を指定できます。<br>
 <br>
--1 : WindowsVista/7 限定で使用できるaero効果を使った透明化を行います。<br>
+-1 : Windows Vista / 7 限定で使用できるaero効果を使った透明化を行います。<br>
 0 : 背景のみが完全に透明になり、PPxの背後が見え、背後の操作が可能です。背景以外は不透明です。<br>
 1～99 : 1 に近づくほど透明になります。<br>
 100 : 通常の不透明です。<br>
@@ -13443,7 +13449,7 @@ PPcは、ステータス行やツールバーの位置を自由に変更でき�
 PPx の各種メッセージは、この項目を変更することによって変えることができます。<br>
 カスタマイザを使うと、他の言語用の表示メッセージの一覧取得・ダウンロードが可能です。<br>
 <br>
-表示メッセージは、X_LANG の指定が無ければ コントロールパネルの「地域と言語のオプション(WindowsXPの場合)」で指定した言語に併せて切り替えられ、該当言語のメッセージ MesXXXX が登録されていないときは、内蔵の英語表記を用います。XXXX は Windows のロケール識別子(LCID)の16進数値です。<br>
+表示メッセージは、X_LANG の指定が無ければ コントロールパネルの「地域と言語のオプション(Windows XP の場合)」で指定した言語に併せて切り替えられ、該当言語のメッセージ MesXXXX が登録されていないときは、内蔵の英語表記を用います。XXXX は Windows のロケール識別子(LCID)の16進数値です。<br>
 現在使用しているLCIDは、Registry editor で、HKEY_CURRENT_USER\Control Panel\International\Localeを参照すると分かります。その下4桁をXXXXに当てはめて使用できます。<br>
 参考: <a href="#custLang">言語ファイル</a><br>
 <hr>
@@ -14208,19 +14214,22 @@ PPc で標準で扱える条件は、ファイル名、拡張子、ファイル�
 ・<a href="#HowToCust8"> 指定したファイル等をパラメータとして実行する方法</a><br>
 ・<a href="#HowToCust9"> メニュー関連(複雑／付け足し／階層化／編集)</a><br>
 ・<a href="#HowToCust10"> ファイル等を実行するときの挙動変更</a><br>
-・<a href="#HowToCust12"> [PPc]更新通知表示を無くしたい</a><br>
-・<a href="#HowToCust13"> [PPc]エントリ表示書式のカスタマイズ説明</a><br>
-・<a href="#HowToCust14"> [PPc]特別なエントリを強調させたい</a><br>
-・<a href="#mysort"> [PPc]標準の方法にない並び順で表示させたい</a><br>
-・<a href="#HowToCust15"> [PPc]ホイールをカスタマイズしたい</a><br>
-・<a href="#HowToCust16"> PPX.HLPの呼び出し方法</a><br>
-・<a href="#HowToCust17"> ネットワークアクセス関連</a><br>
-・<a href="#HowToCust18"> [PPv]最近開いたファイルを表示するためのメニューを追加する</a><br>
-・<a href="#HowToCust19"> [PPb]フォントや色などのカスタマイズをしたい</a><br>
-・<a href="#HowToCust20"> テキスト形式設定ファイルの書き出し→テキストエディタで編集→テキスト形式設定ファイルを取り込む…をひとまとめにしたい</a><br>
-・<a href="#HowToCust21"> 各コマンドを実行して一行編集を表示させたときに、カーソル位置の変更や、コマンド実行をしたい</a><br>
+・<a href="#HowToCust11"> メニューバーのカスタマイズ</a><br>
+・<a href="#HowToCust13"> [PPc] 更新通知表示を無くしたい</a><br>
+・<a href="#HowToCust14"> [PPc] エントリ表示書式のカスタマイズ説明</a><br>
+・<a href="#HowToCust15"> [PPc] 特別なエントリを強調させたい</a><br>
+・<a href="#mysort"> [PPc] 標準の方法にない並び順で表示させたい</a><br>
+・<a href="#HowToCust16"> [PPc] ホイールをカスタマイズしたい</a><br>
+・<a href="#HowToCust17"> PPX.HLPの呼び出し方法</a><br>
+・<a href="#HowToCust18"> ネットワークアクセス関連</a><br>
+・<a href="#HowToCust19"> [PPv] 特定種類のテキストを整形して表示する</a><br>
+・<a href="#HowToCust20"> [PPv] Markdown テキストを整形して表示する</a><br>
+・<a href="#HowToCust21"> [PPv] 最近開いたファイルを表示するためのメニューを追加する</a><br>
+・<a href="#HowToCust22"> [PPb] フォントや色などのカスタマイズをしたい</a><br>
+・<a href="#HowToCust23"> テキスト形式設定ファイルの書き出し→テキストエディタで編集→テキスト形式設定ファイルを取り込む…をひとまとめにしたい</a><br>
+・<a href="#HowToCust24"> 各コマンドを実行して一行編集を表示させたときに、カーソル位置の変更や、コマンド実行をしたい</a><br>
 ・<a href="#values"> 変数・一時的な文字列の記憶</a><br>
-・<a href="#HowToCust22"> 高速化のための設定</a><br>
+・<a href="#HowToCust25"> 高速化のための設定</a><br>
 
 <hr><br>
 <a name="HowToCust1"><b> サンプル</b></a><br>
@@ -14398,13 +14407,23 @@ M_jump2 = {<br>
 <hr><br>
 <a name="HowToCust10"><b> ファイル等を実行するときの挙動変更</b></a><br>
 <br>
-・カレントディレクトリ(作業フォルダ)は、PPcなら現在表示しているディレクトリです。変更するときは、<i>*cd ディレクトリ %: 実行ファイル名</i>と指定します。<br>
+・カレントディレクトリ(作業フォルダ)は、PPc なら現在表示しているディレクトリです。変更するときは、<i>*cd ディレクトリ %: 実行ファイル名</i>と指定します。<br>
 ・カレントディレクトリ(作業フォルダ)を実行ファイルと同じディレクトリにする必要がある場合、<i><a href="#launch">*launch</a> 実行ファイル名</i>で可能です。前段よりも簡潔な記載ができます。<br>
 <br>
 ・PPbを経由しないで実行するときは<i>%Ob 実行ファイル名</i>と指定します。<br>
 関連 <a href="#execute">実行処理</a>, <a href="#run">*run</a>, <a href="#launch">*launch</a>, <a href="#start">*start</a>, <a href="#shellmenu">*shellmenu</a>, <a href="#zapfile">%Z</a>, <a href="#zapmenu">%z</a>, <a href="#optionmacro">%O</a><br>
 <hr><br>
-<a name="HowToCust12"><b> [PPc]更新通知表示を無くしたい</b></a><br>
+<a name="HowToCust11"><b> メニューバーのカスタマイズ</b></a><br>
+・ダークモード対応のメニューバーにしたい<br>
+  Windows 標準のメニューバーはダークモードに対応していません。<br>
+  PPc は ツールバー(<a href="#X_dock">X_dock</a>)にダークモード対応のメニューバーが用意されていますので、標準のメニューバーを非表示にし、代わりにツールバーのメニューバーを使用してください。<br>
+<br>
+・メニューバーの表示・非表示のマウス操作をなくしたい。<br>
+  標準のマウスカスタマイズでは、メニューバー、ステータス行のダブルクリックでメニューバーの表示を切り替えることができます。この動作を止めたい場合は、<br>
+  カスタマイザのマウス割当て（MC_click, MV_click）で、LD_LINE, LD_MENU の項目を削除してください。<br>
+<br>
+<hr><br>
+<a name="HowToCust13"><b> [PPc] 更新通知表示を無くしたい</b></a><br>
 <a name="ppc_nocheck"></a><br>
 次のように背景と同じ色にカスタマイズしてください。<br>
 更新通知が目障りになりにくくなります。<br>
@@ -14425,7 +14444,7 @@ GUI設定での例)<br>
 <br>
   ※Ctrl+F5で手動更新することができます。<br>
 <hr><br>
-<a name="HowToCust13"><b> [PPc]エントリ表示書式のカスタマイズ説明</b></a><br>
+<a name="HowToCust14"><b> [PPc] エントリ表示書式のカスタマイズ説明</b></a><br>
 <a name="ppc_dispfmtdetail"></a><br>
 PPc は<a href="#ppc_dispfmt">表示の書式</a>を記載することで、１～３行目(XC_stat, XC_inf1, XC_inf2)と各エントリ(MC_celS)の表示をカスタマイズすることができます。<br>
 <br>
@@ -14440,7 +14459,7 @@ PPc は<a href="#ppc_dispfmt">表示の書式</a>を記載することで、１�
 <br>
 <i>例) N32 w60F20,5 / z10 S1 T8 s1</i><br>
 <hr><br>
-<a name="HowToCust14"><b> [PPc]特別なエントリを強調させたい</b></a><br>
+<a name="HowToCust15"><b> [PPc] 特別なエントリを強調させたい</b></a><br>
 <br>
  <a href="#C_ext">拡張子色</a>の指定は、<a href="#wildcard">ワイルドカード</a>が使えますので、属性、ファイルサイズ、書き込み時刻等の条件や、正規表現による複雑な名前指定による条件で、文字色を変えることができます。<br>
  また、文字色は、XC_fexc の設定により、拡張子部分だけ色を変えたり、ファイル名全体の色を変えたりできます。<br>
@@ -14448,7 +14467,7 @@ PPc は<a href="#ppc_dispfmt">表示の書式</a>を記載することで、１�
  一時的に色を付けたい場合は、*markentry -highlight や *range -highlight によるハイライト操作で強調できます。<br>
 <br>
 <hr><br>
-<a name="mysort"><b> [PPc]標準の方法にない並び順で表示させたい</b></a><br>
+<a name="mysort"><b> [PPc] 標準の方法にない並び順で表示させたい</b></a><br>
 <br>
 詳細指定で指定できる方法でも必要とするソートができない場合、いくつか方法があります。<br>
 <br>
@@ -14492,7 +14511,7 @@ PPc は<a href="#ppc_dispfmt">表示の書式</a>を記載することで、１�
 [INS], [DEL]を使うことで、一時的に位置移動させることができます。移動方法はXC_emovで変更できます。<br>
 また、FAT/exFATのドライブであれば、<a href="#writeentry">[W] コマンド</a>で順番の書き込み(ファイル移動による並び替え)を行うことができます。書き込みをした後、ソートをしない／属性順ソート／読み込み順ソートをすることで、書き込んだ順番で表示することができます。<br>
 <hr><br>
-<a name="HowToCust15"><b> [PPc]ホイールをカスタマイズしたい</b></a><br>
+<a name="HowToCust16"><b> [PPc] ホイールをカスタマイズしたい</b></a><br>
 <br>
 ホイール操作を標準のカーソル移動から変更したいときは、XC_mvWH を次のように設定すると、ホイール操作にともなって KC_main の RANGEEVENT1 / RANGEEVENT2 が呼び出されるようになります。<br>
 <br>
@@ -14502,7 +14521,7 @@ PPc は<a href="#ppc_dispfmt">表示の書式</a>を記載することで、１�
   RANGEEVENT2 , *linemessage ホイール下<br>
   }<br>
 <hr><br>
-<a name="HowToCust16"><b> PPX.HLPの呼び出し方法</b></a><br>
+<a name="HowToCust17"><b> PPX.HLPの呼び出し方法</b></a><br>
 <br>
 <i>WINHLP32 -kX_alt %0%\PPX.HLP</i><br>
 指定したキーワード「X_alt」があるページを開きます。<br>
@@ -14511,7 +14530,7 @@ PPc は<a href="#ppc_dispfmt">表示の書式</a>を記載することで、１�
 指定したインデックス「ID001」があるページを開きます。<br>
 このインデックスは、PPX.CNT(テキストエディタで開けます)内に記載されています。<br>
 <hr><br>
-<a name="HowToCust17"><b> ネットワークアクセス関連</b></a><br>
+<a name="HowToCust18"><b> ネットワークアクセス関連</b></a><br>
 <br>
 別PCをネットワーク(Microsoft Windows Network)経由で頻繁にアクセスするときに便利な設定です。<br>
 <br>
@@ -14533,7 +14552,29 @@ PPc は<a href="#ppc_dispfmt">表示の書式</a>を記載することで、１�
 ネットワーク先のドライブを指定するときにUNCパス(\\pc名\共有名)が使えますが、そのまま使うと、そのルートにしか移動できません。PPxの拡張指定方法を使うと、任意位置からの以前のカレントディレクトリに移動できます。<br>
 例えば「%j\\pc名\共有名\:」と指定すると、\\pc名\共有名 上で最後に移動したディレクトリへ移動することができます。<br>
 <hr><br>
-<a name="HowToCust18"><b> [PPv]最近開いたファイルを表示するためのメニューを追加する</b></a><br>
+<a name="HowToCust19"><b> [PPv] 特定種類のテキストを整形して表示する</b></a><br>
+<br>
+次のように <a href="#XV_opts">XV_opts</a> 中に -document 指定で<a href="#documentfilter">フィルタコマンド</a>を使うことで、指定した拡張子やファイル種類のときに、フィルタにより整形されたテキストを表示することができます。<br>
+<br>
+例えば、json ファイルを jq (<a href="https://jqlang.org" target="_top">https://jqlang.org</a>) を使って整形する場合は次のようになります。<br>
+<br>
+XV_opts = {<br>
+json = -document:&quot;%Obn set JQ_COLORS=0;90:0;39:0;39:0;39:0;32:0;39:0;39:0;33 &amp;&amp; jq-windows-amd64.exe --color-output &lt;&quot;&quot;%C&quot;&quot;&gt; %si&quot;&quot;TempFile&quot;&quot; &quot; -utf8<br>
+}<br>
+<br>
+<hr><br>
+<a name="HowToCust20"><b> [PPv] Markdown テキストを整形して表示する</b></a><br>
+<br>
+現在、PPv には Markdown を解釈する機能が用意されていません。<br>
+このため、何らかのフィルタソフトを組み合わせる必要があります。<br>
+例えば、次のようなカスタマイズをして、Markdown を html に変換する Perl スクリプトである、 Markdown.pl (<a href="https://daringfireball.net/projects/markdown/" target="_top">https://daringfireball.net/projects/markdown/</a>) をフィルタとして用いることで、拡張子 md の Markdown テキストを整形表示することができます。<br>
+<br>
+XV_opts = {<br>
+md = -document:&quot;%Obn perl Markdown.pl %C&gt; %si&quot;&quot;TempFile&quot;&quot; &quot; -utf8 -tag:on<br>
+}<br>
+<br>
+<hr><br>
+<a name="HowToCust21"><b> [PPv] 最近開いたファイルを表示するためのメニューを追加する</b></a><br>
 <br>
 [0]キーで最近開いたファイルのメニューを表示する例です。<br>
 <i>KV_main = {<br>
@@ -14549,14 +14590,16 @@ M_vmenu = {<br>
 7&nbsp;&nbsp;= %hv6<br>
 }</i><br>
 <hr><br>
-<a name="HowToCust19"><b> [PPb]フォントや色などのカスタマイズをしたい</b></a><br>
+<a name="HowToCust22"><b> [PPb] フォントや色などのカスタマイズをしたい</b></a><br>
 <br>
 PPbは、PPbのコマンドライン（編集行）の色のみ変更可能です。<br>
 コンソールのフォントや、他のアプリケーションの表示色等を変更するには、Windowsの設定を変更する必要があります。<br>
+尚、PPb のフォント指定自体はありますが、Windows Vista 以降の Windows コンソールホスト(conhost.exe) のみ機能します。Windows XP 以前や、Windows Terminal 等に対しては機能しません。<br>
+<br>
 PPbのタイトルバーを右クリックし、「プロパティ」(PPbのみの設定)、「既定値」(コンソール全体の設定)を選択することで、フォントや色等を変更することができます。<br>
 また、colorコマンド(cmd.exe)で、色を一時的に変更できます。<br>
 <hr><br>
-<a name="HowToCust20"><b> テキスト形式設定ファイルの書き出し→テキストエディタで編集→テキスト形式設定ファイルを取り込む…をひとまとめにしたい</b></a><br>
+<a name="HowToCust23"><b> テキスト形式設定ファイルの書き出し→テキストエディタで編集→テキスト形式設定ファイルを取り込む…をひとまとめにしたい</b></a><br>
 <br>
 <i>%Os *ppcust cd %0%\ppx.cfg %: editor %0%\ppx.cfg %: *ppcust cs %0%\ppx.cfg</i><br>
 使用しているeditorがnotepad等の場合、上記コマンドを実行することで、notepadの終了を待ってからテキスト形式設定ファイルの取り込みを行うことができます。<br>
@@ -14566,7 +14609,7 @@ PPbのタイトルバーを右クリックし、「プロパティ」(PPbのみ�
 <br>
 WZ EDITOR等の、<b>実行したプロセスがテキスト編集に使われずに終了するエディタ</b>の場合は、上記方法では<b>できません</b>。<br>
 <hr><br>
-<a name="HowToCust21"><b> 各コマンドを実行して一行編集を表示させたときに、カーソル位置の変更や、コマンド実行をしたい</b></a><br>
+<a name="HowToCust24"><b> 各コマンドを実行して一行編集を表示させたときに、カーソル位置の変更や、コマンド実行をしたい</b></a><br>
 <br>
 ファイルのコピーなどでコピー先文字列の選択状態を変えたり、スクリプトを実行して特別な処理をさせたりしたいときは、何通りかの方法があります。<br>
 <br>
@@ -14653,7 +14696,7 @@ PPx間で内容を受け渡ししたいときや、長期に渡り設定を記�
 <b>メニュー</b> *setcust M_xxx:name=param , %*getcust(M_xxx:name)<br>
 いくつかの内容をグループxxxとしてまとめたいときに使用することがあります。<br>
 <hr><br>
-<a name="HowToCust22"><b> 高速化のための設定</b></a><br>
+<a name="HowToCust25"><b> 高速化のための設定</b></a><br>
 <br>
 より機敏にPPxを使用したい人向けの話です。<br>
 <br>
@@ -14857,7 +14900,7 @@ plug-in の設定はカスタマイザで行うことができます。<br>
  4) OSや他のソフトによって使用されているファイルは、参照、書き換え、削除等ができない場合があります。PPc の名前変更や削除等で該当状態になったとき、該当ソフトの名前やプロセスID が表示可能であれば表示しますので、タスクマネージャ等で確認・終了させてください。<br>
  5) ネットワーク上のドライブを参照している場合、書換禁止のアクセス制限がされている場合があります。<br>
  6) ファイルシステムとして NTFS を用いたドライブは、エントリ毎にセキュリティ設定ができ、ユーザ毎に制限をかけることができます。この制限によって、参照、書き換え、削除等ができない場合があります。<br>
- 7) Vista/7以降では、過去の互換性のために、「Documents and Settings」などの名前の特別なシンボリックリンクが用意されています。これらは、アクセス権でディレクトリの一覧表示ができないようになっているので、一覧表示のために使用することはできません。<br>
+ 7) Vista / 7以降では、過去の互換性のために、「Documents and Settings」などの名前の特別なシンボリックリンクが用意されています。これらは、アクセス権でディレクトリの一覧表示ができないようになっているので、一覧表示のために使用することはできません。<br>
 8) 64bit版 Windows (x64, Arm64) 上で 32bit版 PPx を使用すると、Windows\System32  の内容が Windows\SysWOW64 の内容にリダイレクトされます。<br>
  ファイル一覧に表示されていませんが、Windows\Sysnative で本来の Windows\System32 の内容にアクセスできます。<br>
 <hr><br>
@@ -14886,8 +14929,8 @@ plug-in の設定はカスタマイザで行うことができます。<br>
 <hr><br>
 <a name="trouble9"><b> カラム拡張機能が使えない</b></a><br>
 <a name="columnsupport"></a><br>
-Explorerのカラム拡張は、Win2000, Me, XP, 2003 と、WinVista 以降では全く異なります。このため、一方で登録したカラム拡張名が、他方では使用できないことがあります。<br>
-また、Win2000, Me, XP, 2003 用のカラム拡張ソフトを WinVista 以降にいれてもExplorerでは使用できませんが、PPx ではインストール(レジストリ HKEY_CLASSE<NotID:S_ROOT>\Folder\shellex\ColumnHandlers に登録)されていればPPxで使用することができます。<br>
+Explorerのカラム拡張は、Windows 2000, Me, XP, 2003 と、Windows Vista 以降では全く異なります。このため、一方で登録したカラム拡張名が、他方では使用できないことがあります。<br>
+また、Windows 2000, Me, XP, 2003 用のカラム拡張ソフトを Windows Vista 以降にいれてもExplorerでは使用できませんが、PPx ではインストール(レジストリ HKEY_CLASSE<NotID:S_ROOT>\Folder\shellex\ColumnHandlers に登録)されていればPPxで使用することができます。<br>
 <br>
 尚、Win2000より前のExplorerはカラム拡張に対応していないので、Windows標準のカラム拡張が入っていません。<br>
 <hr><br>
@@ -15375,7 +15418,7 @@ IBM-PC互換機用のファイルマネージャ。Peter Norton Computing社(Sym
 <dt><b>スパースファイル / sparse file</b></dt><dd>ファイルの使っていない部分をドライブ内に保存しないようにしていることを示します。これにより、ドライブの使用サイズがファイルサイズよりも小さくなります。FILE_ATTRIBUTE_SPARSE_FILE, B9</dd>
 <dt><b>ラベル / label</b></dt><dd>ドライブのボリュームラベルです。この属性のエントリは通常目にすることはありません。PPcでFATディスクイメージを直接参照しているとき、ルートディレクトリで見られることがあります。B3</dd>
 <dt><b>デバイス / device</b></dt><dd>ファイルでなくデバイスファイル(stdin等)で使われると思われる属性です。通常は使用されません。FILE_ATTRIBUTE_DEVICE, B6</dd>
-<dt><b>仮想化 / virtual</b></dt><dd>Vista以降のバーチャルストア機能(書き込み禁止のディレクトリにファイルを保存したように見せかける互換用機能)によりリダイレクトされていることを示すエントリです。元のファイルは %LOCALAPPDATA%\VirtualStore 以下に入っています。FILE_ATTRIBUTE_VIRTUAL, B16</dd>
+<dt><b>仮想化 / virtual</b></dt><dd>Windows Vista以降のバーチャルストア機能(書き込み禁止のディレクトリにファイルを保存したように見せかける互換用機能)によりリダイレクトされていることを示すエントリです。元のファイルは %LOCALAPPDATA%\VirtualStore 以下に入っています。FILE_ATTRIBUTE_VIRTUAL, B16</dd>
 <dt><b>オープン時に生成、又は拡張属性 / recall on open, or Extend Attribute</b></dt>
 <dt></dt><dd>※ディレクトリによって属性の意味が異なります</dd>
 <dt></dt><dd>オープン時に生成の場合:</dd><dd>そのディレクトリにまだ存在していません。リモートストレージ上に存在しています。FILE_ATTRIBUTE_RECALL_ON_OPEN, B19</dd>
