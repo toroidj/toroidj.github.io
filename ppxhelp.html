@@ -27,17 +27,17 @@ PPxの前身として K-Launcher というファイラがあります。こち�
 <a name="supportos"><b> 対応/動作確認 OS</b></a><br>
 <br>
 <b>64bit UNICODE 版</b><br>
-　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2000 ～ 2022 の 64bit版 で動作します。<br>
+　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2000 ～ 2022 の x64 64bit版 で動作します。<br>
 　32bit版 Windows では動作しません。<br>
 <br>
 <b>32bit UNICODE 版</b><br>
 　Windows NT4.0, 2000, XP, Vista, 7, 8, 8.1, 10, 11, Server 2000 ～ 2022 で動作します。<br>
-　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2003 ～ 2022 の 64bit版 でも動作します。<br>
+　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2003 ～ 2022 の x64 64bit版 でも動作します。<br>
 　Windows 95～Me, Win32s, Windows(NT) 3.x以下では動作しません。<br>
 <br>
 <b>32bit MultiByte 版</b><br>
 　Windows 95, 98, 98SE, Me / NT4.0, 2000, XP, Vista, 7, 8, 8.1, 10, 11, Server 2000 ～ 2022 で動作します。<br>
-　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2003 ～ 2022 の 64bit版 でも動作します。<br>
+　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2003 ～ 2022 の x64 64bit版 でも動作します。<br>
 　Win32s や Windows(NT) 3.x以下では動作しません。<br>
 <br>
 <b>64bit Arm 版</b><br>
@@ -45,26 +45,26 @@ PPxの前身として K-Launcher というファイラがあります。こち�
 <br>
 ※ Server 2000 ～ 2022 は Windows Server の 2000, 2003(R2), 2008(R2), 2012(R2), 2016, 2019, 2022 が含まれます。<br>
 <br>
-・開発や主な動作確認は Windows 11 Pro 24H2 x64版 で行っています。<br>
-・PPxの実行ファイルがあるディレクトリ/フォルダが書き込み禁止であっても支障が出ないように考慮しています。<br>
+・開発や主な動作確認は Windows 11 Pro 24H2 x64 版 で行っています。<br>
+・PPx の実行ファイルがあるディレクトリ/フォルダが書き込み禁止であっても支障が出ないように考慮しています。<br>
 <a name="(Limit)"></a><a name="Limit"></a><a name="(Elevate)"></a><a name="Elevate"></a>・別のユーザとして実行 / RUNAS を考慮しており、使用中のデスクトップのユーザと異なる場合は、タイトルバー(キャプション)にそのPPxが属するユーザ名が表示されます。<br>
   例) PPC[A](username)C:\<br>
 <a name="UAC"></a>・Windows Vista以降のUACが有効の時、通常より権限が低くなっているときは「(Limit)」がタイトルバーに表示されます。また、権限が高いときは「(Elevate)」がタイトルバーに表示されます。<a href="#X_dlim">X_dlim</a>で表示の設定変更ができます。<br>
 <br>
-・<b>WindowsやインストールされているInternet Explorerのバージョンによっては、使用できない機能があります。</b><br>
+・<b>Windows やインストールされている Internet Explorer のバージョンによっては、使用できない機能があります。</b><br>
 <hr><br>
 <a name="registry"><b> レジストリ</b></a><br>
 <br>
 PPx<b>自体が確認無しに</b>レジストリの書き込みを行うことは<b>ありません。</b><br>
 <br>
-SETUP.EXEを使ってインストールをおこなった場合、「アプリケーションの追加と削除」に登録するために該当レジストリ(SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\PPX)の書き込みをおこないます。<br>
+SETUP.EXE を使ってインストールをおこなった場合、「アプリケーションの追加と削除」に登録するために該当レジストリ(SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\PPX)の書き込みをおこないます。<br>
 ※書き込まない方法(ポータブル、持ち歩き用)もあります。SETUP.EXEのカスタムインストールで設定可能です。<br>
 <br>
-PPcustでPPcをフォルダに関連づけるときには、該当レジストリ(Software\Classes\Folder\shell)への書き込みをおこないます。また、Susie plug-inの個別設定を行うと、そのSusie plug-inがレジストリを操作することがあります。<br>
+PPcust で PPc をフォルダに関連づけるときには、該当レジストリ(Software\Classes\Folder\shell)への書き込みをおこないます。また、Susie plug-in の個別設定を行うと、その Susie plug-in がレジストリを操作することがあります。<br>
 <br>
 設定ファイルの保存場所をレジストリで指定できます。<br>
 HKEY_CURRENT_USER\Software\TOROid\PPX に以下のキーを記載すると、そのキーに示したファイルを使用します。アンインストールをする場合はこれらのキーを削除して下さい。<br>
-※ Version 0.34以前は下記内容で使用する場合がありました。<br>
+※ Version 0.34 以前は下記内容で使用する場合がありました。<br>
 <br>
 <i>例)<br>
 [HKEY_CURRENT_USER\Software\TOROid\PPX]<br>
@@ -15434,10 +15434,10 @@ IBM-PC互換機用のファイルマネージャ。Peter Norton Computing社(Sym
 問題の解決になるかもしれませんので、送信していただけると助かります。<br>
 ・文中に記された各ソフトウェア名称はそれぞれ著作物であり、パッケージソフト／シェアウェア／フリーソフトウェア等として入手可能です。<br>
 ・ソースは、正式公開版を別アーカイブで公開しています。<br>
-・PPx 32bit版は、Borland C++ Version 5.02 を用いて構築しています。<br>
-  64bit版は、Visual Studio 2008 を用いて構築しています。<br>
-  ARM64版は、Visual Studio 2019 を用いて構築しています。<br>
-・PPx の改変履歴は PPX.TXT の末尾に記載しています。<br>
+・PPx 32bit 版は、Borland C++ Version 5.02 を用いて構築しています。<br>
+  x64 版は、Visual Studio 2008 を用いて構築しています。<br>
+  ARM64 版は、Visual Studio 2025 を用いて構築しています。<br>
+・PPx の改変履歴は PPX.TXT の末尾に記載しています。また、古い改変履歴の詳細は、別途配布しているソース一式中に含まれています。<br>
 <hr>
 <a name="copyright"></a><a name="連絡先／一次配布先"></a><h3>連絡先／一次配布先等 - 連絡先／一次配布先</h3><br>
 E-mail <a href="mailto:toroid.jp@gmail.com"><i>toroid.jp@gmail.com</i></a><br>

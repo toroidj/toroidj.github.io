@@ -489,14 +489,14 @@
 	XDLH|Drive jump([1]...[9])ドライブジャンプ(PPc [1]～[9])の挙動設定
 		Jump to root選択したドライブのルートに移動する(チェック無：カレントに移動):X_dlf+8=?B0
 		Exclude other PPc path他のPPcで表示するパス以外に移動する(※一つ上の項目が無効の時):X_dlf+8=?B7
-	XDLJ|PC List(\\.\\pcname)PC一覧(\\.\\pcname)の挙動設定
-		Listed PC in histories(No FD)PCをヒストリから抽出して列挙(探索無効時):X_dlf+12=?B4!
-		add C$共有一覧に「C$」を追加する:X_dlf+12=?B9
+	XDLJ|PC list(\\pcname) and shared list(\\pcname\share)PC一覧(\\pcname)と共有一覧(\\pcname\share)の挙動設定
+		Listed pcname and shared by histories(No FD)pcname や share をヒストリから抽出して列挙(探索無効時):X_dlf+12=?B4!
+		Add C$ to share list共有一覧に「C$」を追加する:X_dlf+12=?B9
 	XWDL|Show dialog to recycledごみ箱削除([D])の開始確認を常に行う(確認なしはごみ箱のプロパティで):X_wdel+12=?1/1:0
 	XWDM|Show dialog to delete削除(\[D])の開始確認を
 		XNOO|noしない:X_wdel+8=@0/1
-		yes(OK)する。フォーカスは「OK」:X_wdel+8=@1/1
-		yes(cancel)する。フォーカスは「キャンセル」:X_wdel+8=@2
+		yes(focused OK)する。フォーカスは「OK」:X_wdel+8=@1/1
+		yes(focused cancel)する。フォーカスは「キャンセル」:X_wdel+8=@2
 ...ZTCM|Cursor moveカーソル移動・クリック挙動
 	XMSL|Explorer link clickエントリクリック動作はExplorer風にする:XC_msel=?1:0
 	XMSM|Mark from last mark(shift+click)[Shift]+クリック動作を直前マークからの範囲選択にする:XC_msel+4=?1:0
