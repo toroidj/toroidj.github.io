@@ -28,7 +28,7 @@ p { text-align: left; }
 --></style></head>
 <body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
 <div id="page">
-<div id="title"><H2>Susie 32bit / 64bit Plug-in の仕様(2025-1-25版)</H2>
+<div id="title"><H2>Susie 32bit / 64bit Plug-in の仕様(2025-8-10版)</H2>
 <hr></div>
 <div id="contents"><div id="contents2">
 <p>拙作 Susie 32bit / 64bit Plug-in の仕様です。</p>
@@ -36,6 +36,7 @@ p { text-align: left; }
 本仕様は API の 64bit 化に加えて、Susie 32bit Plug-in 仕様 rev5 では記載されていなかった動作の言及や、曖昧な定義の厳格化をおこなっています。</p>
 <p>Susie 32bit Plug-in 仕様 rev5 は、Susie 32bit Plug-in の本家となる竹村嘉人 (たけちん)氏のサイト (<a href="http://www.digitalpad.co.jp/~takechin/">http://www.digitalpad.co.jp/~takechin/</a>) の Plug-in package ver0.08 に同梱されています。</p>
  <UL>
+  <LI><A HREF="#plugin">Plug-in の概要</A></LI>
   <LI><A HREF="#fileext">Plug-in の拡張子</A></LI>
   <LI><A HREF="#types">Plug-in の種類</A></LI>
   <LI><A HREF="#api" >64bit API の概要</A></LI>
@@ -47,6 +48,24 @@ p { text-align: left; }
   <LI><A HREF="#reference" >参考資料</A></LI>
  </UL>
 <A HREF="index.html">Homeへ戻る</A>
+<HR><H3><A NAME="plugin">Plug-in の概要</A></H3>
+Susie Plug-in は、画像ビューアである Susie (<a href="http://www.digitalpad.co.jp/~takechin/">http://www.digitalpad.co.jp/~takechin/</a>) のために開発されたプラグインです。<br>
+Susie Plug-in は、次の２種類があります。<br>
+・画像展開プラグイン<br>
+　指定された静止画像データをビットマップに展開します。<br>
+・アーカイブ展開プラグイン<br>
+　指定された書庫データからファイルを展開します。<br>
+<br>
+Susie Plug-in は、以下に列挙した機能を Susie Plug-in の API だけで実現することはできません。<br>
+各機能を実現するには、Susie Plug-in を使用する画像ビューア等のアプリケーション側が、自分で実装する必要があります。<br>
+・アニメーション画像（GIF, PNG, WebP, avif 等）や動画のアニメーション表示はできません<br>
+　Susie Plug-in には、アニメーションの表示に必要な、各フレームを取得する方法、及びアニメーションの時間間隔を取得する方法等が決まっていません。<br>
+　アニメーション画像を読み込める Plug-in は、１番目のフレームのみを静止画像として扱えることが多いです。<br>
+　尚、各フレームを書庫の１ファイルとすることで全てのフレームを確認できたり、呼び出し側から独立したウィンドウで独自表示することで擬似的に対応できたりする、 Susie Plug-in はあります。<br>
+・ベクター形式は対応していないのでラスター形式のビットマックにする必要があります。<br>
+・複数ページを備える画像(TIFF, PDF等)のページ切換はできません<br>
+・ファイルから特定の書庫を作成できません<br>
+
 <HR><H3><A NAME="fileext">Plug-in の拡張子</A></H3>
 Susie Plug-in として以下の拡張子が決められています。.spi と .PLG が本家仕様です。 .sph, .spha は独自仕様です。
 <pre>
@@ -68,6 +87,7 @@ GetPluginInfo の Plug-in APIバージョンは "00IN" になります。</li>
 GetPluginInfo の Plug-in APIバージョンは "00AM" になります。</li></ul>
 
 <HR><H3><A NAME="api">64bit API の概要</A></H3>
+Susie 64bit API の概要を、本家 32bit API との比較点を挙げる形で説明します。
 <ul><li>定義が 32bit / 64bit で共用できるように LONG_PTR 等を使用しています。</li>
 <li>64bit 版の構造体はアラインメント合わせを行っているため、要素のアラインメントずれに注意が必要です。</li>
 <li>本家仕様では引数に使用していない const を使用しています。</li>
@@ -284,7 +304,7 @@ Plug-in 定義の aboutダイアログ か 設定ダイアログを実行しま�
 
 [in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
   途中経過を表示するコールバック関数へのポインタ
-  NULL の場合、plug-in は処理が終了するまでプロセスを占有し、中断も出来ません。
+  NULL の場合、Plug-in は処理が終了するまでスレッドを占有し、中断も出来ません。
   ただし、NULL を許容しないプラグインがあるので、アプリケーションはダミーでも関数を指定することを推奨します。
 
 [in][option] <span class="type">LONG_PTR</span> lData
@@ -323,17 +343,17 @@ Plug-in 定義の aboutダイアログ か 設定ダイアログを実行しま�
       001 : メモリ上のイメージ
 
 [out] <span class="type">HLOCAL</span> *lphInf
-  <a href="#fileInfo">fileInfW</a></li> (ANSI版), <a href="#fileInfoW">fileInfoW</a></li> (UNICODE版) の配列の LOCAL メモリハンドルを受け取る変数へのポインタ。
+  <a href="#fileInfo">fileInfo</a></li> (ANSI版), <a href="#fileInfoW">fileInfoW</a></li> (UNICODE版) の配列の LOCAL メモリハンドルを受け取る変数へのポインタ。
    エラーの時は、NULL を設定します。戻り値が 0 以外の時も必ず設定が必要です。
-  アプリケーションはLocalLockでポインタを取得し、LocalUnlock, LocalFreeによってメモリーを解放する必要があります。
-   method[0] == '\0' のときは終端です。このときの fileInfoW の大きさは method[0] の大きさのみであって、他の要素を参照しようとするとアクセス違反になる場合があります。
+  アプリケーションは LocalLock でポインタを取得し、LocalUnlock, LocalFree によってメモリーを解放する必要があります。
+   method[0] == '\0' のときは配列終端です。このときの fileInfo/W の大きさは method[0] の大きさのみであって、他の要素を参照しようとするとアクセス違反になる場合があります。前記問題を回避するために、Plug-in が確保するメモリは、 sizeof(fileInfo/W) * (fileInfo/W + 1) とすることがお勧めです。
 
 戻り値
   <a href="#errorcode">エラーコード</a>
   lhasad.spi では常に 2 を返します。このため、lphInf が NULL か NULL でないかの判断も必要です。
 
 解説
- ファイル名のディレクトリ部は fileInfo/W.path、ファイル名部は fileInfo/W.filenam に格納されます。
+ ファイル名のディレクトリ部は fileInfo/W.path、ファイル名部は fileInfo/W.filenam に格納されます。パス区切りは「\」で、path を使う場合は必ず末尾を「\」にする必要があります。
 
 ファイル filename.ext の場合、
 path = ""、filename = "filename.ext"
@@ -413,7 +433,7 @@ struct {
 
 [in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
   途中経過を表示するコールバック関数へのポインタ。
-  NULL の場合、plug-in は処理が終了するまでプロセスを占有し、中断も出来ません。
+  NULL の場合、plug-in は処理が終了するまでスレッドを占有し、中断も出来ません。
   ただし、NULL を許容しないプラグインがあるのでダミーのコールバックを推奨します。
 
 [in][option] <span class="type">LONG_PTR</span> lData
@@ -514,7 +534,7 @@ struct {
 
 [in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
   途中経過を表示するコールバック関数へのポインタ。
-  NULL の場合、plug-in は処理が終了するまでプロセスを占有し、中断も出来ません。
+  NULL の場合、plug-in は処理が終了するまでスレッドを占有し、中断も出来ません。
   ただし、NULL を許容しないプラグインがあるのでダミーのコールバックを推奨します。
 
 [in][option] <span class="type">LONG_PTR</span> lData
@@ -604,6 +624,10 @@ IsSupported - GetPictureInfo - GetPicture<br>
 IsSupported - GetArchiveInfo - [GetFile]n<br>
 IsSupported - GetArchiveInfo - [GetFileInfo - GetFile]n<br>
 IsSupported - GetArchiveInfo - [IsSupported - GetFileInfo - GetFile]n</li>
+<li>GetPluginInfo を使って得られた拡張子を使って展開するファイルのフィルタリングを行う必要はありません。<br>
+各ファイルに対して各 Plug-in の IsSupported を使い、結果が非対応でなければ展開する、といった手順を推奨します。<br>
+特定の拡張子を持たない画像・書庫であったり、対応する拡張子であるが内部形式が非対応の画像等であったりすることがあるためです。<br>
+尚、Susie ではファイルを開くダイアログボックスの拡張子情報に使用しています。</li>
 <li>ファイルサイズが 0、または画像ファイルのヘッダサイズに満たない大きさのファイルを、ファイル名かメモリイメージで渡されることがあります。Plug-in 側はこれらのファイルでも異常終了しないように対策する必要があります。</li>
 <li>マルチスレッドによる API の複数スレッドの同時使用は保証されません。ただし、マルチスレッドで使用するアプリケーションがあるため、可能なら対応することをお勧めします。対応していない場合はそのことを言及することをお勧めします。</li>
 <li>複数のスレッドで API を使う場合、一連の操作(IsSupported～GetPicture/GetFile まで)を同じスレッドで行う必要があります。<br>
@@ -633,10 +657,13 @@ Windows Bitmap 関係<br>
 <ul><li><a href="https://entropymine.com/jason/">Jason Summers’s web site</a> 「BMP Suite」(<a href="https://entropymine.com/jason/bmpsuite/">https://entropymine.com/jason/bmpsuite/</a>)</li>
 </ul>
 <HR><H3><A NAME="changelog">更新履歴</A></H3>
-2025-1-25
-・C ヘッダファイル例を添付
-・IsSupported / IsSupportedW の dw を const に変更
-・IsSupported, GetFileInfo のパラメータ説明欄の型の誤記を修正
+2025-8-10<br>
+・Plug-in の概要を追加<br>
+・その他を拡充<br>
+2025-1-25<br>
+・C ヘッダファイル例を添付<br>
+・IsSupported / IsSupportedW の dw を const に変更<br>
+・IsSupported, GetFileInfo のパラメータ説明欄の型の誤記を修正<br>
 <hr><a href="index.html">Homeへ戻る</a>
 <hr><address>Copyright(c)2024,2025 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
 </div></div>
