@@ -294,7 +294,7 @@ migemo-dictから対応する単語を削除しておいてください。<br>
 <br>
 <b>・OpenSSL/LibreSSL</b><br>
 <br>
-PPcのディレクトリのパス、PPvの開くファイル、*httpget 等で、https を指定するときに使用します。<br>
+PPcのディレクトリのパス、PPvの開くファイル、*httpget 等で、https を指定するときに使用します。OpenSSL/LibreSSL が無い場合は WinHTTP を使用します。<br>
 <br>
 OpenSSL <a href="https://www.openssl.org/" target="_top">https://www.openssl.org/</a> は、0.9.8～1.1.1, 3.0.0 まで、<br>
 LibreSSL <a href="https://www.libressl.org/" target="_top">https://www.libressl.org/</a> は、2.5.5 まで動作確認済みです。<br>
@@ -4678,6 +4678,47 @@ cmd.exe / COMMAND.COM コマンドや DOS アプリ等のコンソールが必�
 <br>
 各種実行は、マクロ文字 %: か改行で区切られた文を単位に行われます。<br>
 <hr><br>
+<b>コマンドラインを実行する場所、情報の取得先</b><br>
+コマンドラインを実行するとき、そのコマンドラインを実行した場所によって実行対象や情報の取得先が決まります。<br>
+<pre>例)
+  ppc.exe
+   +--- PPc[A]の窓 ①
+         +--- ツリー ②
+         +--- ファイルコピーのダイアログ ③
+               +--- コピー実行時に出る名前変更ダイアログ ④
+         +--- 一行編集窓 ⑤
+   +--- PPc[B]の窓 ⑥
+
+  ① %1 = PPc[A] の表示ディレクトリ
+     %C = 選択位置のエントリの情報
+     %n = CA (PPc[A]のID)
+     %N = PPc[A] のウィンドウハンドル
+  ② %1 = ppc.exe の場所
+     %C = ツリーで選択している場所のフルパス
+     %n = 空欄
+     %N = ツリーのウィンドウハンドル
+  ③ %1 = コピー元のディレクトリ
+     %C = 未定義
+     %n = CA (親(PPc[A])のID)
+     %N = ダイアログのウィンドウハンドル
+  ④ %1 = コピー先のディレクトリ
+     %C = コピー先の名前
+     %n = 空欄
+     %N = 一行編集のウィンドウハンドル
+  ⑤ %1 = PPc[A] の表示ディレクトリ
+     %C = 選択位置のエントリの情報
+     %n = CA (親(PPc[A])のID)
+     %N = 一行編集窓のウィンドウハンドル
+  ⑥ %1 = PPc[B] の表示ディレクトリ
+     %C = 選択位置のエントリの情報
+     %n = CB (PPc[B]のID)
+     %N = PPc[B] のウィンドウハンドル
+</pre><br>
+注意<br>
+  ・ *focus 等でフォーカス操作をしても、実行場所や情報取得先がフォーカス先に変わることはありません。<br>
+  ・ 別の場所を実行する場所や情報取得先にしたい場合は、<a href="#execute">*execute</a> や <a href="#extract">%*extract</a>、%~ 等を使う必要があります。<br>
+     例) *focus ~ %: *execute ~,command %%C 反対窓で実行する例<br>
+<hr><br>
 <b>パラメータ</b><br>
 <br>
 タブ、空白、二重引用符「&quot;」を含まないパラメータはそのまま記載可能です。これらを含む場合は「&quot;」で括る必要があります。パラメータに「&quot;」を含める場合は「&quot;&quot;」と２重に記載する必要があります。<br>
@@ -4752,14 +4793,14 @@ text line1%b
 コマンドを実行するとき「%」で始まるマクロ文字があると、それに応じた内容に置き換えられます。<br>
 (関連:<a href="#command">%*function</a>)<br>
 <a href="#macro2">全般</a><br>
-<a href="#macro33">ディレクトリ名取得</a><br>
-<a href="#macro38">エントリ名取得</a><br>
-<a href="#macro46">カーソル位置エントリ名取得</a><br>
+<a href="#macro32">ディレクトリ名取得</a><br>
+<a href="#macro37">エントリ名取得</a><br>
+<a href="#macro45">カーソル位置エントリ名取得</a><br>
 マークの有無に関係なく必ずカーソル位置の内容になります。<br>
 <br>
-<a href="#macro50">ヒストリ内容の取得</a><br>
-<a href="#macro53">編集</a><br>
-<a href="#macro65">実行処理</a><br>
+<a href="#macro49">ヒストリ内容の取得</a><br>
+<a href="#macro52">編集</a><br>
+<a href="#macro64">実行処理</a><br>
 <hr><br>
 
 <a name="macro2"><b>全般</b></a><br>
@@ -4785,66 +4826,66 @@ text line1%b
 ・<a href="#macro25">%W キャプション文字列取得</a><br>
 ・<a href="#FormatEntry">%F<i>type</i> パス生成</a><br>
 ・<a href="#extract">%*extract(<i>[ID]&quot;command&quot;</i>) 指定PPx上でマクロ文字展開</a><br>
-・<a href="#macro29">%~<i>macro</i> 反対窓PPcの内容でマクロ文字展開</a><br>
-・<a href="#macro30">%*temp[(<i>name[,f|d])</i>)] 一時パス、ファイル、ディレクトリの取得</a><br>
+・<a href="#macro28">%~<i>macro</i> 反対窓PPcの内容でマクロ文字展開</a><br>
+・<a href="#macro29">%*temp[(<i>name[,f|d])</i>)] 一時パス、ファイル、ディレクトリの取得</a><br>
 ・<a href="#treefunc">%*tree(<i>type</i>) ツリー形式のメニュー</a><br>
-・<a href="#macro31">%*now[(date)] 現在日時</a><br>
+・<a href="#macro30">%*now[(date)] 現在日時</a><br>
 ・<a href="#arg">%*arg([index]) ユーザコマンド・ユーザ関数の引数</a><br>
 <hr><br>
 
-<a name="macro33"><b>ディレクトリ名取得</b></a><br>
-・<a href="#macro34">%0 PPxディレクトリ</a><br>
-・<a href="#macro35">%1 現在窓ディレクトリ</a><br>
-・<a href="#macro36">%2 反対窓ディレクトリ</a><br>
-・<a href="#macro37">%D<i>ID</i> PPxディレクトリ</a><br>
+<a name="macro32"><b>ディレクトリ名取得</b></a><br>
+・<a href="#macro33">%0 PPxディレクトリ</a><br>
+・<a href="#macro34">%1 現在窓ディレクトリ</a><br>
+・<a href="#macro35">%2 反対窓ディレクトリ</a><br>
+・<a href="#macro36">%D<i>ID</i> PPxディレクトリ</a><br>
 <hr><br>
 
-<a name="macro38"><b>エントリ名取得</b></a><br>
-・<a href="#macro39"> エントリ名について</a><br>
-・<a href="#macro40">%C name.ext</a><br>
-・<a href="#macro41">%#<i>[type]</i> 列挙</a><br>
-・<a href="#macro42">%X name</a><br>
-・<a href="#macro43">%T ext</a><br>
-・<a href="#macro44">%@<i>[*][8|8B|U|UB][type]</i> レスポンスファイル</a><br>
-・<a href="#macro45">%a<i>[*][8|8B|U|UB][type]</i> レスポンスファイル</a><br>
+<a name="macro37"><b>エントリ名取得</b></a><br>
+・<a href="#macro38"> エントリ名について</a><br>
+・<a href="#macro39">%C name.ext</a><br>
+・<a href="#macro40">%#<i>[type]</i> 列挙</a><br>
+・<a href="#macro41">%X name</a><br>
+・<a href="#macro42">%T ext</a><br>
+・<a href="#macro43">%@<i>[*][8|8B|U|UB][type]</i> レスポンスファイル</a><br>
+・<a href="#macro44">%a<i>[*][8|8B|U|UB][type]</i> レスポンスファイル</a><br>
 <hr><br>
 
-<a name="macro46"><b>カーソル位置エントリ名取得</b></a><br>
+<a name="macro45"><b>カーソル位置エントリ名取得</b></a><br>
 ・%R ファイル名(name.ext)<br>
 ・%Y %R から拡張子部分を省いたもの(name)<br>
 ・%t %R の拡張子部分のみ(ext)<br>
 <hr><br>
 
-<a name="macro50"><b>ヒストリ内容の取得</b></a><br>
-・<a href="#macro51">%H<i>[types]n</i> 実行ヒストリ</a><br>
-・<a href="#macro52">%h<i>[types]n</i> パスヒストリ</a><br>
+<a name="macro49"><b>ヒストリ内容の取得</b></a><br>
+・<a href="#macro50">%H<i>[types]n</i> 実行ヒストリ</a><br>
+・<a href="#macro51">%h<i>[types]n</i> パスヒストリ</a><br>
 <hr><br>
 
-<a name="macro53"><b>編集</b></a><br>
-・<a href="#macro54">%!<i>macro</i> 部分編集</a><br>
-・<a href="#macro56">%$<i>macro</i> キャッシュ付き部分編集</a><br>
-・<a href="#macro57">%E 編集内容を挿入</a><br>
-・<a href="#macro58">%P 編集したパスを挿入</a><br>
-・<a href="#macro59">%{...%} 範囲編集</a><br>
-・<a href="#macro61">%| カーソル/範囲指定</a><br>
+<a name="macro52"><b>編集</b></a><br>
+・<a href="#macro53">%!<i>macro</i> 部分編集</a><br>
+・<a href="#macro55">%$<i>macro</i> キャッシュ付き部分編集</a><br>
+・<a href="#macro56">%E 編集内容を挿入</a><br>
+・<a href="#macro57">%P 編集したパスを挿入</a><br>
+・<a href="#macro58">%{...%} 範囲編集</a><br>
+・<a href="#macro60">%| カーソル/範囲指定</a><br>
 ・<a href="#editmodemacro">%e<i>[R|E|O][S]type[,reftype]</i> 一行編集の種類・ヒストリ等の設定</a><br>
 <hr><br>
 
-<a name="macro65"><b>実行処理</b></a><br>
-・<a href="#macro66">%v<i>[filename]</i> PPvで表示</a><br>
-・<a href="#macro67">%L[V] PPvの論理行</a><br>
-・<a href="#macro68">%l[V] PPvの表示行</a><br>
-・<a href="#macro69">%lH PPvの表示桁</a><br>
-・<a href="#macro70">%u<i>[/]m, n</i> UnXXX.DLL</a><br>
+<a name="macro64"><b>実行処理</b></a><br>
+・<a href="#macro65">%v<i>[filename]</i> PPvで表示</a><br>
+・<a href="#macro66">%L[V] PPvの論理行</a><br>
+・<a href="#macro67">%l[V] PPvの表示行</a><br>
+・<a href="#macro68">%lH PPvの表示桁</a><br>
+・<a href="#macro69">%u<i>[/]m, n</i> UnXXX.DLL</a><br>
 ・<a href="#zapfile">%Z<i>[name][,command]</i> 拡張子判別実行</a><br>
 ・<a href="#zapmenu">%z<i>[pathname][,command]</i> シェルコンテキストメニュー実行</a><br>
-・<a href="#macro71">%I<i>&quot;text&quot;</i> メッセージ表示</a><br>
-・<a href="#macro73">%Q[Y|N|O|C]<i>&quot;text&quot;</i> 確認表示</a><br>
+・<a href="#macro70">%I<i>&quot;text&quot;</i> メッセージ表示</a><br>
+・<a href="#macro72">%Q[Y|N|O|C]<i>&quot;text&quot;</i> 確認表示</a><br>
 ・%K<i>&quot;keycommand&quot;</i> キーコマンド実行<br>
-・<a href="#macro76">%K<i>[ID,]&quot;keycommand&quot;</i> 指定PPxでキーコマンドを実行</a><br>
+・<a href="#macro75">%K<i>[ID,]&quot;keycommand&quot;</i> 指定PPxでキーコマンドを実行</a><br>
 ・<a href="#sendkeymacro">%k<i>&quot;key&quot;</i> キー入力エミュレート</a><br>
 ・<a href="#jumpdirchar">%j<i>&quot;path&quot;</i> ディレクトリ移動</a><br>
-・<a href="#macro79">%J<i>&quot;filepath&quot;</i> ファイルへ移動/表示</a><br>
+・<a href="#macro78">%J<i>&quot;filepath&quot;</i> ファイルへ移動/表示</a><br>
 
 <hr><br>
 
@@ -5203,7 +5244,7 @@ ID指定がなければ実行元のPPxになります。C#等と、一体化窓�
 <i>例) echo %*extract(CB&quot;*string i,val=%%FCD %%: %%si&quot;&quot;temp&quot;&quot; &quot;)</i><br>
  %%: や 改行でコマンドラインを区切った場合、最後の展開結果(%si&quot;temp&quot;)が取得内容になります。<br>
 <hr><br>
-<a name="macro29"><b>%~<i>macro</i> 反対窓PPcの内容でマクロ文字展開</b></a><br>
+<a name="macro28"><b>%~<i>macro</i> 反対窓PPcの内容でマクロ文字展開</b></a><br>
 <br>
 反対窓PPcの内容を取得したい時に用います。%*extract(~&quot;%macro&quot;)を用いたときと同じ結果が得られます。<br>
 <br>
@@ -5213,7 +5254,7 @@ ID指定がなければ実行元のPPxになります。C#等と、一体化窓�
 ※展開動作のため、コマンド動作のマクロ文字(%~J等)に対しては使用できません。<br>
 ※macroは英字のみです。「%~#-FC」のように記号を含むと、正しく解釈できません。「%*extract(~&quot;%%#-FC&quot;)」のように %*extract を使用してください。<br>
 <hr><br>
-<a name="macro30"><b>%*temp[(<i>name[,f|d])</i>)] 一時パス、ファイル、ディレクトリの取得</b></a><br>
+<a name="macro29"><b>%*temp[(<i>name[,f|d])</i>)] 一時パス、ファイル、ディレクトリの取得</b></a><br>
 <br>
 PPxの終了時に削除される一時ディレクトリのパスや、一時ディレクトリ内に用意されるファイルやディレクトリのパスを取得します。<br>
 ※一時ディレクトリ（PPXxxxx.TMP）は、ユーザの一時ディレクトリ(%TEMP%)に作成されます。<br>
@@ -5245,7 +5286,7 @@ type は使用するディレクトリやメニュー名等を指定します。
 空欄なら、お気に入りメニュー(M_pjump)をツリー表示します。<br>
 詳細は、<a href="#treecmd">*tree</a>と同じですのでこちらを参照してください。<br>
 <hr><br>
-<a name="macro31"><b>%*now[(date)] 現在日時</b></a><br>
+<a name="macro30"><b>%*now[(date)] 現在日時</b></a><br>
 <br>
 現在日時を「2001-01-23 01:34:56」形式で展開します。「date」指定をしたときは「2001-01-23」になります。<br>
 他の形式で取得したい場合は、Text Module の %*nowdatetime を使用してください。<br>
@@ -5261,19 +5302,19 @@ index が-1のときは、パースされていないパラメータが取得で
 
 <b>ディレクトリ名取得</b><br>
 <hr><br>
-<a name="macro34"><b>%0 PPxディレクトリ</b></a><br>
+<a name="macro33"><b>%0 PPxディレクトリ</b></a><br>
 <br>
 起動した PPx があるディレクトリです。<br>
 <hr><br>
-<a name="macro35"><b>%1 現在窓ディレクトリ</b></a><br>
+<a name="macro34"><b>%1 現在窓ディレクトリ</b></a><br>
 <br>
 現在窓のディレクトリです。細かな指定を行いたいときは %FD(<a href="#FormatEntry">%Fの説明</a>)を使用してください。<br>
 <hr><br>
-<a name="macro36"><b>%2 反対窓ディレクトリ</b></a><br>
+<a name="macro35"><b>%2 反対窓ディレクトリ</b></a><br>
 <br>
 反対窓のディレクトリです。なければ空白になります。細かな指定を行いたいときは %~FD(<a href="#FormatEntry">%Fの説明</a>)を使用してください。<br>
 <hr><br>
-<a name="macro37"><b>%D<i>ID</i> PPxディレクトリ</b></a><br>
+<a name="macro36"><b>%D<i>ID</i> PPxディレクトリ</b></a><br>
 <br>
 指定したPPx の現在パスを取得します。<br>
 IDは、<a href="#ppxidformat">PPxのID指定方法</a>を参照してください。※一体化窓自体( C#,CBA# )は指定できません。<br>
@@ -5282,7 +5323,7 @@ ID指定がなければ実行元のPPxになります。<br>
 
 <b>エントリ名取得</b><br>
 <hr><br>
-<a name="macro39"><b> エントリ名について</b></a><br>
+<a name="macro38"><b> エントリ名について</b></a><br>
 <b>PPc</b><br>
 マークしたファイルがない場合は現在のカーソル位置のファイル名、マークしたファイルがある場合はマークのついたファイル名が順に設定されます。<br>
 ※エントリが「c:\windows\win.com」のようにパスになっている場合は、パスのままになります。これを加工するには<a href="#functionF">%*name</a>を使用してください。<br>
@@ -5299,13 +5340,13 @@ ID指定がなければ実行元のPPxになります。<br>
 <b>一行編集</b><br>
 呼び出し元 PPx のエントリ名がエントリ名となります。<br>
 <hr><br>
-<a name="macro40"><b>%C name.ext</b></a><br>
+<a name="macro39"><b>%C name.ext</b></a><br>
 <br>
 エントリ一つ分の name.ext です。<br>
 細かな指定を行いたいときは %FC(<a href="#FormatEntry">%Fの説明</a>)を使用してください。<br>
 参考:<a href="#marks">マークエントリの取り扱い</a><br>
 <hr><br>
-<a name="macro41"><b>%#<i>[type]</i> 列挙</b></a><br>
+<a name="macro40"><b>%#<i>[type]</i> 列挙</b></a><br>
 <br>
 マークした複数のエントリがある場合は、空白を開けて列挙します。<br>
 ・type を指定しない場合は %C 相当で列挙します。<br>
@@ -5320,17 +5361,17 @@ ID指定がなければ実行元のPPxになります。<br>
 　※6以降があるとき、%OR / %Or-が無ければ、残りも「%#2FC-%#3,FC」で展開・実行される。（「6 7-8,9,10」「11 12-13,14,15」…）<br>
 　※「%#2FC-%#3,FC-%C」等とした場合は意図しない挙動になります。<br>
 <hr><br>
-<a name="macro42"><b>%X name</b></a><br>
+<a name="macro41"><b>%X name</b></a><br>
 <br>
 %C から拡張子部分を省いたものです(name)。<br>
 細かな指定を行いたいときは %FX(<a href="#FormatEntry">%Fの説明</a>)を使用してください。<br>
 <hr><br>
-<a name="macro43"><b>%T ext</b></a><br>
+<a name="macro42"><b>%T ext</b></a><br>
 <br>
 %C の拡張子のみです(ext)。<br>
 細かな指定を行いたいときは %FT(<a href="#FormatEntry">%Fの説明</a>)を使用してください。<br>
 <hr><br>
-<a name="macro44"><b>%@<i>[*][8|8B|U|UB][type]</i> レスポンスファイル</b></a><br>
+<a name="macro43"><b>%@<i>[*][8|8B|U|UB][type]</i> レスポンスファイル</b></a><br>
 <br>
 %temp%内に<a href="#レスポンスファイル">レスポンスファイル</a>を作成して、この部分には「@filename」に展開します。「@」が不要なら、%aを使用してください。レスポンスファイルの文字コードは指定が無ければシステムロケール設定(Shift_JIS)です。<br>
 ・* 指定無しの場合は、ディレクトリの末尾に「\*」を付加します。<br>
@@ -5344,7 +5385,7 @@ ID指定がなければ実行元のPPxになります。<br>
 ・レスポンスファイル名は、%so&quot;response&quot;として再利用できます。<br>
 ※*, 8, typeの指定は必ずこの順に行う必要があります。<br>
 <hr><br>
-<a name="macro45"><b>%a<i>[*][8|8B|U|UB][type]</i> レスポンスファイル</b></a><br>
+<a name="macro44"><b>%a<i>[*][8|8B|U|UB][type]</i> レスポンスファイル</b></a><br>
 <br>
 <a href="#レスポンスファイル">レスポンスファイル</a>を作成して、この部分には「filename」に展開します。<br>
 %@ との違いは、filename の頭に @ を付けるかどうかのみです。指定の詳細は %@ を参照してください。<br>
@@ -5355,11 +5396,11 @@ ID指定がなければ実行元のPPxになります。<br>
 
 <b>ヒストリ内容の取得</b><br>
 <hr><br>
-<a name="macro51"><b>%H<i>[types]n</i> 実行ヒストリ</b></a><br>
+<a name="macro50"><b>%H<i>[types]n</i> 実行ヒストリ</b></a><br>
 <br>
 n 番目の実行用のヒストリの内容が入ります。ない場合は何も展開されません。<br>
 <hr><br>
-<a name="macro52"><b>%h<i>[types]n</i> パスヒストリ</b></a><br>
+<a name="macro51"><b>%h<i>[types]n</i> パスヒストリ</b></a><br>
 <br>
 n 番目のパス用のヒストリの内容が入ります。ない場合は何も展開されません。<br>
 尚、このヒストリは全PPx共通で使われるヒストリです。PPc の前に戻る/次に進む(^[←], ^[→])のヒストリは指定できません。%*dirhistory(n)を使用してください。<br>
@@ -5384,35 +5425,35 @@ x&nbsp;&nbsp;ユーザ定義2(%ex か %eX で使用可能)<br>
 
 <b>編集</b><br>
 <hr><br>
-<a name="macro54"><b>%!<i>macro</i> 部分編集</b></a><br>
+<a name="macro53"><b>%!<i>macro</i> 部分編集</b></a><br>
 <a name="paramedit"></a><br>
 指定のマクロ文字「macro」を展開した後、その部分だけ編集します。高度な指定を行う場合は、「%*input(&quot;%macro&quot;～)」等と<a href="#input">%*input</a> を使用します。<br>
 例) *logwindow &quot;%!C&quot;<br>
 <hr><br>
-<a name="macro56"><b>%$<i>macro</i> キャッシュ付き部分編集</b></a><br>
+<a name="macro55"><b>%$<i>macro</i> キャッシュ付き部分編集</b></a><br>
 <br>
 上記 %!macro と基本的な動作は同じですが、選択エントリの連続実行中に、以前の編集内容を用いて編集を行いません。<br>
 例) *logwindow &quot;%$1%\%C&quot;<br>
 <br>
 キャッシュは１つのコマンドラインにつき、１箇所のみ使用でき、複数箇所指定した場合は無効になります。複数箇所に対して使いたい場合はスクリプトを使用して、まとめて編集するなどと調整してください。<br>
 <hr><br>
-<a name="macro57"><b>%E 編集内容を挿入</b></a><br>
+<a name="macro56"><b>%E 編集内容を挿入</b></a><br>
 <br>
 一行編集でテキストの編集を行い、編集した内容を挿入します。<br>
 高度な指定を行う場合は <a href="#input">%*input</a> を使用します。<br>
 <hr><br>
-<a name="macro58"><b>%P 編集したパスを挿入</b></a><br>
+<a name="macro57"><b>%P 編集したパスを挿入</b></a><br>
 <br>
 パス入力の為に編集を行います。入力されたパスは絶対指定の形式に置換します。<br>
 （例）「..\DATA」→「C:\BIN\DATA」<br>
 <br>
 高度な指定を行う場合は、「%*name(CD,&quot;%*input(&quot;&quot;～)&quot;)」等と<a href="#functionF">%*name</a>と<a href="#input">%*input</a> を使用します。<br>
 <hr><br>
-<a name="macro59"><b>%{...%} 範囲編集</b></a><br>
+<a name="macro58"><b>%{...%} 範囲編集</b></a><br>
 <a name="areaedit"></a><br>
 指定範囲の内容「...」を編集します。高度な指定を行う場合は「%*input(&quot;...&quot;～)」等と <a href="#input">%*input</a> を使用します。<br>
 <hr><br>
-<a name="macro61"><b>%| カーソル/範囲指定</b></a><br>
+<a name="macro60"><b>%| カーソル/範囲指定</b></a><br>
 <br>
 %{...%}で編集時のキャレットカーソルの位置をこのマクロの位置に設定します。二つ使った場合はその間を選択します。<br>
 例) %{abc%|def%|ghi%}  defを選択<br>
@@ -5476,26 +5517,26 @@ reftype はヒストリを参照するときに利用する種類で、type で�
 
 <b>実行処理</b><br>
 <hr><br>
-<a name="macro66"><b>%v<i>[filename]</i> PPvで表示</b></a><br>
+<a name="macro65"><b>%v<i>[filename]</i> PPvで表示</b></a><br>
 <br>
 PPvで表示します。<br>
 filenameが無い時は%C 相当です。filenameがあればそのファイルを表示します。<br>
 <hr><br>
-<a name="macro67"><b>%L[V] PPvの論理行</b></a><br>
+<a name="macro66"><b>%L[V] PPvの論理行</b></a><br>
 <br>
 PPvの論理行位置(改行までを1行としたときの行数)が入ります。エディタで編集する行を指定するために用います。<br>
 %LV と %L はどちらを使っても同じ動作をします。<br>
 <hr><br>
-<a name="macro68"><b>%l[V] PPvの表示行</b></a><br>
+<a name="macro67"><b>%l[V] PPvの表示行</b></a><br>
 <br>
 PPvの表示行位置(窓右端までを1行としたときの行数)が入ります。エディタで編集する行を指定するために用います。<br>
 %lV と %l はどちらを使っても同じ動作をします。<br>
 <hr><br>
-<a name="macro69"><b>%lH PPvの表示桁</b></a><br>
+<a name="macro68"><b>%lH PPvの表示桁</b></a><br>
 <br>
 PPvの表示桁位置(窓左端からの桁数)が入ります。エディタで編集する桁を指定するために用います。<br>
 <hr><br>
-<a name="macro70"><b>%u<i>[/]m, n</i> UnXXX.DLL</b></a><br>
+<a name="macro69"><b>%u<i>[/]m, n</i> UnXXX.DLL</b></a><br>
 <br>
 m で指定した UnXXX.DLL を利用して n の内容で圧縮・展開を行います。<br>
 /をつけると別プロセスで実行せず、自プロセスで行います。<br>
@@ -5553,14 +5594,14 @@ runas&nbsp;&nbsp;管理者/別のユーザで実行<br>
 runasuser&nbsp;&nbsp;別のユーザで実行<br>
 関連 <a href="#execute">実行処理</a>, <a href="#shellmenu">*shellmenu</a>, <a href="#run">*run</a>, <a href="#launch">*launch</a>, <a href="#start">*start</a>, <a href="#zapfile">%Z</a>, <a href="#optionmacro">%O</a><br>
 <hr><br>
-<a name="macro71"><b>%I<i>&quot;text&quot;</i> メッセージ表示</b></a><br>
+<a name="macro70"><b>%I<i>&quot;text&quot;</i> メッセージ表示</b></a><br>
 <br>
 内容textをメッセージボックスで表示します([OK]ボタン付き)<br>
 %I, <a href="#msgbox">*messagebox, *msgbox</a> はいずれも同じ機能です。<br>
 <br>
 <a href="#mutilineparam">改行等を含む text の記載方法</a><br>
 <hr><br>
-<a name="macro73"><b>%Q[Y|N|O|C]<i>&quot;text&quot;</i> 確認表示</b></a><br>
+<a name="macro72"><b>%Q[Y|N|O|C]<i>&quot;text&quot;</i> 確認表示</b></a><br>
 <br>
 内容textをメッセージボックスで表示し、[OK]/[キャンセル]ボタンで選択します。<br>
 [OK]なら続行、[キャンセル]なら中止します。繰り返し実行するときは最初の１回のみ確認します。<br>
@@ -5570,7 +5611,7 @@ runasuser&nbsp;&nbsp;別のユーザで実行<br>
 <br>
 <a href="#mutilineparam">改行等を含む text の記載方法</a><br>
 <hr><br>
-<a name="macro76"><b>%K<i>[ID,]&quot;keycommand&quot;</i> 指定PPxでキーコマンドを実行</b></a><br>
+<a name="macro75"><b>%K<i>[ID,]&quot;keycommand&quot;</i> 指定PPxでキーコマンドを実行</b></a><br>
 <br>
 呼び出し元PPxの内蔵機能「keycommand」を実行します。keycommandは<a href="#keyformat">キー表記、内蔵キーコマンド</a>を参照してください。<br>
 空白を空けてキー名称を記載していくと、順番に実行します。<br>
@@ -5601,7 +5642,7 @@ ID 指定がある場合は、キーコマンドの実行を指示(PostMessage)�
 (PPc [L])指定した「path」へディレクトリ移動します。<br>
 pathにマクロ文字を使用する場合や、細かな指定が必要なら、<a href="#jumppath">*jumppath</a>を使用します。<br>
 <hr><br>
-<a name="macro79"><b>%J<i>&quot;filepath&quot;</i> ファイルへ移動/表示</b></a><br>
+<a name="macro78"><b>%J<i>&quot;filepath&quot;</i> ファイルへ移動/表示</b></a><br>
 <br>
 (PPc)「filepath」へ該当エントリへカーソル移動します。<br>
      「dir\filepath」と、ディレクトリ指定が含まれていれば、ディレクトリ移動もおこないます。<br>
@@ -13588,7 +13629,7 @@ test&nbsp;&nbsp;= text 4<br>
 　<b>helpdir</b> <a href="#help">ヘルプ</a>ファイル(ppxhelp.html, ppx.hlp)の保存場所です。<br>
 　<b>NewFile</b> PPcの新規ファイル作成(\[K])で使用する仮のファイル名(TEMPFILE)。マクロ文字「%…」・範囲指定「|」が使用できます。<br>
 　<b>NewDir</b> PPcのディレクトリの作成([K])で使用する仮のディレクトリ名(TEMPDIR)。マクロ文字「%…」・範囲指定「|」が使用できます。<br>
-　<b>PackName, PackCmd, PackOption, PackIndiv</b> *packコマンドで使用しています。<br>
+　<b>PackName, PackCmd, PackOption, PackAddExt, PackIndiv</b> *packコマンドで使用しています。<br>
 　<b>SaveDir</b> PPe や PPv でファイルを保存するとき、開いているファイルのディレクトリが指定されていないときに使用するディレクトリです。空欄のときは、ドキュメント（shell:Personal, #5:\）を使用します。また、相対ディレクトリで指定したときは PPx ディレクトリ（%0）を基準とします。<br>
 　<b>subnump</b> %*name(U)やファイルコピーの数字付加等で使用する分離記号です。未記載のときは「-」になります。例えば「&quot; $$ &quot;」を指定すると「filename $$ 1.ext」のようになります。<br>
 　<b>SyncViewID</b> PPcの連動ビューで使用するPPvのIDです(a～z)。<br>
@@ -15431,7 +15472,7 @@ IBM-PC互換機用のファイルマネージャ。Peter Norton Computing社(Sym
 <a name="ppxt"></a><a name="最後に"></a><h3>連絡先／一次配布先等 - 最後に</h3><br>
 ・Paper Plane xUI はフリーソフトウェアです。著作権は「TORO」、「高橋 良和」にあります。<br>
 ・Paper Plane xUI は、MITライセンスに基づいて公開しています。<br>
-・PPxに異常終了などの問題が起きたときに出るダイアログの選択次第で、問題の詳細内容が既定のブラウザで作者に送信されます。送信する内容は、異常終了ダイアログに表示される内容です。また、集計のためにブラウザ情報からIPアドレスとエージェントを利用します。<br>
+・PPxに異常終了などの問題が起きたときはダイアログによって報告します。ダイアログの選択次第で、問題の詳細内容が既定のブラウザで作者に送信されます。送信する内容は、異常終了ダイアログに表示される内容です。また、集計のためにブラウザ情報からIPアドレスとエージェントを利用します。<br>
 問題の解決になるかもしれませんので、送信していただけると助かります。<br>
 ・文中に記された各ソフトウェア名称はそれぞれ著作物であり、パッケージソフト／シェアウェア／フリーソフトウェア等として入手可能です。<br>
 ・ソースは、正式公開版を別アーカイブで公開しています。<br>
