@@ -147,7 +147,7 @@ PPx 自体を起動させるために必要なファイルのうち、別途用�
 <dt>UNLHA32.DLL</dt><dd>対応ファイル：.lzh, .lzs</dd>
 <dt></dt><dd>動作確認 Ver.2.67a</dd>
 <dt></dt><dd>吉崎 栄泰氏作の「LHA」や「LARC」の書庫を操作する為にＭｉｃｃｏ氏が DLL 化したものです。</dd>
-<dt></dt><dd><a href="https://micco.mars.jp/micindex.html" target="_top">https://micco.mars.jp/micindex.html</a></dd>
+<dt></dt><dd><a href="https://micco.blog/micindex.html" target="_top">https://micco.blog/micindex.html</a></dd>
 <dt></dt>
 <dt>UNZIP32.DLL</dt><dd>対応ファイル：.zip</dd>
 <dt></dt><dd>動作確認 Ver.5.42</dd>
@@ -169,6 +169,9 @@ PPx 自体を起動させるために必要なファイルのうち、別途用�
 <dt></dt><dd>Igor Pavlov 氏作の「7zip」の書庫等を操作する為に 秋田 稔氏が DLL 化したものです。</dd>
 <dt></dt><dd><a href="http://akky.xrea.jp/" target="_top">http://akky.xrea.jp/</a></dd>
 <dt></dt>
+<dt></dt><dd>上記を基にして市丸 剛氏、Yak!氏、 x@rgs氏が手を加えたものが配布されています。</dd>
+<dt></dt><dd><a href="https://frostmoon.sakura.ne.jp/" target="_top">https://frostmoon.sakura.ne.jp/</a></dd>
+<dt></dt>
 <dt>UNRAR32.DLL</dt><dd>対応ファイル：.rar</dd>
 <dt></dt><dd>動作確認 Ver.0.12</dd>
 <dt></dt><dd>Alexander Roshal 氏作の「RAR」の書庫を展開する unrar.dll を亀井 哲弥氏が統合アーカイバ仕様で扱えるようにする DLL です。</dd>
@@ -183,7 +186,7 @@ PPx 自体を起動させるために必要なファイルのうち、別途用�
 <dt>UNARJ32J.DLL</dt><dd>対応ファイル：.arj</dd>
 <dt></dt><dd>動作確認 Ver.1.10a</dd>
 <dt></dt><dd>Robert K Jung 氏作の「ARJ」の書庫を展開する為にＭｉｃｃｏ氏が DLL 化したものです。</dd>
-<dt></dt><dd><a href="https://micco.mars.jp/micindex.html" target="_top">https://micco.mars.jp/micindex.html</a></dd>
+<dt></dt><dd><a href="https://micco.blog/micindex.html" target="_top">https://micco.blog/micindex.html</a></dd>
 <dt></dt>
 <dt><b>32bit版・64bit版</b></dt>
 <dt>LMZIP32.DLL, LMZIP64.DLL  対応ファイル：.zip</dt>
@@ -2203,7 +2206,7 @@ PPx, KL, FD, FILMTN:[T]<br>
 <hr><br>
 <a name="ppckey52"><b>^[F] [F3] エクスプローラの検索機能でファイルやフォルダを検索</b></a><br>
 <br>
-尚、環境によってはエクスプローラの検索機能の呼び出しに失敗することがあります。そのときは、^[W]コマンド(ファイルの検索)を使用します。<br>
+Windows Vista 以降は、エクスプローラの検索機能を呼び出せないため、^[W]コマンド(ファイルの検索)を使用します。<br>
 <hr><br>
 <a name="ppckey53"><b>^[W] ファイルの検索</b></a><br>
 &nbsp;&nbsp;以下の条件に該当するエントリを検索します。検索結果は<a href="#listsubj">ListFile</a>で作成されるため、検索結果を基にファイル操作をしたり、ListFileをテキストエディタで編集したりすることができます。<br>
@@ -3245,7 +3248,8 @@ PPv を最小化したときに、フォーカス設定する親ウィンドウ�
  *ppv -popup:%NC# %FDC<br>
 <br>
 <b>-showstyle:n</b><br>
-親ウィンドウが設定されているときの表示位置を指定します。値は <a href="#X_vpos">X_vpos</a> を参照してください。<br>
+親ウィンドウが設定されているときの表示位置を指定します。値は <a href="#X_vpos">X_vpos</a> を参照してください。また、親ウィンドウを指定するために -setparent が必要です。<br>
+  例) ppvw -setparent:%N -showstyle:2 %FDC<br>
 <br>
 <hr>
 <a name="PPvSpecInfo"></a><a name="仕様"></a><h3>PPv - マルチフォーマットビューア - 仕様</h3><br>
@@ -3562,9 +3566,9 @@ PPcのカーソル上のファイルをPPvで表示しているときにCtrl+[�
 <hr><br>
 <a name="PPvKey49"><b>[M] コメント表示/格子模様</b></a><br>
 <br>
-●次のコメントを表示をPPeで表示します。<br>
-・画像のExif等の情報<br>
-・http:で取得したファイルのhttpヘッダ<br>
+●次のコメントを表示を PPe で表示します。<br>
+・画像の Exif 等の情報<br>
+・http: で取得したファイルの http ヘッダ<br>
 ・EXEファイルの情報<br>
 <br>
 ●32bit色画像のアルファ指定の部分を格子模様に<b>書き換え</b>ます。<br>
@@ -7075,9 +7079,9 @@ oldnameのファイルまたはディレクトリをnewnameに変更します。
 <br>
 自動ドラッグ＆ドロップ(^[D])を指定したcaptionに対して行います。<br>
 次の方法のどれかで D&amp;Dを行います。<br>
-・Post式: File Manager(WM_DROPFILES) 形式 D&amp;D<br>
-・ドラッグ(フック式): OLE D&amp;D(直接操作)<br>
-・ドラッグ(エミュレート式): OLE D&amp;D(マウス操作の代行)<br>
+・Post式: File Manager(WM_DROPFILES) 形式 D&amp;D。古い D&amp;D 形式ですが、テキストエディタ等、ファイルのドロップのみ可能なアプリケーションで実装されていることがあります。<br>
+・ドラッグ(フック式): OLE D&amp;D(直接操作)。マウス操作を使わずに直接 D&amp;D を行うため、確実性が高いです。一方、PPx の DLL を一時的に D&amp;D 対象で動作させるため、UWP 等では失敗します。<br>
+・ドラッグ(エミュレート式): OLE D&amp;D(マウス操作の代行)。対象アプリケーションのタイトルバー等にドロップします。操作中はマウス操作ができません。<br>
 <br>
 option は、次の通りです。<br>
 -mode:r|c|m&nbsp;&nbsp;OLE D&amp;D を行う時の動作指定です。<br>
@@ -13910,7 +13914,7 @@ PPXCMDID_xx の一覧は、PPCOMMON.H を参照してください。<br>
 PPx の ID別の情報の記憶は、特殊環境変数(PPXCMDID_SETWNDVARIABLEDATA / PPXCMDID_GETWNDVARIABLEDATA)が使用できます。（使用例 Key Module）<br>
 PPc のエントリ別の情報の記憶は、PPXCMDID_ENTRYEXTDATA_SETDATA / PPXCMDID_ENTRYEXTDATA_GETDATA で参照できます。（使用例 CFX Module）これらで使用する ID は、拡張コメントなら DFC_COMMENTEX が用意されています。私用の場合は、 PPXCMDID_ENTRYEXTDATA_GETID で ID を確保します。<br>
 <hr>
-<a name="useppx"></a><a name="外部からPPxを利用する"></a><h3>PPx Module - 外部からPPxを利用する</h3><br>
+<a name="useppx"></a><a name="外部から PPx を利用する"></a><h3>PPx Module - 外部から PPx を利用する</h3><br>
 <br>
 PPx は、外部から操作を行ったり、内部情報を取得したり、PPx の各種コマンドを利用したりすることができます。<br>
 <b>コマンドラインを使って操作する</b><br>
@@ -13921,7 +13925,8 @@ PPx は、外部から操作を行ったり、内部情報を取得したり、P
 例) ppbw.exe -c *stdout %E | ～    一行編集の結果を標準出力に出力し、後続のコマンドで利用する。要 PPx text module<br>
 <br>
 ・また、PPx のコマンドラインは、同PPxの操作を行う（PPcをつかって別PPcを操作する等）だけでなく、*execute, %*extract を使って別PPxの操作を行うこともできます。<br>
-このため、PPb や PPtray といったコンパクトなソフトから PPc, PPv 等を操作可能です。<br>
+このため、PPb や PPtray といったコンパクトなソフトから PPc, PPv 等を操作可能です。コンソールアプリ扱いなら PPb、GUI アプリ扱いなら PPtray を使用します。<br>
+<br>
 例) ppbw.exe -k %KC&quot;down enter&quot;   PPb からアクティブ PPc のカーソルを下に動かし、[Enter] を実行させる。<br>
 <br>
 <b>PPlibXX.DLL を使って操作する</b><br>
@@ -13933,6 +13938,11 @@ PPlib32.DLL / PPlib32W.DLL / PPlib64W.DLL を使用することで、PPx のコ�
 C の例 <a href="http://toro.d.dooo.jp/ppxcfg/ppx.c" target="_top">http://toro.d.dooo.jp/ppxcfg/ppx.c</a><br>
 C# の例 <a href="http://toro.d.dooo.jp/ppxcfg/ppx.cs" target="_top">http://toro.d.dooo.jp/ppxcfg/ppx.cs</a><br>
 Python の例 <a href="http://toro.d.dooo.jp/ppxcfg/ppx.py" target="_top">http://toro.d.dooo.jp/ppxcfg/ppx.py</a><br>
+<br>
+<b>PPlibXX.DLL を使って操作する(rundll32.exe を使用)</b><br>
+PPlib32.DLL / PPlib32W.DLL / PPlib64W.DLL は、rundll32.exe 用のエントリ run を用意しています。このため、次のようなコマンドライン実行が可能です。<br>
+例) rundll32 pplib64w.dll,run %I&quot;テスト: %0&quot;<br>
+※ %0 は、実行元の rundll32.exe の場所を示す<br>
 <hr>
 <a name="HowTo"></a><a name="全般"></a><h3>こんなことをしたいときは - 全般</h3><br>
 ・<a href="#HowTo1"> 設定を保存／復元したい</a><br>
@@ -15109,9 +15119,8 @@ OneDrive がインストールしていると起きる症状です。<br>
 <hr><br>
 <a name="troublePPc6"><b> ^[F](エクスプローラで検索)が^[W](WhereIs)になったり、反応がなかったりする</b></a><br>
 <br>
- 一部の環境でこのような状態になることがあります。シェルコンテキストメニューの「検索」が正しく呼び出せないのが原因で、%zで該当コマンドを正しく呼び出せるようにカスタマイズする必要があります。<br>
-通常、「%z.,F」を検索コマンドとして登録することで回避できます。<br>
-※^[F]の内部動作は、%z.,find と同等です。<br>
+ ^[F] は、フォンダのシェルコンテキストメニューの「検索」を呼び出します(%z.,find を実行)。<br>
+Windows Vista 以降では「検索」がないため、代わりに ^[W](WhereIs) を使用します。<br>
 <hr><br>
 <a name="paneopenclose"><b> 窓増減時の注意</b></a><br>
 <br>
