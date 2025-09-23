@@ -272,7 +272,8 @@ viewon cursor	保持View	@Y
 sync view	連動ファイルビュー	@\Y
 sync path	連動・同期パス	@^Y
 comment	コメント操作	@\O
-pack	書庫作成	*pack "%2%\|%X|" %Or-
+pack	書庫作成	*pack
+pack(custom edit)	書庫作成(編集指定有)	*pack "%2%\|%X|" %Or-
 individual pack	書庫作成(個別)	*pack "|%2%\|",indiv %Or-
 PACK LHA	書庫作成(LHA)	%"Pack File"%eSc,gfcp%M_xpack,!"lh&5"
 PACK ZIP	書庫作成(zip)	%"Pack File"%eSc,gfcp%M_xpack,!"zip(zip32j)"

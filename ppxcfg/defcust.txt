@@ -195,6 +195,8 @@ DOC	,%M_Ccr,!V
 TXT	,%M_Ccr,!V
 MD	,%M_Ccr,!V
 :UTEXT	,%M_Ccr,!V
+:UTF8	,%M_Ccr,!V
+:BUTXT	,%M_Ccr,!V
 :DOC95	,%M_Ccr,!V
 :DOC97	,%M_Ccr,!V
 :DOCX	,%M_Ccr,!V
@@ -214,7 +216,6 @@ RAR	=C_DIR
 :XVBS	,%"Script" *script %{%R,%|%}
 :XJS	,%"Script" *script %{%R,%|%}
 MAKEFILE.	,%{MAKE %|%}
-MAK	,%{MAKE -f%C%}
 }
 E_scr	={
 *	,%"JMTE|Text edit"%Orib,editor %FDC
@@ -248,6 +249,7 @@ G	=%h6
 H	=%h7
 I	=%h8
 J	=%h9
+K	=%h10
 ||	=
 %G"PJDE|Desktop"(&S)	=shell:DesktopFolder\
 %G"PJDL|DriveList"(&L)	=:
@@ -288,6 +290,7 @@ M_Ccr.exe	={
 }
 +0.44|MC_sort	={
 &%G"SRTN|N:Name	=0,-1,-1,B11111,1
+&%G"SRTI|I:Numbers name	=0,-1,-1,B11111,B11000000000000000000000001
 &%G"SRTE|E:Ext	=1,-1,-1,B11111,1
 &%G"SRTS|S:file Size	=2,-1,-1,B11111,1
 &%G"SRTT|T:Time stamp	=3,-1,-1,B11111,1
@@ -297,7 +300,6 @@ M_Ccr.exe	={
 &%G"SRTH|H:Changed	=7,-1,-1,B11111,1
 &%G"SRTO|O:Comment	=17,-1,-1,B11111,1
 &%G"SRTX|X:Ext color	=20,-1,-1,B11111,1
-&%G"SRTI|I:Numbers name	=0,-1,-1,B11111,B11000000000000000000000001
 --	=
 &%G"STnR|n:R)Name	=8,-1,-1,B11111,1
 &%G"STeR|e:R)Ext	=9,-1,-1,B11111,1

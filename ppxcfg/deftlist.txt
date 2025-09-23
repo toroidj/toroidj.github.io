@@ -294,7 +294,7 @@
 		XBCI|tab coloredタブを着色する:X_combos=?B18
 		XBD6|close button閉じるボタンを表示する:X_combos+4=?B6!
 			XBD8|auto hide close button閉じるボタンを自動で隠す:X_combos+4=?B8!
-		XBDD|Tab drag require ALT keyタブのドラッグ編集には[Alt]キーが必要:X_combos+4=?B13
+		XBDD|Tab drag or switch require ALT keyタブのドラッグ編集・ホイールによる切替には[Alt]キーが必要:X_combos+4=?B13
 		XBCG|Fixed tab widthタブ幅を固定:X_combos=?B16
 			XTWI|pixcel幅:X_twid=<i
 		XBCH|Multi line tabタブ列の多段表示:X_combos=?B17

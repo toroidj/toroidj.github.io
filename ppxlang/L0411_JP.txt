@@ -1,5 +1,5 @@
 +1.42|Mes0411	=#{ 日本語
-+|0000	2028
++|0000	2042
 0003	中止(&A)
 0004	再試行(&R)
 0005	無視(&I)
@@ -599,6 +599,7 @@ JMTE	テキスト編集
 JMUN	元に戻す
 JNCL	仮想フォルダ(&C)
 JNJL	リンク先(&L)
+JNRP	パスを実体化(&A)
 JNSH	ショートカット先(&S)
 JNST	ストリーム一覧(&T)
 JPCL	反対窓を仮想フォルダに(&I)
@@ -745,6 +746,7 @@ NWFN	tempfile
 OPSA	選択したアドレスで開く(&A)
 OWDT	移動形式(&Y)
 OWIT	送る・プログラム(&N)
+PACE	拡張子を付加
 PACI	ファイル毎に１つの書庫
 PACO	その他
 PACT	書庫の種類
@@ -1385,4 +1387,4 @@ XUUN	最新版です
 XUUQ	新しい %s があります。%s から更新しますか？
 -|7883	
 -|ITFC	
-};fjpngfnmhaoeifmcainbdcbglgeolopghkpicpainomaijfhdppfilpfdlmgldgllijhpimeeaeobhkgenkinenglkhhpebdepcmelonkjficldkocanjdaapnbhkjonaie 
+};clmdbgchgagiofemjbplnngphaijjfgfakibicmajjkipljknldcfnjfhkhgiefioohonabnmepmcocpgkdlamelfmampnabjgfcohplegomnpgjdojhpafgaljhnjclaie 

@@ -1,5 +1,5 @@
 Mes0409	=#{ English ; 0409 is Locale ID (LCID)
-+|0000	2028
++|0000	2042
 0001	OK
 0002	Cancel
 0003	Abort(&A)
@@ -620,6 +620,7 @@ JMUN	Undo
 JNCL	CLSID(&C)
 JNHL	ハードリンク一覧(&H)
 JNJL	link(&l)
+JNRP	Realize path(&A)
 JNSH	shortcut(&s)
 JNST	stream(&T)
 JPCL	CLSID(pair window, &I)
@@ -767,6 +768,7 @@ NWFN	tempfile
 OPSA	Open selected Address(&A)
 OWDT	Directory types(&Y)
 OWIT	Send to(&N)
+PACE	add extention
 PACI	individual archive
 PACO	other
 PACT	Archive type
@@ -1438,7 +1440,7 @@ XBD7	use PPc ID "Zxxx" in Combo ID "A"
 XBD8	auto hide close button
 XBD9	keep panes wide rate with delete one pane
 XBDA	Over pane on tab null space
-XBDD	Tab drag require ALT key
+XBDD	Tab drag or switch require ALT key
 XBEP	Error sound
 XBGC	tab group
 XBGD	group default name
@@ -1807,4 +1809,4 @@ ZTPY	PPtray
 ZTVD	Drag
 ZTVI	Image view
 ZTVT	Text view
-};nbgiahjhhdbcegjbmehdhbljgpceconngclcbapamabmgkodcaeigpnmkjmadgpoaclomccemadlfhjhkhlhdknecleidppbffnmggihcmlglphomoioikeokamnimnoaie 
+};lkjdiomfiipmnnhcmcfgejfalmencgkigickdbbpnbkcknalnkmhlilfdfeiellnkcplaeaboipgadcjjdcooodicgdblmoccjfffecacnkkjjmkjdlfcnlbnhlcfijkaie 
