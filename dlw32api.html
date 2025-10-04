@@ -35,7 +35,7 @@ Win32 API について、SDK HELP/MSDN に載っていない／分かりにく�
   <LI><A HREF="#unicode">UNICODE</A></LI>
   <LI><A HREF="#etc">その他</A></LI>
  </UL>
-<A HREF="index.html">Homeへ戻る</A> update:2023-10-22
+<A HREF="index.html">Homeへ戻る</A> update:2025-10-04
 <HR><H3><A NAME="single">個別API等の動作関連</A></H3><DL>
 <dt>GetTempPathName(lpszPath, lpszPrefix, uUnique, lpszTempFile)</dt>
 <DD>uUnique == 0 のとき、生成したファイル名で filesize = 0 のファイルが作成される。<br>
@@ -228,7 +228,7 @@ WM_INITMENU内であってもGetMenuState()で得たメニューハンドルに�
 <dt>EM_GETSEL<br>EM_SETSEL<br>EM_LIMITTEXT<br>EM_LINEINDEX</dt>
 <DD>WindowsXP 以降でビジュアルスタイルの ANSI 版エディットボックスを開いているにも関らず、EM_GETSEL / EM_SETSEL / EM_LIMITTEXTで UNICODE 版の動作をする。<br>
 例えば、次のコードでは XP 以外では FALSE を返すが、XP では TRUE となる。<br>
-<a href="http://support.microsoft.com/default.aspx?scid=kb;ja;418099">[WinXP] Common Control 6.0 の EM_LIMITTEXT による入力制限</a>によれば仕様ということである。<br>
+<a href="http://support.microsoft.com/default.aspx?scid=kb;ja;418099">[WinXP] Common Control 6.0 の EM_LIMITTEXT による入力制限(該当ページ消滅)</a>によれば仕様ということである。<br>
 （ビジュアルスタイルではANSI版／完全なANSI変換は提供せず、UNICODE版のみ提供のようだ）<br>
 また、エディットボックスが UNICODE版 の動作をするかは IsWindowUnicode を使えば判定できる。(2003-12-6)<br>
 <del>※ Windows 8.1 で ANSI 版の動作をするようになった。(2017-12-30)</del>(勘違いだった 2018-10-20)
@@ -393,9 +393,9 @@ Windows2000では 0 か 0 以外で解釈する。
 <br>(2006-04-29)</dd>
 
 <dt>CallNextHookEx(HHOOK hhk, int nCode, WPARAM wParam, LPARAM lParam)</dt>
-<dd>パラメータにあるhhkは、Win32cではSetWindowsHookExの戻り値、Win32では<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winui/winui/windowsuserinterface/windowing/hooks/hookreference/hookfunctions/callnexthookex.asp">最新の英語版MSDN</a>では、「Ignored.」になっている。<br>
+<dd>パラメータにあるhhkは、Win32cではSetWindowsHookExの戻り値、Win32では<a href="https://learn.microsoft.com/ja-jp/windows/win32/api/winuser/nf-winuser-callnexthookex">最新の説明</a>では、「無視/Ignored.」になっている。<br>
 ※一時期の英語版MSDNでは、Win32のみの記載になっていた。
-<br>(2007-04-21)</dd>
+<br>(2025-10-04)</dd>
 
 <dt>コンソール</dt>
 <DD>Win32c上のコンソールは次の問題がある。
@@ -486,7 +486,7 @@ Windows2000では 0 か 0 以外で解釈する。
 
 </DL>
 <HR><A HREF="index.html">Homeへ戻る</A>
-<hr><address>Copyright(c)1997-2024 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+<hr><address>Copyright(c)1997-2025 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
 </div></div><div id="index">
 <strong><A HREF="./index.html">TORO's Library</A></strong>
 <H3>Software</H3>
@@ -506,6 +506,6 @@ Windows2000では 0 か 0 以外で解釈する。
 &nbsp;<A HREF="dlw32api.html">Win32 API memo</A><br>
 &nbsp;<A HREF="dlsphapi.html">Susie Plugin API</A><br>
 <H3>Message Board</H3>
-&nbsp;<A HREF="http://toro.d.dooo.jp/wforum/wforum.cgi">Software</A>
+&nbsp;<A HREF="https://toro.d.dooo.jp/wforum/wforum.cgi">Software</A>
 </div>
 </div></body></html>
