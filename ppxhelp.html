@@ -2851,7 +2851,6 @@ SETUP.EXE で エクスプローラ の機能割当てをおこなったとき�
 <dt></dt>
 <dt><b>左ダブルクリック</b></dt>
 <dt>ステータス行、メニューバー</dt>
-<dt></dt><dd>メニューバーの表示切替</dd>
 <dt>情報行</dt><dd>親ディレクトリへ移動</dd>
 <dt>エントリ</dt><dd>「開く」(XC_exem)</dd>
 <dt>空欄エントリ</dt><dd>親ディレクトリへ移動</dd>
@@ -3678,7 +3677,6 @@ MIME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;…MIME(quoted-printable, BASE64)解析<
 <dt><b>左ダブルクリック</b></dt>
 <dt>表示領域</dt><dd>「開く」</dd>
 <dt>ステータス行、メニューバー</dt>
-<dt></dt><dd>メニューバーの表示切替</dd>
 <dt>窓枠</dt><dd>窓枠の大きさを調整</dd>
 <dt></dt>
 <dt><b>左ドラッグ</b></dt>
@@ -5693,8 +5691,8 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 <a href="#PPxCmd113">PPc</a><br>
 <a href="#PPxCmd158">PPc / PPv</a><br>
 <a href="#PPxCmd159">PPv</a><br>
-<a href="#PPxCmd169">ツリー窓</a><br>
-<a href="#PPxCmd170">Windowsログイン・電源管理</a><br>
+<a href="#PPxCmd170">ツリー窓</a><br>
+<a href="#PPxCmd171">Windowsログイン・電源管理</a><br>
 <hr><br>
 
 <a name="PPxCmd1"><b>PPx共用</b></a><br>
@@ -5839,7 +5837,7 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 ・<a href="#clipentry">*clipentry <i>[text|file]</i> 選択エントリのクリップ(コピー)</a><br>
 ・<a href="#PPxCmd119">*color [back|cursor] [color] 色の一時的変更</a><br>
 ・<a href="#commentcommand">*comment [id,][&quot;text&quot;|[all] command] コメントの操作</a><br>
-・<a href="#PPxCmd122">%*comment[(id)] コメント内容</a><br>
+・<a href="#PPxCmd122">%*comment[(id)] コメント内容(PPc)</a><br>
 ・<a href="#comparemark">*comparemark <i>比較方法 [オプション]</i> ファイル比較マーク</a><br>
 ・<a href="#countsize">*countsize [all|cursor|marked][-clear] マーク総サイズ算出</a><br>
 ・<a href="#cutentry">*cutentry <i>[text|file]</i> 選択エントリの切り取り</a><br>
@@ -5878,21 +5876,22 @@ filepathにマクロ文字を使用する場合や、細かな指定が必要な
 <hr><br>
 
 <a name="PPxCmd159"><b>PPv</b></a><br>
-・<a href="#PPxCmd160">*reducemode <i>mode</i> 縮小方法指定</a><br>
-・<a href="#PPxCmd162">*find <i>[&quot;text&quot;] [option]</i> 文字列の検索(PPv)</a><br>
-・<a href="#PPxCmd163">*highlight <i>[&quot;text&quot;] [-dialog]</i> ハイライトの設定</a><br>
-・<a href="#PPxCmd164">*jumpline <i>[L|Y][行番号][,桁番号]</i> 行番号指定カーソル移動</a><br>
-・<a href="#PPxCmd165">%*selecttext 選択テキスト</a><br>
-・<a href="#PPxCmd166">*viewoption <i>各種オプション</i> 表示関係オプション</a><br>
-・<a href="#PPxCmd167"> %*viewoption <i>各種オプションの状態を取得</i></a><br>
-・<a href="#PPxCmd168"> %*zoom([notify]) <i>表示倍率の取得</i></a><br>
+・<a href="#PPxCmd160">%*comment(-memo|-getmemo) コメント内容(PPv)</a><br>
+・<a href="#PPxCmd161">*reducemode <i>mode</i> 縮小方法指定</a><br>
+・<a href="#PPxCmd163">*find <i>[&quot;text&quot;] [option]</i> 文字列の検索(PPv)</a><br>
+・<a href="#PPxCmd164">*highlight <i>[&quot;text&quot;] [-dialog]</i> ハイライトの設定</a><br>
+・<a href="#PPxCmd165">*jumpline <i>[L|Y][行番号][,桁番号]</i> 行番号指定カーソル移動</a><br>
+・<a href="#PPxCmd166">%*selecttext 選択テキスト</a><br>
+・<a href="#PPxCmd167">*viewoption <i>各種オプション</i> 表示関係オプション</a><br>
+・<a href="#PPxCmd168"> %*viewoption <i>各種オプションの状態を取得</i></a><br>
+・<a href="#PPxCmd169"> %*zoom([notify]) <i>表示倍率の取得</i></a><br>
 <hr><br>
 
-<a name="PPxCmd169"><b>ツリー窓</b></a><br>
+<a name="PPxCmd170"><b>ツリー窓</b></a><br>
 ・<a href="#treecmd">*tree type ツリー窓の操作(PPc, 一行編集)</a><br>
 <hr><br>
 
-<a name="PPxCmd170"><b>Windowsログイン・電源管理</b></a><br>
+<a name="PPxCmd171"><b>Windowsログイン・電源管理</b></a><br>
 ・*screensaver スクリーンセーバを起動<br>
 ・*monitoroff モニタを省電力モードにする<br>
 ・*lockpc コンピュータをロックする<br>
@@ -7840,7 +7839,7 @@ infotip&nbsp;&nbsp;インフォチップの内容を設定します。<br>
 ※現在、カラム拡張、bcrypt はメニュー上のみ使用可能です。<br>
 <br>
 <hr><br>
-<a name="PPxCmd122"><b>%*comment[(id)] コメント内容</b></a><br>
+<a name="PPxCmd122"><b>%*comment[(id)] コメント内容(PPc)</b></a><br>
 <br>
 カーソル上のエントリのコメント内容です。コメントがなければ空欄になります。<br>
 %*comment とした場合は通常のコメント、%*comment(1)などとID指定した場合は拡張コメントが取得できます。<br>
@@ -8831,7 +8830,15 @@ font の大きさを % で指定します。符号「+」「-」があるとき�
 
 <b>PPv</b><br>
 <hr><br>
-<a name="PPxCmd160"><b>*reducemode <i>mode</i> 縮小方法指定</b></a><br>
+<a name="PPxCmd160"><b>%*comment(-memo|-getmemo) コメント内容(PPv)</b></a><br>
+<br>
+ファイルのコメント内容です。コメントがなければ空欄になります。<br>
+コメントの取得方法を必ず指定する必要があります。<br>
+-memo は既に取得済みコメントを取得します。<br>
+-getmemo は取得済みコメントがなければ取得を試みます。例えば、画像の Exif 情報は、-getmemo を使わないと取得されていない場合があります。<br>
+<br>
+<hr><br>
+<a name="PPxCmd161"><b>*reducemode <i>mode</i> 縮小方法指定</b></a><br>
 <br>
 画像の拡大・縮小表示方法を設定します。<br>
 XV_imgDの第2引数と同じです。<br>
@@ -8874,7 +8881,7 @@ XV_imgDの第2引数と同じです。<br>
 方法: 平均画素法/面積平均法。先画像の画素に対応する元画像の全画素をその面積比を考慮して平均化します。<br>
 <br>
 <hr><br>
-<a name="PPxCmd162"><b>*find <i>[&quot;text&quot;] [option]</i> 文字列の検索(PPv)</b></a><br>
+<a name="PPxCmd163"><b>*find <i>[&quot;text&quot;] [option]</i> 文字列の検索(PPv)</b></a><br>
 <br>
 text の位置を検索し、該当 text の行に移動します。<br>
 text がないときは以前の text を用います。<br>
@@ -8890,7 +8897,7 @@ option<br>
 -dialog    text を入力するダイアログを表示します。<br>
 <br>
 <hr><br>
-<a name="PPxCmd163"><b>*highlight <i>[&quot;text&quot;] [-dialog]</i> ハイライトの設定</b></a><br>
+<a name="PPxCmd164"><b>*highlight <i>[&quot;text&quot;] [-dialog]</i> ハイライトの設定</b></a><br>
 <br>
 空白区切りで指定した文字列 textをハイライト表示します。<br>
 -dialog を指定するとダイアログを表示します。<br>
@@ -8898,13 +8905,13 @@ option<br>
 入力内容は、特殊環境変数 %si&quot;Highlight&quot; に保存されます。<br>
 常時使用する固定キーワードハイライトは、<a href="#CV_hkey">CV_hkey</a>で指定可能です。<br>
 <hr><br>
-<a name="PPxCmd164"><b>*jumpline <i>[L|Y][行番号][,桁番号]</i> 行番号指定カーソル移動</b></a><br>
+<a name="PPxCmd165"><b>*jumpline <i>[L|Y][行番号][,桁番号]</i> 行番号指定カーソル移動</b></a><br>
 <br>
 指定した行番号(1=先頭)にカーソルを移動させます。<br>
 行番号の頭に「L」を付けた場合は論理行番号、「Y」を付けた場合は表示行番号で移動します。<br>
 テキスト表示の時、L/Yが無いときは、XV_numtの設定に従います。<br>
 <hr><br>
-<a name="PPxCmd165"><b>%*selecttext 選択テキスト</b></a><br>
+<a name="PPxCmd166"><b>%*selecttext 選択テキスト</b></a><br>
 <br>
 範囲選択した部分の表示文字列を取得します。<br>
 ・テキスト表示時に範囲選択していないときは、キャレットカーソル表示時はカーソル行、非表示時は表示分を取得します。<br>
@@ -8912,7 +8919,7 @@ option<br>
 ・%*selecttext(u)とした場合、UTF-8でURLエンコードした内容を得ることができます。Web検索用です。<br>
 参考 文字列全体 %*edittext, カーソル位置 %*cursortext<br>
 <hr><br>
-<a name="PPxCmd166"><b>*viewoption <i>各種オプション</i> 表示関係オプション</b></a><br>
+<a name="PPxCmd167"><b>*viewoption <i>各種オプション</i> 表示関係オプション</b></a><br>
 <br>
 以下の<a href="#ppvoptions">起動時オプション</a>を指定して、表示を変更します。複数のオプションを同時に指定することもできます。<br>
  例) *viewoption -tag:tag -utf8<br>
@@ -8932,7 +8939,7 @@ option<br>
  ※特定の種類のファイルに対してオプションを常時指定したいときは、<a href="#XV_opts">XV_opts</a>で指定できます。<br>
  ※タブ桁数、桁数については専用の設定 <a href="#XV_tab">XV_tab</a>, <a href="#XV_cols">XV_cols</a> が用意されています。<br>
 <hr><br>
-<a name="PPxCmd167"><b> %*viewoption <i>各種オプションの状態を取得</i></b></a><br>
+<a name="PPxCmd168"><b> %*viewoption <i>各種オプションの状態を取得</i></b></a><br>
 <br>
  以下の設定を、<a href="#ppvoptions">起動時オプション</a>の形式で取得します。<br>
  出力例) -TEXT -SYSTEM -mime:0 -tag:0<br>
@@ -8947,7 +8954,7 @@ option<br>
 <br>
 <br>
 <hr><br>
-<a name="PPxCmd168"><b> %*zoom([notify]) <i>表示倍率の取得</i></b></a><br>
+<a name="PPxCmd169"><b> %*zoom([notify]) <i>表示倍率の取得</i></b></a><br>
 <br>
 SetimgD や *zoom で設定した表示倍率を取得します。<br>
 %*zoom(notify) と指定したときは、ステータス行に表示する文字列（「120%」「自動縮小」等）が取得できます。<br>

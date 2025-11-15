@@ -22,6 +22,7 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#arg" target="main">%*arg([index])</a><br>
 <a href="ppxhelp.html#PPxCmd2" target="main">%*calc(<i>formula</i>)</a><br>
 <a href="ppxhelp.html#choice" target="main">%*choice(option)</a><br>
+<a href="ppxhelp.html#PPxCmd160" target="main">%*comment(-memo|-getmemo)</a><br>
 <a href="ppxhelp.html#PPxCmd122" target="main">%*comment[(id)]</a><br>
 <a href="ppxhelp.html#PPxCmd98" target="main">%*cursortext</a><br>
 <a href="ppxhelp.html#PPxCmd124" target="main">%*dirhistory(<i>n</i>)</a><br>
@@ -45,7 +46,7 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#PPxCmd30" target="main">%*regexp(<i>source</i>,<i>pattern</i>)</a><br>
 <a href="ppxhelp.html#runfunc" target="main">%*run(<i>[options] command [parameter])</i></a><br>
 <a href="ppxhelp.html#PPxCmd32" target="main">%*screendpi(<i>[ID]</i>)</a><br>
-<a href="ppxhelp.html#PPxCmd165" target="main">%*selecttext</a><br>
+<a href="ppxhelp.html#PPxCmd166" target="main">%*selecttext</a><br>
 <a href="ppxhelp.html#PPxCmd153" target="main">%*sortentry(last|id)</a><br>
 <a href="ppxhelp.html#macro29" target="main">%*temp[(<i>name[,f|d])</i>)]</a><br>
 <a href="ppxhelp.html#treefunc" target="main">%*tree(<i>type</i>)</a><br>
@@ -161,15 +162,15 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#PPxCmd77" target="main">*execinarc</a><br>
 <a href="ppxhelp.html#PPxCmd42" target="main">*execute <i>ID,command</i></a><br>
 <a href="ppxhelp.html#PPxCmd66" target="main">*file</a><br>
-<a href="ppxhelp.html#PPxCmd162" target="main">*find <i>[&quot;text&quot;] [option]</i></a><br>
+<a href="ppxhelp.html#PPxCmd163" target="main">*find <i>[&quot;text&quot;] [option]</i></a><br>
 <a href="ppxhelp.html#PPxCmd106" target="main">*find <i>[&quot;text&quot;][-back][-previous][-replace[:&quot;new text&quot;][-all][-dialog][-regexp]]</i></a><br>
 <a href="ppxhelp.html#PPxCmd14" target="main">*flashwindow [caption|ID]</a><br>
 <a href="ppxhelp.html#PPxCmd15" target="main">*focus <i>[!][caption[,filename]]</i></a><br>
 <a href="ppxhelp.html#PPxCmd78" target="main">*freedriveuse <i>[drivename]</i></a><br>
 <a href="ppxhelp.html#goto" target="main">*goto <i>label</i></a><br>
 <a href="ppxhelp.html#help" target="main">*help <i>[keyword]</i></a><br>
-<a href="ppxhelp.html#PPxCmd180" target="main">*hibernate</a><br>
-<a href="ppxhelp.html#PPxCmd163" target="main">*highlight <i>[&quot;text&quot;] [-dialog]</i></a><br>
+<a href="ppxhelp.html#PPxCmd181" target="main">*hibernate</a><br>
+<a href="ppxhelp.html#PPxCmd164" target="main">*highlight <i>[&quot;text&quot;] [-dialog]</i></a><br>
 <a href="ppxhelp.html#PPxCmd71" target="main">*httpget <i>&quot;url&quot;,&quot;destname&quot;</i></a><br>
 <a href="ppxhelp.html#PPxCmd45" target="main">*if <i>formula</i></a><br>
 <a href="ppxhelp.html#PPxCmd46" target="main">*ifmatch <i>wildcards[,string]</i></a><br>
@@ -179,14 +180,14 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#PPxCmd95" target="main">*insertfile <i>filename</i></a><br>
 <a href="ppxhelp.html#PPxCmd94" target="main">*insertsel <i>&quot;text&quot;</i></a><br>
 <a href="ppxhelp.html#PPxCmd47" target="main">*job</a><br>
-<a href="ppxhelp.html#PPxCmd164" target="main">*jumpline <i>[L|Y][行番号][,桁番号]</i></a><br>
+<a href="ppxhelp.html#PPxCmd165" target="main">*jumpline <i>[L|Y][行番号][,桁番号]</i></a><br>
 <a href="ppxhelp.html#jumppath" target="main">*jumppath <i>[path][ -option]</i></a><br>
 <a href="ppxhelp.html#launch" target="main">*launch <i>[options] command [parameter]</i></a><br>
 <a href="ppxhelp.html#layout" target="main">*layout</a><br>
 <a href="ppxhelp.html#linecust" target="main">*linecust <i>[^]label,[ ID=param | ID:SubID=param | ID:SubID,command ]</i></a><br>
 <a href="ppxhelp.html#linemessage" target="main">*linemessage <i>message</i></a><br>
-<a href="ppxhelp.html#PPxCmd173" target="main">*lockpc</a><br>
-<a href="ppxhelp.html#PPxCmd174" target="main">*logoff</a><br>
+<a href="ppxhelp.html#PPxCmd174" target="main">*lockpc</a><br>
+<a href="ppxhelp.html#PPxCmd175" target="main">*logoff</a><br>
 <a href="ppxhelp.html#PPxCmd142" target="main">*logwindow <i>[on|off|focus|&quot;表示文字列&quot;]</i></a><br>
 <a href="ppxhelp.html#makedir" target="main">*makedir <i>directoryname</i></a><br>
 <a href="ppxhelp.html#makefile" target="main">*makefile <i>filename</i></a><br>
@@ -196,13 +197,13 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#PPxCmd146" target="main">*maskpath <i>[on|off|short]</i></a><br>
 <a href="ppxhelp.html#maxlength" target="main">*maxlength <i>length</i></a><br>
 <a href="ppxhelp.html#PPxCmd33" target="main">*messagebox <i>&quot;text&quot;</i></a><br>
-<a href="ppxhelp.html#PPxCmd172" target="main">*monitoroff</a><br>
+<a href="ppxhelp.html#PPxCmd173" target="main">*monitoroff</a><br>
 <a href="ppxhelp.html#msgbox" target="main">*msgbox <i>&quot;text&quot;</i></a><br>
 <a href="ppxhelp.html#PPxCmd112" target="main">*option <i>[type]</i></a><br>
 <a href="ppxhelp.html#PPxCmd74" target="main">*pack <i>[!][filename][,indiv][,dllname,type[,option1[,option2...]]]</i></a><br>
 <a href="ppxhelp.html#PPxCmd148" target="main">*pairrate <i>[L|R|all][+|-]移動量|比率</i></a><br>
 <a href="ppxhelp.html#panecommand" target="main">*pane <i>commandname [parameter...]</i></a><br>
-<a href="ppxhelp.html#PPxCmd175" target="main">*poweroff</a><br>
+<a href="ppxhelp.html#PPxCmd176" target="main">*poweroff</a><br>
 <a href="ppxhelp.html#PPxCmd56" target="main">*ppb <i>[-runas][param]</i></a><br>
 <a href="ppxhelp.html#PPxCmd57" target="main">*ppc <i>[-runas][param]</i></a><br>
 <a href="ppxhelp.html#ppcfile" target="main">*ppcfile <i>[!]action[...]</i></a><br>
@@ -214,14 +215,14 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#PPxCmd150" target="main">*ppvoption command</a><br>
 <a href="ppxhelp.html#PPxCmd38" target="main">*psinfo</a><br>
 <a href="ppxhelp.html#range" target="main">*range</a><br>
-<a href="ppxhelp.html#PPxCmd176" target="main">*reboot</a><br>
-<a href="ppxhelp.html#PPxCmd160" target="main">*reducemode <i>mode</i></a><br>
+<a href="ppxhelp.html#PPxCmd177" target="main">*reboot</a><br>
+<a href="ppxhelp.html#PPxCmd161" target="main">*reducemode <i>mode</i></a><br>
 <a href="ppxhelp.html#PPxCmd75" target="main">*rename <i>oldname,newname</i></a><br>
 <a href="ppxhelp.html#PPxCmd96" target="main">*replace <i>&quot;text&quot;</i></a><br>
 <a href="ppxhelp.html#PPxCmd97" target="main">*replacefile <i>filename</i></a><br>
 <a href="ppxhelp.html#PPxCmd54" target="main">*return [value]</a><br>
 <a href="ppxhelp.html#run" target="main">*run <i>[options] command [parameter]</i></a><br>
-<a href="ppxhelp.html#PPxCmd171" target="main">*screensaver</a><br>
+<a href="ppxhelp.html#PPxCmd172" target="main">*screensaver</a><br>
 <a href="ppxhelp.html#PPxCmd34" target="main">*selectppx <i>[ID]</i></a><br>
 <a href="ppxhelp.html#setcmd" target="main">*set <i>[valuename[+[+]]=[strings]]</i></a><br>
 <a href="ppxhelp.html#PPxCmd107" target="main">*setcaption <i>text</i></a><br>
@@ -230,7 +231,7 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#setmaskentry" target="main">*setmaskentry <i>[option] [wildcards]</i></a><br>
 <a href="ppxhelp.html#setsortentry" target="main">*setsortentry <i>[MC_sort名] | ソート1[,ソート2[,ソート3]],ソート属性,オプション</i></a><br>
 <a href="ppxhelp.html#shellmenu" target="main">*shellmenu <i>[pathname1[ pathname2...]] [options]</i></a><br>
-<a href="ppxhelp.html#PPxCmd177" target="main">*shutdown</a><br>
+<a href="ppxhelp.html#PPxCmd178" target="main">*shutdown</a><br>
 <a href="ppxhelp.html#PPxCmd51" target="main">*signal [PPbID],[command]</a><br>
 <a href="ppxhelp.html#PPxCmd52" target="main">*skip</a><br>
 <a href="ppxhelp.html#sortentry" target="main">*sortentry <i>[option] [MC_sort名] | ソート1[,ソート2[,ソート3]],ソート属性,オプション</i></a><br>
@@ -238,16 +239,16 @@ body { line-height: 150%; word-break: break-word; }
 <a href="ppxhelp.html#start" target="main">*start <i>[-launch][-command] name [parameter]</i></a><br>
 <a href="ppxhelp.html#PPxCmd53" target="main">*stop <i>[-n][formula]</i></a><br>
 <a href="ppxhelp.html#stringcmd" target="main">*string <i>[type],[valuename=[strings]]</i></a><br>
-<a href="ppxhelp.html#PPxCmd179" target="main">*suspend</a><br>
+<a href="ppxhelp.html#PPxCmd180" target="main">*suspend</a><br>
 <a href="ppxhelp.html#PPxCmd154" target="main">*syncpath [on|off|entry]</a><br>
 <a href="ppxhelp.html#PPxCmd155" target="main">*syncprop [on|off|focus]</a><br>
-<a href="ppxhelp.html#PPxCmd178" target="main">*terminate</a><br>
+<a href="ppxhelp.html#PPxCmd179" target="main">*terminate</a><br>
 <a href="ppxhelp.html#PPxCmd36" target="main">*touch <i>[off|touch|mouse|pen]</i></a><br>
 <a href="ppxhelp.html#treecmd" target="main">*tree type</a><br>
 <a href="ppxhelp.html#trimmark" target="main">*trimmark</a><br>
 <a href="ppxhelp.html#unmarkentry" target="main">*unmarkentry <i>[option][wildcards]</i></a><br>
 <a href="ppxhelp.html#PPxCmd80" target="main">*unpack <i>path</i></a><br>
-<a href="ppxhelp.html#PPxCmd166" target="main">*viewoption <i>各種オプション</i></a><br>
+<a href="ppxhelp.html#PPxCmd167" target="main">*viewoption <i>各種オプション</i></a><br>
 <a href="ppxhelp.html#viewstyle" target="main">*viewstyle <i>[option] [MC_celS名|directory|separate|edit|format &quot;formats&quot;]</i></a><br>
 <a href="ppxhelp.html#wait" target="main">*wait <i>[option][time[,1|2]]</i></a><br>
 <a href="ppxhelp.html#PPxCmd156" target="main">*where <i>[!][option...]</i></a><br>
