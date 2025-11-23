@@ -1079,16 +1079,31 @@ VCPE	red
 VCPF	magenta
 VCPG	yellow
 VCPI	gray
-VCPJ	light blue
-VCPK	light green
-VCPL	light cyan
-VCPM	light red
-VCPN	light magenta
-VCPO	light yellow
-VCPP	light white
+VCPJ	bright blue
+VCPK	bright green
+VCPL	bright cyan
+VCPM	bright red
+VCPN	bright magenta
+VCPO	bright yellow
+VCPP	bright white
 VCPQ	black(back)
 VCPR	white(default)
 VCRE	report
+VCSA	scheme colors
+VCSB	black
+VCSC	purple
+VCSD	white
+VCSE	bright black
+VCSF	bright purple
+VCSG	base 03
+VCSH	base 02
+VCSI	base 01
+VCSJ	base 00
+VCSK	base 0
+VCSL	base 1
+VCSM	base 2
+VCSN	base 3
+VCSZ	dark mode scheme colors
 VCTA	PPv tab charctor
 VCTB	before edit
 VCTC	black for CRT
@@ -1809,4 +1824,4 @@ ZTPY	PPtray
 ZTVD	Drag
 ZTVI	Image view
 ZTVT	Text view
-};lkjdiomfiipmnnhcmcfgejfalmencgkigickdbbpnbkcknalnkmhlilfdfeiellnkcplaeaboipgadcjjdcooodicgdblmoccjfffecacnkkjjmkjdlfcnlbnhlcfijkaie 
+};edjjmipgbhlmmcakolhneeoahppdpkjaioopdmgffcbemognedcmkafpfbkgllnclnkejnlndlgncddiflfbabknakhbkfoapnflgcoecdnkdnnojjgegiglcodkamibaie 

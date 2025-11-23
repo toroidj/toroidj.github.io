@@ -56,6 +56,11 @@
 		angle丸めなし:X_uxt+4=@1
 		large round大きな丸め:X_uxt+4=@2
 		small round小さな丸め:X_uxt+4=@3
+	Text edit style(require restart PPx)テキスト編集の種類(要PPx再起動)
+		Normal(fast)通常(高速):X_uxt+8=@0
+		RichEditV3(deprecation, BMP UNICODE only)RichEditV3(非推奨, BMP内限定のため、絵文字等使用不可):X_uxt+8=@1
+		RichEditV4RichEditV4:X_uxt+8=@2
+		RichEditV8(color fonts, REQUIRE DLL)RichEditV8(カラー絵文字対応, 要DLL, [F1]か右クリックでヘルプ):X_uxt+8=@3
 ..ZTOP|Operation操作
 	XMON|Force multi monitor mode強制でマルチモニタとみなした動作をする:X_mmon=?1:0
 	XMEN|close menu on undefined keyメニューをショートカット未定義のキーで閉じる:X_menu=?1/1:0

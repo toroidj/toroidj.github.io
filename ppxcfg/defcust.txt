@@ -4,7 +4,7 @@ X_mwid	=60
 X_dlim	=0
 X_dss	=-1
 X_tskb	=2
-^|X_uxt	=-3,0
+^|X_uxt	=-3,0,0
 X_LANG	=0
 ^|X_pmc	=-1,0,B110001111111,0
 X_tous	=50,120,85,60
@@ -515,11 +515,9 @@ LD_FRAM	=@&F6
 R_FRAM	=@&SPACE
 W_FRAM	=@&SPACE
 M_FRAM	=@&SPACE
-LD_MENU	=@'^'
 R_MENU	=@&SPACE
 L_PATH	=@L
 R_PATH	,*layout
-LD_LINE	=@'^'
 R_LINE	,*layout
 W_LINE	=@\ESC
 M_LINE	=@\ESC
@@ -570,8 +568,6 @@ RG_R	=@^RIGHT
 }
 MV_click	={
 LD_FRAM	=@&F6
-LD_MENU	=@'^'
-LD_LINE	=@'^'
 LD_SPC	,%Z
 &LD_SPC	,%z,properties
 R_FRAM	=@&SPACE

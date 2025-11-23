@@ -1,4 +1,4 @@
-X_uxt	=0
+X_uxt	=0,0,0
 C_back	=H202020
 C_mes	=H0080FF
 C_info	=HF7F7F7

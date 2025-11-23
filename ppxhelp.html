@@ -6833,6 +6833,8 @@ command の先頭の文字が「-」や「/」のときは、「&quot;-…&quot;
 <br>
 <b>-log[:option1[,option2...]]</b>&nbsp;&nbsp;標準出力・エラー出力の結果をログ窓に表示します。-io:log と同じです。<br>
 <br>
+<b>-desktoplevel</b>&nbsp;&nbsp;UAC により昇格しているとき、降格して実行します。デスクトップの UAC の格で実行します。<br>
+<br>
 関連 <a href="#execute">実行処理</a>, <a href="#launch">*launch</a>, <a href="#start">*start</a>, <a href="#zapfile">%Z</a>, <a href="#wait">*wait</a>, <a href="#optionmacro">%O</a><br>
 <hr><br>
 <a name="runfunc"><b>%*run(<i>[options] command [parameter])</i> commandを実行し結果を返す</b></a><br>
@@ -9608,6 +9610,18 @@ _DGRE: 暗緑&nbsp;&nbsp;_DCYA: 暗水&nbsp;&nbsp;_DBRO: 暗黄&nbsp;&nbsp;_DWHI
 _MGRE: 明緑&nbsp;&nbsp;_SBLU: 水色/空&nbsp;&nbsp;_CREM: 暗白&nbsp;&nbsp;_GRAY: 明灰<br>
 _AUTO: 既定の色を使います。使用する色は項目毎に異なります。<br>
 ※_MGRE, _SBLU, _CREM は 256色で正しく表示できません。<br>
+<br>
+ カラースキーム指定：<br>
+カラースキーム(C_schN, C_schD)で指定した色を使用します。<br>
+ ただし、現在は、C_back, C_mes, C_info, C_line, C_ext, CV_char のみ使用可能です。<br>
+_SBLACK, _SBLUE, _SCYAN, _SGREEN,<br>
+_SPURPLE, _SRED, _SWHITE, _SYELLOW<br>
+_SBRBLACK, _SBRBLUE, _SBRCYAN, _SBRGREEN<br>
+_SBRPURPLE, _SBRRED, _SBRWHITE, _SBRYELLOW<br>
+_BASE03, _BASE02, _BASE01, _BASE00<br>
+_BASE0, _BASE1, _BASE2,_BASE3<br>
+_RESERVED0, _RESERVED1, _RESERVED2, _RESERVED3,<br>
+_RESERVED4, _RESERVED5, _RESERVED6, _RESERVED7<br>
 <br>
  数値形式：<br>
  基本色以外は Hbbggrr と、16進数で指定すると分かりやすくなります。<br>
@@ -12988,6 +13002,15 @@ _auto を使用すると、Windowsのチップと同じ色になります。<br>
  窓背景&nbsp;&nbsp;一行編集、リストボックス等の背景<br>
  ダイアログ文字&nbsp;&nbsp;ダイアログの文字の色<br>
  ダイアログ背景&nbsp;&nbsp;ダイアログ、ツールバーの背景<br>
+<br>
+<a name="C_schN"><b>C_schN</b></a> カラースキーム<br>
+<a name="C_schD"><b>C_schD</b></a> ダークモード用カラースキーム<br>
+ 同じ色を複数の設定項目で使い回すための設定です。<br>
+ カラースキーム指定を使った設定項目は、カラースキームの色を変更することで一括変更が可能です。<br>
+ ただし、現在は、C_back, C_mes, C_info, C_line, C_ext, CV_char のみ使用可能です。<br>
+<br>
+ また、ダークモードとそれ以外を併用している場合、C_schN の代わりに C_schD が使用されて色を再カスタマイズしなくても変更できます。<br>
+ 指定可能な数は 32 あり、始めの 16 + 8 項目は各種ターミナルで使われている色の名前と同じ名前を割り振っています。残りの 8 項目は、現在名称を決めていませんが将来特定の用途を振るかもしれません。<br>
 <br>
 <a name="C_ext"><b>C_ext</b></a> PPc 拡張子色<br>
 <br>

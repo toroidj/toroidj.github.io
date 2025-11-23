@@ -137,7 +137,7 @@
 747A	対象、空欄なら自動判別(&E)例).bmp,.dib / *.bmp;*.dib
 747B	UNICODE API を使用しない(トラブル回避用, &N)
 7480	その他
-+1913|7483	拡張編集(&E)
++1.92|7483	拡張編集(&E)
 7490	メニュー
 7491	上へ(&U)
 7492	下へ(&W)
@@ -1094,6 +1094,13 @@ VCPP	明白
 VCPQ	黒(背景)
 VCPR	暗白(初期色)
 VCRE	報告
+VCSA	カラースキーム
+VCSB	黒
+VCSC	紫
+VCSD	白
+VCSE	明黒
+VCSF	明紫
+VCSZ	ダークモード用カラースキーム
 VCTA	PPv タブ文字
 VCTB	編集前
 VCTC	黒(CRT向)
@@ -1387,4 +1394,4 @@ XUUN	最新版です
 XUUQ	新しい %s があります。%s から更新しますか？
 -|7883	
 -|ITFC	
-};clmdbgchgagiofemjbplnngphaijjfgfakibicmajjkipljknldcfnjfhkhgiefioohonabnmepmcocpgkdlamelfmampnabjgfcohplegomnpgjdojhpafgaljhnjclaie 
+};ldbamaajgllhnjoooaffikmddbfalknajgaomapgbeinjdfjlldngghhcekjpimjbieknnbjapmhmnmhkohmnaahkbkamnodmdjifeihbodphjaibemfahhccjgpgiohaie 
