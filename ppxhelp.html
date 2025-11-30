@@ -4251,7 +4251,8 @@ MC_menu、MV_menuとその下位階層のメニューが修正対象です。<br
 <b>種類</b>：色設定関係の種類一覧です<br>
 <b>項目</b>：左で選んだ種類についての項目一覧です<br>
 <b>色</b>：左の項目一覧に追加したい項目名を入れる場所です<br>
-<b>色の一覧</b>：簡単な色の一覧です。右端の一列はPPxやWindowsで使用している色です。「他」は左側にない色、「自動」は項目に応じて自動選択される色（具体的な色はPPxの使用時に確認してください）です。<br>
+<b>色の一覧</b>：簡単な色の一覧です。左の6列は、<br>
+の一列はPPxやWindowsで使用している色です。「他」は左側にない色、「自動」は項目に応じて自動選択される色（具体的な色はPPxの使用時に確認してください）です。<br>
 <b>その他</b>：上の色一覧以外の色を指定したい場合に使用します<br>
 <br>
 <b>配色テーマ</b><br>
@@ -9612,16 +9613,19 @@ _AUTO: 既定の色を使います。使用する色は項目毎に異なりま�
 ※_MGRE, _SBLU, _CREM は 256色で正しく表示できません。<br>
 <br>
  カラースキーム指定：<br>
-カラースキーム(C_schN, C_schD)で指定した色を使用します。<br>
- ただし、現在は、C_back, C_mes, C_info, C_line, C_ext, CV_char のみ使用可能です。<br>
+1)既定の設定値の色を使用します。<br>
+_SBACK : 背景(C_back)<br>
+_SMES : 項目名(C_mes)<br>
+_SINFO : 内容(C_info)<br>
+2)カラースキーム(C_schN, C_schD)で指定した色を使用します。<br>
 _SBLACK, _SBLUE, _SCYAN, _SGREEN,<br>
 _SPURPLE, _SRED, _SWHITE, _SYELLOW<br>
 _SBRBLACK, _SBRBLUE, _SBRCYAN, _SBRGREEN<br>
 _SBRPURPLE, _SBRRED, _SBRWHITE, _SBRYELLOW<br>
-_BASE03, _BASE02, _BASE01, _BASE00<br>
-_BASE0, _BASE1, _BASE2,_BASE3<br>
-_RESERVED0, _RESERVED1, _RESERVED2, _RESERVED3,<br>
-_RESERVED4, _RESERVED5, _RESERVED6, _RESERVED7<br>
+_SBKBLACK, _SBKBLUE, _SBKCYAN, _SBKGREEN<br>
+_SBKPURPLE, _SBKRED, _SBKWHITE, _SBKYELLOW<br>
+_SBACK, _SFORE, _SBKSELECT, _SSELECT<br>
+_SLABEL, _SCURSOR, _SFRAME,_SRESERVED<br>
 <br>
  数値形式：<br>
  基本色以外は Hbbggrr と、16進数で指定すると分かりやすくなります。<br>
@@ -12959,7 +12963,7 @@ _auto を使用すると、Windowsの「ウィンドウの文字」の色を使�
 <br>
 <a name="C_info"><b>C_info</b></a> 内容<br>
 <br>
-各項目の内容に使用する文字色です。<a href="#color">色指定方法</a><br>
+各項目の内容・値に使用する文字色です。<a href="#color">色指定方法</a><br>
 _auto を使用すると、Windowsの「ウィンドウの文字」の色を使用します。<br>
 <br>
 <a name="C_res"><b>C_res</b></a> 報告<br>
@@ -13007,10 +13011,19 @@ _auto を使用すると、Windowsのチップと同じ色になります。<br>
 <a name="C_schD"><b>C_schD</b></a> ダークモード用カラースキーム<br>
  同じ色を複数の設定項目で使い回すための設定です。<br>
  カラースキーム指定を使った設定項目は、カラースキームの色を変更することで一括変更が可能です。<br>
- ただし、現在は、C_back, C_mes, C_info, C_line, C_ext, CV_char のみ使用可能です。<br>
 <br>
- また、ダークモードとそれ以外を併用している場合、C_schN の代わりに C_schD が使用されて色を再カスタマイズしなくても変更できます。<br>
- 指定可能な数は 32 あり、始めの 16 + 8 項目は各種ターミナルで使われている色の名前と同じ名前を割り振っています。残りの 8 項目は、現在名称を決めていませんが将来特定の用途を振るかもしれません。<br>
+ また、ダークモード(X_uxt の第1項目が 0 か、第1項目が -1 且つ Windows がダークモード時)時は、C_schN の代わりに C_schD が使用されます。ダークモードを必要に応じて on/off している場合は、色を再カスタマイズしなくても配色を変更できます。<br>
+ 指定可能な数は 32 種類です。各色は種類・用途を想定した名前を割り当てていますが、他の色として使ってもかまいません。<br>
+<br>
+・通常の色<br>
+ 黒、赤、緑、青、黄、水、紫、白<br>
+・明るい色<br>
+ 明黒、明赤、明緑、明青、明黄、明水、明紫、明白<br>
+・背景用の色<br>
+ 背景黒、背景赤、背景緑、背景青、背景黄、背景水、背景紫、背景白<br>
+・用途別の色<br>
+ 背景(C_back)、前景（文字 C_info）、選択時の背景、選択時の前景（文字）<br>
+ ラベル文字(C_mes)、カーソル、区切り線(C_line)、予備<br>
 <br>
 <a name="C_ext"><b>C_ext</b></a> PPc 拡張子色<br>
 <br>
