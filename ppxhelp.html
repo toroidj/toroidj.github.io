@@ -234,7 +234,7 @@ PPx 自体を起動させるために必要なファイルのうち、別途用�
  Plug-in は、Susie 本体がインストールされている場合、Susie が参照するディレクトリから取得します。Susie 本体がインストールされていない場合は、PPx があるディレクトリを検索します。<br>
 また、カスタマイズによって任意の場所を指定できます(P_susieP)。<br>
 <a name="imagesave"></a><br>
-PPcのクリップボードからのビットマップの貼り付けのとき、拙作 WIC Susie Plug-in 1.0 以降<a href="http://toro.d.dooo.jp/slplugin.html#iftwic" target="_top">http://toro.d.dooo.jp/slplugin.html#iftwic</a> か GDI+ Susie Plug-in 1.1 以降<a href="http://toro.d.dooo.jp/slplugin.html#ifgdip" target="_top">http://toro.d.dooo.jp/slplugin.html#ifgdip</a> があれば、PNG形式で保存することができます。<br>
+PPcのクリップボードからのビットマップの貼り付けのとき、拙作 WIC Susie Plug-in 1.0 以降<a href="https://toro.d.dooo.jp/slplugin.html#iftwic" target="_top">https://toro.d.dooo.jp/slplugin.html#iftwic</a> か GDI+ Susie Plug-in 1.1 以降<a href="https://toro.d.dooo.jp/slplugin.html#ifgdip" target="_top">https://toro.d.dooo.jp/slplugin.html#ifgdip</a> があれば、PNG形式で保存することができます。<br>
 <br>
 プラグインの優先順位は、ディレクトリ上の並び順です。<br>
 <br>
@@ -242,7 +242,7 @@ PPcのクリップボードからのビットマップの貼り付けのとき�
  <b>64bit 版 PPxは、拡張子が SPH</b> の Susie Plug-in を使用します。<br>
  <b>64bit Arm 版 PPxは、拡張子が SPHA</b> の Susie Plug-in を使用します。<br>
 <br>
-  尚、拡張子が SPH, SPHA のSusie Plug-inは独自仕様です。添付 iftwic の他、<a href="http://toro.d.dooo.jp/slplugin.html" target="_top">http://toro.d.dooo.jp/slplugin.html</a>で公開している拙作Plug-inが使えます。<br>
+  尚、拡張子が SPH, SPHA のSusie Plug-inは独自仕様です。添付 iftwic の他、<a href="https://toro.d.dooo.jp/slplugin.html" target="_top">https://toro.d.dooo.jp/slplugin.html</a>で公開している拙作Plug-inが使えます。<br>
   また、64bit 版 / 64bit Arm 版 は UNBYPASS の ZBYPASSA / ZBYPASSIで、32bit Plug-in(*.SPI)を利用することができます。ZBYPASSA.SPH 等は上記アドレスから入手できる UNBYPASS 内に入っています。<br>
 <br>
 <b>・コマンドラインアーカイバ等</b><br>
@@ -259,7 +259,7 @@ PPcのクリップボードからのビットマップの貼り付けのとき�
 現在、どのライブラリを使用しているかを確かめるには、「%I&quot;%*regexp(?)」を実行してください。現在使用しているライブラリが表示されます。<br>
 <br>
 <b>(1) bregonig.dll</b><br>
-K.Takata 氏作の bregonig.dll <a href="http://k-takata.o.oo7.jp/" target="_top">http://k-takata.o.oo7.jp/</a> を使用できます。<br>
+K.Takata 氏作の bregonig.dll <a href="http://k-takata.o.oo7.jp/" target="_top">http://k-takata.o.oo7.jp/</a> <a href="https://github.com/k-takata/bregonig" target="_top">https://github.com/k-takata/bregonig</a> を使用できます。<br>
 正規表現エンジンとして、鬼車 (Oniguruma) を改良した鬼雲 (Onigmo, Oniguruma-mod) が使われています。<br>
 正規表現の書式については、bregonig.dll の配布書庫中のドキュメントを参照してください。<br>
 <br>
@@ -708,7 +708,7 @@ WinNT系のみ対応しています。また、リムーバブルドライブ(US
 <a name="pathformat15"><b> http, https形式※</b></a><br>
 <br>
 該当 html ファイルへの URI<br>
-<i>例) http://toro.d.dooo.jp/index.html</i><br>
+<i>例) https://toro.d.dooo.jp/index.html</i><br>
 <br>
 html ファイルへの URI を指定することで、その html ファイル内のリンクをエントリとした、仮想ディレクトリとして取扱うことができます。<br>
 <hr><br>
@@ -778,6 +778,9 @@ PPvで画像の展開に用いるSusie plug-inを指定するときにも使用�
 <a name="wildcard"></a><a name="ファイル名のワイルドカード"></a><h3>全般 - ファイル名のワイルドカード</h3><br>
 PPc の [F]Find / [+]Find mask 等では、次の規則に従ってファイルが同一かどうかを判断します。<br>
 <br>
+<b>注</b>ファイル名の拡張子部分（filename.ext の「ext」部分）は、正規表現を使うか、オプション（option:x）を指定しない限り、別個に扱われます。詳細は、ファイル名・拡張子指定を参照してください。<br>
+<b>注</b>ディレクトリは、オプション（path:, option:d）を指定しないと、無視します。また、属性が分からない状態(%*regexpから使用など)は判断されます。<br>
+<b>注</b>ファイル名のディレクトリ部分（dir\filename.ext の「dir\」部分）は、正規表現を使うか、オプション（option:s）を指定しない限り、無視します。<br>
 <b>注</b>※印の指定は、以下の機能で使用できます。<br>
 PPcの[F], \[F], [+], [-], ^[W]と*file<br>
  以下の機能では使用できません。<br>
@@ -795,7 +798,7 @@ PPcの[F], \[F], [+], [-], ^[W]と*file<br>
 ・<a href="#wildcard11">date:  ※更新時刻指定</a><br>
 ・<a href="#wildcard12">size:  ※ファイルサイズ指定</a><br>
 ・<a href="#wildcard13">roma:  ローマ字部分一致指定</a><br>
-・<a href="#wildcard14">path:  ※ディレクトリ名指定</a><br>
+・<a href="#wildcard14">path:  ※ディレクトリ指定</a><br>
 ・<a href="#wildcard15">option:  オプション指定</a><br>
 
 <hr><br>
@@ -856,7 +859,8 @@ PPcの[F], \[F], [+], [-], ^[W]と*file<br>
 ※2. ファイル名の英大文字/英小文字の区別はしません。<br>
 ※3. ファイル名の英大文字/英小文字の区別をしたいときは、「/I」を指定してください。<br>
 <i>例) /loweronly/I</i><br>
-※4. 拡張子も含んだ形で比較されます。<br>
+※4. 拡張子も含んだ形で比較されます。オプション x の状態は無視されます。<br>
+※5.ファイル名のディレクトリ部分はオプション s に影響されます。<br>
 <i>例) /read.*me/</i><br>
 ファイル名(拡張子含む)に「read～me」を含む。<br>
 「readme.txt」、「READ.ME」等が該当します。<br>
@@ -969,9 +973,9 @@ PPcの[F], \[F], [+], [-], ^[W]と*file<br>
 　尚、この指定は、<a href="#BREGEXP">正規表現ライブラリ</a>と、<a href="#CMigemo">C/Migemo</a>が必要です。<br>
 「roma:」は「r:」に省略可能です。<br>
 <hr><br>
-<a name="wildcard14"><b>path:  ※ディレクトリ名指定</b></a><br>
+<a name="wildcard14"><b>path:  ※ディレクトリ指定</b></a><br>
 <br>
-1)&nbsp;&nbsp;path:,wildcard 等と、「path:」のみ指定した場合はファイル名に加えてディレクトリ名のワイルドカードによる判別を行うようになります。<br>
+1)&nbsp;&nbsp;path:,wildcard 等と、「path:」のみ指定した場合はファイルの名前に加えて、ディレクトリの名前のワイルドカードによる判別を行うようになります。指定しない場合は、ディレクトリ<br>
 2)&nbsp;&nbsp;path:wildcard 等と、「path:wildcard」を指定した場合は、ディレクトリ名をwildcardで判別します。ファイル名は無視します。後続のワイルドカードがあれば 1)と同じく、どちらも判別します。<br>
 3)&nbsp;&nbsp;「path:/regexp/」と正規表現も指定することができます（ 2)と同じ）。<br>
 「path:」は「p:」に省略可能です。<br>
@@ -979,22 +983,23 @@ PPcの[F], \[F], [+], [-], ^[W]と*file<br>
 <a name="wildcard15"><b>option:  オプション指定</b></a><br>
 <br>
 「o:」と省略できます。<br>
-option:のあとに x、d、w、e を指定できます。<br>
+option:のあとに x、d、s、w、e を指定できます。<br>
 option:dxと複数を同時に指定することもできます。<br>
 option:d,option:x と指定したときは最後の「x」のみ有効になります。<br>
 wildcard,option:x とワイルドカード等の後にオプションを指定したときは、結果が不定になります。<br>
 <br>
- <a name="namewildcard"></a> option:x&nbsp;&nbsp;通常のワイルドカードは拡張子を分離して判別しますが、このオプションを指定すると分離しないで判別します。<br>
+<a name="namewildcard"></a> <b>option:x</b>&nbsp;&nbsp;ファイル名と拡張子を分離しないで判別します。通常のワイルドカードは拡張子を分離して判別します。<br>
 &nbsp;&nbsp;例えば filename.html は、「*html」で該当しませんが、「o:x,*html」では該当します。<br>
- option:d&nbsp;&nbsp;「path:」と同じく、wildcardでファイル名に加えてディレクトリ名の判別を行うようになります。<br>
- <a name="wordwildcard"></a> option:w&nbsp;&nbsp;部分一致、単語扱い（空白区切り）の動作に変更します。<br>
+<b>option:d</b>&nbsp;&nbsp;「path:」と同じく、wildcard でファイルの名前に加えてディレクトリの名前の判別を行うようになります。<br>
+<b>option:s</b>&nbsp;&nbsp;ファイル名のディレクトリ部分（dir1\dir2\filenameの「dir1\dir2\」）も判別対象にします。この指定が無いと「filename」のみが判別対象です。<br>
+ <a name="wordwildcard"></a> <b>option:w</b>&nbsp;&nbsp;部分一致、単語扱い（空白区切り）の動作に変更します。<br>
 &nbsp;&nbsp;「o:w,word text」...   「word」、「text」が両方とも含まれるファイル名の判別になります。「&amp;*word*,&amp;*text*」相当の動作です。<br>
 &nbsp;&nbsp;「o:w,.ext」...  拡張子に「ext」が含まれるファイル名です。<br>
 &nbsp;&nbsp;「o:w,word.ext」...  ファイル名の「word」が含まれ且つ拡張子に「ext」が含まれるファイル名です。<br>
 &nbsp;&nbsp;「o:w,word OR text」とした場合、「word」、「text」のどちらかがあるファイル名の判別になります。「*word*,*text*」相当の動作です。<br>
 &nbsp;&nbsp;「o:w,.w??d」...  ファイル名「w??d」(?は任意の1文字)が含まれるファイル名です。<br>
 &nbsp;&nbsp;「o:wx,.word」...  ファイル名か拡張子に「.word」が含まれるファイル名です。<br>
- option:e&nbsp;&nbsp;ワイルドカードが誤っていてもエラーメッセージを表示しません。<br>
+<b>option:e</b>&nbsp;&nbsp;ワイルドカードが誤っていてもエラーメッセージを表示しません。<br>
 <br>
 
 <hr>
@@ -1090,31 +1095,30 @@ MultiByte版を使う<br>
 <br>
 ・SETUP.EXE はどちらの版も同じ名前ですが、最後に実行するPPcが異なるだけで、両方の版のファイルを同時にインストール・アンインストール・アップデートするようになっています。<br>
 <hr>
-<a name="x86x64"></a><a name="32bit版と64bit版の違い"></a><h3>全般 - 32bit版と64bit版の違い</h3><br>
-・PPxの内蔵機能自体の違いは今のところありません。<br>
-・どちらも32/64bit版EXEファイルを実行できます。<br>
-・設定ファイル(PPWxxxxx.DAT)の違いもないのでそのまま使い回せます。<br>
-・64bit版は32bit版よりメモリ制限が緩いので、32bit版よりメモリの大きさに起因する制限が一部緩和されています。<br>
-・32bitUNICODE版PPxと64bit版PPxを同時に起動した場合は動作異常を起こします。一旦片方を終了すればもう片方が使えます。そのとき、次の一覧による問題がなければ普通に使えます。<br>
+<a name="x86x64"></a><a name="32bit 版と 64bit 版の違い"></a><h3>全般 - 32bit 版と 64bit 版の違い</h3><br>
+・どちらも32 / 64bit版 EXEファイルを実行できます。<br>
+・設定ファイル(PPWxxxxx.DAT)の違いはないので、そのまま使い回せます。<br>
+・64bit 版は 32bit 版よりメモリ制限が緩いので、32bit 版よりメモリの大きさに起因する制限が一部緩和されています。<br>
+・32bit UNICODE 版 PPx と 64bit 版 PPx を同時に起動した場合は動作異常を起こします。一旦片方を終了すればもう片方が使えます。そのとき、次の一覧による問題がなければ普通に使えます。<br>
 その他の違いは次の一覧を参照してください。<br>
 <br>
-<b>32bit版PPx</b><br>
-・32/64bit Windows のどちらでも動作します。<br>
-・各種拡張DLLが豊富にあります。<br>
-・各種拡張DLLは32bit版を使用します。64bit版は使えません。<br>
-・64bit版Windows上で使用しているときは次の点に気を付ける必要があります。<br>
-　・64bit版エクスプローラ拡張など、64bit版DLLが使用されません。<br>
-　　例えば、エクスプローラの右クリックで表示されていた項目が、PPxのシェルコンテキストメニューで表示されないことなどがあります。<br>
-　・Windows\System32 の中身が Windows\SYSWOW64 になるため、実体(64bit用System32)の Windows\System32 を表示するには、Windows\Sysnative を指定する必要があります。<br>
-　・バーチャルストア機能により 64bit版と異なるファイルが存在する場合があります。<br>
-　　これにより、本来の System32 内にある64bit版のファイルが実行できないことがあります。<br>
+<b>32bit 版 PPx</b><br>
+・32/64 bit Windows のどちらでも動作します。<br>
+・2020年頃以前の各種拡張 DLL が豊富にあります。<br>
+・各種拡張 DLL は 32bit 版を使用します。64bit 版は使えません。<br>
+・64bit 版 Windows 上で使用しているときは次の点に気を付ける必要があります。<br>
+　・64bit 版エクスプローラ拡張など、64bit 版 DLL が使用されません。<br>
+　　例えば、エクスプローラの右クリックで表示されていた項目が、PPx のシェルコンテキストメニューで表示されないことなどがあります。<br>
+　・Windows\System32 の中身が Windows\SYSWOW64 になるため、実体(64bit用 System32)の Windows\System32 を表示するには、Windows\Sysnative を指定する必要があります。<br>
+　・バーチャルストア機能により 64bit 版と異なるファイルが存在する場合があります。<br>
+　　これにより、本来の System32 内にある64bit 版のファイルが実行できないことがあります。<br>
 <br>
-<b>64bit版PPx</b><br>
-・64bit版Windows のみ動作します。32bit版Windowsでは起動できません。<br>
-・同じ環境なら、64bit版PPxの方がメモリを多く使用しますが、動作は早くなります。<br>
-・各種拡張DLLが限られています。<br>
-・各種拡張DLLは64bit版を使用します。32bit版はUNBYPASSで対応しているDLLだけ使えます。<br>
-・32bit版のエクスプローラ拡張は使えません。<br>
+<b>64bit 版 PPx</b><br>
+・64bit 版 Windows のみ動作します。32bit 版 Windows では起動できません。<br>
+・同じ環境なら、64bit 版 PPx の方がメモリを多く使用しますが、動作は早くなります。<br>
+・各種拡張 DLL は 64bit 版を使用します。32bit 版は UNBYPASS で対応している DLL 、Susie Plug-in が使えます。<br>
+・2020年頃以降の各種拡張 DLL が多くあります。また、64bit 版 DLL の方が機能強化されている場合があります。<br>
+・32bit 版のエクスプローラ拡張は使えません。<br>
 <hr>
 <a name="lang"></a><a name="複数言語の使用"></a><h3>全般 - 複数言語の使用</h3><br>
 PPx は、日本語以外の環境で動作させることをある程度考慮しています。<br>
@@ -1130,16 +1134,16 @@ PPx は、日本語以外の環境で動作させることをある程度考慮�
 <hr><br>
 <b>MultiByte版</b><br>
 <br>
-MultiByte版は Win9x系 でも動作するために、UNICODE を使った複数言語を同時に使用するエントリ名等を扱うことができません。<br>
+MultiByte 版は Win9x系 でも動作するために、UNICODE を使った複数言語を同時に使用するエントリ名等を扱うことができません。<br>
 ただし、コントロールパネルでデフォルト指定された言語については日本語以外でもサポートしています。<br>
 マルチバイト文字でも指定言語の範囲内で正しく１文字を判別します。<br>
 <hr><br>
 <b>UNICODE版・64bit版</b><br>
 <br>
-UNICODE版は、文字をUNICODEで扱うため、複数言語の文字を同時に取り扱うことができます。また、対応するフォントを使用することで、複数言語の文字を同時に表示することができます。表示ができない場合でも、文字情報を失わずにファイル操作を行うことが可能です。<br>
+UNICODE版(MultiByte版以外の全ての版)は、文字を UNICODE で扱うため、複数言語の文字を同時に取り扱うことができます。また、対応するフォントを使用することで、複数言語の文字を同時に表示することができます。表示ができない場合でも、文字情報を失わずにファイル操作を行うことが可能です。<br>
 <hr>
 <a name="HiDPI"></a><a name="画面のスケーリング／HiDPI対応"></a><h3>全般 - 画面のスケーリング／HiDPI対応</h3><br>
-PPxは、画面スケーリング（HiDPI、コントロールパネルのデスクトップ上のテキストやその他の項目を縮小又は拡大する設定）に対応しています。設定(<a href="#X_dss">X_dss</a>)で挙動を調節することができます。<br>
+PPx は、画面スケーリング（HiDPI、コントロールパネルのデスクトップ上のテキストやその他の項目を縮小又は拡大する設定）に対応しています。設定(<a href="#X_dss">X_dss</a>)で挙動を調節することができます。<br>
 <br>
 ・カスタマイズで設定するフォントの大きさと、設定したときの画面スケーリング設定を記憶し、画面スケーリング設定が異なる環境ではフォント大きさの調整を行います。<br>
   ※この調整では見栄えが悪くなることがあるため、長期間使用するときは、フォントサイズを改めて設定することをお勧めします。<br>
@@ -1162,12 +1166,12 @@ PPx は、Windows が予め用意している機能を一部変更していま�
 <a name="exlpath"></a>・Windows は通常扱うことができるパス長が 259文字(UNICODE版)、259bytes(MultiByte版) となっており、それを越えるパス(PPx では極長パスと略します)は扱うことができません。<br>
 極長パスを通常のアプリケーションで扱うとファイルが開けない、保存することができない、異常終了が起きる、データを失うなどの問題が起きる恐れがあります。<br>
 <br>
-・PPx では WinNT系で使用する場合に限って、一部の機能を260文字(MAX_PATH)以上の極長パスでも扱えるようにし、最低限のファイル管理ができるように対策がされています。<br>
-・極長パスは WinNT系 OSの仕様として約32000文字まで可能ですが、PPx ではパフォーマンス上の理由により最大 599文字/bytes までに制限しています。<br>
+・PPx では WinNT 系で使用する場合に限って、一部の機能を260 文字(MAX_PATH)以上の極長パスでも扱えるようにし、最低限のファイル管理ができるように対策がされています。<br>
+・極長パスは WinNT 系 OS の仕様として約 32,000 文字まで可能ですが、PPx ではパフォーマンス上の理由により最大 599 文字/bytes までに制限しています。<br>
  ・この長さの限界を越える場合、上位ディレクトリ名を短いファイル名形式（name~1 形式）に変換してアクセス可能であれば、自動変換します。<br>
   例) C:\長いファイル名a\長いファイル名b\長いファイル名c → C:\短いファイル名a\短いファイル名b\長いファイル名c<br>
   ※自動変換は、短いファイル名が作成できる NTFS と FAT のみ対応します。<br>
- ・エントリ(ファイル名やディレクトリ名)の最大長は、極長パスであるかに関わらず、OSの仕様上 255文字/bytes になります。<br>
+ ・エントリ(ファイル名やディレクトリ名)の最大長は、極長パスであるかに関わらず、OS の仕様上 255 文字/bytes になります。<br>
  ・シェルコンテキストメニュー、アイコンの取得、プロパティシートの表示等の Windows の機能を使った処理は、Windows 側の長さ制限に掛かる場合があり、使用できないことがあります。<br>
 <br>
 ・Windows10 1607(RS1, Anniversary Update)では、レジストリ設定次第で MAX_PATH を越える極長パスを標準で扱えるようになります。<br>
@@ -1182,7 +1186,7 @@ PPx は、Windows が予め用意している機能を一部変更していま�
 <dt></dt></dl><br>
 <hr>
 <a name="treewnd"></a><a name="ツリー窓"></a><h3>全般 - ツリー窓</h3><br>
-ツリー窓は、ディレクトリのツリーの他、任意ディレクトリをRootとしたツリー、書庫や<a href="#listsubj">ListFile</a>の内容リスト、M_pjump を使ったお気に入りツリー、PPcの表示ディレクトリの一覧、任意のメニューを用いた<a href="#Mt_type">ユーザ定義メニュー</a>を切り替えて表示することができます。<br>
+ツリー窓は、ディレクトリのツリーの他、任意ディレクトリを Root としたツリー、書庫や<a href="#listsubj">ListFile</a>の内容リスト、M_pjump を使ったお気に入りツリー、PPc の表示ディレクトリの一覧、任意のメニューを用いた<a href="#Mt_type">ユーザ定義メニュー</a>を切り替えて表示することができます。<br>
 ※ http://、ftp://、aux:// 等のパスは、現在意図的にツリーの項目の列挙を行わないように制限しています。<br>
 <br>
 各種一行編集でディレクトリの参照に使われるツリー窓と、<br>
@@ -1214,21 +1218,21 @@ PPcの[T]/\[T]コマンドで使われるツリー窓は、<br>
 ・PPcのツリー窓は、[SHIFT]を押しながら選択すると連動しません。<br>
 <hr>
 <a name="PPcInfo"></a><a name="概要"></a><h3>PPc - ファイラ／ファイルマネージャ - 概要</h3><br>
-PPcは、ディレクトリ一覧を表示してファイル操作を行うことができるいわゆるファイラ(ファイルマネージャ等ともいいます)です。<br>
+PPc は、ディレクトリ一覧を表示してファイル操作を行うことができるいわゆるファイラ(ファイルマネージャ等ともいいます)です。<br>
 MS-DOS 用ファイラで多く見られた文字主体でシンプルな外観となっていますが、キーボード操作、マウス操作、タッチ操作、ペン操作のいずれにおいても快適に利用できるように心がけています。<br>
 <br>
 １枚窓で使用することができますが、２枚以上起動して連係した動作を行わせることができます。また、２枚の窓を連結して並べた状態のままにしたり、１枚で複数ディレクトリを表示（一体化）したりすることができます。<br>
 <hr>
 <a name="PPcWindowType"></a><a name="表示形態／複数枚起動"></a><h3>PPc - ファイラ／ファイルマネージャ - 表示形態／複数枚起動</h3><br>
-・PPcは複数枚起動をすることによって複数のディレクトリを操作することができます。このときタイトルバーに「PPC[A]」等と表示されるように、A～ZのIDが振られているので、それを目印にして各窓を指定することができます。また、ID毎に窓の位置・大きさ・表示設定・ディレクトリ等が記憶されます。<br>
-尚、27枚以降も開くことはできますが、27枚目以降は、26枚目(Z)の設定と兼用されます。27枚以上を開く場合は、一体化窓を使用してください。<br>
+・PPc は複数枚起動をすることによって複数のディレクトリを操作することができます。このときタイトルバーに「PPC[A]」等と表示されるように、A～Z の ID が振られているので、それを目印にして各窓を指定することができます。また、ID 毎に窓の位置・大きさ・表示設定・ディレクトリ等が記憶されます。<br>
+尚、27 枚以降も開くことはできますが、27 枚目以降は、26 枚目(Z)の設定と兼用されます。27 枚以上を開く場合は、一体化窓を使用してください。<br>
 <br>
-・PPcが複数枚起動している場合は、対象ディレクトリの入力時に直前に扱った窓のディレクトリ名が格納されています。<br>
+・PPc が複数枚起動している場合は、対象ディレクトリの入力時に直前に扱った窓のディレクトリ名が格納されています。<br>
 <br>
 ・PPcが複数枚起動している場合、その表示方法を色々選択することができます。また、一部制限がありますが、複数の表示方法を混在して使用することもできます。<br>
 <dl compact>
 <dt>独立型</dt><dd>各窓が完全に独立して、好きな位置に好きな大きさで配置することができます。</dd>
-<dt>一体化型</dt><dd>１つの一体化窓内を左右/上下に区切った一覧ペインのそれぞれに、ディレクトリの一覧窓が表示される、マルチペイン型表示です。設定で情報行を共通にし、情報行に表示される内容を多くすることができます。</dd>
+<dt>一体化型</dt><dd>１つの一体化窓内を左右/上下に区切った一覧ペインのそれぞれに、ディレクトリの一覧窓が表示される、マルチペイン型、分割型表示です。設定で情報行を共通にし、情報行に表示される内容を多くすることができます。</dd>
 <dt></dt><dd>左/上端の一覧ペインに表示された窓と、それ以外で最後にアクティブになった一覧ペインに表示された窓とがペアとなった２画面動作をします。</dd>
 <dt>タブ型</dt><dd>一体化型の変形で、一覧ペインで表示する窓をタブで切り替えできます。タブの数は表示ペイン数より多くできます。タブ管理の方法がいくつかあり、変更できます。</dd>
 <dt>　共用タブ型</dt><dd>複数の一覧ペインがあっても１つのタブで表示します。</dd>
@@ -1245,15 +1249,15 @@ MS-DOS 用ファイラで多く見られた文字主体でシンプルな外観�
 <a name="PPcSpecInfo"></a><a name="仕様"></a><h3>PPc - ファイラ／ファイルマネージャ - 仕様</h3><br>
 <b>ファイルの実行</b><br>
 <br>
- CMD.EXE / COMMAND.COM コマンドや DOS アプリ等のコンソールが必要とするものは、PPb を起動して、PPb 上で実行します。これによって、メッセージ等が表示されてもすぐに消えることがありません。(関連設定:<a href="#X_wppb">X_wppb</a>)<br>
+ CMD.EXE / COMMAND.COM コマンドや コンソールアプリ、DOS アプリ等のコンソールが必要とするものは、PPb を起動して、PPb 上で実行します。これによって、メッセージ等が表示されてもすぐに消えることがありません。(関連設定:<a href="#X_wppb">X_wppb</a>)<br>
  PPbで実行するとき、実行するコマンド内容を表示しますが、先頭に「@」がある場合は、表示を行いません。<br>
  また、PPb が実行できないときは自前で実行しますが、実行が終わったコンソール窓はすぐに閉じてしまうことが多いので、表示されたメッセージが読めない場合があります。<br>
 <hr><br>
 <a name="最大読み込みエントリ数"><b>最大読み込みエントリ数</b></a><br>
 <br>
- メモリの余裕があれば最大で約340万エントリまで扱えます(32bit UNICODE版)。特に、100～5,000 程度で最も快適に使える様に設計しています。約30万エントリで利用できることを確認済みです。<br>
+ メモリの余裕があれば最大で約340万エントリまで扱えます(32bit UNICODE版)。特に、100～5,000 程度で最も快適に使える様に設計しています。約 30 万エントリで利用できることを確認済みです。<br>
  ※一体化表示等の１プロセスで複数窓を扱う状態にしたり、アイコン・画像のサムネイル表示などのメモリを多く使用する機能を使ったりすると、読み込み可能なエントリ数が大幅に減りますので注意してください。<br>
-  数万～数十万の大量のエントリを常時扱う場合（一体化時は全タブ／全ペインの総数）は、使い方によっては32bit版でメモリ不足になることも考えられます。64bit版PPxを使うことも検討してみてください。<br>
+  数万～数十万の大量のエントリを常時扱う場合（一体化時は全タブ／全ペインの総数）は、使い方によっては 32bit 版でメモリ不足になることも考えられます。64bit 版 PPx を使うことも検討してみてください。<br>
 <hr><br>
 <a name="一体化窓"><b>一体化窓</b></a><br>
 <br>
@@ -1262,7 +1266,7 @@ MS-DOS 用ファイラで多く見られた文字主体でシンプルな外観�
 <hr><br>
 <a name="一覧の更新"><b>一覧の更新</b></a><br>
 <br>
- PPc が表示中のディレクトリに何らかの書き込みが発生した時は、上から３行目と４行目との境目にある仕切り線の色が変わって通知し、更に数秒間何も操作しないと、最新情報を入手します。このとき、削除・変更・追加されたエントリを背景色の違いであらわします。<br>
+ PPc が表示中のディレクトリに何らかの書き込みが発生した時は、上から３行目と４行目との境目にある仕切り線の色が変わって通知し、更に数秒間何も操作しないと、最新情報を入手します。このとき、削除・変更・追加されたエントリを背景色の違いであらわします。表示が不要の場合は、該当項目の色を変更してください（境界線の未確定、PPc エントリ背景の不明、更新、追加）。<br>
 <br>
  暗赤&nbsp;&nbsp;削除された&nbsp;&nbsp;&nbsp;&nbsp;灰&nbsp;&nbsp;不確定<br>
  暗青&nbsp;&nbsp;変更があった&nbsp;&nbsp;&nbsp;&nbsp;暗水&nbsp;&nbsp;追加された<br>
@@ -3502,7 +3506,7 @@ Image形式の解像度の指定は ^[U] か <u>F</u>ile-&gt;print set <u>U</u>p
 <a name="PPvKey23"><b>^[S] 保存</b></a><br>
 <br>
 現在開いているファイル等をファイルに保存します。<br>
-また、開いているファイル等が画像の時、拙作 WIC Susie Plug-in 1.0 以降<a href="http://toro.d.dooo.jp/slplugin.html#iftwic" target="_top">http://toro.d.dooo.jp/slplugin.html#iftwic</a> か GDI+ Susie Plug-in 1.1 以降<a href="http://toro.d.dooo.jp/slplugin.html#ifgdip" target="_top">http://toro.d.dooo.jp/slplugin.html#ifgdip</a> があれば、ファイル名の拡張子に合わせたファイル形式で保存できます。<br>
+また、開いているファイル等が画像の時、拙作 WIC Susie Plug-in 1.0 以降<a href="https://toro.d.dooo.jp/slplugin.html#iftwic" target="_top">https://toro.d.dooo.jp/slplugin.html#iftwic</a> か GDI+ Susie Plug-in 1.1 以降<a href="https://toro.d.dooo.jp/slplugin.html#ifgdip" target="_top">https://toro.d.dooo.jp/slplugin.html#ifgdip</a> があれば、ファイル名の拡張子に合わせたファイル形式で保存できます。<br>
 　拙作 WIC Susie Plug-in を使用しているときは、jpg, bmp, gif, tif, jxr, wdp が指定可能です。<br>
 <hr><br>
 
@@ -6126,7 +6130,7 @@ keywordが指定していない場合はトピック表示をし、指定して�
 ヘルプファイル(PPX.HLP)は PPx 本体の配布書庫に同梱していません。<a href="#winhlpdl">別途ダウンロード</a>してください。<br>
 <br>
 <b>html help</b><br>
-PPX.HLP が存在しないか、Windows Vista 以降ならオンラインヘルプ<a href="http://toro.d.dooo.jp/ppxhlp.html" target="_top">http://toro.d.dooo.jp/ppxhlp.html</a>を使用します。<br>
+PPX.HLP が存在しないか、Windows Vista 以降ならオンラインヘルプ<a href="https://toro.d.dooo.jp/ppxhlp.html" target="_top">https://toro.d.dooo.jp/ppxhlp.html</a>を使用します。<br>
 オンラインヘルプを<a href="#downloadhelp">ダウンロード</a>して使用することもできます。<br>
 <br>
 <hr><br>
@@ -7547,6 +7551,26 @@ write / readonly<br>
 <br>
 ・-leavecancel<br>
 一行編集ダイアログ上で使用したとき、その一行編集ダイアログ以外がアクティブになったとき、一行編集を中止し、一行編集ダイアログを閉じます。%*input の -leavecancel と同じ設定です。<br>
+<br>
+・-syntax[:on|off|clear|g|h|d|f|m|s]<br>
+文法に応じて文字を着色するシンタックスハイライトを行います。文法は指定をしない場合、現在の保存ヒストリ種類に対応した文法とします。<br>
+尚、PPe でも使用できますが、-syntax:on のときに着色するのみで、その後編集しても色の更新はされません。<br>
+<br>
+初期設定(g)<br>
+&nbsp;&nbsp;検索文字のハイライトのみ行います。下記に記載していないヒストリ種類も該当します。ディレクトリ(d)、フルパスファイル名(f)<br>
+&nbsp;&nbsp;フルパスのハイライトを行います。パスの絶対指定時と相対指定時が区別しやすくなります。また、検索文字、パス区切り、拡張子やファイル名に使用できない記号を着色します。<br>
+ファイル名(c)<br>
+&nbsp;&nbsp;ファイルパスのハイライトを行います。検索文字、パス区切り、拡張子名、ファイル名に使用できない記号を着色します。<br>
+マスク(m)、検索文字列(s)<br>
+&nbsp;&nbsp;ワイルドカードや区切り、検索文字を着色します。<br>
+コマンドライン(h)<br>
+&nbsp;&nbsp;コマンド区切り、文字列、オプション、マクロ文字、検索文字等を着色します。<br>
+<br>
+指定無し&nbsp;&nbsp;on/offのトグル動作<br>
+on&nbsp;&nbsp;シンタックスハイライトを有効化し、着色します。<br>
+off&nbsp;&nbsp;シンタックスハイライトを無効化しますが、色はそのままです<br>
+clear&nbsp;&nbsp;シンタックスハイライトを無効化し、着色を全て解除します。<br>
+g/h/d/f/m/s&nbsp;&nbsp;文法の種類を指定し、着色します（保存ヒストリ種類）。シンタックスハイライトが無効の時は有効にします。<br>
 <br>
 ・-tabkey[:on|off]<br>
 [TAB]キーをカスタマイズ可能にするかどうかの指定です。初期値は X_ltab に従います。<br>
@@ -9539,7 +9563,7 @@ WSH VBScriptの場合は、置換(s/src/dest/)のみ使用できます。修飾�
  尚、作者が常用しているカスタマイズは、デフォルトカスタマイズに近い環境であって、独立した 2枚のPPc + PPv + PPbを主に使用しています。他の設定(PPcの連結・一体化・タブ等)は、開発のときに使用しているだけですので問題や、常用していたら気づく使いにくさなどが残っている可能性が高くなっています。改善が必要な部分があれば指摘をお願いします。対処するか検討します。<br>
 <hr>
 <a name="CustTempl"></a><a name="カスタマイズひな形、カスタマイズ内容の手動アップデート"></a><h3>カスタマイズ詳細 - カスタマイズひな形、カスタマイズ内容の手動アップデート</h3><br>
- <a href="http://toro.d.dooo.jp/index.html" target="_top">http://toro.d.dooo.jp/index.html</a> の Configuration file &amp; Memo で、PPx に内蔵されているテキスト形式設定ファイルや、カスタマイズのひな形をいくつか公開しています。<br>
+ <a href="https://toro.d.dooo.jp/index.html" target="_top">https://toro.d.dooo.jp/index.html</a> の Configuration file &amp; Memo で、PPx に内蔵されているテキスト形式設定ファイルや、カスタマイズのひな形をいくつか公開しています。<br>
  これらをダウンロードして、カスタマイズの「取込」（コマンドラインなら PPCUST(W) CS filename）で取り込むことで使用することができます。<br>
 <br>
  また、カスタマイズ内容を手動でアップデートしたい場合は、「初期設定値」をダウンロードし、「更新」(PPCUST(W) CU filename）を行うことでアップデートが可能です。<br>
@@ -9999,6 +10023,10 @@ Windows 10 1903 以降で、ダイアログやメニュー等の配色をダー�
 &nbsp;&nbsp;  必要な DLL: MSPTLS.DLL, RICHED20.DLL の両方<br>
 <br>
 &nbsp;&nbsp;  ※ 32bit版 PPx では、アプリ版メモ帳の 32bit版がないため、32bit版 Office の DLL のみ使用可能です。<br>
+<hr><br>
+<a name="X_csyh"><b>X_csyh</b></a> 一行編集のシンタックスハイライト, PPb のシンタックスハイライト<br>
+<br>
+一行編集／PPb のキーワード等を着色するシンタックスハイライトを有効にするかどうかの設定です。<br>
 <hr><br>
 <a name="X_es"><b>X_es</b></a> 拡張シフトキーに使用するキー<br>
 <br>
@@ -13415,7 +13443,7 @@ deldir&nbsp;&nbsp;= rd   &quot;%*path&quot;<br>
 }<br>
 PPc でディレクトリのパスとして「aux:S_auxdir\c:\windows」を指定すると、S_auxdir に指定した内容を用いてドライブ C: 内の閲覧や複写等の操作を行うことができます。<br>
 <br>
-※この他、PPxの配布ページ<a href="http://toro.d.dooo.jp/slppx.html#ppxaux" target="_top">http://toro.d.dooo.jp/slppx.html#ppxaux</a>で、FTP や andorid ADB.EXE 用の例を用意しています。<br>
+※この他、PPxの配布ページ<a href="https://toro.d.dooo.jp/slppx.html#ppxaux" target="_top">https://toro.d.dooo.jp/slppx.html#ppxaux</a>で、FTP や andorid ADB.EXE 用の例を用意しています。<br>
 <b>・aux: パスの指定方法</b><br>
 (1)「\」区切りのとき<br>
 aux:(設定名)\[(パス1)[\(パス2)...]]<br>
@@ -13799,7 +13827,7 @@ X_uftyp = {<br>
 <a name="custLang"></a><a name="言語ファイル"></a><h3>カスタマイズ詳細 - 言語ファイル</h3><br>
 <a name="custLang"></a><br>
 言語ファイルは、表示メッセージ(MesXXXX)等の言語別設定を取り込むために用いるテキスト形式設定ファイルです。<br>
-既に用意されている言語ファイルは、<a href="http://toro.d.dooo.jp/checkver/checklang.cgi?name=ppxweb&amp;lcid=help" target="_top">http://toro.d.dooo.jp/checkver/checklang.cgi?name=ppxweb&amp;lcid=help</a> から入手できます。<br>
+既に用意されている言語ファイルは、<a href="https://toro.d.dooo.jp/checkver/checklang.cgi?name=ppxweb&amp;lcid=help" target="_top">https://toro.d.dooo.jp/checkver/checklang.cgi?name=ppxweb&amp;lcid=help</a> から入手できます。<br>
 ※ファイル名がSから始まる言語ファイルは、L0409_EN-US.txt を Google 翻訳で翻訳したサンプルファイルです。<br>
 <br>
 通常のテキスト形式設定ファイルと同じ様式ですがいくつか自動化のための専用仕様があります。<br>
@@ -14025,9 +14053,9 @@ PPlib32.DLL / PPlib32W.DLL / PPlib64W.DLL を使用することで、PPx のコ�
 次の各ソースは、各DLL に用意されているコマンドライン実行・展開用APIを定義し、使用するためのサンプルです。<br>
 64bit / 32bit Unicode版用です。<br>
 <br>
-C の例 <a href="http://toro.d.dooo.jp/ppxcfg/ppx.c" target="_top">http://toro.d.dooo.jp/ppxcfg/ppx.c</a><br>
-C# の例 <a href="http://toro.d.dooo.jp/ppxcfg/ppx.cs" target="_top">http://toro.d.dooo.jp/ppxcfg/ppx.cs</a><br>
-Python の例 <a href="http://toro.d.dooo.jp/ppxcfg/ppx.py" target="_top">http://toro.d.dooo.jp/ppxcfg/ppx.py</a><br>
+C の例 <a href="https://toro.d.dooo.jp/ppxcfg/ppx.c" target="_top">https://toro.d.dooo.jp/ppxcfg/ppx.c</a><br>
+C# の例 <a href="https://toro.d.dooo.jp/ppxcfg/ppx.cs" target="_top">https://toro.d.dooo.jp/ppxcfg/ppx.cs</a><br>
+Python の例 <a href="https://toro.d.dooo.jp/ppxcfg/ppx.py" target="_top">https://toro.d.dooo.jp/ppxcfg/ppx.py</a><br>
 <br>
 <b>PPlibXX.DLL を使って操作する(rundll32.exe を使用)</b><br>
 PPlib32.DLL / PPlib32W.DLL / PPlib64W.DLL は、rundll32.exe 用のエントリ run を用意しています。このため、次のようなコマンドライン実行が可能です。<br>
@@ -14162,19 +14190,19 @@ K_tray ={<br>
 <hr><br>
 <a name="downloadhelp"><b> ヘルプをダウンロードして使用する</b></a><br>
 <br>
-PPx の html ヘルプはオンライン<a href="http://toro.d.dooo.jp/ppxhlp.html" target="_top">http://toro.d.dooo.jp/ppxhlp.html</a>ですが、ヘルプをダウンロードしてオフラインで<a href="#help">ヘルプ</a>を使用することができます。<br>
+PPx の html ヘルプはオンライン<a href="https://toro.d.dooo.jp/ppxhlp.html" target="_top">https://toro.d.dooo.jp/ppxhlp.html</a>ですが、ヘルプをダウンロードしてオフラインで<a href="#help">ヘルプ</a>を使用することができます。<br>
 <br>
 <b>(1)オンラインヘルプのダウンロード</b><br>
-　<a href="http://toro.d.dooo.jp/ppxhelp.html" target="_top">http://toro.d.dooo.jp/ppxhelp.html</a>(フレームが付いているときは右側のフレーム)を PPx があるディレクトリに保存しておくと、F1キーを押したときや、カスタマイザで右クリックを押したときなどに、保存した ppxhelp.html を開くようになります。<br>
-　また、<a href="http://toro.d.dooo.jp/ppxindex.html" target="_top">http://toro.d.dooo.jp/ppxindex.html</a>か<a href="http://toro.d.dooo.jp/ppxwords.html" target="_top">http://toro.d.dooo.jp/ppxwords.html</a>も用意してあれば、フレーム表示になります。<br>
-例) *httpget &quot;http://toro.d.dooo.jp/ppxhelp.html&quot;,&quot;%1\ppxhelp.html&quot; %: *httpget &quot;http://toro.d.dooo.jp/ppxindex.html&quot;,&quot;%1\ppxindex.html&quot; %: *httpget &quot;http://toro.d.dooo.jp/ppxwords.html&quot;,&quot;%1\ppxwords.html&quot;<br>
+　<a href="https://toro.d.dooo.jp/ppxhelp.html" target="_top">https://toro.d.dooo.jp/ppxhelp.html</a>(フレームが付いているときは右側のフレーム)を PPx があるディレクトリに保存しておくと、F1キーを押したときや、カスタマイザで右クリックを押したときなどに、保存した ppxhelp.html を開くようになります。<br>
+　また、<a href="https://toro.d.dooo.jp/ppxindex.html" target="_top">https://toro.d.dooo.jp/ppxindex.html</a>か<a href="https://toro.d.dooo.jp/ppxwords.html" target="_top">https://toro.d.dooo.jp/ppxwords.html</a>も用意してあれば、フレーム表示になります。<br>
+例) *httpget &quot;https://toro.d.dooo.jp/ppxhelp.html&quot;,&quot;%1\ppxhelp.html&quot; %: *httpget &quot;https://toro.d.dooo.jp/ppxindex.html&quot;,&quot;%1\ppxindex.html&quot; %: *httpget &quot;https://toro.d.dooo.jp/ppxwords.html&quot;,&quot;%1\ppxwords.html&quot;<br>
 <br>
 ※ html の保存場所は _others:helpdir で指定可能です。<br>
 ※ 開くブラウザは既定のブラウザですが、カスタマイズの全般-全般-デフォルトブラウザ (<a href="#A_exec">A_exec</a>の browser) に使用したいブラウザのパスを指定しておくとそのブラウザを使用することができます。ただし、Chromium系は該当項目に移動しないことがあります。<br>
 ※ ppxhelp.html だけダウンロードして開けないときは、ppxindex.html などもダウンロードしてください（コマンドラインに file:///～#～ を指定ができないブラウザがあるため ）。<br>
 <a name="winhlpdl"></a><br>
 <b>(2)Windows Help(WINHLP32.EXE)</b><br>
-　<a href="http://toro.d.dooo.jp/slppx.html#ppxhelp" target="_top">http://toro.d.dooo.jp/slppx.html#ppxhelp</a> からヘルプファイルをダウンロードして、PPx があるディレクトリに PPX.HLP と PPX.CNT を保存すると、Windows XP 以前で使用するようになります。Windows Vista 以降では、 _others:winhelp に WINHLP32.EXE のパスを指定する必要があります。<br>
+　<a href="https://toro.d.dooo.jp/slppx.html#ppxhelp" target="_top">https://toro.d.dooo.jp/slppx.html#ppxhelp</a> からヘルプファイルをダウンロードして、PPx があるディレクトリに PPX.HLP と PPX.CNT を保存すると、Windows XP 以前で使用するようになります。Windows Vista 以降では、 _others:winhelp に WINHLP32.EXE のパスを指定する必要があります。<br>
 <br>
 <b>(3)ヘルプの設定</b><br>
 _others:helpdir = [+|-][ヘルプファイルがあるディレクトリのパス]<br>
@@ -14376,8 +14404,8 @@ PPc で標準で扱える条件は、ファイル名、拡張子、ファイル�
 <hr><br>
 <a name="HowToCust1"><b> サンプル</b></a><br>
 <br>
-Configuration file &amp; Memo <a href="http://toro.d.dooo.jp/dlcfg.html" target="_top">http://toro.d.dooo.jp/dlcfg.html</a> と、<br>
-動作画面 <a href="http://toro.d.dooo.jp/ssppx.html" target="_top">http://toro.d.dooo.jp/ssppx.html</a> にいくつかサンプルを用意しています。<br>
+Configuration file &amp; Memo <a href="https://toro.d.dooo.jp/dlcfg.html" target="_top">https://toro.d.dooo.jp/dlcfg.html</a> と、<br>
+動作画面 <a href="https://toro.d.dooo.jp/ssppx.html" target="_top">https://toro.d.dooo.jp/ssppx.html</a> にいくつかサンプルを用意しています。<br>
 <hr><br>
 <a name="HowToCust2"><b> ポータブル化</b></a><br>
 <a name="ポータブル化"><b>ポータブル化</b></a>（インストールディレクトリのみで使用可能にする）を行うには以下の項目を確認してください。<br>
@@ -15582,6 +15610,6 @@ IBM-PC互換機用のファイルマネージャ。Peter Norton Computing社(Sym
 <hr>
 <a name="copyright"></a><a name="連絡先／一次配布先"></a><h3>連絡先／一次配布先等 - 連絡先／一次配布先</h3><br>
 E-mail <a href="mailto:toroid.jp@gmail.com"><i>toroid.jp@gmail.com</i></a><br>
-WWW <a href="http://toro.d.dooo.jp/index.html" target="_top">http://toro.d.dooo.jp/index.html</a> <a href="https://toroidj.github.io/" target="_top">https://toroidj.github.io/</a><br>
+WWW <a href="https://toro.d.dooo.jp/index.html" target="_top">https://toro.d.dooo.jp/index.html</a> <a href="https://toroidj.github.io/" target="_top">https://toroidj.github.io/</a><br>
  <i>Paper Plane xUI Copyright (c)1997-2025 TORO／高橋 良和</i><br>
 </body></html>
