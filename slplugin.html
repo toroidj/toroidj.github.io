@@ -8,14 +8,17 @@
 <style type="text/css"><!--
 body { line-height: 130%; }
 hr { border:solid 1px; }
+h1 { font-size: 150%; }
+h2 { font-size: 120%; line-height: 120%; }
+h3 { font-size: 110%; line-height: 120%; }
 pre { line-height: 110%; }
 span { font-weight: bold; font-size: 150% }
 img { max-width: 100%; height: auto; }
 #page { width:96%; text-align:left; }
 #title { text-align:center; }
-#index { width:105pt; float:left; border-right: 1px solid gray; }
-#contents { width:100%; float:right; margin-left:-110pt; }
-#contents2 { margin-left:114pt; }
+#index { width:114pt; float:left; border-right: 1px solid gray; }
+#contents { width:100%; float:right; margin-left:-124pt; }
+#contents2 { margin-left:119pt; }
 
 @media only screen and (orientation: portrait) {
  #index { width:100%; float:none; border-right:none; }
@@ -26,7 +29,7 @@ img { max-width: 100%; height: auto; }
 </style></head>
 <body bgcolor="#eeee99" text="#000000" link="#0000CC" vlink="#8800cc" alink="#440088">
 <div id="page">
-<div id="title"><h2>各種 DLL・SusiePlugin .SPI/.SPH(Windows 95 - Me, Windows NT4.0 - 11/2025)</h2>
+<div id="title"><h1>各種 DLL・SusiePlugin .SPI/.SPH(Windows 95 - Me, Windows NT4.0 - 11/2025)</h1>
 <div align="left">※ http://toro.d.dooo.jp からダウンロードできないときは、<a href="https://toroidj.github.io/slplugin.html">https://toroidj.github.io</a> からダウンロードしてください。</div><hr></div>
 <div id="contents"><div id="contents2">
  <table border="0" summary="目録">
@@ -79,13 +82,13 @@ iftpsd
 ifgif
 ./ifgif-0.1.1.5.zip
 iftwebp
-./iftwebp11.zip
+./iftwebp12.zip
 axeres
 ./axeres15.zip
 ifgdip
 ./iftgdi18.zip
 ifdx
-./ifdx911.zip
+./ifdx912.zip
 ifjpegt
 ./ifjpegt109.zip
 ifjpegt1
@@ -109,7 +112,7 @@ unzzip
 7zca
 ./7zca06.zip
 EndList -->
-<hr><a href="./slplugin.html">↑</a><a name="unbypass"><span>UNBYPASS.DLL</span></a> Version 2.0
+<hr><a href="./slplugin.html">↑</a><a name="unbypass"><span role="heading" aria-level="2">UNBYPASS.DLL</span></a> Version 2.0
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/unbypass20.zip">unbypass20.zip</a> ( 241 Kbytes,&nbsp;2023-11-11,&nbsp;Windows XP/2003 - 10/2022 (x64, Arm64))<br>
 <br>・統合化アーカイブプロジェクト関連DLL(UNLHA32.DLL, UNZIP32.DLL, ZIP32J.DLL, TAR32.DLL, CAB32.DLL, UNRAR32.DLL, 7-ZIP32.DLL) <br>
@@ -122,7 +125,7 @@ EndList -->
  Susie plug-inは、マルチスレッドに対応していません。<br><br>●<strong>変更点</strong><br>1.9→2.0<br>
 ・Unxxx&nbsp;/&nbsp;Susie&nbsp;plug-in&nbsp;でダイアログが表示されるときの挙動を調整した<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="iftwic"><span>WIC Susie Plug-in</span></a> Version 2.2
+<hr><a href="./slplugin.html">↑</a><a name="iftwic"><span role="heading" aria-level="2">WIC Susie Plug-in</span></a> Version 2.2
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/iftwic22.zip">iftwic22.zip</a> ( 270 Kbytes,&nbsp;2024-3-9,&nbsp;Windows XP/2003 - 11/2022(x86, x64, Arm64))<br>
 <br>WIC(Windows Imaging Component)を使って各種に読み込むためのSusie Plug-in です。<br>
@@ -134,7 +137,7 @@ WIC は標準で、BMP, PNG, ICO, JPG(JPEG), GIF, TIFF, HDP(HD Photo) 形式に�
  ファイル形式名の取得(GetPluginInfo)は、マルチスレッドに対応していません。<br><br>●<strong>変更点</strong><br>2.1→2.2<br>
 ・0&nbsp;バイトのファイルの読み込み時に異常終了することがあるのを修正<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="iftpsd"><span>PSD Susie Plug-in</span></a> Version 1.6
+<hr><a href="./slplugin.html">↑</a><a name="iftpsd"><span role="heading" aria-level="2">PSD Susie Plug-in</span></a> Version 1.6
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/iftpsd16.zip">iftpsd16.zip</a> ( 214 Kbytes,&nbsp;2024-2-24,&nbsp;Windows 2000 - 11/2022(x86, x64, Arm64))<br>
 <br>PhotoshopのPSDファイルを表示するためのSusie Plug-in です。<br>
@@ -146,7 +149,7 @@ WIC は標準で、BMP, PNG, ICO, JPG(JPEG), GIF, TIFF, HDP(HD Photo) 形式に�
 ・レイヤー取得用のプラグイン(axtpsd)を追加<br>
 ・ARM64&nbsp;版を作成<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="ifgif"><span>GIF import plug-in</span></a> Version 0.1.1.5
+<hr><a href="./slplugin.html">↑</a><a name="ifgif"><span role="heading" aria-level="2">GIF import plug-in</span></a> Version 0.1.1.5
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/ifgif-0.1.1.5.zip">ifgif-0.1.1.5.zip</a> ( 122 Kbytes,&nbsp;2024-4-13,&nbsp;Windows XP/2003 - 10/2022(32bit/64bit))<br>
 <br>mij4x氏<a href="http://mij4x.datacompression.jp/" >(サイト閉鎖)</a>が作成された <a href="https://toroidj.github.io/redistribution/ifgif-0.1.1.zip" >CompuServe 社の GIF 画像用の Susie plug-in(転載)</a>を<br>
@@ -161,19 +164,20 @@ WIC は標準で、BMP, PNG, ICO, JPG(JPEG), GIF, TIFF, HDP(HD Photo) 形式に�
 ・UNICODE&nbsp;版&nbsp;API&nbsp;を用意した<br>
 ・ARM64&nbsp;版を用意した<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="iftwebp"><span>WebP Susie Plug-in</span></a> Version 1.1
+<hr><a href="./slplugin.html">↑</a><a name="iftwebp"><span role="heading" aria-level="2">WebP Susie Plug-in</span></a> Version 1.2
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/iftwebp11.zip">iftwebp11.zip</a> ( 246 Kbytes,&nbsp;2023-9-26,&nbsp;Windows Vista/2008 - 11/2022(32bit/64bit))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/iftwebp12.zip">iftwebp12.zip</a> ( 393 Kbytes,&nbsp;2025-12-20,&nbsp;Windows Vista/2008 - 11/2022(x86, x64, Arm64))<br>
 <br><a href="https://developers.google.com/speed/webp/" >Google の WebP 画像</a>を <a href="https://chromium.googlesource.com/webm/libwebp/" >libwebp</a>を使って読み込むためのSusie Plug-in です。<br>
 <br>
 ※ Windows 10 1809 から WIC に WebP 画像のコーデックが標準で用意されています。<br>
 　WIC Susie Plug-in を使用している場合は、本 Plug-in は不要となります。<br>
 <br>
 ・マルチスレッド対応<br>
- このPlug-inは、マルチスレッドに対応しています。<br><br>●<strong>変更点</strong><br>1.0→1.1<br>
-・libwebp&nbsp;1.3.2&nbsp;(CVE-2023-4863&nbsp;対応)&nbsp;を使用<br>
+ このPlug-inは、マルチスレッドに対応しています。<br><br>●<strong>変更点</strong><br>1.1→1.2<br>
+・libwebp&nbsp;1.6.0&nbsp;を使用<br>
+・ARM64&nbsp;版を用意した<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="axeres"><span>EXE file resource Susie Plug-in</span></a> Version 1.5
+<hr><a href="./slplugin.html">↑</a><a name="axeres"><span role="heading" aria-level="2">EXE file resource Susie Plug-in</span></a> Version 1.5
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/axeres15.zip">axeres15.zip</a> ( 118 Kbytes,&nbsp;2025-3-1,&nbsp;Windows XP/2003 - 11/2025(x86, x64, Arm64))<br>
 <br>16/32/64bit Windows の exe ファイルのリソースなどを参照するためのSusie Plug-in です。<br>
@@ -184,7 +188,7 @@ WIC は標準で、BMP, PNG, ICO, JPG(JPEG), GIF, TIFF, HDP(HD Photo) 形式に�
  このPlug-inは、マルチスレッドに完全に対応しておらず、アプリケーションによっては読み込み失敗することがあります。<br><br>●<strong>変更点</strong><br>1.4→1.5<br>
 ・内部処理の見直しをした<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="ifgdip"><span>GDI+ Susie Plug-in</span></a> Version 1.8
+<hr><a href="./slplugin.html">↑</a><a name="ifgdip"><span role="heading" aria-level="2">GDI+ Susie Plug-in</span></a> Version 1.8
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/iftgdi18.zip">iftgdi18.zip</a> ( 147 Kbytes,&nbsp;2025-6-7,&nbsp;Windows 2000 - 11/2025(x86, x64, Arm64))<br>
 <br>GDI+ を使って EMF, GIF, ICO, JPEG, PNG, TIFF, WMF, BMP ファイルを読み込むためのSusie Plug-in です。<br>
@@ -196,19 +200,19 @@ WIC は標準で、BMP, PNG, ICO, JPG(JPEG), GIF, TIFF, HDP(HD Photo) 形式に�
 ・GetPluginInfo&nbsp;の処理を調整した<br>
 ・GetPictureInfo&nbsp;の処理を調整した<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="ifdx"><span>DirectX9 Susie Plug-in</span></a> Version 1.1
+<hr><a href="./slplugin.html">↑</a><a name="ifdx"><span role="heading" aria-level="2">DirectX9 Susie Plug-in</span></a> Version 1.2
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/ifdx911.zip">ifdx911.zip</a> ( 94 Kbytes,&nbsp;2015-4-5,&nbsp;Windows 2000 - 8.1(32bit/64bit))<br>
-<br>DirectX9 を使って JPEG,PNG,DDS,TGA ファイルを読み込むためのSusie Plug-in です。<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/ifdx912.zip">ifdx912.zip</a> ( 95 Kbytes,&nbsp;2025-12-20,&nbsp;Windows 2000 - 11/2025(x86, x64))<br>
+<br>DirectX9 を使って JPEG, PNG, DDS, TGA ファイルを読み込むための Susie Plug-in です。<br>
 32bit版/64bit版が入っています。<br>
 ※読み込める画像の大きさは使用している GPU により制限されます。<br>
 <br>
 ・マルチスレッド対応<br>
- このPlug-inは、マルチスレッドに完全対応しています。<br><br>●<strong>変更点</strong><br>1.0→1.1<br>
-・IsSupported,GetPictureInfo&nbsp;の処理を調整した<br>
-・対応形式を&nbsp;TGA,DDS&nbsp;に限定したIFDX9mini.SPI,IFDX9mini.SPHを用意した<br>
+ このPlug-inは、マルチスレッドに完全対応しています。<br><br>●<strong>変更点</strong><br>1.1→1.2<br>
+・UNICODE&nbsp;API&nbsp;を追加<br>
+・Plug-in&nbsp;再読み込み時に機能しないことがあるのを修正<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="ifjpegt"><span>JPEG-turbo Susie Plug-in</span></a> Version 1.09
+<hr><a href="./slplugin.html">↑</a><a name="ifjpegt"><span role="heading" aria-level="2">JPEG-turbo Susie Plug-in</span></a> Version 1.09
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/ifjpegt109.zip">ifjpegt109.zip</a> ( 331 Kbytes,&nbsp;2022-8-20,&nbsp;Windows XP/2003 - 11/2022(32bit/64bit))<br>
 <br>宮坂 賢氏の <a href="http://cetus.sakura.ne.jp/softlab/jpeg-x86simd/jpegsimd.html" >Independent JPEG Group's JPEG software with x86 SIMD extension for IJG JPEG library</a> をベースに作成されている <a href="https://libjpeg-turbo.org/" >libjpeg-turbo ライブラリ</a>を使って JPEG ファイルを高速に読み込むためのSusie Plug-in です。<br>
@@ -222,13 +226,13 @@ WIC は標準で、BMP, PNG, ICO, JPG(JPEG), GIF, TIFF, HDP(HD Photo) 形式に�
 ・libjpeg-turbo&nbsp;を&nbsp;2.1.3&nbsp;に更新<br>
 ・マルチスレッド対応を強化<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="ifjpegt1"><span>JPEG-turbo Susie Plug-in 試験版</span></a> Version 1.09p1test
+<hr><a href="./slplugin.html">↑</a><a name="ifjpegt1"><span role="heading" aria-level="2">JPEG-turbo Susie Plug-in 試験版</span></a> Version 1.09p1test
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/ifjpegt109p1test.zip">ifjpegt109p1test.zip</a> ( 399 Kbytes,&nbsp;2023-3-25,&nbsp;Windows XP/2003 - 11/2022(32bit/64bit))<br>
 <br>JPEG-turbo Susie Plug-in の試験版です。<br>
 lossless JPEG表示対応と、RGBが各12bitの JPEG を簡易表示(正常表示ではない)を試験的に有効にしています。これらは正式版でも有効にするかどうかは決めていません。<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="ifjpeg2k"><span>JPEG 2000 Susie Plug-in</span></a> Version 0.6
+<hr><a href="./slplugin.html">↑</a><a name="ifjpeg2k"><span role="heading" aria-level="2">JPEG 2000 Susie Plug-in</span></a> Version 0.6
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/ifjpeg2k06.zip">ifjpeg2k06.zip</a> ( 209 Kbytes,&nbsp;2016-2-20,&nbsp;Windows XP/2003 - 10/2012(32bit/64bit))<br>
 <br><a href="http://www.ece.uvic.ca/~frodo/jasper/" >JasPer ライブラリ</a>を使って JPEG 2000 ファイル(.jp2, .j2k, .jpc, .j2c, [.jpf])を読み込むためのSusie Plug-in です。<br>
@@ -238,7 +242,7 @@ lossless JPEG表示対応と、RGBが各12bitの JPEG を簡易表示(正常表�
 ・コードストリームのみのファイル(.j2k等)が表示できなかったのを修正<br>
 ・拡張形式ファイル(.jpf)を、拡張部分を除いた簡易表示ができるようにした<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="axcurico"><span>Cursor / Icon Susie Plug-in</span></a> Version 1.3
+<hr><a href="./slplugin.html">↑</a><a name="axcurico"><span role="heading" aria-level="2">Cursor / Icon Susie Plug-in</span></a> Version 1.3
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/axcuri13.zip">axcuri13.zip</a> ( 104 Kbytes,&nbsp;2025-3-1,&nbsp;Windows 95 - 10/2025(32bit/64bit))<br>
 <br>複数の画像が格納されている、アイコン(.ico)、カーソル(.cur)、アニメーションカーソル(.ani)内の各画像を参照するためのSusie Plug-in です。<br>
@@ -254,7 +258,7 @@ lossless JPEG表示対応と、RGBが各12bitの JPEG を簡易表示(正常表�
 ・UNICODE版&nbsp;API&nbsp;を実装<br>
 ・ARM64版&nbsp;を作成<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="spextend"><span>Extend convert Susie Plug-in</span></a> Version 1.4
+<hr><a href="./slplugin.html">↑</a><a name="spextend"><span role="heading" aria-level="2">Extend convert Susie Plug-in</span></a> Version 1.4
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/spextend14.zip">spextend14.zip</a> ( 210 Kbytes,&nbsp;2025-3-22,&nbsp;Windows XP/2003 - 11/2025(x86, x64, Arm64))<br>
 <br>ImageMagick 等の画像・書庫用のコマンドラインツールを用いて各種ファイルを読み込むためのSusie Plug-in です。<br>
@@ -281,7 +285,7 @@ ifextend : 画像の展開(ImageMagick)、動画の切り出し(FFmpeg)、32bit 
 1.3+3→1.4<br>
 ・ソースの見直しをした<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="spextend_dev"><span>Extend convert Susie Plug-in for developer</span></a> Version 1.4
+<hr><a href="./slplugin.html">↑</a><a name="spextend_dev"><span role="heading" aria-level="2">Extend convert Susie Plug-in for developer</span></a> Version 1.4
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/spextend_dev14.zip">spextend_dev14.zip</a> ( 251 Kbytes,&nbsp;2025-3-22,&nbsp;Windows XP/2003 - 11/2022(x86, x64, Arm64))<br>
 <br>Susie Plug-in を使ったアプリケーションの開発者向けに<br>
@@ -294,7 +298,7 @@ API の呼び出しをコンソールに出力する他、動作確認用のサ�
  axextend は、マルチスレッドに対応していません。<br>
  ifextend は、マルチスレッドに対応しています。<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="ifmagick"><span>ImageMagick Susie Plug-in</span></a> Version 1.0
+<hr><a href="./slplugin.html">↑</a><a name="ifmagick"><span role="heading" aria-level="2">ImageMagick Susie Plug-in</span></a> Version 1.0
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/ifmagick10.zip">ifmagick10.zip</a> ( 56 Kbytes,&nbsp;2016-2-27,&nbsp;Windows XP/2003 - 10/2012(32bit/64bit))<br>
 <br><a href="http://imagemagick.org/" >ImageMagick DLL版</a>を使って 各種ファイルを読み込むためのSusie Plug-in です。<br>
@@ -307,19 +311,19 @@ API の呼び出しをコンソールに出力する他、動作確認用のサ�
 ・マルチスレッド対応未確認<br>
  このPlug-inは、マルチスレッドに対応しているかを確認できていません。<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="runspx"><span>Runspi / Runsph / Runspia</span></a> Version 1.4
+<hr><a href="./slplugin.html">↑</a><a name="runspx"><span role="heading" aria-level="2">Runspi / Runsph / Runspia</span></a> Version 1.4
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/runspx14.zip">runspx14.zip</a> ( 178 Kbytes,&nbsp;2025-3-1,&nbsp;Windows XP/2003 - 11/2025(x86, x64, Arm64))<br>
 <br>Susie Plug-in を使って画像の取得、書庫展開をしたり、Susie Plug-in の動作検証を行ったりするためのコンソールアプリケーションです。<br><br>●<strong>変更点</strong><br>1.3→1.4<br>
 ・GetArchiveInfoのテストでソースがファイルの時に失敗すると異常終了するのを修正<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="spibench"><span>spibench 改変版</span></a>
+<hr><a href="./slplugin.html">↑</a><a name="spibench"><span role="heading" aria-level="2">spibench 改変版</span></a>
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/spibench-20170902.zip">spibench-20170902.zip</a> ( 97 Kbytes,&nbsp;2017-9-2,&nbsp;Windows XP/2003 - 10/2016(32bit/64bit))<br>
 <br>Susie Plug-in の動作速度を計測・比較するためのソフトである、宮坂 賢氏が作成された <a href="http://cetus.sakura.ne.jp/softlab/toolbox2/index.html#spibench" >spibench - Susie Plug-in 用シンプル・ベンチマークテスト</a> を、64bit版として使えるようにした等、いくつか改変したものです。<br>
 32bit版/64bit版が入っています。<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="unzzip"><span>unzzip.dll</span></a> Version 1.4
+<hr><a href="./slplugin.html">↑</a><a name="unzzip"><span role="heading" aria-level="2">unzzip.dll</span></a> Version 1.4
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/unzzip14.zip">unzzip14.zip</a> ( 220 Kbytes,&nbsp;2025-5-3,&nbsp;Windows XP/2003 - 11/2025(x86, x64, Arm64))<br>
 <br>zlib を使った zip書庫の展開ライブラリです。<br>
@@ -330,7 +334,7 @@ x64版/x86版/ARM64版が入っています。<br><br>●<strong>変更点</stro
 ・ファイル作成時のエラーを返さない時があったのを修正<br>
 ・各種ダイアログに操作中の書庫名を表示するようにした<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="7zca"><span>7zca.dll</span></a> Version 0.6
+<hr><a href="./slplugin.html">↑</a><a name="7zca"><span role="heading" aria-level="2">7zca.dll</span></a> Version 0.6
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/7zca06.zip">7zca06.zip</a> ( 190 Kbytes,&nbsp;2025-5-3,&nbsp;Windows XP/2003 - 11/2025(x86, x64, Arm64))<br>
 <br>7-Zipに入っている7z.dllを使った 7z等の書庫の展開ライブラリの試作品です。<br>
@@ -359,9 +363,9 @@ x64版/x86版/ARM64版が入っています。<br><br>●<strong>変更点</stro
 &nbsp;<a href="./dlw32api.html">Win32 API memo</a><br>
 &nbsp;<a href="dlsphapi.html">Susie Plugin API</a><br>
 <h3>Message Board</h3>
-&nbsp;<a href="http://toro.d.dooo.jp/wforum/wforum.cgi">Software</a>
+&nbsp;<a href="https://toro.d.dooo.jp/wforum/wforum.cgi">Software</a>
 <h3>another sites</h3>
-&nbsp;<a href="http://toro.d.dooo.jp/index.html">toro.d.dooo.jp</a><br>
+&nbsp;<a href="https://toro.d.dooo.jp/index.html">toro.d.dooo.jp</a><br>
 &nbsp;<a href="https://toroidj.github.io/">toroidj.github.io</a><br>
 &nbsp;<a href="https://github.com/toroidj/">github.com/toroidj</a>
 </div>

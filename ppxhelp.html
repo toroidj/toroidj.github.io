@@ -1954,7 +1954,7 @@ for /f &quot;delims=?&quot; %i in ('ppc -choose:multi -bootid:z') do @echo %i<br
 ・[Z] カーソル位置のファイルを開く<br>
 ・<a href="#ppckey110">^\[F10] \[APPS] Shell Context Menu</a><br>
 ・<a href="#ppckey111">^[APPS] ディレクトリコンテキストメニュー</a><br>
-・<a href="#ppckey112">[F10] メニューを表示</a><br>
+・<a href="#ppckey112">[F10] メニューバーにフォーカス／システムメニューを表示</a><br>
 ・&amp;[space] システムメニュー<br>
 <hr><br>
 
@@ -2378,7 +2378,7 @@ PPc が１枚のみの場合は、もう１枚開いてから移動します。<
 <br>
 現在ディレクトリに関するメニュー(M_DirMenu)です。<br>
 <hr><br>
-<a name="ppckey112"><b>[F10] メニューを表示</b></a><br>
+<a name="ppckey112"><b>[F10] メニューバーにフォーカス／システムメニューを表示</b></a><br>
 <br>
 メニューバーが表示されているときは、メニューバーにフォーカス移動します。メニューバーが表示されていないときは、システムメニューを表示します。<br>
 <hr><br>
@@ -4923,16 +4923,16 @@ line2&quot;<br>
 改行を常時パラメータに含めるときは、<a href="#optionmacro">%OC</a>を使用します。<br>
 <br>
 ●制御文字の挿入<br>
-%bt&nbsp;&nbsp;タブ文字(\t, 9)の挿入<br>
-%bl&nbsp;&nbsp;改行文字 LF(\n, 10)の挿入<br>
-%br&nbsp;&nbsp;改行文字 CR(\r, 13)の挿入<br>
-%bn&nbsp;&nbsp;改行文字 CRLF(\r\n, 13 10)の挿入<br>
+<b>%bt</b> タブ文字(\t, 9)の挿入<br>
+<b>%bl</b> 改行文字 LF(\n, 10)の挿入<br>
+<b>%br</b> 改行文字 CR(\r, 13)の挿入<br>
+<b>%bn</b> 改行文字 CRLF(\r\n, 13 10)の挿入<br>
 <b>*cliptext, *entrytip, *string, *insert, *insertsel, *replace, %I, %Q, *linemessage(log窓出力時), *logwindow で使用できます。</b>他のコマンドでは検証していません。<br>
 <br>
 ●文字コード指定による文字の挿入<br>
 文字コード(MultiByte 版なら現在のコードページの文字コード、それ以外なら UNICODE)を数値で指定して挿入します。<br>
-%bn;&nbsp;&nbsp;10進数値nの挿入（例: %b65;）<br>
-%bhn; 又は %bxn;&nbsp;&nbsp;16進数値nの挿入（例: %bx41;）<br>
+<b>%bn;</b> 10進文字コード nの挿入（例: %b65;）<br>
+<b>%bhn; 又は %bxn;</b> 16進文字コード数値 n の挿入（例: %bx41;）<br>
 <br>
 <hr><br>
 <a name="macro4"><b>%; 「;」</b></a><br>
@@ -5032,25 +5032,25 @@ type を指定することでスコープを指定することができます。
 「g」が指定されているときは、環境変数のマクロ文字が展開されます。<br>
 例) 「*string i,drive=%%*name(C,&quot;c:\123&quot;)」を実行した後、%si'drive'なら「%*name(C,&quot;c:\123&quot;)」、%sgi'drive'なら「123」になります。<br>
 <br>
-<b>%si&quot;name&quot; PPx の ID 単位</b><br>
+<b>%si&quot;name&quot;</b> PPx の ID 単位<br>
 スコープが PPx の ID である、各 PPx 内のみ有効な環境変数 name です。<br>
 異なる ID (例えば PPc[A]、PPc[B])で、%si&quot;abc&quot; の内容が異なります。一体化窓内であっても同様です。<br>
 環境変数の内容は 各 PPx が閉じられるまで有効です。<br>
 <br>
-<b>%so&quot;name&quot; コマンドライン単位</b><br>
+<b>%so&quot;name&quot;</b> コマンドライン単位<br>
 スコープがコマンドラインである、コマンドライン内のみ有効な環境変数 name です<br>
 例えば *string o,abc=string を実行した後に、改めて echo %so&quot;abc&quot; を実行すると、%so&quot;abc&quot; の中身は空になります。<br>
 *string o,abc=string %: echo %so&quot;abc&quot; であれば、設定した中身を利用できます。<br>
 また、*execute や %*extract、*usercommand、%*userfunction の場合、これらの実行元と、実行先は別スコープになります。<br>
 <br>
-<b>%sp&quot;name&quot; プロセス単位</b><br>
+<b>%sp&quot;name&quot;</b> プロセス単位<br>
 プロセス内で共通のスコープです。一体化窓内で共用したい内容を利用したいときに使用します。<br>
 尚、PPc以外は、%si と %sp が同じ内容になります。<br>
 <br>
-<b>%se&quot;name&quot; 一行編集・PPe 単位</b>  <br>
+<b>%se&quot;name&quot;</b> 一行編集・PPe 単位> <br>
 各一行編集や PPe がそれぞれ記憶している内容です。一行編集毎の状態を記憶したいとき等に使用できます。<br>
 <br>
-<b>%su&quot;name&quot; PPx 全体</b><br>
+<option:%su&quot;name&quot; PPx 全体><br>
 PPx 全体で共有するスコープがグローバル、且つ PPx を全てが終了しても維持される不揮発の内容です。ユーザデータ保存用のカスタマイズ項目 _User に保存される内容であり、_User を直接変更しても %su に反映されます。<br>
 <br>
 <br>
@@ -5149,57 +5149,57 @@ filenameが指定されている時はそのファイルによる判別を行い
 <a name="オプション一覧"><b>オプション一覧</b></a>(後ろに -を付けるとそのオプションを解除)<br>
 <b>・マクロ文字展開制御</b><br>
 <dl compact>
-<dt><b>A</b></dt><dd>展開したディレクトリの末尾を \*.* にします。</dd>
-<dt><b>r</b></dt><dd>マークエントリ全てを処理します。一回の実行でマークエントリの全てを対象にすることができない場合、繰り返し実行します。</dd>
+<dt><b>A</b> </dt><dd>展開したディレクトリの末尾を \*.* にします。</dd>
+<dt><b>r</b> </dt><dd>マークエントリ全てを処理します。一回の実行でマークエントリの全てを対象にすることができない場合、繰り返し実行します。</dd>
 <dt></dt><dd>例えば、%C, %X等では、マークエントリの数だけ実行し、各エントリに対して指定したコマンドを実行します。(実行する順番は、マークした順番です)</dd>
 <dt></dt><dd> %# ではコマンドラインに全てのエントリが入りきらない場合は、一旦入る分だけで実行をおこない、続けて残りのエントリの列挙・実行を繰り返します。</dd>
 <dt></dt><dd> 逆に、このオプションを指定しないと、マークされていても最初のマークエントリのみ処理し、他のマークエントリは処理しません。</dd>
 <dt></dt><dd> 尚、%C, %X等で複数の選択ファイルが対象になる場合は、このオプションが自動付加されます。この動作を抑制したい場合は、<b>%ORを先頭に指定するか、%Or- を%C, %X等の後ろに付加する</b>必要があります。</dd>
-<dt><b>R</b></dt><dd>%Or を無効にして、必ず１ファイルのみ処理します。複数の選択ファイルがあっても、%Or を無効にして繰り返し実行しないようにします。</dd>
-<dt><b>S</b></dt><dd>展開するパスの区切りを「/」にします。UNZIP32.DLL用のオプションです。</dd>
-<dt><b>p</b></dt><dd>&quot;[&quot;,  &quot;]&quot;を&quot;\[&quot;, &quot;\]&quot;にエスケープします。UNZIP32.DLL用のオプションです。</dd>
-<dt><b>N</b></dt><dd>編集機能を無効にします。%!x や %E があっても編集を行いません。</dd>
-<dt><b>C</b></dt><dd>改行をパラメータに含めます。%I, %Q, *cliptext, *entrytip, *string で改行を含めたテキストを指定したいときなどに使います。尚、普通のアプリケーションのコマンドラインは改行を含めることはできないので、この指定を使用したことにより異常動作を起こす可能性があります。</dd>
+<dt><b>R</b> </dt><dd>%Or を無効にして、必ず１ファイルのみ処理します。複数の選択ファイルがあっても、%Or を無効にして繰り返し実行しないようにします。</dd>
+<dt><b>S</b> </dt><dd>展開するパスの区切りを「/」にします。UNZIP32.DLL用のオプションです。</dd>
+<dt><b>p</b> </dt><dd>&quot;[&quot;,  &quot;]&quot; を &quot;\[&quot;, &quot;\]&quot;にエスケープします。UNZIP32.DLL用のオプションです。</dd>
+<dt><b>N</b> </dt><dd>編集機能を無効にします。%!x や %E があっても編集を行いません。</dd>
+<dt><b>C</b> </dt><dd>改行をパラメータに含めます。%I, %Q, *cliptext, *entrytip, *string で改行を含めたテキストを指定したいときなどに使います。尚、普通のアプリケーションのコマンドラインは改行を含めることはできないので、この指定を使用したことにより異常動作を起こす可能性があります。</dd>
 <dt></dt><dd>一時的に改行を含めるときは、<a href="#escapecr">改行エスケーブ %bn</a>を使用します。</dd>
-<dt><b>D</b></dt><dd>実行、ダイアログ表示、ファイル作成等のマクロ文字、*コマンド、%*関数の動作を無効にします。メニュー表示等に使うため、動作してほしくないときに用います。</dd>
+<dt><b>D</b> </dt><dd>実行、ダイアログ表示、ファイル作成等のマクロ文字、*コマンド、%*関数の動作を無効にします。メニュー表示等に使うため、動作してほしくないときに用います。</dd>
 <dt></dt>
-<dt>無効化されるものは以下の通りです。</dt>
-<dt>・実行、実行制御（各種 *command、%:, %&amp; 等の実行制御）</dt>
-<dt>・入力・表示ダイアログを伴うマクロ文字(%E, %*input, %I, %Q, %}, %!, %$)</dt>
-<dt>・ファイル作成を伴うマクロ文字(%@, %a)</dt>
-<dt>・その他実行を伴うマクロ文字(各種 %*function, %J, %K, %M, %Z, %j %k, %u, %v, %z)</dt>
-<dt>・エラーメッセージの表示</dt>
+<dt></dt><dd>無効化されるものは以下の通りです。</dd>
+<dt></dt><dd>・実行、実行制御（各種 *command、%:, %&amp; 等の実行制御）</dd>
+<dt></dt><dd>・入力・表示ダイアログを伴うマクロ文字(%E, %*input, %I, %Q, %}, %!, %$)</dd>
+<dt></dt><dd>・ファイル作成を伴うマクロ文字(%@, %a)</dd>
+<dt></dt><dd>・その他実行を伴うマクロ文字(各種 %*function, %J, %K, %M, %Z, %j %k, %u, %v, %z)</dd>
+<dt></dt><dd>・エラーメッセージの表示</dd>
 <dt></dt>
 <dt><b>・実行制御</b></dt>
 <dt>以下の実行制御に関するオプションは、ファイルの実行の他、%Zと *start で機能します。</dt>
-<dt><b>m</b></dt><dd>マクロ文字を展開した結果をログファイルに出力します(X_log, X_save)。デバッグ用です。</dd>
+<dt><b>m</b> </dt><dd>マクロ文字を展開した結果をログファイルに出力します(X_log, X_save)。デバッグ用です。</dd>
 <dt></dt>
 <dt><b>実行制御-起動時ウィンドウ</b></dt>
-<dt><b>x</b></dt><dd>ウィンドウを最大化した状態で実行します。</dd>
-<dt><b>n</b></dt><dd>ウィンドウを最小化した状態で実行します。フォーカス移動も行いません。</dd>
-<dt><b>d</b></dt><dd>ウィンドウを表示しない状態で実行します。コンソールを必要とする場合でもコンソールが表示されません。フォーカス移動も行いません。</dd>
+<dt><b>x</b> </dt><dd>ウィンドウを最大化した状態で実行します。</dd>
+<dt><b>n</b> </dt><dd>ウィンドウを最小化した状態で実行します。フォーカス移動も行いません。</dd>
+<dt><b>d</b> </dt><dd>ウィンドウを表示しない状態で実行します。コンソールを必要とする場合でもコンソールが表示されません。フォーカス移動も行いません。</dd>
 <dt></dt><dd>※この指定をすると動作がおかしくなることがあります。(例:cmd.exeではコードページが英語固定になり、メッセージが英語表記になったり、日本語ファイル名が扱えなくなったりする)</dd>
-<dt><b>a</b></dt><dd>フォーカス移動なしで、通常のウィンドウの大きさで実行します。</dd>
-<dt><b>l</b></dt><dd>実行優先度を「低」の状態で実行します。%Z, *startでは機能しません。</dd>
+<dt><b>a</b> </dt><dd>フォーカス移動なしで、通常のウィンドウの大きさで実行します。</dd>
+<dt><b>l</b> </dt><dd>実行優先度を「低」の状態で実行します。%Z, *startでは機能しません。</dd>
 <dt></dt>
 <dt><b>実行制御-コンソール関連</b></dt>
-<dt><b>B</b></dt><dd>常にPPb経由で実行。通常はコンソールを必要とする場合のみPPbを使いますが、このオプションを指定するとPPbを常に使います。</dd>
-<dt><b>b</b></dt><dd>PPb経由で実行しない。通常はコンソールを必要とする場合にPPbを使いますが、このオプションを指定するとPPbを使用せずに自前で実行します。</dd>
+<dt><b>B</b> </dt><dd>常に PPb 経由で実行。通常はコンソールを必要とする場合のみPPbを使いますが、このオプションを指定するとPPbを常に使います。</dd>
+<dt><b>b</b> </dt><dd>PPb 経由で実行しない。通常はコンソールを必要とする場合にPPbを使いますが、このオプションを指定するとPPbを使用せずに自前で実行します。</dd>
 <dt></dt>
 <dt><b>実行制御-コマンドラインシェル(%COMSPEC%, CMD.EXE)</b></dt>
-<dt><b>c</b></dt><dd>常にコマンドラインシェルを使用する。通常、実行ファイルはコマンドラインシェルを介さずに実行します。</dd>
-<dt><b>P</b></dt><dd>パイプ(&quot;|&quot;)・リダイレクト(&quot;&gt;&quot;, &quot;&lt;&quot;)処理を無効にする。これらの記号をパラメータとして使用するときに指定します。</dd>
+<dt><b>c</b> </dt><dd>常にコマンドラインシェルを使用する。通常、実行ファイルはコマンドラインシェルを介さずに実行します。</dd>
+<dt><b>P</b> </dt><dd>パイプ(&quot;|&quot;)・リダイレクト(&quot;&gt;&quot;, &quot;&lt;&quot;)処理を無効にする。これらの記号をパラメータとして使用するときに指定します。</dd>
 <dt></dt>
 <dt><b>実行制御-待機・実行後処理</b></dt>
-<dt><b>i</b></dt><dd>起動完了まで待ちます。実行したアプリケーションの起動が完了するまで待ちます。GUIアプリケーションならウィンドウの表示がされたときが起動完了時になります。コンソールアプリケーションなら実行開始したときが起動完了時になります。</dd>
-<dt><b>I</b></dt><dd>PPxのキーコマンド(xx = key1 key2... や %K&quot;key1 key1&quot;)を実行しているときにエラーが発生しても、実行を中止しないで次のコマンドを実行します。ユーザによるキャンセル操作を行った場合は常に中止します。</dd>
-<dt><b>s</b></dt><dd>順番に一つずつ実行します。実行したアプリケーションが終了するまで待機し、終了してから次のコマンドを実行します。</dd>
-<dt><b>q</b></dt><dd>静かに待機します。オプション i, s による待機が一定時間経過すると、待機をキャンセルできるようにするダイアログを表示しますが、これを表示しないようにします。また、PPbの空き待ちダイアログも非表示にします。</dd>
-<dt><b>T</b></dt><dd>実行後、レスポンスファイル(%@, %a)を削除します。尚、%Os を指定しないと、アプリケーション実行中にレスポンスファイルを削除してしまうことがあります。</dd>
-<dt><b>W</b></dt><dd>(PPb)実行後キー入力待ちを行います。PPbで１つコマンドを実行した後に、「キーを押すと続行します...」を表示し、入力を待ちます。何かキーを押すか、マウスクリックした後に、次のコマンドを実行します。</dd>
+<dt><b>i</b> </dt><dd>起動完了まで待機。実行したアプリケーションの起動が完了するまで待ちます。GUIアプリケーションならウィンドウの表示がされたときが起動完了時になります。コンソールアプリケーションなら実行開始したときが起動完了時になります。</dd>
+<dt><b>I</b> </dt><dd>PPx のキーコマンドのエラー無視。xx = key1 key2... や %K&quot;key1 key1&quot; 等と実行しているときにエラーが発生しても、実行を中止しないで次のコマンドを実行します。ユーザによるキャンセル操作を行った場合は常に中止します。</dd>
+<dt><b>s</b> </dt><dd>順番に一つずつ実行します。実行したアプリケーションが終了するまで待機し、終了してから次のコマンドを実行します。</dd>
+<dt><b>q</b> </dt><dd>静かに待機します。オプション i, s による待機が一定時間経過すると、待機をキャンセルできるようにするダイアログを表示しますが、これを表示しないようにします。また、PPbの空き待ちダイアログも非表示にします。</dd>
+<dt><b>T</b> </dt><dd>実行後、レスポンスファイル(%@, %a)を削除します。尚、%Os を指定しないと、アプリケーション実行中にレスポンスファイルを削除してしまうことがあります。</dd>
+<dt><b>W</b> </dt><dd>(PPb)実行後キー入力待ちを行います。PPbで１つコマンドを実行した後に、「キーを押すと続行します...」を表示し、入力を待ちます。何かキーを押すか、マウスクリックした後に、次のコマンドを実行します。</dd>
 <dt></dt>
 <dt><b>実行制御-実行後PPc処理</b></dt>
-<dt><b>O</b></dt><dd>実行後カーソルを一つ下に移動させます。%K&quot;@down&quot;と同じ効果です。</dd>
+<dt><b>O</b> </dt><dd>実行後カーソルを一つ下に移動させます。%K&quot;@down&quot;と同じ効果です。</dd>
 <dt></dt></dl><br>
 <hr><br>
 <a name="macro25"><b>%W キャプション文字列取得</b></a><br>
@@ -5213,19 +5213,19 @@ PPc, PPv, 一行編集窓上からこのマクロ文字を使用すると、こ�
 <dl compact>
 <dt>[type]</dt><dd>生成するパス形式。指定する順は任意です。</dd>
 <dt>(出力形式)</dt>
-<dt> C</dt><dd>ファイル名＋拡張子。%C 相当</dd>
-<dt> X</dt><dd>ファイル名。%X 相当</dd>
-<dt> T</dt><dd>拡張子。%T 相当</dd>
-<dt> D</dt><dd>ディレクトリ名 ※<a href="#dirformatLF">ListFile 内での %FD の取り扱い</a></dd>
+<dt><b>C</b> </dt><dd>ファイル名＋拡張子。%C 相当</dd>
+<dt><b>X</b> </dt><dd>ファイル名。%X 相当</dd>
+<dt><b>T</b> </dt><dd>拡張子。%T 相当</dd>
+<dt><b>D</b> </dt><dd>ディレクトリ名 ※<a href="#dirformatLF">ListFile 内での %FD の取り扱い</a></dd>
 <dt>(「&quot;」の処理)</dt>
-<dt> B</dt><dd>必ず「&quot;」で括る。この指定がないときも空白を含むときは括る</dd>
-<dt> N</dt><dd>空白があっても「&quot;」で括らない</dd>
+<dt><b>B</b> </dt><dd>必ず「&quot;」で括る。この指定がないときも空白を含むときは括る</dd>
+<dt><b>N</b> </dt><dd>空白があっても「&quot;」で括らない</dd>
 <dt>(その他)</dt>
-<dt> V</dt><dd>ディレクトリ名で「#x:」等の仮想ディレクトリ表記を使う。</dd>
+<dt><b>V</b> </dt><dd>ディレクトリ名で「#x:」等の仮想ディレクトリ表記を使う。</dd>
 <dt></dt><dd>ListFile内のときは、そのListFileのパス。</dd>
 <dt></dt><dd>指定しないときは実際にあるディレクトリ名に変換する。</dd>
-<dt> S</dt><dd>SFN(8.3形式)指定。MultiByte版で扱えない文字を含むエントリを扱う場合、または DOSアプリケーションでエントリを指定する場合に用います。</dd>
-<dt> M</dt><dd>(PPc限定)マークしたファイルに限定する。マークしていないときは空欄になる。</dd>
+<dt><b>S</b> </dt><dd>SFN(8.3形式)指定。MultiByte版で扱えない文字を含むエントリを扱う場合、または DOSアプリケーションでエントリを指定する場合に用います。</dd>
+<dt><b>M</b> </dt><dd>(PPc限定)マークしたファイルに限定する。マークしていないときは空欄になる。</dd>
 <dt></dt></dl><br>
 例)&nbsp;&nbsp;ディレクトリが「C:\Program Files」、カーソルが「Accessories」のとき、<br>
 %FC&nbsp;&nbsp;Accessories<br>
@@ -6789,48 +6789,48 @@ command の先頭の文字が「-」や「/」のときは、「&quot;-…&quot;
 <br>
 <a name="runoptions"></a><b>option指定</b><br>
 <br>
-<b>-launch</b>&nbsp;&nbsp;command があるディレクトリをカレントディレクトリ(作業ディレクトリの設定)として実行します。※*launch はこの指定が常時有効です。<br>
-<b>-d:path</b>&nbsp;&nbsp;pathをカレントディレクトリとします。常時指定したいときは *cd を使います。<br>
+<b>-launch</b> &nbsp;&nbsp;command があるディレクトリをカレントディレクトリ(作業ディレクトリの設定)として実行します。※*launch はこの指定が常時有効です。<br>
+<b>-d:path</b> &nbsp;&nbsp;pathをカレントディレクトリとします。常時指定したいときは *cd を使います。<br>
 <br>
-<b>-onppb</b>&nbsp;&nbsp;常にPPb経由で実行。通常はコンソールを必要とする場合のみPPbを使いますが、このオプションを指定するとPPbを常に使います。常時指定したいときは %OB を使います。<br>
-<b>-noppb</b>&nbsp;&nbsp;PPb経由で実行しない。通常はコンソールを必要とする場合にPPbを使いますが、このオプションを指定するとPPbを使用せずに自前で実行します。常時指定したいときは %Ob を使います。<br>
+<b>-onppb</b> &nbsp;&nbsp;常にPPb経由で実行。通常はコンソールを必要とする場合のみPPbを使いますが、このオプションを指定するとPPbを常に使います。常時指定したいときは %OB を使います。<br>
+<b>-noppb</b> &nbsp;&nbsp;PPb経由で実行しない。通常はコンソールを必要とする場合にPPbを使いますが、このオプションを指定するとPPbを使用せずに自前で実行します。常時指定したいときは %Ob を使います。<br>
 <br>
-<b>-cmd</b>&nbsp;&nbsp;常にコマンドラインシェル(cmd.exe等)を使用する。常時指定したいときは %Oc を使います。<br>
+<b>-cmd</b> &nbsp;&nbsp;常にコマンドラインシェル(cmd.exe等)を使用する。常時指定したいときは %Oc を使います。<br>
 <br>
-<b>-min</b>&nbsp;&nbsp;ウィンドウを最小化した状態で実行します。フォーカス移動も行いません。常時指定したいときは %On を使います。<br>
-<b>-max</b>&nbsp;&nbsp;ウィンドウを最大化した状態で実行します。常時指定したいときは %Ox を使います。<br>
-<b>-hide</b>&nbsp;&nbsp;ウィンドウを表示しない状態で実行します。コンソールを必要とする場合でもコンソールが表示されません。フォーカス移動も行いません。<br>
+<b>-min</b> &nbsp;&nbsp;ウィンドウを最小化した状態で実行します。フォーカス移動も行いません。常時指定したいときは %On を使います。<br>
+<b>-max</b> &nbsp;&nbsp;ウィンドウを最大化した状態で実行します。常時指定したいときは %Ox を使います。<br>
+<b>-hide</b> &nbsp;&nbsp;ウィンドウを表示しない状態で実行します。コンソールを必要とする場合でもコンソールが表示されません。フォーカス移動も行いません。<br>
 &nbsp;&nbsp;※この指定をすると動作がおかしくなることがあります。(例:cmd.exeではコードページが英語固定になり、メッセージが英語表記になったり、日本語ファイル名が扱えなくなったりする)<br>
 &nbsp;&nbsp;常時指定したいときは %Od を使います。<br>
-<b>-noactive</b>&nbsp;&nbsp;フォーカス移動なしで、通常のウィンドウの大きさで実行します。常時指定したいときは %Oa を使います。<br>
-<b>-nostartmsg</b>&nbsp;&nbsp;実行を開始するときの「開始…」表示をなくします。※「開始…」表示は、セキュリティソフトのファイルスキャンによって実行前に待たされることがあるため用意しています。表示が不要のときは、Mes0411:EXEF (日本語のとき)を空欄にして下さい。<br>
+<b>-noactive</b> &nbsp;&nbsp;フォーカス移動なしで、通常のウィンドウの大きさで実行します。常時指定したいときは %Oa を使います。<br>
+<b>-nostartmsg</b> &nbsp;&nbsp;実行を開始するときの「開始…」表示をなくす。※「開始…」表示は、セキュリティソフトのファイルスキャンによって実行前に待たされることがあるため用意しています。表示が不要のときは、Mes0411:EXEF (日本語のとき)を空欄にして下さい。<br>
 <br>
-<b>-wait</b>&nbsp;&nbsp;実行したアプリケーションが終了するまで待機します。常時指定したいときは %Os を使います。<br>
-<b>-wait:idle</b>&nbsp;&nbsp;起動完了まで待ちます。実行したアプリケーションの起動が完了するまで待ちます。GUIアプリケーションならウィンドウの表示がされたときが起動完了時になります。コンソールアプリケーションなら実行開始したときが起動完了時になります。常時指定したいときは %Oi を使います。<br>
-<b>-wait:later</b>&nbsp;&nbsp;*wait -run でアプリケーションの終了を待機できるようにします。特殊環境変数PID/TIDにプロセスID/スレッドIDを記憶します。<br>
+<b>-wait</b> &nbsp;&nbsp;実行したアプリケーションが終了するまで待機します。常時指定したいときは %Os を使います。<br>
+<b>-wait:idle</b> &nbsp;&nbsp;起動完了まで待ちます。実行したアプリケーションの起動が完了するまで待ちます。GUIアプリケーションならウィンドウの表示がされたときが起動完了時になります。コンソールアプリケーションなら実行開始したときが起動完了時になります。常時指定したいときは %Oi を使います。<br>
+<b>-wait:later</b> &nbsp;&nbsp;*wait -run でアプリケーションの終了を待機できるようにします。特殊環境変数PID/TIDにプロセスID/スレッドIDを記憶します。<br>
 &nbsp;&nbsp;※現在PPb/PPb経由など、使用できないときが各種有ります。*run -wait:later ～ %: %I&quot;PID=%so,&quot;PID&quot;&quot; 等として、PID が取得できるときだけ使用できます。<br>
 &nbsp;&nbsp;※-wait:idle を併用するときは -wait:idle -wait:later とします。<br>
-<b>-wait:no</b>&nbsp;&nbsp;終了待機、起動完了待機を行いません。%Os, %Oi, -wait 等が無効になります。<br>
-<b>-pid -tid</b>&nbsp;&nbsp;プロセスID, メインスレッドIDを特殊環境変数PID/TIDに保存します。保存したIDは、「%so,&quot;PID&quot;」「%so,&quot;TID&quot;」で取得できます。尚、メインスレッドIDは取得できないことがあります。<br>
+<b>-wait:no</b> &nbsp;&nbsp;終了待機、起動完了待機を行いません。%Os, %Oi, -wait 等が無効になります。<br>
+<b>-pid -tid</b> &nbsp;&nbsp;プロセスID, メインスレッドIDを特殊環境変数 PID/TID に保存します。保存したIDは、「%so,&quot;PID&quot;」「%so,&quot;TID&quot;」で取得できます。尚、メインスレッドIDは取得できないことがあります。<br>
 &nbsp;&nbsp;取得したプロセスIDは、*wait -pid や taskkill.exe 等で使用できます。<br>
 <br>
 <b>・実行ファイル(exeファイル)のみ有効な指定</b><br>
 <br>
-<b>-low</b>&nbsp;&nbsp;実行優先度を「低」の状態で実行します。システムがアイドル状態のときだけ実行されます。<br>
-<b>-belownormal</b>&nbsp;&nbsp;実行優先度を「通常以下」の状態で実行します。<br>
-<b>-normal</b>&nbsp;&nbsp;実行優先度を「通常」の状態で実行します。<br>
-<b>-abovenormal</b>&nbsp;&nbsp;実行優先度を「通常以上」の状態で実行します。<br>
-<b>-high</b>&nbsp;&nbsp;実行優先度を「高」の状態で実行します。<br>
-<b>-realtime</b>&nbsp;&nbsp;管理者権限があるときに、実行優先度を「リアルタイム」の状態で実行します。通常の権限のときは「高」になります。<br>
+<b>-low</b> &nbsp;&nbsp;実行優先度を「低」の状態で実行します。システムがアイドル状態のときだけ実行されます。<br>
+<b>-belownormal</b> &nbsp;&nbsp;実行優先度を「通常以下」の状態で実行します。<br>
+<b>-normal</b> &nbsp;&nbsp;実行優先度を「通常」の状態で実行します。<br>
+<b>-abovenormal</b> &nbsp;&nbsp;実行優先度を「通常以上」の状態で実行します。<br>
+<b>-high</b> &nbsp;&nbsp;実行優先度を「高」の状態で実行します。<br>
+<b>-realtime</b> &nbsp;&nbsp;管理者権限があるときに、実行優先度を「リアルタイム」の状態で実行します。通常の権限のときは「高」になります。<br>
 <br>
-<b>-breakjob</b>&nbsp;&nbsp;タスクのジョブを分離します。<br>
-<b>-newgroup</b>&nbsp;&nbsp;プロセスグループを分離します。プロセスグループは、コンソールでCtrl+C / Ctrl+Breakを行ったときのシグナルが送信される範囲となります。<br>
+<b>-breakjob</b> &nbsp;&nbsp;タスクのジョブを分離します。<br>
+<b>-newgroup</b> &nbsp;&nbsp;プロセスグループを分離します。プロセスグループは、コンソールでCtrl+C / Ctrl+Breakを行ったときのシグナルが送信される範囲となります。<br>
 <br>
-<b>-pos:x,y</b>&nbsp;&nbsp;表示位置を指定します。前回の表示位置で表示するソフトに対しては機能しません。このため、cmd.exe等の一部のソフトのみ使用できます。<br>
+<b>-pos:x,y</b> &nbsp;&nbsp;表示位置を指定します。前回の表示位置で表示するソフトに対しては機能しません。このため、cmd.exe等の一部のソフトのみ使用できます。<br>
 <br>
-<b>-size:width,height</b>&nbsp;&nbsp;窓の大きさを指定します。前回の表示位置で表示するソフトに対しては機能しません。このため、一部のソフトのみ使用できます。<br>
+<b>-size:width,height</b> &nbsp;&nbsp;窓の大きさを指定します。前回の表示位置で表示するソフトに対しては機能しません。このため、一部のソフトのみ使用できます。<br>
 <br>
-<b>-io[:option1[,option2...]]</b>&nbsp;&nbsp;標準入出力関係の指定を行います。<br>
+<b>-io[:option1[,option2...]]</b> &nbsp;&nbsp;標準入出力関係の指定を行います。<br>
 &nbsp;&nbsp;数値&nbsp;&nbsp;標準入出力のコードページを数値で指定します。<br>
 &nbsp;&nbsp;utf8, utf16, unicode, system, ansi, sjis, us<br>
 &nbsp;&nbsp;&nbsp;&nbsp;標準入出力のコードページを変更します。<br>
@@ -6844,9 +6844,9 @@ command の先頭の文字が「-」や「/」のときは、「&quot;-…&quot;
 &nbsp;&nbsp;log&nbsp;&nbsp;標準出力・エラー出力をログ窓に表示します。-log と同じです。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;log と ppe を同時に指定するとログ窓とPPeに表示します。<br>
 <br>
-<b>-log[:option1[,option2...]]</b>&nbsp;&nbsp;標準出力・エラー出力の結果をログ窓に表示します。-io:log と同じです。<br>
+<b>-log[:option1[,option2...]]</b> &nbsp;&nbsp;標準出力・エラー出力の結果をログ窓に表示します。-io:log と同じです。<br>
 <br>
-<b>-desktoplevel</b>&nbsp;&nbsp;UAC により昇格しているとき、降格して実行します。デスクトップの UAC の格で実行します。<br>
+<b>-desktoplevel</b> &nbsp;&nbsp;UAC により昇格しているとき、降格して実行します。デスクトップの UAC の格で実行します。<br>
 <br>
 関連 <a href="#execute">実行処理</a>, <a href="#launch">*launch</a>, <a href="#start">*start</a>, <a href="#zapfile">%Z</a>, <a href="#wait">*wait</a>, <a href="#optionmacro">%O</a><br>
 <hr><br>
@@ -6872,14 +6872,14 @@ command や parmeter 中に括弧 (,) を含む場合は %(  %) で括る必要�
 ・options<br>
 　メニューの表示項目の指定、または実行方法です。<br>
 　<b>選択ファイル全て</b><br>
-　-marks&nbsp;&nbsp;全ての選択ファイルを対象にします。pathname の記載は不要です。 例) *shellmenu -marks<br>
+<b>-marks</b> 全ての選択ファイルを対象にします。pathname の記載は不要です。 例) *shellmenu -marks<br>
 　<b>メニューの表示項目の指定</b><br>
-　-extend&nbsp;&nbsp;拡張項目を表示します。エクスプローラーのShiftキー + 右クリックメニューのように、「パスのコピー」等の項目が増えます。<br>
-　-itemmenu&nbsp;&nbsp;ビュー内のアイテム用の項目を表示します。尚、この指定を行ってもメニュー項目に変化がないことが多いです。<br>
-　-viewpane&nbsp;&nbsp;エクスプローラーツリーが無いときの項目を表示します。尚、この指定を行ってもメニュー項目に変化がないことが多いです。<br>
-　-shiftkey&nbsp;&nbsp;エクスプローラーの右クリックメニューと同じようにShiftキーの有無で表示項目が変化(-extend の切り替え)するようになります。%z はこの指定が有効になっています。<br>
+<b>-extend</b> 拡張項目を表示します。エクスプローラーのShiftキー + 右クリックメニューのように、「パスのコピー」等の項目が増えます。<br>
+<b>-itemmenu</b> ビュー内のアイテム用の項目を表示します。尚、この指定を行ってもメニュー項目に変化がないことが多いです。<br>
+<b>-viewpane</b> エクスプローラーツリーが無いときの項目を表示します。尚、この指定を行ってもメニュー項目に変化がないことが多いです。<br>
+<b>-shiftkey</b> エクスプローラーの右クリックメニューと同じようにShiftキーの有無で表示項目が変化(-extend の切り替え)するようになります。%z はこの指定が有効になっています。<br>
 　<b>実行方法</b><br>
-　-キーワード を指定したときは、メニューを表示しないでそのキーワードに対応した項目の動作をします。<br>
+<b>-[keyword]</b> キーワードを指定したときは、メニューを表示しないでそのキーワードに対応した項目の動作をします。<br>
 　省略した場合はメニュー表示します。<br>
 キーワードは、次の4種類があります。<br>
 :1)「-」のみ。標準の項目（太字表示されている項目）を実行します。<br>
@@ -6934,11 +6934,11 @@ runasuser&nbsp;&nbsp;別のユーザで実行<br>
 　url も指定できます。<br>
 　name の先頭の文字が「-」や「/」のときは、「&quot;-…&quot;」と「&quot;」で括る必要があります。マクロ文字を指定するときは「&quot;%C&quot;」等と予め括るようにしてください。※括らないとオプション扱いになります。<br>
 <br>
-・command 実行方法です。使用できる指定は<a href="#zapmenu">%z</a>を参照してください。<br>
+<b>-command</b> 実行方法です。使用できる指定は<a href="#zapmenu">%z</a>を参照してください。<br>
 　省略した場合はデフォルト設定(通常open)で実行します。<br>
 　例) *start -runas cmd   cmd.exeを管理者/別のユーザで実行する。<br>
 <br>
-・-launch カレントディレクトリを、name があるディレクトリにします。この指定がなければ現在のカレントディレクトリを使用します。※<a href="#launch">*launch</a>と同じ処理です。<br>
+<b>-launch</b> カレントディレクトリを、name があるディレクトリにします。この指定がなければ現在のカレントディレクトリを使用します。※<a href="#launch">*launch</a>と同じ処理です。<br>
 <br>
 関連 <a href="#execute">実行処理</a>, <a href="#run">*run</a>, <a href="#launch">*launch</a>, <a href="#zapfile">%Z</a>, <a href="#zapmenu">%z</a>, <a href="#optionmacro">%O</a><br>
 <hr><br>
@@ -6982,11 +6982,12 @@ time の単位はmsで、<i>*wait 1000</i>で１秒間待機します。<br>
 *wait n はキーボードの仕様上、中断できないことがあります。<br>
 *wait n,1 は仕様上、待機終了直後にしか中断できません。<br>
 <br>
-<b>プロセスの待機</b><br>
+<b>-run</b> *run プロセスの待機<br>
 ・*run -wait:later ～ %: ～ %: *wait -run<br>
  -run オプションを指定すると、-wait:later を指定した *run コマンド対象のプロセス終了を待つことができます。また、取得可能であれば、プロセス終了コードを取得し%*exitcodeで参照することができます。<br>
  *wait -run 1000 と待機時間の指定も可能です。<br>
 <br>
+<b>-pid:n</b> プロセスID指定の待機<br>
 ・*wait -pid:12345<br>
  -pid オプションを指定すると、指定したプロセスIDのプロセスの終了を待つことができます。プロセスID は、*run -pid で実行したときに %so,&quot;PID&quot; で取得できるほか、タスクマネージャ、tasklist.exe 等で確認できます。<br>
  *wait -pid:12345 1000 とタイムアウト時間の指定も可能です。<br>
@@ -7098,15 +7099,15 @@ oldnameのファイルまたはディレクトリをnewnameに変更します。
 ・ドラッグ(エミュレート式): OLE D&amp;D(マウス操作の代行)。対象アプリケーションのタイトルバー等にドロップします。操作中はマウス操作ができません。<br>
 <br>
 option は、次の通りです。<br>
--mode:r|c|m&nbsp;&nbsp;OLE D&amp;D を行う時の動作指定です。<br>
+<b>-mode:r|c|m</b> OLE D&amp;D を行う時の動作指定です。<br>
 &nbsp;&nbsp;r&nbsp;&nbsp;右ドラッグ扱いにします。<br>
 &nbsp;&nbsp;c&nbsp;&nbsp;複写動作を指定します<br>
 &nbsp;&nbsp;m&nbsp;&nbsp;移動動作を指定します<br>
 <br>
--src:source path&nbsp;&nbsp;指定した１つのファイルやディレクトリの D&amp;D を行います。指定が無いときは選択エントリが対象になります。<br>
+<b>-src:source path</b> 指定した１つのファイルやディレクトリの D&amp;D を行います。指定が無いときは選択エントリが対象になります。<br>
 <br>
--masktitle:wildcard&nbsp;&nbsp;一覧のフィルタとして、窓のタイトルによって限定するための<a href="#wildcard">ワイルドカード</a>を指定します。<br>
--maskfile:wildcard&nbsp;&nbsp;一覧のフィルタとして、窓の実行ファイル名によって限定するための<a href="#wildcard">ワイルドカード</a>を指定します。実行ファイル名は、「C:\Windows\explorer.exe」の場合は「explorer」になります。<br>
+<b>-masktitle:wildcard</b> 一覧のフィルタとして、窓のタイトルによって限定するための<a href="#wildcard">ワイルドカード</a>を指定します。<br>
+<b>-maskfile:wildcard</b> 一覧のフィルタとして、窓の実行ファイル名によって限定するための<a href="#wildcard">ワイルドカード</a>を指定します。実行ファイル名は、「C:\Windows\explorer.exe」の場合は「explorer」になります。<br>
 <br>
 option は、次のように「,」区切りで指定することもできます。<br>
 *autodragdrop <i>[caption[,id]][,r|c|m[,source path]]</i><br>
@@ -7151,24 +7152,24 @@ filenameが指定されていればその名前で、無ければ既存の名前
 <br>
 次のオプションが指定できます。<br>
 ・出力形式の指定(追加項目指定より前に記載してください)<br>
--name&nbsp;&nbsp;エントリ名のみ出力します。(&quot;entryname&quot;)<br>
--basic&nbsp;&nbsp;エントリ名と各種属性を出力します。マーク情報、コメントは含まれません。(&quot;entryname&quot;,&quot;shortname&quot;,A:H20,…)<br>
--JSON&nbsp;&nbsp;JSON形式で出力します。<br>
--all&nbsp;&nbsp;エントリ名と各種属性を出力します。マーク情報、色、コメント等も出力します。<br>
--normal&nbsp;&nbsp;(規定値)エントリ名、各種属性、コメント、csv取り込み用文字列を出力します。マーク情報は含まれません。(&quot;entryname&quot;,&quot;shortname&quot;,A:H20,…,Size,123,Create,2001-1-1…)<br>
+<b>-name</b> エントリ名のみ出力します。(&quot;entryname&quot;)<br>
+<b>-basic</b> エントリ名と各種属性を出力します。マーク情報、コメントは含まれません。(&quot;entryname&quot;,&quot;shortname&quot;,A:H20,…)<br>
+<b>-JSON</b> JSON形式で出力します。<br>
+<b>-all</b> エントリ名と各種属性を出力します。マーク情報、色、コメント等も出力します。<br>
+<b>-normal</b> (規定値)エントリ名、各種属性、コメント、csv取り込み用文字列を出力します。マーク情報は含まれません。(&quot;entryname&quot;,&quot;shortname&quot;,A:H20,…,Size,123,Create,2001-1-1…)<br>
 <br>
 ・追加項目指定<br>
--marked&nbsp;&nbsp;マークしたエントリのみ書き出します。<br>
--marktag&nbsp;&nbsp;-basic, -normal のとき、マークしたエントリにマーク情報「,M:1」を追記します。<br>
--color&nbsp;&nbsp;-basic のとき、拡張子色を指定しているときは追記します(X:～)。<br>
--comment&nbsp;&nbsp;-basic のとき、コメント情報(T:&quot;～&quot;)を追記します。<br>
--highlight&nbsp;&nbsp;-basic のとき、ハイライトがあれば追記します(H:1～7)。<br>
--message&nbsp;&nbsp;システムメッセージも出力対象にします<br>
+<b>-marked</b> マークしたエントリのみ書き出します。<br>
+<b>-marktag</b> -basic, -normal のとき、マークしたエントリにマーク情報「,M:1」を追記します。<br>
+<b>-color</b> -basic のとき、拡張子色を指定しているときは追記します(X:～)。<br>
+<b>-comment</b> -basic のとき、コメント情報(T:&quot;～&quot;)を追記します。<br>
+<b>-highlight</b> -basic のとき、ハイライトがあれば追記します(H:1～7)。<br>
+<b>-message</b> システムメッセージも出力対象にします<br>
 <br>
 ・ファイル指定<br>
--append&nbsp;&nbsp;同名のファイルがある場合、追記します。※文字コードは自動で整合されません。必要に応じて-utf8等を指定してください。<br>
--noheader&nbsp;&nbsp;ヘッダ(;ListFile)や追加情報(;Base 等)を無くします。<br>
--utf8, -utf8bom&nbsp;&nbsp;出力文字コードを UTF-8 / BOM 有り UTF-8 にします。指定が無いときは Unicode版/64bit版は BOM 有り UTF-16、MultiByte 版はシステムロケール設定(Shift_JIS)です。<br>
+<b>-append</b> 同名のファイルがある場合、追記します。※文字コードは自動で整合されません。必要に応じて-utf8等を指定してください。<br>
+<b>-noheader</b> ヘッダ(;ListFile)や追加情報(;Base 等)を無くします。<br>
+<b>-utf8, -utf8bom</b> 出力文字コードを UTF-8 / BOM 有り UTF-8 にします。指定が無いときは Unicode版/64bit版は BOM 有り UTF-16、MultiByte 版はシステムロケール設定(Shift_JIS)です。<br>
 <br>
 例) *makelistfile &quot;x:\folder\file name.txt&quot; -basic -comment -message<br>
 <br>
@@ -7184,7 +7185,7 @@ filenameが指定されていればその名前で、無ければ既存の名前
 「*makeListFile filename,marktag」と指定すると、マーク情報付きで書き出します。※マークしないエントリも書き出します。<br>
 <br>
 ・表示形式指定<br>
--dirshow&nbsp;&nbsp;階層表示を行います。指定がなければ<a href="#XC_pmsk">XC_pmsk</a>の指定に従います。※-noheader指定があると機能しません。<br>
+<b>-dirshow</b> 階層表示を行います。指定がなければ<a href="#XC_pmsk">XC_pmsk</a>の指定に従います。※-noheader指定があると機能しません。<br>
 <hr><br>
 <a name="ppcfile"><b>*ppcfile <i>[!]action[...]</i> (PPc)[C]/[M]コマンドを実行</b></a><br>
 <br>
@@ -7347,17 +7348,14 @@ id1(%mid1) の行を削除します。<br>
 *edit は、PPeを閉じるまで待機し、次の動作に移りません。ppb/pptray の -c オプションを使用してPPeでファイルを開くときは *edit を使用してください。<br>
 <br>
 次のオプションを併用できます。<br>
-<b>-new</b>&nbsp;&nbsp;指定したファイルが無い場合は、新規ファイルとして扱います。<br>
-<b>-k</b>&nbsp;&nbsp;起動後、実行するコマンドを指定します。このオプション以降は全て実行するコマンドと解釈しますので、最後に指定する必要があります。<br>
-<b>-sjis, -euc, -utf8, -utf8bom, -unicode / -utf16, -unicodeb / -utf16be, -unicodebom, -unicodebbom, -ibm, -us, -ansi, -latin1, -system, -codepage:n</b><br>
-&nbsp;&nbsp;ファイルの文字コードを手動で指定します。<br>
+<b>-new</b> 指定したファイルが無い場合は、新規ファイルとして扱います。<br>
+<b>-k</b> 起動後、実行するコマンドを指定します。このオプション以降は全て実行するコマンドと解釈しますので、最後に指定する必要があります。<br>
+<b>-sjis, -euc, -utf8, -utf8bom, -unicode / -utf16, -unicodeb / -utf16be, -unicodebom, -unicodebbom, -ibm, -us, -ansi, -latin1, -system, -codepage:n</b> ファイルの文字コードを手動で指定します。<br>
 &nbsp;&nbsp;-utf8bom, -unicodebom, -unicodebbom は保存時に BOM を付加します。<br>
 &nbsp;&nbsp;-system は、システム標準の文字コード(日本の場合は sjis)を指定します。<br>
 &nbsp;&nbsp;-codepage:n は、指定した数値のコードページ nを指定します。指定できるコードページは、Windowsに登録済みのコードページ(PPv 文字コード切り替え[@] - other CP の一覧に表示された内容)です。<br>
-<b>-crlf, -cr, -lf</b><br>
-&nbsp;&nbsp;保存時の改行コードを指定します。<br>
-<b>-tab:n</b><br>
-&nbsp;&nbsp;タブ桁数を指定します。<br>
+<b>-crlf, -cr, -lf</b> 保存時の改行コードを指定します。<br>
+<b>-tab:n</b> タブ桁数を指定します。<br>
 <br>
 <hr><br>
 <a name="PPxCmd92"><b>%*edittext 編集テキスト</b></a><br>
@@ -8717,93 +8715,72 @@ entry&nbsp;&nbsp;カーソルの同期のみ有効にします。<br>
 例)検索モジュール(ets, etp, ws module等)で検索する検索ダイアログを表示する<br>
 *where -type:5<br>
 <br>
-<b>-path[:source]</b><br>
-検索元のディレクトリ名。「;」で複数列挙が可能です。%'path'を指定することで path で実行されるファイルがどこにあるかも探すことができます。<br>
+<b>-path[:source]</b> 検索元のディレクトリ名。「;」で複数列挙が可能です。%'path'を指定することで path で実行されるファイルがどこにあるかも探すことができます。<br>
 空欄の場合はカレントディレクトリが検索元になります。<br>
 例1) -mask:&quot;%C&quot; -path:&quot;dir1;dir2;dir3&quot;<br>
 例2) -mask:cmd.exe -path:&quot;%'path'&quot; -subdir:off<br>
 <br>
-<b>-mask:wildcard1, -mask1:wildcard1, -mask2:wildcard2</b><br>
-ファイル名のマスク。両方の欄に記載した場合は両者が共にある場合のみ列挙します。<br>
+<b>-mask:wildcard1, -mask1:wildcard1, -mask2:wildcard2</b> ファイル名のマスク。両方の欄に記載した場合は両者が共にある場合のみ列挙します。<br>
 ※-maskと-mask1 は名前が異なるだけで同じ設定です。<br>
 <br>
 例) -mask1:&quot;*name1*&quot; -mask2:&quot;*name2*&quot;<br>
 <br>
 <a href="#wildcard">ワイルドカードの指定方法</a><br>
 <br>
-<b>-text:&quot;text&quot;</b><br>
-typeで指定した種類毎の検索内容です。<br>
+<b>-text:&quot;text&quot;</b> typeで指定した種類毎の検索内容です。<br>
 仮想ディレクトリ内の検索に対応していません。<br>
 1文字目が「/」のときは正規表現で検索します。 例) -text:&quot;/name.*file/&quot;<br>
 <br>
-・-type:1/指定無し<br>
-ファイル内の文字列を、英大小を区別せずに検索します。PPe で開くことができるファイルに限定されます。<br>
-・-type:2<br>
-<a href="#コメントファイル">コメント</a>(00_INDEX.TXT)に記載したコメントを指定します。<br>
-・-type:3<br>
-チップテキスト(エクスプローラのチップテキスト拡張で取得できる文字列)を指定します。<br>
-・-type:5<br>
-検索<a href="#ppxmodule">モジュール</a>に指定する文字列を指定します。<br>
+<b>-type:1/指定無し</b> ファイル内の文字列を、英大小を区別せずに検索します。PPe で開くことができるファイルに限定されます。<br>
+<b>-type:2</b> コメント。<a href="#コメントファイル">コメント</a>(00_INDEX.TXT)に記載したコメントを指定します。<br>
+<b>-type:3</b> チップテキスト(エクスプローラのチップテキスト拡張で取得できる文字列)を指定します。<br>
+<b>-type:5</b> 検索モジュール。検索<a href="#ppxmodule">モジュール</a>に指定する文字列を指定します。<br>
 <br>
-<b>-start</b><br>
-*where のみ有効です。ダイアログ表示をしないで、すぐに検索を開始します。<br>
+<b>-start</b> すぐに検索を開始。*where のみ有効です。ダイアログ表示をしないで、すぐに検索を開始します。<br>
 <br>
-<b>-dir[:on|off]</b><br>
-ディレクトリエントリを検索対象にするかどうかの指定です。<br>
+<b>-dir[:on|off]</b> ディレクトリエントリを検索対象にするかどうかの指定です。<br>
 off 又は 0 : 対象にしない(規定値)<br>
 空欄、on、1 : 対象にする。結果一覧にディレクトリが入ります。<br>
 <br>
-<b>-subdir:on|off</b><br>
-サブディレクトリ内を検索するかどうかの指定です。<br>
+<b>-subdir:on|off</b> サブディレクトリ内を検索するかどうかの指定です。<br>
 off 又は 0 : 対象にしない<br>
 on 又は 1 : 対象にする(規定値)<br>
 <br>
-<b>-vfs[:on|off]</b><br>
-仮想ディレクトリ内を検索するかどうかの指定です。<br>
+<b>-vfs[:on|off]</b> 仮想ディレクトリ内を検索するかどうかの指定です。<br>
 off 又は 0 : 対象にしない(規定値)<br>
 空欄、on、1 : 対象にする<br>
 <br>
-<b>-type:数値</b><br>
-textで指定した内容の種類です。※仮想ディレクトリ内の検索に対応していません。<br>
+<b>-type:数値</b> text欄の種類です。※仮想ディレクトリ内の検索に対応していません。<br>
 1 : テキストファイル内の文字列(default)<br>
 2 : <a href="#コメントファイル">コメント</a>(00_INDEX.TXT)<br>
 3 : チップテキスト<br>
 4 : 指定不可<br>
 5 : 検索<a href="#ppxmodule">モジュール</a><br>
 <br>
-<b>-marked[:off|on]</b><br>
-sourceの代わりにマークしたディレクトリを検索元にするかどうかの指定です。<br>
+<b>-marked[:off|on]</b> マークしたディレクトリを検索元にするかどうかの指定です。<br>
 off 又は 0 : sourceが検索元(規定値)<br>
 空欄、on、1 : マークしたディレクトリが検索元<br>
 <br>
-<b>-search</b><br>
-検索後、その listfile にディレクトリ移動しないで終了します。<br>
+<b>-search</b> 検索後、その listfile にディレクトリ移動しないで終了します。<br>
 指定が無ければ、ディレクトリ移動して一覧表示します。<br>
 <br>
-<b>-listfile:path</b><br>
-検索結果を保存する<a href="#listsubj">ListFile</a>のフルパス名を指定します。指定が無ければ %temp% 内に自動生成したディレクトリ＋名前で保存します。<br>
+<b>-listfile:filename</b> 検索結果を保存する<a href="#listsubj">ListFile</a>のフルパス名を指定します。指定が無ければ %temp% 内に自動生成したディレクトリ＋名前で保存します。<br>
 例) -listfile:&quot;%'temp'%\result.txt&quot;<br>
 <br>
-<b>-json[:path]</b><br>
-JSON形式で出力します。文字コードは常に UTF-8 になります。<br>
+<b>-json[:path]</b> JSON形式で出力します。文字コードは常に UTF-8 になります。<br>
 pathを指定するとファイル名を指定できます。<br>
 <br>
-<b>-append</b><br>
-同名のファイルがある場合、追記します。※文字コードは自動で整合されません。必要に応じて-utf8等を指定してください。<br>
+<b>-append</b> 同名のファイルがある場合、追記します。※文字コードは自動で整合されません。必要に応じて-utf8等を指定してください。<br>
 <br>
-<b>-name</b><br>
-検索結果を保存する<a href="#listsubj">ListFile</a>に保存するエントリをエントリ名にします(&quot;entryname&quot;)。PPx以外で結果を利用するため用です。<br>
+<b>-name</b> エントリ名のみ保存。検索結果を保存する<a href="#listsubj">ListFile</a>に保存するエントリをエントリ名にします(&quot;entryname&quot;)。PPx以外で結果を利用するため用です。<br>
 尚、-search も有効になります。<br>
 <br>
-<b>-utf8, -utf8bom</b><br>
-出力文字コードを UTF-8 / BOM 有り UTF-8 にします。指定が無いときは Unicode版/64bit版は BOM 有り UTF-16、MultiByte 版はシステムロケール設定(Shift_JIS)です。<br>
+<b>-utf8, -utf8bom</b> 出力文字コードを UTF-8 / BOM 有り UTF-8 にします。指定が無いときは Unicode版/64bit版は BOM 有り UTF-16、MultiByte 版はシステムロケール設定(Shift_JIS)です。<br>
 また、JSON形式の場合は常に UTF-8 になります。<br>
 <br>
-<b>-dirshow</b><br>
-検索結果の表示が階層表示になります。指定がなければ<a href="#XC_pmsk">XC_pmsk</a>の指定に従います。<br>
+<b>-dirshow</b> 検索結果の表示が階層表示になります。指定がなければ<a href="#XC_pmsk">XC_pmsk</a>の指定に従います。<br>
 <br>
-<b>-k[:]command</b>&nbsp;&nbsp;ダイアログ表示後、コマンド実行<br>
-&nbsp;&nbsp;ダイアログを表示した後にマスク入力の一行編集上で <i>commands</i> を実行します。<br>
+<b>-k[:]command</b> ダイアログ表示後、コマンド実行。ダイアログを表示した後にマスク入力の一行編集上で <i>commands</i> を実行します。<br>
 &nbsp;&nbsp;<a href="#X_jinfc">X_jinfc</a>:whereisshowcmd で指定したコマンドの実行後、実行されます。<br>
 &nbsp;&nbsp;<b>注意</b>-k command と空白区切りで command を指定したときは、-k 以降を全て実行するコマンド扱いにするため、最後に記載してください。<br>
 <br>
@@ -9070,18 +9047,15 @@ menu&nbsp;&nbsp;ツリー表示形式等を変えるメニューを表示<br>
 on|off指定は「1」か「0」でも指定でき、何も指定しない場合はon扱いになります。<br>
 <a href="#fileoptions1">一般シート</a>、<a href="#fileoptions2">名前シート</a>、<a href="#fileoptions3">その他シート</a><br>
 <b>・共通指定</b><br>
--src:<i>source path</i><br>
-&nbsp;&nbsp;コピー元の名前を指定します。<a href="#wildcard">ワイルドカード</a>*, ?、<a href="#レスポンスファイル">レスポンスファイル</a>、<a href="#listsubj">ListFile</a> も指定できます。<br>
+<b>-src:<i>source path</i></b> コピー元の名前を指定します。<a href="#wildcard">ワイルドカード</a>*, ?、<a href="#レスポンスファイル">レスポンスファイル</a>、<a href="#listsubj">ListFile</a> も指定できます。<br>
 &nbsp;&nbsp;<i>例) -src:&quot;*.txt&quot;</i>, <i>-src:&quot;@c:\dir\response.txt&quot;</i>, <i>-src:&quot;@listfile.txt&quot;</i><br>
 <br>
--mask:<i>wildcards</i><br>
-&nbsp;&nbsp;指定した<a href="#wildcard">ワイルドカード</a>に該当するファイルのみ実際に処理します。-srcで限定できないファイル(ディレクトリ内のファイル等)を絞るのに使用します。<br>
+<b>-mask:<i>wildcards</i></b> ファイルマスク。指定した<a href="#wildcard">ワイルドカード</a>に該当するファイルのみ実際に処理します。-srcで限定できないファイル(ディレクトリ内のファイル等)を絞るのに使用します。<br>
 &nbsp;&nbsp;<i>例) *file copy -mask:.doc</i> 拡張子が doc のファイルのみコピーします。<br>
 &nbsp;&nbsp;また、このオプションを使うと、コピー元と同じディレクトリツリーの作成(ファイルはコピーしない)が可能です。<br>
 &nbsp;&nbsp;<i>例) *file copy -mask:a:d+</i><br>
 <br>
--dest:<i>destination path</i><br>
-&nbsp;&nbsp;コピー先のディレクトリを指定します。<i>ex) -dest:&quot;d:\&quot;</i><br>
+<b>-dest:<i>destination path</i></b> コピー先のディレクトリを指定します。<i>ex) -dest:&quot;d:\&quot;</i><br>
 &nbsp;&nbsp;また、「|」を記載することでダイアログ上のカーソル位置を指定したり、２つの「|」で囲むことで範囲選択をしたりすることができます。<br>
 <br>
 -sheet:<i>sheet no</i><br>
