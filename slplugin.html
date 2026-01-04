@@ -67,7 +67,7 @@ img { max-width: 100%; height: auto; }
   </td><td>- Susie Plug-in による画像の取得、書庫展開と、動作検証をする</td></tr>
   <tr><td>・<a href="#spibench">spibench 改変版</a>
   </td><td>- 宮坂 賢氏作成 spibench の改変版</td></tr>
-  <tr><td>・<a href="#unzzip">unzzip.dll</a>
+  <tr><td>・<a href="#unzzip">unzzip.dll</a>&nbsp;(<a href="#unzzip1">+1</a>)
   </td><td>- zlib を使った zip書庫の簡易な OpenArchive DLL</td></tr>
   <tr><td>・<a href="#7zca">7zca.dll</a>
   </td><td>- 7-Zip(7z.dll)を使ったOpenArchive DLLの試作品</td></tr>
@@ -92,7 +92,7 @@ ifdx
 ifjpegt
 ./ifjpegt109.zip
 ifjpegt1
-./ifjpegt109p2test.zip
+./ifjpegt109p3test.zip
 ifjpeg2k
 ./ifjpeg2k06.zip
 axcurico
@@ -109,6 +109,7 @@ spibench
 ./spibench-20170902.zip
 unzzip
 ./unzzip14.zip
+./unzzip14p1.zip
 7zca
 ./7zca06.zip
 EndList -->
@@ -229,11 +230,16 @@ WIC は標準で、BMP, PNG, ICO, JPG(JPEG), GIF, TIFF, HDP(HD Photo) 形式に�
 ・libjpeg-turbo&nbsp;を&nbsp;2.1.3&nbsp;に更新<br>
 ・マルチスレッド対応を強化<br>
 
-<hr><a href="./slplugin.html">↑</a><a name="ifjpegt1"><span role="heading" aria-level="2">JPEG-turbo Susie Plug-in 試験版</span></a> Version 1.09p2test
+<hr><a href="./slplugin.html">↑</a><a name="ifjpegt1"><span role="heading" aria-level="2">JPEG-turbo Susie Plug-in 試験版</span></a> Version 1.09p3test
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/ifjpegt109p2test.zip">ifjpegt109p2test.zip</a> ( 606 Kbytes,&nbsp;2025-12-21,&nbsp;Windows Vista/2008 - 11/2022(x86, x64, Arm64))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/ifjpegt109p3test.zip">ifjpegt109p3test.zip</a> ( 607 Kbytes,&nbsp;2026-1-4,&nbsp;Windows Vista/2008 - 11/2022(x86, x64, Arm64))<br>
 <br>JPEG-turbo Susie Plug-in の試験版です。<br>
-lossless JPEG表示対応と、RGB が 各12bitの JPEG の表示対応を有効にしています。<br><br>●<strong>変更点</strong><br>1.09+1→1.09p2test<br>
+lossless JPEG表示対応と、RGB が 各12bitの JPEG の表示対応を有効にしています。<br><br>●<strong>変更点</strong><br>1.09+2→1.09p3test<br>
+・+1で&nbsp;GetPreview&nbsp;で得たビットマップサイズと画像サイズが一致しないのを修正<br>
+・対応&nbsp;OS&nbsp;を&nbsp;Windows&nbsp;Vista&nbsp;/&nbsp;Server&nbsp;2008&nbsp;以降に変更<br>
+・Exif&nbsp;の解像度情報を取得して、BITMAPINFOHEADERに反映するようにした<br>
+<br>
+1.09+1→1.09+2<br>
 ・libjpeg-turbo&nbsp;3.1.3&nbsp;を使用<br>
 ・RGBが各12bitの&nbsp;JPEG&nbsp;を正常に表示できるようにした<br>
 ・ARM64&nbsp;版を用意した<br>
@@ -345,6 +351,16 @@ x64版/x86版/ARM64版が入っています。<br><br>●<strong>変更点</stro
 ・ファイル作成時のエラーを返さない時があったのを修正<br>
 ・各種ダイアログに操作中の書庫名を表示するようにした<br>
 
+<hr><a href="./slplugin.html">↑</a><a name="unzzip1"><span role="heading" aria-level="2">unzzip.dll</span></a> Version 1.4+1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/unzzip14p1.zip">unzzip14p1.zip</a> ( 439 Kbytes,&nbsp;2026-1-4,&nbsp;Windows XP/2003 - 11/2025(x86, x64, Arm64))<br>
+<br>試験公開版です。 Version 1.4からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>1.4→1.4→1.4+1<br>
+・Info-ZIP&nbsp;Unicode&nbsp;Path&nbsp;に対応<br>
+・経過表示が表示されないことがあるのを修正<br>
+・既存ファイルがあるときの処理指定ダイアログを追加<br>
+・unzip32.dll&nbsp;互換&nbsp;API&nbsp;を試作&nbsp;(unzip32.dll&nbsp;に名前変更して使用可能)<br>
+・全数展開時のマルチスレッド展開に対応<br>
+
 <hr><a href="./slplugin.html">↑</a><a name="7zca"><span role="heading" aria-level="2">7zca.dll</span></a> Version 0.6
 <br>
 &nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/7zca06.zip">7zca06.zip</a> ( 190 Kbytes,&nbsp;2025-5-3,&nbsp;Windows XP/2003 - 11/2025(x86, x64, Arm64))<br>
@@ -353,7 +369,7 @@ OpenArchive API のサブセットの API を用意しています。<br>
 x64版/x86版/ARM64版が入っています。<br><br>●<strong>変更点</strong><br>0.5→0.6<br>
 ・Windows7以降のタスクバーを使った経過表示を追加<br>
 
-<hr><address>Copyright(c)1997-2025 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+<hr><address>Copyright(c)1997-2026 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
 </div></div>
 <div id="index">
 <strong><a href="./index.html">TORO's Library</a></strong>
