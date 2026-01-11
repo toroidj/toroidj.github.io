@@ -67,7 +67,7 @@ img { max-width: 100%; height: auto; }
   </td><td>- Susie Plug-in による画像の取得、書庫展開と、動作検証をする</td></tr>
   <tr><td>・<a href="#spibench">spibench 改変版</a>
   </td><td>- 宮坂 賢氏作成 spibench の改変版</td></tr>
-  <tr><td>・<a href="#unzzip">unzzip.dll</a>&nbsp;(<a href="#unzzip1">+1</a>)
+  <tr><td>・<a href="#unzzip">unzzip.dll</a>&nbsp;(<a href="#unzzip1">+1</a>)&nbsp;(<a href="#unzzip2">+2</a>)
   </td><td>- zlib を使った zip書庫の簡易な OpenArchive DLL</td></tr>
   <tr><td>・<a href="#7zca">7zca.dll</a>
   </td><td>- 7-Zip(7z.dll)を使ったOpenArchive DLLの試作品</td></tr>
@@ -110,6 +110,7 @@ spibench
 unzzip
 ./unzzip14.zip
 ./unzzip14p1.zip
+./unzzip14p2.zip
 7zca
 ./7zca06.zip
 EndList -->
@@ -360,6 +361,14 @@ x64版/x86版/ARM64版が入っています。<br><br>●<strong>変更点</stro
 ・既存ファイルがあるときの処理指定ダイアログを追加<br>
 ・unzip32.dll&nbsp;互換&nbsp;API&nbsp;を試作&nbsp;(unzip32.dll&nbsp;に名前変更して使用可能)<br>
 ・全数展開時のマルチスレッド展開に対応<br>
+
+<hr><a href="./slplugin.html">↑</a><a name="unzzip2"><span role="heading" aria-level="2">unzzip.dll</span></a> Version 1.4+2
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/unzzip14p2.zip">unzzip14p2.zip</a> ( 468 Kbytes,&nbsp;2026-1-11,&nbsp;Windows XP/2003 - 11/2025(x86, x64, Arm64))<br>
+<br>試験公開版です。 Version 1.4からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>1.4+1→1.4+2<br>
+・マルチスレッド処理を調整した<br>
+・既存ファイルのバックアップ(-B)を追加<br>
+・既存ファイルがあるときの処理指定ダイアログの動作を調整した<br>
 
 <hr><a href="./slplugin.html">↑</a><a name="7zca"><span role="heading" aria-level="2">7zca.dll</span></a> Version 0.6
 <br>
