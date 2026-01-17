@@ -27,31 +27,31 @@ PPxの前身として K-Launcher というファイラがあります。こち�
 <a name="supportos"><b> 対応/動作確認 OS</b></a><br>
 <br>
 <b>64bit UNICODE 版</b><br>
-　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2000 ～ 2022 の x64 64bit版 で動作します。<br>
+　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2003-2025 の x64 64bit版 で動作します。<br>
 　32bit版 Windows では動作しません。<br>
 <br>
 <b>32bit UNICODE 版</b><br>
-　Windows NT4.0, 2000, XP, Vista, 7, 8, 8.1, 10, 11, Server 2000 ～ 2022 で動作します。<br>
-　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2003 ～ 2022 の x64 64bit版 でも動作します。<br>
-　Windows 95～Me, Win32s, Windows(NT) 3.x以下では動作しません。<br>
+　Windows NT4.0, 2000, XP, Vista, 7, 8, 8.1, 10, 11, Server 2000-2025 で動作します。<br>
+　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2003-2025 の x64 64bit版 でも動作します。<br>
+　Windows 95-Me, Win32s, Windows(NT) 3.x以下では動作しません。<br>
 <br>
 <b>32bit MultiByte 版</b><br>
-　Windows 95, 98, 98SE, Me / NT4.0, 2000, XP, Vista, 7, 8, 8.1, 10, 11, Server 2000 ～ 2022 で動作します。<br>
-　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2003 ～ 2022 の x64 64bit版 でも動作します。<br>
-　Win32s や Windows(NT) 3.x以下では動作しません。<br>
+　Windows 95, 98, 98SE, Me, NT4.0, 2000, XP, Vista, 7, 8, 8.1, 10, 11, Server 2000-2025 で動作します。<br>
+　Windows XP, Vista, 7, 8, 8.1, 10, 11, Server 2003-2025 の x64 64bit版 でも動作します。<br>
+　Win32s, Windows(NT) 3.x以下では動作しません。<br>
 <br>
 <b>64bit Arm 版</b><br>
 　Windows 10, 11 の 64bit Arm 版 で動作します。<br>
 <br>
-※ Server 2000 ～ 2022 は Windows Server の 2000, 2003(R2), 2008(R2), 2012(R2), 2016, 2019, 2022 が含まれます。<br>
+※ Server 2000-2025 は Windows Server の 2000, 2003(R2), 2008(R2), 2012(R2), 2016, 2019, 2022, 2025 が含まれます。<br>
 <br>
-・開発や主な動作確認は Windows 11 Pro 24H2 x64 版 で行っています。<br>
+・開発や主な動作確認は Windows 11 Pro 25H2 x64 版 で行っています。<br>
 ・PPx の実行ファイルがあるディレクトリ/フォルダが書き込み禁止であっても支障が出ないように考慮しています。<br>
 <a name="(Limit)"></a><a name="Limit"></a><a name="(Elevate)"></a><a name="Elevate"></a>・別のユーザとして実行 / RUNAS を考慮しており、使用中のデスクトップのユーザと異なる場合は、タイトルバー(キャプション)にそのPPxが属するユーザ名が表示されます。<br>
   例) PPC[A](username)C:\<br>
-<a name="UAC"></a>・Windows Vista以降のUACが有効の時、通常より権限が低くなっているときは「(Limit)」がタイトルバーに表示されます。また、権限が高いときは「(Elevate)」がタイトルバーに表示されます。<a href="#X_dlim">X_dlim</a>で表示の設定変更ができます。<br>
+<a name="UAC"></a>・Windows Vista 以降の UAC が有効の時、通常より権限が低くなっているときは「(Limit)」がタイトルバーに表示されます。また、権限が高いときは「(Elevate)」がタイトルバーに表示されます。<a href="#X_dlim">X_dlim</a>で表示の設定変更ができます。<br>
 <br>
-・<b>Windows やインストールされている Internet Explorer のバージョンによっては、使用できない機能があります。</b><br>
+・<b>Windows やインストールされている Internet Explorer のバージョン(Windows 2000 以前)によっては、使用できない機能があります。</b><br>
 <hr><br>
 <a name="registry"><b> レジストリ</b></a><br>
 <br>
@@ -234,7 +234,7 @@ PPx 自体を起動させるために必要なファイルのうち、別途用�
  Plug-in は、Susie 本体がインストールされている場合、Susie が参照するディレクトリから取得します。Susie 本体がインストールされていない場合は、PPx があるディレクトリを検索します。<br>
 また、カスタマイズによって任意の場所を指定できます(P_susieP)。<br>
 <a name="imagesave"></a><br>
-PPcのクリップボードからのビットマップの貼り付けのとき、拙作 WIC Susie Plug-in 1.0 以降<a href="https://toro.d.dooo.jp/slplugin.html#iftwic" target="_top">https://toro.d.dooo.jp/slplugin.html#iftwic</a> か GDI+ Susie Plug-in 1.1 以降<a href="https://toro.d.dooo.jp/slplugin.html#ifgdip" target="_top">https://toro.d.dooo.jp/slplugin.html#ifgdip</a> があれば、PNG形式で保存することができます。<br>
+PPcのクリップボードからのビットマップ画像の貼り付けのとき、拙作 WIC Susie Plug-in 1.0 以降<a href="https://toro.d.dooo.jp/slplugin.html#iftwic" target="_top">https://toro.d.dooo.jp/slplugin.html#iftwic</a> か GDI+ Susie Plug-in 1.1 以降<a href="https://toro.d.dooo.jp/slplugin.html#ifgdip" target="_top">https://toro.d.dooo.jp/slplugin.html#ifgdip</a> があれば、PNG形式で保存することができます。<br>
 <br>
 プラグインの優先順位は、ディレクトリ上の並び順です。<br>
 <br>
@@ -297,7 +297,7 @@ migemo-dictから対応する単語を削除しておいてください。<br>
 <br>
 <b>・OpenSSL/LibreSSL</b><br>
 <br>
-PPcのディレクトリのパス、PPvの開くファイル、*httpget 等で、https を指定するときに使用します。OpenSSL/LibreSSL が無い場合は WinHTTP を使用します。<br>
+PPx の更新処理のときに使用します。また、PPc のディレクトリのパス、PPv の開くファイル、*httpget 等で、https を指定するときに使用します。OpenSSL/LibreSSL が無い場合は WinHTTP を使用します。<br>
 <br>
 OpenSSL <a href="https://www.openssl.org/" target="_top">https://www.openssl.org/</a> は、0.9.8～1.1.1, 3.0.0 まで、<br>
 LibreSSL <a href="https://www.libressl.org/" target="_top">https://www.libressl.org/</a> は、2.5.5 まで動作確認済みです。<br>
@@ -3804,7 +3804,7 @@ Win9x系上の場合、押していないのに Shift が押された状態に�
 <br>
 Windowsでの一行編集（エディットボックス）に準拠していますが、一部異なっています。<br>
 <br>
-<a href="#PPbKey41">ログ参照モード</a><br>
+<a href="#PPbKey42">ログ参照モード</a><br>
 <br>
 ログ参照モードでは、コンソールに表示された文字をカーソルキーによる移動・選択や、インクリメンタルサーチ等によって選択し、クリップボードにコピーしたりすることで引用することができます。<br>
 インクリメンタルサーチは英字キーを押していくと該当する文字列まで移動し、反転表示します。また、[TAB]等で次の候補に移動します。<br>
@@ -3829,10 +3829,10 @@ Windowsでの一行編集（エディットボックス）に準拠していま�
 ・^[D] [DEL] １文字削除<br>
 ・<a href="#PPbKey18">^\[G] シンタックスハイライト表示の on/off(要 ESC シーケンス)</a><br>
 ・^[H] [BS] １文字削除<br>
-・<a href="#PPbKey20">^[I] [TAB] ファイル名補完</a><br>
+・<a href="#PPbKey21">^[I] [TAB] ファイル名補完</a><br>
 ・^[J] ^[M] [Enter] 実行<br>
 ・^[K] \[DEL] 行末まで削除<br>
-・<a href="#PPbKey23">^\[M] \[Enter] 一行編集ダイアログで入力</a><br>
+・<a href="#PPbKey24">^\[M] \[Enter] 一行編集ダイアログで入力</a><br>
 ・^[N] ^[P] [↑] [↓] ヒストリ<br>
 ・^[Q] ^[]] \[F10] [APPS] 選択範囲・クリップボードメニュー<br>
 ・^[R] [F4] ファイル名補完、ヒストリの一覧表示の on/off<br>
@@ -3852,7 +3852,7 @@ Windowsでの一行編集（エディットボックス）に準拠していま�
 ・^\[+] ^\[-] 窓の透明度変更<br>
 <hr><br>
 
-<a name="PPbKey41"><b>ログ参照モード</b></a><br>
+<a name="PPbKey42"><b>ログ参照モード</b></a><br>
 ・&amp;[F4] ^[W] 終了<br>
 ・\[ESC] 最小化<br>
 ・[↑] [↓] [←] [→] ^[B] ^[F] ^[N] ^[P] カーソル移動<br>
@@ -3879,15 +3879,15 @@ PPbの終了や設定の一時変更を行うメニューを表示します。<b
 連続で[ESC]を２回押下した場合はメニューなしで終了します。<br>
 <hr><br>
 <a name="PPbKey18"><b>^\[G] シンタックスハイライト表示の on/off(要 ESC シーケンス)</b></a><br>
- シンタックスハイライトを使用するには、ESC シーケンスが使用可能なターミナルが必要です。<br>
+ シンタックスハイライト(<a href="#X_csyh">X_csyh</a>)を使用するには、ESC シーケンスが使用可能なターミナルが必要です。<br>
 <hr><br>
-<a name="PPbKey20"><b>^[I] [TAB] ファイル名補完</b></a><br>
+<a name="PPbKey21"><b>^[I] [TAB] ファイル名補完</b></a><br>
 <br>
 続けて使用することで次候補になります。<br>
 尚、補完するファイル名がない場合は、%PATHEXT%に該当するファイルを優先検索します。<br>
 参考:X_fdir, X_flst<br>
 <hr><br>
-<a name="PPbKey23"><b>^\[M] \[Enter] 一行編集ダイアログで入力</b></a><br>
+<a name="PPbKey24"><b>^\[M] \[Enter] 一行編集ダイアログで入力</b></a><br>
 <br>
 一行編集ダイアログを用いてコマンドライン編集を行います。コンソールでIMEが使えず漢字が入力できないときに使用してください。<br>
 <hr><br>
@@ -4530,7 +4530,7 @@ Top of Window&nbsp;&nbsp;&nbsp;&nbsp;窓の先頭行へジャンプ<br>
  窓幅変更は、一行編集/PPeの種類によって変更不可/左右のみ可能/上下左右可能です。<br>
 <hr><br>
 <a name="EditKey24"><b>^\[G] シンタックスハイライト表示の on/off(要RichEdit)</b></a><br>
- シンタックスハイライトを使用するには、<a href="#X_uxt2">テキスト編集種類</a>で RichEdit を有効にする必要があります。<br>
+ シンタックスハイライト(<a href="#X_csyh">X_csyh</a>)を使用するには、<a href="#X_uxt2">テキスト編集種類</a>で RichEdit を有効にする必要があります。<br>
 <hr><br>
 <a name="EditKey34"><b>^[V]\[INS] ペースト</b></a><br>
 一行編集時に改行を含むテキストをペーストした場合、改行が除去された一行の状態で貼り付けられます。<br>
@@ -6844,7 +6844,7 @@ command の先頭の文字が「-」や「/」のときは、「&quot;-…&quot;
 &nbsp;&nbsp;log&nbsp;&nbsp;標準出力・エラー出力をログ窓に表示します。-log と同じです。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;log と ppe を同時に指定するとログ窓とPPeに表示します。<br>
 <br>
-<b>-log[:option1[,option2...]]</b> &nbsp;&nbsp;標準出力・エラー出力の結果をログ窓に表示します。-io:log と同じです。<br>
+<b>-log[:option1[,option2...]]</b> &nbsp;&nbsp;標準出力・エラー出力の結果をログ窓に表示します。-io:log[,option1[,option2...]] と同じです。<br>
 <br>
 <b>-desktoplevel</b> &nbsp;&nbsp;UAC により昇格しているとき、降格して実行します。デスクトップの UAC の格で実行します。<br>
 <br>
@@ -7559,7 +7559,7 @@ write / readonly<br>
 一行編集ダイアログ上で使用したとき、その一行編集ダイアログ以外がアクティブになったとき、一行編集を中止し、一行編集ダイアログを閉じます。%*input の -leavecancel と同じ設定です。<br>
 <br>
 ・-syntax[:on|off|clear|g|h|d|f|m|s]<br>
-文法に応じて文字を着色するシンタックスハイライトを行います。文法は指定をしない場合、現在の保存ヒストリ種類に対応した文法とします。<br>
+文法に応じて文字を着色するシンタックスハイライト(<a href="#X_csyh">X_csyh</a>)を行います。文法は指定をしない場合、現在の保存ヒストリ種類に対応した文法とします。<br>
 尚、PPe でも使用できますが、-syntax:on のときに着色するのみで、その後編集しても色の更新はされません。<br>
 <br>
 初期設定(g)<br>
@@ -7736,8 +7736,10 @@ text の位置を検索し、該当 text を new text に置換します。未�
  指定した画像を読み込み、コンソール内に表示します。<br>
 表示にはターミナルの ESC シーケンス対応が必要です。Windows 単体の場合は、Windows 10 RS2/1703 等にする必要があります。<br>
  画像表示は1/2セル(Multibyte版は１セル)が1画素になり、1画面で表示します。<br>
-※現在縦横比の調整を行っていません。Sixel は現在対応していません。<br>
-※conhost内に表示したとき、選択や窓の大きさ変更等の加工を行うと、16色に減色されます。<br>
+ libsixel があり、ターミナルが sixel に対応しているときは、sixel による繊細な表示が可能です（例: Windows Terminal 1.22 以降）<br>
+ 動作確認は、Windows Terminal 1.23 と、<a href="https://github.com/toroidj/libsixsel-dll" target="_top">https://github.com/toroidj/libsixsel-dll</a> で配布する libsixel-1.dll で行っています。尚、前記 libsixel-1.dll は、同梱の2ファイル(libgcc_s_xxx.dll と libwinpthread-1.dll が必要です。<br>
+<br>
+※conhost 内に表示したとき、選択や窓の大きさ変更等の加工を行うと、16色に減色されます。<br>
 <br>
 <hr><br>
 <a name="PPxCmd112"><b>*option <i>[type]</i> PPb の編集動作設定</b></a><br>
@@ -10008,7 +10010,11 @@ Windows 10 1903 以降で、ダイアログやメニュー等の配色をダー�
 <hr><br>
 <a name="X_csyh"><b>X_csyh</b></a> 一行編集のシンタックスハイライト, PPb のシンタックスハイライト<br>
 <br>
-一行編集／PPb のキーワード等を着色するシンタックスハイライトを有効にするかどうかの設定です。<br>
+一行編集／PPb のコマンドライン等に含まれるキーワード等を着色するシンタックスハイライトを有効にするかどうかの設定です。<br>
+<br>
+・具体的な色については<a href="#C_csyh">C_csyh</a>を参照してください。<br>
+・常時表示のリストがあるマスクダイアログ、マークダイアログは現在対応していません。<br>
+・PPb はエスケープシーケンス対応のコンソールが必要です(Windows Terminal、Windows 10 RS2 以降の conhost など)。<br>
 <hr><br>
 <a name="X_es"><b>X_es</b></a> 拡張シフトキーに使用するキー<br>
 <br>
@@ -12330,11 +12336,9 @@ PPvの窓がアクティブであって、マウスポインタをPPv以外の�
 PPb 等のコンソール窓の大きさをしていします。NT系(NT/2000/XP)のみ有効です。<br>
  XB_size = 全体桁数, 全体行数, 表示桁数, 全体行数<br>
 <hr><br>
-<a name="XB_uwid"><b>XB_uwid</b></a> (UNICODE版)正確なカーソル位置取得を行う<br>
+<a name="XB_uwid"><b>XB_uwid</b></a> 正確なカーソル位置取得を行う(廃止)<br>
 <br>
-UNICODE版で全角・半角文字を含む文字列を編集すると、一部カーソル位置がずれる場合があります。このXB_uwidを1にすることで、現在使用中のフォントの文字幅を調べて全角・半角を決定するテーブル(D_uwid)を作成し、ずれがないようにすることができます。<br>
-<br>
-ただ、カスタマイズ領域内に8KBytes の D_uwid を生成するので、UNICODE 文字列を含むコマンドを PPb で編集する機会が少なければ XB_uwid = 0のままで問題ないと思います。また、D_uwid は、通常テキストファイルに書き出されません。<br>
+UNICODE版の文字幅を算出するテーブル D_uwid を作成する指定でした。現在は廃止しています。<br>
 <hr>
 <a name="custPPcust"></a><a name="PPcust 設定"></a><h3>カスタマイズ詳細 - PPcust 設定</h3><br>
 <a name="X_chidc"><b>X_chidc</b></a>GUI使用時にコンソールウィンドウを隠す<br>
@@ -12997,6 +13001,7 @@ PPcのエントリ名のチップに用いられる文字色と背景色です�
 _auto を使用すると、Windowsのチップと同じ色になります。<br>
 <br>
 <a name="C_win"><b>C_win</b></a> 窓枠・ダイアログ<br>
+<br>
  区切枠 明&nbsp;&nbsp;窓間の区切り用枠の左側／上側<br>
  区切枠 表面&nbsp;&nbsp;窓間の区切り用枠の枠の中央<br>
  区切枠 影&nbsp;&nbsp;窓間の区切り用枠の枠の右側／下側<br>
@@ -13019,6 +13024,7 @@ _auto を使用すると、Windowsのチップと同じ色になります。<br>
 <br>
 <a name="C_schN"><b>C_schN</b></a> カラースキーム<br>
 <a name="C_schD"><b>C_schD</b></a> ダークモード用カラースキーム<br>
+<br>
  同じ色を複数の設定項目で使い回すための設定です。<br>
  カラースキーム指定を使った設定項目は、カラースキームの色を変更することで一括変更が可能です。<br>
 <br>
@@ -13032,8 +13038,25 @@ _auto を使用すると、Windowsのチップと同じ色になります。<br>
 ・背景用の色<br>
  背景黒、背景赤、背景緑、背景青、背景黄、背景水、背景紫、背景白<br>
 ・用途別の色<br>
- 背景(C_back)、前景（文字 C_info）、選択時の背景、選択時の前景（文字）<br>
- ラベル文字(C_mes)、カーソル、区切り線(C_line)、予備<br>
+ 背景(C_back)、前景文字(C_info)、選択時の背景、選択時の前景文字<br>
+ ラベル文字(C_mes)、カーソル、区切り線(C_line)、未定義<br>
+<br>
+<a name="C_csyh"><b>C_csyh</b></a> コマンドラインシンタックスハイライト<br>
+<br>
+一行編集／PPb のコマンドライン等に含まれるキーワード等を着色するシンタックスハイライト(<a href="#X_csyh">X_csyh</a>)の色指定です。自動(_auto)の場合は、該当色の変更を行いません。<br>
+コマンド&nbsp;&nbsp;コマンドラインのとき、最初の語をコマンドとします。%O などはコマンドから除外されます。<br>
+コマンド区切り&nbsp;&nbsp;コマンドラインの %: &amp;&amp; || | &lt;>、ワイルドカードの , ; が区切りに該当します。<br>
+エイリアス&nbsp;&nbsp;エイリアス(A_exec)に該当するコマンドです。<br>
+関数&nbsp;&nbsp;コマンドラインのときの %*function が該当します。<br>
+オプション&nbsp;&nbsp;コマンドの後に記載した「-」で始まる語（-o --o --o:x --o=x）が該当します。<br>
+文字列&nbsp;&nbsp;コマンドラインの &quot;文字列&quot; か '文字列' が該当します。<br>
+マクロ文字&nbsp;&nbsp;コマンドライン中のマクロ文字 %x が該当します。<br>
+不明文字&nbsp;&nbsp;各種パス中の使用不可・要注意の記号 &quot; * : &lt;> ? | 、ファイル名編集中のパス区切り / \ 、コマンドライン中の括弧（() [] {}）の組み合わせ不整合、コマンドライン中のタブ文字や全角空白が該当します。<br>
+パス-ドライブ名&nbsp;&nbsp;パス中のドライブ名(c:、\\pc、\\pc\share、https://host)が該当します。<br>
+パス-相対指定・拡張子&nbsp;&nbsp;パスが相対指定のときの各エントリと、拡張子（最終エントリの拡張子部分）が該当します。<br>
+パス区切り&nbsp;&nbsp;パスのパス区切り(\ /)、ワイルドカードの * ? が該当します。<br>
+括弧組-1～4&nbsp;&nbsp;コマンドラインの組となっている括弧（() [] {}）が該当します。<br>
+キーワード&nbsp;&nbsp;一行編集で検索を行ったときの検索ワードが該当します。<br>
 <br>
 <a name="C_ext"><b>C_ext</b></a> PPc 拡張子色<br>
 <br>
@@ -13182,7 +13205,9 @@ _auto を使用すると、Windowsの「ウィンドウの文字」の色を使�
 <a name="PPbの色指定"><b>PPbの色指定</b></a><br>
 <br>
 PPb の色指定は、コンソールウィンドウに対して指定をおこなうため、指定方法が他の色指定と異なります。<br>
-前景色から１色、背景色から１色を選択して、それを「+」で連結して指定します。<br>
+現在は、シンタックスハイライト時はRGB指定、それ以外の時は16色から指定となっています。<br>
+<br>
+16色指定時は、前景色から１色、背景色から１色を選択して、それを「+」で連結して指定します。<br>
 また、好みに応じて線指定を「+」で連結して追加することができます。<br>
 <br>
 <b>前景色</b><br>
@@ -13200,13 +13225,17 @@ R_DGRE: 暗緑&nbsp;&nbsp;R_DCYA: 暗水&nbsp;&nbsp;R_DBRO: 暗黄&nbsp;&nbsp;R_
 <b>線指定</b>(Win9x系や、Windows8.1以前の日本語や中国語以外の非多バイト文字言語では、指定しても表示できません)<br>
 _TL: 上線&nbsp;&nbsp;_UL: 下線&nbsp;&nbsp;_LL: 左線&nbsp;&nbsp;_RL: 右線<br>
 <br>
-<a name="CB_edit"><b>CB_edit</b></a> PPb編集行の色<br>
+<a name="CB_edit"><b>CB_edit</b></a> PPb編集行の色(16色指定)<br>
+<a name="CB_editE"><b>CB_editE</b></a> PPb編集行の色(シンタックスハイライト時)<br>
 はじめの２項目は、編集モード時の色と、選択時の色です。<br>
 あとの２項目は、参照モード時の色と、選択時の色です。<br>
+CB_editE は現在シンタックスハイライト(<a href="#X_csyh">X_csyh</a>)を有効にしているときのみ使用されます。<br>
 <br>
-<a name="CB_com"><b>CB_com</b></a> PPbで実行するコマンドラインの表示色<br>
+<a name="CB_com"><b>CB_com</b></a> PPbで実行するコマンドラインの表示色(16色指定)<br>
+<a name="CB_comE"><b>CB_comE</b></a> PPbで実行するコマンドラインの表示色(シンタックスハイライト時)<br>
 <br>
-<a name="CB_pop"><b>CB_pop</b></a> PPb一覧・メニュー<br>
+<a name="CB_pop"><b>CB_pop</b></a> PPb一覧・メニュー(16色指定)<br>
+<a name="CB_popE"><b>CB_popE</b></a> PPb一覧・メニュー(シンタックスハイライト時)<br>
 補完一覧やメニューで表示されるポップアップ表示に使用する色です。<br>
 <br>
 <a name="CB_pals"><b>CB_pals</b></a> PPb色パレット<br>
@@ -13774,10 +13803,6 @@ PPc<br>
 PPv<br>
 　<b>pppv</b> 1 を指定すると、PPvのホイール操作が、PPc上の前・次のファイル表示になります。<br>
 　 例) *setcust _others:pppv=1 %: %K&quot;loadcust&quot;<br>
-<hr><br>
-<a name="D_uwid"><b>D_uwid</b></a><br>
-<br>
-　XB_uwid=1 時に保存される PPb の文字幅の保存に使用します。ただし、D_uwid は、通常テキストファイルに書き出されません。<br>
 <hr><br>
 <a name="X_uftyp"><b>X_uftyp</b></a><br>
 　<a href="#cust_file">ファイル判別</a>実行(E_cr等)のユーザ定義です。<br>
@@ -15039,7 +15064,7 @@ plug-in の設定はカスタマイザで行うことができます。<br>
 <hr><br>
 <a name="trouble4"><b> 表示されている文字が化ける</b></a><br>
 <br>
-1) カスタマイザで「Display language/表示言語」が正しい言語になっているかを確認してください。<br>
+1) カスタマイザで「Display language / 表示言語」が正しい言語になっているかを確認してください。<br>
 <br>
 2) MultiByte版ではUNICODE版より扱える文字の種類が少ないので、対応していない文字が化けて表示されます。UNICODE版を使用してください。<br>
 また、DirectWrite版でないと表示できない文字もあります。<br>
@@ -15052,7 +15077,7 @@ plug-in の設定はカスタマイザで行うことができます。<br>
  4) OSや他のソフトによって使用されているファイルは、参照、書き換え、削除等ができない場合があります。PPc の名前変更や削除等で該当状態になったとき、該当ソフトの名前やプロセスID が表示可能であれば表示しますので、タスクマネージャ等で確認・終了させてください。<br>
  5) ネットワーク上のドライブを参照している場合、書換禁止のアクセス制限がされている場合があります。<br>
  6) ファイルシステムとして NTFS を用いたドライブは、エントリ毎にセキュリティ設定ができ、ユーザ毎に制限をかけることができます。この制限によって、参照、書き換え、削除等ができない場合があります。<br>
- 7) Vista / 7以降では、過去の互換性のために、「Documents and Settings」などの名前の特別なシンボリックリンクが用意されています。これらは、アクセス権でディレクトリの一覧表示ができないようになっているので、一覧表示のために使用することはできません。<br>
+ 7) Vista/7以降では、過去の互換性のために、「Documents and Settings」などの名前の特別なシンボリックリンクが用意されています。これらは、アクセス権でディレクトリの一覧表示ができないようになっているので、一覧表示のために使用することはできません。<br>
 8) 64bit版 Windows (x64, Arm64) 上で 32bit版 PPx を使用すると、Windows\System32  の内容が Windows\SysWOW64 の内容にリダイレクトされます。<br>
  ファイル一覧に表示されていませんが、Windows\Sysnative で本来の Windows\System32 の内容にアクセスできます。<br>
 <hr><br>
@@ -15105,7 +15130,7 @@ Explorerのカラム拡張は、Windows 2000, Me, XP, 2003 と、Windows Vista �
 <hr><br>
 <a name="trouble12"><b> Internet ExplorerやEdgeからファイル等をドロップしようとすると、カーソルが赤い禁止マークになってドロップできない</b></a><br>
 <br>
-Internet Explorer/Edgeの保護モードによって、操作が禁止されています。Internet Explorerの設定で保護モードを無効にすればドロップできますが、次のようにレジストリに許可するアプリケーションを登録すると、保護モードを無効にしなくてもドロップできるようになります。<br>
+Internet Explorer / Edgeの保護モードによって、操作が禁止されています。Internet Explorerの設定で保護モードを無効にすればドロップできますが、次のようにレジストリに許可するアプリケーションを登録すると、保護モードを無効にしなくてもドロップできるようになります。<br>
 ※ &quot;AppName&quot;と&quot;AppPath&quot; を実際のファイル名・パスに修正して下さい。<br>
 <br>
 Windows Registry Editor Version 5.00<br>
@@ -15275,7 +15300,7 @@ Windows Registry Editor Version 5.00<br>
 <hr><br>
 <b>PPcの一体化時に、意図した終了方法ではなくなった</b><br>
 <br>
-現在では、Q は一枚/一つのタブを閉じる、Alt+F4はPPcを終了(全て閉じる)となっています。キー割当てを再確認してみてください。<br>
+現在では、Q は一枚閉じるか、一つのタブを閉じる、Alt+F4はPPcを終了(全て閉じる)となっています。キー割当てを再確認してみてください。<br>
 <hr>
 <a name="troubleCustomize"></a><a name="カスタマイズ"></a><h3>トラブル、対策 - カスタマイズ</h3><br>
 <b>文字列が途中で途切れる</b><br>
@@ -15572,7 +15597,7 @@ IBM-PC互換機用のファイルマネージャ。Peter Norton Computing社(Sym
 <dt><b>仮想化 / virtual</b></dt><dd>Windows Vista以降のバーチャルストア機能(書き込み禁止のディレクトリにファイルを保存したように見せかける互換用機能)によりリダイレクトされていることを示すエントリです。元のファイルは %LOCALAPPDATA%\VirtualStore 以下に入っています。FILE_ATTRIBUTE_VIRTUAL, B16</dd>
 <dt><b>オープン時に生成、又は拡張属性 / recall on open, or Extend Attribute</b></dt>
 <dt></dt><dd>※ディレクトリによって属性の意味が異なります</dd>
-<dt></dt><dd>オープン時に生成の場合:</dd><dd>そのディレクトリにまだ存在していません。リモートストレージ上に存在しています。FILE_ATTRIBUTE_RECALL_ON_OPEN, B19</dd>
+<dt></dt><dd>オープン時に生成の場合: そのディレクトリにまだ存在していません。リモートストレージ上に存在しています。FILE_ATTRIBUTE_RECALL_ON_OPEN, B19</dd>
 <dt></dt><dd>拡張属性の場合: Unix の拡張属性が保存されています。FILE_ATTRIBUTE_EA, B19</dd>
 <dt><b>アクセス時に生成 / recall on data accesss</b></dt><dd> そのディレクトリにまだ存在していません。リモートストア上に存在しています。FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS / FILE_ATTRIBUTE_EA, B22</dd>
 <dt><b>SMR BLOB</b> この属性は説明がないため、詳細不明です。ファイルのオープンに時間が掛かったり、ファイルのランダム読み書きアクセスに適さなかったりする場所に保存されていることを示していると思われます。 FILE_ATTRIBUTE_STRICTLY_SEQUENTIAL, B29 (Windows 10.0.16267以前では B21)</dt>
@@ -15593,5 +15618,5 @@ IBM-PC互換機用のファイルマネージャ。Peter Norton Computing社(Sym
 <a name="copyright"></a><a name="連絡先／一次配布先"></a><h3>連絡先／一次配布先等 - 連絡先／一次配布先</h3><br>
 E-mail <a href="mailto:toroid.jp@gmail.com"><i>toroid.jp@gmail.com</i></a><br>
 WWW <a href="https://toro.d.dooo.jp/index.html" target="_top">https://toro.d.dooo.jp/index.html</a> <a href="https://toroidj.github.io/" target="_top">https://toroidj.github.io/</a><br>
- <i>Paper Plane xUI Copyright (c)1997-2025 TORO／高橋 良和</i><br>
+ <i>Paper Plane xUI Copyright (c)1997-2026 TORO／高橋 良和</i><br>
 </body></html>
