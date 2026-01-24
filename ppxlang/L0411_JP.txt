@@ -1,5 +1,5 @@
 +1.42|Mes0411	=#{ 日本語
-+|0000	2042
++|0000	2065
 0003	中止(&A)
 0004	再試行(&R)
 0005	無視(&I)
@@ -316,8 +316,8 @@ CDI2	アイコン付2(&6)
 CDI3	アイコン付3(&7)
 CDID	アイコン付詳細(&I)
 CDL1	一覧1(&L)
-CDL2	一覧&2
-CDL3	一覧&3
+CDL2	一覧2(&2)
+CDL3	一覧3(&3)
 CDT1	サムネイル1(&T)
 CDT2	サムネイル2(&8)
 CDT3	サムネイル3(&9)
@@ -989,7 +989,7 @@ VCBH	ディレクトリ文字
 VCBI	ディレクトリ背景
 VCBK	背景
 VCBO	PPb 一覧・メニュー
-VCBP	PPb 色パレット(Vista以降)
+VCBP	PPb 色パレット(Vista以降 console host)
 VCBR	PPb 実行時
 VCBS	編集文字
 VCBT	編集背景
@@ -1067,6 +1067,9 @@ VCJU	ハイライト8
 VCJV	マウスポインタ下
 VCJW	非アクティブ背景(混合色)
 +1.81|VCLA	ログ、アドレスバー、処理中一覧
+VCLB	背景
+VCLC	文字
+VCLD	項目
 VCLF	PPv 改行文字
 VCLG	先頭行
 VCLH	桁折り行
@@ -1083,23 +1086,35 @@ VCPD	水
 VCPE	赤
 VCPF	紫
 VCPG	黄
-VCPI	灰
-VCPJ	明青
-VCPK	明緑
-VCPL	明水
-VCPM	明赤
-VCPN	明紫
-VCPO	明黄
-VCPP	明白
+VCPI	明 灰
+VCPJ	明 青
+VCPK	明 緑
+VCPL	明 水
+VCPM	明 赤
+VCPN	明 紫
+VCPO	明 黄
+VCPP	明 白
 VCPQ	黒(背景)
 VCPR	暗白(初期色)
 VCRE	報告
 VCSA	カラースキーム
 VCSB	黒
-VCSC	紫
-VCSD	白
-VCSE	明黒
-VCSF	明紫
+VCSC	白
+VCSD	背景 灰
+VCSE	背景 赤
+VCSF	背景 緑
+VCSG	背景 青
+VCSH	背景 黄
+VCSI	背景 水
+VCSJ	背景 紫
+VCSK	背景 白
+VCSL	背景
+VCSM	前景(標準文字)
+VCSN	選択(背景)
+VCSO	選択(文字)
+VCSP	ラベル
+VCSQ	カーソル
+VCSR	区切り線
 VCSZ	ダークモード用カラースキーム
 VCTA	PPv タブ文字
 VCTB	編集前
@@ -1113,7 +1128,7 @@ VCTI	チップ
 VCTR	ツリー
 VCTS	コメント
 VCTT	タグ
-VCVA	(未実装)
+VCVA	(未定義)
 VCVB	PPv 末端線
 VCVC	旧行
 VCVD	しおり行
@@ -1132,6 +1147,23 @@ VCWJ	(負荷増)ダイアログ文字
 VCWK	境界線(ダークモード時用)
 VCWL	フォーカス背景(ダークモード時用)
 VCWS	PPv 全角空白
+VCXA	コマンドシンタックスハイライト
+VCXB	(背景色)
+VCXC	コマンド
+VCXE	コマンド区切り
+VCXI	関数
+VCXK	オプション
+VCXM	文字列
+VCXO	マクロ文字
+VCXQ	不明文字
+VCXS	パス-ドライブ名
+VCXU	パス-相対指定・拡張子
+VCXW	パス区切り
+VCXY	キーワード
+VCYA	括弧組-1
+VCYC	括弧組-2
+VCYE	括弧組-3
+VCYG	括弧組-4
 VDLA	名前幅
 VDLC	色
 VDLD	幅
@@ -1394,4 +1426,5 @@ XUUN	最新版です
 XUUQ	新しい %s があります。%s から更新しますか？
 -|7883	
 -|ITFC	
-};ldbamaajgllhnjoooaffikmddbfalknajgaomapgbeinjdfjlldngghhcekjpimjbieknnbjapmhmnmhkohmnaahkbkamnodmdjifeihbodphjaibemfahhccjgpgiohaie 
+-|XBUW	
+};dlkhbeebnfmaoopomaipoogfecknikllpojhlidnkeaaicmdgdnnphagddlgknkickgbgdmdfebipibhhkpaigbnhofelflkageaijigjofflakgjcmipodgndffoaolaie 

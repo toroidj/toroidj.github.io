@@ -1,5 +1,5 @@
 Mes0409	=#{ English ; 0409 is Locale ID (LCID)
-+|0000	2042
++|0000	2065
 0001	OK
 0002	Cancel
 0003	Abort(&A)
@@ -7,7 +7,7 @@ Mes0409	=#{ English ; 0409 is Locale ID (LCID)
 0005	Ignore(&I)
 0006	Yes(&Y)
 0007	No(&N)
-7005	extension(&E)
+7005	Extension(&E)
 7007	Option(&O)
 7009	&...
 700A	(&L)
@@ -44,7 +44,7 @@ Mes0409	=#{ English ; 0409 is Locale ID (LCID)
 703F	Same Name Action
 7040	Name Filter
 7041	Attributes
-7042	Dest(&D)
+7042	Destination(&D)
 7043	Rename(&E)
 7044	Divide size(&V)
 7045	Serial Number(&N)
@@ -83,7 +83,7 @@ Mes0409	=#{ English ; 0409 is Locale ID (LCID)
 7076	serialize operation(&Z)
 7077	Move after close file(&W)
 7078	Fix extention name(&Y)
-7079	Log &4
+7079	Log(&4)
 707A	Link for symbolic link
 707B	Remove symbolic link sources(&H)
 707C	Thermal Throttling(&O)
@@ -300,10 +300,10 @@ Mes0409	=#{ English ; 0409 is Locale ID (LCID)
 7C08	Print
 7C0A	Now Printing...
 ACET	\n, and %d application
-ADDE	D&D emulate(&D)
-ADDH	D&D hook(&D)
+ADDE	Drag and Drop emulate
+ADDH	Drag and Drop hook
 ADDP	Post files
-ADDR	Right button D&D(&D)
+ADDR	Right button Drag and Drop
 ADHD	This file is using by applications;\n
 ADTE	Enter a title
 AICP	Add check pattern
@@ -984,7 +984,7 @@ VCBH	directory text
 VCBI	directory back
 VCBK	back ground
 VCBO	PPb popup
-VCBP	PPb palettes(Vista)
+VCBP	PPb palettes(Vista console host)
 VCBR	PPb execute log
 VCBS	edit text
 VCBT	edit back
@@ -1062,6 +1062,9 @@ VCJU	highlight8
 VCJV	mouse hover
 VCJW	inactive back(blend color)
 VCLA	log, address, job
+VCLB	back
+VCLC	text
+VCLD	lbl
 VCLF	PPv line feed charctor
 VCLG	first line
 VCLH	second line
@@ -1078,7 +1081,7 @@ VCPD	cyan
 VCPE	red
 VCPF	magenta
 VCPG	yellow
-VCPI	gray
+VCPI	bright gray
 VCPJ	bright blue
 VCPK	bright green
 VCPL	bright cyan
@@ -1091,18 +1094,22 @@ VCPR	white(default)
 VCRE	report
 VCSA	scheme colors
 VCSB	black
-VCSC	purple
-VCSD	white
-VCSE	bright black
-VCSF	bright purple
-VCSG	base 03
-VCSH	base 02
-VCSI	base 01
-VCSJ	base 00
-VCSK	base 0
-VCSL	base 1
-VCSM	base 2
-VCSN	base 3
+VCSC	white
+VCSD	gray-back
+VCSE	red-back
+VCSF	green-back
+VCSG	blue-back
+VCSH	yellow-back
+VCSI	cyan-back
+VCSJ	magenta-back
+VCSK	white-back
+VCSL	background
+VCSM	foreground
+VCSN	select-back
+VCSO	select-text
+VCSP	badge
+VCSQ	cursor
+VCSR	frame(line)
 VCSZ	dark mode scheme colors
 VCTA	PPv tab charctor
 VCTB	before edit
@@ -1135,6 +1142,23 @@ VCWJ	(heavy)Dialog Text, for dark mode
 VCWK	edge line, for dark mode
 VCWL	focus back, for dark mode
 VCWS	PPv wide space
+VCXA	Command syntax highlight
+VCXB	(background)
+VCXC	command
+VCXE	command separater
+VCXI	function
+VCXK	option
+VCXM	strings
+VCXO	macro letter
+VCXQ	illigal letter
+VCXS	path-drive
+VCXU	path-part,extention
+VCXW	path separater
+VCXY	keyword
+VCYA	braket pair 1
+VCYC	braket pair 2
+VCYE	braket pair 3
+VCYG	braket pair 4
 VDLA	name width
 VDLC	color
 VDLD	width
@@ -1398,7 +1422,7 @@ VYWS	find file
 WITD	Need WININET.DLL
 WKSI	Keyname seems invalid
 WLLP	Long path directory
-WNMM	Warning : unsupport macro charcter.
+WNMM	Warning : unsupport macro letter.
 WNOA	No \'@\' prefix
 WUML	width unmatch line %d(this width:%d, max width:%d)
 XAAC	refresh all PPc
@@ -1472,7 +1496,6 @@ XBTN	show box space
 XBTO	opaqued window
 XBTP	picture path
 XBTY	show back picture
-XBUW	(UNICODE ver.)calculate char. width
 XCAC	Cache directory
 XCAL	tiny Calculator
 XCAR	Auto save default entry context menu selection
@@ -1824,4 +1847,4 @@ ZTPY	PPtray
 ZTVD	Drag
 ZTVI	Image view
 ZTVT	Text view
-};edjjmipgbhlmmcakolhneeoahppdpkjaioopdmgffcbemognedcmkafpfbkgllnclnkejnlndlgncddiflfbabknakhbkfoapnflgcoecdnkdnnojjgegiglcodkamibaie 
+};feaimjfkfcgmnejnpmdhelmdppdjmnmgnoemlkfkbbjfbcolggknfmkkbnfhggmklgkflbdbdjepfnijlhceachhbklhphjgifpadffaklmhcfjjdennofnnlpmldkefaie 

@@ -61,6 +61,7 @@
 		RichEditV3(deprecation, BMP UNICODE only)RichEditV3(非推奨, BMP内限定のため、絵文字等使用不可):X_uxt+8=@1
 		RichEditV4RichEditV4:X_uxt+8=@2
 		RichEditV8(color fonts, REQUIRE DLL)RichEditV8(カラー絵文字対応, 要DLL, [F1]か右クリックでヘルプ):X_uxt+8=@3
+		syntax highlight(eq. RichEdit,reboot)シンタックスハイライト(要RichEdit,要PPx再起動):X_csyh=?1:0
 ..ZTOP|Operation操作
 	XMON|Force multi monitor mode強制でマルチモニタとみなした動作をする:X_mmon=?1:0
 	XMEN|close menu on undefined keyメニューをショートカット未定義のキーで閉じる:X_menu=?1/1:0
@@ -760,12 +761,12 @@
 .ZTPB|PPb
 	XBSZ|console show linesコンソールの表示行数:XB_size+6=<w
 	XBSY|logged linesコンソールの全体(バックログ)行数:XB_size+2=<w
-	XBUW|(UNICODE ver.)calculate char. width(UNICODE版)正確なカーソル位置取得を行う:XB_uwid=?1:0
 	XTAM|terminal command仮想端末として使用するソフト
 		XTCH|Default terminal通常の仮想端末を使用:X_term=@s
 		XTWT|use Windows TerminalWindows Terminal を使用:X_term=@swt.exe
 		XTWT|use Console hostconhost を使用:X_term=@sconhost.exe
 		XTAM|terminal command端末として使用するソフト:X_term=<s
+	syntax highlight(eq. Win10 1607)シンタックスハイライト(Win10 1607以降):X_csyh+4=?1:0
 .ZTPE|PPe
 	XUCS|show line cursorカーソル位置に下線を使う:X_ucsr=?1:0
 	XNCP|new text charcter set新規時の文字コード
