@@ -269,7 +269,7 @@ Windows 10 1903 以降に標準でインストールされている icu.dll (Int
 <br>
 <b>(3) Windows Script 2.0以上</b><br>
 Windows Script 2.0 以上に含まれている IRegExp を使用できます。<br>
-Windows Script は Windows 98SE / Windows2000 以降 ～ Windows 11 であれば標準で 2.0以上がインストールされています。Windows95, 98, NT4.0は、別途インストールする必要があります。<br>
+Windows Script は Windows 98SE / Windows 2000 以降 ～ Windows 11 であれば標準で 2.0以上がインストールされています。Windows95, 98, NT4.0は、別途インストールする必要があります。<br>
 尚、IRegExp は、VBscript の一部であるために 2023/10 から非推奨になっており、Windows 11 以降では無効化されている場合があります。そのときは有効化の作業が必要です<br>
 また、変換指定 ( tr/ ) を使用できません。<br>
 <br>
@@ -604,7 +604,7 @@ shell:ControlPanelFolder →コントロールパネル<br>
 -#3:\ → #3:\</i><br>
 <br>
 ※「-#0:」等と、相対指定にした場合はパスが正しく解析されない場合があります。<br>
-※「shell:」形式は、Windows2000 以降の File Explorer で使用できるようになった形式です。指定できる name は、基本的に File Explorer で指定できる形式と同一ですが、DesktopFolder 等の一部の名前は対応 Windows 以外の Windows でも指定できるようにしてあります。<br>
+※「shell:」形式は、Windows 2000 以降の File Explorer で使用できるようになった形式です。指定できる name は、基本的に File Explorer で指定できる形式と同一ですが、DesktopFolder 等の一部の名前は対応 Windows 以外の Windows でも指定できるようにしてあります。<br>
 <br>
 <dl compact>
 <dt>#n:</dt><dd>shell:形式のname, 場所(Windows Vista, 7, 8, 10 の標準設定の場合)</dd>
@@ -2702,7 +2702,7 @@ PPx, KL, (FD):\[Y]<br>
 <br>
 ファイル：ハードリンクを作成<br>
 ディレクトリ：ジャンクションを作成<br>
-Windows2000以降&amp;NTFSのみ動作します。<br>
+Windows 2000 以降 &amp; NTFS のみ動作します。<br>
 
 <hr>
 <a name="PPcWindowLayout"></a><a name="PPc画面"></a><h3>PPc - ファイラ／ファイルマネージャ - 操作方法 - PPc画面</h3><br>
@@ -4613,15 +4613,15 @@ PPTRAY.EXEを起動し、メニュー中の「HookEdit」をチェックする�
 <hr>
 <a name="PPeSpecInfo"></a><a name="PPeの仕様"></a><h3>一行編集/PPe - PPeの仕様</h3><br>
 PPeで編集することができるテキストファイルのサイズはメモ帳と同じです。<br>
-つまり、Win9x系では 32Kbytes まで、WinNT 系では 2Gbyte 程度までです。<br>
+つまり、Win9x 系では 32Kbytes まで、WinNT 系では 2Gbyte 程度までです。<br>
 尚、WinNT系でも数100kbytesのファイルを開くと各種操作がかなり遅くなって、編集に耐えられなくなります。<br>
 <br>
-PPeは、改行コードがCR, LF, CR+LFの３種類を判別して読み込むことができます。<br>
+PPe は、改行コードが CR, LF, CR+LF の３種類を判別して読み込むことができます。<br>
 <br>
-また、扱うことができる文字コードは、Shift_JIS, EUC-JP, UTF-16(UCS-2, BOM有/無), UTF-8(BOM有/無) を自動認識するほか、Windows が対応している任意のコードページを手動で指定できます。<br>
+また、扱うことができる文字コードは、Shift_JIS, EUC-JP, UTF-16(UCS-2, BOM 有/無), UTF-8(BOM 有/無) を自動認識するほか、Windows が対応している任意のコードページを手動で指定できます。<br>
 <hr>
 <a name="EditOther"></a><a name="その他"></a><h3>一行編集/PPe - その他</h3><br>
-・[BS]や[Del]で削除された文字は、独自のカットバッファに2000～4000文字分スタックされており、^[U]で削除した単位で挿入可能です。<br>
+・[BS]や[Del]で削除された文字は、独自のカットバッファに 2000～4000 文字分スタックされており、^[U]で削除した単位で挿入可能です。<br>
 また、全 PPx で共通となっています。<br>
 <br>
 ・ファイルのドロップをおこなうと、一行編集の場合はそのフルパス名に置き換えられます。PPeの場合はそのファイルを同じ窓で開きます。<br>
@@ -6135,25 +6135,28 @@ Y/行方向の種類<br>
 <hr><br>
 <a name="help"><b>*help <i>[keyword]</i> PPxのヘルプを表示</b></a><br>
 <a name="ヘルプ"></a><br>
-PPxのヘルプを表示します。<br>
-keywordが指定していない場合はトピック表示をし、指定してあるときは指定キーワードの項目を表示します。<br>
-<br>
-<b>windows help</b><br>
-表示するヘルプは、Windows 95, 98, Me, NT, 2000, XP, 2003 なら PPX.HLP を使用します。<br>
-ヘルプファイル(PPX.HLP)は PPx 本体の配布書庫に同梱していません。<a href="#winhlpdl">別途ダウンロード</a>してください。<br>
+PPx のヘルプを表示します。<br>
 <br>
 <b>html help</b><br>
 PPX.HLP が存在しないか、Windows Vista 以降ならオンラインヘルプ<a href="https://toro.d.dooo.jp/ppxhlp.html" target="_top">https://toro.d.dooo.jp/ppxhlp.html</a>を使用します。<br>
 オンラインヘルプを<a href="#downloadhelp">ダウンロード</a>して使用することもできます。<br>
+keyword を指定したときは、keyword と一致する項目を表示します。<br>
+<br>
+<b>Windows help</b><br>
+Windows XP / Server 2003 以前であり、PPX.HLP が存在していれば、Windows help(WINHLP32.EXE)を使ってヘルプを表示します。<br>
+keyword が指定していない場合はトピック表示をし、指定してあるときは指定キーワードの項目を表示します。<br>
+<br>
+ヘルプファイル(PPX.HLP)は PPx 本体の配布書庫に同梱していません。<a href="#winhlpdl">別途ダウンロード</a>してください。<br>
+また、 _others:winhelp に WINHLP32.EXE のパスを指定した場合は、Windows Vista / Server 2008 以降でも Windows help を使用します。<br>
 <br>
 <hr><br>
 <a name="PPxCmd19"><b>*ime <i>0|1</i> IME状態の変更</b></a><br>
 <br>
-IME による入力の on (*ime 1)、off (*ime 0)を切り替えます。各PPxや一行編集で予め IMEの状態を指定するときに使用します。コマンドラインの /k や <a href="#FIRSTEVENT">FIRSTEVENT</a> に記載すると予め指定することができます。<br>
+IME による入力の on (*ime 1)、off (*ime 0)を切り替えます。各 PPx や一行編集で予め IME の状態を指定するときに使用します。コマンドラインの /k や <a href="#FIRSTEVENT">FIRSTEVENT</a> に記載すると予め指定することができます。<br>
 <hr><br>
 <a name="layout"><b>*layout レイアウトメニューを表示</b></a><br>
 <br>
-PPc, PPvで、各表示要素の表示on/offなどを行うレイアウトメニューを表示します。<br>
+PPc, PPvで、各表示要素の表示 on/off などを行うレイアウトメニューを表示します。<br>
 <br>
 以下のオプションを１つ指定するとトグル切り替えが可能です。<br>
 title&nbsp;&nbsp;タイトルバー<br>
@@ -6188,16 +6191,17 @@ panehv&nbsp;&nbsp;ペインの縦並び / 横並び<br>
 <br>
 一行メッセージ「message」を表示します。<b>「&quot;」で括る必要はありません。括った「&quot;」はそのまま表示されます。</b><br>
 <br>
-PPcの場合は、ログ窓があればログ窓に、そうでなければステータス行に表示します。<br>
+PPc の場合は、ログ窓があればログ窓に、そうでなければステータス行に表示します。<br>
 &nbsp;&nbsp;また、<i>*linemessage !&quot;message</i> と、「!&quot;」を頭に指定するとログ窓があっても必ずステータス行に表示します。<br>
-PPvの場合は、ステータス行に表示します。<br>
-一行編集/PPeの場合は、タイトルバーに表示します。<br>
+PPv の場合は、ステータス行に表示します。<br>
+一行編集/PPe の場合は、タイトルバーに表示します。<br>
 PPbの場合は、コンソールに表示します。<br>
 <br>
 PPc, PPv はステータス行の表示指定として、以下の指定が使用できます。PPc の場合、ログ窓があってもステータス行に表示します。<br>
+※ 末尾に &quot; をあると &quot; が表示されます。<br>
 *linemessage ... messageの指定がない場合、一行メッセージの表示を取り消します。常時表示があれば常時表示になります。<br>
-*linemessage !&quot;message ... messageを表示します。X_log指定によるログを行いません。<br>
-*linemessage !L&quot;message ... messageを表示します。X_log指定によるログを行います。<br>
+*linemessage !&quot;message ... message を表示します。X_log 指定によるログを行いません。<br>
+*linemessage !L&quot;message ... message を表示します。X_log 指定によるログを行います。<br>
 *linemessage !P&quot;message ... 進捗表示用の表示を行います。通常のステータス行表示は一定時間＋操作により消えますが、この指定は表示を維持します。<br>
 *linemessage !K&quot;text ... 常時表示を行います。別の一行メッセージの表示が完了した後は、この指定の一行メッセージの表示に戻ります。「*linemessage !K&quot;」と空文字列を指定した場合は、常時表示を終了します。<br>
 *linemessage !R&quot; ... 直前に表示した一行メッセージを再表示します。既に一行メッセージを表示しているときは、一行メッセージの表示期間が延長されます。<br>
@@ -6216,10 +6220,10 @@ PPc 又は PPv のステータス行に表示されている報告文字列を�
 指定された内容で、選択肢ダイアログを表示し、項目の選択を行います。<br>
 <br>
 例) %*choice(&quot;test&quot;)<br>
- &quot;test&quot;ダイアログを表示し、選択肢として「Ok」/「キャンセル」を表示します。結果は1/0です。<br>
+ &quot;test&quot;ダイアログを表示し、選択肢として「Ok」, 「キャンセル」を表示します。結果は1/0です。<br>
 <br>
 例) %*choice(-type:yNc -text:&quot;test&quot;)<br>
- &quot;test&quot;ダイアログを表示し、選択肢として「Yes」/「No」/「キャンセル」を表示します。<br>
+ &quot;test&quot;ダイアログを表示し、選択肢として「Yes」, 「No」, 「キャンセル」を表示します。<br>
  「No」にフォーカスが設定されます。<br>
  結果は1/2です。<br>
  「キャンセル」か閉じるボタンのときは実行を中止します。<br>
@@ -9574,9 +9578,9 @@ WSH VBScriptの場合は、置換(s/src/dest/)のみ使用できます。修飾�
 <br>
 ・文字列部分においては空白も有効です。<br>
 <br>
-・英大文字･小文字は区別されます。<br>
+・英大文字・小文字は区別されます。<br>
 <br>
-・空白を空ける場合、空白／TABの２種類がありますが、空白は、内容の一部とみなされるのに対し、TABは無視されるという違いがあります。<br>
+・空白を空ける場合、空白と TAB の２種類がありますが、空白は、内容の一部とみなされるのに対し、TAB は無視されるという違いがあります。<br>
 <br>
 ・コメントを記載する場合は「;」のあとに記載して下さい。また、項目の内容として使う場合は、「%;」等として指定します。<br>
 ※コメントの「;」は、行頭か、空白又はタブの次に記載します。<br>
@@ -9611,37 +9615,10 @@ B00000000
  <i>+1.00|keyword =</i>&nbsp;&nbsp;更新される<br>
  <i>+0.99|keyword =</i>&nbsp;&nbsp;更新されない<br>
 <br>
-<a name="color"></a>・色の指定<br>
- 色の指定方法は文字で書く方法と、数値で書く方法があります。<br>
- 文字で書く場合は原色を即座に指定でき、画面の解像度が256色でも表示に支障がありません。<br>
- 逆に数値で書く方法は中間色が使えるため、表現力が大きくなりますが、解像度によっては正しく表現できない場合があります。<br>
-<br>
- 文字形式：<br>
-_BLA : 黒&nbsp;&nbsp;_BLU : 青&nbsp;&nbsp;_RED : 赤&nbsp;&nbsp;_MAG : 紫<br>
-_GRE : 緑&nbsp;&nbsp;_CYA : 明水色&nbsp;&nbsp;_BRO : 黄色&nbsp;&nbsp;_WHI : 白<br>
-_DBLA: 暗灰&nbsp;&nbsp;_DBLU: 暗青&nbsp;&nbsp;_DRED: 暗赤/茶&nbsp;&nbsp;_DMAG: 暗紫<br>
-_DGRE: 暗緑&nbsp;&nbsp;_DCYA: 暗水&nbsp;&nbsp;_DBRO: 暗黄&nbsp;&nbsp;_DWHI: 灰<br>
-_MGRE: 明緑&nbsp;&nbsp;_SBLU: 水色/空&nbsp;&nbsp;_CREM: 暗白&nbsp;&nbsp;_GRAY: 明灰<br>
-_AUTO: 既定の色を使います。使用する色は項目毎に異なります。<br>
-※_MGRE, _SBLU, _CREM は 256色で正しく表示できません。<br>
-<br>
- カラースキーム指定：<br>
-1)既定の設定値の色を使用します。<br>
-_SBACK : 背景(C_back)<br>
-_SMES : 項目名(C_mes)<br>
-_SINFO : 内容(C_info)<br>
-2)カラースキーム(C_schN, C_schD)で指定した色を使用します。<br>
-_SBLACK, _SBLUE, _SCYAN, _SGREEN,<br>
-_SPURPLE, _SRED, _SWHITE, _SYELLOW<br>
-_SBRBLACK, _SBRBLUE, _SBRCYAN, _SBRGREEN<br>
-_SBRPURPLE, _SBRRED, _SBRWHITE, _SBRYELLOW<br>
-_SBKBLACK, _SBKBLUE, _SBKCYAN, _SBKGREEN<br>
-_SBKPURPLE, _SBKRED, _SBKWHITE, _SBKYELLOW<br>
-_SBACK, _SFORE, _SBKSELECT, _SSELECT<br>
-_SLABEL, _SCURSOR, _SFRAME,_SRESERVED<br>
-<br>
- 数値形式：<br>
- 基本色以外は Hbbggrr と、16進数で指定すると分かりやすくなります。<br>
+・色の指定方法はキーワードで指定する方法と、数値で記載する方法があります。<br>
+ キーワードは原色を即座に指定でき、ディスプレイの色解像度が 256 色でも表示に支障がありません。また、エイリアス(A_color)やカラースキーム(C_schN, C_schD)で色を揃えやすくなります。<br>
+ 逆に数値で書く方法は中間色が使えるため、表現力が大きくなります。<br>
+ 詳細は<a href="#color">色指定方法</a>を参照してください。<br>
 <hr>
 <a name="keyformat"></a>
 <a name="custkeynames"></a><a name="キー表記、内蔵キーコマンド、イベント"></a><h3>カスタマイズ詳細 - キー表記、内蔵キーコマンド、イベント</h3><br>
@@ -9658,18 +9635,18 @@ _SLABEL, _SCURSOR, _SFRAME,_SRESERVED<br>
 <dt></dt></dl><br>
 ・[A]～[Z], [0]～[9] はそのまま表記します(A～Z, 0～9)。<br>
 <br>
-・記号は「'」で括ります。（[=]→'='等）ただし、Shiftの有無は問いません。<br>
+・記号は「'」で括ります。（[=] → '=' 等）ただし、Shift キーの有無は問いません。<br>
 例えば、'!'は、日本語キーボードでは Shift + 1 になります。<br>
-また、'*'は、日本語キーボードでは、フルキーのShift+:、又はテンキーの*になります。このように該当キーが複数ある場合は、仮想キーコード(V_xx)で使い分けることができます。<br>
+また、'*' は、日本語キーボードでは、フルキーの Shift + : と、テンキーの * のどちらでも反応します。このように該当キーが複数ある場合は、仮想キーコード(V_xx)で使い分けることができます。<br>
 <a name="vkck"></a>※使い分けは、キーボードを変えると別のキーになってしまい、意図しないキー割当てになることがあるのでお薦めしません。<br>
-※Windowsの仕様により、１つのキーを押した場合でも、仮想キーコード→文字キーコードの順に２つの入力があります。既に割当て済みのキーと同じ仮想キーコードへ割当てを行う場合、<b>元のキーを無効にしないと両方機能します。</b><br>
+※Windows の仕様により、１つのキーを押した場合でも、仮想キーコード→文字キーコードの順に２つの入力があります。既に割当て済みのキーと同じ仮想キーコードへ割当てを行う場合、<b>元のキーを無効にしないと両方機能します。</b><br>
 A&nbsp;&nbsp;= NULL<br>
 V_H41&nbsp;&nbsp;= @'*'<br>
 上記の例は、[A]を押すと「V_H41」、「A」の順に実行されるため、[A]が実行されないように NULL で無効にしています。<br>
 <br>
 ・PPxの初期割当てキーを指定する場合(再帰エイリアス禁止)は「@」を頭に付加する<br>
   ※この指定をしない場合は、指定したキーに新たに割り当てた内容を優先で使用します。このため、指定内容によっては無限ループに陥る場合があります。<br>
-  例)下記設定の場合、A→B→C→A と無限ループに陥る。<br>
+  例)下記設定の場合、A→B→C→A と無限ループに陥ります。<br>
 &nbsp;&nbsp;A = B<br>
 &nbsp;&nbsp;B = C<br>
 &nbsp;&nbsp;C = A<br>
@@ -9797,13 +9774,13 @@ PPxのキーに割り当てられていないコマンドの一部は、次の�
 <dt></dt>
 <dt></dt>
 <dt> <a name="COMMENTEVENT1"><b>COMMENTEVENT1</b></a> ～ COMMENTEVENT10</dt>
-<dt></dt><dd>(PPc KC_main)拡張コメントの内容が必要なときに使用します。</dd>
+<dt></dt><dd>(PPc KC_main)拡張コメントの内容を取得するときに使用します。</dd>
 <dt></dt><dd>拡張コメントが未設定の時に、拡張コメントによるソート、又は拡張コメントの表示が必要になったときに呼び出されます。このとき、*comment コマンドやスクリプトを用いて拡張コメントの内容を設定することができます。</dd>
 <dt></dt><dd>例) COMMENTEVENT1 , *comment 1,all extract,&quot;拡張子=%%FT&quot;</dd>
 <dt></dt><dd>例) COMMENTEVENT2 , *comment 2,all extract,&quot;%%ME_comment2&quot;</dd>
 <dt></dt>
 <dt> <a name="RANGEEVENT1"><b>RANGEEVENT1</b></a> ～ RANGEEVENT8</dt>
-<dt></dt><dd>(PPc KC_main)<a href="#XC_mvXX">XC_mvUD等</a>のカーソル移動設定で<a href="#XC_mvXXct">画面外方法・範囲外方法</a>にこれらEVENTを指定したときに使用されます。独自の画面外等への移動動作を記述するときに使用します。</dd>
+<dt></dt><dd>(PPc KC_main)<a href="#XC_mvXX">XC_mvUD等</a>のカーソル移動設定で<a href="#XC_mvXXct">画面外方法・範囲外方法</a>にこれら EVENT を指定したときに使用されます。独自の画面外等への移動動作を記述するときに使用します。</dd>
 <dt></dt>
 <dt> <a name="REFBUTTON"><b>REFBUTTON</b></a></dt>
 <dt> </dt><dd>(一行編集)参照ボタンを押したときに使用します。</dd>
@@ -9816,9 +9793,9 @@ PPxのキーに割り当てられていないコマンドの一部は、次の�
  KANJI&nbsp;&nbsp;IME の on/off<br>
  NUMLOCK&nbsp;&nbsp;Num Lock の on/off<br>
  SCROLL&nbsp;&nbsp;Scroll Lock の on/off<br>
- V_HAD&nbsp;&nbsp;音量ミュートの on/off(Windows2000以降)<br>
- V_HAE&nbsp;&nbsp;音量小(Windows2000以降)<br>
- V_HAF&nbsp;&nbsp;音量大(Windows2000以降)<br>
+ V_HAD&nbsp;&nbsp;音量ミュートの on/off(Windows 2000以降)<br>
+ V_HAE&nbsp;&nbsp;音量小(Windows 2000以降)<br>
+ V_HAF&nbsp;&nbsp;音量大(Windows 2000以降)<br>
 <hr>
 <a name="cust_gr"></a>
 <a name="custswitch"></a><a name="全般設定"></a><h3>カスタマイズ詳細 - 全般設定</h3><br>
@@ -9948,7 +9925,7 @@ Windows 7 以降で追加されたタスクバーのボタンの制御機能を�
 <br>
 <a href="#taskbarpin">ピン止めの注意</a><br>
 <hr><br>
-<a name="X_uxt"><b>X_uxt</b></a> ダイアログやメニュー等のダークモード, <a href="#X_uxt1">窓の角形状</a>, <a href="#X_uxt2">テキスト編集種類</a><br>
+<a name="X_uxt"><b>X_uxt</b></a> ダイアログやメニュー等のダークモード, <a href="#X_uxt1">窓の角形状</a>, <a href="#X_uxt2">テキスト編集種類</a>, <a href="#X_uxt3">大きいファイルをRichEditでテキスト編集</a><br>
 <br>
 <b>ダイアログやメニュー等のダークモード</b><br>
 Windows 10 1903 以降で、ダイアログやメニュー等の配色をダークモードにするかどうかの設定です。<br>
@@ -10012,6 +9989,12 @@ Windows 10 1903 以降で、ダイアログやメニュー等の配色をダー�
 &nbsp;&nbsp;  必要な DLL: MSPTLS.DLL, RICHED20.DLL の両方<br>
 <br>
 &nbsp;&nbsp;  ※ 32bit版 PPx では、アプリ版メモ帳の 32bit版がないため、32bit版 Office の DLL のみ使用可能です。<br>
+<a name="X_uxt3"></a><br>
+大きいファイルをRichEditでテキスト編集<br>
+<br>
+テキスト編集の種類が Edit のとき(X_uxt 第3が 0)、テキスト編集（一行編集、PPe、ダイアログのテキスト入力欄）で RichEdit コントロールを使うようにするファイルサイズを指定します。0 のときは、RichEdit を使用しません。1 のときは、常に RichEdit を使用します。<br>
+Edit コントロールは、30000-60000 程度で操作が目立って遅くなりますので、前記範囲を指定することをお薦めします。<br>
+尚、Windows 95-Me, NT 4.0 はこの設定にかかわらず、ファイルサイズが 30000 以上になった場合は必ず RichEdit になります。<br>
 <hr><br>
 <a name="X_csyh"><b>X_csyh</b></a> 一行編集のシンタックスハイライト, PPb のシンタックスハイライト<br>
 <br>
@@ -10724,7 +10707,7 @@ bregonig.dllと、BRegExp.dllの両方があった場合は、bregonig.dllを使
 <hr><br>
 <a name="X_execs"><b>X_execs</b></a>&nbsp;&nbsp;(おまけ)初めて実行する実行可能ファイルを警告<br>
 <br>
-1を設定したとき、_Execsに登録されていないか、先頭32KBytesが変化した実行可能ファイル(.exe)を実行するときに実行するかどうかの確認ダイアログを表示します。<br>
+1 を設定したとき、_Execs に登録されていないか、先頭 32KBytes が変化した実行可能ファイル(.exe)を実行するときに実行するかどうかの確認ダイアログを表示します。<br>
 <br>
 誤って不審なファイルを実行しないようにするために使用することができます。<br>
 <hr>
@@ -12525,7 +12508,7 @@ PPx          :TC1 :TH1 :XCFG<br>
   尚、「--」のみで記載した場合は、「--.1」「--.2」等と重複しないように自動で付番します。<br>
 <br>
 ・「||」の場合、垂直線が引かれ、以降の項目は次の段に表示されます。項目内容は無視されます。<br>
-  ※垂直線を使うと、メニューの見た目が変わったり、ダークモード時でも明るい背景であったり、反応が遅くなったりすることがあります。これは、垂直線対応のメニューが Windows2000 以前相当の機能しかなく、最近のデザインに対応していない為のようです。<br>
+  ※垂直線を使うと、メニューの見た目が変わったり、ダークモード時でも明るい背景であったり、反応が遅くなったりすることがあります。これは、垂直線対応のメニューが Windows 2000 以前相当の機能しかなく、最近のデザインに対応していない為のようです。<br>
 <br>
   「||.xxx」と「||.」の後に任意の内容「xxx」を記載できます。複数の垂直線を記載する場合は「xxx」がメニュー内で重複しないようにしてください。<br>
   尚、「||」のみで記載した場合は、「||.1」「||.2」等と重複しないように自動で付番します。<br>
@@ -12970,6 +12953,53 @@ D:下<br>
 <hr>
 <a name="cust_color"></a>
 <a name="custColor"></a><a name="色"></a><h3>カスタマイズ詳細 - 色</h3><br>
+<a name="color"></a>・色の指定<br>
+<pre>
+<b>色キーワード</b>
+_AUTO  既定の色を使います。使用する色は項目毎に異なります。
+_BLA   黒      _BLU   青        _RED   赤        _MAG   紫
+_GRE   緑      _CYA   明水色    _BRO   黄色      _WHI   白
+_DBLA  暗灰    _DBLU  暗青      _DRED  暗赤/茶   _DMAG  暗紫
+_DGRE  暗緑    _DCYA  暗水      _DBRO  暗黄      _DWHI  灰
+_MGRE  明緑    _SBLU  水色/空   _CREM  暗白      _GRAY  明灰
+※_MGRE, _SBLU, _CREM は ディスプレイの色解像度が 256 色のときは正しく表示できません。
+
+<b>カラースキーム指定</b>
+1)既定の設定値の色を使用します。
+_SBACK  背景(C_back)
+_SMES   項目名(C_mes)
+_SINFO  内容(C_info)
+
+2)カラースキーム(C_schN, C_schD)で指定した色を使用します。
+・通常の色
+_SBLACK    黒       _SRED        赤      _SGREEN    緑       _SYELLOW    黄
+_SBLUE     青       _SPURPLE     紫      _SCYAN     水       _SWHITE     白
+
+・明るい色
+_SBRBLACK  明黒     _SBRRED      明赤    _SBRGREEN  明緑     _SBRYELLOW  明黄
+_SBRBLUE   明青     _SBRPURPLE   明紫    _SBRCYAN   明水     _SBRWHITE   明白
+
+・背景用の色
+_SBKBLACK  背景黒   _SBKRED      背景赤  _SBKGREEN  背景緑   _SBKYELLOW  背景黄
+_SBKBLUE   背景青   _SBKPURPLE   背景紫  _SBKCYAN   背景水   _SBKWHITE   背景白
+
+・用途別の色
+_SBACK      背景(C_back)
+_SFORE      前景文字(C_info)
+_SBKSELECT  選択時の背景
+_SSELECT    選択時の前景文字
+_SLABEL     ラベル文字(C_mes)
+_SCURSOR    カーソル
+_SFRAME     区切り線(C_line)
+_SRESERVED  用途未定義
+
+<b>エイリアス指定</b>
+エイリアス(A_color)で指定したキーワードにより色を指定します。
+
+<b>数値形式(BGR)</b>
+ 123456  10進指定    16進指定  H1234ab
+ Hbbggrr と、16進数で指定すると分かりやすくなります。
+</pre><br>
 <a name="C_back"><b>C_back</b></a> 背景色<br>
 <br>
 背景画像を使用しないときの背景色です。<a href="#color">色指定方法</a><br>
@@ -13037,11 +13067,11 @@ _AUTO を使用すると、Windowsのチップと同じ色になります。<br>
  指定可能な数は 32 種類です。各色は種類・用途を想定した名前を割り当てていますが、他の色として使ってもかまいません。<br>
 <br>
 ・通常の色<br>
- 黒、赤、緑、青、黄、水、紫、白<br>
+ 黒、赤、緑、黄、青、紫、水、白<br>
 ・明るい色<br>
- 明黒、明赤、明緑、明青、明黄、明水、明紫、明白<br>
+ 明黒、明赤、明緑、明黄、明青、明紫、明水、明白<br>
 ・背景用の色<br>
- 背景黒、背景赤、背景緑、背景青、背景黄、背景水、背景紫、背景白<br>
+ 背景黒、背景赤、背景緑、背景黄、背景青、背景紫、背景水、背景白<br>
 ・用途別の色<br>
  背景(C_back)、前景文字(C_info)、選択時の背景、選択時の前景文字<br>
  ラベル文字(C_mes)、カーソル、区切り線(C_line)、未定義<br>
@@ -14214,7 +14244,7 @@ PPx の html ヘルプはオンライン<a href="https://toro.d.dooo.jp/ppxhlp.h
 ※ ppxhelp.html だけダウンロードして開けないときは、ppxindex.html などもダウンロードしてください（コマンドラインに file:///～#～ を指定ができないブラウザがあるため ）。<br>
 <a name="winhlpdl"></a><br>
 <b>(2)Windows Help(WINHLP32.EXE)</b><br>
-　<a href="https://toro.d.dooo.jp/slppx.html#ppxhelp" target="_top">https://toro.d.dooo.jp/slppx.html#ppxhelp</a> からヘルプファイルをダウンロードして、PPx があるディレクトリに PPX.HLP と PPX.CNT を保存すると、Windows XP 以前で使用するようになります。Windows Vista 以降では、 _others:winhelp に WINHLP32.EXE のパスを指定する必要があります。<br>
+　<a href="https://toro.d.dooo.jp/slppx.html#ppxhelp" target="_top">https://toro.d.dooo.jp/slppx.html#ppxhelp</a> からヘルプファイルをダウンロードして、PPx があるディレクトリに PPX.HLP と PPX.CNT を保存すると、Windows XP, Server 2003 以前で使用するようになります。Windows Vista 以降では、 _others:winhelp に WINHLP32.EXE のパスを指定する必要があります。<br>
 <br>
 <b>(3)ヘルプの設定</b><br>
 _others:helpdir = [+|-][ヘルプファイルがあるディレクトリのパス]<br>
