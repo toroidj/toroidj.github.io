@@ -33,7 +33,7 @@ img { max-width: 100%; height: auto; }
 <div align="left">※ http://toro.d.dooo.jp からダウンロードできないときは、<a href="https://toroidj.github.io/slplugin.html">https://toroidj.github.io</a> からダウンロードしてください。</div><hr></div>
 <div id="contents"><div id="contents2">
  <table border="0" summary="目録">
-  <tr><td>・<a href="#unbypass">UNBYPASS.DLL</a>
+  <tr><td>・<a href="#unbypass">UNBYPASS.DLL</a>&nbsp;(<a href="#unbypass1">+1</a>)
   </td><td>- UNLHA32.DLLやmigemo.dllなどを64bitアプリケーションで使用するためのDLL</td></tr>
   <tr><td>・<a href="#iftwic">WIC Susie Plug-in</a>
   </td><td>- WIC を使ったSusie Plug-in</td></tr>
@@ -67,7 +67,7 @@ img { max-width: 100%; height: auto; }
   </td><td>- Susie Plug-in による画像の取得、書庫展開と、動作検証をする</td></tr>
   <tr><td>・<a href="#spibench">spibench 改変版</a>
   </td><td>- 宮坂 賢氏作成 spibench の改変版</td></tr>
-  <tr><td>・<a href="#unzzip">unzzip.dll</a>&nbsp;(<a href="#unzzip1">+1</a>)&nbsp;(<a href="#unzzip2">+2</a>)
+  <tr><td>・<a href="#unzzip">unzzip.dll</a>&nbsp;(<a href="#unzzip1">+1</a>)&nbsp;(<a href="#unzzip2">+2</a>)&nbsp;(<a href="#unzzip3">+3</a>)
   </td><td>- zlib を使った zip書庫の簡易な OpenArchive DLL</td></tr>
   <tr><td>・<a href="#7zca">7zca.dll</a>
   </td><td>- 7-Zip(7z.dll)を使ったOpenArchive DLLの試作品</td></tr>
@@ -75,6 +75,7 @@ img { max-width: 100%; height: auto; }
 <!-- DownloadList
 unbypass
 ./unbypass20.zip
+./unbypass20p1.zip
 iftwic
 ./iftwic22.zip
 iftpsd
@@ -111,12 +112,13 @@ unzzip
 ./unzzip14.zip
 ./unzzip14p1.zip
 ./unzzip14p2.zip
+./unzzip14p3.zip
 7zca
 ./7zca06.zip
 EndList -->
 <hr><a href="./slplugin.html">↑</a><a name="unbypass"><span role="heading" aria-level="2">UNBYPASS.DLL</span></a> Version 2.0
 <br>
-&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/unbypass20.zip">unbypass20.zip</a> ( 241 Kbytes,&nbsp;2023-11-11,&nbsp;Windows XP/2003 - 10/2022 (x64, Arm64))<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/unbypass20.zip">unbypass20.zip</a> ( 241 Kbytes,&nbsp;2023-11-11,&nbsp;Windows XP/2003 - 11/2025(x64, Arm64))<br>
 <br>・統合化アーカイブプロジェクト関連DLL(UNLHA32.DLL, UNZIP32.DLL, ZIP32J.DLL, TAR32.DLL, CAB32.DLL, UNRAR32.DLL, 7-ZIP32.DLL) <br>
 ・Susie plug-in<br>
 ・migemo.dll<br>
@@ -126,6 +128,12 @@ EndList -->
 ・マルチスレッド未対応<br>
  Susie plug-inは、マルチスレッドに対応していません。<br><br>●<strong>変更点</strong><br>1.9→2.0<br>
 ・Unxxx&nbsp;/&nbsp;Susie&nbsp;plug-in&nbsp;でダイアログが表示されるときの挙動を調整した<br>
+
+<hr><a href="./slplugin.html">↑</a><a name="unbypass1"><span role="heading" aria-level="2">UNBYPASS.DLL</span></a> Version 2.0+1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/unbypass20p1.zip">unbypass20p1.zip</a> ( 216 Kbytes,&nbsp;2026-2-7,&nbsp;Windows XP/2003 - 11/2025 (x64, Arm64))<br>
+<br>試験公開版です。 Version 2.0からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>2.0→2.0+1<br>
+・異常発生時に応答無しになることがあるのを修正<br>
 
 <hr><a href="./slplugin.html">↑</a><a name="iftwic"><span role="heading" aria-level="2">WIC Susie Plug-in</span></a> Version 2.2
 <br>
@@ -369,6 +377,14 @@ x64版/x86版/ARM64版が入っています。<br><br>●<strong>変更点</stro
 ・マルチスレッド処理を調整した<br>
 ・既存ファイルのバックアップ(-B)を追加<br>
 ・既存ファイルがあるときの処理指定ダイアログの動作を調整した<br>
+
+<hr><a href="./slplugin.html">↑</a><a name="unzzip3"><span role="heading" aria-level="2">unzzip.dll</span></a> Version 1.4+3
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/unzzip14p3.zip">unzzip14p3.zip</a> ( 537 Kbytes,&nbsp;2026-2-7,&nbsp;Windows XP/2003 - 11/2025(x86, x64, Arm64))<br>
+<br>試験公開版です。 Version 1.4からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>1.4+2→1.4+3<br>
+・マルチスレッド処理を調整した<br>
+・AES&nbsp;暗号化ファイル(128,&nbsp;192,&nbsp;256&nbsp;bits)の展開に対応(Windows&nbsp;Vista&nbsp;以降)<br>
+・書庫内ファイルの一覧表示(-l&nbsp;-lv&nbsp;-lj&nbsp;-v&nbsp;-Z)を追加<br>
 
 <hr><a href="./slplugin.html">↑</a><a name="7zca"><span role="heading" aria-level="2">7zca.dll</span></a> Version 0.6
 <br>
