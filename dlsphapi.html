@@ -28,7 +28,7 @@ p { text-align: left; }
 --></style></head>
 <body BGCOLOR="#eeee99" TEXT="#000000" LINK="#0000CC" VLINK="#8800cc" ALINK="#440088">
 <div id="page">
-<div id="title"><H2>Susie 32bit / 64bit Plug-in の仕様(2025-8-10版)</H2>
+<div id="title"><H2>Susie 32bit / 64bit Plug-in の仕様(2026-2-14版)</H2>
 <hr></div>
 <div id="contents"><div id="contents2">
 <p>拙作 Susie 32bit / 64bit Plug-in の仕様です。</p>
@@ -276,11 +276,11 @@ Plug-in 定義の aboutダイアログ か 設定ダイアログを実行しま�
 </pre>
 <h4><a name="GetPicture">GetPicture, GetPictureW</a>, <a name="GetPreview">GetPreview, GetPreviewW</a></h4>
 画像ファイルからビットマップを取得します。<br>
-<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPicture(<span class="type">LPCSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback, <span class="type">LONG_PTR</span> lData);<br>
-<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPictureW(<span class="type">LPCWSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPicture(<span class="type">LPCSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpProgressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPictureW(<span class="type">LPCWSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpProgressCallback, <span class="type">LONG_PTR</span> lData);<br>
 <br>
-<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPreview(<span class="type">LPCSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback, <span class="type">LONG_PTR</span> lData);<br>
-<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPreviewW(<span class="type">LPCWSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPreview(<span class="type">LPCSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpProgressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetPreviewW(<span class="type">LPCWSTR</span> buf, <span class="type">LONG_PTR</span> len, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpProgressCallback, <span class="type">LONG_PTR</span> lData);<br>
 <pre>パラメータ
 [in]  <span class="type">LPCSTR / LPCWSTR</span> buf
   入力がファイルの場合: ファイル名
@@ -302,7 +302,7 @@ Plug-in 定義の aboutダイアログ か 設定ダイアログを実行しま�
 [out] <span class="type">HLOCAL</span> *pHBm
   ビットマップデータ本体のメモリハンドルが返される
 
-[in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
+[in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpProgressCallback
   途中経過を表示するコールバック関数へのポインタ。
   NULL の場合、Plug-in は処理が終了するまでスレッドを占有し、中断も出来ません。
   ただし、NULL を許容しないプラグインがあるので、アプリケーションはダミーでも関数を指定することを推奨します。
@@ -407,8 +407,8 @@ struct {
 </pre>
 <h4><a name="GetFile">GetFile, GetFileW</a></h4>
 アーカイブ内の指定ファイルを取得します。<br>
-<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetFile(<span class="type">LPCSTR</span> src, <span class="type">LONG_PTR</span> len, <span class="type">LPSTR</span> dest, <span class="type">unsigned int</span> flag, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> prgressCallback, <span class="type">LONG_PTR</span> lData);
-<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetFileW(<span class="type">LPCWSTR</span> src, <span class="type">LONG_PTR</span> len, <span class="type">LPWSTR</span> dest, <span class="type">unsigned int</span> flag, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> prgressCallback, <span class="type">LONG_PTR</span> lData);
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetFile(<span class="type">LPCSTR</span> src, <span class="type">LONG_PTR</span> len, <span class="type">LPSTR</span> dest, <span class="type">unsigned int</span> flag, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> lpProgressCallback, <span class="type">LONG_PTR</span> lData);
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> GetFileW(<span class="type">LPCWSTR</span> src, <span class="type">LONG_PTR</span> len, <span class="type">LPWSTR</span> dest, <span class="type">unsigned int</span> flag, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> lpProgressCallback, <span class="type">LONG_PTR</span> lData);
 <pre>パラメータ<br>
 [in] <span class="type">LPCSTR / LPCWSTR</span> src
   入力がファイルの場合: ファイル名
@@ -431,7 +431,7 @@ struct {
       000 : ディスクファイル
       001 : メモリ上のイメージ
 
-[in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
+[in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpProgressCallback
   途中経過を表示するコールバック関数へのポインタ。
   NULL の場合、Plug-in は処理が終了するまでスレッドを占有し、中断も出来ません。
   ただし、NULL を許容しないプラグインがあるので、アプリケーションはダミーでも関数を指定することを推奨します。
@@ -502,8 +502,8 @@ struct {
 </pre>
 <h4><a name="CreatePicture">CreatePicture (オプション、独自)</a></h4>
 ビットマップを指定した拡張子に対応するファイル形式でエンコードします。<br>
-<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> CreatePicture(<span class="type">LPCSTR</span> filepath, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <a href="#PictureInfo">struct PictureInfo</a> *lpInfo, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> progressCallback, <span class="type">LONG_PTR</span> lData);<br>
-<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> CreatePictureW(<span class="type">LPCWSTR</span> filepath, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <a href="#PictureInfo">struct PictureInfo</a> *lpInfo, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> progressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> CreatePicture(<span class="type">LPCSTR</span> filepath, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <a href="#PictureInfo">struct PictureInfo</a> *lpInfo, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> lpProgressCallback, <span class="type">LONG_PTR</span> lData);<br>
+<span class="prefix">extern "C"</span> <span class="type">int</span> <span class="prefix">__stdcall</span> CreatePictureW(<span class="type">LPCWSTR</span> filepath, <span class="type">unsigned int</span> flag, <span class="type">HLOCAL</span> *pHBInfo, <span class="type">HLOCAL</span> *pHBm, <a href="#PictureInfo">struct PictureInfo</a> *lpInfo, <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</a></span> lpProgressCallback, <span class="type">LONG_PTR</span> lData);<br>
 <pre>パラメータ
 拡張子に対応したファイル形式でビットマップからファイルを作成します。
 
@@ -532,7 +532,7 @@ struct {
   pHBInfo にない情報を含めるときに使用します。lpInfo = NULL としても構いません。x_density, y_density, colorDepth は pHBInfo を参照するため、使用されません。
   ※将来保存形式を拡張する場合は、flag の B12 を 1 にして、この構造体の後ろに空白区切りのコマンドパラメータの文字列を追加する形を想定しています。
 
-[in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpPrgressCallback
+[in][option] <span class="type"><a href="#SUSIE_PROGRESS">SUSIE_PROGRESS</span></a> lpProgressCallback
   途中経過を表示するコールバック関数へのポインタ。
   NULL の場合、Plug-in は処理が終了するまでスレッドを占有し、中断も出来ません。
   ただし、NULL を許容しないプラグインがあるので、アプリケーションはダミーでも関数を指定することを推奨します。
@@ -554,9 +554,8 @@ AtoB Converter(<a href="https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html
 <HR><H3>コールバック</H3>
 <a name="SUSIE_PROGRESS"></a><span class="prefix">typedef</span> <span class="type">int</span> (<span class="prefix">__stdcall</span> *SUSIE_PROGRESS)(<span class="type">int</span> nNum, <span class="type">int</span> nDenom, <span class="type">LONG_PTR</span> lData);</a>
 <pre>
-  まず nNum == 0 でコールされ、nNum == nDenom になるまで
-  定期的に呼ばれます。
-  戻り値が 非0 の時、Plug-inは処理を中断します。
+  Plug-in から nNum == 0 でコールされ、nNum == nDenom になるまで定期的に呼ばれます。
+  戻り値が 非 0 の時、Plug-in は処理を中断します。
 </pre>
 
 <HR><H3><A NAME="errorcode">エラーコード</A></H3>
@@ -568,9 +567,10 @@ AtoB Converter(<a href="https://www.asahi-net.or.jp/~kh4s-smz/spi/abc/index.html
     4 : メモリーが確保出来ない
     5 : メモリーエラー（Lock出来ない、等）
     6 : ファイルリードエラー
-    7 : （予約）
+    7 : 予約(ウィンドウの作成に失敗したときに使われているらしいです。）
     8 : 内部エラー
-    9 : ファイルライトエラー </pre>
+    9 : ファイルライトエラー
+    10 : 未定義(EOF によりファイルが読み込めないときに使われているらしいです。) </pre>
 <HR><H3><A NAME="bitmap">bitmap仕様</A></H3>
 やりとりするビットマップは、pHBInfo と pHBm に分かれて扱われます。それぞれの大きさは LocalSize で参照します。<br>
 <br>
@@ -657,6 +657,8 @@ Windows Bitmap 関係<br>
 <ul><li><a href="https://entropymine.com/jason/">Jason Summers’s web site</a> 「BMP Suite」(<a href="https://entropymine.com/jason/bmpsuite/">https://entropymine.com/jason/bmpsuite/</a>)</li>
 </ul>
 <HR><H3><A NAME="changelog">更新履歴</A></H3>
+2026-2-14<br>
+・lpProgressCallback の表記が統一されていなかったのを修正<br>
 2025-8-10<br>
 ・Plug-in の概要を追加<br>
 ・その他を拡充<br>
@@ -665,7 +667,7 @@ Windows Bitmap 関係<br>
 ・IsSupported / IsSupportedW の dw を const に変更<br>
 ・IsSupported, GetFileInfo のパラメータ説明欄の型の誤記を修正<br>
 <hr><a href="index.html">Homeへ戻る</a>
-<hr><address>Copyright(c)2024,2025 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
+<hr><address>Copyright(c)2024-2026 TORO/高橋 良和 E-mail: toroid.jp&nbsp;@&#8203;gmail.com</address>
 </div></div>
 <div id="index">
 <strong><A HREF="./index.html">TORO's Library</A></strong>
