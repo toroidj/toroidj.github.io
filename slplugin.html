@@ -67,7 +67,7 @@ img { max-width: 100%; height: auto; }
   </td><td>- Susie Plug-in による画像の取得、書庫展開と、動作検証をする</td></tr>
   <tr><td>・<a href="#spibench">spibench 改変版</a>
   </td><td>- 宮坂 賢氏作成 spibench の改変版</td></tr>
-  <tr><td>・<a href="#unzzip">unzzip.dll</a>&nbsp;(<a href="#unzzip1">+1</a>)&nbsp;(<a href="#unzzip2">+2</a>)&nbsp;(<a href="#unzzip3">+3</a>)&nbsp;(<a href="#unzzip4">+4</a>)&nbsp;(<a href="#unzzip5">+5</a>)
+  <tr><td>・<a href="#unzzip">unzzip.dll</a>&nbsp;(<a href="#unzzip1">+1</a>)&nbsp;(<a href="#unzzip2">+2</a>)&nbsp;(<a href="#unzzip3">+3</a>)&nbsp;(<a href="#unzzip4">+4</a>)&nbsp;(<a href="#unzzip5">+5</a>)&nbsp;(<a href="#unzzip6">+6</a>)
   </td><td>- zlib を使った zip書庫の簡易な OpenArchive DLL</td></tr>
   <tr><td>・<a href="#7zca">7zca.dll</a>
   </td><td>- 7-Zip(7z.dll)を使ったOpenArchive DLLの試作品</td></tr>
@@ -114,6 +114,7 @@ unzzip
 ./unzzip14p3.zip
 ./unzzip14p4.zip
 ./unzzip14p5.zip
+./unzzip14p6.zip
 7zca
 ./7zca06.zip
 EndList -->
@@ -396,6 +397,15 @@ x64版/x86版/ARM64版が入っています。<br><br>●<strong>変更点</stro
 <br>試験公開版です。 Version 1.4からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>1.4+4→1.4+5<br>
 ・内部処理を調整した<br>
 ・unzip32.dll&nbsp;互換&nbsp;API&nbsp;の挙動を調整した<br>
+
+<hr><a href="./slplugin.html">↑</a><a name="unzzip6"><span role="heading" aria-level="2">unzzip.dll</span></a> Version 1.4+6
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/unzzip14p6.zip">unzzip14p6.zip</a> ( 513 Kbytes,&nbsp;2026-3-7,&nbsp;Windows XP/2003 - 11/2025(x86, x64, Arm64))<br>
+<br>試験公開版です。 Version 1.4からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>1.4+5→1.4+6<br>
+・260&nbsp;文字以上のパスに対応<br>
+・260&nbsp;文字以上のパスへの展開を許可する指定を追加(--long-path)<br>
+・Mark&nbsp;of&nbsp;the&nbsp;Web&nbsp;の伝播(--ZoneID)を追加<br>
+・書庫のテスト／展開時の&nbsp;crc&nbsp;テスト(-t)を追加<br>
 
 <hr><a href="./slplugin.html">↑</a><a name="7zca"><span role="heading" aria-level="2">7zca.dll</span></a> Version 0.6
 <br>
