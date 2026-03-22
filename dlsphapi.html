@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <TITLE>TORO's Data Library(Susie Plug-in 仕様)</TITLE>
 <LINK REL="CHAPTER" HREF="dlsphapi.html">
+<link rel="icon" href="/toro.png">
 <style type="text/css"><!--
 body { line-height: 150%; word-break: break-word; }
 hr { border: solid 1px; }
@@ -603,11 +604,11 @@ Plug-in を使うアプリケーションとして完全対応したい場合は
 <br>
 参考：ファイルに保存するときの配置<br>
  BITMAPFILEHEADER, BITMAPINFOHEADER, [パレット又はBITFIELDS], ビットマップ<br>
- BITMAPFILEHEADER, BITMAPV5HEADER, [パレット又はBITFIELDS], ビットマップ, [カラープロファイル]<br>
+ BITMAPFILEHEADER, BITMAPV5HEADER, [パレット], ビットマップ, [カラープロファイル]<br>
 <br>
 参考：クリップボードに保存するときの配置<br>
  BITMAPINFOHEADER, [パレット又はBITFIELDS], ビットマップ<br>
- BITMAPV5HEADER, [パレット又はBITFIELDS], ビットマップ, [カラープロファイル]<br>
+ BITMAPV5HEADER, [パレット], ビットマップ, [カラープロファイル]<br>
 ※ BITMAPV5HEADERを使う場合は CF_DIBV5(BITMAPV5HEADER) と CF_DIB(BITMAPINFOHEADER) をこの順に登録する必要がある。
 <br>
 <HR><H3><A NAME="others">その他</A></H3>
