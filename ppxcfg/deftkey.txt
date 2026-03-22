@@ -237,16 +237,19 @@ recyclebin	ごみ箱へ移動	@D
 delete	削除	@\D
 delete(BG)	削除(バックグラウンド)	*ppcfile delete
 erase from list	リストファイルから消去	@^\D
-clip file	クリップ	@^C
+clip files(list, DnD)	クリップ(フルパスファイル一覧, DnD)	@^C
 cut	切り取り	@^X
 paste	ペースト	@^V
 clip(explorer)	エクスプローラ互換クリップ	%z,copy
-cut(exp)	エクスプローラ互換切り取り	%z,cut
-paste(exp)	エクスプローラ互換ペースト	%z.,paste
-clip files	クリップ(ファイル等)	*clipentry file
-clip filename	クリップ(ファイル名)	*clipentry text
+cut(explorer)	エクスプローラ互換切り取り	%z,cut
+paste(explorer)	エクスプローラ互換ペースト	%z.,paste
+clip files(list, DnD, shortcut)	クリップ(フルパスファイル一覧, DnD, ショートカット)	*clipentry all
+clip files(DnD, shortcut)	クリップ(DnD, shortcut)	*clipentry file
+clip file list	クリップ(フルパスファイル名一覧)	*clipentry text
 clip directory	クリップ(フォルダ名)	@^\C
-Clip name list	ファイル名の一覧をクリップ(Vista以降限定)	%ObdTs clip < %aFCN
+clip name list	クリップ(ファイル名一覧)	*cliptext %OC%*regexp("%#,C","/,/\n/g")
+clip name list(without ext)	クリップ(拡張子なしファイル名一覧)	*cliptext %OC%*regexp("%#,X","/,/\n/g")
+Clip name list	クリップ(ファイル名の一覧, Vista以降限定)	%ObdTs clip < %aFCN
 paste link	ショートカット貼付	@^\V
 attribute	属性・時刻変更	@A
 rename	名前変更	@R

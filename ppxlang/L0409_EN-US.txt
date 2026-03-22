@@ -1,5 +1,5 @@
 Mes0409	=#{ English ; 0409 is Locale ID (LCID)
-+|0000	2065
++|0000	208
 0001	OK
 0002	Cancel
 0003	Abort(&A)
@@ -47,7 +47,7 @@ Mes0409	=#{ English ; 0409 is Locale ID (LCID)
 7042	Destination(&D)
 7043	Rename(&E)
 7044	Divide size(&V)
-7045	Serial Number(&N)
+7045	Serial Number(&K)
 7047	Copy SACL(&C)
 7048	Directory(&D)
 7049	Burst/self buffering(&G)
@@ -244,6 +244,9 @@ Mes0409	=#{ English ; 0409 is Locale ID (LCID)
 7878	Cleanup result
 7879	POSIX's unlink
 787A	Ghosting
+787B	Bypass IO
+787C	Stream Snapshots
+787D	Case sensitive dirs
 7881	Directory Mask(&D)
 7882	Real time Mask(&M)
 7884	format(&T)
@@ -1847,4 +1850,4 @@ ZTPY	PPtray
 ZTVD	Drag
 ZTVI	Image view
 ZTVT	Text view
-};feaimjfkfcgmnejnpmdhelmdppdjmnmgnoemlkfkbbjfbcolggknfmkkbnfhggmklgkflbdbdjepfnijlhceachhbklhphjgifpadffaklmhcfjjdennofnnlpmldkefaie 
+};ilomahdinfmjamejgdgaohokmoapebmcijpgagpilimancnlfifoehfcbhiodkmnbpaobojhdommneojjmafhkkdfhjldclofklhlklijcolkalfcklfjdkkdhapliapaie 

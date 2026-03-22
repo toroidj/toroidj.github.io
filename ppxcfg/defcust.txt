@@ -4,7 +4,7 @@ X_mwid	=60
 X_dlim	=0
 X_dss	=-1
 X_tskb	=2
-^|X_uxt	=-3,0,0
+^|X_uxt	=-3,0,0,30000
 X_csyh	=0,0
 X_LANG	=0
 ^|X_pmc	=-1,0,B110001111111,0
@@ -228,9 +228,9 @@ LZS	,LHA X %C %!2%\ %m"DOS archiver"
 RAR	,UNRAR X %C %!2 %m"DOS archiver"
 PMA	,PMA X %C %!2 %m"DOS archiver"
 ZIP	,PKUNZIP -d %C %!2 %m"DOS archiver"
-TAR	,TAR xvf %C -o %!2 %m"DOS archiver"
-TAZ	,TAR xvf %C -o %!2 %m"DOS archiver"
-TGZ	,TAR xvf %C -o %!2 %m"DOS archiver"
+TAR	,tar xvf %C -o %!2 %m"cli archiver"
+TAZ	,tar xvf %C -o %!2 %m"cli archiver"
+TGZ	,tar xvf %C -o %!2 %m"cli archiver"
 ??_	,EXPAND -r %C %!2
 *Z	,GZIP -d %C %!2
 BDF	,BUPDATE %C %m"DOS diff"
@@ -250,7 +250,7 @@ H	=%h7
 I	=%h8
 J	=%h9
 K	=%h10
-||	=
+--	=
 %G"PJDE|Desktop"(&S)	=shell:DesktopFolder\
 %G"PJDL|DriveList"(&L)	=:
 %G"PJCP|ControlPanel"(&P)	=shell:ControlPanelFolder\
@@ -344,14 +344,14 @@ lhaSFX(WIN&32)	=%uUNLHA32.DLL,S %ec"%C" -gw
 &7zip	=%u7-ZIP64.DLL,a %ef"%{%2%\%|%X%|%}" %@ %S"-r"
 &7zip(pass)	= %u7-ZIP64.DLL,a %ef"%{%2%\%|%X%|%}" %@ %S"-r" -p
 zip(7-zip)	=%u7-ZIP64.DLL,a -tzip -mx=7 %ef"%{%2%\%|%X%|%}" %@ %S"-r"
-zip(7,pass)	=%u7-ZIP64.DLL,a -tzip -mx=7 %ef"%{%2%\%|%X%|%}" %@ %S"-r" -p
+zip(7, pass)	=%u7-ZIP64.DLL,a -tzip -mx=7 %ef"%{%2%\%|%X%|%}" %@ %S"-r" -p
 zip(zip32j)	=%uZIP32J.DLL,%ef"%{%2%\%|%X%|%}" %@ %S"-r"
-||	=
-&TAR	=tar cvf %{%2%\%|%X%|.tar%} %@
-&gzip	=tar cvfz %{%2%\%|%X%|.gz%} %@
-&bzip2	=tar cvfj %{%2%\%|%X%|.bz2%} %@
-&xz	=tar cvfJ %{%2%\%|%X%|.xz%} %@
-&lzma	=tar cvf --lzma %{%2%\%|%X%|.7z%} %@
+--	=
+&tar	=tar cvf %{%2%\%|%X%|.tar%} %@
+&gzip(tar)	=tar cvfz %{%2%\%|%X%|.gz%} %@
+&bzip2(tar)	=tar cvfj %{%2%\%|%X%|.bz2%} %@
+&xz(tar)	=tar cvfJ %{%2%\%|%X%|.xz%} %@
+&lzma(tar)	=tar cvf --lzma %{%2%\%|%X%|.7z%} %@
 }
 M_DirMenu	= {
 %G"MTVF|View"(&V)	=?viewmenu

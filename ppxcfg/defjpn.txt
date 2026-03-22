@@ -87,10 +87,11 @@ M_menuCEdit = {
 }
 M_menuCEdit1 = {
 現在のディレクトリ(&D)\tCtrl+Shift+C	= %K"@^\C"
-ファイル名(&F)	= *cliptext %C
-ファイル名(拡張子除く)(&X)	= *cliptext %X
+選択ファイル名(&F)	= *cliptext %OC%*regexp("%#,C","/,/\n/g")
+選択ファイル名(拡張子除く)(&X)	= *cliptext %OC%*regexp("%#,X","/,/\n/g")
 拡張子部分(&E)	= *cliptext %T
-フルパス名(&P)	= %K"@^C"
+選択ファイル(text list, DnD, shortcut, &P)	= *clipentry all
+選択ファイル(text list, DnD, &N)\tCtrl+C	= *clipentry entry
 反対ディレクトリ(&2)	= *cliptext %2
 }
 M_menuCView = {

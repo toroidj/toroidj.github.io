@@ -1,5 +1,5 @@
 +1.42|Mes0411	=#{ 日本語
-+|0000	2065
++|0000	208
 0003	中止(&A)
 0004	再試行(&R)
 0005	無視(&I)
@@ -42,7 +42,7 @@
 7042	先(&D)
 7043	名前(&E)
 7044	分割(&V)
-7045	連番(&M)
++2.08|7045	連番(&K)
 7047	監査(&C)
 7048	ディレクトリ(&D)
 7049	Burst(自前バッファ,&G)
@@ -232,6 +232,9 @@
 7878	クリーンアップ通知
 7879	POSIX削除
 787A	ゴーストイメージ
+787B	バイパスIO
+787C	ストリームスナップショット
+787D	ディレクトリ単位 大／小文字区別
 7881	ディレクトリ&D
 7882	リアルタイム&M
 7884	書式(&T)
@@ -1427,4 +1430,4 @@ XUUQ	新しい %s があります。%s から更新しますか？
 -|7883	
 -|ITFC	
 -|XBUW	
-};dlkhbeebnfmaoopomaipoogfecknikllpojhlidnkeaaicmdgdnnphagddlgknkickgbgdmdfebipibhhkpaigbnhofelflkageaijigjofflakgjcmipodgndffoaolaie 
+};cafooialpggeidhpecpjkdpcmneilbijmhibopcmehhdobpdmdbgdcabnagedalinfgoichdllcpbpldcjipphjglhnlhejlnnigjhapfmbablekldnalajnbnipafkiaie 
