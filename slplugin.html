@@ -66,7 +66,7 @@ img { max-width: 100%; height: auto; }
   </td><td>- Susie Plug-in による画像の取得、書庫展開と、動作検証をする</td></tr>
   <tr><td>・<a href="#spibench">spibench 改変版</a>
   </td><td>- 宮坂 賢氏作成 spibench の改変版</td></tr>
-  <tr><td>・<a href="#unzzip">unzzip.dll</a>
+  <tr><td>・<a href="#unzzip">unzzip.dll</a>&nbsp;(<a href="#unzzip1">+1</a>)
   </td><td>- zlib を使った zip書庫の簡易な OpenArchive DLL/EXE</td></tr>
   <tr><td>・<a href="#7zca">7zca.dll</a>
   </td><td>- 7-Zip(7z.dll)を使ったOpenArchive DLLの試作品</td></tr>
@@ -106,6 +106,7 @@ spibench
 ./spibench-20170902.zip
 unzzip
 ./unzzip15.zip
+./unzzip15p1.zip
 7zca
 ./7zca06.zip
 EndList -->
@@ -337,6 +338,12 @@ OpenArchive API のサブセットの API を用意しています。<br>
 ・書庫内ファイルの一覧表示(-l&nbsp;-lv&nbsp;-lj&nbsp;-v&nbsp;-Z)を追加<br>
 ・既存ファイルのバックアップ(-B)を追加<br>
 ・経過表示が表示されないことがあるのを修正<br>
+
+<hr><a href="./slplugin.html">↑</a><a name="unzzip1"><span role="heading" aria-level="2">unzzip.dll</span></a> Version 1.5+1
+<br>
+&nbsp;&nbsp;&nbsp;<a href="https://toroidj.github.io/plugin/unzzip15p1.zip">unzzip15p1.zip</a> ( 474 Kbytes,&nbsp;2026-4-11,&nbsp;Windows XP/2003 - 11/2025(x86, x64, Arm64))<br>
+<br>試験公開版です。 Version 1.5からの差し替え分のみとなってます。<br><br>●<strong>変更点</strong><br>1.5→1.5+1<br>
+・展開完了後に異常終了することがあるのを修正<br>
 
 <hr><a href="./slplugin.html">↑</a><a name="7zca"><span role="heading" aria-level="2">7zca.dll</span></a> Version 0.6
 <br>
