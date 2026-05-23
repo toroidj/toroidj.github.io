@@ -1189,7 +1189,7 @@ VDMJ	右側空白を詰める(要注意)
 VDMM	マーク情報
 VDMN	サムネイル画像
 VDMP	現在ページ数
-VDMQ	一覧の配置方法
+VDMQ	一覧の配列方法
 VDMS	空白(端用)
 VDMT	時刻詳細
 VDMU	コメント(拡張)
@@ -1430,4 +1430,4 @@ XUUQ	新しい %s があります。%s から更新しますか？
 -|7883	
 -|ITFC	
 -|XBUW	
-};cafooialpggeidhpecpjkdpcmneilbijmhibopcmehhdobpdmdbgdcabnagedalinfgoichdllcpbpldcjipphjglhnlhejlnnigjhapfmbablekldnalajnbnipafkiaie 
+};pdfkppnibacigbbhijoiigkjpciaafhhgmjcglkgijkogofldhdonggoiddeecghdefibcinaeacacpglichojijlhebfpennijdlbldcnoneknedbdnecnjmlnobaagaie 
