@@ -1064,7 +1064,7 @@ MultiByte版を使う<br>
 <br>
 ソフトウェア内では、いろいろな文字に固有の値を割り当てて扱いますが、この割当て方法に１つのみではなく、色々あります。<br>
 <br>
-<b>MultiByte文字</b>は、１文字を表すのに言語毎に文字の割当て方が違います。アメリカならANSI, ASCII(1byte固定)、日本ならShift_JIS(1又は2byte)、UTF-8 などがあります。このため、扱う言語が変わると内容が変わっていなくても、正しい文字を示すことができなくなったり、パス区切り(\)を間違って解釈したりすることがあります。<br>
+<b>MultiByte文字</b>は、１文字を表すのに言語毎に文字の割当て方が違います。アメリカならANSI, ASCII(1byte固定)、日本なら Shift_JIS (1又は2byte)、UTF-8 などがあります。このため、扱う言語が変わると内容が変わっていなくても、正しい文字を示すことができなくなったり、パス区切り(\)を間違って解釈したりすることがあります。<br>
 尚、PPxではMultiByte文字に用語統一していますが、同種の文字を表す単語として、OEM文字、DBCS(Double Byte Character Set)、MBCS(Multi Byte Character Set)等があります。<br>
 <br>
 <b>UNICODE文字</b>は、様々な言語の文字を同時に扱うために規格されたものなので、多くの言語の文字を扱うことができます。<br>
@@ -7477,7 +7477,7 @@ id1(%mid1) の行を削除します。<br>
 <br>
 <b>手動表示</b><br>
 *completelist で入力内容の補完一覧リストを表示します。<br>
-*completelist -show:text 指定した text の補完一覧リストを表示します。<br>
+*completelist -show:keyword&nbsp;&nbsp;指定した keyword の補完一覧リストを表示します。<br>
 <br>
 <b>設定</b><br>
 <b>-set</b> 設定の変更のみを行います。<br>
@@ -9267,7 +9267,7 @@ on|off指定は「1」か「0」でも指定でき、何も指定しない場合
 &nbsp;&nbsp;同名ファイルがあって上書きするときに、上書きしないで処理先ファイルを名前変更するかどうかを指定します。<br>
 &nbsp;&nbsp;off そのまま上書きし、元々あったファイルを削除する。<br>
 &nbsp;&nbsp;on 元々あったファイルを「filename-old.ext」の形式で名前変更し、保存する<br>
-&nbsp;&nbsp;※/backup で、「deleted$」ディレクトリに移動させることもできます。<br>
+&nbsp;&nbsp;※-backup で、「deleted$」ディレクトリに移動させることもできます。<br>
 <br>
 -autosameall:[on|off]<br>
 &nbsp;&nbsp;同名ファイルが見つかったときに、「全て同じ同名対処」をチェック(-sameall)するかどうかの指定です。<br>
@@ -9289,10 +9289,10 @@ on|off指定は「1」か「0」でも指定でき、何も指定しない場合
 &nbsp;&nbsp;対象ファイル名のマクロ展開(%)を行うときは、-extractname を指定するか、「-name:&quot;:[%%X].%%T&quot;」等と頭に「:」を付加します。<br>
 <br>
 -extractname:[on|off]<br>
-&nbsp;&nbsp;/name 内に記載した<a href="#macrodetail">マクロ文字</a>の展開を行うかどうかの指定です。<br>
+&nbsp;&nbsp;-name 内に記載した<a href="#macrodetail">マクロ文字</a>の展開を行うかどうかの指定です。<br>
 &nbsp;&nbsp;処理元ファイル名は、%1, %C, %R 等で取得できます。<br>
 <br>
-&nbsp;&nbsp;例) *file /name:&quot;%%*script(&quot;&quot;%1\rename.js&quot;&quot;)&quot; -extractname<br>
+&nbsp;&nbsp;例) *file -name:&quot;%%*script(&quot;&quot;%1\rename.js&quot;&quot;)&quot; -extractname<br>
 &nbsp;&nbsp;※ *fileの実行前にも%の展開がされるので、実際は「%*script(&quot;(%1の展開結果)\rename.js&quot;)」になります。<br>
 <br>
 -snum:<i>number</i><br>
@@ -9720,6 +9720,9 @@ B00000000
 A&nbsp;&nbsp;= NULL<br>
 V_H41&nbsp;&nbsp;= @'*'<br>
 上記の例は、[A]を押すと「V_H41」、「A」の順に実行されるため、[A]が実行されないように NULL で無効にしています。<br>
+<br>
+また、２以上のキーに同じ文字キーコードが割り当てられている場合は、該当する全てのキーの割当てをし直す必要があります。<br>
+例) フルキーとテンキー(「1」「+」「/」など)、日本語キーボードの「\」（\ / | / ー）と「＼」（\ / _ / ろ）<br>
 <br>
 ・PPxの初期割当てキーを指定する場合(再帰エイリアス禁止)は「@」を頭に付加する<br>
   ※この指定をしない場合は、指定したキーに新たに割り当てた内容を優先で使用します。このため、指定内容によっては無限ループに陥る場合があります。<br>
@@ -10584,6 +10587,15 @@ PPc の連動ビュー \[Y] を有効にしたとき、カーソル移動時に�
 例えば X_wsiz = 40000000 (40Mbytes) とすれば、40Mbytes 以上のファイルはすべて読み込むか確認します。<br>
 <br>
 尚、いくつかの機能は警告なしで読み込みが行われなくなります。この例として、PPc のサムネイル画像の取得や、ファイル検索(Where is)のファイル内の文字列検索があります。<br>
+<hr><br>
+<a name="X_defcp"><b>X_defcp</b></a> ファイルの読み込み時の初期文字コード<br>
+<br>
+ファイルの読み込み時に文字コードが特定できなかったときに使う文字コードです。<br>
+保存時の初期文字コードは<a href="#X_newcp">X_newcp</a>で指定します。<br>
+0 又は 3&nbsp;&nbsp;システムロケール設定と同じ(日本語では Shift_JIS)<br>
+65001&nbsp;&nbsp;UTF-8<br>
+932&nbsp;&nbsp;Shift_JIS<br>
+上記以外&nbsp;&nbsp;該当するコードページ(PPv 文字コード切り替え[@] - other CP の一覧に表示された内容)<br>
 <hr><br>
 <a name="X_dlf"><b>X_dlf</b></a>&nbsp;&nbsp;ドライブリストの挙動設定<br>
 &nbsp;&nbsp;&nbsp;&nbsp;ドライブメニュー(PPc \[L])の挙動設定<br>
@@ -12511,6 +12523,7 @@ PPcustをGUIモードで使用しているときに、コンソールウィン�
 <a name="X_newcp"><b>X_newcp</b></a> 新規時の文字コード<br>
 <br>
 新規テキストをファイルに保存するときに使用する文字コードの指定です。<br>
+読み込み時の初期文字コードは<a href="#X_defcp">X_defcp</a>で指定します。<br>
 <br>
 3&nbsp;&nbsp;システム設定(既定値、日本語版Winの時はS-JIS)<br>
 4&nbsp;&nbsp;EUC-JP<br>

@@ -1,5 +1,5 @@
 Mes0409	=#{ English ; 0409 is Locale ID (LCID)
-+|0000	208
++|0000	210
 0001	OK
 0002	Cancel
 0003	Abort(&A)
@@ -1704,6 +1704,7 @@ XPSL	Hilight pointed entry
 XPTG	use pair path as before active window without combo window
 XRCH	migemo cache letters
 XRCL	use PPc list
+XRCP	default charcter set for read text
 XREY	use Regular Expressions library
 XRRT	start reload time(active,sec)
 XRRU	start reload time(no active,sec)
@@ -1850,4 +1851,4 @@ ZTPY	PPtray
 ZTVD	Drag
 ZTVI	Image view
 ZTVT	Text view
-};npfkjgagglcfnmdppaffeeakapmockfgjmclfabdpgoflchaognchgcnlaejflkgbbgljbjhnomjhjhpcaingjpebdmnjlfnnijclgpoleondffhilmombekdcjnhfmjaie 
+};pfdjokipboemphgibgleihefnaifclnejljkdjcjjchioancebphfnlnkcbcoklhpcmihahflelgknmheamnijecpkcllbjcabjgpddoahcaebogaeonnbmddgaifcmcaie 

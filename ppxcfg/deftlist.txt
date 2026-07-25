@@ -202,6 +202,11 @@
 		20MBytes:X_wsiz=@20000000
 		40MBytes:X_wsiz=@40000000
 		XMIS|miscその他:X_wsiz=<d
+	XRCP|default charcter set for read text読み込み時の初期文字コード
+		system localeシステム設定:X_defcp=@3:3
+		UTF-8:X_defcp=@65001
+		S-JIS:X_defcp=@932
+		code page:X_defcp=<d/3
 	XCLT|Command name list for cmd.exe直接指定可能な cmd.exe コマンドの一覧( ; 区切り):X_cmdls=<s
 	XWPB|use ppb実行時にPPbが必要なとき、空きPPbがなければ
 		XNOO|noPPbなしで実行:X_wppb=@-1
@@ -538,7 +543,7 @@
 		stop移動停止:XC_mvUD+8=@0
 		jump to up/down bound画面反対(線対称):XC_mvUD+8=@1
 		jump to angle bound画面反対(点対称):XC_mvUD+8=@2
-		line scroll一行分スクロール(要スクロール設定):XC_mvUD+8=@3
+		line scroll一行分スクロール:XC_mvUD+8=@3
 		column scroll一桁分スクロール:XC_mvUD+8=@4
 		pageページ切替:XC_mvUD+8=@5
 		half page半ページ切替:XC_mvUD+8=@15
@@ -559,7 +564,7 @@
 		stop移動停止:XC_mvUD+16=@0
 		jump to up/down bound画面反対(線対称):XC_mvUD+16=@1
 		jump to angle bound画面反対(点対称):XC_mvUD+16=@2
-		line scroll一行分スクロール(要スクロール設定):XC_mvUD+16=@3
+		line scroll一行分スクロール:XC_mvUD+16=@3
 		column scroll一桁分スクロール:XC_mvUD+16=@4
 		pageページ切替(一周する):XC_mvUD+16=@5
 		half page半ページ切替(一周する):XC_mvUD+16=@15
@@ -580,7 +585,7 @@
 		stop移動停止:XC_mvLR+8=@0
 		jump to up/down bound画面反対(線対称):XC_mvLR+8=@1
 		jump to angle bound画面反対(点対称):XC_mvLR+8=@2
-		line scroll一行分スクロール(要スクロール設定):XC_mvLR+8=@3
+		line scroll一行分スクロール:XC_mvLR+8=@3
 		column scroll一桁分スクロール:XC_mvLR+8=@4
 		pageページ切替:XC_mvLR+8=@5
 		half page半ページ切替:XC_mvLR+8=@15
@@ -600,7 +605,7 @@
 		stop移動停止:XC_mvLR+16=@0
 		jump to up/down bound画面反対(線対称):XC_mvLR+16=@1
 		jump to angle bound画面反対(点対称):XC_mvLR+16=@2
-		line scroll一行分スクロール(要スクロール設定):XC_mvLR+16=@3
+		line scroll一行分スクロール:XC_mvLR+16=@3
 		column scroll一桁分スクロール:XC_mvLR+16=@4
 		pageページ切替(一周する):XC_mvLR+16=@5
 		half page半ページ切替(一周する):XC_mvLR+16=@15

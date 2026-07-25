@@ -52,6 +52,7 @@ X_rtree	=0
 X_rclst	=0
 X_svsz	=10000000
 X_wsiz	=40000000
+X_defcp	=3
 ^|X_dlf	=B10000100,B0,B10000000,0
 +2.04|X_cmdls	=cd;chcp;chdir;cls;color;copy;del;dir;echo;erase;for;if;md;mkdir;mklink;move;path;pause;rd;ren;rmdir;set;start;title;type;ver;vol
 X_wppb	=3
