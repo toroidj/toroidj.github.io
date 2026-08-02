@@ -6670,7 +6670,6 @@ ID指定がなければ実行元のPPxで実行します。PPb(BA-BZ)に対し�
 <br>
 参考 <a href="#extract">%*extract</a><br>
 <hr><br>
-<hr><br>
 <a name="PPxCmd43"><b>*execute <i>@path [-mask:&quot;wildcard&quot;] command</i> ListFile・ディレクトリの列挙実行</b></a><br>
 <br>
 @path / @&quot;path&quot; / %@ などと ListFile やディレクトリのパスを指定すると、その内容の列挙実行ができます。% のエスケープが指定 PPx による実行と同様に必要です。<br>
@@ -10592,9 +10591,22 @@ PPc の連動ビュー \[Y] を有効にしたとき、カーソル移動時に�
 <br>
 ファイルの読み込み時に文字コードが特定できなかったときに使う文字コードです。<br>
 保存時の初期文字コードは<a href="#X_newcp">X_newcp</a>で指定します。<br>
+<br>
+使用している文字コードの種類に応じて４種類指定可能です。<br>
+X_defcp = 7bit範囲, 不明8bit範囲, Shift_JIS系(Shift_JIS, Big5 等), EUC(EUC-JP, EUC-KR, GB2312 等)<br>
+<br>
 0 又は 3&nbsp;&nbsp;システムロケール設定と同じ(日本語では Shift_JIS)<br>
 65001&nbsp;&nbsp;UTF-8<br>
+437&nbsp;&nbsp;IBM437(英語)<br>
+874&nbsp;&nbsp;TIS-620(タイ)<br>
 932&nbsp;&nbsp;Shift_JIS<br>
+936&nbsp;&nbsp;GB2312(簡体字)<br>
+950&nbsp;&nbsp;Big5(繁体字)<br>
+1250&nbsp;&nbsp;ANSI 中央ヨーロッパ<br>
+1252&nbsp;&nbsp;ANSI 西ヨーロッパ<br>
+1258&nbsp;&nbsp;ANSI ベトナム<br>
+20936&nbsp;&nbsp;GB2312(簡体字)<br>
+51949&nbsp;&nbsp;EUC-KR(ハングル)<br>
 上記以外&nbsp;&nbsp;該当するコードページ(PPv 文字コード切り替え[@] - other CP の一覧に表示された内容)<br>
 <hr><br>
 <a name="X_dlf"><b>X_dlf</b></a>&nbsp;&nbsp;ドライブリストの挙動設定<br>
