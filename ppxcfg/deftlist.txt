@@ -148,8 +148,8 @@
 		XFOC|serialized(max 32 jobs)１つのみ、指定した順番に実行(32超は待機無し):X_fopw=@2
 	XJLS|Show job list window処理の一覧表示を
 		XNOO|noしない:X_jlst=@0
-		XJLA|show必要なときのみ表示(固定位置):X_jlst=@1
-		XJLB|show必要なときのみ表示(現在窓の右):X_jlst=@2
+		XJLA|show fixed position必要なときのみ表示(固定位置):X_jlst=@1
+		XJLB|show right position必要なときのみ表示(現在窓の右):X_jlst=@2
 		XJLC|show always on combo PPc window一体化PPc上に常時表示:X_jlst=@3
 		XJLD|hide dialog with show job list処理の一覧表示時は、処理中のファイル操作ダイアログを隠す:X_jlst+4=?1:0
 	XFAT|fix time for FAT時刻の比較はFATによる誤差(±2秒)を考慮する:X_fatim=?1:0
@@ -332,8 +332,11 @@
 	XMSD|Directory labelディレクトリを表すラベル(漢字は末尾が化けることあり):Mes:DIRS=<s
 	XDPM|Show mask on caption現在のエントリマスク文字列をタイトルバーに表示する:XC_dpmk=?1:0
 	XAWI|Auto width change with view styleエントリ表示幅が変わったら窓幅を調節する:XC_awid=?1:0
-	XING|Gray view現在窓以外はグレー調にする:X_inag=?1:0
 	XPSL|Hilight pointed entryマウスポインタ上のエントリ背景色を変化させる:X_poshl=?1/1:0
+	XING|Gray unfocused view非アクティブ窓をグレー調
+		XNOO|noしない:X_inag=@0
+		without this pane現在窓以外:X_inag=@1
+		all unfocued window全ての窓:X_inag=@2
 	XSTP|Show long name tipファイル名が表示しきれないときチップ表示
 		XNOO|noしない:X_stip=@0
 		0.3 sec later0.3秒後:X_stip=@300

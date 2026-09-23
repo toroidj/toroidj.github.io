@@ -52,7 +52,7 @@ X_rtree	=0
 X_rclst	=0
 X_svsz	=10000000
 X_wsiz	=40000000
-X_defcp	=3
+^|X_defcp	=3,932,932,4
 ^|X_dlf	=B10000100,B0,B10000000,0
 +2.04|X_cmdls	=cd;chcp;chdir;cls;color;copy;del;dir;echo;erase;for;if;md;mkdir;mklink;move;path;pause;rd;ren;rmdir;set;start;title;type;ver;vol
 X_wppb	=3
@@ -162,7 +162,11 @@ XV_minf	=2
 ^|X_prts	=20,15,10,10,0
 ^|X_iexo	=0,0,0
 XV_tab	={
-4	=.c,.cpp,.h,.hpp,.rc,.rh,.pl
+4	=.c,.cpp,.h,.hpp,.rc,.rh,.pl,.md
+}
+XV_opts	={
+md = -markup
+txt = -markup
 }
 XV_dds	=1
 ^|XV_drag	=1,2,3,0
@@ -514,7 +518,6 @@ E	,%"JMTE|Text edit"%Orib,editor %{%FDC%}
 MC_click	={
 LD_FRAM	=@&F6
 R_FRAM	=@&SPACE
-W_FRAM	=@&SPACE
 M_FRAM	=@&SPACE
 R_MENU	=@&SPACE
 L_PATH	=@L
@@ -572,19 +575,15 @@ LD_FRAM	=@&F6
 LD_SPC	,%Z
 &LD_SPC	,%z,properties
 R_FRAM	=@&SPACE
+M_FRAM	=@&SPACE
 R_LINE	,*layout
 R_SCRL	=@&SPACE
 R_MENU	=@&SPACE
 R_SPC	=@^ENTER
 \R_SPC	, %z
-W_FRAM	=@&SPACE
 W_HMNU	=@\ESC
 W_LINE	=@\ESC
 W_SPC	=@\ESC
-W_FRAM	=@&SPACE
-M_HMNU	=@\ESC
-M_LINE	=@\ESC
-M_SPC	=@\ESC
 }
 MT_icon	={
 LD_ICON	,%E
@@ -765,10 +764,24 @@ CV_hkey	= {
 	>_DGRE,//
 	>_DGRE,/*
 	<_DGRE,*/
-eml	= _CYA,Subject:
-	_CYA,From:
-	_CYA,To:
-	_CYA,Received:
+eml	= _SLABEL,Subject:
+	_SLABEL,From:
+	_SLABEL,To:
+	_SLABEL,Received:
+?|markup	=|^>,_SBRCYAN,>
+	|^>,_SGREEN,"# "
+	|^>,_SGREEN,"## "
+	|^>,_SGREEN,"### "
+	|^>,_SLABEL,"Åú "
+	|^,_SLABEL,"* "
+	|^,_SLABEL,"+ "
+	|^,_SLABEL,"- "
+	^%s,_SLABEL,**
+	^%s,_SLABEL,*
+	^%s~,_SBKYELLOW,__
+	^%s~,_SBKBLACK,``
+	^%s~,_SBKBLACK,`
+	^%s~,_SBKRED,~~
 }
 CV_char	=_DBLA,_RED,_GRE,_BLU,_DBRO,_CYA,_MAG,_WHI,_AUTO,_DRED,_DGRE,_DBLU,_DBRO,_DCYA,_DMAG,HA0A0A0
 CB_pals	=_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO,_AUTO
