@@ -6845,7 +6845,8 @@ command の先頭の文字が「-」や「/」のときは、「&quot;-…&quot;
 <hr><br>
 <a name="run"><b>*run <i>[options] command [parameter]</i> commandを実行</b></a><br>
 <br>
-指定された command を実行します。「command」でそのまま実行するときよりも詳細なオプションを指定できます。<br>
+指定された command を実行します。「command」でそのまま実行するときよりも詳細なオプションを指定できます。また、取得可能であれば、プロセス終了コードを取得し%*exitcodeで参照することができます。<br>
+<br>
 command は<a href="#cmdalias">コマンドエイリアス</a>を使用できます。<br>
 command の先頭の文字が「-」や「/」のときは、「&quot;-…&quot;」と「&quot;」で括る必要があります。マクロ文字を指定するときは「&quot;%C&quot;」等と予め括るようにしてください。※括らないとオプション扱いになります。<br>
 <br>
@@ -6866,17 +6867,17 @@ command の先頭の文字が「-」や「/」のときは、「&quot;-…&quot;
 &nbsp;&nbsp;常時指定したいときは %Od を使います。<br>
 <b>-noactive</b> &nbsp;&nbsp;フォーカス移動なしで、通常のウィンドウの大きさで実行します。常時指定したいときは %Oa を使います。<br>
 <b>-nostartmsg</b> &nbsp;&nbsp;実行を開始するときの「開始…」表示をなくす。※「開始…」表示は、セキュリティソフトのファイルスキャンによって実行前に待たされることがあるため用意しています。表示が不要のときは、Mes0411:EXEF (日本語のとき)を空欄にして下さい。<br>
-<br>
+<b>-newconsole</b> &nbsp;&nbsp;新しいコンソールを使用する。PPb を使わないで実行するとき、現プロセスに紐付いたコンソールではなく、新しいコンソールを用意して実行を行います。<br>
 <b>-wait</b> &nbsp;&nbsp;実行したアプリケーションが終了するまで待機します。常時指定したいときは %Os を使います。<br>
 <b>-wait:idle</b> &nbsp;&nbsp;起動完了まで待ちます。実行したアプリケーションの起動が完了するまで待ちます。GUIアプリケーションならウィンドウの表示がされたときが起動完了時になります。コンソールアプリケーションなら実行開始したときが起動完了時になります。常時指定したいときは %Oi を使います。<br>
-<b>-wait:later</b> &nbsp;&nbsp;*wait -run でアプリケーションの終了を待機できるようにします。特殊環境変数PID/TIDにプロセスID/スレッドIDを記憶します。<br>
-&nbsp;&nbsp;※現在PPb/PPb経由など、使用できないときが各種有ります。*run -wait:later ～ %: %I&quot;PID=%so,&quot;PID&quot;&quot; 等として、PID が取得できるときだけ使用できます。<br>
+<b>-wait:later</b> &nbsp;&nbsp;*wait -run でアプリケーションの終了を待機できるようにします。特殊環境変数 PID/TID にプロセスID/スレッドIDを記憶します。<br>
+&nbsp;&nbsp;※現在 PPb/PPb 経由など、使用できないときが各種有ります。*run -wait:later ～ %: %I&quot;PID=%so,&quot;PID&quot;&quot; 等として、PID が取得できるときだけ使用できます。<br>
 &nbsp;&nbsp;※-wait:idle を併用するときは -wait:idle -wait:later とします。<br>
 <b>-wait:no</b> &nbsp;&nbsp;終了待機、起動完了待機を行いません。%Os, %Oi, -wait 等が無効になります。<br>
-<b>-pid -tid</b> &nbsp;&nbsp;プロセスID, メインスレッドIDを特殊環境変数 PID/TID に保存します。保存したIDは、「%so,&quot;PID&quot;」「%so,&quot;TID&quot;」で取得できます。尚、メインスレッドIDは取得できないことがあります。<br>
-&nbsp;&nbsp;取得したプロセスIDは、*wait -pid や taskkill.exe 等で使用できます。<br>
+<b>-pid -tid</b> &nbsp;&nbsp;プロセス ID, メインスレッド ID を特殊環境変数 PID/TID に保存します。保存した ID は、「%so,&quot;PID&quot;」「%so,&quot;TID&quot;」で取得できます。尚、メインスレッド ID は取得できないことがあります。<br>
+&nbsp;&nbsp;取得したプロセス ID は、*wait -pid や taskkill.exe 等で使用できます。<br>
 <br>
-<b>・実行ファイル(exeファイル)のみ有効な指定</b><br>
+<b>・実行ファイル(exe ファイル)のみ有効な指定</b><br>
 <br>
 <b>-low</b> &nbsp;&nbsp;実行優先度を「低」の状態で実行します。システムがアイドル状態のときだけ実行されます。<br>
 <b>-belownormal</b> &nbsp;&nbsp;実行優先度を「通常以下」の状態で実行します。<br>
@@ -6888,7 +6889,7 @@ command の先頭の文字が「-」や「/」のときは、「&quot;-…&quot;
 <b>-breakjob</b> &nbsp;&nbsp;タスクのジョブを分離します。<br>
 <b>-newgroup</b> &nbsp;&nbsp;プロセスグループを分離します。プロセスグループは、コンソールでCtrl+C / Ctrl+Breakを行ったときのシグナルが送信される範囲となります。<br>
 <br>
-<b>-pos:x,y</b> &nbsp;&nbsp;表示位置を指定します。前回の表示位置で表示するソフトに対しては機能しません。このため、cmd.exe等の一部のソフトのみ使用できます。<br>
+<b>-pos:x,y</b> &nbsp;&nbsp;表示位置を指定します。前回の表示位置で表示するソフトに対しては機能しません。このため、cmd.exe 等の一部のソフトのみ使用できます。<br>
 <br>
 <b>-size:width,height</b> &nbsp;&nbsp;窓の大きさを指定します。前回の表示位置で表示するソフトに対しては機能しません。このため、一部のソフトのみ使用できます。<br>
 <br>
@@ -6913,7 +6914,8 @@ command の先頭の文字が「-」や「/」のときは、「&quot;-…&quot;
 関連 <a href="#execute">実行処理</a>, <a href="#launch">*launch</a>, <a href="#start">*start</a>, <a href="#zapfile">%Z</a>, <a href="#wait">*wait</a>, <a href="#optionmacro">%O</a><br>
 <hr><br>
 <a name="runfunc"><b>%*run(<i>[options] command [parameter])</i> commandを実行し結果を返す</b></a><br>
-command を実行したときの標準出力・標準エラー出力を戻り値にします。標準出力・エラー出力の文字コードは、指定が無ければシステムのコードページ、-io:utf8 等と指定すればその文字コードになります。<br>
+command を実行したときの標準出力・標準エラー出力を戻り値にします。標準出力・エラー出力の文字コードは、指定が無ければシステムのコードページ、-io:utf8 等と指定すればその文字コードになります。また、取得可能であれば、プロセス終了コードを取得し%*exitcodeで参照することができます。<br>
+<br>
 options は <a href="#run">*run</a> と同じです。<br>
 command や parmeter 中に括弧 (,) を含む場合は %(  %) で括る必要があります。<br>
 <hr><br>
