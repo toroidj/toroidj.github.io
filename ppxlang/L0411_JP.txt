@@ -324,28 +324,28 @@ CDL3	一覧3(&3)
 CDT1	サムネイル1(&T)
 CDT2	サムネイル2(&8)
 CDT3	サムネイル3(&9)
-CMP1	SHA-1が一致(サブディレクトリ,&H)
+CMP1	SHA-1が一致(サブディレクトリ, &H)
 CMP6	SHA-1が一致する任意ファイル名(&J)
 CMP7	SHA-1が一致、全比較ログ(サブディレクトリ,&L)
 CMPA	大きさと時刻が同じファイル(&A)
-CMPB	中身が一致(サブディレクトリ,&B)
+CMPB	中身が一致(サブディレクトリ含,&B)
 CMPC	コメントが一致(&W)
 CMPD	詳細(&D)...
 CMPE	どちらにも存在するファイル(&E)
 CMPF	同ファイル名(拡張子無視,&F)
-CMPG	中身が一致、全比較ログ(サブディレクトリ,&G)
+CMPG	中身が一致、全比較ログ(サブディレクトリ内, &G)
 CMPH	クリップボード内ハッシュと比較(&C)
 CMPI	同じ大きさ、任意ファイル名(&I)
 CMPL	大きいファイル(&L)
-CMPM	同じコメント(1窓内,&M)
+CMPM	同じコメント(1窓内, &M)
 CMPN	新規又は新しいファイル(&F)
 CMPQ	同サイズ、任意ファイル名(&Q)
 CMPS	大きさが異なるファイル(&S)
 CMPT	新しいファイル(&T)
 CMPW	孤立ファイル(&O)
-CMPX	どちらにも存在(サブディレクトリ,&X)
+CMPX	どちらにも存在(サブディレクトリ含,&X)
 CMPY	同コメントの任意ファイル名(&Y)
-CMPZ	同じ大きさ(1窓内,&Z)
+CMPZ	同じ大きさ(1窓内 ,&Z)
 COMP	完了しました
 COMT	コメント
 COSE	拡張子を分離判定(&S)
@@ -1430,4 +1430,4 @@ XUUQ	新しい %s があります。%s から更新しますか？
 -|7883	
 -|ITFC	
 -|XBUW	
-};ghpjplfpjcnpcgnmlekgcookhnkpkglfapboklhmafgmdjakooljmnhgempapaifhmckbbccnbnofdanhegehmcemfgbddinmkbaknjjkahmofjkcpgdkbephelkbomoaie 
+};jebnjhcpnkfjedhjpknaeapaondppighdckemhjanlngppiopealeonafffelnaeifkojdmhbjacomfkgiehchabinecnembdbncjcklcaifadoehjmpcooccgijgfjcaie 

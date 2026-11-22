@@ -338,11 +338,11 @@ CDL3	List&3
 CDT1	Thumbnails1(&T)
 CDT2	Thumbnails2(&8)
 CDT3	Thumbnails3(&9)
-CMP1	Same SHA-1(&H)
+CMP1	Same SHA-1(sub folders, &H)
 CMP6	Same SHA-1, any name(&J)
 CMP7	Same SHA-1, all sub-entries(&L)
 CMPA	Same size && time(&A)
-CMPB	Same Binary(&B)
+CMPB	Same Binary(sub folders, &B)
 CMPC	Same Comment(&W)
 CMPD	Detail...(&D)
 CMPE	Exist file(&E)
@@ -351,15 +351,15 @@ CMPG	Same Binary, all sub-entries(&G)
 CMPH	Compare Hash to Clipboard(&C)
 CMPI	file size(no name check, &I)
 CMPL	Large file(&L)
-CMPM	comment(1window, &M)
+CMPM	comment(in this window, &M)
 CMPN	new File(&F)
 CMPQ	same size, any name(&Q)
 CMPS	file Size(&S)
 CMPT	Time stamp(&T)
 CMPW	alone file(&O)
-CMPX	Exist(with sub-dir, &X)
+CMPX	Exist(sub folder, &X)
 CMPY	Comment, any name(&Y)
-CMPZ	same file size(1 window, &Z)
+CMPZ	same file size(in this window, &Z)
 COMP	completed.
 COMT	comment
 COSE	split extension(&S)
@@ -1851,4 +1851,4 @@ ZTPY	PPtray
 ZTVD	Drag
 ZTVI	Image view
 ZTVT	Text view
-};pfdjokipboemphgibgleihefnaifclnejljkdjcjjchioancebphfnlnkcbcoklhpcmihahflelgknmheamnijecpkcllbjcabjgpddoahcaebogaeonnbmddgaifcmcaie 
+};cjkaplgdijmnnibcodgacnaiibifpjpobehpfanhhmkbfepiigjeiienchehkmekfiidgdjccjloddnmgbmielgdplklibbmapaaelcmijglihjgbomhncommbbnogmcaie 
